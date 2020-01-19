@@ -12,8 +12,7 @@ Materiale didattico per i frequentatori del corso di Ingegneria Informatica pres
 
 
 ## Corsi
-1. Item 1
-1. Item 2
-1. Item 3
-   1. Item 3a
-   1. Item 3b
+1. Anno 1
+   1. Algebra Lineare
+   1. Analisi 1
+   1. Fondamenti di Programmazione
