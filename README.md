@@ -11,10 +11,9 @@ Materiale didattico per i frequentatori del corso di Ingegneria Informatica pres
 **Telegram primo anno**: https://t.me/inginfunipi
 
 
-#Corsi
-
-Anno|Materia
-----|-------
-Algebra Lineare | 0
-Analisi I | 0
-FdP       | 0
+## Corsi
+1. Item 1
+1. Item 2
+1. Item 3
+   1. Item 3a
+   1. Item 3b
