@@ -17,6 +17,3 @@ Materiale didattico per i frequentatori del corso di Ingegneria Informatica pres
    1. Analisi 1
    1. Fondamenti di Programmazione
 
-
-
-![](https://upload.wikimedia.org/wikipedia/it/7/72/Stemma_unipi.png) 
