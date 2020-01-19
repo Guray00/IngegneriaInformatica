@@ -19,4 +19,4 @@ Materiale didattico per i frequentatori del corso di Ingegneria Informatica pres
 
 
 
-![](https://upload.wikimedia.org/wikipedia/it/7/72/Stemma_unipi.png=250x250) 
+![](https://upload.wikimedia.org/wikipedia/it/7/72/Stemma_unipi.png =250x250) 
