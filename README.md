@@ -13,6 +13,14 @@ Materiale didattico per i frequentatori del corso di Ingegneria Informatica pres
 
 ## Corsi
 1. Anno 1
-   1. **Algebra Lineare** - [Longo Placido](http://pagine.dm.unipi.it/alan/)
-   1. **Analisi 1** - [Luigi Carlo Berselli](http://pagine.dm.unipi.it/berselli/dida/maindida.html)
-   1. **Fondamenti di Programmazione** - [Marco Cococcioni](http://www.iet.unipi.it/m.cococcioni/)
+      1. Primo semestre
+         1. **Algebra Lineare** - [Longo Placido](http://pagine.dm.unipi.it/alan/)
+         1. **Analisi 1** - [Luigi Carlo Berselli](http://pagine.dm.unipi.it/berselli/dida/maindida.html)
+         1. **Fondamenti di Programmazione** - [Marco Cococcioni](http://www.iet.unipi.it/m.cococcioni/)
+         
+      1. Secondo semestre
+         1. Algoritmi e strutture dati
+         1. Analisi II
+         1. Base di dati
+         1. Fisica I
+
