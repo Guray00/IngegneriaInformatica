@@ -19,7 +19,7 @@ Materiale didattico per i frequentatori del corso di Ingegneria Informatica pres
          1. **Fondamenti di Programmazione** - [Marco Cococcioni](http://www.iet.unipi.it/m.cococcioni/)
          
       1. _Secondo semestre_
-         1. **Algoritmi e strutture dati**
+         1. **Algoritmi e strutture dati** - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - [Antonio Virdis](http://www.iet.unipi.it/a.virdis/algoritmi.html)
          1. **Analisi II**
          1. **Base di dati**
          1. **Fisica I**
