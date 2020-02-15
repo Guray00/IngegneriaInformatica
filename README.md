@@ -20,7 +20,7 @@ Materiale didattico per i frequentatori del corso di Ingegneria Informatica pres
          
       1. _Secondo semestre_
          1. **Algoritmi e strutture dati** - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - [Antonio Virdis](http://www.iet.unipi.it/a.virdis/algoritmi.html)
-         1. **Analisi II**
+         1. **Analisi II** - [Longo Placido](http://pagine.dm.unipi.it/alan/)
          1. **Base di dati**
          1. **Fisica I**
 
