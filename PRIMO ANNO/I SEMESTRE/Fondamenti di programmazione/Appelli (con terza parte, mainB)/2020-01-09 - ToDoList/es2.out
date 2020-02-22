@@ -1,0 +1,63 @@
+--- PRIMA PARTE ---
+Test costruttore e funzione aggiungi
+  1 - Task3
+  2 - Task1
+  2 - Task2
+  2 - Task5
+  3 - Task4
+
+Test distruttore
+Distruttore chiamato
+--- SECONDA PARTE ---
+Test operatore +=
+  1 - Task3
+  1 - Task1
+  2 - Task1
+  2 - Task2
+  2 - Task5
+  2 - Task2
+  3 - Task4
+  3 - Task3
+  4 - Task4
+
+Test funzione fai
+  1 - Task3
+V 1 - Task1
+  2 - Task1
+V 2 - Task2
+  2 - Task5
+V 2 - Task2
+  3 - Task4
+  3 - Task3
+  4 - Task4
+
+Test funzione cancella_fatti
+  1 - Task3
+  2 - Task1
+  2 - Task5
+  3 - Task4
+  3 - Task3
+  4 - Task4
+
+--- TERZA PARTE ---
+Test funzione aggiungi con input non validi
+  1 - Task3
+  2 - Task1
+  2 - Task5
+  3 - Task4
+  3 - Task3
+  4 - Task4
+
+Test funzione fai con input non validi
+  1 - Task3
+  2 - Task1
+  2 - Task5
+  3 - Task4
+  3 - Task3
+  4 - Task4
+
+Test funzione cancella_fatti con cancellazione in testa e in coda
+  2 - Task1
+  2 - Task5
+  3 - Task3
+

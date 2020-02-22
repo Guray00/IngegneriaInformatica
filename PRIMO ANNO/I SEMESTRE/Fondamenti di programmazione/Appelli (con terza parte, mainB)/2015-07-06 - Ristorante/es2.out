@@ -1,0 +1,26 @@
+Test costruttore e op. uscita. Deve stampare: 'Posti liberi 14, in attesa nessuno' 
+Posti liberi 14, in attesa nessuno
+
+Test della 'aggiungi'. Deve stampare: 'Posti liberi 2, in attesa  Verdi(4) Bianchi(6) Neri(2) Rossini(5)' 
+Posti liberi 2, in attesa Verdi(4) Bianchi(6) Neri(2) Rossini(5) 
+
+Testa dell'op. -= (7). Deve stampare: 'Posti liberi 5, in attesa Bianchi(6) Neri(2) Rossini(5)'
+Posti liberi 5, in attesa Bianchi(6) Neri(2) Rossini(5) 
+
+Test del costruttore di copia. Deve stampare 'Posti liberi 5, in attesa Bianchi(6) Neri(2) Rossini(5)'
+Posti liberi 5, in attesa Bianchi(6) Neri(2) Rossini(5) 
+
+Test del distruttore (r2 sta per essere distrutto): non deve stampare nulla
+
+Test della 'rinuncia'. Deve stampare: 'Bianchi ha rinunciato. Verdini non trovato'
+Bianchi ha rinunciato. Verdini non trovato
+
+Altra verifica della 'rinuncia'. Deve stampare: 'Posti liberi 3, in attesa Rossini(5)'
+Posti liberi 3, in attesa Rossini(5) 
+
+
+Posti liberi 3, in attesa Rossini(5) Nerini(1) Bianchetti(1) 
+
+
+Posti liberi 1, in attesa nessuno
+

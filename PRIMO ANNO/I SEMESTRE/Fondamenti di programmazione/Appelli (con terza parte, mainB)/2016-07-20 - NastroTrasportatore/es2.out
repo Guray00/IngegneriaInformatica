@@ -1,0 +1,31 @@
+--- PRIMA PARTE ---
+Test del costruttore
+<vuoto>
+
+Test della aggiungi()
+(F024)
+(B42)=(F024)
+(A1625)=(B42)=(F024)
+(C878)=(A1625)=(B42)=(F024)
+
+Test della rimuovi()
+(C878)=(A1625)=(B42)
+
+Test del costruttore di copia
+(C878)=(A1625)=(B42)
+--- SECONDA PARTE ---
+
+Test della controlla()
+(A1625*)=(C878)=(B42)
+(A1625*)=(B42*)=(C878)
+
+Test di int()
+2
+
+Test del distruttore
+(n2 e' stato distrutto)
+--- TERZA PARTE ---
+(C878)=(A1625)=(B42)
+(C878)=(A1625)=(B42)
+(C878*)=(A1625)=(B42)
+1

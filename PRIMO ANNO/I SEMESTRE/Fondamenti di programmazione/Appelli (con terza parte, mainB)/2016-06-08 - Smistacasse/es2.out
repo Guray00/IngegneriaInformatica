@@ -1,0 +1,63 @@
+--- PRIMA PARTE ---
+Test del costruttore e dell'operatore di uscita
+1: <vuota>
+2: <vuota>
+3: <vuota>
+
+Test della 'aggiungi'
+1: (ID=68, ARTICOLI=11).
+2: (ID=74, ARTICOLI=7).
+3: <vuota>
+
+1: (ID=68, ARTICOLI=11).
+2: (ID=74, ARTICOLI=7)(ID=52, ARTICOLI=9).
+3: (ID=76, ARTICOLI=8).
+
+Test della 'trovaCassa'
+3
+
+Test della 'servi' sulla seconda e terza cassa
+1: (ID=68, ARTICOLI=11).
+2: (ID=52, ARTICOLI=9).
+3: <vuota>
+
+--- SECONDA PARTE --- 
+Test dell'operatore -= sulla prima cassa
+1: <chiusa>
+2: (ID=52, ARTICOLI=9).
+3: (ID=68, ARTICOLI=11).
+
+Test del distruttore (s1 e' stata appena distrutta)
+--- TERZA PARTE ---
+1: (ID=33, ARTICOLI=4)(ID=44, ARTICOLI=8)(ID=55, ARTICOLI=9).
+
+1: <chiusa>
+
+1: <chiusa>
+
+1: <vuota>
+2: <vuota>
+
+Test della 'aggiungi'
+1: (ID=68, ARTICOLI=11).
+2: (ID=74, ARTICOLI=7).
+
+1: (ID=68, ARTICOLI=11)(ID=52, ARTICOLI=9).
+2: (ID=74, ARTICOLI=7)(ID=76, ARTICOLI=8).
+
+2
+1: <vuota>
+2: (ID=74, ARTICOLI=7)(ID=76, ARTICOLI=8).
+
+1: (ID=74, ARTICOLI=7)(ID=76, ARTICOLI=8).
+2: <chiusa>
+
+1: (ID=74, ARTICOLI=7)(ID=76, ARTICOLI=8)(ID=99, ARTICOLI=9).
+2: <chiusa>
+
+1: <chiusa>
+2: <chiusa>
+
+1: <chiusa>
+2: <chiusa>
+

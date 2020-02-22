@@ -1,0 +1,135 @@
+--- PRIMA PARTE ---
+Test costruttore
+========
+|      |
+|      |
+|      |
+|      |
+|      |
+|      |
+|      |
+|      |
+|      |
+|      |
+========
+Test funzione fire
+========
+|RRYY  |
+|B  Y  |
+|B  G  |
+|      |
+|      |
+|      |
+|      |
+|      |
+|      |
+|      |
+========
+Test operatore int
+Altezza: 3
+--- SECONDA PARTE ---
+Test funzionalita' scoppio bolle
+========
+|RR    |
+|R  Y  |
+|   G  |
+|   G  |
+|      |
+|      |
+|      |
+|      |
+|      |
+|      |
+========
+Test funzione scroll
+========
+|======|
+|======|
+|RR    |
+|R  Y  |
+|   G  |
+|   G  |
+|      |
+|      |
+|      |
+|      |
+========
+Test funzione compact
+========
+|======|
+|======|
+|RR Y  |
+|R  G  |
+|   G  |
+|      |
+|      |
+|      |
+|      |
+|      |
+========
+--- TERZA PARTE ---
+Test funzione fire con scoppio di file verticali e orizzontali
+========
+|======|
+|======|
+|R  Y  |
+|   G  |
+|   G  |
+|      |
+|      |
+|      |
+|      |
+|      |
+========
+Test funzione fire con input non validi
+========
+|======|
+|======|
+|R  Y  |
+|   G  |
+|   G  |
+|      |
+|      |
+|      |
+|      |
+|      |
+========
+Test funzione fire con bolle che escono dallo schema
+========
+|======|
+|======|
+|R  Y  |
+|   G  |
+|   G  |
+|   B  |
+|   G  |
+|   R  |
+|   Y  |
+|   B  |
+========
+Test funzione scroll con bolle che escono dallo schema
+========
+|======|
+|======|
+|R  Y  |
+|   G  |
+|   G  |
+|   B  |
+|   G  |
+|   R  |
+|   Y  |
+|   B  |
+========
+Test funzione compact con buchi multipli
+========
+|======|
+|======|
+|RBYY  |
+|RYRG  |
+| YRG  |
+|   R  |
+|   Y  |
+|   B  |
+|      |
+|      |
+========

@@ -1,0 +1,60 @@
+
+--- PRIMA PARTE ---
+
+Test del costruttore
+Numero di segnali: 0
+
+
+Test della aggiungi()
+Numero di segnali: 1
+[1] ROSSO
+
+Numero di segnali: 3
+[2] ROSSO
+[1] VERDE
+
+
+Test della elimina()
+Numero di segnali: 2
+[2] ROSSO
+
+
+--- SECONDA PARTE ---
+
+Test della riduci()
+
+Numero di segnali: 1
+[1] ROSSO
+
+Numero di segnali: 0
+
+
+Test del costruttore di copia (e stampa di m1)
+Mappa m:
+Numero di segnali: 3
+[1] VERDE
+[2] GIALLO
+
+Mappa m1:
+Numero di segnali: 3
+[1] VERDE
+[2] GIALLO
+
+
+Test del distruttore (m2 sta per essere distrutto)
+
+
+--- TERZA PARTE ---
+Numero di segnali: 3
+[1] VERDE
+[2] GIALLO
+
+Numero di segnali: 2
+[2] GIALLO
+
+Numero di segnali: 3
+[1] ROSSO
+[2] GIALLO
+
+Numero di segnali: 0
+

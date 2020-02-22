@@ -1,0 +1,97 @@
+Test del costruttore
+- - - - - - - 
+- - - - - - - 
+- - - - - - - 
+- - - - - - - 
+- - - - - - - 
+- - - - - - - 
+- - - - - - - 
+
+Test s.aggiungi
+- - - - t - - 
+- - a e r e o 
+- - - - e - - 
+- - m - n - - 
+- - o - o - - 
+a u t o - - - 
+- - o - - - - 
+
+Test s1.aggiungi
+- c - - - - 
+g a t t o - 
+- n - - - - 
+- e - - - - 
+- - - - - - 
+- m u c c a 
+
+Test dell'operatore di assegnamento s1 = s
+- - - - t - - 
+- - a e r e o 
+- - - - e - - 
+- - m - n - - 
+- - o - o - - 
+a u t o - - - 
+- - o - - - - 
+
+Primo test s1.esiste
+La parola cercata esiste! :)
+
+Secondo test s1.esiste
+La parola cercata non esiste! :(
+
+Test operator!
+5
+
+Test del distruttore
+(s2 e' stato distrutto)
+
+Ulteriori test - TERZA PARTE - 
+- - - - 
+- - - - 
+- - - - 
+- - - - 
+
+t r e - 
+r - - - 
+e - - - 
+- - - - 
+
+o t t o 
+t - - t 
+t - - t 
+o t t o 
+
+2
+- - t - - 
+- - r - - 
+t r e - - 
+- - - - s 
+- - - s i 
+
+4
+- - t o - 
+- - r t - 
+t r e t - 
+o t t o s 
+- - - s i 
+
+3
+n o t o - 
+o - r t n 
+t r e t o 
+o t t o s 
+- - - s i 
+
+3
+- - - - t - - 
+- - a e r e o 
+- - - - e - - 
+- - m - n - - 
+- - o - o - - 
+a u t o - - - 
+- - o - - - - 
+
+La parola cercata esiste! :)
+La parola cercata esiste! :)
+La parola cercata esiste! :)
+La parola cercata esiste! :)

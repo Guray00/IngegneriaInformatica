@@ -1,0 +1,12 @@
+Test del costr., della 'riserva' e dell'op. <<. Deve stampare: '11000000' 
+11000000
+
+Altri test della 'riserva'. Deve stampare: '11222300' 
+11222300
+
+Test della 'cancella' del file con id==2. Deve stampare: '11000300'
+11000300
+
+Altro test della 'riserva'. Deve stampare: '11444340'
+11444340
+

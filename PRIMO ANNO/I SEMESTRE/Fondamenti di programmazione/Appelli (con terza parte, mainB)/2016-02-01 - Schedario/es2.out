@@ -1,0 +1,28 @@
+--- PRIMA PARTE ---
+
+Test del costruttore e dell'operatore di uscita
+L1()L2()L3()
+
+Test della aggiungi
+L1(6)L2(35,48,21)L3(10,12)
+
+Test dell'operatore -=
+L1(6)L2()L3(10,12)
+
+--- SECONDA PARTE ---
+
+Test della promuovi
+  [s prima della promuovi]
+L1(6)L2(5,8,5,5,3,5)L3(10,12)
+  [s dopo la promuovi]
+L1(6)L2(8,3)L3(5,5,5,5,10,12)
+
+---TERZA PARTE---
+L1(6,3,6,6)L2(8,3)L3(5,5,5,5,10,12)
+  [s dopo la promuovi(1,6)]
+L1(3)L2(6,6,6,8,3)L3(5,5,5,5,10,12)
+  [s dopo varie altre promuovi]
+L1(3)L2(8)L3(3,6,6,6,5,5,5,5,10,12)
+
+Test del distruttore (s e' stato appena distrutto)
+

@@ -1,0 +1,20 @@
+
+--- PRIMA PARTE ---
+
+Test del costruttore
+Numero di segnali: 0
+
+
+Test della aggiungi()
+Numero di segnali: 1
+[1] ROSSO
+
+Numero di segnali: 3
+[2] ROSSO
+[1] VERDE
+
+
+Test della elimina()
+Numero di segnali: 2
+[2] ROSSO
+

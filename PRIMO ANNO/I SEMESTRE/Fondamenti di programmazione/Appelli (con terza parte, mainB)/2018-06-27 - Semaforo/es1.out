@@ -1,0 +1,25 @@
+--- PRIMA PARTE ---
+Test del costruttore:
+<Rosso>
+[
+[
+
+Test della arrivo:
+<Rosso>
+[AB123CD,CT789ZF
+[BE456MH
+
+Test della cambiaStato:
+<Verde Destra>
+[
+[BE456MH
+
+Ulteriori test di arrivo e cambiaStato:
+<Verde Sinistra>
+[BL452MT
+[
+
+<Rosso>
+[BL452MT,BV175TR
+[AR271SD
+

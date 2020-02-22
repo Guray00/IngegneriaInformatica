@@ -1,0 +1,17 @@
+---PRIMA PARTE---
+Test costruttore e operatore di uscita:
+
+Test aggiungi():
+>[0:0]titolo1-album1-artista1-300
+titolo2-album2-artista2-240
+titolo3-album3-artista3-301
+
+Test play():
+titolo1-album1-artista1-300
+>[1:5]titolo2-album2-artista2-240
+titolo3-album3-artista3-301
+
+>[0:24]titolo1-album1-artista1-300
+titolo2-album2-artista2-240
+titolo3-album3-artista3-301
+
