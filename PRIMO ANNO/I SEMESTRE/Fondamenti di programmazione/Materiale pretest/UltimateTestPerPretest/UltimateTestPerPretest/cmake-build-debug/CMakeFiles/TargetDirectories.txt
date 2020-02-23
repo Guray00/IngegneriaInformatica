@@ -1,0 +1,3 @@
+C:/Users/alex/CLionProjects/UltimateTestPerPretest/cmake-build-debug/CMakeFiles/UltimateTestPerPretest.dir
+C:/Users/alex/CLionProjects/UltimateTestPerPretest/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/alex/CLionProjects/UltimateTestPerPretest/cmake-build-debug/CMakeFiles/rebuild_cache.dir
