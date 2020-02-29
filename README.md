@@ -41,6 +41,9 @@ va bene qualsiasi libro di analisi 1, consigliato il Pagani Bramanti Salsa.
 Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.  
 Testo consigliato: 
 
+**Algebra Lineare e Analisi Matematica II** - _Non necessario_    
+Bastano le dispense fornite dal docente. 
+
 **Basi di dati** - _Non necessario_  
 I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.  
 Testo consigliato: Basi di dati (Atzeni).   
@@ -51,7 +54,6 @@ Testo consigliato: Serway volume 1 e 2
 **Algoritmi e strutture dati** _Non necessario_    
 La professoressa mette una dispensa molto completa a disposizione.      
       
-**6.Algebra Lineare e Analisi Matematica II** - _Non necessario_    
-Bastano le dispense fornite dal docente.  
+ 
 
 
