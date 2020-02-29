@@ -33,7 +33,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 3) **Utile**: Il libro è consigliato per seguire il corso del professore.
 4) **Fondamentale**: Il libro di testo risulta imprescindibile per seguire il corso.
 
-Primo anno
+Primo anno\n
 Analisi Matematica I - _**Utile**_
 va bene qualsiasi libro di analisi 1, consigliato il Pagani Bramanti Salsa.
 
