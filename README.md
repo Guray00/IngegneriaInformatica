@@ -43,7 +43,7 @@ Testo consigliato:
 
 **Basi di dati** - _Non necessario_  
 I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.  
-Il testo consigliato e` Basi di Dati di Atzeni ma non e` strettamente necessario.   
+Testo consigliato: Basi di dati (Atzeni).   
 
 **Fisica Generale I** - _Utile_    
 Testo consigliato: Serway volume 1 e 2          
