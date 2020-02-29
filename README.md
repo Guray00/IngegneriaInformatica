@@ -39,7 +39,7 @@ va bene qualsiasi libro di analisi 1, consigliato il Pagani Bramanti Salsa.
 
 **Fondamenti di Programmazione** - _Comodo_  
 Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.  
-Testo consigliato: 
+Testo consigliato: Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++ (Andrea Domenici e Graziano Frosini).
 
 **Algebra Lineare e Analisi Matematica II** - _Non necessario_    
 Bastano le dispense fornite dal docente. 
