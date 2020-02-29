@@ -33,11 +33,11 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 3) **Utile**: Il libro è consigliato per seguire il corso del professore.
 4) **Fondamentale**: Il libro di testo risulta imprescindibile per seguire il corso.
 
-Primo anno  
-Analisi Matematica I - _**Utile**_
+**Primo anno**  
+i. Analisi Matematica I - _**Utile**_
 va bene qualsiasi libro di analisi 1, consigliato il Pagani Bramanti Salsa.
 
-Fondamenti di Programmazione - _**Comodo**_  
+i. Fondamenti di Programmazione - _**Comodo**_  
 Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.
 Testo consigliato: 
 
