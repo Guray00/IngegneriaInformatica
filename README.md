@@ -35,22 +35,18 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 1. **Primo anno**  
       1. Analisi Matematica I - _**Utile**_
-      va bene qualsiasi libro di analisi 1, consigliato il Pagani Bramanti Salsa.
+      va bene qualsiasi libro di analisi 1, consigliato il Pagani Bramanti Salsa.  
       2. Fondamenti di Programmazione - _**Comodo**_  
-      Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.
+      Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.  
       Testo consigliato: 
-
-Basi di dati - _**Non necessario**_  
-I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.
-Il testo consigliato e` Basi di Dati di Atzeni ma non e` strettamente necessario. 
-
-Fisica Generale I - _**Utile**_  
-Testo consigliato: Serway volume 1 e 2        
-
-Algoritmi e strutture dati _**Non necessario**_  
-La professoressa mette una dispensa molto completa a disposizione.    
-
-Algebra Lineare e Analisi Matematica II - _**Non necessario**_  
-Bastano le dispense fornite dal docente.
+      3.Basi di dati - _**Non necessario**_  
+      I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.  
+      Il testo consigliato e` Basi di Dati di Atzeni ma non e` strettamente necessario.   
+      4.Fisica Generale I - _**Utile**_    
+      Testo consigliato: Serway volume 1 e 2          
+      5.Algoritmi e strutture dati _**Non necessario**_    
+      La professoressa mette una dispensa molto completa a disposizione.      
+      6.Algebra Lineare e Analisi Matematica II - _**Non necessario**_    
+      Bastano le dispense fornite dal docente.  
 
 
