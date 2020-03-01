@@ -29,15 +29,15 @@ Di seguito e' presente una lista dei libri di testo suggeriti per ogni corso (po
 I testi, in base all'esperienza degli studenti, si suddividono in:
 
 1) **Non necessario**: Il materiale fornito dal professore è sufficiente per passare l'esame.
-2) **Comodo**: Non è fondamentale e non è richiesto, potrebbe essere utile per altri punti di vista e integrare alcuni argomenti.
-3) **Utile**: Il libro è consigliato per seguire il corso del professore.
+2) **Utile**: Utile per vedere più nel dettaglio alcuni argomenti.
+3) **Consigliato**: Il libro è consigliato per seguire il corso del professore.
 4) **Fondamentale**: Il libro di testo risulta imprescindibile per seguire il corso.
 
 **PRIMO ANNO**  
-**Analisi Matematica I** - _Utile_  
+**Analisi Matematica I** - _Consigliato_  
 va bene qualsiasi libro di analisi 1, consigliato il Pagani Bramanti Salsa.  
 
-**Fondamenti di Programmazione** - _Comodo_  
+**Fondamenti di Programmazione** - _Utile_  
 Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.  
 Testo consigliato: Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++ (Andrea Domenici e Graziano Frosini).
 
@@ -48,7 +48,7 @@ Bastano le dispense fornite dal docente.
 I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.  
 Testo consigliato: Basi di dati (Atzeni).   
 
-**Fisica Generale I** - _Utile_    
+**Fisica Generale I** - _Consigliato_    
 Testo consigliato: Serway volume 1 e 2          
       
 **Algoritmi e strutture dati** _Non necessario_    
