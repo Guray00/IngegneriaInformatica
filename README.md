@@ -24,7 +24,7 @@ Materiale didattico per i frequentatori del corso di Ingegneria Informatica pres
          1. **Base di dati** - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
          1. **Fisica I** - [Guido Tonelli](http://www2.ing.unipi.it/~a004898/) - Maria Agnese Ciocci
 
-![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.jpg) <!-- .element height="50%" width="50%" -->
+![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.jpg) <!-- .element height="25%" width="25%" -->
 ## Libri di testo
 Di seguito e' presente una lista dei libri di testo suggeriti per ogni corso (potrebbe non essere sempre aggiornato, verificare).
 I testi, in base all'esperienza degli studenti, si suddividono in:
