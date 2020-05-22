@@ -26,7 +26,7 @@ Materiale didattico per i frequentatori del corso di Ingegneria Informatica pres
 
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.jpg) <!-- .element height="25%" width="25%" -->
 ## Libri di testo
-Di seguito e' presente una lista dei libri di testo suggeriti per ogni corso (potrebbe non essere sempre aggiornato, verificare).
+Di seguito trovate una lista dei libri di testo suggeriti per ogni corso (potrebbe non essere sempre aggiornato, verificare).
 I testi, in base all'esperienza degli studenti, si suddividono in:
 
 1) **Non necessario**: Il materiale fornito dal professore è sufficiente per passare l'esame.
