@@ -45,7 +45,7 @@ Testo consigliato: Introduzione alla programmazione ed elementi di strutture dat
 **Algebra Lineare e Analisi Matematica II** - _Non necessario_    
 Bastano le dispense fornite dal docente. 
 
-**Basi di dati** - _Non necessario_  
+**Basi di dati** - _Utile_  
 I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.  
 Testo consigliato: Basi di dati (Atzeni).   
 
