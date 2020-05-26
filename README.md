@@ -55,6 +55,20 @@ Testo consigliato: Serway volume 1 e 2
 **Algoritmi e strutture dati** _Non necessario_    
 La professoressa mette una dispensa molto completa a disposizione.      
       
- 
+ ## Credits (in aggiornamento)
 
+Questo progetto si basa sull'aiuto spontaneo da parte degli studenti della triennale di Ingegneria Informatica. Ogni contributo è gradito!
 
+I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedenti motivo per cui non è stato possibile rintracciare il contributore, se il tuo nome non è presente scrivici su telegram o realizza una issue a questo progetto.
+
+**Gestione**
+Gabriele Frassi
+Marco Lampis
+
+**Materiale**
+Gab Ma
+Angelo De Marco
+Gabriel Tudor Nechita
+Alex Parri
+Giacomo Sansone
+  
