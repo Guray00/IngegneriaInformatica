@@ -73,3 +73,4 @@ Gabriel Tudor Nechita
 Alex Parri  
 Giacomo Sansone   
   
+Per richiedere l'autorizzazione per aggiungere file (o mandare semplicemente a noi un file per caricarlo) è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto.
