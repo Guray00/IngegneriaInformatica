@@ -35,24 +35,24 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 4) **Fondamentale**: Il libro di testo risulta imprescindibile per seguire il corso.
 
 **PRIMO ANNO**  
-**Analisi Matematica I** - _Consigliato_  
+- **Analisi Matematica I** - _Consigliato_  
 Testo consigliato: Analisi I di Pagani Bramanti Salsa.  
 
-**Fondamenti di Programmazione** - _Utile_  
+- **Fondamenti di Programmazione** - _Utile_  
 Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.  
 Testo consigliato: Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++ (Andrea Domenici e Graziano Frosini).
 
-**Algebra Lineare e Analisi Matematica II** - _Non necessario_    
+- **Algebra Lineare e Analisi Matematica II** - _Non necessario_    
 Bastano le dispense fornite dal docente. 
 
-**Basi di dati** - _Utile_  
+- **Basi di dati** - _Utile_  
 I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.  
 Testo consigliato: Basi di dati (Atzeni).   
 
-**Fisica Generale I** - _Consigliato_    
+- **Fisica Generale I** - _Consigliato_    
 Testo consigliato: Serway volume 1 e 2          
       
-**Algoritmi e strutture dati** _Non necessario_    
+- **Algoritmi e strutture dati** _Non necessario_    
 La professoressa mette una dispensa molto completa a disposizione.      
       
  ## Credits (in aggiornamento)
