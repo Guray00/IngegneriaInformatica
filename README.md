@@ -65,7 +65,8 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 Gabriele Frassi   
 Marco Lampis      
 
-**Materiale**       
+**Materiale**   
+Davide Bruni      
 Angelo De Marco   
 Gab Ma      
 Gabriel Tudor Nechita   
