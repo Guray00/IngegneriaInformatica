@@ -59,16 +59,16 @@ La professoressa mette una dispensa molto completa a disposizione.
 
 Questo progetto si basa sull'aiuto spontaneo da parte degli studenti della triennale di Ingegneria Informatica. Ogni contributo è gradito!
 
-I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedenti motivo per cui non è stato possibile rintracciare il contributore, se il tuo nome non è presente scrivici su telegram o realizza una issue a questo progetto.
+I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedenti motivo per cui non è stato possibile rintracciare il contributore, se il tuo nome non è presente scrivici su telegram o realizza una issue a questo progetto (stessa procedura se vuoi richiedere la rimozione del tuo nome).
 
-**Gestione**
-Gabriele Frassi
-Marco Lampis
+**Gestione**      
+Gabriele Frassi   
+Marco Lampis      
 
-**Materiale**
-Gab Ma
-Angelo De Marco
-Gabriel Tudor Nechita
-Alex Parri
-Giacomo Sansone
+**Materiale**       
+Angelo De Marco   
+Gab Ma      
+Gabriel Tudor Nechita   
+Alex Parri  
+Giacomo Sansone   
   
