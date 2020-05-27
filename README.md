@@ -21,7 +21,7 @@ Materiale didattico per gli studenti del corso di Ingegneria Informatica (Trienn
       1. _Secondo semestre_
          1. **Algoritmi e strutture dati** - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
          1. **Analisi Matematica II** - [Longo Placido](http://pagine.dm.unipi.it/alan/)
-         1. **Base di dati** - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
+         1. **Basi di dati** - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
          1. **Fisica I** - [Guido Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/)
 
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.jpg) <!-- .element height="25%" width="25%" -->
