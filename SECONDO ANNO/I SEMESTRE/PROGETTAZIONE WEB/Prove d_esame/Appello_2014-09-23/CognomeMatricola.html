@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+	<meta charset="utf-8"> 
+    <meta name = "author" content = "author">
+	<title>MarcaTempo</title>
+
+	<!-- CSS -->
+	<style type="text/css">
+
+		body{
+			text-align: left;
+			font-weight: bold;
+			color: black;
+			text-align: center;
+		}
+
+		#currentTimeText{
+				font-size: 24px;
+				font-weight: bold;
+				text-align: center;
+			}
+
+		#mat{
+		text-align: center;
+			}
+
+		div{
+			padding: 0.4em;
+		}
+
+		table,td{
+			border:1px	solid black;
+		}
+
+
+
+		#left{
+			padding: 1.5em;
+			width: 15em;
+			float: left;
+		}
+
+		#right{
+			padding: 1.5em;
+			width: 25em;
+			float: left;
+		}
+
+		button {
+			padding: 0.4em;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		@media print {
+			#left{
+				display: none;
+			}
+
+			#right{
+				display:block;
+				font-weight:bold;
+				padding: 1.5em;
+				width: 25em;
+			}
+
+			button {
+				display: none;
+			}
+ 			
+ 			/* style sheet for print goes here */
+		}
+
+	</style>
+
+	<!-- Javascript -->
+	<script type="text/javascript">
+	<!--
+
+	var MAX_PEOPLE = 5; // number of people in the list.
+	tabData=new Array();
+
+	function createRow(tab,inputData)
+	{
+		var row=document.createElement("tr");
+		var data, i;
+		for (i=0;i<6;i++)
+		{
+			data=document.createElement("td");
+			var node = document.createTextNode(inputData[i]);
+			data.appendChild(node);
+			row.appendChild(data);
+		}
+		tab.appendChild(row);
+	}
+
+	function resetTable()
+	{
+		var i,j;
+		var tab=document.getElementById("tab");
+		var data=document.getElementsByTagName("td");
+		initializeData();
+		for (i=0; i<MAX_PEOPLE; i++)
+			for (j=0;j<6;j++)
+				data[i*6+j].firstChild.nodeValue=tabData[i][j];
+	}
+
+	function initializeData(){
+		tabData[0]= new Array("00000","Luca","Bianchi","-","-","-");
+		tabData[1]= new Array("11111","Fabio","Neri","-","-","-");
+		tabData[2]= new Array("22222","Paolo","Rossi","-","-","-");
+		tabData[3]= new Array("33333","Giulia","Lisi","-","-","-");
+		tabData[4]= new Array("44444","Francesco","Pardi","-","-","-");
+	}
+
+	function initializeTable()
+	{
+		initializeData();
+		var tab=document.getElementById("tab");
+		for (i=0; i<5; i++)
+			createRow(tab, tabData[i]);
+	}
+
+	//Initialize the service
+		function begin(){
+				initializeTable();
+				// Sets timer
+				setInterval("clock()", 1000);
+		}
+
+	// check on the event onblur if the value inserted into the field consists of 5 digits 
+	function check(mat)
+	{
+			if (mat.value.match(/\b\d{5}\b/g)) return;
+			alert("Non un numero di 5 cifre");
+			mat.value="-";
+	}
+
+	// Ingresso
+	function ingresso()
+	{
+		var mat=document.getElementById("mat").value;
+		var data=document.getElementsByTagName("td");
+		var i;
+		for (i=0; i<MAX_PEOPLE; i++)
+		{
+			if (tabData[i][0]==mat)
+			{
+				if (tabData[i][3]=='-')
+				{
+					tabData[i][3]=new Date;
+					data[i*6+3].firstChild.nodeValue=tabData[i][3].toString().match(/\d{2}:\d{2}:\d{2}/);
+				}
+				else 
+					alert("Ingresso gia' effettuato");
+			document.getElementById("mat").value='-';
+			return;
+			}
+		}
+		
+		if (i==MAX_PEOPLE)
+			alert("Matricola non trovata");
+	}
+
+	//Uscita
+	function uscita()
+	{
+		var mat=document.getElementById("mat").value;
+		var data=document.getElementsByTagName("td");
+		var i,temp, sec, min, hour;
+		for (i=0; i<MAX_PEOPLE; i++)
+		{
+			if (tabData[i][0]==mat)
+			{
+				if (tabData[i][4]!='-')
+					alert("Uscita gia' effettuata");
+				else
+				{						
+					if (tabData[i][3]!='-')
+					{
+						tabData[i][4]=new Date;
+						data[i*6+4].firstChild.nodeValue=tabData[i][4].toString().match(/\d{2}:\d{2}:\d{2}/);
+						tabData[i][5]=tabData[i][4]-tabData[i][3];
+						temp=Math.floor(tabData[i][5] / 1000);
+						hour=Math.floor((temp %= 86400) / 3600);
+						if (hour<10) hour = "0" + hour;
+						min=Math.floor((temp %= 3600) / 60);
+						if (min<10) 
+							min = "0" + min;
+						
+						sec=temp%60;
+						if (sec<10) 
+							sec = "0" + sec;
+					
+						temp=hour + ":" + min + ":" + sec;
+						data[i*6+5].firstChild.nodeValue=temp;
+					}
+					else 
+						alert("Nessun dipendente registrato in ingresso con questa matricola");
+				}
+				
+				document.getElementById("mat").value='-';
+				return;
+			}
+		}
+		
+		if (i==MAX_PEOPLE)
+			alert("Matricola non trovata");
+	}
+
+	// Reset the application
+	function reset(){
+		// Remove all inputs in the list
+		var rightDiv = document.getElementById("right");
+		while (rightDiv.firstChild) {
+   			rightDiv.removeChild(rightDiv.firstChild);
+		}
+
+		// Update the button
+		updateButtonStatus();
+	}
+
+	// Prints current time and update
+			function clock() {
+				// Get current time and set the value in the input element
+				var currentTime = new Date();
+				var textTime = currentTime.toString().match(/\d{2}:\d{2}:\d{2}/);
+				document.getElementById("currentTimeText").value = textTime;
+				}
+
+	//-->
+	</script>
+
+	</head>
+	<body onload="begin()">  
+		<div id="panel">
+		  	<input id="currentTimeText" type="text" readonly="readonly">
+		<div>
+			<div id="left">
+				<div id="identifier">
+					<label>
+						Matricola:<br>
+						<input id="mat" type="text" value="-" maxlength="5" onblur="check(this)">
+					</label>
+				</div>
+				<div id="buttonWrapper">
+					<button id="ingresso" onclick="ingresso()">INGRESSO</button>
+					<button id="uscita"	onclick="uscita()">USCITA</button>
+				</div>
+				<div>
+				<button id="nuovoGiorno" onclick="resetTable()">NUOVO GIORNO</button>
+				</div>
+			</div>
+		</div>
+		<div id="right">
+		<table id="tab">
+		  <tr>
+			<th>MATRICOLA</th>
+			<th>NOME</th>
+			<th>COGNOME</th>
+			<th>INGRESSO</th>
+			<th>USCITA</th>
+			<th>TEMPO</th>
+		  </tr>
+		</table>
+
+		</div>
+		</div>
+	</body>
+</html>
