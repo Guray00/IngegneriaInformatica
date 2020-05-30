@@ -66,7 +66,8 @@ Gabriele Frassi
 Marco Lampis      
 
 **Materiale**   
-Davide Bruni      
+Davide Bruni   
+Federico Casu 	   
 Angelo De Marco   
 Gab Ma      
 Gabriel Tudor Nechita   
