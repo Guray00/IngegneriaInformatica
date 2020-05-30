@@ -2,7 +2,7 @@
 In questa categoria sono situate informazioni riguardanti esami del primo anno di Ingegneria Informatica (Triennale).
 
 ## Date sessione estiva 2019/2020
-
+**Attenzione!** Le date potrebbero non essere aggiornate! Non siamo responsabili in caso di variazione di date o mancato aggiornamento.
 **Nota 1**: il pratico di Algoritmi del primo appello è stato spostato al _8 Giugno_. 
 
 <table>
