@@ -5,7 +5,7 @@ In questa categoria sono situate informazioni riguardanti esami del primo anno d
 
 **Nota 1**: il pratico di Algoritmi del primo appello è stato spostato al _8 Giugno_. 
 
-<table>
+<table style="margin:auto;">
 <thead>
 <tr><th>Appello</th><th>Pratico</th><th>Scritto</th><th>Orale</th>
 </tr>
