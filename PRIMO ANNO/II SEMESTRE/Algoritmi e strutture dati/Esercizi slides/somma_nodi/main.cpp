@@ -1,11 +1,11 @@
-/*********************************
+/********************************************************************************************
 
 La seguente mostra una possibile soluzione di Somma Nodi
 
 ---> IMPORTANTE! La soluzione mostrata non è detto che sia la migliore o quella "corretta",
 		 in quanto non è stata fornita dai docenti bensì da uno studente.
 
-*********************************/
+********************************************************************************************/
 
 
 #include <iostream>
