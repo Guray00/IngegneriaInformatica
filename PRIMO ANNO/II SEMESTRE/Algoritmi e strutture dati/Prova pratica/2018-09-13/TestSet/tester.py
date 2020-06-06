@@ -54,10 +54,10 @@ for file in glob.glob("*.txt"):
 		check = f.read()
 		
 		if (check == ''):
-			print(" => PASSED")
+			print(" => \033[92mPASSED\033[0m")
 		
 		else:
-			print(" => FAILED")
+			print(" => \033[91mFAILED\033[0m")
 			failed.append([file, output])
 
 		os.remove(".check.txt")
