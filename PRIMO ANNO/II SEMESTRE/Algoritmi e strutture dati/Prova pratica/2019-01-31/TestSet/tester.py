@@ -2,7 +2,7 @@
 
 
 '''
-*************************************************************************
+**********************************************************************
 
 	INFO:
 	With this script you will be able to run fast all the scripts of 
@@ -27,17 +27,47 @@
 
 	sudo apt get install python3
 
-*********************************************************************
+	If you want to use windows, i raccoment to use WSL
+	(Windows' Subsystem for Linux)
+
+********************************************************************
 
 '''
 
 
 
 import glob, os, sys
+import subprocess
+
+failed = []
+program = sys.argv[1]
 
 os.chdir("./")
 for file in glob.glob("*.txt"):
 	if ("input" in file):
 		output = file.replace("input", "output")
-		program = sys.argv[1]
-		os.system("{} < {} | diff - {}".format(program, file, output))
+
+		print("==== Testing "+ file, end='');
+		os.system("{} < {} | diff - {} > .check.txt".format(program, file, output))
+		
+		f = open(".check.txt","r")
+		check = f.read()
+		
+		if (check == ''):
+			print(" => PASSED")
+		
+		else:
+			print(" => FAILED")
+			failed.append([file, output])
+
+		os.remove(".check.txt")
+
+
+	
+if (len(failed) != 0):
+	print("\n\nYou should check with:")
+
+	for f in failed:
+		print(program + ' < ' + f[0] + '| diff - ' + f[1])
+
+
