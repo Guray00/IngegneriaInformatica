@@ -8,7 +8,7 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 
 ## Contatti
 
-**Telegram primo anno**: https://t.me/inginfunipi
+**[Telegram](https://t.me/inginfunipi) primo anno**
 
 
 ## Corsi
