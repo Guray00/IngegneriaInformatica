@@ -1,6 +1,6 @@
 # Materiale Ingegneria Informatica - UniPi
 
-Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https://www.unipi.it/index.php/lauree/corso/10276) (Triennale) presso l'università di Pisa (classe L-8). Cioè che troverete all'interno di questa raccolta è realizzato direttamente dagli studenti che hanno frequentato, o che tutt'ora frequentano, il corso; per tale motivo non è in alcun modo da ritenersi ufficiale e quanto fornito non è controllato da alcun docente, se non dagli studenti stessi che segnalano eventuali problemi o apportano loro stessi modifiche e miglioramenti.
+Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https://www.unipi.it/index.php/lauree/corso/10276) (Triennale) presso l'università di Pisa (classe L-8). Ciò che troverete all'interno di questa raccolta è realizzato direttamente dagli studenti che hanno frequentato, o che tutt'ora frequentano, il corso; per tale motivo non è in alcun modo da ritenersi ufficiale e quanto fornito non è controllato da alcun docente, se non dagli studenti stessi che segnalano eventuali problemi o apportano loro stessi modifiche e miglioramenti.
 
 **Quanto fornito è senza alcun scopo di lucro e vuole intendersi unicamente come aiuto per gli studenti.**
 
@@ -19,10 +19,10 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
          1. **Fondamenti di Programmazione** - [Marco Cococcioni](http://www.iet.unipi.it/m.cococcioni/)
          
       1. _Secondo semestre_
-         1. **Algoritmi e strutture dati** - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
+         1. **Algoritmi e Strutture Dati** - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
          1. **Analisi Matematica II** - [Longo Placido](http://pagine.dm.unipi.it/alan/)
-         1. **Basi di dati** - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
-         1. **Fisica I** - [Guido Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/)
+         1. **Basi di Dati** - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
+         1. **Fisica Generale I** - [Guido Emilio Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/)
 
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.jpg?raw=true) <!-- .element height="25%" width="25%" -->
 ## Libri di testo
@@ -45,14 +45,14 @@ Testo consigliato: Introduzione alla programmazione ed elementi di strutture dat
 - **Algebra Lineare e Analisi Matematica II** - _Non necessario_    
 Bastano le dispense fornite dal docente. 
 
-- **Basi di dati** - _Utile_  
+- **Basi di Dati** - _Utile_  
 I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.  
 Testo consigliato: Basi di dati (Atzeni).   
 
 - **Fisica Generale I** - _Consigliato_    
 Testo consigliato: Serway volume 1 e 2          
       
-- **Algoritmi e strutture dati** _Non necessario_    
+- **Algoritmi e Strutture Dati** _Non necessario_    
 La professoressa mette una dispensa molto completa a disposizione.      
       
  ## Credits (in aggiornamento)
