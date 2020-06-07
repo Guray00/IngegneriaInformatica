@@ -52,7 +52,7 @@ Testo consigliato: Basi di dati (Atzeni).
 - **Fisica Generale I** - _Consigliato_    
 Testo consigliato: Serway volume 1 e 2          
       
-- **Algoritmi e Strutture Dati** _Non necessario_    
+- **Algoritmi e Strutture Dati** - _Non necessario_    
 La professoressa mette una dispensa molto completa a disposizione.      
       
  ## Credits (in aggiornamento)
