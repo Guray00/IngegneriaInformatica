@@ -55,7 +55,7 @@ Testo consigliato: Serway volume 1 e 2
 - **Algoritmi e Strutture Dati** - _Non necessario_    
 La professoressa mette una dispensa molto completa a disposizione.      
       
- ## Credits (in aggiornamento)
+## Credits (in aggiornamento)
 
 Questo progetto si basa sull'aiuto spontaneo da parte degli studenti della triennale di Ingegneria Informatica. Ogni contributo è gradito!
 
