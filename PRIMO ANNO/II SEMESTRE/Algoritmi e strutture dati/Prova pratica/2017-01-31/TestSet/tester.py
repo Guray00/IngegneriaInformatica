@@ -68,6 +68,6 @@ if (len(failed) != 0):
 	print("\n\nYou should check with:")
 
 	for f in failed:
-		print(program + ' < ' + f[0] + ' | diff - ' + f[1])
+		print(program + ' < ' + f[0] + '| diff - ' + f[1])
 
 
