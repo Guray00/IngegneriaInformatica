@@ -67,24 +67,17 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 **Gestione**
 
-Gabriel Frassi
-
-Marco Lampis
-
+Gabriel Frassi<br>
+Marco Lampis<br>
 Tudor Gabriel Nechita
 
 **Collaboratori Materiale**
 
-Alex Parri
-
-Angelo De Marco
-
-Davide Bruni
-
-Federico Casu
-
-Gab Ma
-
+Alex Parri<br>
+Angelo De Marco<br>
+Davide Bruni<br>
+Federico Casu<br>
+Gab Ma<br>
 Giacomo Sansone
 
 Per richiedere l'autorizzazione per aggiungere file (o mandare semplicemente a noi un file per caricarlo) è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto.
