@@ -64,7 +64,6 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 **Gestione**      
 Gabriele Frassi   
 Marco Lampis
-
 Tudor Gabriel Nechita
 
 **Materiale**   
