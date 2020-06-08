@@ -1,4 +1,4 @@
-# Materiale Ingegneria Informatica - UniPi
+# Materiale Ingegneria Informatica @ UniPi
 
 Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https://www.unipi.it/index.php/lauree/corso/10276) (Triennale) presso l'università di Pisa (classe L-8). Ciò che troverete all'interno di questa raccolta è realizzato direttamente dagli studenti che hanno frequentato, o che tutt'ora frequentano, il corso; per tale motivo non è in alcun modo da ritenersi ufficiale e quanto fornito non è controllato da alcun docente, se non dagli studenti stessi che segnalano eventuali problemi o apportano loro stessi modifiche e miglioramenti.
 
@@ -36,21 +36,21 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 **PRIMO ANNO**  
 - **Analisi Matematica I** - _Consigliato_  
-Testo consigliato: Analisi I di Pagani Bramanti Salsa.  
+**Testo consigliato**: Analisi matematica I di _Carlo D. Pagani & Sandro Salsa_.  
 
 - **Fondamenti di Programmazione** - _Utile_  
 Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.  
-Testo consigliato: Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++ (Andrea Domenici e Graziano Frosini).
+**Testo consigliato**: Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++ di _Andrea Domenici & Graziano Frosini_.
 
 - **Algebra Lineare e Analisi Matematica II** - _Non necessario_    
 Bastano le dispense fornite dal docente. 
 
 - **Basi di Dati** - _Utile_  
 I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.  
-Testo consigliato: Basi di dati (Atzeni).   
+**Testo consigliato**: Basi di dati di _Paolo Atzeni, Stefano Ceri & altri_.   
 
 - **Fisica Generale I** - _Consigliato_    
-Testo consigliato: Serway volume 1 e 2          
+**Testo consigliato**: Fisica 1 & 2 di _Raymond A. Serway & altri_           
       
 - **Algoritmi e Strutture Dati** - _Non necessario_    
 La professoressa mette una dispensa molto completa a disposizione.      
@@ -63,14 +63,14 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 **Gestione**      
 Gabriele Frassi   
-Marco Lampis      
+Marco Lampis
+Tudor Gabriel Nechita
 
 **Materiale**   
 Davide Bruni   
 Federico Casu 	   
 Angelo De Marco   
-Gab Ma      
-Gabriel Tudor Nechita   
+Gab Ma         
 Alex Parri  
 Giacomo Sansone   
   
