@@ -4,28 +4,31 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 
 **Quanto fornito è senza alcun scopo di lucro e vuole intendersi unicamente come aiuto per gli studenti.**
 
-
-
 ## Contatti
 
 **[Telegram](https://t.me/inginfunipi) primo anno**
 
-
 ## Corsi
+
 1. Anno 1
-      1. _Primo semestre_
-         1. **Algebra Lineare** - [Longo Placido](http://pagine.dm.unipi.it/alan/)
-         1. **Analisi Matematica I** - [Luigi Carlo Berselli](http://pagine.dm.unipi.it/berselli/dida/maindida.html)
-         1. **Fondamenti di Programmazione** - [Marco Cococcioni](http://www.iet.unipi.it/m.cococcioni/)
-         
-      1. _Secondo semestre_
-         1. **Algoritmi e Strutture Dati** - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
-         1. **Analisi Matematica II** - [Longo Placido](http://pagine.dm.unipi.it/alan/)
-         1. **Basi di Dati** - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
-         1. **Fisica Generale I** - [Guido Emilio Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/)
+   
+   1. _Primo semestre_
+      
+      1. **Algebra Lineare** - [Longo Placido](http://pagine.dm.unipi.it/alan/)
+      2. **Analisi Matematica I** - [Luigi Carlo Berselli](http://pagine.dm.unipi.it/berselli/dida/maindida.html)
+      3. **Fondamenti di Programmazione** - [Marco Cococcioni](http://www.iet.unipi.it/m.cococcioni/)
+   
+   2. _Secondo semestre_
+      
+      1. **Algoritmi e Strutture Dati** - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
+      2. **Analisi Matematica II** - [Longo Placido](http://pagine.dm.unipi.it/alan/)
+      3. **Basi di Dati** - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
+      4. **Fisica Generale I** - [Guido Emilio Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/)
 
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.jpg?raw=true) <!-- .element height="25%" width="25%" -->
+
 ## Libri di testo
+
 Di seguito trovate una lista dei libri di testo suggeriti per ogni corso (potrebbe non essere sempre aggiornato, verificare).
 I testi, in base all'esperienza degli studenti, si suddividono in:
 
@@ -35,26 +38,27 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 4) **Fondamentale**: Il libro di testo risulta imprescindibile per seguire il corso.
 
 **PRIMO ANNO**  
+
 - **Analisi Matematica I** - _Consigliato_  
-**Testo consigliato**: Analisi matematica I di _Carlo D. Pagani & Sandro Salsa_.  
+  **Testo consigliato**: Analisi matematica I di _Carlo D. Pagani & Sandro Salsa_.  
 
 - **Fondamenti di Programmazione** - _Utile_  
-Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.  
-**Testo consigliato**: Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++ di _Andrea Domenici & Graziano Frosini_.
+  Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.  
+  **Testo consigliato**: Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++ di _Andrea Domenici & Graziano Frosini_.
 
 - **Algebra Lineare e Analisi Matematica II** - _Non necessario_    
-Bastano le dispense fornite dal docente. 
+  Bastano le dispense fornite dal docente. 
 
 - **Basi di Dati** - _Utile_  
-I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.  
-**Testo consigliato**: Basi di dati di _Paolo Atzeni, Stefano Ceri & altri_.   
+  I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.  
+  **Testo consigliato**: Basi di dati di _Paolo Atzeni, Stefano Ceri & altri_.   
 
 - **Fisica Generale I** - _Consigliato_    
-**Testo consigliato**: Fisica 1 & 2 di _Raymond A. Serway & altri_           
-      
+  **Testo consigliato**: Fisica 1 & 2 di _Raymond A. Serway & altri_           
+
 - **Algoritmi e Strutture Dati** - _Non necessario_    
-La professoressa mette una dispensa molto completa a disposizione.      
-      
+  La professoressa mette una dispensa molto completa a disposizione.      
+
 ## Credits (in aggiornamento)
 
 Questo progetto si basa sull'aiuto spontaneo da parte degli studenti della triennale di Ingegneria Informatica. Ogni contributo è gradito!
@@ -62,16 +66,33 @@ Questo progetto si basa sull'aiuto spontaneo da parte degli studenti della trien
 I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedenti motivo per cui non è stato possibile rintracciare il contributore, se il tuo nome non è presente scrivici su telegram o realizza una issue a questo progetto (stessa procedura se vuoi richiedere la rimozione del tuo nome).
 
 **Gestione**
-Gabriele Frassi
+
+Gabriel Frassi
+
 Marco Lampis
+
 Tudor Gabriel Nechita
 
-**Materiale**   
-Davide Bruni   
-Federico Casu 	   
-Angelo De Marco   
-Gab Ma         
-Alex Parri  
-Giacomo Sansone   
-  
+**Collaboratori Materiale**
+
+Alex Parri
+
+Angelo De Marco
+
+Davide Bruni
+
+Federico Casu
+
+Gab Ma
+
+Giacomo Sansone
+
+
+
+
+
+
+
+
+
 Per richiedere l'autorizzazione per aggiungere file (o mandare semplicemente a noi un file per caricarlo) è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto.
