@@ -67,9 +67,9 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 **Gestione**
 
-Gabriele Frassi<br>
-Marco Lampis<br>
-Tudor Gabriel Nechita
+[Gabriele Frassi](https://github.com/gfrax-web)<br>
+[Marco Lampis](https://github.com/Guray00)<br>
+[Tudor Gabriel Nechita](https://github.com/NechGabriel)
 
 **Collaboratori Materiale**
 
