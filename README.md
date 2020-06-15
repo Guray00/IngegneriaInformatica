@@ -73,12 +73,13 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 **Collaboratori Materiale**
 
-Alex Parri<br>
-Angelo De Marco<br>
+Luca Arduini<br>
 Francesco Berti<br>
 Davide Bruni<br>
 Federico Casu<br>
 Gab Ma<br>
+Angelo De Marco<br>
+Alex Parri<br>
 Aleandro Prudenzano<br>
 Giacomo Sansone<br>
 Alessandro Versari<br>
