@@ -75,9 +75,12 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 Alex Parri<br>
 Angelo De Marco<br>
+Francesco Berti<br>
 Davide Bruni<br>
 Federico Casu<br>
 Gab Ma<br>
-Giacomo Sansone
-
+Aleandro Prudenzano<br>
+Giacomo Sansone<br>
+Alessandro Versari<br>
+Francesco Zollo<br><br>
 Per richiedere l'autorizzazione per aggiungere file (o mandare semplicemente a noi un file per caricarlo) è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto.
