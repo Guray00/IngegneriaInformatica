@@ -25,11 +25,12 @@
 	Make sure you have installed python3 on your machine,
 	for Ubuntu or debian you can do this with:
 
-	sudo apt get install python3
+	sudo apt-get install python3
 
 	If you want to use windows, i raccoment to use WSL
 	(Windows' Subsystem for Linux)
-                                                   Marco Lampis 2020
+	
+Last edit: 15-05-20                                Marco Lampis 2020
 ********************************************************************
 
 '''
