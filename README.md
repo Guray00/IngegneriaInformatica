@@ -77,6 +77,7 @@ Luca Arduini<br>
 Francesco Berti<br>
 Davide Bruni<br>
 Federico Casu<br>
+Pia Eugenia D'Antonio<br>
 Gab Ma<br>
 Angelo De Marco<br>
 Alex Parri<br>
