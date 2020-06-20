@@ -39,25 +39,31 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 **PRIMO ANNO**  
 
-- **Analisi Matematica I** - _Consigliato_  
+- **Analisi Matematica I** - _Consigliato_
   **Testo consigliato**: Analisi matematica I di _Carlo D. Pagani & Sandro Salsa_.  
 
-- **Fondamenti di Programmazione** - _Utile_  
-  Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.  
-  **Testo consigliato**: Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++ di _Andrea Domenici & Graziano Frosini_.
+- **Fondamenti di Programmazione** - _Utile_    
+  **Testo consigliato**:<br> 
+      1) "Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++" [dalla 5° in poi] di _Andrea Domenici, Graziano Frosini_.<br>
+      2) "Note sull’organizzazione di un calcolatore e Rappresentazione dell’informazione" di _Paolo Corsini, Graziano Frosini_<br>
+  **Note studenti**: Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.
 
 - **Algebra Lineare e Analisi Matematica II** - _Non necessario_    
-  Bastano le dispense fornite dal docente. 
-
+  **Testo consigliato**:<br> 
+      1) "Algebra Lineare" di _Serge Lang_<br>
+  **Note studenti**: Bastano le dispense fornite dal docente. 
+ 
 - **Basi di Dati** - _Utile_  
-  I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.  
-  **Testo consigliato**: Basi di dati di _Paolo Atzeni, Stefano Ceri & altri_.   
+  **Testo consigliato**:<br> 
+      1) "Basi di Dati" di _Paolo Atzeni, Stefano Ceri & altri_<br>
+  **Note studenti**: I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.   
 
 - **Fisica Generale I** - _Consigliato_    
-  **Testo consigliato**: Fisica 1 & 2 di _Raymond A. Serway & altri_           
+  **Testo consigliato**:<br> 
+      1) "Fisica 1 & 2" di _Raymond A. Serway & altri_        
 
 - **Algoritmi e Strutture Dati** - _Non necessario_    
-  La professoressa mette una dispensa molto completa a disposizione.      
+  **Note studenti**: La professoressa mette una dispensa molto completa a disposizione.      
 
 ## Credits (in aggiornamento)
 
