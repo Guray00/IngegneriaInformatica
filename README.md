@@ -10,7 +10,7 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 
 ## Corsi
 
-1. Anno 1
+1. Primo Anno Accademico
    
    1. _Primo semestre_
       
