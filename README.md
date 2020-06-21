@@ -39,7 +39,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 **PRIMO ANNO**  
 
-- **Analisi Matematica I** - _Consigliato_
+- **Analisi Matematica I** - _Consigliato_<br>
   **Testo consigliato**: Analisi matematica I di _Carlo D. Pagani & Sandro Salsa_.  
 
 - **Fondamenti di Programmazione** - _Utile_    
