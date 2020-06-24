@@ -71,7 +71,7 @@ Questo progetto si basa sull'aiuto spontaneo da parte degli studenti della trien
 
 I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedenti motivo per cui non è stato possibile rintracciare il contributore, se il tuo nome non è presente scrivici su telegram o realizza una issue a questo progetto (stessa procedura se vuoi richiedere la rimozione del tuo nome).
 
-**Gestione**
+**Maintainer**
 
 [Gabriele Frassi](https://github.com/gfrax-web)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
