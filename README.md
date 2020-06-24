@@ -39,7 +39,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 **PRIMO ANNO**  
 
-- **Analisi Matematica I** - _Consigliato_
+- **Analisi Matematica I** - _Consigliato_<br>
   **Testo consigliato**: Analisi matematica I di _Carlo D. Pagani & Sandro Salsa_.  
 
 - **Fondamenti di Programmazione** - _Utile_    
@@ -71,7 +71,7 @@ Questo progetto si basa sull'aiuto spontaneo da parte degli studenti della trien
 
 I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedenti motivo per cui non è stato possibile rintracciare il contributore, se il tuo nome non è presente scrivici su telegram o realizza una issue a questo progetto (stessa procedura se vuoi richiedere la rimozione del tuo nome).
 
-**Gestione**
+**Maintainer**
 
 [Gabriele Frassi](https://github.com/gfrax-web)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
