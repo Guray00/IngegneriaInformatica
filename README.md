@@ -84,6 +84,7 @@ Francesco Berti<br>
 Davide Bruni<br>
 Federico Casu<br>
 Pia Eugenia D'Antonio<br>
+Edoardo Geraci<br>
 Gabriele Marcuccetti<br>
 Angelo De Marco<br>
 Alex Parri<br>
