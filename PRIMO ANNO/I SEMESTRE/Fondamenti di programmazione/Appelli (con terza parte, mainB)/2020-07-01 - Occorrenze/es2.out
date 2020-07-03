@@ -12,3 +12,77 @@ TU:1
 Test dell'operatore di modulo: (deve stampare 3)
 3
 
+--- SECONDA PARTE ---
+Test dell'operatore di somma ed assegnamento: (LUNA:3, DAMMI:1)
+CHE:2
+CIEL:1
+DAMMI:1
+DIMMI:1
+FAI:2
+IN:1
+LUNA:3
+SILENZIOSA:1
+TU:1
+
+Test dell'operatore parentesi quadra:
+-> numero di occorrenze della parola LUNA (deve stampare 3): 3
+-> numero di occorrenze della parola CHE  (deve stampare 2): 2
+
+Test dell'operatore di sottrazione e assegnamento (rimuove DAMMI e DIMMI):
+CHE:2
+CIEL:1
+FAI:2
+IN:1
+LUNA:3
+SILENZIOSA:1
+TU:1
+
+Test del distruttore ('o' sta per essere distrutto)
+--- TERZA PARTE ---
+Test costruttore con spazi bianchi multipli:
+CHE:2
+CIEL:1
+DIMMI:1
+FAI:2
+IN:1
+LUNA:2
+SILENZIOSA:1
+TU:1
+
+
+Test dell'operatore di somma e assegnamento (aggiunge in testa e in fondo alla lista):
+AMACA:1
+CHE:2
+CIEL:1
+DIMMI:1
+FAI:2
+IN:1
+LUNA:2
+SILENZIOSA:1
+TU:1
+ZORRO:1
+ZUCCA:1
+
+
+Test dell'operatore di sottrazione e assegnamento (rimuove in testa e in fondo alla lista):
+CHE:2
+CIEL:1
+DIMMI:1
+FAI:2
+IN:1
+LUNA:2
+SILENZIOSA:1
+
+
+Test dell'operatore di sottrazione e assegnamento (svuota la lista e rimuove da lista vuota):
+AMACA:1
+AMENO:1
+AMICO:1
+
+(non deve stampare nulla:)
+
+(non deve stampare nulla:)
+
+
+Ulteriore test dell'operatore di modulo
+7
