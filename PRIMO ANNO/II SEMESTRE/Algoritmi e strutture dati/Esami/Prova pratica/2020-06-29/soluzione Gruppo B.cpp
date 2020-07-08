@@ -7,7 +7,6 @@ struct node{
     node* right;
 
     node(int i): label(i), left(NULL), right(NULL){}
-    bool foglia() { return (!left && !right); }
 };
 
 class binTree{
