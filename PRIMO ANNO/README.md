@@ -6,15 +6,15 @@ Di seguito vengono mostrate le modalità di esecuzione degli esami telematici, a
 
 - Primo Anno:
   
-  - [Algoritmi e Strutture Dati]([IngegneriaInformatica/1 - Algoritmi e strutture dati.pdf at master · Guray00/IngegneriaInformatica · GitHub](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/II%20SEMESTRE/Algoritmi%20e%20strutture%20dati/1%20-%20Algoritmi%20e%20strutture%20dati.pdf));
+  - [Algoritmi e Strutture Dati](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/II%20SEMESTRE/Algoritmi%20e%20strutture%20dati/1%20-%20Algoritmi%20e%20strutture%20dati.pdf);
   
-  - [Algebra Lineare & Analisi Matematica II]([IngegneriaInformatica/1 - Algebra lineare e Analisi II.pdf at master · Guray00/IngegneriaInformatica · GitHub](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/I%20SEMESTRE/Algebra%20lineare/1%20-%20Algebra%20lineare%20e%20Analisi%20II.pdf));
+  - [Algebra Lineare & Analisi Matematica II](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/I%20SEMESTRE/Algebra%20lineare/1%20-%20Algebra%20lineare%20e%20Analisi%20II.pdf);
   
   - [Analisi Matematica I](https://pagine.dm.unipi.it/berselli/dida/modalita_anmatematica1.html);
   
-  - [Basi di Dati]([IngegneriaInformatica/1 - Basi di dati.pdf at master · Guray00/IngegneriaInformatica · GitHub](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/II%20SEMESTRE/Basi%20di%20dati/1%20-%20Basi%20di%20dati.pdf));
+  - [Basi di Dati](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/II%20SEMESTRE/Basi%20di%20dati/1%20-%20Basi%20di%20dati.pdf);
   
-  - [Fisica Generale I]([IngegneriaInformatica/1 - Fisica generale I.pdf at master · Guray00/IngegneriaInformatica · GitHub](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/II%20SEMESTRE/Fisica%20Generale%20I/1%20-%20Fisica%20generale%20I.pdf));
+  - [Fisica Generale I](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/II%20SEMESTRE/Fisica%20Generale%20I/1%20-%20Fisica%20generale%20I.pdf);
   
   - Fondamenti di Programmazione:
     
@@ -24,7 +24,7 @@ Di seguito vengono mostrate le modalità di esecuzione degli esami telematici, a
 
 - Secondo Anno:
   
-  - [Reti Logiche]([Reti Logiche - F.A.Q. (DM270)](http://docenti.ing.unipi.it/~a080368/Teaching/RetiLogiche/FAQ_RL.html));
+  - [Reti Logiche](http://docenti.ing.unipi.it/~a080368/Teaching/RetiLogiche/FAQ_RL.html);
 
 # DATE ESAMI
 
