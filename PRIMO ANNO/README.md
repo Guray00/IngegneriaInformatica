@@ -1,5 +1,3 @@
-# 
-
 # DATE ESAMI
 
 In questa categoria sono situate informazioni riguardanti esami del primo anno di Ingegneria Informatica (Triennale).
