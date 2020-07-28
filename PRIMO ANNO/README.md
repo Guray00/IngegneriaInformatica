@@ -6,8 +6,6 @@ In questa categoria sono situate informazioni riguardanti esami del primo anno d
 
 ## SESSIONE ESTIVA 2019/2020
 
-<div>
-
 <table>
   <thead>
     <tr>
@@ -38,12 +36,6 @@ In questa categoria sono situate informazioni riguardanti esami del primo anno d
 </div>
 
 ## SESSIONE SETTEMBRE 2019/2020
-
-
-
-
-
-
 
 <div>
 <table>
