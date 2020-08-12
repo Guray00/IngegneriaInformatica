@@ -1,4 +1,4 @@
-[PRENDERE CON LE PINZE FINO ALL'INIZIO DELLE LEIZONI]
+[PRENDERE CON LE PINZE FINO ALL'INIZIO DELLE LEZIONI, NON SAPPIAMO SE MARCELLONI CAMBIERA' LE DIAPOSITIVE]
 
 I documenti raccolgono tutte le diapositive utilizzate da Francesco Marcelloni durante il corso di Progettazione web.  Sono disponibili due versioni
 <ul>
