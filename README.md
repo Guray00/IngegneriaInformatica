@@ -4,6 +4,15 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 
 **Quanto fornito è senza alcun scopo di lucro e vuole intendersi unicamente come aiuto per gli studenti.**
 
+## Indice
+  - [Contatti](#contatti)
+  - [Corsi](#corsi)
+    - [Corsi del Primo anno](#corsi-del-primo-anno)
+  - [Libri di testo](#libri-di-testo)
+    - [Libri del Primo anno](#libri-del-primo-anno)
+  - [Credits](#credits-in-aggiornamento)
+
+
 ## Contatti
 
 **[Telegram](https://t.me/inginfunipi) primo anno**
