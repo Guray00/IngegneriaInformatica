@@ -10,8 +10,9 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 
 ## Corsi
 
-1. Primo Anno Accademico
-   
+Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di corso e semestre nel quale esso viene erogato.
+
+###  Corsi del Primo anno   
    1. _Primo semestre_
       
       1. **Algebra Lineare** - [Longo Placido](http://pagine.dm.unipi.it/alan/)
@@ -37,7 +38,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 3) **Consigliato**: Il libro è consigliato per seguire il corso del professore.
 4) **Fondamentale**: Il libro di testo risulta imprescindibile per seguire il corso.
 
-**PRIMO ANNO**  
+### Libri del Primo anno  
 
 - **Analisi Matematica I** - _Consigliato_<br>
   **Testo consigliato**: Analisi matematica I di _Carlo D. Pagani & Sandro Salsa_.  
