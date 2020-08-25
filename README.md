@@ -5,7 +5,9 @@
 <br><br>
 Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https://www.unipi.it/index.php/lauree/corso/10276) (Triennale) presso l'università di Pisa (classe L-8). Ciò che troverete all'interno di questa raccolta è realizzato direttamente dagli studenti che hanno frequentato, o che tutt'ora frequentano, il corso; per tale motivo non è in alcun modo da ritenersi ufficiale e quanto fornito non è controllato da alcun docente, se non dagli studenti stessi che segnalano eventuali problemi o apportano loro stessi modifiche e miglioramenti.
 
-**Quanto fornito è senza alcun scopo di lucro e vuole intendersi unicamente come aiuto per gli studenti.**
+<p align="center">
+<b>Quanto fornito è senza alcun scopo di lucro e vuole intendersi unicamente come aiuto per gli studenti.</b>
+</p>
 
 ## Indice
   - [Contatti](#contatti)
