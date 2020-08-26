@@ -1,0 +1,118 @@
+
+alter session set current_schema = mydb;
+insert into Prodotto
+ select 10100, 'Apple', 'iPhone4', 'Smartphone', 199.90, 399.95 from dual union all 
+ select 10200, 'Apple', 'iPhone5', 'Smartphone', 250.00, 449.98 from dual union all 
+ select 10300, 'Apple', 'iPhone6', 'Smartphone', 300.00, 499.99 from dual union all 
+ select 10400, 'Samsung', 'Galaxy4', 'Smartphone', 200.00, 399.96 from dual union all 
+ select 10500, 'Samsung', 'Galaxy5', 'Smartphone', 250.00, 449.50 from dual union all 
+ select 10600, 'Samsung', 'Galaxy6', 'Smartphone', 300.00, 499.60 from dual union all 
+ select 10700, 'Samsung', 'GalaxyNote', 'Smartphone', 350.00, 549.99 from dual;
+
+insert into Punto_Vendita
+ select 1000, 'Roma, 03043, 53', 1776300178 from dual union all 
+ select 2000, 'Milano, 03343, 32', 1774365385 from dual union all 
+ select 3000, 'Torino, 50211, 113', 1637536423 from dual;
+
+insert into Dipendente
+ select 'RSSMRI94E12H501I', 'Mario', 'Rossi', '2010-04-01', 'Vendita' from dual union all 
+ select 'BNCCRL94E12H501I', 'Carlo', 'Bianchi', '2011-05-01', 'Riparazion' from dual union all 
+ select 'VRDFRN94E12H501I', 'Franco', 'Verdi', '2012-06-01', 'Gestione' from dual union all 
+ select 'NRILCA94E12H501I', 'Luca', 'Neri', '2012-07-02', 'Vendita' from dual union all 
+ select 'RSIPLO94E12H501I', 'Paolo', 'Rossi', '2013-04-12', 'Riparazion' from dual union all 
+ select 'BNCMRI94E12H501I', 'Mario', 'Bianchi', '2012-06-13', 'Gestione' from dual union all 
+ select 'VRDBRN94E12H501I', 'Bruno', 'Verdi', '2013-06-12', 'Vendita' from dual union all 
+ select 'NRIGVN94E12H501I', 'Giovanni', 'Neri', '2014-12-03', 'Riparazion' from dual union all 
+ select 'RSISMN94E12H501I', 'Simone', 'Rossi', '2014-11-04', 'Gestione' from dual;
+
+insert into Lista_Dipendenti
+ select 'RSSMRI94E12H501I', 1000 from dual union all 
+ select 'BNCCRL94E12H501I', 1000 from dual union all 
+ select 'VRDFRN94E12H501I', 1000 from dual union all 
+ select 'NRILCA94E12H501I', 2000 from dual union all 
+ select 'RSIPLO94E12H501I', 2000 from dual union all 
+ select 'BNCMRI94E12H501I', 2000 from dual union all 
+ select 'VRDBRN94E12H501I', 3000 from dual union all 
+ select 'NRIGVN94E12H501I', 3000 from dual union all 
+ select 'RSISMN94E12H501I', 3000 from dual;
+
+insert into Magazzino
+ select 10200, 1000, 35 from dual union all 
+ select 10300, 1000, 62 from dual union all 
+ select 10400, 1000, 14 from dual union all 
+ select 10500, 1000, 26 from dual union all 
+ select 10600, 1000, 23 from dual union all 
+ select 10700, 1000, 72 from dual union all 
+ select 10100, 2000, 2 from dual union all 
+ select 10200, 2000, 25 from dual union all 
+ select 10300, 2000, 27 from dual union all 
+ select 10400, 2000, 28 from dual union all 
+ select 10500, 2000, 84 from dual union all 
+ select 10600, 2000, 26 from dual union all 
+ select 10700, 2000, 16 from dual union all 
+ select 10100, 3000, 84 from dual union all 
+ select 10200, 3000, 27 from dual union all 
+ select 10300, 3000, 95 from dual union all 
+ select 10400, 3000, 27 from dual union all 
+ select 10500, 3000, 27 from dual union all 
+ select 10600, 3000, 58 from dual union all 
+ select 10700, 3000, 37 from dual;
+
+insert into Cliente
+ select 'RSSCRL94E22H531I', 'Carlo', 'Rossi', 3492467391, 'Roma' from dual union all 
+ select 'NRIMRI94E22H531I', 'Mario', 'Neri', 3492467392, 'Roma' from dual union all 
+ select 'VRIMCE94E22H531I', 'Michele', 'Verdi', 3492467393, 'Milano' from dual union all 
+ select 'BNCLCA94E22H531I', 'Luca', 'Bianchi', 3492467394, 'Milano' from dual;
+
+insert into Modulo_Vendita 
+ select 20100, '2015-01-01', 850.00, 'RSSCRL94E22H531I' from dual union all 
+ select 20200, '2015-01-02', 450.00, 'VRIMCE94E22H531I' from dual union all 
+ select 20300, '2015-01-03', 450.00, 'BNCLCA94E22H531I' from dual union all 
+ select 20400, '2015-01-04', 900.00, 'NRIMRI94E22H531I' from dual;
+
+insert into Lista_Vendite
+ select 20100, 'RSSMRI94E12H501I' from dual union all 
+ select 20200, 'NRILCA94E12H501I' from dual union all 
+ select 20300, 'VRDBRN94E12H501I' from dual union all 
+ select 20400, 'NRILCA94E12H501I' from dual;
+
+insert into Modulo_Riparazione
+ select 30100, 'Garanzia', '2015-01-01', '2015-02-01', 'NRIMRI94E22H531I', 0.00, 'Completo' from dual union all 
+ select 30200, 'Batteria', '2015-01-02', '2015-02-02', 'VRIMCE94E22H531I', 10.00, 'Repair' from dual union all 
+ select 30300, 'Display', '2015-01-03', '2015-02-03', 'RSSCRL94E22H531I', 40.00, 'Completo' from dual union all 
+ select 30400, 'Microfono', '2015-01-04', '2015-02-04', 'BNCLCA94E22H531I', 5.00, 'Consegnato' from dual union all 
+ select 30500, 'Fusibile', '2015-01-05', '2015-02-05', 'RSSCRL94E22H531I', 2.00, 'Completo' from dual;
+
+insert into Lista_Riparazioni
+ select 'BNCCRL94E12H501I', 30100 from dual union all 
+ select 'BNCCRL94E12H501I', 30200 from dual union all 
+ select 'RSIPLO94E12H501I', 30300 from dual union all 
+ select 'NRIGVN94E12H501I', 30400 from dual union all 
+ select 'RSIPLO94E12H501I', 30500 from dual;
+
+insert into Ordine
+ select 40100, '2015-05-01', 'VRDFRN94E12H501I' from dual union all 
+ select 40200, '2015-05-14', 'BNCMRI94E12H501I' from dual union all 
+ select 40300, '2015-06-01', 'RSISMN94E12H501I' from dual;
+
+insert into Lista_Ordine
+ select 10200, 40100, 5 from dual union all 
+ select 10300, 40100, 2 from dual union all 
+ select 10400, 40100, 1 from dual union all 
+ select 10300, 40200, 2 from dual union all 
+ select 10500, 40300, 3 from dual;
+
+insert into Lista_Prodotti_Vendita
+ select 20100, 10100, 1 from dual union all 
+ select 20100, 10200, 1 from dual union all 
+ select 20200, 10500, 1 from dual union all 
+ select 20300, 10500, 1 from dual union all 
+ select 20400, 10500, 2 from dual;
+
+
+insert into Lista_Prodotti_Riparazione
+ select 10200, 30100 from dual union all 
+ select 10100, 30200 from dual union all 
+ select 10500, 30300 from dual union all 
+ select 10500, 30400 from dual union all 
+ select 10200, 30500 from dual;
