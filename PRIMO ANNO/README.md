@@ -1,31 +1,5 @@
 In questa categoria sono situate informazioni riguardanti esami del primo anno di Ingegneria Informatica (Triennale). **NON** ci assumiamo nessuna responsabilità delle possibili modifiche ed invitiamo gli studenti ad attendere sempre alle informazioni dei canali ufficiali o, in caso du dubbi, contattare i docenti.
 
-# MODALITA' ESAMI TELEMATICI
-
-Di seguito vengono mostrate le modalità di esecuzione degli esami telematici, a causa del SARS-CoV-2, dei vari esami del primo anno ed alcuno del secondo.
-
-- Primo Anno:
-  
-  - [Algoritmi e Strutture Dati](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/II%20SEMESTRE/Algoritmi%20e%20strutture%20dati/1%20-%20Algoritmi%20e%20strutture%20dati.pdf);
-  
-  - [Algebra Lineare & Analisi Matematica II](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/I%20SEMESTRE/Algebra%20lineare/1%20-%20Algebra%20lineare%20e%20Analisi%20II.pdf);
-  
-  - [Analisi Matematica I](https://pagine.dm.unipi.it/berselli/dida/modalita_anmatematica1.html);
-  
-  - [Basi di Dati](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/II%20SEMESTRE/Basi%20di%20dati/1%20-%20Basi%20di%20dati.pdf);
-  
-  - [Fisica Generale I](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/II%20SEMESTRE/Fisica%20Generale%20I/1%20-%20Fisica%20generale%20I.pdf);
-  
-  - Fondamenti di Programmazione:
-    
-    - [Pratico](http://www.iet.unipi.it/m.cococcioni/FdP/modalita_esame_FdP.txt);
-    
-    - [Orale](http://www.iet.unipi.it/m.cococcioni/FdP/indicazioni_prova_orale.txt);
-
-- Secondo Anno:
-  
-  - [Reti Logiche](http://docenti.ing.unipi.it/~a080368/Teaching/RetiLogiche/FAQ_RL.html)
-
 # DATE ESAMI
 
 **Attenzione!** Le date potrebbero non essere aggiornate! Non siamo responsabili in caso di variazione di date o mancato aggiornamento.
