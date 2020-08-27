@@ -14,7 +14,8 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 ## Indice
   - [Contatti](#contatti)
   - [Corsi](#corsi)
-    - [Corsi del Primo anno](#corsi-del-primo-anno)
+    - [Corsi Anno I](#corsi-anno-I)
+    - [Corsi Anno II](#corsi-anno-II)
   - [Libri di testo](#libri-di-testo)
     - [Libri del Primo anno](#libri-del-primo-anno)
   - [Credits](#credits-in-aggiornamento)
