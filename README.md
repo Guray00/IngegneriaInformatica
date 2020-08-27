@@ -28,19 +28,36 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 
 Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di corso e semestre nel quale esso viene erogato.
 
-###  Corsi del Primo anno   
-   1. _Primo semestre_
+###  Corsi Anno I   
+ 1. _Primo semestre_
       
-      1. **Algebra Lineare** - [Longo Placido](http://pagine.dm.unipi.it/alan/)
-      2. **Analisi Matematica I** - [Luigi Carlo Berselli](http://pagine.dm.unipi.it/berselli/dida/maindida.html)
-      3. **Fondamenti di Programmazione** - [Marco Cococcioni](http://www.iet.unipi.it/m.cococcioni/)
+      1. **Algebra Lineare** (6 cfu) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
+      2. **Analisi Matematica I** (12 cfu) - [Luigi Carlo Berselli](http://pagine.dm.unipi.it/berselli/dida/maindida.html)
+      3. **Fondamenti di Programmazione** (9 cfu) - [Marco Cococcioni](http://www.iet.unipi.it/m.cococcioni/)
    
-   2. _Secondo semestre_
+ 2. _Secondo semestre_
       
-      1. **Algoritmi e Strutture Dati** - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
-      2. **Analisi Matematica II** - [Longo Placido](http://pagine.dm.unipi.it/alan/)
-      3. **Basi di Dati** - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
-      4. **Fisica Generale I** - [Guido Emilio Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/)
+      1. **Algoritmi e Strutture Dati** (6 cfu) - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
+      2. **Analisi Matematica II** (6 cfu) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
+      3. **Basi di Dati** (9 cfu) - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
+      4. **Fisica Generale I** (12 cfu) - [Guido Emilio Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/)
+
+### Corsi Anno II
+
+1. _Primo semestre_
+      1. **Calcolo Numerico** (6 cfu)
+      2. **Elettrotecnica** (6 cfu)
+      3. **Progettazione WEB** (6 cfu)
+      4. **Reti Logiche** (9 cfu)
+  
+2. _Secondo semestre_
+      1. **Ricerca Operativa** (9 cfu)
+      2. **Fondamenti di Automatica** (9 cfu)
+      3. **Economia e Organizzazione Aziendale** (6 cfu)
+      4. **Calcolatori Elettronici** (9 cfu)
+
+
+
 
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.jpg?raw=true) <!-- .element height="25%" width="25%" -->
 
