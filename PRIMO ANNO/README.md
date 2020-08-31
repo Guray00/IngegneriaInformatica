@@ -2,7 +2,7 @@ In questa categoria sono situate informazioni riguardanti esami del primo anno d
 
 # DATE ESAMI
 
-**Attenzione!** Le date potrebbero non essere aggiornate! Non siamo responsabili in caso di variazione di date o mancato aggiornamento...
+**Attenzione!** Le date potrebbero non essere aggiornate! Non siamo responsabili in caso di variazione di date o mancato aggiornamento.
 
 
 
