@@ -42,14 +42,14 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
 ###  Corsi Anno I   
  1. _Primo semestre_
       
-      1. **Algebra Lineare** (6 cfu) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
+      1. **Algebra Lineare** (12 cfu con Analisi II) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
       2. **Analisi Matematica I** (12 cfu) - [Luigi Carlo Berselli](http://pagine.dm.unipi.it/berselli/dida/maindida.html)
       3. **Fondamenti di Programmazione** (9 cfu) - [Marco Cococcioni](http://www.iet.unipi.it/m.cococcioni/)
    
  2. _Secondo semestre_
       
       1. **Algoritmi e Strutture Dati** (6 cfu) - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
-      2. **Analisi Matematica II** (6 cfu) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
+      2. **Analisi Matematica II** (12 cfu con Algebra lineare) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
       3. **Basi di Dati** (9 cfu) - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
       4. **Fisica Generale I** (12 cfu) - [Guido Emilio Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/)
 
