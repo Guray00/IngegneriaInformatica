@@ -1,6 +1,11 @@
-    - uses: yanzay/notify-telegram@v0.1.0
-      if: always()
-      with:
-        chat: ${{ secrets.chat }} # user id or channel name secret
-        token: ${{ secrets.token }} # token secret
-        status: ${{ job.status }} # do not modify this line
+- name: Notify Telegram
+  # You may pin to the exact commit or the version.
+  # uses: yanzay/notify-telegram@1025564e15f68b2fcddeba37b5bfaf4033c79448
+  uses: yanzay/notify-telegram@v0.1.0
+  with:
+    # Chat to send: chat id or @channel_name
+    chat: ${{ secrets.chat }}
+    # Telegram Bot token
+    token: ${{ secrets.token }}
+    # Job status
+    status: ${{ job.status }}
