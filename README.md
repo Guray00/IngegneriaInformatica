@@ -7,7 +7,7 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 
 <br>
 <p align="center">
-<b>Quanto fornito è senza alcun scopo di lucro e vuole intendersi unicamente come aiuto per gli studenti!</b>
+<b>Quanto fornito è senza alcun scopo di lucro e vuole intendersi unicamente come aiuto per gli studenti</b>
 </p>
 <br>
 
