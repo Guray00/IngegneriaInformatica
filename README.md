@@ -21,9 +21,17 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
   - [Credits](#credits-in-aggiornamento)
 
 
-## Contatti
+## Gruppi Telegram
+Per rendere la comunicazione più efficace, sono stati realizzati gruppi appositi:
 
-**[Telegram](https://t.me/inginfunipi) primo anno**
+### Principali
+- **[ Gruppo Anno 1](https://kutt.it/inginf1)**
+- **[ Gruppo Anno 2](https://kutt.it/inginf2)**
+
+### Off-Topic
+- **[Shitposting](https://t.me/joinchat/ALDXWEt7IxLWwQ1i5x4fvA)**
+- **[Gaming](https://t.me/joinchat/Cb7psFd1nwYjtrMekE51hg)**
+
 
 ## Corsi
 
