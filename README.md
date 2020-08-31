@@ -12,13 +12,15 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 <br>
 
 ## Indice
-  - [Contatti](#contatti)
+  - [Gruppi Telegram](#gruppi-telegram)
+    - [Principali](#principali)
+    - [Off-Topic](#off-topic)
   - [Corsi](#corsi)
-    - [Corsi Anno I](#corsi-anno-I)
-    - [Corsi Anno II](#corsi-anno-II)
+    - [Corsi Anno I](#corsi-anno-i)
+    - [Corsi Anno II](#corsi-anno-ii)
   - [Libri di testo](#libri-di-testo)
     - [Libri del Primo anno](#libri-del-primo-anno)
-  - [Credits](#credits-in-aggiornamento)
+  - [Credits (in aggiornamento)](#credits-in-aggiornamento)
 
 
 ## Gruppi Telegram
