@@ -32,9 +32,10 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-      - uses: yanzay/notify-telegram@v0.1.0
+      - uses: robotomize/notify-telegram@v0.1.0
         if: always()
         with:
           chat: ${{ secrets.chat }} # user id or channel name secret
           token: ${{ secrets.token }} # token secret
-          status: ${{ job.status }} # do not modify this line    
+          status: ${{ job.status }} # do not modify this line   
+          message: ${{ secrets.message }}
