@@ -6,7 +6,7 @@ In questa categoria sono situate informazioni riguardanti esami del primo anno d
 
 
 
-## SESSIONE SETTEMBRE 2019/2020
+## SESSIONE SETTEMBRE 2019/2020 - Distanza
 
 <div>
 <table>
