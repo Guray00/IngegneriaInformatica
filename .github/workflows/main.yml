@@ -38,4 +38,4 @@ jobs:
           chat: ${{ secrets.chat }} # user id or channel name secret
           token: ${{ secrets.token }} # token secret
           status: ${{ job.status }} # do not modify this line   
-          message: ${{ secrets.message }}
+          args: ${{ secrets.message }}
