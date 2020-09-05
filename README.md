@@ -48,7 +48,9 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
    
  2. _Secondo semestre_
       
-      1. **Algoritmi e Strutture Dati** (6 cfu) - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
+      1. **Algoritmi e Strutture Dati** (6 cfu) - 
+          1. **AA.2019-2020**: [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
+          2. **AA.2020-2021**: Pietro Ducange - Gigliola Vaglini
       2. **Analisi Matematica II** (12 cfu con Algebra lineare) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
       3. **Basi di Dati** (9 cfu) - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
       4. **Fisica Generale I** (12 cfu) - [Guido Emilio Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/)
