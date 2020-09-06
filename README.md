@@ -48,7 +48,9 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
    
  2. _Secondo semestre_
       
-      1. **Algoritmi e Strutture Dati** (6 cfu) - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
+      1. **Algoritmi e Strutture Dati** (6 cfu) - 
+          1. **AA.2019-2020**: [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
+          2. **AA.2020-2021**: Pietro Ducange - Gigliola Vaglini
       2. **Analisi Matematica II** (12 cfu con Algebra lineare) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
       3. **Basi di Dati** (9 cfu) - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
       4. **Fisica Generale I** (12 cfu) - [Guido Emilio Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/)
@@ -56,15 +58,15 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
 ### Corsi Anno II
 
 1. _Primo semestre_
-      1. **Calcolo Numerico** (6 cfu)
-      2. **Elettrotecnica** (6 cfu)
-      3. **Progettazione WEB** (6 cfu)
-      4. **Reti Logiche** (9 cfu)
+      1. **Calcolo Numerico** (6 cfu) - [Paolo Ghelardoni](http://pagine.dm.unipi.it/ghelardoni/) - Cecilia Magherini
+      2. **Elettrotecnica** (6 cfu) - [Emanuele Crisostomi](https://people.unipi.it/emanuele_crisostomi/didattica/)
+      3. **Progettazione WEB** (6 cfu) - [Francesco Marcelloni](http://www.iet.unipi.it/f.marcelloni/)
+      4. **Reti Logiche** (9 cfu) - [Giovanni Stea](http://www.iet.unipi.it/g.stea/)
   
 2. _Secondo semestre_
-      1. **Ricerca Operativa** (9 cfu)
+      1. **Ricerca Operativa** (9 cfu) - [Massimo Pappalardo](http://pages.di.unipi.it/mpappalardo/)
       2. **Fondamenti di Automatica** (9 cfu)
-      3. **Economia e Organizzazione Aziendale** (6 cfu)
+      3. **Economia e Organizzazione Aziendale** (6 cfu) - Antonella Martini - Paola Belinghieri
       4. **Calcolatori Elettronici** (9 cfu)
 
 
@@ -118,7 +120,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 **Maintainer**
 
-[Gabriele Frassi](https://github.com/gfrax-web)<br>
+[Gabriele Frassi](https://github.com/gabrielefrax)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
 [Tudor Gabriel Nechita](https://github.com/NechGabriel)
 
