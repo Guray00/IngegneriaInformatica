@@ -15,6 +15,7 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
   - [Gruppi Telegram](#gruppi-telegram)
     - [Principali](#principali)
     - [Off-Topic](#off-topic)
+  - [Come scaricare le lezioni](#come-scaricare-le-lezioni)  
   - [Corsi](#corsi)
     - [Corsi Anno I](#corsi-anno-i)
     - [Corsi Anno II](#corsi-anno-ii)
@@ -34,6 +35,8 @@ Per rendere la comunicazione più efficace, sono stati realizzati gruppi apposit
 - **[Shitposting](https://t.me/joinchat/ALDXWEt7IxLWwQ1i5x4fvA)**
 - **[Gaming](https://t.me/joinchat/Cb7psFd1nwYjtrMekE51hg)**
 
+## Come scaricare le lezioni
+A causa del Nuovo Coronavirus 19 le lezioni nel prossimo futuro continueranno ad essere erogate in modalità a distanza. Per questo motivo è stato realizzato un fork che consente di scaricare le registrazioni presenti sulla piattaforma Microsoft Stream. Per ulteriori informazioni sul progetto e sul suo utilizzo trovate [qui](https://github.com//Guray00/destreamer-unipi) tutte le informazioni necessarie.
 
 ## Corsi
 
