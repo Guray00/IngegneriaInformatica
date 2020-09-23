@@ -51,7 +51,7 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
    
  2. _Secondo semestre_
       
-      1. **Algoritmi e Strutture Dati** (6 cfu) - 
+      1. **Algoritmi e Strutture Dati** (6 cfu) 
           1. **AA.2019-2020**: [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
           2. **AA.2020-2021**: Pietro Ducange - Gigliola Vaglini
       2. **Analisi Matematica II** (12 cfu con Algebra lineare) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
@@ -64,7 +64,7 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
       1. **Calcolo Numerico** (6 cfu) - [Paolo Ghelardoni](http://pagine.dm.unipi.it/ghelardoni/) - Cecilia Magherini
       2. **Elettrotecnica** (6 cfu) - [Emanuele Crisostomi](https://people.unipi.it/emanuele_crisostomi/didattica/)
       3. **Progettazione WEB** (6 cfu) - [Francesco Marcelloni](http://www.iet.unipi.it/f.marcelloni/)
-      4. **Reti Logiche** (9 cfu) - [Giovanni Stea](http://www.iet.unipi.it/g.stea/)
+      4. **Reti Logiche** (9 cfu) - [Giovanni Stea](http://www.iet.unipi.it/g.stea/) - Raffaele Zippo
   
 2. _Secondo semestre_
       1. **Ricerca Operativa** (9 cfu) - [Massimo Pappalardo](http://pages.di.unipi.it/mpappalardo/)
