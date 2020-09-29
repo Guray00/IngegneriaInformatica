@@ -113,8 +113,32 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       1) "Fisica 1 & 2" di _Raymond A. Serway & altri_        
 
 - **Algoritmi e Strutture Dati** - _Non necessario_    
-  **Note studenti**: La professoressa mette una dispensa molto completa a disposizione.      
+  **Note studenti**: La professoressa mette una dispensa molto completa a disposizione.  
+  
+### Libri del Secondo anno  
 
+- **Calcolo Numerico** - _Non necessario_<br>
+  **Testo consigliato**: Nessuno.<br> 
+  **Note studenti**: Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.<br>
+
+- **Elettrotecnica** - _Utile_    
+  **Testo consigliato**:<br> 
+      1) "Lezioni di Elettrotecnica" di _Marco Raugi_.<br>
+      2) "Eserciziario elettrotecnica" di _Francesco Bertoncini_.<br>
+  **Note studenti**: Consigliato per alcune cose ma possono essere sufficienti gli appunti.
+
+- **Reti Logiche** - _Utile_    
+  **Testo consigliato**:<br> 
+      ~~1) "Lezioni di Elettrotecnica" di _Marco Raugi_.~~<br>
+      ~~2) "Eserciziario elettrotecnica" di _Francesco Bertoncini_.~~<br>
+  ~~**Note studenti**: Consigliato per alcune cose ma possono essere sufficienti gli appunti.~~
+  
+- **Progettazione web** - _Utile_    
+  ~~**Testo consigliato**:<br> 
+      ~~1) "Lezioni di Elettrotecnica" di _Marco Raugi_.~~<br>
+      ~~2) "Eserciziario elettrotecnica" di _Francesco Bertoncini_.~~<br>
+  ~~**Note studenti**: Consigliato per alcune cose ma possono essere sufficienti gli appunti.~~
+  
 ## Credits (in aggiornamento)
 
 Questo progetto si basa sull'aiuto spontaneo da parte degli studenti della triennale di Ingegneria Informatica. Ogni contributo è gradito!
