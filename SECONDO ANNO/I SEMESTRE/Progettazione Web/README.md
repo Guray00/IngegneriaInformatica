@@ -1,16 +1,16 @@
 # INFORMAZIONI
 Tutto il materiale si trova sul sito http://www.iet.unipi.it/f.marcelloni/pweb/home.html
 
-# Credenziali
+## Credenziali
 - Username: sistemiInf <br>
 - Password: abcd4321
 
-# Pacchetto all-in-one
+## Pacchetto all-in-one
 http://www.iet.unipi.it/f.marcelloni/pweb/resources/pweb(decomprimere_in_C).zip
 
 Dovrà essere scompattato in C (senza sottocartelle, solo C).
 
-# Editors per lo sviluppo
+## Editors per lo sviluppo
 - Aptana Studio: ambiente di sviluppo con completamento automatico HTML, CSS, JS, e JS debug (free, multi-platform); <br>
 - NetBeans: ambiente di sviluppo multi-language per sviluppo lato server e client (free, multi-platform);<br>
 - Eclipse: ambiente di sviluppo integrato multi-language (free, multi-platform);<br>
@@ -23,7 +23,7 @@ Dovrà essere scompattato in C (senza sottocartelle, solo C).
 - TextWrangler: editor di testo multi-language (free, MAC OS X);<br>
 - Emacs: editor di testo multi-language (free, Linux);<br>
 
-# Software:
+## Software:
 - Xampp: distribuzione Apache completamente gratuita che contiene MySQL, PHP e Perl;<br>
 - Apache Server: piattaforma server Web modulare;<br>
 - MySQL Server: database management system;<br>
