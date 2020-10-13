@@ -110,7 +110,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 - **Fisica Generale I** - _Consigliato_    
   **Testo consigliato**:<br> 
-      1) "Fisica 1 & 2" di _Raymond A. Serway & altri_        
+      1) "Fisica per scienze e ingegneria volumi 1 & 2" di _Raymond A. Serway & altri_        
 
 - **Algoritmi e Strutture Dati** - _Non necessario_    
   **Note studenti**: La professoressa mette una dispensa molto completa a disposizione.  
