@@ -64,7 +64,7 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
       1. **Calcolo Numerico** (6 cfu) - [Paolo Ghelardoni](http://pagine.dm.unipi.it/ghelardoni/) - Cecilia Magherini
       2. **Elettrotecnica** (6 cfu) - [Emanuele Crisostomi](https://people.unipi.it/emanuele_crisostomi/didattica/)
       3. **Progettazione WEB** (6 cfu) - [Francesco Marcelloni](http://www.iet.unipi.it/f.marcelloni/)
-      4. **Reti Logiche** (9 cfu) - [Giovanni Stea](http://www.iet.unipi.it/g.stea/) - Raffaele Zippo
+      4. **Reti Logiche** (9 cfu) - [Giovanni Stea](http://docenti.ing.unipi.it/~a080368/Teaching/RetiLogiche/index_RL.html) - Raffaele Zippo
   
 2. _Secondo semestre_
       1. **Ricerca Operativa** (9 cfu) - [Massimo Pappalardo](http://pages.di.unipi.it/mpappalardo/)
