@@ -1,0 +1,122 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nty/global//global/global}
+  \entry{ancilotti:so}{book}{}
+    \name{author}{4}{}{%
+      {{hash=AP}{%
+         family={Ancilotti},
+         familyi={A\bibinitperiod},
+         given={Paolo},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=BM}{%
+         family={Boari},
+         familyi={B\bibinitperiod},
+         given={Maurelio},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Ciampolini},
+         familyi={C\bibinitperiod},
+         given={Anna},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=LG}{%
+         family={Lipari},
+         familyi={L\bibinitperiod},
+         given={Giuseppe},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {McGraw-Hill}%
+    }
+    \strng{namehash}{AP+1}
+    \strng{fullhash}{APBMCALG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{edition}{2}
+    \field{title}{Sistemi operativi}
+    \field{year}{2008}
+  \endentry
+
+  \entry{frosini:architetturacalcolatori}{book}{}
+    \name{author}{2}{}{%
+      {{hash=FG}{%
+         family={Frosini},
+         familyi={F\bibinitperiod},
+         given={Graziano},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=LG}{%
+         family={Lettieri},
+         familyi={L\bibinitperiod},
+         given={Giuseppe},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Pisa University Press}%
+    }
+    \strng{namehash}{FGLG1}
+    \strng{fullhash}{FGLG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{title}{Architettura dei Calcolatori}
+    \field{volume}{2}
+    \field{year}{2013}
+  \endentry
+
+  \entry{silberschatz:osc}{book}{}
+    \name{author}{3}{}{%
+      {{hash=SA}{%
+         family={Silberschatz},
+         familyi={S\bibinitperiod},
+         given={Abraham},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=GPB}{%
+         family={Galvin},
+         familyi={G\bibinitperiod},
+         given={Peter\bibnamedelima Baer},
+         giveni={P\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=GG}{%
+         family={Gagne},
+         familyi={G\bibinitperiod},
+         given={Greg},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SAGPBGG1}
+    \strng{fullhash}{SAGPBGG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{edition}{9}
+    \field{title}{Operating System Concepts}
+    \field{year}{2013}
+  \endentry
+\enddatalist
+\endinput
