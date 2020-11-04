@@ -72,7 +72,11 @@
   **LEZIONE**: Teorema di Tellegen e teorema di Boucherot con dimostrazione. Potenza complessa negli induttori mutuamente accoppiati.
 
   **ESERCITAZIONE**: Risoluzione di vecchi testi d'esame sui circuiti a regime periodico sinusoidale.
+  #
+- [**04-11-2020**](https://unipiit.sharepoint.com/:v:/s/a_td_47189/Ecor39P5mYlNl3i69H-FGQMBr7FSXdAiEN-9hNsWeXkvKA?e=vCXZqz)
 
+  **ESERCITAZIONE**: Risoluzione di esercizi di esame per circuiti in continua e circuiti a regime periodico sinusoidale.
+  
 &nbsp;
 #
 
