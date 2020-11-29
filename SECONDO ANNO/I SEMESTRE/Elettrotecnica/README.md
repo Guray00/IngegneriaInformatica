@@ -79,9 +79,28 @@
   #
 - [**06-11-2020**](https://unipiit-my.sharepoint.com/:v:/g/personal/g_rossi97_studenti_unipi_it/EUVmKX5MHsxDvO7QsFtWY9gBVOjrwMdHVgdPWbLvpcQYjg)
 
-  **LEZIONE**
+  **LEZIONE**: Componenti multipoli, definizione di porta. Reti a due porte. Parametri Z: circuito equivalente e determinazione dei parametri. Reti reciproche e simmetriche.
+  #
+- [**10-11-2020**](https://unipiit-my.sharepoint.com/:v:/g/personal/g_rossi97_studenti_unipi_it/EeWrml351FdNu8IgoAyt9A0BkSTV3WQbFCd_9_lQo7VRtA)
 
+  **LEZIONE**: Parametri Y: circuito equivalente, anche in caso di rete reciproca. Determinazione dei parametri ed esercizio svolto. Parametri h: circuito equivalente e determinazione dei parametri.
+  #
+- [**11-11-2020**](https://unipiit-my.sharepoint.com/:v:/g/personal/g_rossi97_studenti_unipi_it/EUN9wI_iYItPs1UaIVY-xsEBQU5-3rJA3jpEWmN7YHgmEw)
 
+  **LEZIONE**: Equivalenza tra circuiti a due porte espressi con diverse parametrizzazioni, e parametri h in caso di rete reciproca. Esercizio svolto. Parametri T: circuito equivalente e determinazione dei parametri. Esercizio svolto.
+  #
+- [**13-11-2020**](https://unipiit-my.sharepoint.com/:v:/g/personal/g_rossi97_studenti_unipi_it/EQYLnDlbG2NHhnhM52--SwoByaZwXd9Koz60IZ3SDI3f7g)
+
+  **LEZIONE**: Collegamenti fra doppi bipoli: collegamenti serie, parallelo, cascata e ibrido serie/parallelo.
+  #
+- [**17-11-2020**](https://unipiit-my.sharepoint.com/:v:/g/personal/g_rossi97_studenti_unipi_it/EaYlErD2pBhFk__RHJfjVhsBi29bzoMIcKX3PrB8xjD3Kg)
+
+  **ESERCITAZIONE**: Risoluzione di esercizi di esame sui circuiti a due porte.
+  #
+- [**18-11-2020**](https://unipiit-my.sharepoint.com/:v:/g/personal/g_rossi97_studenti_unipi_it/Ec5vr_8wuXhFhZXMnKxZ3s4BmUpKlvzgvAr9rzgxO7Ou6Q)
+
+  **LEZIONE**: Introduzione ai fenomeni transitori nelle reti elettriche: equazioni differenziali associate e calcolo delle condizioni iniziali. Trasformata di Laplace e sue proprietà.
+  
 &nbsp;
 #
 
