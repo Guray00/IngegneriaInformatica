@@ -61,7 +61,7 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
 ### Corsi Anno II
 
 1. _Primo semestre_
-      1. **Calcolo Numerico** (6 cfu) - [Paolo Ghelardoni](http://pagine.dm.unipi.it/ghelardoni/) - Cecilia Magherini
+      1. **Calcolo Numerico** (6 cfu) - [Paolo Ghelardoni](http://pagine.dm.unipi.it/ghelardoni/)
       2. **Elettrotecnica** (6 cfu) - [Emanuele Crisostomi](https://people.unipi.it/emanuele_crisostomi/didattica/)
       3. **Progettazione WEB** (6 cfu) - [Francesco Marcelloni](http://www.iet.unipi.it/f.marcelloni/)
       4. **Reti Logiche** (9 cfu) - [Giovanni Stea](http://docenti.ing.unipi.it/~a080368/Teaching/RetiLogiche/index_RL.html) - Raffaele Zippo
