@@ -42,7 +42,7 @@ A causa del Nuovo Coronavirus 19 le lezioni nel prossimo futuro continueranno ad
 
 Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di corso e semestre nel quale esso viene erogato.
 
-###  Corsi Anno I   
+###  Corsi Anno I  [AA.2019-2020] 
  1. _Primo semestre_
       
       1. **Algebra Lineare** (12 cfu con Analisi II) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
@@ -51,14 +51,12 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
    
  2. _Secondo semestre_
       
-      1. **Algoritmi e Strutture Dati** (6 cfu) 
-          1. **AA.2019-2020**: [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
-          2. **AA.2020-2021**: Pietro Ducange - Gigliola Vaglini
+      1. **Algoritmi e Strutture Dati** (6 cfu) - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
       2. **Analisi Matematica II** (12 cfu con Algebra lineare) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
       3. **Basi di Dati** (9 cfu) - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
       4. **Fisica Generale I** (12 cfu) - [Guido Emilio Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/)
 
-### Corsi Anno II
+### Corsi Anno II [AA.2020-2021]
 
 1. _Primo semestre_
       1. **Calcolo Numerico** (6 cfu) - [Paolo Ghelardoni](http://pagine.dm.unipi.it/ghelardoni/)
