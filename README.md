@@ -156,6 +156,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 Luca Arduini<br>
 Francesco Berti<br>
 Francesco Boldrini<br>
+Matteo Bernini<br>
 Davide Bruni<br>
 Federico Casu<br>
 Pia Eugenia D'Antonio<br>
