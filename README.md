@@ -165,6 +165,7 @@ Gabriele Marcuccetti<br>
 Angelo De Marco<br>
 Alex Parri<br>
 Aleandro Prudenzano<br>
+Samuele Ricotta<br>
 Giacomo Sansone<br>
 Alessandro Versari<br>
 Francesco Zollo<br><br>
