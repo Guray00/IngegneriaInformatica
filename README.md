@@ -160,9 +160,9 @@ Matteo Bernini<br>
 Davide Bruni<br>
 Federico Casu<br>
 Pia Eugenia D'Antonio<br>
+Angelo De Marco<br>
 Edoardo Geraci<br>
 Gabriele Marcuccetti<br>
-Angelo De Marco<br>
 Alex Parri<br>
 Aleandro Prudenzano<br>
 Samuele Ricotta<br>
