@@ -1,11 +1,11 @@
-# Esami a scelta
-Esami facoltativi che potranno essere scelti durante il terzo anno, per un totale 12 CFU.
-## Ingegneria Informatica
-- Programmazione avanzata
-- Laboratorio di reti informatiche 
-- Tirocinio
+# Scelta degli esami
+Il Consiglio di CdS verificherà la coerenza delle attività scelte con il progetto formativo. La coerenza è automaticamente verificata per le attività presenti nel gruppo "Attività consigliate per la libera scelta". 
 
-## Informatica
-- Sviluppo applicazioni Mobile
-- Green and cloud computing
-- [...]
+## Attività formative consigliate per la libera scelta
+- **Programmazione avanzata** (6CFU)
+  - **Propedeuticità**: *Algoritmi e Strutture Dati, Basi di Dati*
+- **Progettazione di Reti informatiche** (6CFU)
+  - **Propedeuticità**: *Reti Informatiche*
+- **Laboratorio di Informatica Applicata** (6CFU)
+  - **Propedeuticità**: *Sistemi Operativi, Reti Informatiche*
+- **Tirocinio** (6CFU)
