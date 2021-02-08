@@ -14,6 +14,6 @@ Il Consiglio di CdS verificherà la coerenza delle attività scelte con il proge
 - **Tirocinio** (6CFU)
 
 ## Materie estranee al corso di laurea di Ingegneria informatica
-Per il riconoscimento di attività estranee al nostro corso di laurea è necessario richiedere il riconoscimento dei CFU
+Per il riconoscimento di attività estranee al nostro corso di laurea è necessario compilare un modulo.
 - **Modulo**: [Clicca qui](https://www.unipi.it/index.php/servizi-di-segreteria/item/1490-riconoscimento-crediti-formativi)
 - **Referenti segreteria studenti**: [Clicca qui](https://www.unipi.it/index.php/segreterie-sedi-orari-e-contatti/item/17774-elenco-dei-referenti-per-area)
