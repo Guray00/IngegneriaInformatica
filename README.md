@@ -158,6 +158,7 @@ Pia Eugenia D'Antonio<br>
 Angelo De Marco<br>
 Giulia Gastaldin<br>
 Edoardo Geraci<br>
+Giacomo Maldarella<br>
 Gabriele Marcuccetti<br>
 Alex Parri<br>
 Aleandro Prudenzano<br>
