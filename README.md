@@ -149,7 +149,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 [Gabriele Frassi](https://github.com/gabrielefrax)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
-[Tudor Gabriel Nechita](https://github.com/NechGabriel)
+[Tudor Gabriel Nechita](https://github.com/NechGab)
 
 **Collaboratori Materiale**
 
@@ -160,11 +160,12 @@ Matteo Bernini<br>
 Davide Bruni<br>
 Federico Casu<br>
 Pia Eugenia D'Antonio<br>
+Angelo De Marco<br>
 Edoardo Geraci<br>
 Gabriele Marcuccetti<br>
-Angelo De Marco<br>
 Alex Parri<br>
 Aleandro Prudenzano<br>
+Samuele Ricotta<br>
 Giacomo Sansone<br>
 Alessandro Versari<br>
 Francesco Zollo<br><br>
