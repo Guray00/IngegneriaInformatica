@@ -125,10 +125,9 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       1) "Dalle porte AND, OR, NOT al Sistema calcolatore" di _Paolo Corsini_, edizioni ETS <br>
       2) "Circuiti logici per le operazioni sui numeri naturali e sui numeri interi" di _Paolo Corsini_, edizioni ETS<br>
       3) "Il Calcolatore Didattico C86.32" di _Paolo Corsini_, edizioni ETS (nuova edizione)<br>
-      
   **Note studenti**: Definire i libri sopra essenziali è dire decisamente poco, per cui l'acquisto è molto più che consigliato.<br>
   
-- **Progettazione web** - _Non necessario_
+- **Progettazione web** - _Non necessario_<br>
   **Testo consigliato**: Nessuno.<br> 
   **Note studenti**: Il professore mette a disposizione delle diapositive in inglese. Si consiglia di seguire i laboratori.<br>
   
