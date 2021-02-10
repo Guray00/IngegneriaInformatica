@@ -128,11 +128,9 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       
   **Note studenti**: Definire i libri sopra essenziali è dire decisamente poco, per cui l'acquisto è molto più che consigliato.<br>
   
-- **Progettazione web** - _Utile_    
-  ~~**Testo consigliato**:<br> 
-      ~~1) "Lezioni di Elettrotecnica" di _Marco Raugi_.~~<br>
-      ~~2) "Eserciziario elettrotecnica" di _Francesco Bertoncini_.~~<br>
-  ~~**Note studenti**: Consigliato per alcune cose ma possono essere sufficienti gli appunti.~~
+- **Progettazione web** - _Non necessario_
+  **Testo consigliato**: Nessuno.<br> 
+  **Note studenti**: Il professore mette a disposizione delle diapositive in inglese. Si consiglia di seguire i laboratori.<br>
   
 ## Credits (in aggiornamento)
 
