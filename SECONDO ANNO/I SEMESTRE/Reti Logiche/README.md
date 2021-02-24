@@ -1,7 +1,7 @@
 # Modalità di esame
 - L'esame risulta diviso in tre parti: pretest, prova scritta, prova orale.
 - Sono consentite al massimo 4 consegne in un anno. La consegna è contata con la sottomissione delle risposte al pretest.
-- L'esame comincia e finisce in un appello. Niente viene «tenuto» per appelli successivi\\
+- L'esame comincia e finisce in un appello. Niente viene «tenuto» per appelli successivi<br>
 Unica eccezione: orale ad Aprile (Novembre) con scritto a fine Febbraio(Settembre), per gli aventi diritto<br>
 Non ci saranno esami scritti ad Aprile e Novembre.
 
