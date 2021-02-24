@@ -16,7 +16,7 @@ Non ci saranno esami scritti ad Aprile e Novembre.
 - Ogni studente avrà la possibilità di svolgere l'autocorrezione degli esercizi svolti durante la prova. Maggiori saranno le correzioni apportate, minore sarà la valutazione del docente. Quando il codice inserito risulterà valido l'esaminato potrà richiedere una valutazione.
 
 ## Prova orale
-- La prova orale è aperta a tutti coloro che superano la prova scritta (cioè tutti coloro che non avranno scritto, nella valutazione, nettamente insufficiente).
+- La prova orale è aperta a tutti coloro che hanno superato la prova scritta (cioè tutti coloro che non avranno scritto, nella valutazione, nettamente insufficiente).
 - La prova consiste nel rispondere a domande aperte (anche esercizi).
 - Tempo variabile: da novanta minuti a due ore.
 - Svolta con carta e penna.
