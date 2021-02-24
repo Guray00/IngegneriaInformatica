@@ -61,9 +61,9 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
   
 2. _Secondo semestre_
       1. **Ricerca Operativa** (9 cfu) - [Massimo Pappalardo](http://pages.di.unipi.it/mpappalardo/)
-      2. **Fondamenti di Automatica** (9 cfu)
+      2. **Fondamenti di Automatica** (9 cfu) - [Mario Innocenti](https://people.unipi.it/mario_innocenti/) - [Lorenzo Pollini](https://people.unipi.it/lorenzo_pollini/)
       3. **Economia e Organizzazione Aziendale** (6 cfu) - Antonella Martini - Paola Belinghieri
-      4. **Calcolatori Elettronici** (9 cfu)
+      4. **Calcolatori Elettronici** (9 cfu) - [Giuseppe Lettieri](http://www.iet.unipi.it/g.lettieri/)
 
 
 
