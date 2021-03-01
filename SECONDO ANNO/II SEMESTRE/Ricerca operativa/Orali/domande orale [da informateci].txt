@@ -1,0 +1,95 @@
+Domande tratte da: https://www.informateci.it/viewtopic.php?t=633
+
+DOMANDE PL
+
+#5 Illustrare l'algoritmo del simplesso duale.
+#5 Dare la definizione di soluzione di base duale; dire cosa vuol dire degenere e disegnare poi una non ammissibile/ammissibile/degenere/ottima. (-> disegno: fo non nel cono di competenza).
+#5 Scrivere il modello del duale ausiliario, dire a cosa serve ed enunciare il teorema che lo caratterizza. (-> Teorema 3.2.2. pg 81).
+#4 Enunciare la regola anticiclo di Bland per la PL (per h e per k) e dire a cosa serve.
+#4 Dare la definizione di soluzione di base primale, dire cosa significa degenere e disegnarne una ammissibile/non ammissibile e degenere/ottima/ottima non unica.
+#4 Enunciare il teorema di Weyl (rappresentazione dei poliedri) e dire a cosa serve.
+#4 Scrivere il modello del duale ausiliario e dire a cosa serve.
+#3 Disegnare problema di PL (di massimo) illimitato superiormente e dire come il simplesso lo certifica (risposta: trattare il caso di AiW^h<0 per ogni i appartenente a N).
+#3 Illustrare il simplesso primale e dimostrare la correttezza della scelta dell'indice h/k.
+#3 Dare la definizione di poliedro e di vertice di un poliedro.
+#2 Dare la definizione di una soluzione di base primale ammissibile non ottima. Costruirne una graficamente.
+#2 Enunciare il teorema fondamentale della PL, fornirne una breve dimostrazione e dire a cosa serve.
+#2 Dare la definizione di assegnamento fornendo un esempio (5x5) con due assegnamenti ottimi distinti.
+Illustrare il test di ottimalità per la PL, dire dove si utilizza e commentare il caso degenere.
+Dare la definizione e costruire graficamente una soluzione di base duale non ammissibile. Come si controlla l'ottimalità?
+dare la definizione di poliedro e disegnare poi un problema di PL con ottimo finito e poliedro illimitato.
+Esistono poliedri senza vertici?
+Dare la definizione di poliedro e disegnarne uno con 3 vertici e una direzione di recessione.
+Enunciare il teorema della dualità per la PL e dire a cosa serve.
+Dare la definizione di poliedro e disegnare una soluzione di base non ammissibile e degenere (primale/duale).
+Dare la definizione di poliedro e disegnarne uno che abbia 4 elementi in V e 3 elementi in E
+Disegnare un poliedro con due elementi di E conicamente indipendenti indicando l'insieme V.
+Elencare i metodi per trasformare un generico problema di PL in uno standard primale ed in uno standard duale.
+Disegnare una soluzione di base duale ammissibile e una non ammissibile.
+Implementando l'algoritmo del simplesso su un calcolatore, cosa dovresti fare per poter fornire al programma una base ammissibile di partenza?
+Enunciare e dimostrare il test di ottimalità per la PL. (-> Teorema 2.3.6. (Scarti complementari))
+Dare la definizione di poliedro e disegnarne uno con 3 vertici e una direzione di recessione.
+Enunciare il teorema della dualità forte e dire a cosa serve e quando si applica.
+Disegnare una soluzione di base primale non ammissibile ed una soluzione primale ammissibile non di base.
+Scrivere il modello matematico del problema dell'assegnamento di costo minimo. Lo si può rolvere con il simplesso su reti? Perché?
+
+
+DOMANDE PLI
+
+#7 dare la definizione di disuguaglianza valida e piano di taglio. scrivere l'equazione del piano di taglio di Gomory.
+#5 Enunciare "Teorema di equivalenza tra PL e PLI". Scrivere equazione del taglio di Gomory. (Il teorema è quello che dice che dato S limitato e A,b razionali allora max cx dato x appartenente a S = max cx dato x appartenente a convS. Consiglio:descrivere l'equazione, dire esempio cos'è a tilde ecc.).
+#3 Illustrare l'algoritmo che fornisce la soluzione ottima del rilassamento continuo del problema delle zaino 0-1 e di quello dello zaino intero.
+#3 Dopo aver dato le definizioni descrivere la relazione tra assegnamento e cicli hamiltoniani.
+#3 Dare la definizione di valutazione (superiore ed inferiore) per un problema di PLI ed illustrare le regole di taglio del Branch and Bound per problemi di massimo.
+#3 Elencare le regole di taglio del Branch and Bound per problemi di massimo e per problemi di minimo.
+#2 Scrivere il modello matematico del TSP asimmetrico e dire come si calcolano la valutazione superiore ed inferiore. (-> Vi: Rilassamento vincolo 3, Vs: algoritmo delle toppe)
+#2 Scrivere il modello matematico del problema dello zaino binario illustrando gli algoritmi per la costruzione di una valutazione inferiore ed una superiore.
+#2 Scrivere il modello matematico del TSP asimmetrico e simmetrico.
+Definizione "k-albero" e "ciclo hamiltoniano". Descrivere la loro relazione. (Possibile risposta: parlare del TSP).
+Regole del Branch & Bound per lo zaino 0-1.
+Dare la definizione di 5-albero e disegnarne uno che sia un 2-albero ma che sia 6-albero.
+Cosa sono gli algoritmi greedy? Quali conosci?
+Dare la definizione di k-albero e dire a cosa serve.
+Scrivere il modello matematico del problema dell'assegnamento di costo minimo. Si può omettere il vincolo di interezza? Perché?
+Scrivere il modello matematico del problema del TSP simmetrico. Costruire poi un esempio a 5 nodi e scrivere un vincolo violato dalla valutazione inferiore.
+
+DOMANDE PL SU RETI
+
+#7 Scrivere il modello matematico del problema dei potenziali su reti capacitate e non capacitate.
+#7 Dare la definizione di potenziale di base [su una rete capacitata].
+#5 Costruire un potenziale [di base] ammissibile/non ottimo/ottimo [degenere]/non ammissibile [degenere]/degenere su una rete [capacitata] a 4 nodi e 5 archi.
+#5 Dare la definizione di flusso di base [su una rete capacitata]. (il modello è il duale di quello del flusso min cx/Ex=b/0<=x<=u).
+#5 Costruire un flusso di base ottimo [non unico(degenere)]/non ammissibile/ammissibile [degenere].
+#3 Enunciare il teorema di Bellman.
+#3 Scrivere il modello matematico del cammino minimo dal nodo i al nodo j e descrivere come risolverlo con il simplesso su reti.
+#4 Illustrare il cambio di base nel simplesso su reti capacitate.
+#2 Disegnare una rete con due alberi distinti di cammini minimi e scrivere poi il vettore [ottimo] X di entrambi.
+#2 Scrivere il modello matematico dell'albero dei cammini minimi e disegnare un albero non ottimo per tale problema.
+#2 Costruire, su una rete [capacitata] a 4 nodi e 5 archi, un flusso di base ammissibile/non ammissibile [degenere]/non di base [ottimo].
+Dare la definizione di 5-albero e disegnarne uno che sia un 2-albero ma che non sia un 6-albero.
+Illustrare l'algoritmo di Djkstra. 
+Scrivere il modello matematico dei problemi di flusso di costo minimo.
+Scrivere il modello di cammino minimo dal nodo i al nodo j e mostrare con un esempio che la soluzione ottima può non essere unica. (-> il modello va modificato, il bilancio del nodo sorgente va messo a -1, nodo destinazione a 1 e i restanti a 0).
+Enunciare e dimostrare il teorema che caratterizza le basi dei problemi di flusso di costo minimo come albero di copertura.
+
+
+DOMANDE PNL
+
+
+
+DA CATALOGARE
+
+#10 Dare la definizione di taglio di una rete [(per problemi di flusso massimo)], di capacità del taglio e disegnarne uno non ottimo/fornendo un esempio di rete con due tagli di capacità minima (risposta disegno: io mi sono ricordata di max flow min cut).
+#5 Illustrare l'algoritmo delle toppe e dire a cosa serve.
+#5 Illustrare l'algoritmo di Ford-Fulkerson.
+#4 Scrivere il modello matematico del flusso massimo dal nodo i al nodo j e descrivere come risolverlo con il simplesso su reti.
+#3 Enunciare il teorema del max-flow min-cut.
+#2 Scrivere il modello matematico del flusso massimo, descrivere la sua trasformata in problema di flusso su reti.
+Illustrare l'algoritmo dei rendimenti, dire a cosa serve e mostrare con un esempio che a volte trova l'ottimo.
+Scrivere un flusso ottimo per il problema max-flow.
+Illustrare l'algoritmo del nodo più vicino e dire a cosa serve.
+Scrivere il modello del flusso massimo e disegnare un taglio di capacità minima.
+Costruire un flusso ottimo degenere su una rete con almeno 4 nodi ed almeno 5 archi.
+
+
+
