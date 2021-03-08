@@ -1,0 +1,1 @@
+Il materiale didattico è disponibile sul canale teams del corso, non sarà pubblicato su Github.
