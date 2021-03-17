@@ -30,9 +30,6 @@ Per rendere la comunicazione più efficace, sono stati realizzati gruppi apposit
 - **[Shitposting](https://t.me/joinchat/ALDXWEt7IxLWwQ1i5x4fvA)**
 - **[Gaming](https://t.me/joinchat/Cb7psFd1nwYjtrMekE51hg)**
 
-## Come scaricare le lezioni
-A causa del Nuovo Coronavirus 19 le lezioni nel prossimo futuro continueranno ad essere erogate in modalità a distanza. Per questo motivo è stato realizzato un fork che consente di scaricare le registrazioni presenti sulla piattaforma Microsoft Stream. Per ulteriori informazioni sul progetto e sul suo utilizzo trovate [qui](https://github.com//Guray00/destreamer-unipi) tutte le informazioni necessarie.
-
 ## Corsi
 <!--
 Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di corso e semestre nel quale esso viene erogato.
@@ -65,6 +62,9 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
       4. **Calcolatori Elettronici** (9 cfu) - [Giuseppe Lettieri](http://www.iet.unipi.it/g.lettieri/) -->
 
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.jpg?raw=true) <!-- .element height="25%" width="25%" -->
+
+## Come scaricare le lezioni
+A causa del Nuovo Coronavirus 19 le lezioni nel prossimo futuro continueranno ad essere erogate in modalità a distanza. Per questo motivo è stato realizzato un fork che consente di scaricare le registrazioni presenti sulla piattaforma Microsoft Stream. Per ulteriori informazioni sul progetto e sul suo utilizzo trovate [qui](https://github.com//Guray00/destreamer-unipi) tutte le informazioni necessarie.
 
 ## Libri di testo
 
