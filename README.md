@@ -134,13 +134,12 @@ Questo progetto si basa sull'aiuto spontaneo da parte degli studenti della trien
 I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedenti motivo per cui non è stato possibile rintracciare il contributore, se il tuo nome non è presente scrivici su telegram o realizza una issue a questo progetto (stessa procedura se vuoi richiedere la rimozione del tuo nome).
 
 **Maintainer**
-
 [Gabriele Frassi](https://github.com/gabrielefrax)<br>
+[Matteo Giannini](https://github.com/matteogiannini)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
 [Tudor Gabriel Nechita](https://github.com/NechGab)
 
 **Collaboratori Materiale**
-
 Luca Arduini<br>
 Francesco Berti<br>
 Francesco Boldrini<br>
@@ -151,7 +150,6 @@ Pia Eugenia D'Antonio<br>
 Angelo De Marco<br>
 Giulia Gastaldin<br>
 Edoardo Geraci<br>
-Matteo Giannini<br>
 Dafne Iennaro<br>
 Giacomo Maldarella<br>
 Elia Marabotto<br>
