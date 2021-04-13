@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+		.container{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.columnContainer{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+		}
+		#clock{
+			width: 80px;
+			height: 30px;
+			border: 1px solid black;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 30px;
+			background-color: white;
+		}
+		#leftContainer, #rightContainer{
+			width: 50%;
+		}
+		#leftContainer{
+			background-color: lightgrey;
+			padding: 10px;
+		}
+		#rightContainer{
+			align-self: flex-start;
+			align-items: flex-start;
+			margin-left: 20px;
+		}
+		#leftTable{
+			width: 100%;
+			height: 300px;
+			margin-top: 30px;
+			margin-bottom: 15px;
+		}
+		#served{
+				width: 80%;
+				height: 30px;
+				border: 1px solid black;
+				text-align: center;
+				vertical-align: middle;
+				line-height: 25px;
+				margin-top: 20px;
+				margin-bottom: 20px;
+				font-size: 2em;
+		}
+		.tileL{
+			min-width: 15%;
+		}
+		table, tr, td{
+			border: 2px solid black;
+			border-collapse: collapse;
+		}
+    </style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="columnContainer" id="leftContainer">
+				<div id="clock"></div>
+				<table id="leftTable"></table>
+			</div>
+			<div class="columnContainer" id="rightContainer">
+				<h3>In Servizio</h3>
+				<div id="served">-</div>
+				<div class="container">
+					<input type="text" name="cognome" id="cognome">
+					<button type="button" id="insert">INSERISCI</button>
+				</div>
+			</div>
+		</div>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+
+		var clock = document.getElementById('clock');
+		var table = document.getElementById('leftTable');
+
+		var usersList = [];
+
+		for (var i = 0; i < 10; i++) {
+			var row = document.createElement('tr');
+			var leftTile = document.createElement('td');
+			leftTile.setAttribute('class','tileL');
+			leftTile.setAttribute('id',i);
+			var rightTile = document.createElement('td');
+			rightTile.setAttribute('class','tileR');
+			rightTile.setAttribute('id',i + 'user');
+			rightTile.textContent = '-';
+			row.appendChild(leftTile);
+			row.appendChild(rightTile);
+			table.appendChild(row);
+		}
+		setInterval(function(){
+			var today = new Date();
+			clock.textContent = today.getHours() + ":" + ((today.getMinutes() < 10)?'0' + today.getMinutes() : today.getMinutes()) + ":" + ((today.getSeconds() < 10)?'0' + today.getSeconds() : today.getSeconds());
+			for (var i = 0; i < 10; i++) {
+				var today = new Date();
+				document.getElementById(i).textContent = (10 - parseInt(today.getSeconds())%10) + (parseInt(i)*10);
+			}
+			if (document.getElementById('0').textContent == '10') {
+				document.getElementById('served').textContent = document.getElementById('0user').textContent;
+				if(document.getElementById('0user').textContent == '-'){
+					document.getElementById('served').style.backgroundColor = 'white';
+					document.getElementById('served').style.color = 'black';
+				}else{
+					document.getElementById('served').style.backgroundColor = 'red';
+					document.getElementById('served').style.color = 'white';
+				}
+				usersList.splice(0,1);
+				var tilesR = document.getElementsByClassName('tileR');
+				if (usersList.length < 10) {
+					document.getElementById('insert').disabled = false;
+				}
+				if (usersList.length == 0) {
+						tilesR[0].textContent = '-';
+				}
+				for (var i = 0; i < usersList.length; i++) {
+						tilesR[i].textContent = usersList[i];
+						if (i == usersList.length-1) {
+							tilesR[++i].textContent = '-';
+						}
+				}
+
+			}
+			if(document.getElementById('0').textContent == '5' && document.getElementById('served').textContent != '-'){
+				var winWindow = window.open('','','width=200,height=100');
+				var text = 'Servizio per ' + document.getElementById('served').textContent + ' sta terminando';
+				winWindow.document.write(text);
+				setTimeout(function () {
+					winWindow.close();
+				 }, 5000);
+			}
+		},1000);
+
+		document.getElementById('insert').addEventListener('click', function(){
+			usersList.push(document.getElementById('cognome').value);
+			var tilesR = document.getElementsByClassName('tileR');
+			for (var i = 0; i < tilesR.length; i++) {
+				if(tilesR[i].textContent == '-'){
+					tilesR[i].textContent = document.getElementById('cognome').value;
+					break;
+				}
+			}
+			if(usersList.length == 10){
+				document.getElementById('insert').disabled = true;
+			}
+
+		});
+  </script>
+</html>

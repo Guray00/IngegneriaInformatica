@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+		/* classes for divs used as containers */
+		.container{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.columnContainer{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+		}
+		table, tr, td{
+				border: 2px solid black;
+				border-collapse: collapse;
+		}
+		table{
+			width: 300px;
+			height: 60px;
+			table-layout: fixed;
+		}
+		td{
+			background-color: red;
+			text-align: center;
+			vertical-align: middle;
+		}
+		#yourChars{
+			height: 240px;
+		}
+
+    </style>
+	</head>
+
+	<body>
+		<div class="columnContainer">
+			<h3>Gratta e Vinci</h3>
+			<div class="columnContainer">
+				<h4>Lettere Vincenti</h4>
+				<table id="wintable">
+					<tr id="winRow"></tr>
+				</table>
+			</div>
+			<div class="columnContainer">
+				<h4>Le Tue Lettere</h4>
+				<table id="yourChars"></table>
+				<div class="container">
+					<button type="button" id="scopri">SCOPRI</button>
+					<button type="button" id="gratta" disabled >GRATTA</button>
+				</div>
+			</div>
+		</div>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+	function startGame(){
+		var generatedChars = [];
+		var row = document.getElementById('winRow');
+		for (var i = 0; i < 5; i++) {
+			var tile = document.createElement('td');
+			tile.setAttribute('class', 'tile');
+			tile.setAttribute('id', 'win' + i);
+			row.appendChild(tile);
+		}
+		document.getElementById('wintable').appendChild(row);
+
+		for (var i = 0; i < 4; i++) {
+			var row = document.createElement('tr');
+			if(i == 1){
+				row.setAttribute('class', 'spaceUnder');
+			}
+			for (var j = 0; j < 5; j++) {
+				var tile = document.createElement('td');
+				tile.setAttribute('class', 'tile');
+				tile.textContent = '‎ ‎';
+				if(i == 1){
+					tile.setAttribute('id', 'premio' + j);
+				}else if (i == 3) {
+					tile.setAttribute('id', 'premio' + (5 + parseInt(j)));
+				}else if (i == 0){
+					tile.setAttribute('id', 'numero' + j);
+				}else{
+					tile.setAttribute('id', 'numero' + ( 5 + parseInt(j)));
+				}
+				row.appendChild(tile);
+			}
+			document.getElementById('yourChars').appendChild(row);
+		}
+	};
+
+	var scopri = document.getElementById('scopri');
+	var generatedChars = [];
+	scopri.addEventListener('click', function(){
+		scopri.disabled = true;
+		document.getElementById('gratta').disabled = false;
+		for (var i = 0; i < 5; i++) {
+			var tile = document.getElementById('win' + i);
+			do {
+				var generated = String.fromCharCode(65 + parseInt(Math.floor(Math.random() * 26)));
+			} while (generatedChars.indexOf(generated) != -1);
+			generatedChars.push(generated);
+			tile.textContent = generated;
+		}
+	});
+
+	var myChars = [];
+	var wins = [5,10,20,50,100,200];
+	var totalWin = 0;
+	var gratta = document.getElementById('gratta')
+	gratta.addEventListener('click', function(){
+		var generated;
+		do {
+			generated = String.fromCharCode(65 + parseInt(Math.floor(Math.random() * 26)));
+		} while (myChars.indexOf(generated) != -1);
+		myChars.push(generated);
+		var win = wins[Math.floor(Math.random() * 6)];
+		if(generatedChars.indexOf(generated) != -1){
+			totalWin += parseInt(win);
+		}
+		for (var i = 0; i < 10; i++) {
+			var tileWin = document.getElementById('premio'+i);
+			var tileChar = document.getElementById('numero'+i);
+			if (tileChar.textContent == '‎ ‎') {
+				tileWin.textContent = win;
+				tileChar.textContent = generated;
+				break;
+			}
+		}
+		if(myChars.length == 10){
+			gratta.disabled = true;
+			scopri.disabled = false;
+			var winWindow = window.open('','','width=200,height=100');
+			var text = 'Hai vinto ' + totalWin;
+			winWindow.document.write(text);
+			setTimeout(function () {
+				winWindow.close();
+				var tiles = document.getElementsByClassName('tile');
+				for (var i = 0; i < tiles.length; i++) {
+					tiles[i].textContent = '';
+				}
+				totalWin = 0;
+				myChars = [];
+				generatedChars = [];
+			 }, 5000);
+		}
+	});
+
+
+	startGame();
+  </script>
+</html>

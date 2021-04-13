@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+		.container{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.columnContainer{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+		}
+		#leftContainer, #rightContainer{
+			width: 50%;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+		#rightContainer{
+			padding-top:15px;
+			padding-bottom:15px;
+			background-color: lightgrey;
+			align-self: flex-start;
+		}
+		#alphabetContainer{
+			margin-top: 35px;
+		}
+		#alphabetContainer, #insertContainer{
+			padding-top:15px;
+			padding-bottom:15px;
+			background-color: lightgrey;
+			width: 100%;
+		}
+		.letter{
+			width: 30px;
+			height: 30px;
+			border: 1px solid black;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 30px;
+			background-color: white;
+		}
+		#firstHalf{
+			margin-bottom: 10px;
+		}
+		#buttonContainer{
+			margin-top: 20px;
+		}
+		#insert{
+			margin-right: 10px;
+		}
+		#numero{
+  		-webkit-appearance: none;
+  		-moz-appearance: textfield;
+		}
+		#selectedLetter{
+			width: 70px;
+			height: 50px;
+			border: 1px solid black;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 50px;
+			background-color: white;
+			margin-bottom: 10px;
+		}
+		table, th, td{
+			border: 3px solid black;
+			border-collapse: collapse;
+		}
+		table{
+			width: 90%;
+		}
+
+    </style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="columnContainer"id="leftContainer">
+				<div class="columnContainer" id="insertContainer">
+					<h3>Cognome</h3>
+					<input type="text" name="cognome" id="cognome">
+					<h3>Nome</h3>
+					<input type="text" name="nome" id="nome">
+					<h3>Numero Telefonico</h3>
+					<input type="number" name="numero" id="numero">
+					<div class="container" id="buttonContainer">
+						<button type="button" name="button" id="insert">INSERISCI</button>
+						<button type="button" name="button" id="delete">CANCELLA</button>
+					</div>
+				</div>
+				<div class="columnContainer" id="alphabetContainer">
+					<div class="container" id="firstHalf"></div>
+					<div class="container" id="secondHalf"></div>
+				</div>
+			</div>
+
+			<div class="columnContainer" id="rightContainer">
+				<div id="selectedLetter"></div>
+				<table id="numberList">
+					<th>Cognome</th>
+					<th>Nome</th>
+					<th>Num. Tel.</th>
+				</table>
+			</div>
+		</div>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+	var fh = document.getElementById('firstHalf');
+	var sh = document.getElementById('secondHalf');
+	for (var i = 0; i < 26; i++) {
+		var tile = document.createElement('div');
+		tile.setAttribute('class', 'letter');
+		tile.setAttribute('id',  String.fromCharCode((65 + i)));
+		tile.textContent = String.fromCharCode((65 + i));
+		tile.addEventListener('click', function(e){
+			var rows = document.getElementsByClassName('row');
+			for (var i = rows.length-1; i >=0 ; i--) {
+				rows[i].remove();
+			}
+
+			for (var i = 0; i < contacts.length; i++) {
+				if(contacts[i].cognome.charAt(0).toUpperCase() == e.target.textContent){
+					var row = document.createElement('tr');
+					row.setAttribute('class', 'row');
+					var n = document.createElement('td');
+					n.textContent = contacts[i].nome;
+					var c = document.createElement('td');
+					c.textContent = contacts[i].cognome;
+					var nt = document.createElement('td');
+					nt.textContent = contacts[i].numT;
+					row.appendChild(n);
+					row.appendChild(c);
+					row.appendChild(nt);
+					document.getElementById('numberList').appendChild(row);
+				}
+			}
+			var counter = 0;
+			for (var i = 0; i < contacts.length; i++) {
+				if(contacts[i].cognome.charAt(0).toUpperCase() == document.getElementById('selectedLetter').textContent){
+					counter++;
+				}
+			}
+			if(counter > 0){
+
+				document.getElementById(document.getElementById('selectedLetter').textContent).style.backgroundColor = 'orange';
+			}else{
+
+				document.getElementById(document.getElementById('selectedLetter').textContent).style.backgroundColor = 'white';
+			}
+			document.getElementById('selectedLetter').textContent = e.target.textContent;
+			document.getElementById(e.target.textContent).style.backgroundColor = 'green';
+		});
+		if(i <= 12){
+			fh.appendChild(tile);
+		}else{
+			sh.appendChild(tile);
+		}
+	}
+
+	var contacts = [];
+
+	document.getElementById('insert').addEventListener('click', function(){
+		var cognome = document.getElementById('cognome').value;
+		var nome = document.getElementById('nome').value;
+		var numero = document.getElementById('numero').value;
+		//number check
+		if(numero.length != 10 || !(/^\d*$/.test(numero))){
+			return;
+		}
+		if(!(/^[a-zA-Z\s]*$/.test(nome))|| !(/^[a-zA-Z\s]*$/.test(cognome)) || !(/^[a-zA-Z]+$/.test(nome)) || !(/^[a-zA-Z]+$/.test(cognome))){
+			return;
+		}
+
+		var user = {
+	    nome: nome,
+	    cognome: cognome,
+	    numT: numero
+			};
+		contacts.push(user);
+		contacts.sort(function(a, b) {
+			if (a.cognome.toLowerCase() < b.cognome.toLowerCase() || a.nome.toLowerCase() < b.nome.toLowerCase()){
+				return -1;
+			}else{
+				return 1;
+			}
+		});
+		document.getElementById(cognome.charAt(0).toUpperCase()).style.backgroundColor = 'orange';
+
+		var rows = document.getElementsByClassName('row');
+		for (var i = rows.length-1; i >=0 ; i--) {
+			rows[i].remove();
+		}
+		console.log(contacts);
+		for (var i = 0; i < contacts.length; i++) {
+			if(contacts[i].cognome.charAt(0).toUpperCase() == cognome.charAt(0).toUpperCase()){
+				var row = document.createElement('tr');
+				row.setAttribute('class', 'row');
+				var n = document.createElement('td');
+				n.textContent = contacts[i].nome;
+				var c = document.createElement('td');
+				c.textContent = contacts[i].cognome;
+				var nt = document.createElement('td');
+				nt.textContent = contacts[i].numT;
+				row.appendChild(c);
+				row.appendChild(n);
+				row.appendChild(nt);
+				document.getElementById('numberList').appendChild(row);
+			}
+		}
+		document.getElementById('selectedLetter').textContent = cognome.charAt(0).toUpperCase();
+	});
+
+	document.getElementById('delete').addEventListener('click', function(){
+		var cognome = document.getElementById('cognome').value;
+		var nome = document.getElementById('nome').value;
+		if(!(/^[a-zA-Z\s]*$/.test(nome))|| !(/^[a-zA-Z\s]*$/.test(cognome)) || !(/^[a-zA-Z]+$/.test(nome)) || !(/^[a-zA-Z]+$/.test(cognome))){
+			return;
+		}
+
+
+		var counter = 0;
+		for (var i = 0; i < contacts.length; i++) {
+			if(contacts[i].cognome.charAt(0).toUpperCase() == cognome.charAt(0).toUpperCase()){
+				counter++;
+			}
+			if(contacts[i].cognome == cognome && contacts[i].nome == nome){
+          contacts.splice(i, 1);
+					i--;
+					counter--;
+			}
+		}
+
+		if (counter <= 0) {
+			document.getElementById(cognome.charAt(0).toUpperCase()).style.backgroundColor = 'white';
+		}
+
+		var rows = document.getElementsByClassName('row');
+		for (var i = rows.length-1; i >=0 ; i--) {
+			rows[i].remove();
+		}
+		for (var i = 0; i < contacts.length; i++) {
+			if(contacts[i].cognome.charAt(0).toUpperCase() == cognome.charAt(0).toUpperCase()){
+				var row = document.createElement('tr');
+				row.setAttribute('class', 'row');
+				var n = document.createElement('td');
+				n.textContent = contacts[i].nome;
+				var c = document.createElement('td');
+				c.textContent = contacts[i].cognome;
+				var nt = document.createElement('td');
+				nt.textContent = contacts[i].numT;
+				row.appendChild(n);
+				row.appendChild(c);
+				row.appendChild(nt);
+			}
+			document.getElementById('numberList').appendChild(row);
+		}
+		document.getElementById('selectedLetter').textContent = cognome.charAt(0).toUpperCase();
+
+	});
+  </script>
+</html>
