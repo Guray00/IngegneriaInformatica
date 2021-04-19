@@ -5,6 +5,7 @@
 \usepackage{fixltx2e}
 \usepackage{hyperref}
 \usepackage{listings}
+\usepackage{multicol}
 
 \AtBeginSection[]{
   \begin{frame}
@@ -17,11 +18,12 @@
   \end{frame}
 }
 
-\definecolor{darkblue}{HTML}{1431a2}
+\definecolor{arsenic}{rgb}{0.23, 0.27, 0.29}
+\definecolor{cadet}{rgb}{0.33, 0.41, 0.47}
 
-\title{Le forme normali}
+\title{Le forme normali 1/2}
 \institute{Università di Pisa}
-\date{2021}
+\date{Lezione del 14 aprile 2021}
 % \logo{\includegraphics[scale=.25]{blue-unipi.png}}
 
 
@@ -29,14 +31,15 @@
 
 \frame{\titlepage}
 \begin{frame}{Contenuti}
-    \tableofcontents
+\begin{multicols}{2}
+  \tableofcontents
+\end{multicols}
 \end{frame}
 
 
 % ------------------------------------------ INTRODUZIONE ------------------------------------------ %
 \section{Introduzione}
 
-\subsection{Linee guida}
 \begin{frame}{Obbiettivi}
     
     \begin{itemize}
@@ -60,7 +63,6 @@
 \end{frame}
 
 
-\subsection{Esempi}
 \begin{frame}{Esempio: LG1}
 
     \begin{itemize}
@@ -99,7 +101,7 @@
 \section{Formalizzazione}
 
 \subsection{In teoria}
-\begin{frame}{Dipendenza funzionale: FD}
+\begin{frame}{Dipendenza funzionale: DF}
 
 \begin{block}{Definizione}
 Esprime un legame semantico tra due gruppi di attributi di uno schema R.
@@ -177,7 +179,7 @@ Esprime un legame semantico tra due gruppi di attributi di uno schema R.
 
 
 \subsection{Definizione}
-\begin{frame}{Ma quindi cosa sono le FD??}
+\begin{frame}{Ma quindi cosa sono le DF??}
 
     Siano:
     \begin{itemize}
@@ -211,7 +213,7 @@ Esprime un legame semantico tra due gruppi di attributi di uno schema R.
         \textbf{Y} $\rightarrow$ \textbf{Z} non implica \textbf{Z} $\rightarrow$ \textbf{Y}!
     \end{alertblock}
 
-    \begin{block}{FD complete}
+    \begin{block}{DF complete}
         Una dipendenza funzionale si dice \textcolor{blue}{completa} se \\
         \centering
         \textbf{Y} $\rightarrow$ \textbf{Z}, e $\forall \textbf{W} \subseteq \textbf{Y}$, non vale \textbf{W} $\rightarrow$ \textbf{Y}
@@ -298,7 +300,7 @@ Esprime un legame semantico tra due gruppi di attributi di uno schema R.
 
 % ------------------------------------------ COSTRUZIONE DELLA CHIUSURA ------------------------------------------ %
 \section{Costruzione della chiusura}
-\subsection{Complessità}
+\subsection{Motivazione}
 \begin{frame}{Problema}
     \begin{block}{}
         Trovare tutte le chiavi di una relazione --- al peggio esponenziale. \par
@@ -328,6 +330,7 @@ Esprime un legame semantico tra due gruppi di attributi di uno schema R.
     \vfill
 \end{frame}
 
+\subsection{Regole di inferenza di Armstrong}
 \begin{frame}{Regole di inferenza di Armstrong}
     \begin{enumerate}
         \item \textbf{Riflessività}: se \textbf{Y} $\subseteq$ \textbf{X}, allora \textbf{X} $\rightarrow$ \textbf{Y}
@@ -421,8 +424,8 @@ Esprime un legame semantico tra due gruppi di attributi di uno schema R.
 % \begin{frame}[fragile]{Algoritmo per trovare F\textsuperscript{+} --- ok, c'ho provato}
 %     \tiny
 %     \begin{verbatim}
-% vector<FD> F+ = F;
-% vector<FD> oldF+ = NULL;
+% vector<DF> F+ = F;
+% vector<DF> oldF+ = NULL;
 % vector<Attributi> A = tutti gli attributi dello schema;
 
 % while(equal(oldF+, F+))
@@ -430,24 +433,24 @@ Esprime un legame semantico tra due gruppi di attributi di uno schema R.
 %     oldF+ = F+;
     
 %     // applica riflessivita
-%     for (FD f : F+)
+%     for (DF f : F+)
 %         // f = X → Y, Y incluso in X
 %         for (Attribute Yi : Y)
-%             F+.push_back(makeFD(X, Yi));
+%             F+.push_back(makeDF(X, Yi));
     
 %     // applica arricchimento
-%     for (FD f : F+)
+%     for (DF f : F+)
 %         // f = X → Y, Z incluso in A
 %         for (Attribute Z : A)
-%             F+.push_back(makeFD(XZ, YZ));
+%             F+.push_back(makeDF(XZ, YZ));
     
 %     // applica transitivita
-%     for (FD f1 : F+)
-%         for (FD f2 : F+)
+%     for (DF f1 : F+)
+%         for (DF f2 : F+)
 %             // f1 = X → Y, f2 = Y → Z
 %             for (Attribute Zi : Z)
 %             {
-%                 f3 = transitivity(f1, makeFD(Y, Zi));
+%                 f3 = transitivity(f1, makeDF(Y, Zi));
 %                 if (f3 != NULL)
 %                     F+.push_back(f3);
 %             }
@@ -476,6 +479,7 @@ Esprime un legame semantico tra due gruppi di attributi di uno schema R.
     \end{itemize}
 \end{frame}
 
+\subsection{Regole derivate di Armstrong}
 \begin{frame}{Regole derivate di Armstrong}
     \begin{enumerate}
     \item \textbf{Unione}: \{\textbf{X} $\rightarrow$ \textbf{Y}, \textbf{X} $\rightarrow$ \textbf{Z}\} $\implies$ \textbf{X} $\rightarrow$ \textbf{YZ}
@@ -526,7 +530,8 @@ Esprime un legame semantico tra due gruppi di attributi di uno schema R.
 
 % ------------------------------------------ EQUIVALENZA FRA INSIEMI DI DF ------------------------------------------ %
 \section{Equivalenza fra insiemi di DF}
-\begin{frame}{Problema}
+\subsection{Il problema dell'equivalenza}
+\begin{frame}{Il problema dell'equivalenza}
     Dati F, G insiemi di DF, torna utile sapere se sono \textcolor{blue}{equivalenti}. Ovvero:
     \begin{block}{Definizione}
         F, G si dicono equivalenti se F\textsuperscript{+} = G\textsuperscript{+}, quindi 
@@ -542,10 +547,10 @@ Esprime un legame semantico tra due gruppi di attributi di uno schema R.
     \begin{itemize}
         \item[$\blacktriangleright$] In pratica, per verificare l'equivalenza, prendi tutte le DF in F, e prova a dimostrarle usando le DF in G, e viceversa. Se tutto va bene, congratulazioni, F equivalente a G!
     \end{itemize}
-    
-    
 \end{frame}
 
+
+\subsection{La chiusura di un insieme di attributi}
 \begin{frame}{Chiusura transitiva di un insieme di attributi}
     Il calcolo di F\textsuperscript{+} è molto costoso, ma tutte le DF banali manco servono! Spesso ci interessa se F\textsuperscript{+} contiene qualche specifica dipendenza. Che fare?
     \begin{block}{Definizione}
@@ -612,6 +617,7 @@ Siano: F = \{A $\rightarrow$ C, AC $\rightarrow$ D, E $\rightarrow$ AD, E $\righ
 \Huge\centering QUINDI...
 \end{frame}
 
+\subsection{Big badum-ts! time}
 \begin{frame}{Equivalenza con chiusura di attributi}
     \huge
     F, G equivalenti sse...
@@ -623,7 +629,7 @@ Siano: F = \{A $\rightarrow$ C, AC $\rightarrow$ D, E $\rightarrow$ AD, E $\righ
 \end{frame}
 
 \begin{frame}{Conclusioni sulla chiusura di attributi}
-    Sia \textbf{R}(\textbf{Z}) con le sue dipendenze in F. \par Allora, la chiusura di \textbf{X} $\subseteq$ \textbf{Z} utile per verificare se:
+    Sia \textbf{R}(\textbf{Z}) con le sue dipendenze in F. \par Allora, la chiusura di \textbf{X} $\subseteq$ \textbf{Z} utile per \textcolor{gray}{verificare se}:
     \begin{itemize}
         \item[$\blacktriangleright$] una dipendenza funzionale è logicamente implicata da F (vedi Teorema)
         \item[$\blacktriangleright$] un insieme di attributi è superchiave o chiave
@@ -638,11 +644,12 @@ Siano: F = \{A $\rightarrow$ C, AC $\rightarrow$ D, E $\rightarrow$ AD, E $\righ
 % ------------------------------------------ RIDONDANZA DI UN INSIEME DI DF ------------------------------------------ %
 \section{Ridondanza di un insieme di DF}
 
-\begin{frame}{Overview}
+\subsection{Il Problema part.2}
+\begin{frame}{Il Problema part.2}
     Si vuole usare il concetto di equivalenza tra insiemi di DF per partire da una F più semplice possibile.
     \begin{itemize}
         \item[$\blacktriangleright$] a \textcolor{blue}{destra}:
-        \{A $\rightarrow$ BC\} equivalente a \{A $\rightarrow$ B, A $\rightarrow$ C\} "\textcolor{blue}{FD semplici}"
+        \{A $\rightarrow$ BC\} equivalente a \{A $\rightarrow$ B, A $\rightarrow$ C\} "\textcolor{blue}{DF semplici}"
         \item[$\blacktriangleright$] a \textcolor{red}{sinistra}:
         \{A $\rightarrow$ B, AB $\rightarrow$ C\} equivalente a \{A $\rightarrow$ B, A $\rightarrow$ C\} \par
         \hspace{7cm} "senza \textcolor{red}{attributi estranei}"
@@ -655,35 +662,114 @@ Siano: F = \{A $\rightarrow$ C, AC $\rightarrow$ D, E $\rightarrow$ AD, E $\righ
     \end{block}
 \end{frame}
 
-\begin{frame}{FD semplici}
-    Possiamo portare un insieme di FD F in forma “standard”, quella in cui sulla destra c’è un singolo attributo.\par
-    Se F = \{AB $\rightarrow$ CD, AC $\rightarrow$ DE\} lo si scompone in:\par\hspace{1cm} 
-            \{AB $\rightarrow$ C, AB $\rightarrow$ D, AC $\rightarrow$ D, AC $\rightarrow$ E\} 
+\subsection{Semplificare l'insieme F}
+\begin{frame}{DF semplici}
+    Possiamo portare un insieme di DF F in forma “standard”, quella in cui sulla destra c’è un singolo attributo.\par
+    \vfill
+    Per esempio:\par
+    Se F = \{AB $\rightarrow$ CD, AC $\rightarrow$ DE\} lo si scompone in:\par
+            \hspace{1cm}  \{AB $\rightarrow$ C, AB $\rightarrow$ D, AC $\rightarrow$ D, AC $\rightarrow$ E\} 
     
 \end{frame}
 
 \begin{frame}{Attributi estranei}
     \begin{block}{Definizione}
-    Gli attributi a sinistra di una FD che sono inutili entro un dato F si dicono estranei.
+    Gli attributi a sinistra di una DF che sono "inutili" (cioè la DF vale anche senza di loro) rispetto ad un dato F si dicono estranei.
     \end{block}
     Sia F = \{AB $\rightarrow$ C, A $\rightarrow$ B\}, e calcoliamo A\textsuperscript{+}, B\textsuperscript{+}:\par
     \begin{itemize}
-        \item A\textsuperscript{+} = A
-        \item coming soon in a cinema near you
+        \item[$\bullet$] A\textsuperscript{+} = A
+        \item[$\bullet$] A\textsuperscript{+} = AB poiché A $\rightarrow$ B e A $\subseteq$ A\textsuperscript{+}
+        \item[$\bullet$] A\textsuperscript{+} = ABC poiché AB $\rightarrow$ C e AB $\subseteq$ A\textsuperscript{+}
     \end{itemize}
+    Quindi C dipende solo da A. Per quello possiamo riscrivere F come:\par
+    \begin{center}
+      F := \{A $\rightarrow$ C, A $\rightarrow$ B\}
+    \end{center}
+    \begin{block}{}
+      In generale, in una DF del tipo A\textbf{X} $\rightarrow$ B, A è estraneo se B $\subseteq$ \textbf{X}\textsuperscript{+}.
+    \end{block}
     
 \end{frame}
 
-\begin{frame}{FD ridondanti}
-    coming soon in a cinema near you
+\begin{frame}{DF ridondanti}
+    Dopo aver portato le DF in F in "\textcolor{cadet}{forma standard}" (o "semplici", con un solo attributo a destra) ed \textcolor{cadet}{eliminato gli attributi estranei}, vogliamo assicurarci che tutte le ridondanze in F sono necessarie.
+    \begin{itemize}
+        \item[$\blacktriangleright$] Come si fa a dire che \textbf{X} $\rightarrow$ A è ridondante?
+    \end{itemize}
+    
+    \vfill
+    \begin{alertblock}{Procedimento:}
+        \begin{itemize}
+            \item[$\bullet$] elimina \textbf{X} $\rightarrow$ A da F
+            \item[$\bullet$] calcola \textbf{X}\textsuperscript{+} rispetto al nuovo F
+            \item[$\bullet$] verifica se A $\in$ \textbf{X}\textsuperscript{+}
+        \end{itemize}
+        Se cosi, si riesce a trovare A anche senza la DF \textbf{X} $\rightarrow$ A, e quindi quest'ultima e ridondante.
+    \end{alertblock}
 \end{frame}
 
 \subsection{Copertura minimale}
-\begin{frame}{Copertura minimale: definizione}
-    coming soon in a cinema near you
+\begin{frame}{Copertura minimale}
+    \textit{Let's pretend for a second this doesn't sound like politics.}
+    \begin{block}{Definizione}
+    Un insieme F di DF si dice \textcolor{blue}{copertura minimale} se:
+    \begin{enumerate}
+        \item[I.] è in forma standard (o semplice) --- a destra delle DF
+        \item[II.] non presenta attributi estranei --- a sinistra delle DF
+        \item[III.] non vi sono ridondanze
+    \end{enumerate}
+    In pratica, è un insieme di DF equivalente a F ma di complessità minore.
+    \end{block}
+    \vfill
+    In generale una copertura minimale \textbf{non è unica}.
 \end{frame}
-\begin{frame}{Copertura minimale: algoritmo}
-    coming soon in a cinema near you
+
+\begin{frame}[fragile]{Algoritmo per trovare la Copertura Minimale}
+    \begin{verbatim}
+    InsiemeDF M = F
+    
+    per ogni ogni DF X->{A1, ..., An} in M
+        sostituisci  con X->A1, ..., A->An
+        
+    per ogni DF X->A in M
+        se A incluso in (X-{B})+
+            sostituisci con (X-{B})->A
+        
+    per ogni DF X->A in M
+        se A incluso in X+ anche rispetto a M-{X->A}
+            rimuovi X->A da M
+    \end{verbatim}
+\end{frame}
+
+\begin{frame}{Esempio}
+Sia F = \{AB $\rightarrow$ C, B $\rightarrow$ A, C $\rightarrow$ A,\}\par
+\begin{itemize}
+    \item[$\blacktriangleright$] A\textsuperscript{+} = A, B\textsuperscript{+} = ABC quindi A estraneo in AB $\rightarrow$ C quindi:\\
+    F' := \{B $\rightarrow$ C, B $\rightarrow$ A, C $\rightarrow$ A,\}
+    \item[$\blacktriangleright$] eliminando B $\rightarrow$ C non possiamo arrivare a C, ma eliminando B $\rightarrow$ A rimane B\textsuperscript{+} = ABC per cui:\\
+    F" := \{B $\rightarrow$ C, C $\rightarrow$ A,\}
+\end{itemize}
+
+\begin{alertblock}{Nota Bene}
+    Tentare ad eliminare le DF ridondanti prima di risolvere gli attributi estranei risulta in inevitabile fallimento e dolore. Il dottore avvisa contro.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Esempio}
+Sia F = \{A $\rightarrow$ BC, B $\rightarrow$ C, A $\rightarrow$ B, AB $\rightarrow$ C\}
+\begin{itemize}
+    % passo 1
+    \item[$\blacktriangleright$] Portando le DF in forma standard:\\
+    F := \{A $\rightarrow$ B, A $\rightarrow$ C, B $\rightarrow$ C, A $\rightarrow$ B, AB $\rightarrow$ C\}
+    % passo 2
+    \item[$\blacktriangleright$] Vogliamo poi eliminare possibili attributi estranei. L'unica DF che potrebbe presentarli è l'ultima, quindi si calcolano A\textsuperscript{+} = ABC, B\textsuperscript{+} = BC. Quindi sia da A che da B si può raggiungere C. Scegliamo  di togliere A, \\
+    F = \{A $\rightarrow$ B, A $\rightarrow$ C, B $\rightarrow$ C, A $\rightarrow$ B, B $\rightarrow$ C\}
+    % passo 3
+    \item[$\blacktriangleright$] B $\rightarrow$ C e A $\rightarrow$ B appaiono due volte e quindi le possono togliere. Inoltre, calcolando A\textsuperscript{+} rispetto ad F - A $\rightarrow$ C, abbiamo sempre che A\textsuperscript{+} = ABC, e dunque la A $\rightarrow$ C ridondante.\\
+    
+    F = \{A $\rightarrow$ B, B $\rightarrow$ C\}
+\end{itemize}
 \end{frame}
 
 
