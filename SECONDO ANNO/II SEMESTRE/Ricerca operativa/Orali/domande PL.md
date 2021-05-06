@@ -76,49 +76,48 @@ Di seguito è presente un elenco molto ampio sulle domande poste durante gli esa
 
 ### Algoritmi
 1. Illustrare **l'algoritmo del simplesso duale**.
-28. Scrivere il modello matematico dello Zaino
 29. Descrivere l’algoritmo di caricamento per lo Zaino Binario e per lo Zaino Intero
 30. Illustrare gli algoritmi che forniscono le valutazioni inferiori e superiori dei problemi dello zaino 0-1 e dello zaino intero.
 27. Dire cosa è un algoritmo greedy
+
+## Problemi
+1. Scrivere il modello matematico dello Zaino
+
+5.  Scrivere il modello matematico del problema dell'assegnamento di costo minimo. Lo si può rolvere con il simplesso su reti? Perché?
+   
 
 ###  Domande generali
 
 1. Scrivere il modello del duale ausiliario, dire a cosa serve ed enunciare il teorema che lo caratterizza. (-> Teorema 3.2.2. pg 81).
 
-1. Scrivere il modello del duale ausiliario e dire a cosa serve.
+2. Scrivere il modello del duale ausiliario e dire a cosa serve.
 
-1. Scrivere le formule dei rapporti del simplesso primale e del simplesso duale
+3. Scrivere le formule dei rapporti del simplesso primale e del simplesso duale
 
-1. Dare la definizione di assegnamento fornendo un esempio (5x5) con due assegnamenti ottimi distinti.
+4. Dare la definizione di assegnamento fornendo un esempio (5x5) con due assegnamenti ottimi distinti.
 
-1. Illustrare il test di ottimalità per la PL, dire dove si utilizza e commentare il caso degenere.
-
-
-2. Come si calcolando i vertici del poliedro di un problema di PL
-
-3. Elencare i metodi per trasformare un generico problema di PL in uno standard primale ed in uno standard duale.
-
-4. Implementando l'algoritmo del simplesso su un calcolatore, cosa dovresti fare per poter fornire al programma una base ammissibile di partenza?
+5. Illustrare il test di ottimalità per la PL, dire dove si utilizza e commentare il caso degenere.
 
 
-5.  Scrivere il modello matematico del problema dell'assegnamento di costo minimo. Lo si può rolvere con il simplesso su reti? Perché?
+6. Come si calcolando i vertici del poliedro di un problema di PL
+
+7. Elencare i metodi per trasformare un generico problema di PL in uno standard primale ed in uno standard duale.
+
+8. Implementando l'algoritmo del simplesso su un calcolatore, cosa dovresti fare per poter fornire al programma una base ammissibile di partenza?
+
+
     
-6.  Dati diversi c dire se il problema da come soluzione -∞, +∞ o soluzione a seconda che il problema sia di massimo o minimo
+9.  Dati diversi c dire se il problema da come soluzione -∞, +∞ o soluzione a seconda che il problema sia di massimo o minimo
    
-7.  Dato un c dire se una base può essere di partenza
+10. Dato un c dire se una base può essere di partenza
    
-8.  Trovare un c e una base che sia duale ammissibile, dato un poliedro grafico. Come deve essere c per essere duale ammissibile?
+11. Trovare un c e una base che sia duale ammissibile, dato un poliedro grafico. Come deve essere c per essere duale ammissibile?
 
-9.  Scrivere i comandi Linprog per un problema
-10. Scrivere la coppia di problemi primale/duale ed enunciare i teoremi della dualità forte e della dualità debole
-11. Dimostrare che la funzione obiettivo di un problema di PL di massimo cresce lungo opportuni spigoli
-12. Dire quante soluzioni ottime può avere un problema di PL
-13. Dire dove sono le soluzioni ottime e le soluzioni di base e perché
-14. Dire quado un poliedro è vuoto e quando è illimitato e se si può usare Weierstrass
+13. Scrivere i comandi Linprog per un problema
+14. Scrivere la coppia di problemi primale/duale ed enunciare i teoremi della dualità forte e della dualità debole
+15. Dimostrare che la funzione obiettivo di un problema di PL di massimo cresce lungo opportuni spigoli
+16. Dire quante soluzioni ottime può avere un problema di PL
+17. Dire dove sono le soluzioni ottime e le soluzioni di base e perché
+18. Dire quado un poliedro è vuoto e quando è illimitato e se si può usare Weierstrass
 
-15. Mostrare un problema di PL, con poliedro dotato di vertici, che sia illimitato sia inferiormente che superiormente
-
-
-
-
-
+19. Mostrare un problema di PL, con poliedro dotato di vertici, che sia illimitato sia inferiormente che superiormente
