@@ -1,3 +1,5 @@
+# Informazioni
+
 L'ordine con cui mi sono trovato bene io a fare il progetto:
 
 1) Leggete la traccia e distinguete le informazioni su cosa sarà parte dell'ER/tabelle, informazioni
