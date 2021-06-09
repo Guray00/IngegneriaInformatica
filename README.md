@@ -138,6 +138,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 [Gabriele Frassi](https://github.com/gabrielefrax)<br>
 [Matteo Giannini](https://github.com/matteogiannini)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
+[Federico Nardi](https://github.com/fedenardii)<br>
 [Tudor Gabriel Nechita](https://github.com/NechGab)
 
 **Collaboratori Materiale**
