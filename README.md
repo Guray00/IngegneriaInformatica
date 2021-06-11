@@ -157,6 +157,7 @@ Dafne Iennaro<br>
 Giacomo Maldarella<br>
 Elia Marabotto<br>
 Gabriele Marcuccetti<br>
+Alessio Meini<br>
 Alex Parri<br>
 Aleandro Prudenzano<br>
 Samuele Ricotta<br>
