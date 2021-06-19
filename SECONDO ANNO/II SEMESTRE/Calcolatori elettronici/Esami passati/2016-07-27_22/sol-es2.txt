@@ -1,0 +1,93 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2016-07-27
+extern "C" bool c_cedmaread(natl id, natl& quanti, char *buf)
+{
+	if (id >= next_ce) {
+		flog(LOG_WARN, "ce non riconosciuto: %d", id);
+		abort_p();
+	}
+
+	if ((natq)buf & 0xfff) {
+		flog(LOG_WARN, "indirizzo %x non allineato alla pagina", buf);
+		abort_p();
+	}
+
+	if (quanti == 0 || quanti > MAX_CE_BUF_DES * 4096) {
+		flog(LOG_WARN, "valore quanti non valido: %d", quanti);
+		abort_p();
+	}
+
+	des_ce *ce = &array_ce[id];
+	sem_wait(ce->mutex);
+	flog(LOG_DEBUG, "virt %p len %d", buf, quanti);
+	int i;
+	for (i = 0; i < MAX_CE_BUF_DES && quanti; i++) {
+		natw len = quanti;
+		if (len > 4096)
+			len = 4096;
+		ce->buf_des[i].addr = (natq)trasforma(buf);
+		ce->buf_des[i].len = len;
+		ce->buf_des[i].eot = ce->buf_des[i].eod = 0;
+		quanti -= len;
+		buf += len;
+		flog(LOG_DEBUG, "des[%d] addr %x len %d", i, ce->buf_des[i].addr, ce->buf_des[i].len);
+	}
+	ce->buf_des[i - 1].eod = 1;
+	outputl(1, ce->iCMD);
+	sem_wait(ce->sync);
+	quanti = 0;
+	int j;
+	bool complete = false;
+	for (j = 0; j < i; j++) {
+		quanti += ce->buf_des[j].len;
+		if (ce->buf_des[j].eot) {
+			complete = true;
+			break;
+		}
+	}
+	sem_signal(ce->mutex);
+	return complete;
+}
+
+extern "C" void estern_ce(int id)
+{
+	des_ce *ce = &array_ce[id];
+	natl b;
+
+	for (;;) {
+		inputl(ce->iSTS, b);
+		sem_signal(ce->sync);
+		wfi();
+	}
+}
+//   SOLUZIONE 2016-07-27 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2016-07-27
+	fill_io_gate	IO_TIPO_CEDMAREAD	a_cedmaread
+//   SOLUZIONE 2016-07-27 )
+// ( SOLUZIONE 2016-07-27
+.EXTERN		c_cedmaread
+a_cedmaread:
+		.cfi_startproc
+		.cfi_def_cfa_offset 40
+		.cfi_offset rip, -40
+		.cfi_offset rsp, -16
+		cavallo_di_troia %rsi
+		cavallo_di_troia2 %rsi $4
+		cavallo_di_troia %rdx
+		movl (%rsi), %r9d
+		cavallo_di_troia2 %rdx %r9
+		call c_cedmaread
+		iretq
+		.cfi_endproc
+//   SOLUZIONE 2016-07-27 )
+
+

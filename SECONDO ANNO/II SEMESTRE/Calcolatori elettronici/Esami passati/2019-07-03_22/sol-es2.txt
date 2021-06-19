@@ -1,0 +1,82 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2019-07-03
+	carica_gate	TIPO_BPR	a_bpremove	LIV_UTENTE
+//   SOLUZIONE 2019-07-03 )
+// ( SOLUZIONE 2019-07-03
+a_bpremove:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_bpremove
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2019-07-03 )
+// ( SOLUZIONE 2019-07-03
+	movq $3, %rdi
+	movq $0, %rsi
+	movq (%rsp), %rdx
+	call c_breakpoint_exception
+//   SOLUZIONE 2019-07-03 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2019-07-03
+extern "C" void c_bpremove()
+{
+	if (b_info.waiting || !b_info.busy) {
+		flog(LOG_WARN, "bpremove() errata");
+		c_abort_p();
+		return;
+	}
+
+	natb *bytes = reinterpret_cast<natb*>(b_info.rip);
+	*bytes = b_info.orig;
+	proc_elem *work;
+	while (b_info.intercepted) {
+		rimozione_lista(b_info.intercepted, work);
+		inserimento_lista(b_info.to_wakeup, work);
+	}
+	inspronti();
+	while (b_info.to_wakeup) {
+		rimozione_lista(b_info.to_wakeup, work);
+		des_proc *dp = des_p(work->id);
+		natq rsp_v = dp->contesto[I_RSP];
+		natq *rsp = reinterpret_cast<natq*>(trasforma(work->id, rsp_v));
+		(*rsp)--;
+		inserimento_lista(pronti, work);
+	}
+	b_info.busy = false;
+	schedulatore();
+}
+
+extern "C" void c_breakpoint_exception(int tipo, natq errore, vaddr rip)
+{
+	if (!b_info.busy || rip != b_info.rip + 1) {
+		gestore_eccezioni(tipo, errore, rip);
+		return;
+	}
+	if (b_info.waiting) {
+		proc_elem *work;
+
+		rimozione_lista(b_info.waiting, work);
+		des_proc *dp = des_p(work->id);
+		dp->contesto[I_RAX] = esecuzione->id;
+		inserimento_lista(b_info.to_wakeup, esecuzione);
+		inserimento_lista(pronti, work);
+	} else {
+		inserimento_lista(b_info.intercepted, esecuzione);
+	}
+	schedulatore();
+} 
+//   SOLUZIONE 2019-07-03 )
+
+

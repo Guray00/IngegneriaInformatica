@@ -1,0 +1,95 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2018-07-25
+	msg *m[DIM_RING];
+	natl old_head;
+//   SOLUZIONE 2018-07-25 )
+// ( SOLUZIONE 2018-07-25
+	natl new_head, tail;
+
+	for (;;) {
+		inputl(net.iHEAD, new_head);
+		inputl(net.iTAIL, tail);
+		flog(LOG_DEBUG, "HEAD %d (old %d) TAIL %d", new_head, net.old_head, tail);
+		for (natl scan = net.old_head ; scan != new_head; scan = ring_next(scan)) {
+			msg *m = net.m[scan];
+			flog(LOG_DEBUG, "scan %d port %d", scan, m->port);
+			if (m->port >= MAX_PORTS)
+				continue;
+			des_port *p = &net.ports[m->port];
+			sem_wait(p->mutex);
+			accoda_msg(p, m);
+			sem_signal(p->mutex);
+			sem_signal(p->messages);
+			addr buf = mem_alloc_aligned(sizeof(msg), 4096);
+			if (!buf) {
+				panic("memoria insufficiente");
+			}
+			net.ring[scan].addr = (natl)(natq)trasforma(buf);
+			net.ring[scan].len = sizeof(msg);
+			net.m[scan] = static_cast<msg*>(buf);
+			tail = ring_next(tail);
+		}
+		net.old_head = new_head;
+		outputl(tail, net.iTAIL);
+		wfi();
+	}
+//   SOLUZIONE 2018-07-25 )
+// ( SOLUZIONE 2018-07-25
+	/* comunichiamo l'indirizzo del ring all'interfaccia */
+	outputl((natl)(natq)trasforma(net.ring), net.iRING);
+	/* lo riempiamo di buffer (riuseremo sempre gli stessi) */
+	for (natl i = 0; i < DIM_RING; i++) {
+		addr buf = mem_alloc_aligned(sizeof(msg), 4096);
+		if (!buf) {
+			flog(LOG_ERR, "memoria insufficiente");
+			return false;
+		}
+		net.ring[i].addr = (natl)(natq)trasforma(buf);
+		net.ring[i].len = sizeof(msg);
+		net.m[i] = static_cast<msg*>(buf);
+		flog(LOG_DEBUG, "slot %d: addr %p size %d", i, net.ring[i].addr, net.ring[i].len);
+	}
+	/* inizializziamo TAIL in modo che il ring risulti pieno */
+	outputl(DIM_RING - 1, net.iTAIL);
+
+	/* inizializziamo i semafori */
+	for (natl i = 0; i < MAX_PORTS; i++) {
+		des_port *p = &net.ports[i];
+		p->mutex = sem_ini(1);
+		if (p->mutex == 0xFFFFFFFF) {
+			flog(LOG_ERR, "semafori insufficienti");	
+			return false;
+		}
+		p->messages = sem_ini(0);
+		if (p->messages == 0xFFFFFFFF) {
+			flog(LOG_ERR, "semafori insufficienti");
+			return false;
+		}
+	}
+//   SOLUZIONE 2018-07-25 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2018-07-25
+	.extern c_send
+a_receive:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	cavallo_di_troia %rdx
+	cavallo_di_troia2 %rdx $8
+	cavallo_di_troia %rsi
+	cavallo_di_troia2 %rsi (%rdx)
+	call c_receive
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2018-07-25 )
+
+

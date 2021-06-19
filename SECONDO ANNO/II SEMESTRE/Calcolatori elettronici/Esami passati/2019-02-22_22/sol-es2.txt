@@ -1,0 +1,66 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2019-02-22
+extern "C" void c_receive(char *buf, natq len)
+{
+	natl cur = get_pid();
+
+	// mutua escusione tra i processi che vogliono usare net
+	sem_wait(net.mutex);
+
+	// cerchiamo il primo slot che appartiene a cur
+	natl scan;
+	for (scan = net.tocopy; scan != net.towait; scan = ring_next(scan)) {
+		if (net.procs[scan] == cur)
+			break;
+	}
+	if (scan == net.towait) {
+		// il processo ha invocato receive() in modo errato
+		sem_signal(net.mutex);
+		flog(LOG_WARN, "receive() senza messaggi");
+		abort_p();
+	}
+	slot *s = &net.s[scan];
+	if (s->len < len)
+		len = s->len;
+	memcpy(buf, (char *)(natq)s->addr, len);
+	// liberiamo lo slot corrente
+	net.procs[scan] = 0;
+	s->len = RXBUFSZ;
+	// vediamo quanti slot possono essere restituiti alla scheda
+	natl n;
+	for (n = 0; net.tocopy != net.towait && !net.procs[net.tocopy]; net.tocopy = ring_next(net.tocopy), n++)
+		;
+	if (n > 0) {
+		natl tail;
+		inputl(net.iTAIL, tail);
+		tail += n;
+		if (tail >= DIM_RING)
+			tail -= DIM_RING;
+		outputl(tail, net.iTAIL);
+	}
+
+	sem_signal(net.mutex);
+}
+//   SOLUZIONE 2019-02-22 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2019-02-22
+	fill_io_gate	IO_TIPO_RECEIVE	a_receive
+//   SOLUZIONE 2019-02-22 )
+// ( SOLUZIONE 2019-02-22
+	.extern c_receive
+a_receive:
+	cavallo_di_troia %rdi
+	cavallo_di_troia2 %rdi %rsi
+	call c_receive
+	iretq
+//   SOLUZIONE 2019-02-22 )
+
+

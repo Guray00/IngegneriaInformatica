@@ -1,0 +1,53 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2021-06-09
+	vaddr usr_stack_top;
+//   SOLUZIONE 2021-06-09 )
+// ( SOLUZIONE 2021-06-09
+bool extend_stack();
+//   SOLUZIONE 2021-06-09 )
+// ( SOLUZIONE 2021-06-09
+	if (tipo == 14 && extend_stack()) {
+		return;
+	}
+//   SOLUZIONE 2021-06-09 )
+// ( SOLUZIONE 2021-06-09
+		if (!crea_pila(p->cr3, fin_utn_p, DIM_PAGINA, LIV_UTENTE)) {
+			flog(LOG_WARN, "creazione pila utente fallita");
+			goto err_del_sstack;
+		}
+
+		p->usr_stack_top = fin_utn_p - DIM_PAGINA;
+//   SOLUZIONE 2021-06-09 )
+// ( SOLUZIONE 2021-06-09
+	if (p->livello == LIV_UTENTE)
+		distruggi_pila(root_tab, fin_utn_p, fin_utn_p - p->usr_stack_top);
+//   SOLUZIONE 2021-06-09 )
+// ( SOLUZIONE 2021-06-09
+bool extend_stack()
+{
+	vaddr new_stack_top = base(readCR2(), 0);
+
+	if (new_stack_top < ini_utn_p)
+		return false;
+
+	natq extension = esecuzione->usr_stack_top - new_stack_top;
+
+	if (fin_utn_p - new_stack_top > DIM_USR_STACK) {
+		flog(LOG_WARN, "stack troppo grande");
+		return false;
+	}
+
+	if (!crea_pila(esecuzione->cr3, esecuzione->usr_stack_top, extension, LIV_UTENTE)) {
+		flog(LOG_WARN, "impossibile estendere la pila");
+		return false;
+	}
+
+	esecuzione->usr_stack_top = new_stack_top;
+	return true;
+}
+//   SOLUZIONE 2021-06-09 )
+
+

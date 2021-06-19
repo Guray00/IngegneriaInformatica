@@ -1,0 +1,15 @@
+debugger 1: chiamo breakpoint
+debugger 0: chiamo breakpoint
+debugger 0: occupato
+proc1: prima della funzione
+proc2: prima della funzione
+proc2: eseguo funzione
+proc2: dopo la funzione
+debugger 1: breapoint intercettato, processo: 12
+proc1: eseguo funzione
+proc1: dopo la funzione
+debugger 2: chiamo breakpoint
+proc3: prima della funzione
+debugger 2: breapoint intercettato, processo: 14
+proc3: eseguo funzione
+proc3: dopo la funzione

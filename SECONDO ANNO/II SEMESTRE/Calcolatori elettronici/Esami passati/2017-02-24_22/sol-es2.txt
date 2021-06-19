@@ -1,0 +1,76 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2017-02-24
+extern "C" bool c_cedmaread(natl id, natl quanti, char *buf)
+{
+	bool rv;
+
+	if (id >= next_ce) {
+		flog(LOG_WARN, "ce non riconosciuto: %d", id);
+		abort_p();
+	}
+
+	des_ce *ce = &array_ce[id];
+
+	sem_wait(ce->mutex);
+	flog(LOG_DEBUG, "virt %p len %d", buf, quanti);
+	ce->error = false;
+	natl rid = resident(buf, quanti);
+	if (rid == 0xffffffff) {
+		rv = false;
+		goto out;
+	}
+	outputl((natq)buf, ce->iVPTRLO);
+	outputl((natq)buf >> 32, ce->iVPTRHI);
+	outputl(quanti, ce->iCNT);
+	outputl((natq)readCR3(), ce->iCR3);
+	outputl(0, ce->iSTS);
+	outputl(1, ce->iCMD);
+	sem_wait(ce->sync);
+	rv = !ce->error;
+	nonresident(rid);
+out:
+	sem_signal(ce->mutex);
+	return rv;
+}
+
+extern "C" void estern_ce(int id)
+{
+	des_ce *ce = &array_ce[id];
+	natl b;
+
+	for (;;) {
+		inputl(ce->iSTS, b);
+		ce->error = (b & 2);
+		sem_signal(ce->sync);
+		wfi();
+	}
+}
+//   SOLUZIONE 2017-02-24 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2017-02-24
+	fill_io_gate	IO_TIPO_CEDMAREAD	a_cedmaread
+//   SOLUZIONE 2017-02-24 )
+// ( SOLUZIONE 2017-02-24
+.EXTERN		c_cedmaread
+a_cedmaread:
+		.cfi_startproc
+		.cfi_def_cfa_offset 40
+		.cfi_offset rip, -40
+		.cfi_offset rsp, -16
+		cavallo_di_troia %rdx
+		movl %esi, %esi	# azzera la parte alta di %rsi
+		cavallo_di_troia2 %rdx %rsi
+		call c_cedmaread
+		iretq
+		.cfi_endproc
+//   SOLUZIONE 2017-02-24 )
+
+

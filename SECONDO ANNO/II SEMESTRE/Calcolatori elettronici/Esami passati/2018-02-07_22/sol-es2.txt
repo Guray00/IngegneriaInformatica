@@ -1,0 +1,99 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2018-02-07
+struct ce_counter {
+	bool busy;
+	natl proc;
+};
+//   SOLUZIONE 2018-02-07 )
+// ( SOLUZIONE 2018-02-07
+	natl mutex;
+	ce_counter counters[MAX_CE_CTR];
+	natl nctr;
+//   SOLUZIONE 2018-02-07 )
+// ( SOLUZIONE 2018-02-07
+natl findfreewd(des_ce *ce)
+{
+	for (natl i = 0; i < ce->nctr; i++)
+		if (!ce->counters[i].busy) {
+			ce->counters[i].busy = true;
+			return i;
+		}
+	return 0xffffffff;
+}
+
+extern "C" natl c_startwatchdog(natl id, natl secs)
+{
+	if (id >= next_ce) {
+		flog(LOG_WARN, "ce: id %d non valido", id);
+		abort_p();
+	}
+	des_ce *ce = &array_ce[id];
+	sem_wait(ce->mutex);
+	natl wd = findfreewd(ce);
+	if (wd == 0xffffffff) {
+		sem_signal(ce->mutex);
+		return wd;
+	}
+	ce_counter *c = &ce->counters[wd];
+	c->proc = getpid();
+	outputl(secs, ce->iCNT);
+	outputl(wd, ce->iSWD);
+	sem_signal(ce->mutex);
+	return wd;
+}
+
+extern "C" void c_stopwatchdog(natl id, natl wd)
+{
+	if (id >= next_ce) {
+		flog(LOG_WARN, "ce: id %d non valido", id);
+		abort_p();
+	}
+	des_ce *ce = &array_ce[id];
+	if (wd >= ce->nctr) {
+		flog(LOG_WARN, "ce %d: wd %d non valido", id, wd);
+		abort_p();
+	}
+	ce_counter *c = &ce->counters[wd];
+	sem_wait(ce->mutex);
+	if (!c->busy || !(c->proc == getpid())) {
+		flog(LOG_WARN, "ce %d: wd %d non valido", id, wd);
+		sem_signal(ce->mutex);
+		abort_p();
+	}
+	outputl(0, ce->iCNT);
+	outputl(wd, ce->iSWD);
+	c->busy = false;
+	sem_signal(ce->mutex);
+}
+
+extern "C" void estern_ce(int id)
+{
+	des_ce *ce = &array_ce[id];
+	natl wd;
+
+	for (;;) {
+		inputl(ce->iEWD, wd);
+		ce_counter *c = &ce->counters[wd];
+		sem_wait(ce->mutex);
+		if (c->busy) {
+			kill(c->proc);
+			c->busy = false;
+		}
+		sem_signal(ce->mutex);
+		wfi();
+	}
+}
+//   SOLUZIONE 2018-02-07 )
+// ( SOLUZIONE 2018-02-07
+		ce->mutex = sem_ini(1);
+		inputl(ce->iCFG, ce->nctr);
+		flog(LOG_INFO, "ce%d: %d counters", next_ce, ce->nctr);
+		for (natl i = 0; i < ce->nctr; i++) {
+			ce->counters[i].busy = false;
+		}
+//   SOLUZIONE 2018-02-07 )
+
+

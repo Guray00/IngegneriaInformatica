@@ -1,0 +1,208 @@
+******************************************
+* util/question.tex
+******************************************
+
+
+
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2020-09-23 #1
+	carica_gate	TIPO_MPROTECT	a_mprotect	LIV_UTENTE
+//   SOLUZIONE 2020-09-23 )
+// ( SOLUZIONE 2020-09-23 #2
+a_mprotect:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	cavallo_di_troia %rdi
+	cavallo_di_troia2 %rdi %rsi
+	call c_mprotect
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2020-09-23 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2020-09-23 #1
+//   SOLUZIONE 2020-09-23 )
+// ( SOLUZIONE 2020-09-23 #2
+//   SOLUZIONE 2020-09-23 )
+// ( SOLUZIONE 2020-09-23 #3
+//   SOLUZIONE 2020-09-23 )
+// ( SOLUZIONE 2020-09-23 #4
+//   SOLUZIONE 2020-09-23 )
+// ( SOLUZIONE 2020-09-23 #5
+	/* cerchiamo tutti i frame che contengono tabelle o pagine
+	 * relative a indirizzi in [ini_utn_c, fin_utn_c) e che appartengono
+	 * al processo che sta terminando. Questi sono sicuramente frame
+	 * occupati dalla nostra duplica(), perche' altrimenti apparterrebbero
+	 * a dummy.
+	 */
+	for (natq i = 0; i < N_DF; i++) {
+		des_frame *df = &vdf[i];
+
+		if (df->livello >= 0 &&
+		    df->processo == p->id &&
+		    df->ind_virtuale >= ini_utn_c && df->ind_virtuale < fin_utn_c)
+			rilascia_frame(df);
+	}
+//   SOLUZIONE 2020-09-23 )
+// ( SOLUZIONE 2020-09-23 #6
+/* duplica, se necessario, tutte le tabelle nel percorso di traduzione di v,
+ * in modo che non siano piu' condivise con altri processi.
+ */
+bool duplica(vaddr v)
+{
+	/* la tabella di livello 4 e' sicuramente gia' privata, quindi possiamo
+	 * partire dal livello 3. Ci fermiamo al livello 1, perche' non vogliamo
+	 * duplicare anche le pagine.
+	 */
+	for (int i = 3; i > 0; i--) {
+		/* otteniamo un riferimento al descrittore che punta alla
+		 * tabella che vogliamo esaminare. Usiamo un riferimento
+		 * perche', se dobbiamo duplicare la tabella, dobbiamo anche
+		 * aggiornare il descrittore in modo che punti alla nuova
+		 */
+		tab_entry& e = get_des(esecuzione->id, i + 1, v);
+
+		/* se P==0 il percorso di traduzione finisce qui, quindi
+		 * possiamo uscire dal ciclo
+		 */
+		if (!extr_P(e))
+			break;
+
+		/* otteniamo l'indirizzo fisico della tabella. Ci serve sia
+		 * per ottenere il descrittore di frame, sia per copiare
+		 * la tabella nel caso dovessimo duplicarla.
+		 */
+		faddr tab = extr_IND_FISICO(e);
+
+		/* se la tabella appartiene gia' al processo non c'e' bisogno
+		 * di duplicarla. Questo vuol dire che abbiamo gia' duplicato
+		 * questa tabella per effetto di una duplica() precedente.
+		 */
+		des_frame *df = descrittore_frame(tab);
+		if (df->processo == esecuzione->id)  {
+			/* Questa e' gia' privata, ma dobbiamo esaminare le
+			 * tabelle inferiori, perche' le precedenti duplica()
+			 * potrebbero aver coninvolto un percorso diverso.
+			 */
+			continue;
+		}
+
+		/* se siamo arrivati fin qui vuol dire che la tabella deve
+		 * essere duplicata. Allochiamo un frame vuoto.
+		 */
+		df = alloca_frame(esecuzione->id, i, v);
+		if (!df) {
+			flog(LOG_WARN, "out of memory");
+			return false;
+		}
+		/* riempiamo tutti i campi del descrittore */
+		df->processo = esecuzione->id;
+		df->livello = i;
+		df->residente = true;
+		df->ind_virtuale = v;
+		df->ind_massa = 0;
+		df->contatore = 0;
+
+		/* copiamo la vecchia tabella ('tab') nella nuova */
+		faddr ntab = indirizzo_frame(df);
+		copy_des(tab, ntab, 0, 512);
+
+		/* facciamo in modo che il percorso di traduzione passi
+		 * dalla nuova tabella.
+		 */
+		set_IND_FISICO(e, ntab);
+	}
+	/* il solo fatto di aver duplicato il percorso non ha cambiato
+	 * niente nella traduzione, quindi possiamo risparmiarci di invalidare
+	 * il TLB, almeno in questa funzione.
+	 */
+	return true;
+}
+
+extern "C" void c_mprotect(vaddr v, natq n, bool wen)
+{
+	des_proc *self = des_p(esecuzione->id);
+
+	/* abbiamo gia' controllato che v+n non causa overflow
+	 * (cavallo_di_troia2), quindi ci basta controllare che [v,v+n) non
+	 * inizi o non termini fuori da [ini_utn_c, fin_utn_c).
+	 */
+	if (v < ini_utn_c || v + n >= fin_utn_c) {
+		flog(LOG_WARN, "mprotect() su intervallo non consentito");
+		c_abort_p();
+		return;
+	}
+
+	/* allarghiamo l'intervallo [v,v+n) in modo che copra pagine intere */
+	vaddr beg = base(v, 0);
+	vaddr end = base(v + n + DIM_PAGINA - 1, 0);
+
+	/* esaminiamo una pagina alla volta. Questo vuol dire che potremmo
+	 * visitare le tabelle di livello superiore molte volte, ma in compenso
+	 * il ciclo diventa molto semplice.
+	 */
+	for (vaddr scan = beg; scan != end; scan += DIM_PAGINA) {
+		/* duplichiamo tutto il percorso di traduzione */
+		if (!duplica(scan)) {
+			self->contesto[I_RAX] = static_cast<natq>(false);
+			return;
+		}
+		/* ora che abbiamo un percorso sicuramente privato,
+		 * controlliamo ed aggiustiamo i flag R/W.
+		 */
+		for (int liv = 4; liv > 0; liv--) {
+			tab_entry& e = get_des(esecuzione->id, liv, scan);
+
+			/* se P==0 e' inutile andare avanti su questo percorso */
+			if (!extr_P(e))
+				break;
+
+			/* stato corrente del bit R/W */
+			bool cwen = extr_RW(e);
+
+			/* Piccola ottimizzazione: se e' gia' come lo vogliamo
+			 * (cwen == wen) possiamo passare oltre.  Attenzione
+			 * pero' al secondo test, dopo l'or: se vogliamo
+			 * disabilitare le scritture dobbiamo farlo solo sul
+			 * livello 1, altrimenti le disabiliteremmo su una
+			 * regione che potrebbe essere piu' grande di quella
+			 * richiesta.
+			 */
+			if (cwen == wen || (!wen && liv > 1))
+				continue;
+
+			/* se siamo arrivati fin qui vuol dire che R/W deve
+			 * essere aggiustato
+			 */
+			set_RW(e, wen);
+			/* ricordiamoci di invalidare l'entrata nel TLB, nel
+			 * caso il processo avesse gia' usato questo indirizzo.
+			 *
+			 * Lo facciamo solo se siamo arrivati fin qui e stiamo
+			 * esaminando la tabella di livello 1, perche' questo
+			 * vuol dire che abbiamo completato tutto il percorso di
+			 * scan e abbiamo effettivamente modificato qualche bit.
+			 */
+			if (liv == 1)
+				invalida_entrata_TLB(scan);
+		}
+	}
+	/* se siamo usciti dal for normalmente vuol dire che tutto e' andato
+	 * bene e possiamo restituire true
+	 */
+	self->contesto[I_RAX] = static_cast<natq>(true);
+}
+//   SOLUZIONE 2020-09-23 )
+
+

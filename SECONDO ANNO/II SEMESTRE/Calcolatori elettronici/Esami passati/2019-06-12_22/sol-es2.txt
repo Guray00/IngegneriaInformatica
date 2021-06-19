@@ -1,0 +1,78 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2019-06-12
+a_breakpoint:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_breakpoint
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2019-06-12 )
+// ( SOLUZIONE 2019-06-12
+	movq $3, %rdi
+	movq $0, %rsi
+	movq %rsp, %rdx
+	call c_breakpoint_exception
+//   SOLUZIONE 2019-06-12 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2019-06-12
+struct b_info {
+	struct proc_elem *waiting;
+	natq rip;
+	natb orig;
+} b_info;
+
+extern "C" void c_breakpoint(natq rip)
+{
+	struct des_proc *self = des_p(esecuzione->id);
+
+	if (b_info.waiting) {
+		self->contesto[I_RAX] = 0xFFFFFFFF;
+		return;
+	}
+
+	if (rip < ini_utn_c || rip >= fin_utn_c) {
+		flog(LOG_WARN, "rip %p out of bounds [%p, %p)", rip, ini_utn_p, fin_utn_p);
+		c_abort_p();
+		return;
+	}
+
+	natb *bytes = reinterpret_cast<natb*>(rip);
+	b_info.rip = rip;
+	b_info.orig = *bytes;
+	*bytes = 0xCC;
+	b_info.waiting = esecuzione;
+	schedulatore();
+}
+
+
+extern "C" void c_breakpoint_exception(int tipo, natq errore, vaddr* p_saved_rip)
+{
+	if (!b_info.waiting || *p_saved_rip != b_info.rip + 1) {
+		gestore_eccezioni(tipo, errore, *p_saved_rip);
+		return;
+	}
+	natb *bytes = reinterpret_cast<natb*>(b_info.rip);
+	*bytes = b_info.orig;
+	(*p_saved_rip)--;
+	des_proc *dest = des_p(b_info.waiting->id);
+	dest->contesto[I_RAX] = esecuzione->id;
+	inspronti();
+	inserimento_lista(pronti, b_info.waiting);
+	b_info.waiting = 0;
+	schedulatore();
+}
+//   SOLUZIONE 2019-06-12 )
+
+
