@@ -151,6 +151,7 @@ Davide Bruni<br>
 Federico Casu<br>
 Pia Eugenia D'Antonio<br>
 Angelo De Marco<br>
+Nilo Fabiano<br>
 Giulia Gastaldin<br>
 Edoardo Geraci<br>
 Dafne Iennaro<br>
