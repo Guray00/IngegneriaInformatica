@@ -1,7 +1,7 @@
 # Ambiente di sviluppo Assembler
 È disponibile un pacchetto contenente l'ambiente di sviluppo amb_GAS, migliorato per assemblare i progetti in
-qualsiasi directory, tutto già pronto e funzionante. Basta scaricare lo zip da<br>
-[QUI](https://drive.google.com/file/d/1dgLEvbUV730xho4cxfkhF_An2UI-Pf31/view?usp=sharing)<br>
+qualsiasi directory, tutto già pronto e funzionante. Basta scaricare lo zip da
+[QUI](https://drive.google.com/file/d/1dgLEvbUV730xho4cxfkhF_An2UI-Pf31/view?usp=sharing) 
 e seguire le istruzioni contenute nell'archivio. <br>
 Il seguente ambiente di sviluppo NON è quello fornito dal docente, bensì una sua rivisitazione il cui codice può essere trovato [qui](https://github.com/just-Hms/asmbl)
 
