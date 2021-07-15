@@ -1,3 +1,10 @@
+# Ambiente di sviluppo Assembler
+È disponibile un pacchetto contenente l'ambiente di sviluppo amb_GAS, migliorato per assemblare i progetti in
+qualsiasi directory, tutto già pronto e funzionante. Basta scaricare lo zip da
+[QUI](https://drive.google.com/file/d/1dgLEvbUV730xho4cxfkhF_An2UI-Pf31/view?usp=sharing) 
+e seguire le istruzioni contenute nell'archivio. <br>
+Il seguente ambiente di sviluppo NON è quello fornito dal docente, bensì una sua rivisitazione il cui codice può essere trovato [qui](https://github.com/just-Hms/asmbl)
+
 # Modalità di esame
 - L'esame risulta diviso in tre parti: pretest, prova scritta, prova orale.
 - Sono consentite al massimo 4 consegne in un anno. La consegna è contata con la sottomissione delle risposte al pretest.

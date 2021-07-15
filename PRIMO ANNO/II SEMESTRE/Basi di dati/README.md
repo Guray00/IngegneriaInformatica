@@ -1,6 +1,8 @@
 # Informazioni
 Oltre al materiale qui proposto, di seguito vengono specificate fonti terze che forniscono materiale utile per l'esame per i quali non siamo autorizzati a ricaricarne il materiale.
 
+## MySQL
+[Guida tascabile](https://github.com/Guray00/IngegneriaInformatica/blob/master/PRIMO%20ANNO/II%20SEMESTRE/Basi%20di%20dati/MySQL%20Guida%20Tascabile.md)
 ## Esercizi
 
 **Capitolo 3** - Algebra relazione
