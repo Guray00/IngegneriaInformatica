@@ -1,8 +1,8 @@
-DOMANDE DI PL
+# DOMANDE DI PL
 
-#2 Scrivere il problema del duale ausiliario e dire a cosa serve.
-#2 Enunciare il teorema di rappresentazione dei poliedri(Weyl) e dire a cosa serve
-#2 Definizione di vertice di un poliedro
+Scrivere il problema del duale ausiliario e dire a cosa serve.
+Enunciare il teorema di rappresentazione dei poliedri(Weyl) e dire a cosa serve
+Definizione di vertice di un poliedro
 Definizione di soluzione di base duale non ammissibile, non degenere e disegnarne una non ammissibile
 Enunciare la condizione di ottimalità della PL
 Enunciare il “Test di Ottimalità” per la PL. Nel caso degenere cambia qualcosa?
@@ -43,18 +43,19 @@ Scrivere il modello matematico dello Zaino
 Descrivere l’algoritmo di caricamento per lo Zaino Binario e per lo Zaino Intero
 Illustrare gli algoritmi che forniscono le valutazioni inferiori e superiori dei problemi dello zaino 0-1 e dello zaino intero
 
-DOMANDE DI PLI
+# DOMANDE DI PLI
 
 Teorema di equivalenza tra PL e PLI
 Enunciare e dimostrare il teorema dell’interezza e dire a cosa serve nella teoria della PLI/PL
 Può esistere un problema di PLI con rilassamento continuo non vuoto? Cosa è una DV?
 Dare la definizione di disuguaglianza valida e di piano di taglio e scrivere poi l’equazione del piano di taglio di Gomory
-Dopo aver dato le definizioni descrivere la relazione tra k-alberi e cicli hamiltoniani
+Dopo aver dato le definizioni descrivere la relazione tra k-alberi e cicli hamiltoniani, fare un esempio di k-albero che non sia un ciclo Hamiltoniano
 Scrivere il modello tsp asimmetrico, dare la definizione di k-albero
 Regole di taglio branch and bound per problemi di massimo
 Scrivere il modello del tsp asimmetrico e disegnare un assegnamento che non sia un ciclo hamiltoniano
+Illustrare l’algoritmo delle toppe e mostrare un esempio numerico
 
-DOMANDE DI PL SU RETI
+# DOMANDE DI PL SU RETI
 
 #2 Costruire un flusso di base degenere non ottimo/degenere ottimo su una rete non capacitata
 #2 Scrivere il modello del flusso di costo minimo non capacitato/capacitato
@@ -73,19 +74,17 @@ Dare la definizione di potenziale di base e costruire un potenziale ottimo degen
 Scrivere il modello matematico del problema dei potenziali su reti capacitate e non capacitate
 Scrivere il modello matematico del problema dei potenziali su reti non capacitate. Se π1 è ottimo, π1+k1 è ottimo? Perché?
 Enunciare il teorema di tripartizione degli archi e disegnare una rete in cui il flusso ottimo è fatto tutto di archi saturi, se esiste
-
-DOMANDE DI PNL
-
-Scrivere l’enunciato del teorema LKKT e dire poi come viene usato nella PNL
-Cos’è un insieme regolare per la pnl
-
-DA CATALOGARE
-
-Illustrare l’algoritmo delle toppe e mostrare un esempio numerico
 Definizione di taglio di una rete
 Definizione di taglio di capacità minima
 Teorema Max flow/min cut
 Definizione di cammino aumentante e di portata di un cammino aumentante
+
+# DOMANDE DI PNL
+
+Scrivere l’enunciato del teorema LKKT e dire poi come viene usato nella PNL
+Cos’è un insieme regolare per la pnl
+
+# DA CATALOGARE
 Dare la definizione di matrice di proiezione, dire a cosa illustrando l’algoritmo del gradiente proiettato
 Descrivere il metodo del gradiente libero aggiungendo anche i criteri di stop dell’algoritmo
 Dare le definizioni di funzione convessa e di funzione coerciva e illustrare il loro ruolo nell’ottimizzazione

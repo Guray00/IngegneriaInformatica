@@ -66,7 +66,7 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
 ## Come scaricare le lezioni
 A causa del Nuovo Coronavirus 19 le lezioni nel prossimo futuro continueranno ad essere erogate in modalità a distanza. Per questo motivo è stato realizzato un fork che consente di scaricare le registrazioni presenti sulla piattaforma Microsoft Stream. Per ulteriori informazioni sul progetto e sul suo utilizzo trovate [qui](https://github.com//Guray00/destreamer-unipi) tutte le informazioni necessarie.
 
-## Libri di testo
+<!--- ## Libri di testo
 
 Di seguito trovate una lista dei libri di testo suggeriti per ogni corso (potrebbe non essere sempre aggiornato, verificare).
 I testi, in base all'esperienza degli studenti, si suddividono in:
@@ -125,7 +125,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   
 - **Progettazione web** - _Non necessario_<br>
   **Testo consigliato**: Nessuno.<br> 
-  **Note studenti**: Il professore mette a disposizione delle diapositive in inglese. Si consiglia di seguire i laboratori.<br>
+  **Note studenti**: Il professore mette a disposizione delle diapositive in inglese. Si consiglia di seguire i laboratori.<br>*/--->
   
 ## Credits (in aggiornamento)
 
