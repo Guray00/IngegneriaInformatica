@@ -1,8 +1,8 @@
 # Domande di PL
 Di seguito è presente un elenco molto ampio sulle domande poste durante gli esami orali di Ricerca Operativa svolti dal docente M. Pappalardo.
 
-### Geometria
-1. Disegnare problema di PL (di massimo) illimitato superiormente e dire come il simplesso lo certifica (risposta: trattare il caso di AiW^h<0 per ogni i appartenente a N).
+### Disegno
+1. Disegnare problema di PL (di massimo) illimitato superiormente e dire come il simplesso lo certifica `risposta: trattare il caso di AiW^h<0 per ogni i appartenente a N.`
    
 2. Disegnare un poliedro:
 	- con |V|=3 e |E|= 2
@@ -25,35 +25,36 @@ Di seguito è presente un elenco molto ampio sulle domande poste durante gli esa
 
 ### Definizioni
 1. Dare la definizione di poliedro.
+2. 
    - Esistono poliedri senza vertici?
 
-2. Definizio di vertice di un poliedro.
+3. Definizio di **vertice** di un poliedro.
 
-3. Dare la definizione di una soluzione di base primale ammissibile non ottima. Costruirne una graficamente.
+4. Dare la definizione di una **soluzione di base primale ammissibile non ottima**. Costruirne una graficamente.
 
-4. Dare la definizione e costruire graficamente una soluzione di base duale non ammissibile. Come si controlla l'ottimalità?
+5. Dare la definizione e costruire graficamente una soluzione di base duale non ammissibile. Come si controlla l'ottimalità?
 
-5. Dare la definizione di poliedro e disegnarne uno con 3 vertici e una direzione di recessione.
+6. Dare la definizione di poliedro e disegnarne uno con 3 vertici e una direzione di recessione.
    
-6. Dare la definizione di soluzione di base duale; dire cosa vuol dire degenere e disegnare poi una non ammissibile/ammissibile/degenere/ottima. (-> disegno: fo non nel cono di competenza).
+7. Dare la definizione di soluzione di base duale; dire cosa vuol dire degenere e disegnare poi una non ammissibile/ammissibile/degenere/ottima. (-> disegno: fo non nel cono di competenza).
 
-7. Definizione di soluzione di base duale non ammissibile, non degenere e disegnarne una non ammissibile
+8. Definizione di soluzione di base duale non ammissibile, non degenere e disegnarne una non ammissibile
 
-8.  Spiegare il significato di **vertice degenere**.
+9.  Spiegare il significato di **vertice degenere**.
 
-9.  Definizione di **regione ammissibile**.
+10. Definizione di **regione ammissibile**.
     
-10. Definizione di **soluzione ottima**.
+11. Definizione di **soluzione ottima**.
 
-11. Dare la definizione di poliedro e disegnare una soluzione di base non ammissibile e degenere (primale/duale).
+12. Dare la definizione di poliedro e disegnare una soluzione di base non ammissibile e degenere (primale/duale).
 
-12. Dare la definizione di poliedro e disegnarne uno che abbia 4 elementi in V e 3 elementi in E.
+13. Dare la definizione di poliedro e disegnarne uno che abbia 4 elementi in V e 3 elementi in E.
 
-13. Dare la definizione di poliedro e disegnarne uno con 3 vertici e una direzione di recessione.
+14. Dare la definizione di poliedro e disegnarne uno con 3 vertici e una direzione di recessione.
 
-14. Dare la definizione di soluzione di base primale, dire cosa significa degenere e disegnarne una ammissibile/non ammissibile e degenere/ottima/ottima non unica.
+15. Dare la definizione di soluzione di base primale, dire cosa significa degenere e disegnarne una ammissibile/non ammissibile e degenere/ottima/ottima non unica.
 
-1. Illustrare le regole anticiclo di Bland per i problemi di PL
+16. Illustrare le regole anticiclo di Bland per i problemi di PL
 
 
 ### Teoremi
@@ -62,7 +63,6 @@ Di seguito è presente un elenco molto ampio sulle domande poste durante gli esa
 2. Enunciare il **teorema della dualità forte** e dire a cosa serve e quando si applica.
 3. Enunciare il **teorema fondamentale della PL**, fornirne una breve dimostrazione e dire a cosa serve.
 
-4. Illustrare il **simplesso primale** e dimostrare la correttezza della scelta dell'indice h/k.
    
 5.  Enunciare il **Teorema del duale ausiliari**o e indicare la base di partenza del duale ausiliario
 
@@ -75,6 +75,7 @@ Di seguito è presente un elenco molto ampio sulle domande poste durante gli esa
 	- Dimostrare la correttezza.
 
 ### Algoritmi
+4. Illustrare il **simplesso primale** e dimostrare la correttezza della scelta dell'indice h/k.
 1. Illustrare **l'algoritmo del simplesso duale**.
 29. Descrivere l’algoritmo di caricamento per lo Zaino Binario e per lo Zaino Intero
 30. Illustrare gli algoritmi che forniscono le valutazioni inferiori e superiori dei problemi dello zaino 0-1 e dello zaino intero.

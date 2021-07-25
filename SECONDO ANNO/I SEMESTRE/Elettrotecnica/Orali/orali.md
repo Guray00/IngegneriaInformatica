@@ -117,10 +117,9 @@
   
 - __Macchina asincrona__:
   - Principio di funzionamento
-  - Funzionamento al variare dello scorrimento
+  - Funzionamento al variare dello scorrimento (costruire la tabella in base allo scorrimento)
+  - prova a rotore libero e bloccato (Cosa si misura, cosa si calcola... cioè con quali equazioni e perchè)
   - Calcolo della coppia e il valore di S per cui é massima
-  - costruire la tabella in base allo scorrimento
-  - prova a rotore libero e bloccato (Cosa si misura, cosa si calcola, e come si calcola.. cioè con quali equazioni e perchè)
 
 
 ### Domande pratiche
