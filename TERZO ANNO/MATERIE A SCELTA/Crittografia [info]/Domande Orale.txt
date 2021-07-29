@@ -1,0 +1,42 @@
+- Complessità di Kolmogorov.
+- Definizione di sequenza casuale secondo Kolmogorov.
+- Esistenza di sequenze casuali secondo Kolmogorov. (esistono? è possibile indentificarle?)
+- Sequenze crittograficamente sicure, esempio di generatore.
+- Come si procede per la generazione di numeri primi.
+- Generatore BBS (condizioni, dimostrazione sicurezza a partire da funzione one way).
+- Cifrario di Vigerene con attacco su lunghezza della chiave.
+- Teorema di Shannon con dimostrazione.
+- Qual'è la forza di OTP.
+- Dimostrazione perfezione OTP, con svantaggi e possibili attacchi.
+- Principi di diffusione e confusione di Shannon
+- L'importanza della SBOX in DES
+- 3DES, sicurezza nel caso di due chiavi o tre chiavi
+- L'attacco MITM
+- Come si risolve l'attacco MITM
+- Differenze tra DES e AES
+- La fase dell'AES
+- (S)vantaggi della crittografia a chiave pubblica
+- Cifrari ibridi
+- Dimostrazione correttezza RSA
+- RSA: perché p e q non devono essere simili
+- Attacco su RSA se più utenti condividono lo stesso parametro e
+- Tipi di attacco al cifrari RSA e descrizione di uno a piacere
+- Parlare della crittografia su curve ellittiche
+- La sicurezza di ECC rispetto ad AM
+- Protocollo DH su curve ellittiche
+- Vantaggi di DH su EC piuttosto che in AM
+- Algoritmo di Koblitz (probabilità di successo?)
+- Cifrario di El Gamal su EC
+- Perché se EC non è un campo ma un GA è più sicuro di AM?
+- I computer quantistici quali cifrari metteranno in discussione?
+- Protoccolo di identificazione a piacere
+- Protocollo di autonticazione
+- Che cos'è il MAC, esempio HMAC
+- Protocollo per la firma digitale
+- Protocollo ZK e contesto di utilizzo
+- Il protocollo di Fiat-Shamir (sequenza nel caso di P disonesto)
+- L'importanza del bit casuale in FS e ZK
+- Descrizione del protocollo BB84 per lo scambio di chiavi (con e senza intrusione)
+- Perché la crittografia quantistica si usa solo per lo scambio di chiavi
+
+

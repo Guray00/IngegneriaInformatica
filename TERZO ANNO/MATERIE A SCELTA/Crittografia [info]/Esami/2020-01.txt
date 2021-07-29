@@ -1,0 +1,16 @@
+1) Descrivere RSA, dimostrazione + che attachci si possono fare se due utenti hanno lo stesso n?
+2) Descrivere 3DES + che attacchi si possono fare
+3) Descrivere BB84 + Simulare l'invio della chiave descritta in questo modo: Si prendono le ultime 4 cifre della propria matricola, le si convertono in binario e si concatenano le prime 3 cifre binarie di ogni rappresentazione
+
+
+12 punti
+1.1) protocollo Zero-Knowledge e i suoi principi
+1.2) come un Prover disonesto può ingannare un Verifier nell'algoritmo di Fiat-Shamir
+
+10 punti
+2.1) algoritmo di kobliz
+2.2) esempio dell'algoritmo (non mi ricordo i parametri, Sorry)
+
+8 punti
+3.1) protocollo DH
+3.2) attacco man in the middle
