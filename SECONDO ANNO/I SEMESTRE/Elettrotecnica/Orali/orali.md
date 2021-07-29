@@ -33,8 +33,7 @@
 - Descrivere __come si procede__ per scrivere un __sistema di equazioni__ per __risolvere il circuito__ in:
   - __Correnti di maglia__
   - __tensioni di nodo__
-  - __tableau__
-  - __correnti di ramo__
+  - __tableau__ (__correnti di ramo__)
 
 
 - __Condensatore__: 
@@ -107,8 +106,7 @@
 - __Macchina rudimentale__: 
   - legge bli
   - legge blu
-  - velocità limite della barra
-  - Conversione elettromeccanica dell'energia
+  - velocità limite della barra (Conversione elettromeccanica dell'energia)
 
 - __Trasformatore__: 
   - come si arriva dalla legge di Hopkinson al circuito del trasformatore (da Ampere a Hopkinson)
@@ -143,9 +141,9 @@
 
 - $V(s) = s/(s^2+16), v(t) = ?$
   
-- $V(s) = 5^2/(s^2+75+12), v(t) = ?$, Teorema di Boucherot
+- $V(s) = s^2/(s^2+7s+12), v(t) = ?$
 
-- Potenze a regime periodico sinusoidale di: $-I(s) - s^2/(25^2+65+4), i(t) = ?$
+- Potenze a regime periodico sinusoidale di: $I(s) = s^2/(2s^2+6s+4), i(t) = ?$
 
 
 - Funzione da trasformare dal dominio di laplace al dominio del tempo
