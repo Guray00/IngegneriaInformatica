@@ -1,0 +1,64 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2011-07-06
+richiesta* rimozione_lista_attesa(natl id)
+{
+	richiesta *prec = nullptr, *scorri = p_sospesi;
+
+	natl d = 0;
+	while (scorri && scorri->pp->id != id) {
+		d += scorri->d_attesa;
+		prec = scorri;
+		scorri = scorri->p_rich;
+	}
+	if (!scorri)
+		return nullptr;
+	if (prec)
+		prec->p_rich = scorri->p_rich;
+	else
+		p_sospesi = scorri->p_rich;
+	richiesta *r = scorri;
+	scorri = r->p_rich;
+	if (scorri) {
+		scorri->d_attesa += r->d_attesa;
+	}
+	r->d_attesa += d;
+	r->p_rich = nullptr;
+	return r;
+}
+
+extern "C" void c_interrupt(natl id)
+{
+	if (id >= MAX_PROC_ID) {
+		flog(LOG_WARN, "id non valido: %d", id);
+		c_abort_p();
+		return;
+	}
+
+	des_proc *dp = proc_table[id];
+
+	if (!dp) {
+		esecuzione->contesto[I_RAX] = false;
+		return;
+	}
+	esecuzione->contesto[I_RAX] = true;
+
+	if (dp->interrupted)
+		return;
+
+	inspronti();
+	if (dp->sleeping) {
+		richiesta* r = rimozione_lista_attesa(id);
+		dp->contesto[I_RAX] = r->d_attesa;
+		dp->sleeping = false;
+		inserimento_lista(pronti, r->pp);
+		delete r;
+	} else
+		dp->interrupted = true;
+	schedulatore();
+}
+//  SOLUZIONE 2011-07-06 )
+
+

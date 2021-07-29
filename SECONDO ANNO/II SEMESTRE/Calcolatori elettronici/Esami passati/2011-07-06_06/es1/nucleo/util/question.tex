@@ -1,0 +1,46 @@
+Vogliamo aggiungere al nucleo il meccanismo delle interruzioni inter-processo.
+Un qualunque processo pu\`o inviare una interruzione ad un altro processo di cui conosce l'identificatore.
+L'interruzione setta un flag nel descrittore del processo destinatario. Ogni processo pu\`o esaminare
+lo stato del proprio flag con una opportuna primitiva.
+
+Se il processo destinatario si era sospeso sulla coda del timer con la primitiva \verb|delay(natl n)|,
+l'operazione di interruzione, invece di settare il flag, risveglia il processo. La primitiva
+\verb|delay(natl n)| pu\`o ora terminare per due motivi distinti: o perch\'e sono trascorsi \verb|n|
+intervalli di tempo, o perch\'e il processo \`e stato interrotto. Per poter distingure questi due casi
+la primitiva restituisce un valore al chiamante. Tale valore \`e il numero di intervalli di tempo
+che il processo avrebbe dovuto ancora attendere (e dunque \`e 0 se il
+processo si \`e risvegliato normalmente).
+
+A tale scopo aggiungiamo i seguenti campi al descrittore di ogni processo:
+\begin{verbatim}
+        bool  interrupted;
+        bool  sleeping;
+\end{verbatim}
+Il campo \verb|interrupted| \`e il flag di interruzione, posto a \verb|false| alla creazione del processo.
+Il campo \verb|sleeping| \`e un flag che vale \verb|true| se il processo si trova nella coda del timer,
+e \verb|false| altrimenti.
+
+Modifichiamo inoltre la primitiva \verb|delay| in modo che restituisca un \verb|natl|,
+e le funzioni \verb|c_delay| e \verb|c_driver_td| in modo che gestiscano
+il flag \verb|sleeping| e il valore di ritorno della \verb|delay|
+(per le modifiche a queste due funzioni si rimanda al file \verb|sistema.cpp| fornito)
+
+Aggiungiamo infine le seguenti primitive:
+\begin{itemize}
+\item \verb|bool interrupt(natl id)|:
+  Se \verb|id| non corrisponde ad un processo esistente restituisce \verb|false| e termina.
+  In tutti gli altri casi restituisce \verb|true|.
+  Se il flag \verb|interrupted| \`e gi\`a a \verb|true| non fa altro.
+  Se il flag \verb|interrupted| \`e \verb|false| e il processo non \`e nella coda del timer, si limita a settare
+  l'opportuno flag.
+  Infine, se il flag \verb|interrupted| \`e false ed il processo si trova nella coda del timer
+  lo risveglia. Per risvegliarlo deve rimuoverlo dalla coda del timer, avendo cura
+  di riportarla in uno stato consistente.
+  Aggiorna opportunamente i campi del descrittore di processo 
+  e gestisce eventuali {\em preemption}.
+\item \verb|bool interrupted()| (gi\`a realizzata):
+  restituisce il valore del flag \verb|interrupt| del processo corrente e lo resetta.
+\end{itemize}
+
+Modificare i file \verb|sistema.cpp| e \verb|sistema.s| in modo da
+realizzare la primitiva \verb|interrupt()|.

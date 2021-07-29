@@ -1,0 +1,6 @@
+1: sem_wait2 OK
+2: sem_signal2 OK
+3: sem_wait2 OK
+4: interrupt OK
+6: interrupt OK
+5: interrupted OK

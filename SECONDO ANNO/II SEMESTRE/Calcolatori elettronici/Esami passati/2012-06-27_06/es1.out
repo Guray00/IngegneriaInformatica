@@ -1,0 +1,20 @@
+0: invio 1234 a 7
+0: invio 1235 a 7
+0: invio 1236 a 7
+0: invio 1237 a 7
+0: invio 1238 a 7
+0: invio fallito (causa: 2)
+3: invio 333 a 100
+3: invio fallito (causa: 1)
+7: ricevuto 1234
+7: ricevuto 1235
+7: ricevuto 1236
+7: ricevuto 1237
+1: invio 4321 a 7
+7: ricevuto 4321
+1: invio 4322 a 7
+7: ricevuto 4322
+2: invio 555 a 7
+7: ricevuto 555
+2: invio 556 a 7
+7: ricevuto 556

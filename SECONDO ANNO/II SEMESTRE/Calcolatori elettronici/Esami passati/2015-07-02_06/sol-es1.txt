@@ -1,0 +1,65 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2015-07-02
+	carica_gate	TIPO_SA		a_shmem_attach	LIV_UTENTE
+//   SOLUZIONE 2015-07-02 )
+// ( SOLUZIONE 2015-07-02
+
+a_shmem_attach:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_shmem_attach
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2015-07-02 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2015-07-02
+extern "C" void c_shmem_attach(natl id)
+{
+	if (!shmem_valid(id)) {
+		flog(LOG_WARN, "shmem non valida: %d", id);
+		c_abort_p();
+		return;
+	}
+
+	des_shmem *sh = &array_desshmem[id];
+
+	esecuzione->contesto[I_RAX] = 0;
+
+	vaddr start = esecuzione->avail_addr;
+	vaddr end   = start + sh->npag * DIM_PAGINA;
+
+	if (end < start || end >= fin_utn_c) {
+		flog(LOG_WARN, "Impossibile mappare %d pagine da %p",
+			sh->npag, start);
+		return;
+	}
+
+	natl fn = sh->first_frame_number;
+	vaddr last = map(esecuzione->cr3, start, end, BIT_RW|BIT_US,
+			[&](vaddr) {
+				natl cfn = fn;
+				fn = vdf[fn].next_shmem;
+				return cfn * DIM_PAGINA;
+			});
+	if (last != end) {
+		unmap(esecuzione->cr3, start, last, [](vaddr, int) {});
+		return;
+	}
+	esecuzione->avail_addr = end;
+	esecuzione->contesto[I_RAX] = start;
+}
+//   SOLUZIONE 2015-07-02 )
+
+

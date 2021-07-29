@@ -1,0 +1,93 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2014-06-11
+	carica_gate	TIPO_R		a_reg		LIV_UTENTE
+	carica_gate	TIPO_B		a_barrier	LIV_UTENTE
+//   SOLUZIONE 2014-06-11 )
+// ( SOLUZIONE 2014-06-11
+
+a_reg:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_reg
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+a_barrier:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_barrier
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2014-06-11 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2014-06-11
+	bool barrier_reg;
+//   SOLUZIONE 2014-06-11 )
+// ( SOLUZIONE 2014-06-11
+struct barrier_t {
+	bool started;
+	int registered;
+	int nwaiting;
+	des_proc* waiting;
+};
+
+barrier_t global_barrier = { false, 0, 0, nullptr };
+
+extern "C" void c_reg()
+{
+	barrier_t *b = &global_barrier;
+
+	if (b->started) {
+		flog(LOG_WARN, "registrazione in ritardo");
+		c_abort_p();
+		return;
+	}
+	if (esecuzione->barrier_reg) {
+		flog(LOG_WARN, "doppia registrazione");
+		c_abort_p();
+		return;
+	}
+	b->registered++;
+	esecuzione->barrier_reg = true;
+}
+
+extern "C" void c_barrier()
+{
+	barrier_t *b = &global_barrier;
+
+	if (!esecuzione->barrier_reg) {
+		flog(LOG_WARN, "non registrato");
+		c_abort_p();
+		return;
+	}
+	b->started = true;
+	b->nwaiting++;
+	inserimento_lista(b->waiting, esecuzione);
+	if (b->nwaiting == b->registered) {
+		while (b->waiting) {
+			des_proc* work = rimozione_lista(b->waiting);
+			inserimento_lista(pronti, work);
+		}
+		b->nwaiting = 0;
+	}
+	schedulatore();
+}
+//   SOLUZIONE 2014-06-11 )
+
+

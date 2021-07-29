@@ -1,0 +1,14 @@
+shw: begin writing shmem 0
+shw: end writing shmem 0
+shr1: read 0 from shmem 0+00000000
+shr1: read 200 from shmem 0+000c8000
+shr1: read 400 from shmem 0+00190000
+shw: begin writing shmem 1
+shw: end writing shmem 1
+shr2: read 200 from shmem 0+000c7000
+shr2: read 400 from shmem 0+0018f000
+shr2: read 201 from shmem 1+000c7000
+shr2: read 401 from shmem 1+0018f000
+shr2: read 601 from shmem 1+00257000
+shr2: read 801 from shmem 1+0031f000
+shr2: read 1001 from shmem 1+003e7000

@@ -1,0 +1,19 @@
+#include <all.h>
+
+process hello body hello_body(0), 5, LIV_UTENTE;
+
+const natq DIM_NOME = 80;
+char nome[DIM_NOME + 1];
+process_body hello_body(natq a)
+{
+	for (;;) {
+		printf("Ciao, come ti chiami? ");
+		if (readconsole(nome, DIM_NOME + 1) == DIM_NOME + 1) {
+			printf("Troppo lungo! Max %d caratteri\n", DIM_NOME);
+			continue;
+		}
+		break;
+	}
+	printf("Ciao %s, piacere di conoscerti!\n", nome);
+	pause();
+}

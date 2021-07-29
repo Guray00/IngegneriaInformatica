@@ -1,0 +1,121 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2015-01-13
+	carica_gate	TIPO_ACCEPT	a_accept	LIV_UTENTE
+	carica_gate	TIPO_CONNECT	a_connect	LIV_UTENTE
+//   SOLUZIONE 2015-01-13 )
+// ( SOLUZIONE 2015-01-13
+
+a_accept:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_accept
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+a_connect:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_connect
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2015-01-13 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2015-01-13 #1
+//   SOLUZIONE 2015-01-13 )
+// ( SOLUZIONE 2015-01-13 #3
+//   SOLUZIONE 2015-01-13 )
+// ( SOLUZIONE 2015-01-13 #2
+extern "C" void c_accept(natl id)
+{
+	if (!sock_valid(id)) {
+		flog(LOG_WARN, "socket id %d non valido", id);
+		c_abort_p();
+		return;
+	}
+
+	des_sock *s = &array_des_sock[id];
+
+	if (!sock_can_accept(s)) {
+		flog(LOG_WARN, "accept non ammessa su socket %d", id);
+		esecuzione->contesto[I_RAX] = 0xFFFFFFFF;
+		return;
+		
+	}
+	s->state = SOCK_ACCEPTING;
+
+	inserimento_lista(s->accepting, esecuzione);
+	schedulatore();
+}
+
+extern "C" void c_connect(natl id, natl dest)
+{
+	if (!sock_valid(id)) {
+		flog(LOG_WARN, "socket id %d non valido", id);
+		c_abort_p();
+		return;
+	}
+
+	if (!sock_valid(dest)) {
+		flog(LOG_WARN, "socket id %d non valido", dest);
+		c_abort_p();
+		return;
+	}
+
+	des_sock *s = &array_des_sock[id];
+	des_sock *as = &array_des_sock[dest];
+
+
+	if (!sock_src_ok(s)) {
+		flog(LOG_WARN, "connect non ammessa su socket %d", id);
+		esecuzione->contesto[I_RAX] = (natq)false;	
+		return;
+	}
+
+	if (!sock_dest_ok(as)) {
+		flog(LOG_WARN, "socket %d non puo' essere destinazione", dest);
+		esecuzione->contesto[I_RAX] = (natq)false;	
+		return;
+	}
+
+	s->state = SOCK_CONNECTING;
+
+	des_proc *work = rimozione_lista(as->accepting);
+	if (!as->accepting)
+		as->state = SOCK_AVAIL;
+
+	inspronti();
+	inserimento_lista(pronti, work);
+
+	natl c = c_socket();
+	work->contesto[I_RAX] = c;
+	if (c == 0xffffffff) {
+		esecuzione->contesto[I_RAX] = (natq)false;
+	} else {
+		des_sock *cs = &array_des_sock[c];
+
+		s->state = SOCK_CONNECTED;
+		cs->state = SOCK_CONNECTED;
+
+		esecuzione->contesto[I_RAX] = (natq)true;
+	}
+	schedulatore();
+}
+//   SOLUZIONE 2015-01-13 )
+
+

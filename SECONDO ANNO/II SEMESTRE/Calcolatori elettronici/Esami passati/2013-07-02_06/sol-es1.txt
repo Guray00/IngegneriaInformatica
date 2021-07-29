@@ -1,0 +1,50 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2013-07-02
+
+void promote(des_pim *d, natl prio)
+{
+	do {
+		if (prio <= d->curr_prio)
+			break;
+	 	d->curr_prio = prio;
+		if (d->owner->precedenza >= prio)
+			break;
+		d->owner->precedenza = prio;
+		d = d->owner->waiting;
+	} while (d);
+}
+
+extern "C" void c_pim_wait(natl pim)
+{
+	if (!pim_valido(pim)) {
+		flog(LOG_WARN, "pim non valido: %d", pim);
+		c_abort_p();
+		return;
+	}
+
+	des_pim* d = &array_despim[pim];
+
+	if (d->owner == esecuzione) {
+		flog(LOG_WARN, "pim_wait(%d) non valida", pim);
+		c_abort_p();
+		return;
+	}
+
+	if (d->owner) {
+		promote(d, esecuzione->precedenza);
+		inserimento_lista(d->waiting, esecuzione);
+		esecuzione->waiting = d;
+		schedulatore();
+	} else {
+		d->owner = esecuzione;
+		d->prec = esecuzione->owner;
+		esecuzione->owner = d;
+	}
+}
+
+//   SOLUZIONE 2013-07-02 )
+
+

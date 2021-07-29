@@ -1,0 +1,65 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2011-06-22 #1
+extern "C" void c_sem_wait2(natl sem)
+{
+	des_sem *s;
+
+	if (!sem_valido(sem)) {
+		flog(LOG_WARN, "semaforo errato: %d", sem);
+		c_abort_p();
+		return;
+	}
+
+	s = &array_dess[sem];
+	if (s->counter <= 0 && esecuzione->interrupted) {
+			esecuzione->interrupted = false;
+			esecuzione->contesto[I_RAX] = (natq)false;
+			return;
+	}
+	s->counter--;
+
+	if (s->counter < 0) {
+		esecuzione->blocked = sem;
+		inserimento_lista(s->pointer, esecuzione);
+		schedulatore();
+	} else 
+		esecuzione->contesto[I_RAX] = (natq)true;
+}
+extern "C" void c_interrupt(natl id)
+{
+	if (id >= MAX_PROC_ID) {
+		flog(LOG_WARN, "id non valido: %d", id);
+		c_abort_p();
+		return;
+	}
+
+	des_proc *dp = des_p(id);
+
+	if (!dp) {
+		esecuzione->contesto[I_RAX] = (natl)false;
+		return;
+	}
+	esecuzione->contesto[I_RAX] = (natl)true;
+	
+	if (esecuzione->interrupted)
+		return;
+
+	inspronti();
+	if (dp->blocked != 0xFFFFFFFF) {
+		des_sem *s = &array_dess[dp->blocked];
+		elimina_da_lista(s->pointer, dp);
+		s->counter++;
+		dp->contesto[I_RAX] = (natq)false;
+		dp->blocked = 0xFFFFFFFF;
+		inserimento_lista(pronti, dp);
+	} else
+		dp->interrupted = true;
+	schedulatore();
+}
+
+//  SOLUZIONE 2011-06-22 #1 )
+
+

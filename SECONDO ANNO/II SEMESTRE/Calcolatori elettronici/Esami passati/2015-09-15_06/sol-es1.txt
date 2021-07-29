@@ -1,0 +1,120 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2015-09-15
+	carica_gate	TIPO_SD		a_shmem_detach	LIV_UTENTE
+	carica_gate	TIPO_SY		a_shmem_destroy	LIV_UTENTE
+//   SOLUZIONE 2015-09-15 )
+// ( SOLUZIONE 2015-09-15
+
+a_shmem_detach:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_shmem_detach
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+a_shmem_destroy:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_shmem_destroy
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2015-09-15 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2015-09-15
+des_attached **shmem_find_att(natl id)
+{
+	des_attached **patt = nullptr;
+	
+	for (patt = &esecuzione->att; *patt; patt = &(*patt)->next)
+		if ((*patt)->id == id)
+			break;
+	return patt;
+}
+
+void shmem_free(des_shmem *sh)
+{
+	natl f = sh->first_frame_number;
+       	while (f) {
+	       	natl n = vdf[f].next_shmem;
+		rilascia_frame(f * DIM_PAGINA);
+		f = n;
+	}
+	sh->first_frame_number = 0;
+	sh->npag = 0;
+}
+
+extern "C" void c_shmem_detach(natl id)
+{
+	des_attached **patt = shmem_find_att(id);
+	if (!*patt) {
+		flog(LOG_WARN, "shmem id non valido: %d", id);
+		c_abort_p();
+		return;
+	}
+	des_shmem *sh = &array_desshmem[id];
+	natq npag = sh->npag;
+
+	vaddr indv = (*patt)->start;
+	des_attached* old = *patt;
+	*patt = (*patt)->next;
+	delete old;
+
+	unmap(esecuzione->cr3, indv, indv + npag * DIM_PAGINA,
+			[](vaddr v, int) {
+				invalida_entrata_TLB(v);
+			});
+	sh->nusers--;
+	if (!sh->nusers && sh->wait_detach) {
+		shmem_free(sh);
+		inspronti();
+		while (sh->wait_detach) {
+			des_proc *work = rimozione_lista(sh->wait_detach);
+			inserimento_lista(pronti, work);
+		}
+		schedulatore();
+	}
+}
+
+extern "C" void c_shmem_destroy(natl id)
+{
+	if (!shmem_valid(id)) {
+		flog(LOG_WARN, "shmem non valida: %d", id);
+		c_abort_p();
+		return;
+	}
+
+	des_shmem *sh = &array_desshmem[id];
+	des_attached **patt = shmem_find_att(id);
+	if (*patt) {
+		flog(LOG_WARN, "shmem_destroy su shmem attaccata");
+		c_abort_p();
+		return;
+	}
+
+	if (sh->nusers) {
+		inserimento_lista(sh->wait_detach, esecuzione);
+		schedulatore();
+		return;
+	}
+	
+	shmem_free(sh);
+}
+//   SOLUZIONE 2015-09-15 )
+
+

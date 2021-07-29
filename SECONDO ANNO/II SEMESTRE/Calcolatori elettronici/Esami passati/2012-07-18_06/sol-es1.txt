@@ -1,0 +1,62 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2012-07-18
+extern "C" natl c_channel_init(natl size)
+{
+	if (next_channel >= MAX_CHANNELS)
+		return 0xFFFFFFFF;
+
+	natl *buf = (natl*)alloca(size * sizeof(natl));
+	if (!buf)
+		return 0xFFFFFFFF;
+	natl id = next_channel++;
+	des_channel *des_c = &array_deschan[id];
+	des_c->wait_w = 0;
+	des_c->wait_r = 0;
+	des_c->msg_buf = buf;
+	des_c->size = size;
+	des_c->n_free = size;
+	des_c->first_unread = 0;
+	des_c->first_free = 0;
+
+	return id;
+}
+
+
+extern "C" void c_channel_receive(natl id)
+{
+	if (id >= next_channel) {
+		flog(LOG_WARN, "channel id errato: %d", id);
+		c_abort_p();
+		return;
+	}
+
+	des_channel *des_c = &array_deschan[id];
+
+	if (des_c->n_free == des_c->size) {
+		inserimento_lista(des_c->wait_r, esecuzione);
+		schedulatore();
+		return;
+	}
+	natl msg = des_c->msg_buf[des_c->first_unread];
+	des_c->first_unread = (des_c->first_unread + 1) % des_c->size;
+	des_c->n_free++;
+	des_proc *self = des_p(esecuzione->id);
+	self->contesto[I_RAX] = msg;
+	if (des_c->wait_w) {
+		des_proc *p = rimozione_lista(des_c->wait_w);
+		msg = p->msg;
+		des_c->msg_buf[des_c->first_free] = msg;
+		des_c->first_free = (des_c->first_free + 1) % des_c->size;
+		des_c->n_free--;
+		inspronti();
+		inserimento_lista(pronti, p);
+		schedulatore();
+	}
+}
+
+//   SOLUZIONE 2012-07-18 )
+
+

@@ -1,0 +1,42 @@
+#include <all.h>
+
+process init body init_body(0), 60, LIV_UTENTE;
+
+const int DIMBUF = 10;
+char src[DIMBUF];
+char dst[DIMBUF];
+
+void writer(natq p)
+{
+	for (int i = 0; i < DIMBUF; i += 5) {
+		printf("writer: invio %d byte\n", 5);
+		writepipe(p, src + i, 5);
+	}
+	printf("writer: termino\n");
+	terminate_p();
+}
+
+void reader(natq p)
+{
+	for (int i = 0; i < DIMBUF; i += 2) {
+		printf("reader: ricevo %d byte\n", 2);
+		readpipe(p, dst + i, 2);
+	}
+	printf("reader: termino\n");
+	terminate_p();
+
+}
+
+void last(natq a)
+{
+	pause();
+	terminate_p();
+}
+
+process_body init_body(natq a)
+{
+	natl p = inipipe();
+	activate_p(writer, p, 50, LIV_UTENTE);
+	activate_p(reader, p, 20, LIV_UTENTE);
+	activate_p(last, 3, 10, LIV_UTENTE);
+}

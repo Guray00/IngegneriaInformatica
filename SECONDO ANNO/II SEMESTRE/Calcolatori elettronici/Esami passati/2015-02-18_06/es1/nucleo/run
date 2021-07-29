@@ -1,0 +1,82 @@
+#!/bin/bash
+
+[ -f conf/conf.sh ] && source conf/conf.sh
+
+find_qemu() {
+	[ -n "$QEMU" ] && return
+
+	local b=qemu-system-x86_64
+
+	QEMU=$HOME/CE/bin/$b
+	[ -x "$QEMU" ] && return
+
+	QEMU=/usr/local/CE/bin/$b
+	[ -x "$QEMU" ] && return
+
+	QEMU=$b
+}
+
+find_boot() {
+	[ -n "$QEMU_BOOT" ] && return
+
+	for d in $HOME/CE /usr/local/CE /usr/CE /usr/local /usr /; do
+		QEMU_BOOT=$d/lib/ce/boot.bin
+		[ -f "$QEMU_BOOT" ] && return
+	done
+
+	echo "non riesco a trovare boot.bin (libce e' installata?)"
+	exit 1
+}
+
+cmd=
+find_qemu
+find_boot
+CEHDPATH=${CEHDPATH:-$HOME/CE/share/hd.img}
+source util/start.mk
+
+if [ -n "$QEMU_FIFOS" ]; then
+	for f in $QEMU_FIFOS; do
+		rm -f $f.in $f.out
+		mkfifo $f.in $f.out
+	done
+fi
+
+cmd="$QEMU_PRE_CMD $QEMU \
+	-kernel $QEMU_BOOT \
+	-initrd build/sistema,build/io,build/utente \
+	-net none \
+	-no-reboot \
+	$QEMU_EXTRA_OPTIONS \
+	-m $MEM"
+
+if [ "$1" == -g ]; then
+	cmd="$cmd -s -append \"-s\""
+	shift
+fi
+	
+trap 'stty sane' exit
+
+if [ "$AUTOCORR" == 1 ]; then
+	cmd="$cmd -nographic"
+else
+	cmd="$cmd -serial stdio"
+fi
+
+if [ -f "$CEHDPATH" ]; then
+	cmd="$cmd -drive file=\"$CEHDPATH\",index=0,format=raw"
+fi
+
+cmd="$cmd $@"
+
+if [ -n "$CERAW" ]; then
+	show_log=
+else
+	show_log=${QEMU_POST_CMD:-"| util/show_log.pl"}
+fi
+
+if [ -n "$CECOLOR" ]; then
+	show_log="$show_log | awk -f util/colorlog.awk"
+fi
+
+echo Eseguo: $cmd $show_log
+eval $cmd $show_log

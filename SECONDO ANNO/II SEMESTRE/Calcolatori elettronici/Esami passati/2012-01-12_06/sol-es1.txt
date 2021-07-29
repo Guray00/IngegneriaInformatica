@@ -1,0 +1,56 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2012-01-12
+
+extern "C" void c_gestisci(natl signo, gestore g)
+{
+	if (signo >= MAX_SEGNALI) {
+		flog(LOG_WARN, "segnale errato: %d", signo);
+		c_abort_p();
+		return;
+	}
+	if (signo == 0)
+		return;
+
+	esecuzione->gest[signo] = g;
+	esecuzione->pendenti[signo] = false;
+}
+
+extern "C" void c_maschera(natl signo) {
+	if (signo >= MAX_SEGNALI) {
+		flog(LOG_WARN, "segnale errato: %d", signo);
+		c_abort_p();
+		return;
+	}
+	if (signo == 0)
+		return;
+	
+	esecuzione->mascherati[signo] = true;
+}
+
+extern "C" void c_smaschera(natl signo) {
+	if (signo >= MAX_SEGNALI) {
+		flog(LOG_WARN, "segnale errato: %d", signo);
+		c_abort_p();
+		return;
+	}
+	if (signo == 0)
+		return;
+	
+	if (esecuzione->mascherati[signo]) {
+		natl maxsig = maxpending(esecuzione);
+		esecuzione->mascherati[signo] = false;
+		if (esecuzione->pendenti[signo]) {
+			if (maxsig == MAX_SEGNALI)
+				salva_ritorno(esecuzione->id);
+			if (signo < maxsig)
+				forza_ritorno(esecuzione->id, esecuzione->gest[signo]);
+		}
+	}
+}
+
+//  SOLUZIONE 2012-01-12 )
+
+

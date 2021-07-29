@@ -1,0 +1,57 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2012-06-27
+
+extern "C" void c_send(natl id, natl msg)
+{
+	if (id >= MAX_PROC_ID) {
+		flog(LOG_WARN, "id %d non valido");
+		c_abort_p();
+		return;
+	}
+
+	des_proc *dst  = des_p(id);
+
+	if (!dst) {
+		esecuzione->contesto[I_RAX] = 1;
+		return;
+	}
+
+	if (dst->n_msg == MAX_MSG) {
+		esecuzione->contesto[I_RAX] = 2;
+		return;
+	}
+
+	esecuzione->contesto[I_RAX] = 0;
+
+	inspronti();
+	if (dst->waiting) {
+		dst->contesto[I_RAX] = msg;
+		inserimento_lista(pronti, dst);
+		dst->waiting = false;
+	} else {
+		dst->msg[dst->first_free] = msg;
+		dst->first_free = (dst->first_free + 1) % MAX_MSG;
+		dst->n_msg++;
+	}
+	schedulatore();
+}
+
+extern "C" void c_receive()
+{
+	if (!esecuzione->n_msg) {
+		esecuzione->waiting = esecuzione;
+		schedulatore();
+		return;
+	}
+
+	esecuzione->contesto[I_RAX] = esecuzione->msg[esecuzione->first_unread];
+	esecuzione->first_unread = (esecuzione->first_unread + 1) % MAX_MSG;
+	esecuzione->n_msg--;
+}
+
+//   SOLUZIONE 2012-06-27 )
+
+

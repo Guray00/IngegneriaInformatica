@@ -1,0 +1,67 @@
+Introduciamo nel nucleo una versione semplificata del meccanismo dei socket per
+la comunicazione inter-processo, relativamente alle sole fasi di connessione e chiusura.
+
+Un socket \`e un oggetto identificato tramite un numero naturale. \`E possibile
+creare una connessione tra due socket tramite le operazioni di
+\verb|accept(natl id)| e \verb|connect(natl src, natl dest)|.
+
+Un processo che esegue \verb|accept()| su un socket
+si pone in attesa di richieste di connessione verso verso quel socket.
+Su uno stesso socket ci pu\`o essere pi\`u di un processo in attesa di connessioni
+(pi\`u processi possono invocare \verb|accept()| su uno stesso socket).
+
+La primitiva \verb|connect()| permette ad un processo di richiedere una connessione
+da un certo socket sorgente verso un socket destinatario. Se sul socket di destinazione
+vi dei processi in attesa, quello a pi\`u alta priorit\`a viene risvegliato e la connessione
+viene completata. I socket connessi saranno: il socket sorgente della \verb|connect()|;
+un nuovo socket, il cui identificatore sar\`a restituito dalla \verb|accept()|.
+Se non vi sono processi in attesa, la \verb|connect()| fallisce.
+
+In qualunque momento pu\`o essere invocata una \verb|close()| su un socket, che rende
+il socket nuovamente disponibile per qualunque uso.
+Se vi sono processi in attesa di connessioni, questi devono essere tutti 
+risvegliati facendo fallire la primitiva che avevano invocato. Se il socket
+\`e connesso con un altro socket, il processo che invoca la \verb|close()| deve attendere che
+anche l'altro socket venga chiuso. Se il socket era gi\`a inutilizzato, la primitiva fallisce.
+
+Per realizzare questo meccanismo definiamo le seguenti strutture dati:
+
+\begin{verbatim}
+    enum sock_state {
+        SOCK_AVAIL,
+        SOCK_ACCEPTING,
+        SOCK_CONNECTED,
+        SOCK_CLOSING
+    };
+    struct des_sock {
+        sock_state state;
+        des_proc *waiting;
+        des_sock *peer;
+    };
+\end{verbatim}
+
+I possibili stati di un socket sono i seguenti:
+\begin{itemize}
+  \item \verb|SOCK_AVAIL|: il socket non \`e al momento utilizzato;
+  \item \verb|SOCK_ACCEPTING|: c'\`e almeno un processo che sta accettando connessioni
+    su questo socket;
+  \item \verb|SOCK_CONNECTED|: il socket \`e connesso;
+  \item \verb|SOCK_CLOSING|: il socket \`e in fase di chiusura.
+\end{itemize}
+La lista \verb|waiting| contiene i processi che sono in attesa di qualche evento sul socket
+(connessioni o completamento della chisura); il campo \verb|peer| punta all'altro socket
+nel caso di socket connessi.
+
+Aggiungiamo inoltre le seguenti primitive (abortiscono il processo in caso di errore):
+\begin{itemize}
+  \item \verb|natl socket()| (gi\`a realizzata): crea un socket e ne restituisce l'identificatore
+    (0xFFFFFFFF se non \`e stato possibile crearlo);
+  \item \verb|natl accept(natl id)| (gi\`a realizzata): pone il processo in attesa di connessioni
+    sul socket \verb|id|; restituisce 0xFFFFFFFF in caso di fallimento;
+    \`e un errore se il socket non esiste.
+  \item \verb|bool connect(natl src, natl dest)| (gi\`a realizzata):
+    tenta di connettere il socket \verb|src| con il socket \verb|dest|; restituisce \verb|false|
+    in caso di fallimento; \`e un errore se uno dei due socket non esiste.
+  \item \verb|bool close(natl id)| (da realizzare): chiude il socket; restituisce \verb|false| in caso di fallimento.
+\end{itemize}
+Tenere conto di eventuali preemption.

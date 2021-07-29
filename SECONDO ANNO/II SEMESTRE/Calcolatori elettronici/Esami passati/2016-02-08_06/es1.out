@@ -1,0 +1,16 @@
+writer: invio 5 byte
+reader: ricevo 2 byte
+reader: ricevo 2 byte
+reader: ricevo 2 byte
+writer: invio 5 byte
+reader: ricevo 2 byte
+reader: ricevo 2 byte
+writer: invio 5 byte
+reader: ricevo 2 byte
+reader: ricevo 2 byte
+reader: ricevo 2 byte
+writer: invio 5 byte
+reader: ricevo 2 byte
+reader: ricevo 2 byte
+writer: termino
+reader: a b c d e f g h i

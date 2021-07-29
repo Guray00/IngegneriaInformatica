@@ -1,0 +1,77 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2016-01-19
+extern "C" void c_writepipe(natl p, char *buf, natl n)
+{
+	if (!pipe_valid(p)) {
+		flog(LOG_WARN, "pipe non valida %d", p);
+		c_abort_p();
+		return;
+	}
+
+	if (!c_access(reinterpret_cast<vaddr>(buf), n, false)) {
+		flog(LOG_WARN, "buf non valido");
+		c_abort_p();
+		return;
+	}
+	
+	struct des_pipe *dp = &array_despipe[p];
+
+	for ( ; dp->r_pending && n; dp->r_pending--, n--)
+		*dp->r_buf++ = *buf++;
+
+	if (n) {
+		dp->w_pending = n;
+		dp->w_buf = buf;
+		inserimento_lista(dp->w_wait, esecuzione);
+	} else {
+		inspronti();
+	}
+	
+	if (!dp->r_pending && dp->r_wait) {
+		des_proc *work = rimozione_lista(dp->r_wait);
+		inserimento_lista(pronti, work);
+	}
+
+	schedulatore();
+}
+
+extern "C" void c_readpipe(natl p, char *buf, natl n)
+{
+	if (!pipe_valid(p)) {
+		flog(LOG_WARN, "pipe non valida %d", p);
+		c_abort_p();
+		return;
+	}
+
+	if (!c_access(reinterpret_cast<vaddr>(buf), n, true)) {
+		flog(LOG_WARN, "buf non valido");
+		c_abort_p();
+		return;
+	}
+	
+	struct des_pipe *dp = &array_despipe[p];
+
+	for ( ; dp->w_pending && n; dp->w_pending--, n--)
+		*buf++ = *dp->w_buf++;
+
+	if (n) {
+		dp->r_pending = n;
+		dp->r_buf = buf;
+		inserimento_lista(dp->r_wait, esecuzione);
+	} else {
+		inspronti();
+	}
+
+	if (!dp->w_pending && dp->w_wait) {
+		des_proc *work = rimozione_lista(dp->w_wait);
+		inserimento_lista(pronti, work);
+	}
+	
+	schedulatore();
+}
+//   SOLUZIONE 2016-01-19 )
+
+

@@ -1,0 +1,61 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2014-01-30 #1
+struct des_sem* sem_first_busy(des_proc *p)
+{
+	struct des_sem *s;
+	for (natl i = 0; i < p->nextsem; i++) {
+		s = p->mysem[i];
+
+		if (s->counter <= 0)
+			return s;
+	}
+	return 0;
+}
+
+extern "C" void c_sem_multiwait()
+{
+	struct des_sem *s = sem_first_busy(esecuzione);
+
+	if (!s) {
+		for (natl i = 0; i < esecuzione->nextsem; i++) {
+			s = esecuzione->mysem[i];
+			s->counter--;
+		}
+		return;
+	}
+	esecuzione->multiwait = true;
+	inserimento_lista(s->pointer, esecuzione);
+	schedulatore();
+}
+//   SOLUZIONE 2014-01-30 )
+// ( SOLUZIONE 2014-01-30 #2
+	des_sem *s = &array_dess[sem];
+	s->counter++;
+
+	if (!s->pointer)
+		return;
+
+	inspronti();	// preemption
+	des_proc *p = rimozione_lista(s->pointer);
+	if (!p->multiwait) {
+		inserimento_lista(pronti, p);
+	} else {
+		struct des_sem *os = sem_first_busy(p);
+		if (!os) {
+			for (natl i = 0; i < p->nextsem; i++) {
+				os = p->mysem[i];
+				os->counter--;
+			}
+			p->multiwait = false;
+			inserimento_lista(pronti, p);
+		} else {
+			inserimento_lista(os->pointer, p);
+		}
+	}
+	schedulatore();
+//   SOLUZIONE 2014-01-30 )
+
+

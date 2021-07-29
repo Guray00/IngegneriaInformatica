@@ -1,0 +1,10 @@
+0: invio 1234 a 7
+7: ricevuto 1234
+0: invio riuscito
+2: invio 555 a 10
+3: invio 333 a 10
+2: invio riuscito
+10: ricevuto 555
+3: invio fallito
+1: invio 4321 a 7
+1: invio fallito

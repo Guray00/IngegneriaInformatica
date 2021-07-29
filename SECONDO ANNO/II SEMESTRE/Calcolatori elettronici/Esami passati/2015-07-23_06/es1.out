@@ -1,0 +1,8 @@
+proc0: detached shmem 1
+proc0: begin writing shmem 0
+proc0: end writing shmem 0
+proc0: begin writing shmem 1
+proc1: begin reading shmem 0
+proc1: end reading shmem 0: 124750
+proc1: begin reading shmem 1
+proc1: end reading shmem 1: 0

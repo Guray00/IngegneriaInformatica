@@ -1,0 +1,30 @@
+#include <all.h>
+
+process m1 body mio_main(0), 100, LIV_UTENTE;
+
+void child(natq a)
+{
+	printf("figlio %d: termino\n", a);
+	terminate_p();
+}
+
+void father(natq a)
+{
+	(void) activate_p(child, 3, 30, LIV_UTENTE);
+	printf("padre %d: termino\n", a);
+	terminate_p();
+}
+
+process_body mio_main(natq a)
+{
+	(void) activate_p(child, 1, 90, LIV_UTENTE);
+	(void) activate_p(child, 2, 91, LIV_UTENTE);
+	for (int i = 0; i < 2; i++) {
+		printf("attendo terminazione figlio\n");
+		join();
+	}
+	(void) activate_p(father, 1, 50, LIV_UTENTE);
+	printf("attendo terminazione padre\n");
+	join();
+	pause();
+}

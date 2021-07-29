@@ -1,0 +1,21 @@
+proc b1: reg(b1, 0)
+proc b2: reg(b2, 0)
+proc b1: barrier()
+proc b2: barrier()
+proc b1: barrier opened
+proc b2: barrier opened
+proc b2: barrier()
+proc b3: reg(b3, 1)
+proc b5: reg(b1, 1)
+proc b2: barrier opened
+proc b3: barrier()
+proc b1: barrier()
+proc b1: barrier opened
+proc b3: barrier opened
+proc b3: barrier()
+proc b5: reg(b3, 0)
+proc b2: barrier()
+proc b2: barrier opened
+proc b3: barrier opened
+proc b5: reg(b1, -1)
+proc b1: barrier()

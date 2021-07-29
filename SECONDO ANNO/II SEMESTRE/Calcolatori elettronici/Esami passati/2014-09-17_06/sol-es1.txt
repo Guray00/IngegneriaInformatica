@@ -1,0 +1,90 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2014-09-17
+void maybe_open_barrier(barrier_t *b)
+{
+	if (b->narrived == b->nproc) {
+		while (b->waiting) {
+			des_proc *work = rimozione_lista(b->waiting);
+			work->waiting = false;
+			inserimento_lista(pronti, work);
+		}
+		b->narrived = 0;
+	}
+}
+
+extern "C" void c_barrier()
+{
+	natl bid = esecuzione->barrier_id;
+
+	if (bid == 0xFFFFFFFF) {
+		flog(LOG_WARN, "processo non registrato");
+		c_abort_p();
+		return;
+	}
+
+	barrier_t *b = &barriers[bid];
+
+	inserimento_lista(b->waiting, esecuzione);
+	b->narrived++;
+	esecuzione->waiting = true;
+	maybe_open_barrier(b);
+	schedulatore();
+}
+
+extern "C" void c_reg(natl pid, natl bid)
+{
+	if (bid >= MAX_BARRIERS && bid != 0xFFFFFFFF) {
+		flog(LOG_WARN, "barriera inesistente: %d", bid);
+		c_abort_p();
+		return;
+	}
+	if (pid >= MAX_BARRIERS) {
+		flog(LOG_WARN, "pid non valido: %d", pid);
+		c_abort_p();
+		return;
+	}
+	des_proc *p = des_p(pid);
+
+	if (!p) {
+		esecuzione->contesto[I_RAX] = (natq)false;
+		return;
+	}
+	esecuzione->contesto[I_RAX] = (natq)true;
+
+	if (p->barrier_id == bid)
+		return;
+
+	inspronti();
+	if (p->barrier_id != 0xFFFFFFFF) {
+		barrier_t *b = &barriers[p->barrier_id];
+		b->nproc--;
+		if (p->waiting) {
+			b->narrived--;
+			rimozione_lista_id(b->waiting, pid);
+		} else {
+			maybe_open_barrier(b);
+		}
+	}
+	if (bid != 0xFFFFFFFF) {
+		barrier_t *b = &barriers[bid];
+		b->nproc++;
+		if (p->waiting) {
+			inserimento_lista(b->waiting, p);
+			b->narrived++;
+			maybe_open_barrier(b);
+		}
+	} else {
+		if (p->waiting) {
+			inserimento_lista(pronti, p);
+			p->waiting = false;
+		}
+	}
+	p->barrier_id = bid;
+	schedulatore();
+}
+//   SOLUZIONE 2014-09-17 )
+
+

@@ -1,0 +1,48 @@
+Vogliamo aggiungere al nucleo un meccanismo di scambio di messaggi tramite canali.
+In questo meccanismo un processo pu\`o inviare un messaggio \verb|msg| su un canale da cui un altro processo pu\`o poi prelevarlo.
+Assumiamo che i messaggio siano di tipo \verb|natl|. Ogni canale ha un identificatore, di tipo \verb|natl|. Il canale accoda
+i messaggi inviati e non ancora ricevuti, e ogni canale ha una coda di lunghezza massima finita.
+Un processo che vuole inviare un nuovo messaggio su un canale e trova la coda piena si blocca fino a quando almeno un messaggio
+non \`e stato ricevuto. Un processo che vuole ricevere un messaggio da un canale, ma trova la coda vuota, si blocca fino a quando
+almeno un messaggio non \`e stato inviato.
+
+
+Per realizzare il precedente meccanismo introduciamo il seguente descrittore di canale:
+
+\begin{verbatim}
+struct des_channel { 
+        des_proc *wait_w; 
+        des_proc *wait_r; 
+        natl *msg_buf; 
+        natl size; 
+        natl n_free; 
+        natl first_free; 
+        natl first_unread; 
+};
+\end{verbatim}
+
+Il campo \verb|wait_w| \`e una coda su cui si sospendono i processi in attesa di inviare un messaggio.
+Il campo \verb|wait_r| \`e una coda su cui si sospendono i processi in attesa di ricevere un messaggio.
+Il campo \verb|msg_buf| punta ad un buffer che pu\`o contiene al massimo \verb|size| elementi di tipo \verb|natl|.
+I campi \verb|first_free|, \verb|first_unread| e \verb|n_free|
+servono a realizzare, nel buffer puntato da \verb|msg_buf|, una coda circolare di messaggi in attesa di essere ricevuti.
+
+Inoltre aggiungiamo un campo \verb|natl msg| ai descrittori di processo. Un processo che si deve bloccare a causa di una
+coda piena pu\`o salvare qui il messaggio che voleva inviare.
+
+Aggiungiamo infine le seguenti primitive (in caso di errore abortiscono il processo):
+\begin{itemize}
+\item \verb|natl channel_init(natl size)| (da realizzare): alloca un nuovo canale che p\`o contenere
+al massimo \verb|size| messaggi e ne restituisce l'identificatore. Se l'allocazione di un nuovo canale non \`e possibile,
+non alloca alcuna risorsa e restituisce \verb|0xFFFFFFFF|.
+\item \verb|void send(natl chan_id, natl msg)| (gi\`a realizzata): 
+	invia il messaggio \verb|msg| sul canale \verb|chan_id|.
+	\`E un errore se \verb|chan_id| non corrisponde ad un canale precedentemente allocato.
+\item \verb|natl receive(natl chan_id)| (da realizzare):
+	riceve un messaggio dal canalde \verb|chan_id|.
+	\`E un errore se \verb|chan_id| non corrisponde ad un canale precedentemente allocato.
+\end{itemize}
+
+Modificare i file \verb|sistema.cpp| e \verb|sistema.s| in modo da realizzare le primitive e il codice mancante.
+
+{\bf N.B.} Gestire correttamente eventuali {\em preemption}.

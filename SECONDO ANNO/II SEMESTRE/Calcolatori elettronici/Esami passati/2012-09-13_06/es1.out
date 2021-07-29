@@ -1,0 +1,12 @@
+0: invio 2222 sul canale 0
+3: ricevuto 2222
+1: invio 3333 sul canale 0
+2: invio 5555 sul canale 1
+3: ricevuto 5555 dal canale 1
+3: ricevuto 3333
+3: invio 4444 sul canale 0
+3: ricevuto 4444 dal canale 0
+4: invio 7777 sul canale 1
+3: ricevuto 7777
+5: invio 9999 sul canale 0
+3: ricevuto 9999 dal canale 0

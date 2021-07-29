@@ -1,0 +1,32 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2014-01-13 #1
+ 	des_sem* s = &array_dess[sem];
+ 	(s->counter)++;
+ 
+	if (!s->pointer)
+		return;
+
+	inspronti();	// preemption
+	des_proc *lavoro = rimozione_lista(s->pointer);
+	des_sem *os = lavoro->other_sem;
+	if (!os) {
+ 		inserimento_lista(pronti, lavoro);
+	} else if (os->counter > 0) {
+		s->counter--;
+		os->counter--;
+		lavoro->other_sem = nullptr;
+		inserimento_lista(pronti, lavoro);
+	} else {
+		inserimento_lista(os->pointer, lavoro);
+		lavoro->other_sem = s;
+	}
+	schedulatore();
+//   SOLUZIONE 2014-01-13 )
+// ( SOLUZIONE 2014-01-13 #2
+	p->other_sem = 0;
+//   SOLUZIONE 2014-01-13 )
+
+

@@ -1,0 +1,73 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2016-02-08
+extern "C" natl c_inipipe()
+{
+	if (nextpipe >= MAX_PIPES)
+		return 0xFFFFFFFF;
+
+	des_pipe *dp = &array_despipe[nextpipe];
+
+	dp->reader_ready = sem_ini(0);
+	dp->write_done = sem_ini(0);
+	if (dp->reader_ready == 0xFFFFFFFF || dp->write_done == 0xFFFFFFFF)
+		return 0xFFFFFFFF;
+
+	return nextpipe++;
+}
+
+extern "C" void c_writepipe(natl p, char *buf, natl n)
+{
+	if (!pipe_valid(p)) {
+		flog(LOG_WARN, "pipe non valida %d", p);
+		abort_p();
+	}
+
+	if (!c_access(reinterpret_cast<vaddr>(buf), n, false)) {
+		flog(LOG_WARN, "buf non valido");
+		abort_p();
+	}
+	
+	struct des_pipe *dp = &array_despipe[p];
+
+	while (n) {
+		while (!dp->r_pending)
+			sem_wait(dp->reader_ready);
+
+		for ( ; dp->r_pending && n; dp->r_pending--, n--)
+			*dp->r_buf++ = *buf++;
+
+		if (!dp->r_pending)
+			sem_signal(dp->write_done);
+	}
+}
+
+extern "C" void c_readpipe(natl p, char *buf, natl n)
+{
+	if (!pipe_valid(p)) {
+		flog(LOG_WARN, "pipe non valida %d", p);
+		abort_p();
+	}
+
+	if (!c_access(reinterpret_cast<vaddr>(buf), n, true)) {
+		flog(LOG_WARN, "buf non valido");
+		abort_p();
+	}
+	
+	struct des_pipe *dp = &array_despipe[p];
+
+	dp->r_pending = n;
+	dp->r_buf = buf;
+
+	while (dp->r_pending) {
+		sem_signal(dp->reader_ready);
+		sem_wait(dp->write_done);
+	}
+
+	dp->r_buf = 0;
+}
+//   SOLUZIONE 2016-02-08 )
+
+

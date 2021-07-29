@@ -1,0 +1,51 @@
+Vogliamo aggiungere al nucleo una primitiva \verb|join()| tramite la quale un processo
+pu\`o sospendersi in attesa della terminazione di uno (qualunque) dei processi da lui
+creati tramite \verb|activate_p()|.
+
+Per realizzare tale primitiva introduciamo la seguente struttura:
+
+\begin{verbatim}
+struct family {
+    natl nchildren;
+    bool orphan;
+    struct des_proc *waiting;
+};
+\end{verbatim}
+
+La struttura \verb|family| rappresenta una ``famiglia'' di processi, composta da un processo ``padre'' e dei processi ``figli'', creati dal padre tramite \verb|activate_p()|.
+Il campo \verb|nchildren| contiene il numero di figli creati e non ancora terminati.
+Il campo \verb|orhpan| vale \verb|true| se e solo se il padre \`e terminato.
+Il campo \verb|waiting| \`e una coda su cui il processo padre pu\`o bloccarsi in attesa della
+terminazione di uno dei suoi figli.
+
+Ogni processo appartiene a due famiglie: quella in cui \`e un figlio e quella in cui \`e a sua volta padre. Quindi aggiungiamo due campi al descrittore di processo:
+
+\begin{verbatim}
+    family *parent;
+    family *own;
+\end{verbatim}
+
+Il campo \verb|parent| punta alla famiglia in cui il processo a cui appartiene il descrittore
+\`e un figlio, e il campo \verb|own| alla famiglia in cui \`e padre
+(i suoi figli punteranno alla stessa struttura, tramite il loro campo \verb|parent|).
+Le strutture puntate da tali campi vengono allocate e inizializzate alla creazione del processo.
+Quando un processo vuole attendere che uno dei suoi figli termini si blocca sulla lista \verb|waiting|.
+Quando un processo termina, controlla la lista \verb|waiting| nella
+famiglia \verb|parent| e, se necessario, risveglia il processo padre.
+
+Poich\'e le strutture \verb|family| sono condivise tra pi\`u processi
+(padre e figli) che possono terminare in qualsiasi ordine,
+dobbiamo porre particolare attenzione alla loro deallocazione.
+Adottiamo le seguenti regole, seguite da ogni processo
+alla propria terminazione:
+\begin{enumerate}
+\item se la famiglia \verb|own| non ha figli, dealloca la struttura, altrimenti pone \verb|orphan|
+	a \verb|true|;
+\item decrementa \verb|nchildren| nella famiglia \verb|parent|; se il padre non \`e ancora
+  terminato non fa altro, altrimenti dealloca la struttura se non ci sono altri figli.
+\end{enumerate}
+{\bf Attenzione:} per motivi tecnici alcuni processi non hanno un padre. In quel caso
+il puntatore \verb|parent| deve essere inizializzato a 0 e ovviamente non vanno eseguite
+le azioni del punto 2.
+
+Modificare i file \verb|sistema.cpp| e \verb|sistema.s| in modo da realizzare le primitive e il codice mancante.

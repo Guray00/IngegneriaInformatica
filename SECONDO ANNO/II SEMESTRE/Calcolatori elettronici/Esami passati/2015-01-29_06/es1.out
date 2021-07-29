@@ -1,0 +1,20 @@
+server0: accepting on 0
+client1: connecting 1 to 0
+server0: connected socket: 7
+client1: connect success
+client3: connecting 2 to 0
+server2: accepting on 0
+client3: connect success
+server2: connected socket: 8
+client10: connecting 6 to 2
+client10: connect failure
+server6: accepting on 3
+server4: accepting on 3
+client7: connecting 5 to 3
+server6: connected socket: 9
+client7: connect success
+client5: connecting 4 to 3
+server4: connected socket: 10
+client5: connect success
+server8: accepting on 4
+server8: accept error

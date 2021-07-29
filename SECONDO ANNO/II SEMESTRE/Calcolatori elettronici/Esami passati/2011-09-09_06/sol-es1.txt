@@ -1,0 +1,71 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2011-09-09
+
+natl maxpending(bool pendenti[])
+{
+	natl signo = 0;
+	while (signo < MAX_SEGNALI && !pendenti[signo])
+		signo++;
+	return signo;
+}
+
+extern "C" void c_segnala(natl signo, natl id)
+{
+	if (signo >= MAX_SEGNALI) {
+		flog(LOG_WARN, "segnale errato: %d", signo);
+		c_abort_p();
+		return;
+	}
+	des_proc *dest = des_p(id);
+
+	if (!dest) {
+		esecuzione->contesto[I_RAX] = (natq)false;
+		return;
+	}
+
+	if (dest->livello != LIV_UTENTE) {
+		flog(LOG_WARN, "errore di protezione");
+		c_abort_p();
+		return;
+	}
+
+	if (!dest->gest[signo]) {
+		esecuzione->contesto[I_RAX] = (natq)true;
+		return;
+	}
+
+	natl maxsig = maxpending(dest->pendenti);
+	dest->pendenti[signo] = true;
+
+	if (maxsig == MAX_SEGNALI)
+		salva_ritorno(id);
+	
+	if (maxsig > signo)
+		forza_ritorno(id, dest->gest[signo]);
+
+	esecuzione->contesto[I_RAX] = (natq)true;
+}
+
+extern "C" void c_termina_gestore(natl signo)
+{
+	if (signo >= MAX_SEGNALI || !esecuzione->pendenti[signo]) {
+		flog(LOG_WARN, "chiamata errata a termina_gestore()");
+		c_abort_p();
+		return;
+	}
+
+	esecuzione->pendenti[signo] = false;
+
+	natl maxsig = maxpending(esecuzione->pendenti);
+
+	if (maxsig == MAX_SEGNALI) 
+		ripristina_ritorno(esecuzione->id);
+	else
+		forza_ritorno(esecuzione->id, esecuzione->gest[maxsig]);
+}
+//  SOLUZIONE 2011-09-09 )
+
+

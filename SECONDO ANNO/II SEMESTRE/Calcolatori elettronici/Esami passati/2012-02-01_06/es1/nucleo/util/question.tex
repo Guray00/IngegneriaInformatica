@@ -1,0 +1,31 @@
+Vogliamo aggiungere la schedulazione di tipo {\em Round Robin} al nucleo.
+In questo tipo di schedulazione ogni processo pu\`o restare continuamente in esecuzione
+soltanto per certo tempo massimo, dopo di che deve cedere il processore ad un altro processo
+(il primo in coda pronti). 
+Nel cedere il processore, il processo si reinserisce in coda pronti come ultimo.
+Poich\`e nel nucleo abbiamo anche le priorit\`a, prevediamo che il processo si inserisca come ultimo
+tra quelli che hanno la sua stessa priorit\`a (ma prima di quelli con priorit\`a inferiore).
+In questo modo i processi  di uguale priorit\`a vengono eseguiti a rotazione.
+
+Per realizzare questo tipo di schedulazione aggiungiamo al descrittore di processo un campo \verb|int quanto|, 
+che rappresenta il numero di tick del timer che il processo ha ancora a disposizione prima di dover cedere
+il processore. Il numero massimo di tick per i quali ciascun processo pu\`o restare in modo continuato in esecuzione
+\`e contenuto nella costante \verb|MAX_QUANTO|.
+Ogni volta che il driver del timer va in esecuzione, decrementa il campo \verb|quanto| del processo 
+attualmente in esecuzione e provvede ad eseguire le azioni necessarie ad implementare quanto
+sopra illustrato.
+
+\`E possibile utilizzare la funzione \verb|des_proc* des_p(natl id)| che restituisce il puntatore
+al descrittore del processo il cui id \`e passato come argomento (restituisce 0 se il processo non esiste).
+
+Aggiungiamo infine le seguenti primitive:
+\begin{itemize}
+\item \verb|void abilita_rr()| (da realizzare): abilita la schedulazione Round Robin.
+	Il driver del timer deve eseguire quanto sopra specificato solo se la schedulazione Round Robin \`e
+	abilitata.
+\item \verb|void disabilita_rr()| (da realizzare):
+	Disabilita la schedulazione round robin. Se questa era abilitata provvede anche a riportare
+	a \verb|MAX_QUANTO| i campi \verb|quanto| di tutti i processi esistenti nel sistema.
+\end{itemize}
+
+Modificare i file \verb|sistema.cpp| e \verb|sistema.s| in modo da realizzare le primitive e il codice mancante.

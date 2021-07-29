@@ -1,0 +1,59 @@
+Nel nucleo che abbiamo studiato tutta la memoria, con l'esclusione
+delle pile, \`e condivisa tra tutti i processi. Vogliamo aggiungere un
+meccanismo tramite il quale solo alcuni processi, e non necessariamente
+tutti, possano condividere della memoria.
+
+Prevediamo quindi che un processo possa creare delle zone di memoria, dette 
+\verb|shmem|, ciascuna con
+un identificatore unico. I processi che voglio accedere ad una \verb|shmem|
+devono aggiungerla al proprio spazio di indirizzamento, specificandone l'identificatore.
+Una volta aggiunta, la \verb|shmem| sar\`a disponibile contiguamente all'interno della parte
+utente/condivisa dello spazio di indirizzamento del processo. Un processo pu\`o aggiungere
+pi\`u \verb|shmem| al proprio spazio e le diverse \verb|shmem| non devono sovrapporsi.
+Non \`e importante che i processi che condividono una stessa \verb|shmem| la vedano tutti
+allo stesso indirizzo.
+
+Per descrivere una \verb|shmem| aggiungiamo al nucleo la seguente struttura dati:
+
+\begin{verbatim}
+    struct des_shmem {
+        natl npag;
+        natl first_frame_number;
+    };
+\end{verbatim}
+
+Il campo \verb|npag| contiene la dimensione (in pagine) della \verb|shmem|.
+Tutti i frame che contengono la \verb|shmem|, nell'ordine in cui
+devono comparire nella memoria di tutti i processi che la condividono,
+sono mantenuti in una lista, implementata tramite l'array \verb|vdf|. Il numero del
+primo frame della lista \`e contenuto nel campo \verb|first_frame_number| e l'elmento
+\verb|vdf[fn]| di ogni \verb|fn| della lista contiene il numero del frame successivo
+(il valore 0 termina la lista).
+
+Inoltre, aggiungiamo il seguente campo ai descrittori di processo:
+
+\begin{verbatim}
+    addr avail_addr;
+\end{verbatim}
+
+Questo campo contiene il primo indirizzo libero nella parte utente/condivisa del processo.
+Tutti gli indirizzi da \verb|avail_addr| fino a \verb|fin_utn_c| (escluso) sono disponibili
+per contenere zone di memoria condivisa.
+
+Aggiungiamo infine le seguenti primitive:
+\begin{itemize}
+   \item \verb|natl shmem_create(natl npag)| (tipo 0x5c, gi\`a realizzata):
+   	Crea una nuova zona di memoria condivisibile tra pi\`u processi, grande \verb|npag| pagine,
+	e ne restituisce l'identificatore.
+	La primitiva si limita ad allocare i frame necessari e a inserirli in una lista.
+	Se non vi sono frame liberi a sufficienza, restituisce 0xFFFFFFFF.
+   \item \verb|addr shmem_attach(natl id)| (tipo 0x5d, da realizzare):
+   	Permette ad un processo di aggiungere la \verb|shmem| \verb|id| al proprio spazio di indirizzamento
+	e ne restituisce l'indirizzo di partenza.
+	Abortisce il processo se \verb|id| non corrisponde ad una \verb|shmem| esistente.
+	Restituisce 0 se non \`e stato possibile aggiungere la zona (perch\'e non vi sono
+	indirizzi liberi sufficienti a contenerla).
+\end{itemize}
+
+Modificare i file \verb|sistema.cpp| e \verb|sistema.S| in modo da realizzare le primitive appena descritte.
+

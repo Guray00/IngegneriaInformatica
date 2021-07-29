@@ -1,0 +1,34 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2013-01-10 #1
+	p->parent = esecuzione->own;
+	if (p->parent)
+		p->parent->nchildren++;
+	p->own = new family;
+	p->own->nchildren = 0;
+	p->own->orphan = false;
+	p->own->waiting = nullptr;
+//   SOLUZIONE 2013-01-10 )
+// ( SOLUZIONE 2013-01-10 #2
+	if (p->own->nchildren) {
+		p->own->orphan = true;
+	} else {
+		delete p->own;
+		p->own = nullptr;
+	}
+	if (p->parent) {
+		if (p->parent->waiting) {
+			des_proc *parent = rimozione_lista(p->parent->waiting);
+			inserimento_lista(pronti, parent);
+		}
+		p->parent->nchildren--;
+		if (p->parent->nchildren == 0 && p->parent->orphan) {
+			delete p->parent;
+			p->parent = nullptr;
+		}
+	}
+//   SOLUZIONE 2013-01-10 )
+
+

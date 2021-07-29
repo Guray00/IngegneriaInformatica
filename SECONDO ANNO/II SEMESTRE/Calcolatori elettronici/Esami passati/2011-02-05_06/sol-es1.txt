@@ -1,0 +1,75 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2011-02-05
+
+extern "C" void c_rw_rel_write(natl rw)
+{
+	if (!rw_valido(rw)) {
+		flog(LOG_WARN, "rw non valido: %d", rw);
+		c_abort_p();
+		return;
+	}
+
+	des_rw *p_des = &array_desrw[rw];
+
+	if (p_des->writer != esecuzione->id) {
+		flog(LOG_WARN, "tenta di rilasciare la scrittura su %d", rw);
+		c_abort_p();
+		return;
+	}
+
+	p_des->writer = 0xFFFFFFFF;
+	inserimento_lista(pronti, esecuzione);
+	if (p_des->w_readers) {
+		while (p_des->w_readers && p_des->nreaders < MAX_RW_READERS) {
+			des_proc* work = rimozione_lista(p_des->w_readers);
+		        p_des->readers[p_des->nreaders++] = work->id;
+			inserimento_lista(pronti, work);
+		}
+	} else if (p_des->w_writers) {
+		des_proc *work = rimozione_lista(p_des->w_writers);
+		p_des->writer = work->id;
+		inserimento_lista(pronti, work);
+	}
+	schedulatore();
+}
+
+extern "C" void c_rw_rel_read(natl rw)
+{
+	if (!rw_valido(rw)) {
+		flog(LOG_WARN, "rw non valido: %d", rw);
+		c_abort_p();
+		return;
+	}
+
+	des_rw *p_des = &array_desrw[rw];
+
+	natl pos = rw_find_reader(p_des, esecuzione->id);
+	if (pos == 0xFFFFFFFF) {
+		flog(LOG_WARN, "tenta di rilasciare la lettura su %d", rw);
+		c_abort_p();
+		return;
+	}
+
+	inserimento_lista(pronti, esecuzione);
+	if (p_des->nreaders == 1 && p_des->w_writers) {
+		des_proc* work = rimozione_lista(p_des->w_writers);
+		p_des->writer = work->id;
+		p_des->nreaders = 0;
+		inserimento_lista(pronti, work);
+	} else if (p_des->w_readers) {
+		des_proc* work = rimozione_lista(p_des->w_readers);
+		p_des->readers[pos] = work->id;
+		inserimento_lista(pronti, work);
+	} else {
+		p_des->nreaders--;
+		p_des->readers[pos] = 0xFFFFFFFF;
+	}
+	schedulatore();
+}
+
+// SOLUZIONE 2011-02-05 )
+
+

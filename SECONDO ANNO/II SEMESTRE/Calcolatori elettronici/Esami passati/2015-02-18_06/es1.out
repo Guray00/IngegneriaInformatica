@@ -1,0 +1,18 @@
+server0: accepting on 0
+server1: accepting on 0
+server0: accept error
+server1: accept error
+closer2: close(0) OK
+server3: accepting on 0
+client4: connecting 1 to 0
+server3: connected socket: 2
+client4: connect success
+server3: close(2) OK
+client4: close(1) OK
+closer5: close(0) failed
+server6: accepting on 1
+client7: connecting 0 to 1
+server6: connected socket: 3
+client7: connect success
+server6: close(3) OK
+client7: close(0) OK

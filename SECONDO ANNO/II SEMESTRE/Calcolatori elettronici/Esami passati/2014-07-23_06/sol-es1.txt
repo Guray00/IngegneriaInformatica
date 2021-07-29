@@ -1,0 +1,101 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2014-07-23
+	carica_gate	TIPO_BD		a_barrier_destroy		LIV_UTENTE
+	carica_gate	TIPO_B		a_barrier			LIV_UTENTE
+//   SOLUZIONE 2014-07-23 )
+// ( SOLUZIONE 2014-07-23
+
+a_barrier_destroy:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_barrier_destroy
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+a_barrier:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_barrier
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2014-07-23 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2014-07-23
+barrier_t *barrier_find(natl id)
+{
+	for (barrier_t *scan = barriers; scan; scan = scan->next) {
+		if (scan->id == id)
+			return scan;
+	}
+	return 0;
+}
+
+extern "C" void c_barrier(natl id)
+{
+	barrier_t *b = barrier_find(id);
+
+	if (!b) {
+		flog(LOG_WARN, "barriera inesistente: %d", id);
+		c_abort_p();
+		return;
+	}
+
+	inserimento_lista(b->waiting, esecuzione);
+	b->narrived++;
+	if (b->narrived == b->nproc) {
+		while (b->waiting) {
+			des_proc *work = rimozione_lista(b->waiting);
+			work->contesto[I_RAX] = (natq)true;
+			inserimento_lista(pronti, work);
+		}
+		b->narrived = 0;
+	}
+	schedulatore();
+}
+
+extern "C" void c_barrier_destroy(natl id)
+{
+	barrier_t *b = barrier_find(id);
+
+	if (!b) {
+		flog(LOG_WARN, "barriera inesistente: %d", id);
+		c_abort_p();
+		return;
+	}
+
+	if (b->next)
+		b->next->prec = b->prec;
+	if (b->prec)
+		b->prec->next = b->next;
+	else
+		barriers = b->next;
+	b->next = b->prec = nullptr;
+
+	inserimento_lista(pronti, esecuzione);
+	while (b->waiting) {
+		des_proc *work = rimozione_lista(b->waiting);
+		work->contesto[I_RAX] = (natq)false;
+		inserimento_lista(pronti, work);
+	}
+	schedulatore();
+	dealloca(b);
+}
+//   SOLUZIONE 2014-07-23 )
+
+

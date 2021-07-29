@@ -1,0 +1,10 @@
+signal mult1
+single2 start
+single2 signal single1
+1: sezione critica 5
+2: sezione critica 6
+3: sezione critica 5-6-7
+single3 start
+single4 start
+3: sezione critica 6-5-7
+4: sezione critica 5

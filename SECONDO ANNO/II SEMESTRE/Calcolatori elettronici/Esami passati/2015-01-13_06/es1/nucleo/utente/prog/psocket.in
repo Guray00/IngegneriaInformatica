@@ -1,0 +1,58 @@
+#include <all.h>
+
+process psocket body main_body(0), 100, LIV_UTENTE;
+
+natl sock[11];
+
+void server(natq a)
+{
+	printf("server%d: accepting on %d\n", a, sock[a]);
+	natl s = accept(sock[a]);
+	if (s != 0xffffffff) {
+		printf("server%d: connected socket: %d\n", a, s);
+	} else {
+		printf("server%d: accept error\n", a);
+	}
+	terminate_p();
+}
+
+void client(natq a)
+{
+	printf("client%d: connecting %d to %d\n", a, sock[a], sock[a-1]);
+	bool r = connect(sock[a], sock[a-1]);
+	printf("client%d: connect %s\n", a, (r ? "success" : "failure"));
+	terminate_p();
+}
+
+void conductor(natq a)
+{
+	pause();
+	terminate_p();
+}
+
+process_body main_body(natq a)
+{
+	sock[0] = socket();
+	sock[1] = socket();
+	sock[2] = sock[0];
+	sock[3] = socket();
+	sock[4] = socket();
+	sock[5] = socket();
+	sock[6] = sock[4];	
+	sock[7] = socket();
+	sock[8] = sock[5];
+	sock[9] = sock[2];
+	sock[10] = socket();
+
+	activate_p(server, 0, 30, LIV_UTENTE);
+	activate_p(client, 1, 29, LIV_UTENTE);
+	activate_p(server, 2, 27, LIV_UTENTE);
+	activate_p(client, 3, 28, LIV_UTENTE);
+	activate_p(server, 4, 24, LIV_UTENTE);
+	activate_p(client, 5, 22, LIV_UTENTE);
+	activate_p(server, 6, 25, LIV_UTENTE);
+	activate_p(client, 7, 23, LIV_UTENTE);
+	activate_p(server, 8, 20, LIV_UTENTE);
+	activate_p(client, 10, 26, LIV_UTENTE);
+	activate_p(conductor, 6, 10, LIV_UTENTE);
+}

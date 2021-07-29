@@ -1,0 +1,21 @@
+processo 1: barrier_create(2) = 0
+processo 2: barrier(0)
+processo 3: barrier_create(3) = 1
+processo 1: barrier(0)
+processo 1: barrier returned true
+processo 2: barrier returned true
+processo 2: barrier(0)
+processo 1: barrier(0)
+processo 1: barrier returned true
+processo 2: barrier returned true
+processo 2: terminate
+processo 3: barrier(1)
+processo 4: barrier(1)
+processo 5: barrier_destroy(1)
+processo 3: barrier returned false
+processo 4: barrier returned false
+processo 4: terminate
+processo 5: terminate
+processo 1: barrier_destroy(0)
+processo 1: terminate
+memory leak: -8 bytes missing

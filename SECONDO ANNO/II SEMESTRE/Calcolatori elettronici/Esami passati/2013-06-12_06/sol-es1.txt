@@ -1,0 +1,52 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2013-06-12
+extern "C" void c_pim_wait(natl pim)
+{
+	if (!pim_valido(pim)) {
+		flog(LOG_WARN, "pim non valido: %d", pim);
+		c_abort_p();
+		return;
+	}
+
+	des_pim* d = &array_despim[pim];
+
+	if (d->owner) {
+		if (d->owner->precedenza < esecuzione->precedenza)
+			d->owner->precedenza = esecuzione->precedenza;
+		inserimento_lista(d->waiting, esecuzione);
+		schedulatore();
+	} else {
+		d->owner = esecuzione;
+		d->orig_prio = esecuzione->precedenza;
+	}
+}
+
+extern "C" void c_pim_signal(natl pim)
+{
+	if (!pim_valido(pim)) {
+		flog(LOG_WARN, "pim non valido: %d", pim);
+		c_abort_p();
+		return;
+	}
+
+	des_pim* d = &array_despim[pim];
+
+	esecuzione->precedenza = d->orig_prio;
+	inserimento_lista(pronti, esecuzione);
+	if (d->waiting) {
+		des_proc *work = rimozione_lista(d->waiting);
+		d->owner = work;
+		d->orig_prio = work->precedenza;
+		inserimento_lista(pronti, work);
+	} else {
+		d->owner = nullptr;
+		d->orig_prio = 0;
+	}
+	schedulatore();
+}
+//   SOLUZIONE 2013-06-12 )
+
+

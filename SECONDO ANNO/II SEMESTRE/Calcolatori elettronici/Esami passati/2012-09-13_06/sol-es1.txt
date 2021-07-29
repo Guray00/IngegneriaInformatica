@@ -1,0 +1,89 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2012-09-13
+
+void rimozione_tutti_canali(des_proc* elem)
+{
+	for (unsigned i = 0; i < next_channel; i++) {
+		des_channel *des_c = &array_deschan[i];
+
+		elimina_da_lista(des_c->wait_r, elem);
+	}
+}
+
+extern "C" void c_channel_send(natl id, natl msg)
+{
+	if (id >= next_channel) {
+		flog(LOG_WARN, "channel id errato: %d", id);
+		c_abort_p();
+		return;
+	}
+
+	des_channel *des_c = &array_deschan[id];
+
+	if (!des_c->n_free) {
+		inserimento_lista(des_c->wait_w, esecuzione);
+		schedulatore();
+		return;
+	}
+	inserimento_lista(pronti, esecuzione);
+	if (des_c->wait_r) {
+		des_proc *reader = rimozione_lista(des_c->wait_r);
+		rimozione_tutti_canali(reader);
+		reader->contesto[I_RAX] = msg;
+		inserimento_lista(pronti, reader);
+	} else {
+		des_c->msg_buf[des_c->first_free] = msg;
+		des_c->first_free = (des_c->first_free + 1) % des_c->size;
+		des_c->n_free--;
+	}
+	schedulatore();
+}
+
+extern "C" void c_channel_receive2(natl id1, natl id2)
+{
+	if (id1 >= next_channel) {
+		flog(LOG_WARN, "channel id1 errato: %d", id1);
+		c_abort_p();
+		return;
+	}
+	if (id2 >= next_channel) {
+		flog(LOG_WARN, "channel id2 errato: %d", id2);
+		c_abort_p();
+		return;
+	}
+
+	des_channel *des_c1 = &array_deschan[id1];
+	des_channel *des_c2 = &array_deschan[id2];
+
+	if (des_c1->n_free == des_c1->size && des_c2->n_free == des_c2->size) {
+		inserimento_lista(des_c1->wait_r, esecuzione);
+		inserimento_lista(des_c2->wait_r, esecuzione);
+		schedulatore();
+		return;
+	}
+	des_channel *des_c = des_c1;
+	if (des_c->n_free == des_c->size)
+		des_c = des_c2;
+	natl msg = des_c->msg_buf[des_c->first_unread];
+	des_c->first_unread = (des_c->first_unread + 1) % des_c->size;
+	des_c->n_free++;
+	esecuzione->contesto[I_RAX] = msg;
+	if (des_c->wait_w) {
+		des_proc *p = rimozione_lista(des_c->wait_w);
+		msg = p->msg;
+		des_c->msg_buf[des_c->first_free] = msg;
+		des_c->first_free = (des_c->first_free + 1) % des_c->size;
+		des_c->n_free--;
+		inspronti();
+		inserimento_lista(pronti, p);
+		schedulatore();
+	}
+}
+
+
+//   SOLUZIONE 2012-09-13 )
+
+

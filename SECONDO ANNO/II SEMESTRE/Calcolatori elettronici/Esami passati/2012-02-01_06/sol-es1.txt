@@ -1,0 +1,71 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2012-02-01 #1
+	carica_gate	TIPO_A_RR	a_abilita_rr	LIV_UTENTE
+	carica_gate	TIPO_D_RR	a_disabilita_rr	LIV_UTENTE
+//   SOLUZIONE 2012-02-01 )
+// ( SOLUZIONE 2012-02-01 #1
+
+a_abilita_rr:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_abilita_rr
+	iretq
+	.cfi_endproc
+
+a_disabilita_rr:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_disabilita_rr
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2012-02-01 #1 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2012-02-01 #1
+bool rr_abilitato = false;
+
+extern "C" void c_abilita_rr() 
+{
+	rr_abilitato = true;
+}
+
+extern "C" void c_disabilita_rr()
+{
+	if (!rr_abilitato)
+		return;
+
+	rr_abilitato = false;
+	
+	for (natl id = MIN_PROC_ID; id <= MAX_PROC_ID; id++) {
+		des_proc *p = des_p(id);
+		if (p) {
+			p->quanto = MAX_QUANTO;
+		}
+	}
+}
+//   SOLUZIONE 2012-02-01 )
+// ( SOLUZIONE 2012-02-01 #2
+	if (rr_abilitato) {
+		if (--esecuzione->quanto <= 0) {
+			esecuzione->quanto = MAX_QUANTO;
+			inserimento_lista(pronti, esecuzione);
+			schedulatore();
+		}
+	}
+//   SOLUZIONE 2012-02-01 )
+// ( SOLUZIONE 2012-02-01 #3
+	p->quanto = MAX_QUANTO;
+//   SOLUZIONE 2012-02-01 )
+
+

@@ -1,0 +1,60 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2013-07-23
+
+void demote(des_proc *p)
+{
+	p->precedenza = p->orig_prio;
+	for (des_pim *d = p->owner; d; d = d->prec)
+		if (d->curr_prio > p->precedenza)
+			p->precedenza = d->curr_prio;
+}
+
+bool estrai_pim(des_pim*& h, des_pim* p)
+{
+	for (des_pim** ps = &h; *ps; ps = &((*ps)->prec))
+		if (*ps == p) {
+			*ps = p->prec;
+			return true;
+		}
+	return false;
+}
+
+extern "C" void c_pim_signal(natl pim)
+{
+	if (!pim_valido(pim)) {
+		flog(LOG_WARN, "pim non valido: %d", pim);
+		c_abort_p();
+		return;
+	}
+
+	des_pim* d = &array_despim[pim];
+
+	if (!estrai_pim(esecuzione->owner, d)) {
+		flog(LOG_WARN, "pim_signal(%d) non valida", pim);
+		c_abort_p();
+		return;
+	}
+
+	demote(esecuzione);
+	if (d->waiting) {
+		des_proc *work = rimozione_lista(d->waiting);
+		d->curr_prio = maxprio(d->waiting);
+		d->owner = work;
+		d->prec = work->owner;
+		work->owner = d;
+		work->waiting = nullptr;
+		inspronti();
+		inserimento_lista(pronti, work);
+		schedulatore();
+	} else {
+		d->owner = nullptr;
+		d->curr_prio = 0;
+		d->prec = nullptr;
+	}
+}
+//   SOLUZIONE 2013-07-23 )
+
+

@@ -1,0 +1,113 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2015-06-11
+	carica_gate	TIPO_SP		a_set_prio	LIV_UTENTE
+//   SOLUZIONE 2015-06-11 )
+// ( SOLUZIONE 2015-06-11
+
+a_set_prio:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_set_prio
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2015-06-11 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2015-06-11
+des_proc *estrazione_lista(des_proc *&lista, natl id)
+{
+	des_proc *prec, *scorri;
+
+	for (prec = 0, scorri = lista; scorri; prec = scorri, scorri = scorri->puntatore)
+		if (scorri->id == id)
+			break;
+	
+	if (scorri) {
+		if (prec)
+			prec->puntatore = scorri->puntatore;
+		else
+			lista = scorri->puntatore;
+		scorri->puntatore = 0;
+	}
+
+	return scorri;
+}
+
+extern "C" void c_set_prio(natl id, natl prio)
+{
+	if (id >= MAX_PROC_ID) {
+		flog(LOG_WARN, "id non valido: %d", id);
+		c_abort_p();
+		return;
+	}
+	des_proc *dest = des_p(id);
+
+	if (prio > esecuzione->precedenza) {
+		flog(LOG_WARN, "priorita' non ammessa: %d", prio);
+		c_abort_p();
+		return;
+	}
+	if (!dest) {
+		esecuzione->contesto[I_RAX] = false;
+		return;
+	}
+	if (dest->livello == LIV_SISTEMA) {
+		flog(LOG_WARN, "impossibile cambiare priorita' di %d", id);
+		c_abort_p();
+		return;
+	}
+	esecuzione->contesto[I_RAX] = true;
+
+	if (esecuzione->id == id) {
+		esecuzione->precedenza = prio;
+		inserimento_lista(pronti, esecuzione);
+		schedulatore();
+		return;
+	}
+	des_proc *work = estrazione_lista(pronti, id);
+	if (work) {
+		work->precedenza = prio;
+		inspronti();
+		inserimento_lista(pronti, work);
+		schedulatore();
+		return;
+	}
+
+	for (natl sem = 0; sem < MAX_SEM + sem_allocati_sistema; sem++) {
+		des_sem *s = &array_dess[sem];
+
+		work = estrazione_lista(s->pointer, id);
+		if (work) {
+			work->precedenza = prio;
+			inserimento_lista(s->pointer, work);
+			return;
+		}
+
+		if (sem == sem_allocati_utente - 1)
+			sem = MAX_SEM;
+	}
+
+	for (richiesta *r = p_sospesi; r; r = r->p_rich) {
+		if (r->pp->id == id) {
+			r->pp->precedenza = prio;
+			return;
+		}
+	}
+
+	/* impossibile arrivare qui */
+	esecuzione->contesto[I_RAX] = false;
+}
+//   SOLUZIONE 2015-06-11 )
+
+

@@ -1,0 +1,68 @@
+Introduciamo nel nucleo una versione semplificata del meccanismo dei socket per
+la comunicazione inter-processo, relativamente alla sola fase di connessione.
+
+Un socket \`e un oggetto identificato tramite un numero naturale. \`E possibile
+creare una connessione tra due socket tramite le operazioni di
+\verb|accept(natl id)| e \verb|connect(natl src, natl dest)|.
+Un processo che esegue \verb|accept()|
+su un socket $s_1$ si pone in attesa di richieste di connessione verso $s_1$;
+un processo pu\`o inviare una richiesta di connessione invocando \verb|connect()|
+su un altro socket $s_2$, specificando $s_1$ come destinazione.
+La \verb|accept()| completa la connessione creando un nuovo socket, $s_3$, e
+ne restituisce l'identificatore al chiamante. A questo punto i socket $s_2$ e $s_3$
+sono connessi e possono essere usati per scambiare dati tra i processi (cosa che
+non realizziamo), mentre il socket $s_1$ \`e di nuovo disponible per altri usi.
+
+Su uno stesso socket ci pu\`o essere pi\`u di un processo in attesa di connessioni
+(pi\`u processi possono invocare \verb|accept()| su uno stesso socket):
+in quel caso, le eventuali richieste verranno servite in base alla priorit\`a dei
+processi in attesa. Per poter invocare \verb|accept()|, il socket non deve
+per\`o essere gi\`a connesso o essere sorgente di una richiesta di connessione in corso.
+Per poter invocare \verb|connect()|, n\'e il socket sorgente, n\'e il socket
+di destinazione devono essere gi\`a connessi o sorgenti di altre richieste di connessione in corso;
+il socket destinazione deve essere in fase di accettazione, mentre il socket sorgente no.
+
+Per realizzare questo meccanismo definiamo le seguenti strutture dati:
+
+\begin{verbatim}
+    enum sock_state {
+        SOCK_AVAIL,
+        SOCK_ACCEPTING,
+        SOCK_CONNECTING,
+        SOCK_CONNECTED
+    };
+    struct des_sock {
+        sock_state state;
+        des_proc *connecting;
+        des_proc *accepting;
+    };
+\end{verbatim}
+
+I possibili stati di un socket sono i seguenti:
+\begin{itemize}
+  \item \verb|SOCK_AVAIL|: il socket non \`e al momento utilizzato;
+  \item \verb|SOCK_ACCEPTING|: c'\`e almeno un processo che sta accettando connessioni
+    su questo socket;
+  \item \verb|SOCK_CONNECTING|: un processo sta tentando di connettere questo socket
+    (come sorgente) ad un altro;
+  \item \verb|SOCK_CONNECTED|: il socket \`e connesso.
+\end{itemize}
+La lista \verb|connecting| contiene i processi che stanno tentando di creare una connessione che
+ha questo socket come destinazione; la lista \verb|accepting| contiene i processi che
+stanno accettando connessioni su questo socket.
+
+Aggiungiamo inoltre le seguenti primitive (abortiscono il processo in caso di errore):
+\begin{itemize}
+  \item \verb|natl socket()| (gi\`a realizzata): crea un socket e ne restituisce l'identificatore
+    (0xFFFFFFFF se non \`e stato possibile crearlo);
+  \item \verb|natl accept(natl id)| (da realizzare): pone il processo in attesa di connessioni
+    sul socket \verb|id|;
+    restituisce 0xFFFFFFFF se il socket non \`e nello stato giusto;
+    \`e un errore se il socket non esiste.
+  \item \verb|bool connect(natl src, natl dest)| (da realizzare):
+    tenta di connettere il socket \verb|src| con il socket \verb|dest|; restituisce \verb|false|
+    se uno dei due socket non \`e nello stato giusto; \`e un errore se uno dei due socket
+    non esiste.
+\end{itemize}
+Tenere conto di eventuali preemption.
+{\bf Attenzione:} pu\`o essere necessario aggiungere informazioni ai descrittori di processo.

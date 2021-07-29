@@ -1,0 +1,1 @@
+Le prove fino al 2016-06-15 escluso sono aggiornate al nucleo v6, le altre devono essere aggiornate!

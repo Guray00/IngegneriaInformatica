@@ -1,0 +1,70 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2010-07-17
+extern "C" void c_monitor_leave(natl mon)
+{
+	if (!monitor_valido(mon)) {
+		flog(LOG_WARN, "monitor non valido: %d", mon);
+		c_abort_p();
+		return;
+	}
+
+	des_monitor *p_des = &array_desm[mon];
+
+	if (p_des->owner != esecuzione->id) {
+		flog(LOG_WARN, "monitor_leave errata");
+		c_abort_p();
+		return;
+	}
+
+	des_proc *next = 0;
+	if (p_des->urgent != 0) 
+		next = rimozione_lista(p_des->urgent);
+	else if (p_des->w_enter != 0) 
+		next = rimozione_lista(p_des->w_enter);
+	if (next != nullptr) {
+		p_des->owner = next->id;
+		inspronti();
+		inserimento_lista(pronti, next);
+		schedulatore();
+	} else {
+		p_des->owner = 0;
+	}
+}
+
+extern "C" void c_monitor_wait(natl mon)
+{
+	if (!monitor_valido(mon)) {
+		flog(LOG_WARN, "monitor non valido: %d", mon);
+		c_abort_p();
+		return;
+	}
+
+	des_monitor *p_des = &array_desm[mon];
+
+	if (p_des->owner != esecuzione->id) {
+		flog(LOG_WARN, "monitor_wait errata");
+		c_abort_p();
+		return;
+	}
+
+	inserimento_lista(p_des->w_cond, esecuzione);
+	des_proc *next = 0;
+	if (p_des->urgent != 0) 
+		next = rimozione_lista(p_des->urgent);
+	else if (p_des->w_enter != 0) 
+		next = rimozione_lista(p_des->w_enter);
+	if (next != 0) {
+		p_des->owner = next->id;
+		inserimento_lista(pronti, next);
+	} else {
+		p_des->owner = 0;
+	}
+	schedulatore();
+}
+
+// SOLUZIONE 2010-07-17 )
+
+

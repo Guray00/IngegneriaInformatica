@@ -1,0 +1,26 @@
+Una {\em barriera} \`e un meccanismo di sincronizzazione tra processi che funziona nel modo seguente:
+la barriera \`e normalmente chiusa; se un processo arriva alla barriera e la trova chiusa, si blocca;
+la barriera si apre solo quando sono arrivati tutti i processi, che a quel punto si sbloccano;
+una volta aperta e sbloccati tutti i processi, la barriera si richiude e il meccanismo si ripete.
+
+Vogliamo realizzare il meccanismo della barriera nel nucleo, ma solo tra i processi che si sono
+preventivamente registrati. I processi possono registrarsi e deregistarsi per una barriera in qualunque momento.
+La deregistrazione di un processo pu\`o causare l'apertura di una barriera, se tutti gli altri processi
+registrati erano gi\`a arrivati.
+
+Per realizzare il meccanismo aggiungiamo le seguenti primitive:
+\begin{itemize}
+   \item \verb|void reg()| (da realizzare):
+	registra il processo corrente sulla barriera. \`E un errore se un processo
+	tenta di registrarsi due volte.
+   \item \verb|void dereg()| (da realizzare):
+	deregistra il processo corrente sulla barriera. \`E un errore se un processo
+	tenta di deregistrarsi senza essere registrato.
+   \item \verb|void barrier()| (da realizzare): fa giungere il processo corrente 
+	alla barriera.  \`E un errore se un processo invoca questa primitiva senza essersi registrato.
+\end{itemize}
+
+Le primitive abortiscono il processo chiamante in caso di errore e tengono conto della priorit\`a tra i processi.
+
+Modificare i file \verb|sistema.cpp| e \verb|sistema.s| in modo da realizzare le primitive appena descritte.
+Pu\`o essere necessario definire nuove strutture dati e aggiungere campi al descrittore di processo.

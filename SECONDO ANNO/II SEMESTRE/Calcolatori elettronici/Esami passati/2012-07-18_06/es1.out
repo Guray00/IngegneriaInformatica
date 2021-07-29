@@ -1,0 +1,20 @@
+allocazione secondo channel fallita
+0: invio 1234 a 0
+0: invio 1235 a 0
+0: invio 1236 a 0
+0: invio 1237 a 0
+0: invio 1238 a 0
+4: invio 333 a 16000
+3: ricevuto 1234
+3: ricevuto 1235
+3: ricevuto 1236
+3: ricevuto 1237
+3: ricevuto 1238
+1: invio 4321 a 0
+3: ricevuto 4321
+1: invio 4322 a 0
+3: ricevuto 4322
+2: invio 555 a 0
+3: ricevuto 555
+2: invio 556 a 0
+3: ricevuto 556

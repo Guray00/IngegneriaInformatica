@@ -1,0 +1,25 @@
+processo 1: reg
+processo 2: reg
+processo 3: reg
+
+processo 2: barrier approach
+processo 3: barrier approach
+processo 1: dereg
+processo 2: barrier leave
+processo 1: after dereg
+processo 3: barrier leave
+processo 2: dereg
+processo 2: after dereg
+processo 3: barrier approach
+processo 3: barrier leave
+processo 2: reg
+processo 1: reg
+processo 1: barrier approach
+processo 2: dereg
+processo 2: after dereg
+processo 3: barrier approach
+processo 1: barrier leave
+processo 3: barrier leave
+processo 1: terminate
+processo 2: terminate
+processo 3: terminate

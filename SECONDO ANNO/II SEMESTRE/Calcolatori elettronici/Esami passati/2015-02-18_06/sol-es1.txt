@@ -1,0 +1,73 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2015-02-18
+	carica_gate	TIPO_CLOSE	a_close		LIV_UTENTE
+//   SOLUZIONE 2015-02-18 )
+// ( SOLUZIONE 2015-02-18
+
+a_close:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_close
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2015-02-18 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2015-02-18
+extern "C" void c_close(natl id)
+{
+	des_proc *work;
+
+	if (!sock_valid(id)) {
+		flog(LOG_WARN, "socket id %d non valido", id);
+		c_abort_p();
+		return;
+	}
+
+	des_sock *s = &array_des_sock[id];
+
+	esecuzione->contesto[I_RAX] = (natq)true;
+
+	switch (s->state) {
+	case SOCK_ACCEPTING: 
+		inspronti();
+		while (s->waiting) {
+			work = rimozione_lista(s->waiting);
+			work->contesto[I_RAX] = 0xffffffff;
+			inserimento_lista(pronti, work);	
+		}
+		s->state = SOCK_AVAIL;
+		break;
+	case SOCK_CONNECTED:
+		s->state = s->peer->state = SOCK_CLOSING;
+		inserimento_lista(s->waiting, esecuzione);
+		break;
+	case SOCK_CLOSING:
+		inspronti();
+		work = rimozione_lista(s->peer->waiting);
+		inserimento_lista(pronti, work);
+		s->state = s->peer->state = SOCK_AVAIL;
+		s->waiting = s->peer->waiting = 0;
+		s->peer->peer = 0;
+		s->peer = 0;
+		break;
+	default:
+		esecuzione->contesto[I_RAX] = (natq)false;
+		return;
+	}
+	schedulatore();
+}
+//   SOLUZIONE 2015-02-18 )
+
+
