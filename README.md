@@ -11,10 +11,10 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
     - [Principali](#principali)
     - [Off-Topic](#off-topic)
   - [Come scaricare le lezioni](#come-scaricare-le-lezioni)  
-  - [Corsi](#corsi)
+<!--  - [Corsi](#corsi)
     - [Corsi Anno I](#corsi-anno-i)
     - [Corsi Anno II](#corsi-anno-ii)
-<!--  - [Libri di testo](#libri-di-testo)
+  - [Libri di testo](#libri-di-testo)
     - [Libri del Primo anno](#libri-del-primo-anno) -->
   - [Credits (in aggiornamento)](#credits-in-aggiornamento)
 
