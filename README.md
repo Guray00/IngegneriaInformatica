@@ -122,25 +122,25 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       2) "Circuiti logici per le operazioni sui numeri naturali e sui numeri interi" di _Paolo Corsini_, edizioni ETS<br>
       3) "Il Calcolatore Didattico C86.32" di _Paolo Corsini_, edizioni ETS (nuova edizione)<br>
   **Note studenti**: Definire i libri sopra essenziali è dire decisamente poco, per cui l'acquisto è molto più che consigliato.
-  <!--
+  
 - **Progettazione web** - _Non necessario_<br>
-  **Testo consigliato**: Nessuno.<br> 
-  **Note studenti**: Il professore mette a disposizione delle diapositive in inglese. Si consiglia di seguire i laboratori.<br> -->
+  **Testo consigliato**: TBD.<br> 
+  **Note studenti**: TBD.
 
 ### Libri del Terzo anno
 
-- **Reti informatiche**
+- **Reti informatiche**<br>
   **Testo consigliato**:<br> 
-    1) "Bibliografia e materiale didattico
-James F. Kurose, Keith W. Ross, Computer Networking, A Top-Down Approach - VII Edition, Pearson Education"
+ "James F. Kurose, Keith W. Ross, Computer Networking, A Top-Down Approach - VII Edition, Pearson Education"<br>
+  **Note studenti**: Si suggerisce la versione in inglese per qualità e per esercitarsi con la lingua in previsione della magistrale.
  
-- **Sistemi operativi**
+- **Sistemi operativi** - _Utile_    <br>
   **Testo consigliato**:<br> 
-     1) "P. Ancilotti, M.  Boari, A .Ciampolini, G.Lipari, Sistemi Operativi, 2ed, Mc Graw-Hill.".<br> 
+  "P. Ancilotti, M.  Boari, A .Ciampolini, G.Lipari, Sistemi Operativi, 2ed, Mc Graw-Hill.".<br> 
 
 - **Ingegneria del software** - _Non necessario_<br>
   **Testo consigliato**: Nessuno.<br> 
-  **Note studenti**: Il professore mette a disposizione una dispensa in LaTeX.<br>
+  **Note studenti**: Il professore mette a disposizione una dispensa LaTeX e delle diapositive sul suo sito.<br>
 
 ## Credits (in aggiornamento)
 
