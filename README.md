@@ -66,7 +66,7 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
 ## Come scaricare le lezioni
 A causa del Nuovo Coronavirus 19 le lezioni nel prossimo futuro continueranno ad essere erogate in modalità a distanza. Per questo motivo è stato realizzato un fork che consente di scaricare le registrazioni presenti sulla piattaforma Microsoft Stream. Per ulteriori informazioni sul progetto e sul suo utilizzo trovate [qui](https://github.com//Guray00/destreamer-unipi) tutte le informazioni necessarie.
 
-<!--- ## Libri di testo
+ ## Libri di testo
 
 Di seguito trovate una lista dei libri di testo suggeriti per ogni corso (potrebbe non essere sempre aggiornato, verificare).
 I testi, in base all'esperienza degli studenti, si suddividono in:
@@ -90,8 +90,8 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 - **Algebra Lineare e Analisi Matematica II** - _Non necessario_    
   **Testo consigliato**:<br> 
       1) "Algebra Lineare" di _Serge Lang_<br>
-  **Note studenti**: Bastano le dispense fornite dal docente. 
- 
+      2) "E. Giusti:  Analisi Matematica 2  ed. Boringhieri" 
+ <!--
 - **Basi di Dati** - _Utile_  
   **Testo consigliato**:<br> 
       1) "Basi di Dati" di _Paolo Atzeni, Stefano Ceri & altri_<br>
@@ -102,7 +102,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       1) "Fisica per scienze e ingegneria volumi 1 & 2" di _Raymond A. Serway & altri_        
 
 - **Algoritmi e Strutture Dati** - _Non necessario_    
-  **Note studenti**: La professoressa mette una dispensa molto completa a disposizione.  
+  **Note studenti**: La professoressa mette una dispensa molto completa a disposizione.  -->
   
 ### Libri del Secondo anno  
 
@@ -121,12 +121,27 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       1) "Dalle porte AND, OR, NOT al Sistema calcolatore" di _Paolo Corsini_, edizioni ETS <br>
       2) "Circuiti logici per le operazioni sui numeri naturali e sui numeri interi" di _Paolo Corsini_, edizioni ETS<br>
       3) "Il Calcolatore Didattico C86.32" di _Paolo Corsini_, edizioni ETS (nuova edizione)<br>
-  **Note studenti**: Definire i libri sopra essenziali è dire decisamente poco, per cui l'acquisto è molto più che consigliato.<br>
-  
+  **Note studenti**: Definire i libri sopra essenziali è dire decisamente poco, per cui l'acquisto è molto più che consigliato.
+  <!--
 - **Progettazione web** - _Non necessario_<br>
   **Testo consigliato**: Nessuno.<br> 
-  **Note studenti**: Il professore mette a disposizione delle diapositive in inglese. Si consiglia di seguire i laboratori.<br>*/--->
-  
+  **Note studenti**: Il professore mette a disposizione delle diapositive in inglese. Si consiglia di seguire i laboratori.<br> -->
+
+### Libri del Terzo anno
+
+- **Reti informatiche**
+  **Testo consigliato**:<br> 
+    1) "Bibliografia e materiale didattico
+James F. Kurose, Keith W. Ross, Computer Networking, A Top-Down Approach - VII Edition, Pearson Education"
+ 
+- **Sistemi operativi**
+  **Testo consigliato**:<br> 
+     1) "P. Ancilotti, M.  Boari, A .Ciampolini, G.Lipari, Sistemi Operativi, 2ed, Mc Graw-Hill.".<br> 
+
+- **Ingegneria del software** - _Non necessario_<br>
+  **Testo consigliato**: Nessuno.<br> 
+  **Note studenti**: Il professore mette a disposizione una dispensa in LaTeX.<br>
+
 ## Credits (in aggiornamento)
 
 Questo progetto si basa sull'aiuto spontaneo da parte degli studenti della triennale di Ingegneria Informatica. Ogni contributo è gradito!
@@ -149,6 +164,7 @@ Francesco Boldrini<br>
 Matteo Bernini<br>
 Davide Bruni<br>
 Federico Casu<br>
+Alessandro Corsi<br>
 Pia Eugenia D'Antonio<br>
 Angelo De Marco<br>
 Nilo Fabiano<br>
