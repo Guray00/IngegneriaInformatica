@@ -186,4 +186,4 @@ Giuseppe Soriano<br>
 Lorenzo Valtriani<br>
 Alessandro Versari<br>
 Francesco Zollo<br><br>
-Per richiedere l'autorizzazione per aggiungere file (o mandare semplicemente a noi un file per caricarlo) è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto.
+Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto.
