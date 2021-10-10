@@ -42,3 +42,7 @@ sudo apt-get install build-essential gdb gcc-multilib musl-dev
 
 È consigliata anche l'installazione dell'estensione [x86 and x86_64 Assembly](https://marketplace.visualstudio.com/items?itemName=13xforever.language-x86-64-assembly) utile il Syntax highlighting e per utilizzare i breakpoint.
 
+### 6. Configurazione Workspace
+
+Scaricare il file [setup.zip](./setup.zip)
+
