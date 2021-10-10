@@ -21,6 +21,7 @@ wsl --install
 _Una guida più dettagliata può essere trovata [qui](https://docs.microsoft.com/it-it/windows/wsl/install), ma per quello che ci serve basta solo questo._
 
 <img align="right" alt="WSL Button" src="./docs/wsl.png" width="200">
+
 ### 2. Installazione e configurazione dell'estensione per il WSL
 
 Per usare VS Code nel WSL è necessario installare l'estenzione [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
