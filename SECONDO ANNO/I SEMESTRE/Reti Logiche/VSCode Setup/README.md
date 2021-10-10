@@ -1,8 +1,7 @@
 # Visual Studio Code Assembler Setup (**WINDOWS/LINUX**)
 
 <div style="width:100%;">
-	<img align="left" src="./docs/made-by-lorenzo-chesi.svg" height="40">
-	<img align="left" src="https://forthebadge.com/images/badges/contains-17-coffee-cups.svg" height="40">
+	<img src="./docs/made-by-lorenzo-chesi.svg" height="40"> <img src="https://forthebadge.com/images/badges/contains-17-coffee-cups.svg" height="40">
 </div>
 
 
