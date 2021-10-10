@@ -640,7 +640,7 @@ FOR NOT FOUND SET finito = 1; -- e imposta ad 1 la variabile `finito`
 ## SIGNAL
 > È possibile restituire un errore o un warning al chiamante di una stored procedure
 ```sql
-SIGNAL SQLSTATE '4500' -- solleva un errore generico
+SIGNAL SQLSTATE '45000' -- solleva un errore generico
 SET MESSAGE_TEXT = 'Errore generioco'
 ```
 
