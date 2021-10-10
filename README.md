@@ -164,6 +164,7 @@ Francesco Boldrini<br>
 Matteo Bernini<br>
 Davide Bruni<br>
 Federico Casu<br>
+Lorenzo Chesi<br>
 Alessandro Corsi<br>
 Pia Eugenia D'Antonio<br>
 Angelo De Marco<br>
