@@ -1,7 +1,9 @@
 # Visual Studio Code Assembler Setup (**WINDOWS/LINUX**)
 
-<img align="left" src="./docs/made-by-lorenzo-chesi.svg" height="50">
-<img align="left" src="https://forthebadge.com/images/badges/contains-17-coffee-cups.svg" height="50">
+<img align="left" src="./docs/made-by-lorenzo-chesi.svg" height="30">
+<img align="left" src="https://forthebadge.com/images/badges/contains-17-coffee-cups.svg" height="30">
+
+<br>
 
 Semplice guida per programmare/debuggare facilmente del codice Assembler su Visual Studio Code.
 
