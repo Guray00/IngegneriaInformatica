@@ -45,7 +45,7 @@ sudo apt-get install build-essential gdb gcc-multilib musl-dev
 
 ### 5. Installazione estensioni
 
-È necessario installare l'estensione [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) se non l'avete già installata (su windows è importante che sia installata in wsl, è possibile farlo facilmente selezionando il `pulsante Installa in WSL`).
+È necessario installare l'estensione [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) se non l'avete già installata (su windows è importante che sia installata in wsl, è possibile farlo selezionando il `pulsante Installa in WSL`).
 
 È consigliata anche l'installazione dell'estensione [x86 and x86_64 Assembly](https://marketplace.visualstudio.com/items?itemName=13xforever.language-x86-64-assembly) utile il Syntax highlighting e per utilizzare i breakpoint.
 
@@ -81,4 +81,8 @@ Arrivati a questo punto è tutto pronto per programmare in assembler "comodament
 
 - Per debuggare un file Assembly andare in alto "Esegui > Avvia debug".
 - Per eseguire un file Assembly andare in alto "Esegui > Esegui senza eseguire il debug".
-- Per compilare soltanto un file Assembly premere `CTRL`+`MAIUSC`+`B`
+- Per compilare soltanto un file Assembly premere `CTRL`+`MAIUSC`+`B`.
+
+
+## Problemi Noti
+- [ ] Quando si esegue un file Assembly utilizzando il debugger il terminale viene sempre sporcato dalla scritta `[1] + Done                       "/usr/bin/gdb" --interpreter=mi -silent --tty=${DbgTerm} 0<"/tmp/Microsoft-MIEngine-In-crdr2mef.vog" 1>"/tmp/Microsoft-MIEngine-Out-wpbplk44.rbh"` o simile.
