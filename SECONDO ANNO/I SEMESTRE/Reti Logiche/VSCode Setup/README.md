@@ -47,7 +47,7 @@ sudo apt-get install build-essential gdb gcc-multilib musl-dev
 
 È necessario installare l'estensione [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) se non l'avete già installata (su windows è importante che sia installata in wsl, è possibile farlo selezionando il pulsante `Installa in WSL`).
 
-È consigliata anche l'installazione dell'estensione [x86 and x86_64 Assembly](https://marketplace.visualstudio.com/items?itemName=13xforever.language-x86-64-assembly) utile il Syntax highlighting e per utilizzare i breakpoint.
+È consigliata anche l'installazione dell'estensione [ASM Code Lens](https://marketplace.visualstudio.com/items?itemName=maziac.asm-code-lens) utile il Syntax highlighting, per utilizzare i breakpoint e altre cose fighe.
 
 ### 6. Configurazione Workspace
 
