@@ -53,7 +53,7 @@ sudo apt-get install build-essential gdb gcc-multilib musl-dev
 
 Scaricare il file [setup.zip](./setup.zip), contiene l'assemblatore per i file assemler, la libreria per la manipolazione dell'I/O e la configurazione per vs code.
 
-Decomprimere il file zip e copiare tutti i file (con la stessa struttura) in una cartella che preferite (sarà la cartella dove poi programmerai i progetti in Assembler). La struttura dovrebbe essere simile a questa:
+Decomprimere il file zip e copiare tutti i file (con la stessa struttura) in una cartella che preferisci (sarà la cartella dove poi programmerai i progetti in Assembler). La struttura dovrebbe essere simile a questa:
 ```
 MyFolder				# Cartella che hai scelto
 ├── .vscode				# File di configurazione di VS Code
