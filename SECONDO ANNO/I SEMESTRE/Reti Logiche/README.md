@@ -5,6 +5,8 @@ qualsiasi directory, tutto già pronto e funzionante. Basta scaricare lo zip da
 e seguire le istruzioni contenute nell'archivio. <br>
 Il seguente ambiente di sviluppo NON è quello fornito dal docente, bensì una sua rivisitazione il cui codice può essere trovato [qui](https://github.com/just-Hms/asmbl)
 
+Alternativa per Visual Studio Code in [VSCode Setup](./VSCode%20Setup) disponibile per Windows o Linux.
+
 # Modalità di esame
 - L'esame risulta diviso in tre parti: pretest, prova scritta, prova orale.
 - Sono consentite al massimo 4 consegne in un anno. La consegna è contata con la sottomissione delle risposte al pretest.
