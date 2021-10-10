@@ -2,6 +2,8 @@
 
 Semplice guida per programmare/debuggare facilmente del codice Assembler su Visual Studio Code.
 
+**I file usati sono esattamente quelli forniti dai professori.**
+
 Su Windows viene fatto uso di [WSL](https://docs.microsoft.com/it-it/windows/wsl/) (Sottosistema di Windows per Linux) e ovviamente di [Visual Studio Code](https://code.visualstudio.com/)
 
 Alla fine di questa guida potrete fare questo:
@@ -17,3 +19,6 @@ Aprire un Windows prompt dei comandi e immettere questo comando:
 wsl --install
 ```
 _Una guida più dettagliata può essere trovata [qui](https://docs.microsoft.com/it-it/windows/wsl/install), ma per quello che ci serve basta solo questo._
+
+2. ### Installazione delle estensioni per il WSL
+Per usare VS Code nel WSL è necessario installare l'estenzione [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)

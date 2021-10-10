@@ -1,0 +1,38 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build",
+			"type": "shell",
+			"linux": {
+				"command": "gcc -m32 -o \"${fileDirname}/${fileBasenameNoExtension}\" '-Wa,-a' '-Wa,--defsym,LINUX=1' > \"${fileDirname}/${fileBasenameNoExtension}.lst\" -g ./files/main.c ${file}",
+			},
+			"problemMatcher": {
+				"owner": "assembly",
+				"fileLocation": ["autoDetect", "${fileDirname}"],
+				"pattern": [
+					{
+						"regexp": "^(.*?):(\\d+):\\s+(Error|Warning):\\s+(.*)$",
+						// "regexp": "^(.*?):((\\d+):)?\\s+((Error|Warning):\\s+)?(.*?)(:\\s+`(.*?)')?$",
+						"file": 1,
+						"line": 2,
+						"severity": 3,
+						"message": 4,
+						// "loop": true
+					}
+				]
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"presentation": {
+				"focus": false,
+				"reveal": "silent",
+				"clear": true
+			}
+		}
+	]
+}
