@@ -4,6 +4,8 @@
 	<img src="./docs/made-by-lorenzo-chesi.svg" height="40"> <img src="https://forthebadge.com/images/badges/contains-17-coffee-cups.svg" height="40">
 </div>
 
+<br>
+<br>
 
 Semplice guida per programmare/debuggare facilmente del codice Assembler su Visual Studio Code.
 
