@@ -23,7 +23,5 @@ _Una guida più dettagliata può essere trovata [qui](https://docs.microsoft.com
 ### 2. Installazione e configurazione dell'estensione per il WSL
 Per usare VS Code nel WSL è necessario installare l'estenzione [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
 
-Per accedere al Subsystem Linux basta 
-solo premere il pulsante blu con le 
-doppie freccie in basso a sinistra. 
-<img alt="VSCode Setup" src="./docs/vscode-setup.png" width="200">
+Per accedere al Subsystem Linux basta solo premere il pulsante blu con le doppie freccie in basso a sinistra. 
+<img align="right" alt="WSL Button" src="./docs/wsk.png" width="200">
