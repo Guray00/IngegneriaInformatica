@@ -30,4 +30,8 @@ Per accedere al Subsystem Linux basta solo premere il pulsante blu con le doppie
 
 ### 4. Setup Linux environment
 
-Aprire un terminale **_bash_** su VS Code (`CTRL`+`ò`)
+Aprire un terminale **_bash_** su VS Code (`CTRL`+`ò`) e immeter i seguenti comandi:
+```bash
+sudo apt-get update
+sudo apt-get install build-essential gdb
+```
