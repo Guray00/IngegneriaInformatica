@@ -18,7 +18,7 @@ Alla fine di questa guida potrai fare questo:
 <img alt="VSCode Setup" src="./docs/vscode-setup.png" width="700">
 
 ## Guida per **WINDOWS/LINUX**
-> Per i possessori di un sistema operativo linux possono saltare direttamente al punto [4](#4-setup-linux-environment).
+> Per i possessori di un sistema operativo linux possono saltare direttamente al punto [3](#3-setup-linux-environment).
 
 ### 1. Installazione di WSL
 Aprire un Windows prompt dei comandi e immettere questo comando:
@@ -35,7 +35,7 @@ Per usare VS Code nel WSL è necessario installare l'estensione [Remote - WSL](h
 
 Per accedere al Subsystem Linux basta solo premere il pulsante blu con le doppie freccie in basso a sinistra. Dopodichè apparirà una lista di selezione, dovrai premere `New WSL Window`.
 
-### 4. Setup Linux environment
+### 3. Setup Linux environment
 
 Aprire un terminale **_bash_** su VS Code (`CTRL`+`ò`) e immetere i seguenti comandi:
 ```bash
@@ -43,13 +43,13 @@ sudo apt-get update
 sudo apt-get install build-essential gdb gcc-multilib musl-dev
 ```
 
-### 5. Installazione estensioni
+### 4. Installazione estensioni
 
 È necessario installare l'estensione [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) se non l'avete già installata (su windows è importante che sia installata in wsl, è possibile farlo selezionando il pulsante `Installa in WSL`).
 
 È consigliata anche l'installazione dell'estensione [ASM Code Lens](https://marketplace.visualstudio.com/items?itemName=maziac.asm-code-lens) utile il Syntax highlighting, per utilizzare i breakpoint e altre cose fighe.
 
-### 6. Configurazione Workspace
+### 5. Configurazione Workspace
 
 Scaricare il file [setup.zip](./setup.zip), contiene l'assemblatore per i file assemler, la libreria per la manipolazione dell'I/O e la configurazione per vs code.
 
@@ -75,7 +75,7 @@ cd /My/Folder/Location/MyFolder
 code .
 ```
 
-### 7. RUN MY SCRIPT!
+### 6. RUN MY SCRIPT!
 
 Arrivati a questo punto è tutto pronto per programmare in assembler "comodamente".
 
@@ -83,6 +83,32 @@ Arrivati a questo punto è tutto pronto per programmare in assembler "comodament
 - Per eseguire un file Assembly andare in alto "Esegui > Esegui senza eseguire il debug".
 - Per compilare soltanto un file Assembly premere `CTRL`+`MAIUSC`+`B`.
 
+## FAQ
+
+- ### Non riesco ad aggiungere i breakpoints
+Andare in impostazioni (`CTRL`+`,`) e abilitare `debug.allowBreakpointsEverywhere`.
+![allowBreakpointsEverywhere](./docs/allowBreakpointsEverywhere.png)
+
+- ### Non riesco a vedere i registri
+Andare nella finestra di Debug (`CTRL`+`MAIUSC`+`D`), mettere un breakpoint e avviare il debug. Adesso è possibile vedere la schermate delle variabili, i registri si trovano in Variabili > Registers > CPU.
+
+<img src="./docs/registers.png" height="350">
+
+- ### Come faccio a vedere il valore di una variabile?
+Le variabili vanno castate altrimenti il debugger non sà come trattarle.
+Quindi se abbiamo un intero `(int)myvar`, un char `(char)myvar` e così via.
+
+Per vedere il valore in esadecimale si aggiunge `, x` (ad esempio `(int)myvar, x`), per vederlo in ottale si aggiunge `, o` (`(int)myvar, o`) e in binario si aggiunge `, b` (`(int)myvar, b`).
+
+Per visualizzare un vettore si aggiungono le parentesi quadre e ci si inserisce la dimensione (es. `(int[32])myvar`)
+
+Per visualizzare una stringa utilizzare la notazione con le parentesi quadre e poi aggiungere `, s` (es. `(char[22])myvar, s`)
+
+Per visualizzare una variabile salvata in una dimensione di 1 o 2 byte bisogna essere smart (hahahha), bisogna creare una maschera di bit e fare un AND bit a bit. Ad esempio se abbiamo una variabile salvata come BYTE allora dovremmo fare `(int)myvar & 0b11111111`.
+
+<img src="./docs/var.png" height="350">
+
+Per ulteriori informazioni: https://docs.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-cpp?view=vs-2019
 
 ## Problemi Noti
 - [ ] Quando si esegue un file Assembly, utilizzando il debugger gdb, il terminale viene sempre sporcato dalla scritta simile a questa `[1] + Done                       "/usr/bin/gdb" --interpreter=mi -silent --tty=${DbgTerm} 0<"/tmp/Microsoft-MIEngine-In-crdr2mef.vog" 1>"/tmp/Microsoft-MIEngine-Out-wpbplk44.rbh"`.
