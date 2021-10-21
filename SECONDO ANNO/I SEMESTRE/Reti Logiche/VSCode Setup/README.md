@@ -156,6 +156,6 @@ Per ulteriori informazioni: https://docs.microsoft.com/en-us/visualstudio/debugg
 
 Per usare i comandi gdb bisogna prima avviare il debug con almeno un breakpoint inserito (altrimenti non si vede nulla) e poi aprire la schermata debug (`CTRL`+`MAIUSC`+`Y`). A questo punto si può scivere tutti i comandi gdb ma devono essere preceduti da `-exec` (es. `-exec info registers`)
 
-## Problemi Noti
-- [ ] Quando si esegue un file Assembly, utilizzando il debugger gdb, il terminale viene sempre sporcato dalla scritta simile a questa `[1] + Done                       "/usr/bin/gdb" --interpreter=mi -silent --tty=${DbgTerm} 0<"/tmp/Microsoft-MIEngine-In-crdr2mef.vog" 1>"/tmp/Microsoft-MIEngine-Out-wpbplk44.rbh"`.
-- [ ] Il problemMatcher di VS Code non riesce a individuare tutti gli errori/warning durante la fase di build del file Assembler (ci sto ancora lavorando).
+## ~~Problemi Noti~~
+- [x] ~~Quando si esegue un file Assembly, utilizzando il debugger gdb, il terminale viene sempre sporcato dalla scritta simile a questa `[1] + Done                       "/usr/bin/gdb" --interpreter=mi -silent --tty=${DbgTerm} 0<"/tmp/Microsoft-MIEngine-In-crdr2mef.vog" 1>"/tmp/Microsoft-MIEngine-Out-wpbplk44.rbh"`.~~
+- [x] ~~Il ProblemMatcher di VS Code non riesce a individuare tutti gli errori/warning durante la fase di build del file Assembler (ci sto ancora lavorando).~~
