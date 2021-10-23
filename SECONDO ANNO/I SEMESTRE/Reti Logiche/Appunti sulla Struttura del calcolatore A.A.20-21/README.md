@@ -1,0 +1,1 @@
+Sono consapevole che la dispensa possa risultare uno spezzatino, vista l'inclusione di svariati PDF. Per le modifiche dei file pdf basta utilizzare le versioni recenti di Microsoft Word ed esportare in PDF. Modifiche atte a ridurre il disagio sono ben accette, pur mantenendo lo spirito della formattazione su Word.
