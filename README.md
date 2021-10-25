@@ -182,8 +182,10 @@ Alex Parri<br>
 Aleandro Prudenzano<br>
 Samuele Ricotta<br>
 Giacomo Sansone<br>
+Nicolò Salti<br>
 Gianluca Schiano<br>
 Giuseppe Soriano<br>
+Andrea Trasacco<br>
 Lorenzo Valtriani<br>
 Alessandro Versari<br>
 Francesco Zollo<br><br>
