@@ -1,7 +1,4 @@
 <h1>Appunti laboratorio Sistemi Operativi</h1>
-
-<br>
-
 <p>
 Ciao! Ho preso questi appunti seguendo le lezioni di Minici dell'A.A. 2020-21. Per quanto il programma non sia cambiato negli ultimi anni, consiglio ASSOLUTAMENTE di seguire le lezioni, e di usare questi appunti giusto come punto di riferimento (tenendo pure conto che ci potrebbero essere degli errori!!!). Buono studio! 
 </p>
