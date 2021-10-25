@@ -32,12 +32,10 @@ Per descrivere un file, si possono usare due approcci: uno prevede l'uso del pat
 Per comunicare con il sistema, o si usa una shell grafica, facile da usare ma con utilizzi limitati, o una shell testuale, che ci permette di fare qualunque cosa avendone i privilegi. Una shell testuale mostra un prompt, e ripetutamente legge un comando nella shell e lo esegue, verificando la correttezza sintattica di quanto inserito.
 </p>
 
-
 <code>
 
     alice@studio:~/Documents$
 </code>
-
 
 <p>
 In questo modo vediamo la cartella in cui siamo, il tipo di utente e un cursore. 
@@ -563,34 +561,3 @@ Quanto detto è alla base del meccanismo delle pipe, fondamentale per la comunic
 Per creare una pipe, si usa <code class="red">int pipe(int fd[2])</code>. Nel vettore si hanno due elementi, uno per la lettura, all'indice 0, e uno per la scrittura, all'indice 1. I due file descriptor sono gli estremi della nostra pipe. Da questo momento in poi si può usare read e write con, rispettivamente, <code>fd[0]</code> e <code>fd[1]</code>. La funzione ritorna -1 nel caso in cui qualcosa sia andato storto. Ricordarsi di usare la close anche sui due file aperti per la gestione della pipe!
 </p>
 
-<style>
-    .red { color:red; }
-
-    td { border: 1px solid black; }
-
-    code{
-        white-space: pre;
-        width:80%;
-        margin-left:auto;
-        margin-right:auto;
-    }
-    
-    
-
-    h1,h2, h3 { text-align:center; }
-
-    p, hr, ul{
-        width: 80%;
-        line-height:20px;
-        display: block;
-        font-size:12px;
-        text-align:justify;
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .fullCode{
-        backfroucolor:red;
-    }
-
-</style>
