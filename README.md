@@ -168,10 +168,13 @@ Lorenzo Chesi<br>
 Alessandro Corsi<br>
 Pia Eugenia D'Antonio<br>
 Angelo De Marco<br>
+Matteo Dondoli<br>
 Nilo Fabiano<br>
 Giulia Gastaldin<br>
+Daniele Giaquinta<br>
 Edoardo Geraci<br>
 Dafne Iennaro<br>
+Giovanni Ligato<br>
 Giacomo Maldarella<br>
 Elia Marabotto<br>
 Gabriele Marcuccetti<br>
