@@ -176,6 +176,7 @@ Edoardo Geraci<br>
 Dafne Iennaro<br>
 Giovanni Ligato<br>
 Giacomo Maldarella<br>
+Giovanni Enrico Loni<br>
 Elia Marabotto<br>
 Gabriele Marcuccetti<br>
 Federico Matteoni<br>
@@ -187,6 +188,7 @@ Samuele Ricotta<br>
 Giacomo Sansone<br>
 Nicolò Salti<br>
 Gianluca Schiano<br>
+Alessandro Simonelli<br>
 Giuseppe Soriano<br>
 Andrea Trasacco<br>
 Lorenzo Valtriani<br>
