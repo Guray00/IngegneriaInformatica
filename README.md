@@ -167,6 +167,7 @@ Federico Casu<br>
 Lorenzo Chesi<br>
 Alessandro Corsi<br>
 Pia Eugenia D'Antonio<br>
+Roberto De Luca<br>
 Angelo De Marco<br>
 Matteo Dondoli<br>
 Nilo Fabiano<br>
