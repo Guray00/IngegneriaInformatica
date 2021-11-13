@@ -1,0 +1,5 @@
+In alcuni casi le soluzioni degli esercizi fanno uso delle classi interne. 
+Non tutti gli anni accademici pero' siamo riusciti a coprire tale argomento (le classi interne).
+E' sempre possibile risolvere gli esercizi anche senza farne uso, con modeste variazioni
+rispetto alla soluzione proposta. 
+
