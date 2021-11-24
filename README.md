@@ -172,6 +172,7 @@ Angelo De Marco<br>
 Matteo Dondoli<br>
 Nilo Fabiano<br>
 Giulia Gastaldin<br>
+Kevin Giannandrea<br>
 Daniele Giaquinta<br>
 Edoardo Geraci<br>
 Dafne Iennaro<br>
@@ -194,5 +195,6 @@ Giuseppe Soriano<br>
 Andrea Trasacco<br>
 Lorenzo Valtriani<br>
 Alessandro Versari<br>
+Sandro Wu<br>
 Francesco Zollo<br><br>
 Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto.
