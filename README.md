@@ -192,6 +192,7 @@ Nicolò Salti<br>
 Gianluca Schiano<br>
 Alessandro Simonelli<br>
 Giuseppe Soriano<br>
+Giorgio Charles Sorrentini<br>
 Andrea Trasacco<br>
 Lorenzo Valtriani<br>
 Alessandro Versari<br>
