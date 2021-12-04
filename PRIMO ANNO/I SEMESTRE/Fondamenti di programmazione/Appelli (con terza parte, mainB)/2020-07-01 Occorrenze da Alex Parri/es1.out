@@ -1,0 +1,13 @@
+--- PRIMA PARTE ---
+Test del costruttore e dell'operatore di uscita
+CHE:2
+CIEL:1
+DIMMI:1
+FAI:2
+IN:1
+LUNA:2
+SILENZIOSA:1
+TU:1
+
+Test dell'operatore di modulo: (deve stampare 3)
+3
