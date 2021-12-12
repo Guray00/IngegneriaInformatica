@@ -1,0 +1,286 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amssymb} 
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\usepackage{marginnote}
+\usepackage{hyperref}
+\usepackage{url}
+
+
+\begin{document}
+\title{Pillole per la risoluzione di integrali}
+\author{Gabriele Frassi}
+\maketitle
+\tableofcontents
+
+%\listoftheorems[ignoreall,show={definizione}]
+
+\section*{Fonti}
+\begin{itemize}
+	\item Lezioni di Analisi matematica I di Carlo Luigi Berselli (A.A.2019-2020)
+	\item \textit{Bergamini, M., Barozzi, G. and Trifone, A., 2017. Matematica.blu 2.0. 5, Matematica e arte. Bologna: Zanichelli.}
+\end{itemize}
+\section{Integrali indefiniti immediati}
+\subsection{Integrale di una potenza}
+Vogliamo fare la seguente integrazione
+\[\int x^\alpha dx\]
+dove $\alpha \in \mathbb{R}$. Dobbiamo distinguere due casi in base al valore di $\alpha$.
+\paragraph{$\mathbf{\alpha\neq -1}$}
+\[\boxed{\int x^\alpha\, dx=\frac{x^{\alpha+1}}{\alpha+1}+c\,\,\,\,\,\,\,\,\,\text{con }\alpha \in \mathbb{R}\text{ e }\alpha \neq -1}\]
+Si considerino i seguenti casi particolari:
+\begin{itemize}
+	\item $\int dx = x+ c$
+	\item $\int x dx = \frac{x^2}{2}+c$
+	\item $\int \sqrt{x} dx = \int x^{\frac{1}{2}}dx=\frac{x^{\frac{3}{2}}}{\frac{3}{2}}+c=\frac{2}{3} x^{\frac{3}{2}}+c = \frac{2}{3}\sqrt{x^3}+c$
+\end{itemize}
+\paragraph{$\mathbf{\alpha = -1}$}
+\[\boxed{\int x^{-1} dx = \int \frac{1}{x} dx = \ln |x| + c }\]
+Il valore assoluto è necessario per avere una regola valida su tutto il dominio di $\frac{1}{x}$, e quindi anche per valori di $x$ negativi. Per avere la certezza di quanto fatto basta fare due derivate:
+\begin{itemize}
+	\item con $x > 0$: $\text{D}\left[\ln |x|+c\right]=\text{D}\left[\ln x+c\right]=\frac{1}{x}$
+	\item con $x < 0$: $\text{D}\left[\ln |x|+c\right]=\text{D}\left[\ln (-x)+c\right]=\frac{1}{-x}(-1)=\frac{1}{x}$
+\end{itemize}
+
+\subsubsection*{Esercizi di esempio}
+\begin{align*}\int(x^3-3x^2-8)dx&=\int x^3 dx + \int - 3x^2 dx+\int -8 dx =\\&=\int x^3 dx - 3 \int x^2 dx -8 \int dx=\\&=\frac{x^4}{4}-3\frac{x^3}{3}-8x+c=\boxed{\frac{x^4}{4}-x^3-8x+c}\end{align*}
+\begin{align*}\int\left(\frac{5}{x^4}-\frac{4}{x^3}+\frac{3}{x^2}\right)dx&=\int\frac{5}{x^4}dx-\int\frac{4}{x^3}dx+\int\frac{3}{x^2}dx=\\&=5\int\frac{1}{x^4}dx-4\int\frac{1}{x^3}dx+3\int\frac{1}{x^2}dx=\\&=5\int x^{-1}dx-4\int x^{-3}dx+3\int x^{-2}dx=\\&=5\frac{x^{-3}}{-3}-4\frac{x^{-2}}{-2}+3\frac{x^{-1}}{-1}+c=\boxed{-\frac{5}{3}x^{-3}+2x^{-2}-3x^{-1}+c}\end{align*}
+\begin{align*}\int(3\sqrt{x}+\sqrt[4]{x^3})dx&=3\int\sqrt{x}\,dx+\int\sqrt[4]{x^3}\,dx=\\&=3\int x^{\frac{1}{2}}+\int x^{\frac{3}{4}}=\\&=3\frac{x^{\frac{3}{2}}}{\frac{3}{2}}+\frac{x^{\frac{7}{4}}}{\frac{7}{4}}+c=\boxed{2x^{\frac{3}{2}}+\frac{4}{7}x^{\frac{7}{4}}+c}\end{align*}
+\begin{align*}\int \frac{1}{\sqrt{x}}\left(x-\sqrt{x\sqrt{x}}\right)dx&=\int x^{-\frac{1}{2}}\left(x-\left(x \cdot x^{\frac{1}{2}}\right)^{\frac{1}{2}}\right)dx=\\&=\int x^{-\frac{1}{2}}\left(x-x^{\frac{3}{4}}\right)dx=\\&=\int x^{\frac{1}{2}}dx-\int x^{\frac{1}{4}}dx=\frac{x^{\frac{3}{2}}}{\frac{3}{2}}-\frac{x^{\frac{5}{4}}}{\frac{5}{4}}+c=\boxed{\frac{2}{3}x^{\frac{3}{2}}-\frac{4}{5}x^{\frac{5}{4}}+c}\end{align*}
+
+\begin{align*}  \int \left(\frac{3x^2+2}{x}\right)dx =\int \frac{3x^2}{x}\,dx+\int \frac{2}{x}\,dx=3\int x \,dx+2\int \frac{1}{x}=\boxed{\frac{3}{2}x^2+2\ln|x|+c}\end{align*}
+
+\subsection{Integrale di funzioni esponenziali}
+\[\boxed{\int a^x dx = \frac{1}{\ln a} a^x + c}\]
+\[\boxed{\int e^x dx = e^x + c} \longleftarrow \text{Caso particolare, ricordare assonanza $\boxed{e^x \longrightarrow a^x}$}\]
+La prima si dimostra facilmente ricordando la derivata $\text{D}\left[a^x\right]=a^x \ln a$
+\[\text{D}\left[\frac{1}{\ln a} a^x \right]=\frac{1}{\ln a} a^x \ln a = a^x\]
+\subsubsection*{Esercizi di esempio}
+\[\int e^{x+2}dx=e^{x+2}+c\,\,\,\,\,\,\,\,\,\,\,\,\text{Si tenga conto che }\int f'(x) e^{f(x)}dx=e^{f(x)}+c\]
+\begin{align*}\int 4^{x-1} 2^{-x+2}\,dx&=\int 2^{2(x-1)} 2^{-x+2}\,dx=\\&=\int 2^{2x-2} 2^{-x+2}\,dx=\int 2^x dx=\boxed{\frac{1}{\ln 2} 2^x +c}\end{align*}
+
+\begin{align*}\int\left(2^{2x}-1\right)^2 4^x\,dx &=\int\left(2^{4x}+1-2\cdot2^{2x}\right)2^{2x}dx=\\&=2^{4x}2^{2x}\,dx+\int2^{2x}\,dx-2\int 2^{2x}2^{2x}\,dx=\\&=\int 2^{6x}dx+\int 2^{2x}\,dx-2\int 2^{4x}\,dx=\\&=\frac{1}{6}\int 6 \cdot 2^{6x}\,dx+\frac{1}{2}\int 2\cdot 2^{2x}\,dx-\frac{2}{4}\int 4\cdot 2^{4x}\,dx=\\&=\boxed{\frac{1}{6} \frac{1}{\ln 2} 2^{6x}+\frac{1}{2} \frac{1}{\ln 2} 2^{2x}-\frac{1}{2}\frac{1}{\ln 2}2^{4x}+c}\end{align*}
+\begin{align*}\int 8^x \cdot 2^{-3x+4}\,dx&=\int 2^{3x} \cdot 2^{-3x+4}\,dx=\\&=\int 2^4 dx =2^4 \int dx = 2^4(x+c)=\boxed{16x+c'} \end{align*}
+
+
+\subsection{Integrale delle funzioni goniometriche}
+\[\boxed{\int \sin x\, dx = -\cos x + c}\,\,\,\,\,\,\boxed{\int \cos x\, dx = \sin x + c} \longleftarrow \text{Non confondere derivate con integrali}\]
+\[\boxed{\int \frac{1}{\cos^2x}\,dx=\tan x +c}\,\,\,\,\,\,\boxed{\int \frac{1}{\sin^2x}\,dx=-\text{cot }x+c}\]
+Per ricordarsi gli ulimi due integrali tenere conto dei seguenti calcoli
+\[\text{D}[\tan x] = \text{D}\left[\frac{\sin x}{\cos x}\right] = \frac{\cos x \cos x- \sin x (-\sin x )}{\cos^2 x}=\frac{\cos^2x+\sin^2x}{\cos^2x}=\frac{1}{\cos^2x}\]
+\[\text{D}[\text{cot } x] = \text{D}\left[\frac{\cos x}{\sin x}\right]=\frac{-\sin x \sin x - \cos \cos x}{\sin^2x}=-\frac{\cos^2x+\sin^2x}{\sin^2x}=-\frac{1}{\sin^2x}\]
+
+\subsubsection*{Esercizi di esempio}
+\begin{align*}\int (\cos x - \sin x+ 2 e^x)dx&=\int \cos x\,dx-\int \sin x\,dx+2\int e^x\,dx=\\&=\sin x-(-\cos x)+2e^x+c=\boxed{\sin x+\cos x+2e^x+c}\end{align*}
+
+\subsection{Integrale di funzioni goniometriche inverse}
+\[\boxed{\int \frac{1}{\sqrt{1-x^2}}dx=\arcsin x + c}\,\,\,\,\,\,\boxed{\int \frac{1}{\sqrt{1-x^2}}dx=-\arccos x + c}\]
+poichè $\text{D}\left[\arcsin x \right]=\frac{1}{\sqrt{1-x^2}}$ e $\text{D}\left[\arccos x \right]=-\frac{1}{\sqrt{1-x^2}}$
+\[\boxed{\int \frac{1}{1+x^2}dx=\arctan x + c}\,\,\,\,\,\,\boxed{\int \frac{1}{1+x^2}dx=-\text{arccot} x + c}\]
+poichè $\text{D}\left[\arctan x \right]=\frac{1}{1+x^2}$ e $\text{D}\left[\text{arccot} x \right]=-\frac{1}{1+x^2}$
+
+\subsubsection*{Esercizi di esempio}
+
+\begin{align*} \int \left(\frac{1}{3\sqrt{1-x^2}}+\frac{7}{1+x^2}\right)dx &= \int \frac{1}{3\sqrt{1-x^2}}\,dx+\int \frac{7}{1+x^2}\,dx =  \frac{1}{3} \int \frac{1}{\sqrt{1-x^2}}\,dx+7\int \frac{1}{1+x^2}\,dx\\&=\boxed{\frac{1}{3}\arcsin x + 7 \arctan x + c} \end{align*}
+
+\subsection{Integrali di funzioni composte}
+Le formule precedenti, in presenza di funzioni composte, necessitano di un aggiustamento. In particolare, quello che dobbiamo avere è la funzione integranda moltiplicata per la derivata della funzione più interna nella composizione.
+\[\boxed{\int\frac{f'(x)}{f(x)}dx=\ln \left|f(x)\right|+c}\,\,\,\,\,\,\boxed{\int f'(x) e^{f(x)}dx=e^{f(x)}+c}\]
+\[\boxed{\int f'(x)a^{f(x)}dx=\frac{1}{\ln a} a^{f(x)}+c}\,\,\,\,\,\,\boxed{\int f'(x)\sin f(x) \,dx = - \cos f(x) + c}\]
+\[\boxed{\int f'(x)\cos f(x) \,dx =  \sin f(x) + c}\]
+\[\boxed{\int \frac{f'(x)}{\sqrt{1-{f(x)}^2}}dx=\arcsin f(x) + c}\,\,\,\,\,\,\boxed{\int \frac{1}{\sqrt{1-{f(x)}^2}}dx=-\arccos f(x)+ c}\]
+\[\boxed{\int \frac{f'(x)}{1+{f(x)}^2}dx=\arctan f(x) + c}\,\,\,\,\,\,\boxed{\int \frac{f'(x)}{1+{f(x)}^2}dx=-\text{arccot} f(x) + c}\]
+\subsubsection*{Esercizi di esempio}
+\begin{align*}\int 2x(x^2-1)^3\,dx=\frac{(x^2-1)^4}{4}+c\,\,\,\,\,\,\,\,\,\,\text{Considero $f=x^2-1$ ed $f'=2x$.}\end{align*}
+\begin{align*}\int \tan x\,dx&=\int \frac{\sin x}{\cos x}\,dx=-\int \frac{-\sin x}{\cos x}\,dx=-\ln | \cos x| +c\\&\text{Considero $f=\cos x$, ed $f'=-\sin x$, aggiungo i segni per ottenere $\int \frac{f'(x)}{f(x)}\,dx$}\end{align*}
+\begin{align*}\int \text{ctan } x\,dx&=\int \frac{\cos x}{\sin x}\,dx=\ln | \sin x| +c\\&\text{Considero $f=\sin x$, ed $f'=\cos x$, abbiamo fin da subito la forma $\int \frac{f'(x)}{f(x)}\,dx$}\end{align*}
+\begin{align*}\int e^{2x}\sqrt{5+e^{2x}}\,dx&=\frac{1}{2}\int 2e^{2x}(5+e^{2x})^{\frac{1}{2}}\,dx=\frac{1}{2}\frac{(5+e^{2x})^{\frac{3}{2}}}{\frac{3}{2}}+ c=(5+e^{2x})^{\frac{3}{2}}+c=\sqrt{\left(5+e^{2x}\right)^3}+c\\&\text{Considero $f=e^{2x}$, ed $f'=2e^{2x}$, aggiungo il $2$ per ottenere la forma $\int f'(x)e^{f(x)}\,dx$}\end{align*}
+\begin{align*}\int \frac{x^2+1}{(x^3+3x)^3}\,dx&=\frac{1}{3}\int \frac{3(x^2+1)}{(x^3+3x)^3}\,dx=\frac{1}{3}\int 3(x^2+1) (x^3+3x)^{-3}\,dx=\frac{1}{3}\frac{(x^3+3x)^{-2}}{-2}+c\\&\text{Considero $f=x^3+3x$, ed $f'=3x^2+3$, aggiungo $3$ per ottenere $\int f'(x) [f(x)]^\alpha\,dx$}\end{align*}
+\begin{align*}\int 15 \sqrt{6-5x}\,dx&=-\int -3 \cdot 5 (6-5x)^{\frac{1}{2}}\,dx=-3\int - 5 (6-5x)^{\frac{1}{2}}\,dx=-3 \frac{(6-5x)^{\frac{3}{2}}}{\frac{3}{2}}+c=\\&=-2(6-5x)^{\frac{3}{2}}+c=-2\sqrt{(6-5x)^3}+c\\&\text{Considero $f=-5x+6$ ed $f'=5$, scompongo $15$ per ottenere $\int f'(x) [f(x)]^\alpha\,dx$}\end{align*}
+
+\begin{align*} \int x \sqrt{1-x^2}\,dx&=-\frac{1}{2}\int -2x(1-x^2)^{\frac{1}{2}}\,dx=-\frac{1}{2} \frac{(1-x^2)^{\frac{3}{2}}}{\frac{3}{2}}+c=-\frac{1}{3}(1-x^2)^{\frac{3}{2}}+c=-\frac{1}{3}\sqrt{(1-x^2)^3}+c\\&\text{Considero $f=-x^2+1$ ed $f'=-2x$, aggiungo $-2$ per ottenere $\int f'(x) [f(x)]^\alpha\,dx$}\end{align*}
+
+\begin{align*} \int \frac{x}{\sqrt{1-x^2}}\,dx&=\int \frac{x}{(1-x^2)^{\frac{1}{2}}}\,dx=\int x (1-x^2)^{-\frac{1}{2}}\,dx=-\frac{1}{2} \int -2x (1-x^2)^{-\frac{1}{2}}\,dx\\&=-\frac{1}{2} \frac{(1-x^2)^{\frac{1}{2}}}{\frac{1}{2}}+c=-(1-x^2)^{\frac{1}{2}}+c=-\sqrt{1-x^2}+c\\&\text{Considero $f=1-x^2$ ed $f'=-2x$, aggiungo $-2$ per ottenere $\int f'(x) [f(x)]^\alpha\,dx$}\end{align*}
+
+\begin{align*} \int \frac{1}{e^x+e^{-x}}\,dx&=\int \frac{1}{\frac{e^{2x}+1}{e^x}}\,dx=\int \frac{e^x}{e^{2x}+1}\,dx=\arctan e^x + c\\&\text{Considero $f=e^x$ ed $f'=e^x$. Abbiamo la forma $\int \frac{f'(x)}{[f(x)]^2+1}\,dx$}\end{align*}
+
+\section{Integrazione per sostituzione}
+L'integrazione per sostituzione si basa sulla regola di derivazione di una funzione composta
+\[\text{D}\left[f(g(x))\right]=f'(g(x))g'(x)\]
+Ho il seguente integrale
+\[F=\int_a^b f(x)\,dx\]
+dove $F$ è una primitiva ($F'=f$). Sappiamo che
+\[f:[a,b] \to \mathbb{R}, f\in C\left([a,b]\right)\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\gamma: [\alpha,\beta] \to [a,b], \gamma \in C^{1}\left([a,b]\right)\]
+Svolgiamo i seguenti calcoli
+\[\int_\alpha^\beta \frac{d}{dt}F(\gamma(t))\,dt=\int_\alpha^\beta F'(\gamma(t))-\gamma'(t)\,dt=\int_\alpha^\beta f(\gamma(t))\gamma'(t)\,dt\]
+Troveremo anche che
+\[\int_\alpha^\beta \frac{d}{dt}F(\gamma(t))\,dt=F(\gamma(\beta))-F(\gamma(a))=F(b)-F(a)=\int_a^b f(x)\,dx\]
+ponendo $\gamma(\beta)=b$ e $\gamma(\alpha)=a$. Il risultato finale di questi calcoli è la \textbf{formula di integrazione per sostituzione}:
+\large
+\[\boxed{\int_a^b f(x)\,dx=\int_\alpha^\beta f(\gamma(t))\gamma'(t)\,dt}\]
+\normalsize
+Generalmente poniamo $x=\gamma(t)$, quindi $dx=\gamma'(t)\,dt$. Cosa utile per ricordare il procedimento, ma illegale per un matematico, è trattare la notazione delle derivate, $\frac{dx}{dt}$, come una frazione. Ricordarsi degli estremi in caso di integrali definiti. 
+
+\subsection*{Esercizi di esempio}
+\begin{align*} \int \frac{6}{\sqrt{8-3x}}\,dx&=\int \frac{6}{t}(-\frac{2}{3}t)\,dt=-\frac{2}{3} 6 \int dt =-4t+c=-4\sqrt{8-3x}+c\\&t=\sqrt{8-3x} \longrightarrow t^2=8-3x  \longrightarrow \boxed{x=-\frac{1}{3}t^2+\frac{8}{3}} \longrightarrow \frac{dx}{dt}=-\frac{2}{3}t \longrightarrow \boxed{dx=-\frac{2}{3}t\,dt}\end{align*}
+\begin{align*}\int \frac{1}{\sqrt[3]{1-x}}\,dx&=\int \frac{1}{t}-3t^2\,dt=-3\int t\,dt=-3\frac{t^2}{2}+c=-\frac{3}{2}(\sqrt[3]{1-x})^2+c=-\frac{3}{2}(1-x)^{\frac{2}{3}}+c\\&t=\sqrt[3]{1-x} \longrightarrow t^3 = 1-x \longrightarrow \boxed{x=1-t^3}\longrightarrow \frac{dx}{dt}=-3t^2 \longrightarrow \boxed{dx = -3t^2\,dt}\end{align*}
+\begin{align*} \int \frac{1}{2\sqrt{x}(1+x)}\,dx&=\int \frac{1}{2t(1+t^2)}2t\,dt=\int \frac{1}{1+t^2}\,dt=\arctan t + c = \arctan \sqrt{x} + c\\&t=\sqrt{x} \longrightarrow \boxed{t^2 = x} \longrightarrow \frac{dx}{dt}=2t \longrightarrow \boxed{dx=2t\,dt}\end{align*}
+
+\begin{align*}\int \frac{e^x}{e^x-e^{-x}}\,dx&=\int \frac{e^{2x}}{e^{2x}-1}\,dx=\int \frac{t}{t-1}\frac{1}{2t}\,dt=\frac{1}{2}\int \frac{1}{t-1}\,dt=\frac{1}{2}\ln |t-1|+c=\frac{1}{2}\ln|e^{2x}-1|+c\\&t=e^{2x} \longrightarrow \ln t = \ln e\cdot 2x \longrightarrow \boxed{x=\frac{1}{2} \ln t} \longrightarrow \frac{dx}{dt}=\frac{1}{2} \frac{1}{t} \longrightarrow \boxed{dx=\frac{1}{2t}dt}\end{align*}
+
+\begin{align*} \int \frac{x}{\sqrt{2x+1}}\,dx&=\int \frac{\frac{1}{2}t^2-\frac{1}{2}}{t}t\,dt=\frac{1}{2} \int t^2\,dt-\frac{1}{2}\int dt=\frac{1}{2}\frac{t^3}{3}-\frac{1}{2}t+c=\frac{1}{2}\frac{(\sqrt{2x+1})^3}{3}-\frac{1}{2}\sqrt{2x+1}+c\\&t=\sqrt{2x+1} \longrightarrow \boxed{x = \frac{1}{2}t^2-\frac{1}{2}} \longrightarrow \frac{dx}{dt}=t \longrightarrow \boxed{dx=t\,dt}\end{align*}
+
+\begin{align*} \int \frac{1}{x-\sqrt{x}}\,dx&=\int \frac{1}{t^2-t}2t\,dt=2 \int \frac{1}{t-1}\,dt=2 \ln | t-1| +c = 2\ln |\sqrt{x}-1|+c\\&t=\sqrt{x} \longrightarrow \boxed{t^2=x} \longrightarrow \frac{dx}{dt}=2t \longrightarrow \boxed{dx = 2t\,dt}\end{align*}
+
+\begin{align*} \int \frac{4\sqrt{x}}{1+x}\,dx&=\int\frac{4t}{1+t^2}2t\,dt=8 \int \frac{t^2+1-1}{1+t^2}\,dt=8\left[ \int dt - \int \frac{1}{1+t^2}\,dt\right]=\\&=8t-8\arctan t + c=8\sqrt{x}-8\arctan \sqrt{x}+c\\&t=\sqrt{x} \longrightarrow \boxed{t^2=x} \longrightarrow \frac{dx}{dt}=2t\longrightarrow \boxed{dx = 2t\,dt}\end{align*}
+
+
+
+\section{Integrazione per parti}
+L'integrazione per parti si basa sulla regola di derivazione del prodotto di due funzioni
+\[\text{D}\left[f(x)g(x)\right]=f'(x)g(x)+f(x)g'(x)\]
+Integriamo
+\[\int_a^b \frac{d}{dx}\left(f(x)g(x)\right)\,dx=f(b)g(b)-f(a)g(a)=fg{|}_a^b\]
+\[fg{|}_a^b=\int_a^b \left(f'(x)g(x)+f(x)g'(x)\right)\,dx\]
+Spostando alcuni elementi otteniamo la \textbf{formula di integrazione per parti}
+\large
+\[\boxed{\int_a^b\left(f'(x)g(x)\right)dx=fg{|}_a^b-\int_a^b\left(f(x)g'(x)\right)\,dx}\]
+\normalsize
+\paragraph{Procedimento}
+Nell'integrazione per parti dobbiamo scegliere due componenti della funzione integranda:
+\begin{itemize}
+	\item $f(x)$, detto \emph{fattore finito}
+	\item $g'(x)$, detto \emph{fattore differenziale}
+\end{itemize}
+Dobbiamo scegliere gli elementi in modo tale da ottenere un integrale (sottraendo della differenza ottenuta con l'integrazione per parti) facile da calcolare.
+\subsection*{Esercizi di esempio}
+\begin{align*}\int x \ln x \,dx&=\frac{x^2}{2} \ln x - \int \frac{1}{x} \frac{x^2}{2}\,dx=\frac{x^2}{2} \ln x-\frac{1}{2}\int x\,dx=\frac{x^2}{2} \ln x-\frac{1}{2}\frac{x^2}{2}+c=\frac{x^2}{2}\left(\ln x- \frac{1}{2}\right)+c\\&\text{Fattore finito $f(x)=\ln x$, fattore differenziale $g'(x)=x$}\end{align*}
+
+\begin{align*}\int x \sin x \, dx &= -x\cos x + \int \cos x \,dx=-x\cos x+\sin x + c\\&\text{Fattore finito $f(x)=x$, fattore differenziale $g'(x)=\sin x$.}\end{align*}
+
+\begin{align*} \int \ln x \, dx &= \int 1 \cdot \ln x \, dx = x \ln x - \int \frac{1}{x}x \, dx=x \ln x - x + c\\&\text{Fattore finito $f(x)=\ln x$, fattore differenziale $g'(x)=1$}\end{align*}
+
+\begin{align*} \int x \cdot 2^x \ln 2\, dx &= x \cdot 2^x - \int 2^x\,dx=x \cdot 2^x - \frac{1}{\ln 2}2^x+c=2^x\left(x-\frac{1}{\ln 2}\right)+c\\&\text{Fattore finito $f(x)=x$, fattore differenziale $g'(x)=2^x \ln 2$}\end{align*}
+
+\begin{align*}  \int \frac{\ln x}{2\sqrt{x}}\,dx&=\int \ln x \cdot (2\sqrt{x})^{-1}\,dx=2^{-1} \int \ln x \cdot x^{-\frac{1}{2}}\, dx=\\&=\frac{1}{2}\left[\ln x \frac{x^{\frac{1}{2}}}{\frac{1}{2}}- \int \frac{1}{x} \frac{x^{\frac{1}{2}}}{\frac{1}{2}}\,dx	\right] =\frac{1}{2}\left[2\ln x \cdot x^{\frac{1}{2}} - 2\int  x^{\frac{1}{2}}\,dx	\right]=\ln x \cdot  x^{\frac{1}{2}}-2 x^{\frac{1}{2}} + c=\sqrt{x}\left(\ln x - 2\right)\\&\text{Fattore finito $f(x)=\ln x$, fattore differenziale $g'(x)=x^{-\frac{1}{2}}$}\end{align*}
+\clearpage
+
+\section{Integrazione di funzioni razionali}
+Supponiamo di voler calcolare un integrale simile al seguente
+\[\int\frac{A(x)}{B(x)}\,dx\]
+cioè l'integrale di un rapporto tra due polinomi. Per capire come procedere verifichiamo $\deg A$ e $\deg B$, rispettivamente grado del polinomio $A$ e grado del polinomio $B$. 
+\subsection{Denominatore con grado maggiore}
+\[\boxed{\deg A < \deg B}\]
+Consideriamo una serie di casi: alcuni possono essere risolti in modo veloce, altri richiedono un procedimento un po' più lungo.
+\subsubsection{Caso particolare: numeratore derivata del denominatore}
+Il caso è semplice al di la del grado del denominatore. Se noi abbiamo una cosa del tipo $\int\frac{A(x)}{B(x)}\,dx$, dove $A(x)=B'(x)$, possiamo ricondurci al seguente integrale immediato
+\[\int\frac{f'(x)}{f(x)}\,dx=\ln|f(x)|+c\]
+\paragraph{Esempi}
+\begin{align*} \int \frac{6x-2}{3x^2-2x-1}\,dx=\ln | 3x^2-2x-1|+c\\\text{Poichè $f(x)=3x^2-2x-1$ ed $f'(x)=6x-2$}\end{align*}
+\begin{align*}\int\frac{4x+12}{x^2+6x}\,dx&=2\int \frac{2x+6}{x^2+6x}\,dx=2\ln |x^2+6x|+c=\ln(x^2+6x)^2+c\\&\text{Poichè $f(x)=x^2+6x$ ed $f'(x)=2x+6$.}\end{align*}
+\begin{align*}\int \frac{x^2-1}{x^3-3x+1}\,dx&=\frac{1}{3}\int \frac{3x^2-3}{x^3-3x+1}\,dx=\frac{1}{3}\ln|x^3-3x+1|+c\\&\text{Poichè $f(x)=x^3-3x+1$ ed $f'(x)=3x^2-3$.}\end{align*}
+\begin{align*}\int \frac{3x+3}{x^2+2x+9}\,dx&=\frac{3}{2}\int \frac{\frac{2}{3}(3x+3)}{x^2+2x+9}\,dx=\frac{3}{2}\ln|x^2+2x+9|+c\\&\text{Poichè $f(x)=x^2+2x+9$ ed $f'(x)=2x+2$.} \end{align*}
+\subsubsection{Caso particolare: denominatore di primo grado e numeratore di grado zero}
+Anche questo caso è molto semplice. Se il denominatore è di primo grado allora la sua derivata sarà una costante. Il numeratore è una costante ($\deg A =0$). Segue che in caso di derivata $\neq 1$ del denominatore  basteranno semplici manipolazioni numeriche per ricondurci all'integrale immediato già visto prima...
+\[\int\frac{f'(x)}{f(x)}\,dx=\ln|f(x)|+c\]
+\paragraph{Esempio}
+\begin{align*}\int \frac{1}{3x-2}\,dx=\frac{1}{3}\int \frac{3}{3x-2}\,dx=\frac{1}{3}\ln|3x-2|+c\\\text{Poichè $f(x)=3x-2$ ed $f'(x)=3$}\end{align*}
+\begin{align*}\int \frac{5}{2x-3}\,dx&=\frac{5}{2}\int \frac{2}{2x-3}\,dx=\frac{5}{2} \ln|2x-3|+c\\&\text{Poichè $f(x)=2x-3$ ed $f'(x)=2$.}\end{align*}
+\subsubsection{Denominatore di secondo grado}
+Vogliamo calcolare un integrale simile al seguente
+\[\int\frac{px+q}{ax^2+bx+c}\,dx\]
+Prendiamo in studio il denominatore e calcoliamo il discriminante $\Delta$. In base al suo valore decidiamo come muoverci.
+\paragraph{Caso $\Delta > 0$} 
+\begin{enumerate}
+	\item Scompongo il denominatore individuando le soluzioni
+	\[ax^2+bx+c=a(x-x_1)(x-x_1)\]
+	\item Scrivo la frazione data come somma di frazioni con denominatore di primo grado
+	\[\frac{px+q}{ax^2+bx+c}=\frac{A}{a(x-x_1)}+\frac{B}{x-x_2}\]
+	\item Calcolo la somma delle due frazioni al secondo membro
+	\[\frac{A}{a(x-x_1)}+\frac{B}{x-x_2}=\frac{A(x-x_2)+B\left(a(x-x_1)\right)}{a(x-x_1)(x-x_2)}=\frac{x(A+Ba)-Ax_2-Bax_1}{a(x-x_1)(x-x_2)}\]
+	cioè 
+	\[\frac{px+q}{ax^2+bx+c}=\frac{x(A+Ba)-Ax_2-Bax_1}{a(x-x_1)(x-x_2)}\]
+	\item Sulla base dell'ultima uguaglianza creo un sistema di equazioni e individuo $A$ e $B$
+	\[\begin{cases}p=A+Ba\\q=-Ax_2-Bax_1\end{cases}\]
+	\item Risolvo l'integrale utilizzando $A$ e $B$ trovati prima
+	\[\int\left(\frac{A}{a(x-x_1)}+\frac{B}{x-x_2}\right)dx\]
+\end{enumerate}
+\paragraph{Esempi}
+\begin{align*}\int \frac{6}{x^2-9}\,dx&=\int \frac{6}{(x-3)(x+3)}\,dx=\int \frac{A(x+3)+B(x-3)}{(x-3)(x+3)}\,dx=\int 	\frac{(A+B)x+3A-3B}{(x-3)(x+3)}\,dx=\\&=\int \frac{A}{x-3}\,dx+\int \frac{B}{x+3}\,dx=\int \frac{1}{x-3}\,dx-\int \frac{1}{x+3}\,dx=\\&=\ln|x-3|-\ln|x+3|+c=\ln\left|\frac{x-3}{x+3}\right|+c\\&\text{Poichè }\begin{cases}A+B=0\\3A-3B=6\end{cases} \longrightarrow A=1, B=-1\end{align*}
+
+\begin{align*}\int \frac{1}{2x-x^2}\,dx&=-\int \frac{1}{(x-2)x}\,dx=\int \frac{A}{x-2}\,dx+\int \frac{B}{x}\,dx=-\int \frac{Ax+B(x-2)}{(x-2)x}\,dx=\\&=-\int \frac{x(A+B)-2B}{(x-2)x}\,dx=-\left[\int \frac{1/2}{x-2}\,dx-\int \frac{1/2}{x}\,dx\right]=-\frac{1}{2}\int \frac{-1}{2-x}\,dx+\frac{1}{2}\int \frac{1}{x}\,dx=\\&=-\frac{1}{2}\ln|2-x|+\frac{1}{2}\ln|x|+c=\frac{1}{2}\ln\left|\frac{x}{2-x}\right|+c\\&\text{Poichè }\begin{cases}A+B=0\\-2B=1\end{cases} \longrightarrow A=\frac{1}{2}, B=-\frac{1}{2}\end{align*}
+
+\paragraph{Caso $\Delta = 0$}
+\begin{enumerate}
+	\item Scompongo il denominatore individuando la soluzione
+	\[ax^2+bx+c=a(x-x_1)^2\]
+	\item Scrivo la frazione data come somma di frazioni
+	\[\frac{px+q}{ax^2+bx+c}=\frac{A}{a(x-x_1)}+\frac{B}{(x-x_1)^2}\]
+	\item Calcolo la somma delle due frazioni al secondo membro
+	\[\frac{A}{a(x-x_1)}+\frac{B}{(x-x_1)^2}=\frac{A(x-x_1)+Ba}{a(x-x_1)^2}=\frac{Ax-Ax_1+Ba}{a(x-x_1)^2}\]
+	cioè 
+	\[\frac{px+q}{ax^2+bx+c}=\frac{Ax-Ax_1+Ba}{a(x-x_1)^2}\]
+	\item Sulla base dell'ultima uguaglianza creo un sistema di equazioni e individuo $A$ e $B$
+	\[\begin{cases}p=A\\q=-Ax_1+Ba\end{cases}\]
+	\item Risolvo l'integrale utilizzando $A$ e $B$ trovati prima
+	\[\int\left(\frac{A}{a(x-x_1)}+\frac{B}{(x-x_1)^2}\right)dx\]
+\end{enumerate}
+\paragraph{Esempi}
+\begin{align*}
+	\int \frac{x}{x^2-4x+4}\,dx&=\int \frac{x}{(x-2)^2}\,dx=\int \left(\frac{A}{x-2}+\frac{B}{(x-2)^2}\right)dx=\int \frac{A(x-2)+B}{(x-2)^2}\,dx=\\&=\int \frac{A(x)-2A+B}{(x-2)^2}\,dx=\int \frac{1}{x-2}\,dx+2\int \frac{1}{(x-2)^2}\,dx=\ln|x-2|-\frac{2}{x-2}+c\\&\text{Poichè }\begin{cases}A=1\\-2A+B=0\end{cases}\longrightarrow A=1, B=2\end{align*}
+\paragraph{Caso $\Delta < 0$ e $\deg A =0$} 
+\begin{itemize}
+	\item L'obiettivo dei seguenti calcoli è ricondursi al seguente integrale immediato
+	\[\int\frac{f'(x)}{\left[f(x)\right]^2+1}\,dx\]
+	\item Il discriminante $\Delta$ è negativo, dunque dobbiamo far riferimento all'insieme $\mathbb{C}$. Scriviamo le soluzioni
+	\[a(x-p+iq)(x-p-iq)=a[(x-p)+iq][(x-p)-iq]=a[(x-p)^2+q^2]\]
+	$a$ sarà portato fuori dall'integrale
+	\item L'integrale da calcolare è il seguente
+	\[\frac{1}{a}\int\frac{1}{q^2+(x-p)^2}\,dx\]
+	raccolgo rispetto a $q^2$
+	\[\frac{1}{a}\int\frac{1}{q^2\left[1+\frac{(x-p)^2}{q^2}\right]}\,dx=\frac{1}{q^2a}\int \frac{1}{1+\left(\frac{x-p}{q}\right)^2}\,dx\]
+	Integro per sostituzione
+	\[t=\frac{x-p}{q}=\frac{x}{q}-\frac{p}{q} \longrightarrow  \boxed{x= qt+p} \longrightarrow \frac{dx}{dt}=q \longrightarrow \boxed{dx = q dt}\]
+	\[\frac{1}{q^2a}\int \frac{1}{1+\left(\frac{x-p}{q}\right)^2}\,dx=\frac{1}{q^2a}\int \frac{1}{1+\left(t\right)^2}\,q\,dt=\frac{1}{qa}\int \frac{1}{1+t^2}\,dt=\boxed{\frac{1}{qa}\arctan\left(\frac{x-p}{q}\right)}\]
+\end{itemize}
+\paragraph{Esempi}
+\begin{align*} \int \frac{1}{x^2+2x+2}\,dx=\int \frac{1}{x^2+2x+2-1+1}\,dx=\int \frac{1}{(x+1)^2+1}\,dx=\arctan(x+1)+c \end{align*}
+\begin{align*} \int \frac{-1}{4x^2+4x+5}\,dx&=-\int \frac{1}{(2x+1)^2+4}\,dx=-\int \frac{1}{4\left(\frac{(2x+1)^2}{4}+1\right)}\,dx=\\&=-\frac{1}{4}\int \frac{1}{\left(\frac{2x+1}{2}\right)^2+1}\,dx=-\frac{1}{4}\arctan\left(\frac{2x+1}{2}\right)+c\end{align*}
+\paragraph{Caso $\Delta < 0$ e $\deg A > 0$} 
+\begin{itemize}
+	\item Se $\deg A > 0$ significa che avremo un polinomio di primo grado. Se il denominatore è di secondo grado allora è possibile manipolare il numeratore in modo tale da ottenere la derivata. Il risultato sarà la scrittura dell'integrale come somma di due integrali
+	\[r\int\frac{2ax+b}{ax^2+bc+c}\,dx+s\int\frac{1}{ax^2+bc+c}\,dx\]
+	\item Risolvo il primo integrale in modo agile
+	\[\int \frac{f'(x)}{f(x)}\,dx=\ln|f(x)|+c\]
+	per quanto riguarda il secondo, invece, utilizzo il metodo visto prima con $\Delta < 0, \deg A =0$.
+\end{itemize}
+\paragraph{Esempi}
+\begin{align*} \int \frac{x+2}{4x^2+9}\,dx&=\frac{1}{8}\int \frac{8x}{4x^2+9}\,dx+\int \frac{2}{4x^2+9}\,dx=\frac{1}{8} \int \frac{8x}{4x^2+9}\,dx+2\int \frac{1}{4x^2+9}\,dx=\\&=\frac{1}{8} \int \frac{8x}{4x^2+9}\,dx+2\frac{1}{9}\int \frac{1}{\left(\frac{2x}{3}\right)^2+1}\,dx=\frac{1}{8}\ln|4x^2+9|+\frac{2}{9}\arctan \left(\frac{2x}{3}\right)+c \end{align*}
+
+\subsection{Numeratore con grado maggiore o uguale rispetto al denominatore}
+\[\boxed{\deg A \geq \deg B}\]
+Se la condizione è rispettata è possibile svolgere una divisione tra numeratore e denominatore: il risultato è un quoziente $Q$ e un resto $R$, che può essere nullo. Segue la seguente uguaglianza
+\[\boxed{A=B \cdot Q+R \longrightarrow \frac{A}{B} = Q+ \frac{R}{B}}\]
+dunque
+\[\boxed{\int \frac{A(x)}{B(x)}\,dx=\int Q(x)\,dx+\int\frac{R(x)}{B(x)}\,dx}\]
+L'integrale del quoziente è facilmente calcolabile, poichè un semplice polinomio. Il secondo integrale, rapporto tra resto e quoziente, si risolve con le metodologie introdotte nelle pagine precedenti: oserviamo che 
+\[\boxed{0 \leq \deg R < \deg Q}\]
+cioè il grado del numeratore (il resto) è minore del grado del denominatore (il quoziente). 
+\paragraph{Esempi}
+\begin{align*} \int \frac{x^2+1}{x+1}\,dx=\int(x-1)\,dx+\int \frac{2}{x+1}\,dx=\frac{x^2}{2}-x+2\ln|x+1|+c\end{align*}
+\begin{align*}\int \frac{2x^2-3x+4}{2x-3}\,dx=\int x\,dx + 4 \int \frac{1}{2x-3}\,dx=\int x\, dx + \frac{4}{2}\int \frac{2}{2x-3}\,dx=\frac{x^2}{2}+2\ln|2x-3|+c\end{align*}
+\begin{align*} \int \frac{x^3+4x+4}{x^2+4}\,dx&=\int x\,dx+4\int\frac{1}{x^2+4}\,dx=\int x\,dx+4\int \frac{1}{4\left[\left(\frac{x}{2}\right)^2+1\right]}=\\&=\int x\,dx+2\int \frac{1/2}{\left[\left(\frac{x}{2}\right)^2+1\right]}=\frac{x^2}{2}+2\arctan\left(\frac{x}{2}\right)+c\end{align*}
+\subsubsection{Caso particolare: numeratore e denominatore dello stesso grado}
+Se abbiamo un rapporto tra i polinomi $A$ e $B$ dove $\deg A = \deg B$ allora possiamo risolvere manipolando il numeratore. Vogliamo ottenere come numeratore la somma tra una costante e un multiplo del polinomio $B$. 
+\[\int \frac{A(x)}{B(x)}=\int \frac{c B(x) + k}{B(x)}=c\int dx + k\int\frac{1}{B(x)}\,dx\]
+\paragraph{Esempi}
+\begin{align*}\int \frac{2x-5}{x+4}\,dx&=\int \frac{3x-5+13-13}{x+4}\,dx=\int\frac{2(x+4)}{x+4}\,dx-13\int \frac{1}{x+4}\,dx=\\&=2\int dx -13 \frac{1}{x+4}\,dx=2x-13\ln|x+4|+c\end{align*}
+\begin{align*}\int \frac{4x+1}{2x-1}\,dx&=\int \frac{4x+1-3+3}{2x-1}\,dx=\int \frac{2(2x-1)+3}{2x-1}\,dx=\\&=2\int dx + \frac{3}{2}\int \frac{2}{2x-1}\,dx=2x+\frac{3}{2}\ln|2x-1|+c\end{align*}
+
+
+%\includepdf[pagecommand={\thispagestyle{plain}},addtotoc={1,section,1,{Integrazione di funzioni razionali},s2},pages=-]{pdf/berselli2}
+%\includepdf[pagecommand={\thispagestyle{plain}},addtotoc={1,section,1,{Teorema del confronto e del confronto asintotico},s2},pages=-]{pdf/berselli3}
+
+\end{document}
