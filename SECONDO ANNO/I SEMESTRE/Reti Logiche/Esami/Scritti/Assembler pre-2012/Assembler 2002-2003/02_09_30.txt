@@ -1,0 +1,13 @@
+=======================================================================
+Scrivere un programma che si comporta come segue:
+
+1)   legge con eco da tastiera una stringa di al più 20 cifre ([0-9])
+     terminata da un ritorno carrello;
+2.a) se la stringa e` vuota, termina; altrimenti
+2.b) riordina le cifre nella stringa in ordine crescente;
+3)   stampa la stringa risultante e torna al punto 1.
+
+Esempio
+135763485710
+011334556778
+

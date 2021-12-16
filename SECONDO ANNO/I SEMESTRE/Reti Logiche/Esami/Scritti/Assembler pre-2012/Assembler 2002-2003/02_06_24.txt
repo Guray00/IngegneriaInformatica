@@ -1,0 +1,16 @@
+=======================================================================
+Scrivere un programma che esegue ciclicamente le seguenti azioni:
+
+1) legge con eco da tastiera una stringa di caratteri terminata da un ritorno carrello;
+2) conta il numero di occorrenze delle stringhe 'pr' e 'ti' nella stringa;
+3) per ciascuna delle stringhe cercate, stampa il numero di occorrenze;
+4) stampa la stringa sostituendo ad ogni occorrenza individuata la stringa '<>'.
+
+Il programma termina quando viene inserita la stringa STOP.
+Esempio.
+
+prova pratica di reti logiche
+pr 2
+ti 2
+<>ova <>a<>ca di re<> logiche
+

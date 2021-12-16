@@ -1,0 +1,19 @@
+=======================================================================
+Scrivere un programma che esegue ciclicamente le seguenti azioni:
+
+1) legge con eco da tastiera una stringa di caratteri terminata da un ritorno carrello;
+2) sostituisce tutte le vocali nella stringa con il carattere #;
+3) per ciascuna vocale, stampa il numero di vocali rimosse dalla stringa;
+4) stampa la stringa senza vocali.
+
+Il programma termina quando viene inserita la stringa STOP.
+Esempio.
+
+Prova pratica di reti logiche
+a 3
+e 2
+i 4
+o 2
+u 0
+Pr#v# pr#t#c# d# r#t# l#g#ch#
+

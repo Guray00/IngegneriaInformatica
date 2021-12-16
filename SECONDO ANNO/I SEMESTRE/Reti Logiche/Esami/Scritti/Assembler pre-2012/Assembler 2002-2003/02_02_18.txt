@@ -1,0 +1,12 @@
+---------------------------------------------------------------------------
+
+Scrivere un programma che si comporta come segue:
+
+1. legge con eco da tastiera una riga terminata da Ritorno Carrello e di
+   lunghezza massima 40 caratteri;
+
+2. conta le occorrenze di ciascuna CIFRA DECIMALE che compare nella riga;
+
+3. per ogni cifra che compare almeno una volta, stampa su una riga sepa-
+   rata la cifra seguita dal numero di occorrenze, quindi torna al passo 1.
+

@@ -1,0 +1,8 @@
+Scrivere un programma che si comporta come segue:
+
+1. legge con eco da tastiera una riga terminata da Ritorno Carrello e di lunghezza
+   massima 40 caratteri;
+2. per ciascuna CIFRA ESADECIMALE che compare almeno una volta nella riga, stampa su una
+   riga separata la cifra seguita dal numero di volte che compare;
+3. se nella riga non ci sono cifre esadecimali termina, altrimenti torna al passo 1.
+

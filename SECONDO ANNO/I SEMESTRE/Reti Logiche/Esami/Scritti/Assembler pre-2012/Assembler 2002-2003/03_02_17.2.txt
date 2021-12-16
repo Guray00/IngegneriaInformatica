@@ -1,0 +1,14 @@
+Scrivere un programma che si comporta come segue:
+
+1. legge con eco da tastiera, facendo opportuni controlli, una stringa di ESATTAMENTE
+   dieci caratteri alfabetici maiuscoli;
+2. se la stringa non è vuota, stampa su una nuova riga una stringa ottenuta dalla prece-
+   dente scambiando ogni carattere in posizione dispari con il successivo in posizione
+   pari, e cambiando tutte le vocali da maiuscolo a minuscolo, quindi TORNA AL PUNTO 1.
+   Altrimenti,
+3. se la stringa è vuota, termina.
+
+Esempio:
+ABCDEFGHIL
+BaDCFeHGLi
+

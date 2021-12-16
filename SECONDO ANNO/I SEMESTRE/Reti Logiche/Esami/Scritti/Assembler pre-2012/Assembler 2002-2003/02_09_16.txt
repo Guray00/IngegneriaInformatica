@@ -1,0 +1,16 @@
+=======================================================================
+Scrivere un programma che si comporta come segue:
+
+1) legge con eco da tastiera una stringa di caratteri terminata da un
+   ritorno carrello;
+2) sostituisce nella stringa ogni sequenza di caratteri uguali con il
+   carattere stesso;
+3) stampa la stringa risultante.
+4) stampa il numero di sostituzioni effettuate;
+
+Il programma termina quando viene inserita la stringa STOP.
+
+Esempio
+aaaghii     ffsdi uu
+aghi fsdi u
+

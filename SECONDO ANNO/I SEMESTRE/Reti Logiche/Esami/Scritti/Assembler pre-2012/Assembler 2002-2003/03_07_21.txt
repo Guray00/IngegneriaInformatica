@@ -1,0 +1,16 @@
+Scrivere un programma che esegue ciclicamente le seguenti azioni:
+
+1) legge con eco da tastiera una stringa di caratteri terminata da un ritorno carrello.
+   Il programma deve effettuare gli opportuni controlli in modo da accettare SOLTANTO
+   le codifiche ASCII di caratteri alfabetici minuscoli;
+2) conta il numero di occorrenze di ciascuno dei caratteri presenti nella stringa;
+3) per ciascuno dei caratteri il cui numero di occorrenze è maggiore di due, stampa il
+   carattere seguito dal numero di occorrenze;
+
+Il programma termina quando viene inserita una stringa vuota.
+
+Esempio.
+aabcdbcdebbc
+b 4
+c 3
+

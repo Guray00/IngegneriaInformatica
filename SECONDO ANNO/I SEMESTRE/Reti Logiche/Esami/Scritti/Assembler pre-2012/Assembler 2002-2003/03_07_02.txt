@@ -1,0 +1,23 @@
+Scrivere un programma che si comporta come segue:
+
+1. stampa sullo schermo la stringa '0123456789'
+2. legge un carattere da tastiera (SENZA ECO)
+3. esegue le seguenti operazioni in dipendenza del carattere letto
+ 3.1 se il carattere è 's', stampa su una nuova riga l'ultima stringa stampata
+     ruotata di una posizione a sinistra, quindi torna al punto 2;
+ 3.2 se il carattere è 'd', stampa su una nuova riga l'ultima stringa stampata
+     ruotata di una posizione a destra, quindi torna al punto 2;
+ 3.3 se il carattere è 'q', termina;
+ 3.4 altrimenti, ignora il carattere e torna al punto 2.
+
+Esempio. Assumendo che la sequenza di caratteri battuti alla tastiera sia
+   sssdsq
+sullo schermo deve comparire la seguente sequenza di righe:
+
+0123456789
+1234567890
+2345678901
+3456789012
+2345678901
+3456789012
+

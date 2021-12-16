@@ -1,0 +1,14 @@
+Scrivere un programma che si comporta come segue:
+
+1. legge con eco da tastiera una riga terminata da Ritorno Carrello e di lunghezza
+   massima 40 caratteri;
+2. se la stringa non è vuota, stampa su una nuova riga una stringa ottenuta da quella
+   letta sostituendo:
+     a) le cifre esadecimali {0,1,2,3,4,5,6,7} con il carattere '#', e
+     b) le cifre esadecimali {8,9,a,b,c,d,e,f} con il carattere '*'.
+   Torna quindi al punto 1;
+3. se la stringa è vuota, termina.
+
+Esempio:
+asd34ghtk59urtsaafsd iyrt
+*s*##ghtk#*urts**fs* iyrt

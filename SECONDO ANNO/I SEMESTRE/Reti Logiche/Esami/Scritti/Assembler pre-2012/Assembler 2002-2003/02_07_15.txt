@@ -1,0 +1,17 @@
+=======================================================================
+Scrivere un programma che si comporta come segue:
+1. legge con eco da tastiera le rappresentazioni A di un intero a, e B
+   di un intero b, in complemento alla radice su 2 cifre in base dieci.
+   Il programma deve fare i necessari controlli in modo da accettare
+   SOLTANTO le codifiche ASCII di ESATTAMENTE 2 cifre decimali;
+2. se l'intero c = a + b è rappresentabile in complemento alla radice
+   su 2 cifre in base dieci, stampa, su una riga separata, la rappre-
+   sentazione C di c, e ritorna al passo 1. Altrimenti, termina.
+Esempio:
+Immettere la rappresentazione di a:
+74
+Immettere la rappresentazione di b:
+90
+La rappresentazione di a+b e':
+64
+

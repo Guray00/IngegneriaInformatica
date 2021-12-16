@@ -1,0 +1,13 @@
+=========================================================================
+
+Scrivere un programma che:
+1. legge con eco da tastiera una stringa di max 20 caratteri
+   terminata da un ritorno carrello;
+2. stampa la stringa sostituendo ogni cifra decimale
+   con il nome della cifra, contornato da spazi; es. la stringa
+     a12b
+   viene stampata come
+     a uno due b
+3. se la stringa inserita e` diversa da "FINE" va al passo 1,
+   altrimenti termina.
+

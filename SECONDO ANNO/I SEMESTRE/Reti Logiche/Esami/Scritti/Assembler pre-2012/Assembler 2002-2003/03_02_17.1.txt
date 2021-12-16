@@ -1,0 +1,13 @@
+Scrivere un programma che si comporta come segue:
+
+1. legge con eco da tastiera, facendo opportuni controlli, una stringa di ESATTAMENTE
+   dodici caratteri alfabetici, maiuscoli o minuscoli;
+2. se la stringa non è vuota, stampa su una nuova riga gli stessi caratteri in ordine
+   inverso con la capitalizzazione invertita (le lettere maiuscole diventano minuscole
+   e viceversa), quindi TORNA AL PUNTO 1. Altrimenti,
+3. se la stringa è vuota, termina.
+
+Esempio:
+ABcdeFghILMN
+nmliHGfEDCab
+

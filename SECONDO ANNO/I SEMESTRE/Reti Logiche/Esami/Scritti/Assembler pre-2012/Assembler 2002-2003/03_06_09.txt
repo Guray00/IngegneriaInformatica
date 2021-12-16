@@ -1,0 +1,16 @@
+Scrivere un programma che si comporta come segue:
+
+1. legge con eco da tastiera una stringa di al più 80 caratteri terminata da ENTER;
+2. se la stringa non è vuota, riconosce le consonanti doppie presenti nella stringa, e
+   stampa, per ogni doppia trovata, una riga in cui è riportata la consonante ed il
+   numero di occorrenze;
+3. altrimenti, se la stringa è vuota, termina.
+
+Esempio:
+abbggueeff hhttseoduubb
+b: 2
+f: 1
+g: 1
+h: 1
+t: 1
+

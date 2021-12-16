@@ -1,0 +1,8 @@
+Scrivere un programma che si comporta come segue:
+
+1. legge con eco da tastiera una sequenza di 8 cifre esadecimali. Il programma
+   deve fare i necessari controlli in modo da accettare SOLTANTO le codifiche
+   ASCII di ESATTAMENTE 8 cifre esadecimali;
+2. se nella sequenza non vi sono cifre ripetute, termina; altrimenti stampa, su
+   una riga separata, tutte le cifre ripetute, quindi torna al passo 1.
+

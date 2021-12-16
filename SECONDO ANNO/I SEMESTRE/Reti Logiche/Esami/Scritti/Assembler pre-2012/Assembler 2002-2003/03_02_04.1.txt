@@ -1,0 +1,16 @@
+Scrivere un programma che si comporta come segue:
+
+1. legge con eco da tastiera una sequenza di quattro cifre binarie, da interpretare come
+   la rappresentazione di un numero naturale in base due. Il programma deve fare i
+   necessari controlli in modo da accettare SOLTANTO le codifiche ASCII di ESATTAMENTE 4
+   cifre binarie;
+2. se il numero rappresentato è diverso da zero, stampa su una nuova riga il nome del
+   numero in linguaggio naturale, e torna al passo 1. Altrimenti termina.
+
+Esempio:
+0111
+sette
+1010
+dieci
+0000
+
