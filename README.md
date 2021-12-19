@@ -60,7 +60,7 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
       2. **Fondamenti di Automatica** (9 cfu) - [Mario Innocenti](https://people.unipi.it/mario_innocenti/) - [Lorenzo Pollini](https://people.unipi.it/lorenzo_pollini/)
       3. **Economia e Organizzazione Aziendale** (6 cfu) - Antonella Martini - Paola Belinghieri
       4. **Calcolatori Elettronici** (9 cfu) - [Giuseppe Lettieri](http://www.iet.unipi.it/g.lettieri/) -->
-<i>Si ringrazia Alex Parri per lo schema.</i>
+
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.png?raw=true) <!-- .element height="25%" width="25%" -->
 
 
@@ -185,7 +185,7 @@ Gabriele Marcuccetti<br>
 Federico Matteoni<br>
 Alessio Meini<br>
 Tommaso Molesti<br>
-Alex Parri<br>
+Alex Parri (che si ringrazia anche per lo schema delle propedeuticità)<br>
 Aleandro Prudenzano<br>
 Samuele Ricotta<br>
 Giacomo Sansone<br>
