@@ -166,6 +166,7 @@ Matteo Bernini<br>
 Davide Bruni<br>
 Federico Casu<br>
 Lorenzo Chesi<br>
+Luca Chiocchetti<br>
 Alessandro Corsi<br>
 Pia Eugenia D'Antonio<br>
 Roberto De Luca<br>
