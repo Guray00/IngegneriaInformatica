@@ -1,0 +1,5 @@
+Librerie:
+    - <sys/types.h> per utilizzare pid_t
+    - <unistd.h> per fork
+    - <stdlib.h> per exit 
+    - <sys/wait.h> per wait
