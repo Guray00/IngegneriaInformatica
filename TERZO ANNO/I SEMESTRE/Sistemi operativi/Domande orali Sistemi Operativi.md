@@ -1,4 +1,3 @@
-Si ringrazia per i contributi Alessandro Corsi e Luca Chiocchetti.
 <h1>Domande Avvenuti</h1>
 <ul>
 <li>Com'è fatto lo schema di un device driver dal punto di vista del programma? Che azioni deve fare il device driver? 	Descrivere con precisione cosa succede dentro al device driver
