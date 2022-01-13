@@ -1,0 +1,104 @@
+________________________________________________________________________________________________
+ESERCIZIO 1
+
+studenti@studenti:~$ mkdir -p visibile/segreta
+
+studenti@studenti:~$ echo 'vero' > visibile/notizia.txt
+
+studenti@studenti:~$ cp visibile/notizia.txt visibile/segreta/cronaca.txt
+
+studenti@studenti:~$ chmod u-x visibile/
+studenti@studenti:~$ chmod u+x visibile/
+studenti@studenti:~$ ls -l
+drwxr-xr-x 3 studenti studenti 4096 ott 11 15:58 visibile
+studenti@studenti:~$ chmod 655 visibile/
+studenti@studenti:~$ ls -l
+drw-r-xr-x 3 studenti studenti 4096 ott 11 15:58 visibile
+
+studenti@studenti:~$ ls visibile/
+ls: impossibile accedere a visibile/segreta: Permesso negato
+ls: impossibile accedere a visibile/notizia.txt: Permesso negato
+notizia.txt  segreta
+studenti@studenti:~$ cat visibile/notizia.txt
+cat: visibile/notizia.txt: Permesso negato
+studenti@studenti:~$ ls visibile/segreta 
+ls: impossibile accedere a visibile/segreta: Permesso negato
+studenti@studenti:~$ cat visibile/segreta/cronaca.txt
+cat: visibile/segreta/cronaca.txt: Permesso negato
+
+studenti@studenti:~$ chmod u+x visibile/
+studenti@studenti:~$ chmod u-r visibile/segreta/
+studenti@studenti:~$ ls visibile/segreta/
+ls: impossibile aprire la directory visibile/segreta/: Permesso negato
+studenti@studenti:~$ cat visibile/segreta/cronaca.txt
+vero
+________________________________________________________________________________________________
+ESERCIZIO 2
+
+studenti@studenti:~$ sudo adduser utente2
+Aggiunta dell'utente «utente2» ...
+Aggiunta del nuovo gruppo «utente2» (1001) ...
+Aggiunta del nuovo utente «utente2» (1001) con gruppo «utente2» ...
+Creazione della directory home «/home/utente2» ...
+Copia dei file da «/etc/skel» ...
+Immettere nuova password UNIX: 
+Reimmettere la nuova password UNIX: 
+passwd: password aggiornata correttamente
+Modifica delle informazioni relative all'utente utente2
+Inserire il nuovo valore o premere INVIO per quello predefinito
+	Nome completo []: 
+	Stanza n° []: 
+	Numero telefonico di lavoro []: 
+	Numero telefonico di casa []: 
+	Altro []: 
+Le informazioni sono corrette? [S/n] S
+
+studenti@studenti:~$ ls -l /home
+totale 8
+drwxr-xr-x 25 studenti studenti 4096 ott 11 15:58 studenti
+drwxr-xr-x  2 utente2  utente2  4096 ott 11 16:02 utente2
+
+studenti@studenti:~$ sudo chmod o-r -R /home/utente2/
+studenti@studenti:~$ ls -l /home
+totale 8
+drwxr-xr-x 25 studenti studenti 4096 ott 11 15:58 studenti
+drwxr-x--x  2 utente2  utente2  4096 ott 11 16:02 utente2
+
+studenti@studenti:~$ groups root
+root : root
+
+studenti@studenti:~$ sudo adduser utente3
+Aggiunta dell'utente «utente3» ...
+Aggiunta del nuovo gruppo «utente3» (1002) ...
+Aggiunta del nuovo utente «utente3» (1002) con gruppo «utente3» ...
+Creazione della directory home «/home/utente3» ...
+Copia dei file da «/etc/skel» ...
+Immettere nuova password UNIX: 
+Reimmettere la nuova password UNIX: 
+passwd: password aggiornata correttamente
+Modifica delle informazioni relative all'utente utente3
+Inserire il nuovo valore o premere INVIO per quello predefinito
+	Nome completo []: 
+	Stanza n° []: 
+	Numero telefonico di lavoro []: 
+	Numero telefonico di casa []: 
+	Altro []: 
+Le informazioni sono corrette? [S/n] S
+
+studenti@studenti:~$ sudo mkdir /home/utente3/temp
+studenti@studenti:~$ ls -l /home/utente3/
+totale 4
+drwxr-xr-x 2 root root 4096 ott 11 16:05 temp
+
+studenti@studenti:~$ sudo chown utente3 /home/utente3/temp/
+studenti@studenti:~$ sudo chgrp utente3 /home/utente3/temp/
+
+studenti@studenti:~$ sudo deluser utente2
+Rimozione dell'utente «utente2» ...
+Attenzione: il gruppo «utente2» non ha alcun membro.
+Fatto.
+
+studenti@studenti:~$ sudo deluser utente3
+Rimozione dell'utente «utente3» ...
+Attenzione: il gruppo «utente3» non ha alcun membro.
+Fatto.
