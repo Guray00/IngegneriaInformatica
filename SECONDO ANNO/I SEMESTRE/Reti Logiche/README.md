@@ -7,6 +7,10 @@ Il seguente ambiente di sviluppo NON è quello fornito dal docente, bensì una s
 
 Alternativa per Visual Studio Code in [VSCode Setup](./VSCode%20Setup) disponibile per Windows o Linux.
 
+## Ambiente per mac
+Al seguente [link](https://github.com/giusreds/assembler) è disponibile una variante dell'ambiente per utilizzarlo sui dispostivi Apple a cura di [giusreds](https://github.com/giusreds)
+
+
 # Modalità di esame
 - L'esame risulta diviso in tre parti: pretest, prova scritta, prova orale.
 - Sono consentite al massimo 4 consegne in un anno. La consegna è contata con la sottomissione delle risposte al pretest.
