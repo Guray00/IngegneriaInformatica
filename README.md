@@ -160,6 +160,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 **Collaboratori Materiale**
 
 Luca Arduini<br>
+Giulio Bello<br>
 Francesco Berti<br>
 Francesco Boldrini<br>
 Matteo Bernini<br>
