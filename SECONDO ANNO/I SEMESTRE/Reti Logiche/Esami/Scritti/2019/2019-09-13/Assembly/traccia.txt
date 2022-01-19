@@ -1,0 +1,15 @@
+#------------------------------------------------------------------------
+# Scrivere un programma che si comporta come segue:
+#
+# 1. legge con eco da tastiera una sequenza di cinque cifre binarie, da interpretare come
+#    la rappresentazione di un numero intero n in complemento a due. Il programma deve fare
+#    i necessari controlli in modo da accettare SOLTANTO le codifiche ASCII di ESATTAMENTE
+#    5 cifre binarie;
+# 2. se n Ã¨ positivo, stampa la riga
+#    n = <+...+>
+#    altrimenti, se n Ã¨ negativo, stampa la riga:
+#    n = <-...->
+#    dove il numero di caratteri '+' o '-' Ã¨ uguale a ABS(n);
+# 3. se n Ã¨ uguale a zero termina, altrimenti torna al passo 1.
+#
+#------------------------------------------------------------------------

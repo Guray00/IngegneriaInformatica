@@ -1,0 +1,13 @@
+#Scrivere un programma che si comporta come segue:
+#
+#1. legge con eco da tastiera una stringa di lettere minuscole 
+#   terminata da ritorno carrello;
+#2. legge con eco da tastiera una lettera minuscola;
+#3. stampa sulla riga il numero di occorrenze nella stringa della lettera;
+#4. se il numero di occorrenze Ã¨ maggiore di uno torna al passo 2, altrimenti termina.
+#
+#Esempio:
+#aabcdddhbbc
+#a 2
+#d 3
+#f 0

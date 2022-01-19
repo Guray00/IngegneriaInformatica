@@ -1,0 +1,13 @@
+#Scrivere un programma che si comporta come segue:
+#
+#1. legge con eco da tastiera una stringa di lettere minuscole di al piu' 256 caratteri
+#   terminata da ritorno carrello;
+#2. se la stringa è vuota, termina. 
+#3. Altrimenti, se la stringa non è vuota
+#   a. stampa la vocale che occorre il maggior numero di volte nella stringa (in caso
+#      di ugual numero di occorrenze, vale l'ordine alfabetico);
+#   b. torna al punto 1.
+#   
+#Esempio
+#aabcddedhebbeecuuuu
+#e

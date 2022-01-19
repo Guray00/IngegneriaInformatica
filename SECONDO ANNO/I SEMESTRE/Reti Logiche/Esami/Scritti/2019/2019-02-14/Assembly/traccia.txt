@@ -1,0 +1,26 @@
+#----------------------------------------------------------------
+#Scrivere un programma assembler che si comporta come segue:
+#
+#1. stampa un punto interrogativo e legge da tastiera una cifra decimale 
+#2. se la cifra letta X e' uguale a 0 termina, altrimenti
+#3. stampa un triangolo isoscele di base 2X, in cui la riga i-esima 
+#   e' ottenuta stampando 2i-1 volte il carattere ASCII corrispondente 
+#   al numero i, preceduto da un numero opportuno di spazi.
+#4. ritorna al punto 1.
+#
+#Esempio:
+#?5
+#
+#    1
+#   222
+#  33333
+# 4444444
+#555555555
+#
+#?3
+#
+#  1
+# 222
+#33333
+#
+#----------------------------------------------------------------

@@ -1,4 +1,4 @@
-// Made with <3 by Aleandro Prudenzano
+// Autore: Aleandro Prudenzano
 
 module testbench();
     wire clock;

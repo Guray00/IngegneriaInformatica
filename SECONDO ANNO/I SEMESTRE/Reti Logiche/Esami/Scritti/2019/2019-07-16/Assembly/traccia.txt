@@ -1,0 +1,14 @@
+# ===========================================================
+# Scrivere un programma Assembler che si comporta come segue:
+# 1. richiede in ingresso un numero decimale X, assumendo che stia su
+#    16 bit.
+# 2. Se X=0 termina, altrimenti
+# 3. Stampa X in base 4 e ritorna al punto 1
+#
+# Es: 
+# ?48
+# 300
+#
+# ?65535
+# 33333333
+# ===========================================================
