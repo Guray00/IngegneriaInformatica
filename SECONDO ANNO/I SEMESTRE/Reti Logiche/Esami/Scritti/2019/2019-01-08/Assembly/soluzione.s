@@ -1,14 +1,14 @@
-#=========================================================================
+# =========================================================================
 #
-#Scrivere un programma che:
-#1. legge con eco da tastiera una stringa di max 20 caratteri
+# Scrivere un programma che:
+# 1. legge con eco da tastiera una stringa di max 20 caratteri
 #   terminata da un ritorno carrello;
-#2. stampa la stringa sostituendo ogni cifra decimale
+# 2. stampa la stringa sostituendo ogni cifra decimale
 #   con il nome della cifra, contornato da uno o piu' spazi; es. la stringa
 #     a12bc
 #   viene stampata come
 #     a uno     due     bc
-#3. se la stringa inserita conteneva almeno un numero torna al passo 1,
+# 3. se la stringa inserita conteneva almeno un numero torna al passo 1,
 #   altrimenti termina.
 # NB: Si consiglia di allineare tutte le stringhe da stampare sullo stesso numero di caratteri 
 #     calcolato sul testo di lunghezza massima
