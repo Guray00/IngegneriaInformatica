@@ -1,0 +1,16 @@
+# Scrivere un programma che si comporta come segue:
+# 1. emette ? e legge con eco da tastiera un numero naturale in base dieci 
+#    che sta su un byte;
+# 2. se il numero è compreso fra 0 e 19:
+#     a. stampa su una nuova riga il nome del numero;
+#     b. torna al punto 1;
+# 3. altrimenti, se il numero è maggiore di 19, termina.
+#
+# Esempio:
+#13
+#tredici
+#0
+#zero
+#214
+# --------------------------------------------------------------------------
+
