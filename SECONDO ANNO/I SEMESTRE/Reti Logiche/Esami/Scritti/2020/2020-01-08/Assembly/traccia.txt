@@ -1,0 +1,20 @@
+#Scrivere un programma assembler che si comporta come segue:
+#
+#1. legge da tastiera un numero naturale A in base 10,
+# sotto l'ipotesi che A stia su 32 bit
+#2. se A e' nullo, termina, altrimenti:
+#3. stampa A in tutte le basi da 2 a 9 su righe successive,
+# premettendo a ciascuna sequenza di cifre la base cui si riferisce
+#4. torna al punto 1.
+#
+#Esempio:
+#?00065536
+#2: 10000000000000000
+#3: 10022220021
+#4: 100000000
+#5: 4044121
+#6: 1223224
+#7: 362032
+#8: 200000
+#9: 108807
+#---------------------------------------------------------------
