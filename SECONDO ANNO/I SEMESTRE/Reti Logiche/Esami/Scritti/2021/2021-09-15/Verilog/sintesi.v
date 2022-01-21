@@ -1,3 +1,9 @@
+/*
+Sintesi proposta da uno studente
+basata
+sulla descrizione proposta dai docenti
+*/
+
 module ABC(
     s, h, rfd, dav_, out,
     clock, reset_
