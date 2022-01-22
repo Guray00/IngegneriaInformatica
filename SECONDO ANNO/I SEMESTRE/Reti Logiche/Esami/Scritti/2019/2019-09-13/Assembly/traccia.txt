@@ -10,6 +10,6 @@
 #    altrimenti, se n è negativo, stampa la riga:
 #    n = <-...->
 #    dove il numero di caratteri '+' o '-' è uguale a ABS(n);
-# 3. se n Ã¨ uguale a zero termina, altrimenti torna al passo 1.
+# 3. se n è uguale a zero termina, altrimenti torna al passo 1.
 #
 #------------------------------------------------------------------------
