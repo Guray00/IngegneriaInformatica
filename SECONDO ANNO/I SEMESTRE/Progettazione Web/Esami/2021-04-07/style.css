@@ -1,0 +1,66 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+
+    
+}
+
+img{
+    width: 25px;
+}
+
+.game-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 1em;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 1em;
+}
+
+.player-container,
+.computer-container{
+    border: 1px solid black;
+    width: 30%;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score{
+    display: flex;
+}
+
+.value,
+.time{
+    width: 3ch;
+    height: 1em;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.time{
+    width: 6ch;
+}
+
+h2,
+h3,
+h4,
+.game{
+    color: red;
+}
+
+.player-container>*,
+.computer-container>*{
+    margin-bottom: 1em;
+}

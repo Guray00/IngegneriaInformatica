@@ -1,0 +1,77 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section{
+    width: 490px;
+    height: 800px;
+    background: grey;
+
+    text-align: center;
+}
+
+h1{
+    color:white;
+}
+
+.vincenti{
+    background: orange;
+    margin: 100px 10px;
+}
+
+table{
+    width: 100%;
+    border-spacing: 5px;
+    border: 1px solid black;
+}
+
+.vincenti table{
+    height: 50px;
+}
+
+td{
+    background: green;
+    border: 1px solid rgb(82, 82, 82);
+    width: 20%;
+    font-weight: 900;
+}
+
+.giocatore{
+    background: orange;
+    margin: 100px 10px;
+}
+
+.giocatore table{
+    height: 100px;
+}
+
+.giocatore .upper{
+    margin-bottom: 50px;
+}
+
+.giocatore td{
+    height: 49%;
+}
+
+
+
+
+button{
+    text-transform: uppercase;
+    padding: 1em;
+}
+
+
+
+
+
+
+/* new window style*/
+
+article{
+    font-size: 1.5em;
+    font-weight: 800;
+}

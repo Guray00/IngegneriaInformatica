@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        body{
+            margin: 0;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-container{
+            display: flex;
+        }
+
+        .interactions{
+            width: 400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+
+            height: 400px;
+        }
+
+        .data{
+            padding: 1em;
+            background-color: rgb(177, 177, 177);
+            width: 300px;
+        }
+
+        button{
+            margin-top: 1em;
+        }
+
+        input:valid{
+            border: 1px solid black;
+        }
+
+        input:invalid{
+            border: 1px solid red;
+        }
+
+        .alfabeto{
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1em;
+            background: rgb(177, 177, 177);
+            width: 300px;
+        }
+
+        .alfabeto *{
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgb(68, 68, 68);
+        }
+
+        .rubrica{
+            width: 300px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(177, 177, 177);
+
+            overflow-y: scroll;
+        }
+
+        .pagina{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        table{
+            border-collapse: collapse;
+            width: 95%;
+        }
+
+        .rubrica th,
+        .rubrica td{
+            width: 33%;
+            border: 1px solid black;
+            height: 1em;
+        }
+
+        .lettera{
+            width: 40px;
+            height: 30px;
+            border: 2px solid lime;
+            margin: 0.5em 0;
+            font-size: 25px;
+            text-align: center;
+            background: white;
+        }
+
+        .grid{
+            cursor: pointer;
+            background: white;
+        }
+
+    </style>
+</head>
+<body onload="set_up()">
+    
+    <div class="main-container">
+        <div class="interactions">
+            <div class="data">
+                <div>Cognome</div>
+                <input required type="text" name="cognome" id="cognome" pattern="[A-Za-z]([A-Za-z' ])*">
+                <div>Nome</div>
+                <input required type="text" name="nome" id="nome" pattern="[A-Za-z]([A-Za-z' ])*">
+                <div>Numero Telefonico</div>
+                <input required type="tel" name="telefono" id="telefono" pattern="[0-9]{10}">
+                <div class="buttons">
+                    <button class="inserisci">Inserisci</button>
+                    <button class="cancella">Cancella</button>
+                    <button class="cerca">Cerca</button>
+                </div>
+            </div>
+
+            <div class="alfabeto"></div>
+        </div>
+        <div class="rubrica">
+            <div class="lettera"></div>
+            <div class="pagina">
+
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+
+    <script>
+        function set_up(){
+            // crea la griglia per le lettere dell'alfabeto
+            create_alfabeto();
+            // crea la prima riga dell'elenco
+            header_elenco();
+
+            // eventi tasti
+            document.querySelector(".inserisci").onclick = inserisci;
+            document.querySelector(".cancella").onclick = cancella;
+            document.querySelector(".cerca").onclick = cerca;
+
+            // struttura dati
+            let elenco = [];
+            // array di pagine
+            for(let i = 0; i < 26;i++){
+                let pagina = [];
+                elenco.push(pagina);
+            }
+
+
+            function create_alfabeto(){
+                let target = document.querySelector(".alfabeto");
+                let letter_code = 65;
+                for(let i = 0; i < 26; i++){
+                    let new_cell = document.createElement("div");
+                    let letter = String.fromCharCode(letter_code);
+                    new_cell.textContent = letter;
+                    new_cell.classList.add(letter);
+                    new_cell.classList.add("grid");
+                    target.appendChild(new_cell);
+                    letter_code++;
+
+
+                    // event listner
+                    new_cell.addEventListener('click',  e => {
+                        let letter = e.target.textContent;
+                        // console.log(letter);
+                        mostra_pagina(get_page_index(letter.toLowerCase()));
+                    });
+                }
+            }
+
+
+            function header_elenco(){
+                let target = document.querySelector(".pagina");
+                let table = document.createElement("table");
+                target.appendChild(table);
+
+                // prima riga
+                table.innerHTML= "<tr class='header'><th>Cognome</th><th>Nome</th><th>Num. Tel.</th></tr>";
+            }
+
+            function clear_pagina(){
+                let target = document.querySelectorAll("td");
+                for(let i = 0; i < target.length; i++){
+                    target[i].remove();
+                }
+            }
+
+            function inserisci(){
+                let cognome = document.querySelector("#cognome");
+                let nome = document.querySelector("#nome");
+                let numero = document.querySelector("#telefono");
+                if(!cognome.validity.valid){
+                    return;
+                }
+                if(!nome.validity.valid){
+                    return;
+                }
+                if(!numero.validity.valid){
+                    return;
+                }
+                let contatto = {
+                    cognome: cognome.value,
+                    nome: nome.value,
+                    telefono: numero.value
+                }
+                
+                let first_letter = cognome.value.charAt(0);
+                let index = get_page_index(first_letter);
+
+                elenco[index].push(contatto);
+                console.log("Contatto inserito!");
+
+                // ordina la pagina
+                elenco[index].sort(compare);
+
+                console.log(elenco);
+
+                // mostra tutti i contatti i cui cognomi hanno la stessa iniziale di quello appena inserito
+
+                mostra_pagina(index);
+
+                // "accende" la lettera della pagina in cui è stato inserito il contatto 
+                let a = document.querySelector("." + first_letter.toUpperCase())
+                a.style.background = "orange";
+
+            }
+            function get_page_index(first_letter){
+                first_letter.toLowerCase();
+                document.querySelector(".lettera").textContent = first_letter.toUpperCase();
+                return first_letter.charCodeAt() - 97;
+            }
+
+            function cancella(){
+                let cognome = document.querySelector("#cognome");
+                let nome = document.querySelector("#nome");
+                if(!cognome.validity.valid){
+                    return;
+                }
+                if(!nome.validity.valid){
+                    return;
+                }
+                let index = get_page_index(cognome.value.charAt(0));
+
+                for(let i = 0; i < elenco[index].length; i++){
+                    if(cognome.value == elenco[index][i].cognome){
+                        if(nome.value == elenco[index][i].nome){
+                            elenco[index].splice(i,1);
+                        }
+                    }
+                }
+                console.log("Contatto eliminato!");
+                console.log(elenco);
+
+                // mostra tutti i contatti i cui cognomi hanno la stessa iniziale di quello appenna cancellato
+                mostra_pagina(index);
+
+                // spegne la lettera della pagina se non ci sono più contatti in tale pagina
+                if(elenco[index].length == 0){
+                    let a = document.querySelector("." + cognome.value.charAt(0).toUpperCase())
+                    a.style.background = "white";
+                }
+            }
+
+            function cerca(){
+                let cognome = document.querySelector("#cognome");
+                let nome = document.querySelector("#nome");
+                if(!cognome.validity.valid){
+                    return;
+                }
+                if(!nome.validity.valid){
+                    return;
+                }
+                mostra_contatto(cognome.value, nome.value);
+            }
+
+            function mostra_pagina(index){
+                clear_pagina();
+                let table = document.querySelector(".pagina table tbody");
+                for(let i = 0; i < elenco[index].length;i++){   
+                    let row = document.createElement("tr");
+                    let c = document.createElement("td");
+                    c.textContent = elenco[index][i].cognome;
+                    row.appendChild(c);
+                    
+
+                    let n = document.createElement("td");
+                    n.textContent = elenco[index][i].nome;
+                    row.appendChild(n);
+                    
+
+                    let t = document.createElement("td");
+                    t.textContent = elenco[index][i].telefono;
+                    row.appendChild(t);
+                    
+                    // console.log(row);
+                    table.appendChild(row);
+                }
+            }
+
+            function mostra_contatto(nome, cognome){
+                // get page
+                let index = get_page_index(cognome.charAt(0));
+                clear_pagina();
+                for(let i = 0; i < elenco[index].length;i++){   
+                    if(elenco[index][i].cognome == cognome && elenco[index][i].nome == nome){
+                        let table = document.querySelector(".pagina table tbody");
+                        let row = document.createElement("tr");
+                        let c = document.createElement("td");
+                        c.textContent = elenco[index][i].cognome;
+                        row.appendChild(c);
+                        
+
+                        let n = document.createElement("td");
+                        n.textContent = elenco[index][i].nome;
+                        row.appendChild(n);
+                        
+
+                        let t = document.createElement("td");
+                        t.textContent = elenco[index][i].telefono;
+                        row.appendChild(t);
+                        
+                        // console.log(row);
+                        table.appendChild(row);
+                        return;
+                    }
+                    
+                }
+            }
+
+            function compare(first, second){
+                // first e second sono contatti della rubrica
+                return (first.cognome < second.cognome) ? -1 : 1;
+            }
+        }
+
+        
+
+        
+
+    </script>
+</body>
+</html>

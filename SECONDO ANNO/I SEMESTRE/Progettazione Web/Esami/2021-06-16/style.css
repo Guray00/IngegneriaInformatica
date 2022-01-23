@@ -1,0 +1,46 @@
+body{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+table{
+    background-color: rgb(245, 245, 245);
+}
+
+td{
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.infos>*{
+    display: flex;
+    margin: 10px;
+    justify-content: flex-end;
+}
+
+.infos .value{
+    border: 1px solid black;
+    width: 50px;
+    height: 1.5em;
+    margin-left: 1em;
+    text-align: center;
+}
+
+.start{
+   margin-top: 10px;
+}
+
+
+.seen{
+    background-color: yellow;
+}
+
+.seen.bersaglio{
+    background-color: red;
+}
+
+.player{
+    background-color: black !important;
+}

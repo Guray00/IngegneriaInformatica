@@ -1,0 +1,25 @@
+table{
+    background: black;
+}
+
+td{
+    border: 1px solid black;
+    
+    text-align: center;
+    width: 60px;
+    height: 60px;
+}
+
+.top{
+    margin-bottom: 5px;
+    width: 600px;
+
+    display: flex;
+    gap: 1em;
+}
+
+.tentativi{
+    width: 30px;
+    border: 1px solid black;
+    text-align: right;
+}
