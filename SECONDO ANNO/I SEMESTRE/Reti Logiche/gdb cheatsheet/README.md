@@ -1,6 +1,9 @@
 # GDB
 File utili per consultare rapidamente le istruzioni di gdb.
 
+# Altro sito
+https://www.cs.mcgill.ca/~consult/info/gdb.html
+
 
 # Rapide Istruzioni
 
