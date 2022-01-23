@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: green;
+        }
+
+        .main > *{
+            margin: 1rem;
+        }
+
+        h2{
+            color: yellow;
+        }
+
+        .messaggio{
+            color: white;
+        }
+
+        table{
+            border-spacing: 1em;
+            border: 2px solid black;
+            background: orange;
+        }
+
+        td{
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 2px inset black;
+            text-align: center;
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .estratto{
+            background: lightblue;
+        }
+
+        .scelto{
+            background: rgba(72, 247, 72, 0.541);
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="main">
+        <h2>Speed Tombola</h2>
+        <div class="messaggio"></div>
+
+        <div class="scheda">
+            <table>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button class="avvia">Avvia</button>
+        <button class="cinquina" disabled>Cinquina</button>
+    </div>
+
+
+
+
+    <script>
+
+        function set_up(){
+            // creazione tabella
+            create_table();
+
+            let mess = "Premi Avvia aper iniziare";
+            document.querySelector(".messaggio").textContent = mess;
+
+            // creazione array dei numeri
+            let arr = [];
+            for(let i = 1; i <= 90;i++){
+                arr.push(i);
+            }
+            shuffle(arr);
+            // console.log(arr);
+
+
+            let interval;
+
+            // tasti
+            let start = document.querySelector(".avvia");
+            let fine = document.querySelector(".cinquina");
+
+
+            // array numeri estratti
+            let estratti = [];
+
+            start.onclick = () => {
+                start.disabled = true;
+                fine.disabled = false;
+
+                // inizia l'estrazione dei numeri
+                interval = setInterval(() => {
+                    if(arr.length == 0){
+                        clearInterval(interval);
+                        perso();
+                        return;
+                    }
+                    let estratto = arr.pop();
+                    estratti.push(estratto);
+                    // mostra a schermo
+                    let m = "E' stato estratto il numero: ";
+                    document.querySelector(".messaggio").textContent = m + estratto;
+                }, 1000);
+            }
+
+
+            fine.onclick = () => {
+                fine.disabled = true;
+                // termina estrazione
+                clearInterval(interval);
+                alert("Clicca su 5 caselle");
+                // controlla la vittoria
+                verifica(estratti);                           
+            }
+        }
+
+        function create_table(){
+            let caselle = document.querySelectorAll("td");
+            console.log(caselle);
+            for(let i = 0; i < 27;i++){
+                if(i < 9){
+                    caselle[i].classList.add("row-1");
+                }else if(i < 19){
+                    caselle[i].classList.add("row-2");
+                }else{
+                    caselle[i].classList.add("row-3");
+                }
+                caselle[i].classList.add("col-" + (i%9+1));
+
+
+                caselle[i].onclick = () => {
+                    if(caselle[i].classList.contains("numero")){
+                        caselle[i].classList.add("estratto");
+                    }
+                }
+            }
+
+            // riempimento tabella
+            let poss_num = [];
+            
+            for(let i = 0; i < 9;i++){
+                let col = [];
+                for(let j = i*10+1; j <= i*10+10;j++){
+                    col.push(j);
+                }
+                shuffle(col);
+                col.splice(3);
+                col.sort(compare);
+                poss_num.push(col);
+            }
+
+            // console.log(poss_num);
+            // posizioni
+            for(let i = 0; i < 3;i++){
+                let numbers_positions = [];
+                for(let k = 0; k < 9;k++){
+                    numbers_positions.push(k);
+                }
+                shuffle(numbers_positions);
+                numbers_positions.splice(5,4);
+                numbers_positions.sort();
+
+                console.log(numbers_positions);
+                
+
+                while(numbers_positions.length > 0){
+                    let pos = caselle[i*9+numbers_positions[0]];
+                    //console.log(pos);
+                    pos.classList.add("numero");
+                    //console.log("col: " + numbers_positions[0]);
+                    //console.log("row: " + i*9);
+                    pos.textContent = poss_num[numbers_positions[0]][0];
+
+                    poss_num[numbers_positions[0]].splice(0, 1);
+                    
+                    numbers_positions.splice(0, 1);
+                }
+            }
+
+
+        }
+
+        function verifica(estratti){
+                // riga scelta
+                let row = null;
+                // numeri scelti
+                let numeri = [];
+                let caselle = document.querySelectorAll("td");
+                for(let i = 0; i < 27; i++){
+                    caselle[i].onclick = () => {
+                        if(caselle[i].classList.contains("numero")){
+                            caselle[i].style.background = "green";
+                            numeri.push(parseInt(caselle[i].textContent));
+
+                            if(row == null){
+                                if(caselle[i].classList.contains("row-1")){
+                                    row = "row-1";
+                                }else if(caselle[i].classList.contains("row-2")){
+                                    row = "row-2";
+                                }else{
+                                    row = "row-3";
+                                }
+                            }
+
+                            // controlla che la casella scelta sia sulla stessa riga
+                            if(!caselle[i].classList.contains(row)){
+                                perso();
+                                return;
+                            }
+
+                        }
+                    
+                        // quando ho cliccato su almeno 5 caselle controllo che i numeri siano stati estratti
+                        if(numeri.length >= 5){
+                            verifica_numeri(estratti, numeri);
+                        }
+                }
+            }
+        }
+
+        function verifica_numeri(estratti, numeri, row){
+            // ordina i due array per comodità
+            estratti.sort();
+            numeri.sort();
+            console.log(estratti);
+            console.log(numeri);
+            if(estratti.length < 5){
+                perso();
+                return;
+            }
+
+            for(let i = 0; i < numeri.length;i++){
+                if(!is_there(numeri[i], estratti)){
+                    perso();
+                    return;
+                }
+            } 
+
+            console.log("fine");
+            
+            document.querySelector(".messaggio").textContent = "Hai vinto";
+        }
+
+        function is_there(n, arr){
+            for(let i = 0; i < arr.length; i++){
+                if(arr[i] == n)
+                return true;
+            }
+            return false;
+        }
+
+
+/*--------------------------------------Funzione fornita dal testo--------------------------------*/
+        function shuffle(arr) {
+            let rand, temp, i;
+            for (i = arr.length - 1; i > 0; i --) {
+            rand = Math.floor((i + 1) * Math.random());// numero a caso tra 0 e i (inclusi)
+            temp = arr[rand];// scambia il valore i-esimo con quello di indice rand
+            arr[rand] = arr[i];
+            arr[i] = temp;
+            }
+            return arr;
+        }
+
+        function get_possible_numbers(col){
+            let arr = [];
+            for(let i = col*10; i < 10;i++){
+                arr.push(i);
+            }
+            shuffle(arr);
+            console.log(arr);
+            return arr;
+        }
+
+        // funzione comparazione per la sort
+        function compare(a, b){
+            return parseInt(a) < parseInt(b) ? -1 : 1;
+        }
+
+        function perso(){
+            document.querySelector(".messaggio").textContent = "Hai perso";
+        }
+
+        
+
+        set_up();
+    </script>
+</body>
+</html>
