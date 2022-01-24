@@ -1,15 +1,24 @@
 # Ambiente di sviluppo Assembler
+
+### Ufficiale
+
+- [**Windows**](http://docenti.ing.unipi.it/~a080368/Teaching/RetiLogiche/pdf/Ambienti/dos.zip) (basato su DOSBox)
+- [**Linux**](http://docenti.ing.unipi.it/~a080368/Teaching/RetiLogiche/pdf/Ambienti/linux.zip)
+
+⚠️ Leggere le [note](http://docenti.ing.unipi.it/~a080368/Teaching/RetiLogiche/pdf/Dispense/Note%20Assembler.pdf) dei docenti.
+
+### Non ufficiale
+
+- 👾 [**Windows - Linux**](./VSCode%20Setup) (a cura di Lorenzo Chesi)
+- 🍎 [**Mac OS**](https://github.com/giusreds/assembler) (a cura di Giuseppe Rossi)
+
+<!-- ----- DEPRECATO -----
 È disponibile un pacchetto contenente l'ambiente di sviluppo amb_GAS, migliorato per assemblare i progetti in
 qualsiasi directory, tutto già pronto e funzionante. Basta scaricare lo zip da
 [QUI](https://drive.google.com/file/d/1dgLEvbUV730xho4cxfkhF_An2UI-Pf31/view?usp=sharing) 
 e seguire le istruzioni contenute nell'archivio. <br>
 Il seguente ambiente di sviluppo NON è quello fornito dal docente, bensì una sua rivisitazione il cui codice può essere trovato [qui](https://github.com/just-Hms/asmbl)
-
-Alternativa per Visual Studio Code in [VSCode Setup](./VSCode%20Setup) disponibile per Windows o Linux.
-
-## Ambiente per mac
-Al seguente [link](https://github.com/giusreds/assembler) è disponibile una variante dell'ambiente per utilizzarlo sui dispostivi Apple a cura di [giusreds](https://github.com/giusreds)
-
+-->
 
 # Modalità di esame
 - L'esame risulta diviso in tre parti: pretest, prova scritta, prova orale.

@@ -167,6 +167,7 @@ Davide Bruni<br>
 Federico Casu<br>
 Lorenzo Chesi<br>
 Luca Chiocchetti<br>
+Pietro Cok<br>
 Alessandro Corsi<br>
 Pia Eugenia D'Antonio<br>
 Roberto De Luca<br>

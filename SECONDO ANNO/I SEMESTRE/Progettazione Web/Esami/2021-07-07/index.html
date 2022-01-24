@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <form action="#">
+            <h4>Cognome</h4>
+            <input type="text" required name="cognome" id="cognome">
+            <br>
+            <h4>Nome</h4>
+            <input type="text" required name="nome" id="nome">
+            <br>
+            <h4>Telefono</h4>
+            <input type="tel" required pattern="\d*" name="telefono" id="telefono">
+            <br>
+
+            <div class="servizio_1">
+                <h3>Servizio 1:</h3>
+                <select name="ora" id="ora">
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+
+
+                <button type="button" onclick="inserisci(1)">INSERISCI</button>
+                <BUtton type="button" onclick="cancella(1)">CANCELLA</BUtton>
+            </div>
+
+            <div class="servizio_2">
+                <h3>Servizio 2:</h3>
+                <select name="ora" id="ora">
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+
+                <button type="button" onclick="inserisci(2)">INSERISCI</button>
+                <BUtton type="button" onclick="cancella(2)">CANCELLA</BUtton>
+            </div>
+
+            <div class="servizio_3">
+                <h3>Servizio 3:</h3>
+                <select name="ora" id="ora">
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+
+                <button type="button" onclick="inserisci(3)">INSERISCI</button>
+                <BUtton type="button" onclick="cancella(3)">CANCELLA</BUtton>
+            </div>
+        </form>
+
+        <div class="selezione_servizio">
+            <h4>Prenotazioni</h4>
+            <button class="servizio_1" onclick="mostra_servizio(1)" >SERVIZIO 1</button>
+            <button class="servizio_2" onclick="mostra_servizio(2)">SERVIZIO 2</button>
+            <button class="servizio_3" onclick="mostra_servizio(3)">SERVIZIO 3</button>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <h2 class="nome-servizio">servizio</h2>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
