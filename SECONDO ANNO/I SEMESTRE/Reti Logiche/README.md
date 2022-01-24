@@ -9,7 +9,7 @@
 
 ### Non ufficiale
 
-- 👾 [**Windows - Linux**](./VSCode%20Setup) (a cura di Lorenzo Chiesi)
+- 👾 [**Windows - Linux**](./VSCode%20Setup) (a cura di Lorenzo Chesi)
 - 🍎 [**Mac OS**](https://github.com/giusreds/assembler) (a cura di Giuseppe Rossi)
 
 <!-- ----- DEPRECATO -----
