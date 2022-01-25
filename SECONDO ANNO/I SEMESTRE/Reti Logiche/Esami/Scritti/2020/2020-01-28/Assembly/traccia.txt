@@ -1,0 +1,20 @@
+###############################################################
+# Scrivere un programma Assembler che si comporta come segue:
+# 1. Chiede in ingresso un numero INTERO x in base 10, 
+#    rappresentato in modulo e segno, supponendo che il modulo stia su 8 bit
+# 2. aggiunge il numero x digitato, ad un accumulatore s, che sta su *10 bit*
+#    (1 bit di segno e 9 di modulo). s Ã¨ inizialmente pari a zero.
+#    Se l'operazione di somma algebrica ritorna un numero non rappresentabile
+#    su 10 bit in modulo e segno, stampa "overflow" e termina. 
+#    Altrimenti stampa s in modulo e segno.
+#
+#  Esempio:
+#  ?+255
+#  +255
+#  ?-20
+#  +235
+#  ?+255
+#  +490
+#  ?+255
+#  overflow
+###################################################################
