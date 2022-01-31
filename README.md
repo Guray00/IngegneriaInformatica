@@ -80,7 +80,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 ### Libri del Primo anno  
 
 - **Analisi Matematica I** - _Consigliato_<br>
-  **Testo consigliato**: Analisi matematica I di _Carlo D. Pagani & Sandro Salsa_.  
+  **Testo consigliato**: Analisi_1 di Enrico_Giusti- Volume_1_Edizione_3_.  
 
 - **Fondamenti di Programmazione** - _Utile_    
   **Testo consigliato**:<br> 
@@ -90,7 +90,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 - **Algebra Lineare e Analisi Matematica II** - _Non necessario_    
   **Testo consigliato**:<br> 
-      1) "Algebra Lineare" di _Serge Lang_<br>
+      1) "Lipschutz_Schaums" <br>
       2) "E. Giusti:  Analisi Matematica 2  ed. Boringhieri" 
  <!--
 - **Basi di Dati** - _Utile_  
@@ -103,7 +103,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       1) "Fisica per scienze e ingegneria volumi 1 & 2" di _Raymond A. Serway & altri_        
 
 - **Algoritmi e Strutture Dati** - _Non necessario_    
-  **Note studenti**: La professoressa mette una dispensa molto completa a disposizione.  -->
+  **Note studenti**:Il professore mette una dispensa molto completa a disposizione.  -->
   
 ### Libri del Secondo anno  
 
