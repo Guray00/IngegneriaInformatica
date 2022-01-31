@@ -80,7 +80,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 ### Libri del Primo anno  
 
 - **Analisi Matematica I** - _Consigliato_<br>
-  **Testo consigliato**: Analisi_1 di Enrico_Giusti- Volume_1_Edizione_3_.  
+  **Testo consigliato**: "Analisi 1" di Enrico Giusti- Volume 1 Edizione 3.  
 
 - **Fondamenti di Programmazione** - _Utile_    
   **Testo consigliato**:<br> 
