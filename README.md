@@ -92,7 +92,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   **Testo consigliato**:<br> 
       1) "Lipschutz_Schaums" <br>
       2) "E. Giusti:  Analisi Matematica 2  ed. Boringhieri"<br>
-  **Note studenti**: Il professore mette delle slide a disposizione che possono essere integrate con l'uso dei libri.
+  **Note studenti**: I professori mette delle slide a disposizione che possono essere integrate con l'uso dei libri.
 
 
 - **Basi di Dati** - _Utile_  
@@ -103,6 +103,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 - **Fisica Generale I** - _Consigliato_    
   **Testo consigliato**:<br> 
       1) "Fisica per scienze e ingegneria volumi 1 & 2" di _Raymond A. Serway & altri_        
+  **Note studenti**: I professori mette delle slide a disposizione che possono essere integrate con l'uso dei libri.
 
 - **Algoritmi e Strutture Dati** - _Non necessario_    
   **Note studenti**: Il professore mette una dispensa molto completa a disposizione.  
@@ -128,7 +129,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   
 - **Progettazione web** - _Non necessario_<br>
   **Testo consigliato**: TBD.<br> 
-  **Note studenti**:  Il professore mette delle slide a disposizione sufficenti.
+  **Note studenti**:  Il professore mette delle slide a disposizione sufficienti.
 
 ### Libri del Terzo anno
 
@@ -144,6 +145,10 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 - **Ingegneria del software** - _Non necessario_<br>
   **Testo consigliato**: Nessuno.<br> 
   **Note studenti**: Il professore mette a disposizione una dispensa LaTeX e delle diapositive sul suo sito.<br>
+
+- **Elettronica Digitale** - _Non necessario_<br>
+  **Testo consigliato**: Nessuno.<br>
+  **Note studenti**: Il professore mette delle slide a disposizione sufficienti.
 
 ## Credits (in aggiornamento)
 
