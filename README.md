@@ -88,11 +88,13 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       2) "Note sull’organizzazione di un calcolatore e Rappresentazione dell’informazione" di _Paolo Corsini, Graziano Frosini_<br>
   **Note studenti**: Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.
 
-- **Algebra Lineare e Analisi Matematica II** - _Non necessario_    
+- **Algebra Lineare e Analisi Matematica II** - _Consigliato_    
   **Testo consigliato**:<br> 
       1) "Lipschutz_Schaums" <br>
-      2) "E. Giusti:  Analisi Matematica 2  ed. Boringhieri" 
- <!--
+      2) "E. Giusti:  Analisi Matematica 2  ed. Boringhieri"<br>
+  **Note studenti**: Il professore mette delle slide a disposizione che possono essere integrate con l'uso dei libri.
+
+
 - **Basi di Dati** - _Utile_  
   **Testo consigliato**:<br> 
       1) "Basi di Dati" di _Paolo Atzeni, Stefano Ceri & altri_<br>
@@ -103,8 +105,8 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       1) "Fisica per scienze e ingegneria volumi 1 & 2" di _Raymond A. Serway & altri_        
 
 - **Algoritmi e Strutture Dati** - _Non necessario_    
-  **Note studenti**:Il professore mette una dispensa molto completa a disposizione.  -->
-  
+  **Note studenti**: Il professore mette una dispensa molto completa a disposizione.  
+   <!-- -->
 ### Libri del Secondo anno  
 
 - **Calcolo Numerico** - _Non necessario_<br>
@@ -126,7 +128,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   
 - **Progettazione web** - _Non necessario_<br>
   **Testo consigliato**: TBD.<br> 
-  **Note studenti**: TBD.
+  **Note studenti**:  Il professore mette delle slide a disposizione sufficenti.
 
 ### Libri del Terzo anno
 
