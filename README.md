@@ -146,6 +146,10 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   **Testo consigliato**: Nessuno.<br> 
   **Note studenti**: Il professore mette a disposizione una dispensa LaTeX e delle diapositive sul suo sito.<br>
 
+- **Comunicazioni Numeriche** - _Consigliato_<br>
+  **Testo consigliato**: "Teoria dei segnali" 3° Edizione, M.Luise, Mcgraw-Hill.<br>
+  **Note studenti**: Il professore mette delle slide a disposizione sufficienti al fine di superare l'esame. Per maggior approfondimenti si consiglia l'uso del libro.<br>
+
 - **Elettronica Digitale** - _Non necessario_<br>
   **Testo consigliato**: Nessuno.<br>
   **Note studenti**: Il professore mette delle slide a disposizione sufficienti.
