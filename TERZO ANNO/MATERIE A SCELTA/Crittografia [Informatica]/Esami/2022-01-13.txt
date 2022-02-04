@@ -23,30 +23,7 @@ Totale 15 punti
 Edoardo Cremente, [13/01/2022 11:53]
 Non sono le domande esatte, sono come le ricordo io
 
-Edoardo Cremente, [13/01/2022 11:53]
-Io ero nel primo turno e avevo il compito "2".
-
-1) a. Spiegare le proprietà delle funzioni hash one way e perché sono utili nei protocolli di autenticazione e firma digitale
-b. Descrivere un protocollo di firma digitale
-c. In che ambito le funzioni hash vengono impiegate nei Bitcoin 
-
-Totale 9 punti
-
-2) Descrivere il triple DES e spiegare perché è sicuro facendo riferimento ad attacchi meet in the middle
-
-Totale 6 punti
-
-3) siano p,q,e,n,d parametri dell'RSA noti e sia noto il suo impiego.
-a. Dire perché e e (p-1)(q-1) devono essere primi tra loro
-b. Dimostrare che RSA è corretto
-c. Spiegare perché è efficente usare l'RSA in termini di complessità
-d. Spiegare perché l'RSA è sicuro
-e. Fare un esempio numerico creando una coppia chiave pubblica e chiave privata (usare Euclide esteso e esplicitare passaggi e calcoli)
-
-Totale 15 punti
-
-Edoardo Cremente, [13/01/2022 11:53]
-Non sono le domande esatte, sono come le ricordo io
+---------------------------------------------------------------------
 
 Sara, [13/01/2022 12:18]
 Io come primo esercizio avevo CBC:
@@ -64,6 +41,8 @@ Dato p=13 e g=2
 -scegliere x e y casuale e simulare DH
 -spiegare perché il cifrario è sicuro (per p e q molto grandi)
 -descrizione dell'attacco man in the middle e come si può evitare
+
+--------------------------------------------------------------------
 
 Alessio 🐫🐫, [13/01/2022 14:26]
 secondo turno:
