@@ -1,0 +1,15 @@
+Il mio compito (numero non lo so delle 11):
+
+- Cifrari Perfetti (12 punti)
+  * definizione e spiegazione
+  * definizione di one-time pad e delle ipotesi di utilizzo
+  * dim che otp è perfetto
+  * si può attaccare otp con una ricerca esaustiva?
+  * si può attaccare otp con crittoanalisi statistica?
+
+- Miller-Rabin (8 punti)
+  * Generare un numero primo con probabilità di errore minore di 1/10 spiegando perché i passi fatti sono polinomiali. (nel testo dell'esercizio venivano ricordati P1 e P2 di Miller-Rabin)
+
+- Curve ellittiche (10 punti) 
+  * Spiegare qual è la funzione one-way trap-door delle curve ellittiche
+  * Quali sono i vantaggi della crittografia su curve ellittiche rispetto a RSA/DH modulari?
