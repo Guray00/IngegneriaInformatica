@@ -121,7 +121,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       2) "Eserciziario elettrotecnica" di _Francesco Bertoncini_.<br>
   **Note studenti**: I testi sono consigliati per alcune cose, gli appunti sono comunque sufficienti per il superamento dell'esame.
 
-- **Reti Logiche** 
+- **Reti Logiche** <br>
   **Testo consigliato**:<br> 
       1) "Dalle porte AND, OR, NOT al Sistema calcolatore" di _Paolo Corsini_, edizioni ETS (_Consigliato_) <br>
       2) "Circuiti logici per le operazioni sui numeri naturali e sui numeri interi" di _Paolo Corsini_, edizioni ETS (_Consigliato_)<br>
