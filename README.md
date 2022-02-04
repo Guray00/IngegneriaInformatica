@@ -129,8 +129,8 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   **Note studenti**: I libri sono utili per chiarire gli argomenti affrontati dai docenti. Dall'A.A. in cui il prof. Paolo Corsini ha smesso di insegnare rimane fondamentale l'ultimo libro, quello sull'Assembler. Si raccomanda un uso estremo delle dispense di Stea (_Fondamentale_).
   
 - **Progettazione web** - _Non necessario_<br>
-  **Testo consigliato**: TBD.<br> 
-  **Note studenti**:  Il professore mette delle slide a disposizione sufficienti.
+  **Testo consigliato**: "Fundamentals of Web Development", R. Connoly and R.Hoar, Pearson<br> 
+  **Note studenti**:  Il professore ha suggerito un libro, ma non è necessario. Sufficiente il materiale offerto dal docente e consultazione di portali online contenenti spiegazioni rivolte ai _beginners_
 
 ### Libri del Terzo anno
 
