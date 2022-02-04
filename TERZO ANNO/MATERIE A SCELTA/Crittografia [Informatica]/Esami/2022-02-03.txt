@@ -1,0 +1,17 @@
+Nella mia prova: 
+- Cifrari perfetti (letteralmente tutto) 12 punti
+- hash one-way (proprietà ed esempio di protocollo di identificazione tra quelli visti) 6 punti
+- curve ellittiche prime (date due cifre del numero di matricola che vanno a costituire a e b ti chiedeva di verificare la condizione di gruppo abeliano e l’algoritmo dei raddoppi ripetuti, non voleva i calcoli ma la spiegazione e il numero di step compiuti 
+12 punti
+
+---------------------------------------------------
+
+-crittoanalisi statistica, cosa succede se ci attachi vigenere 
+-fiat shamir, zero knowledge protocol, fare una simulazione
+-rsa, dimostrazione correttezza, dimostrazione sicurezza, dimostrazione polinomialitá per l'utilizzo
+
+----------------------------------------------------
+
+-rsa e gli attacchi
+-sequenza casuale
+-bb84
