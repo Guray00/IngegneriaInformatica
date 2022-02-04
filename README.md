@@ -108,28 +108,29 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 - **Algoritmi e Strutture Dati** - _Non necessario_    
   **Note studenti**: Il professore mette una dispensa molto completa a disposizione.  
    <!-- -->
+   
 ### Libri del Secondo anno  
 
 - **Calcolo Numerico** - _Non necessario_<br>
   **Testo consigliato**: Nessuno.<br> 
-  **Note studenti**: Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.<br>
+  **Note studenti**: Il professore mette a disposizione delle diapositive e una dispensa LaTeX. Le diapositive esprimono le cose essenziali, il testo approfondisce in modo più accurato alcuni argomenti.<br>
 
 - **Elettrotecnica** - _Utile_    
   **Testo consigliato**:<br> 
       1) "Lezioni di Elettrotecnica" di _Marco Raugi_.<br>
       2) "Eserciziario elettrotecnica" di _Francesco Bertoncini_.<br>
-  **Note studenti**: Consigliato per alcune cose ma possono essere sufficienti gli appunti.
+  **Note studenti**: I testi sono consigliati per alcune cose, gli appunti sono comunque sufficienti per il superamento dell'esame.
 
-- **Reti Logiche** - _Fondamentale_    
+- **Reti Logiche** <br>
   **Testo consigliato**:<br> 
-      1) "Dalle porte AND, OR, NOT al Sistema calcolatore" di _Paolo Corsini_, edizioni ETS <br>
-      2) "Circuiti logici per le operazioni sui numeri naturali e sui numeri interi" di _Paolo Corsini_, edizioni ETS<br>
-      3) "Il Calcolatore Didattico C86.32" di _Paolo Corsini_, edizioni ETS (nuova edizione)<br>
-  **Note studenti**: Definire i libri sopra essenziali è dire decisamente poco, per cui l'acquisto è molto più che consigliato.
+      1) "Dalle porte AND, OR, NOT al Sistema calcolatore" di _Paolo Corsini_, edizioni ETS (_Consigliato_) <br>
+      2) "Circuiti logici per le operazioni sui numeri naturali e sui numeri interi" di _Paolo Corsini_, edizioni ETS (_Consigliato_)<br>
+      3) "Il Calcolatore Didattico C86.32" di _Paolo Corsini_, edizioni ETS (_Fondamentale_)<br>
+  **Note studenti**: I libri sono utili per chiarire gli argomenti affrontati dai docenti. Dall'A.A. in cui il prof. Paolo Corsini ha smesso di insegnare rimane fondamentale l'ultimo libro, quello sull'Assembler. Si raccomanda un uso estremo delle dispense di Stea (_Fondamentale_).
   
 - **Progettazione web** - _Non necessario_<br>
-  **Testo consigliato**: TBD.<br> 
-  **Note studenti**:  Il professore mette delle slide a disposizione sufficienti.
+  **Testo consigliato**: "Fundamentals of Web Development", R. Connoly and R.Hoar, Pearson<br> 
+  **Note studenti**:  Il professore ha suggerito un libro, ma non è necessario. Sufficiente il materiale offerto dal docente e consultazione di portali online contenenti spiegazioni rivolte ai _beginners_
 
 ### Libri del Terzo anno
 
