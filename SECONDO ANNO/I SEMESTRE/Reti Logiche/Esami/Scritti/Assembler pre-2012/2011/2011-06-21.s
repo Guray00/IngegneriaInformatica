@@ -18,7 +18,7 @@
 #    e ritorna al punto 2
 #    - "+": aggiunge 1 all'elemento alle coordinate fornite
 #    - "-": sottrae 1 all'elemento alle coordinate fornite.
-	    Se il risultato e' <0, il numero resta pari a zero.
+#	    Se il risultato e' <0, il numero resta pari a zero.
 #    - "*": calcola il quadrato dell'elemento alle coordinate 
 #           fornite, ove questo stia su 16 bit
 #    - "S": stampa l'elemento alle coordinate fornite
