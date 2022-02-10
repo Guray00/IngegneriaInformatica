@@ -134,8 +134,8 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   
 - **Calcolatori elettronici** - _Non necessario_<br>
   **Testo consigliato**:<br>
-"Archiettura dei calcolatori, vol I", G. Frosini, Pisa University Press;<br>
- "Archiettura dei calcolatori, vol II", G. Frosini e G. Lettieri, Pisa University Press.<br>
+1) "Archiettura dei calcolatori, vol I", G. Frosini, Pisa University Press;<br>
+2) "Archiettura dei calcolatori, vol II", G. Frosini e G. Lettieri, Pisa University Press.<br>
   **Note studenti**:  Il professore ha suggerito i libri indicati, ma al più sono utili per chiarire alcuni concetti (non sono presenti tutti gli argomenti, inoltre ampie parti dei volumi non sono più trattate nel programma del corso). Il docente ha pubblicato sul suo sito dei PDF relativi ad alcuni argomenti del corso (non tutti).
   
 - **Economia e organizzazione aziendale** - _Non necessario_<br>
@@ -157,9 +157,9 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
  "James F. Kurose, Keith W. Ross, Computer Networking, A Top-Down Approach - VII Edition, Pearson Education"<br>
   **Note studenti**: Si suggerisce la versione in inglese per qualità e per esercitarsi con la lingua in previsione della magistrale.
  
-- **Sistemi operativi** - _Utile_    <br>
-  **Testo consigliato**:<br> 
-  "P. Ancilotti, M.  Boari, A .Ciampolini, G.Lipari, Sistemi Operativi, 2ed, Mc Graw-Hill.".<br> 
+- **Sistemi operativi** - _Consigliato_    <br>
+  **Testo consigliato**: "P. Ancilotti, M.  Boari, A .Ciampolini, G.Lipari, Sistemi Operativi, 2ed, Mc Graw-Hill.".<br> 
+  **Note studenti**: Il professore segue quasi completamente il filo logico adottato dal libro nelle sue spiegazioni, basando le sue lezioni su diapositive fornite dagli autori del volume. 
 
 - **Ingegneria del software** - _Non necessario_<br>
   **Testo consigliato**: Nessuno.<br> 
