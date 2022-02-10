@@ -131,6 +131,24 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 - **Progettazione web** - _Non necessario_<br>
   **Testo consigliato**: "Fundamentals of Web Development", R. Connoly and R.Hoar, Pearson<br> 
   **Note studenti**:  Il professore ha suggerito un libro, ma non è necessario. Sufficiente il materiale offerto dal docente e consultazione di portali online contenenti spiegazioni rivolte ai _beginners_
+  
+- **Calcolatori elettronici** - _Non necessario_<br>
+  **Testo consigliato**:<br>
+"Archiettura dei calcolatori, vol I", G. Frosini, Pisa University Press;<br>
+ "Archiettura dei calcolatori, vol II", G. Frosini e G. Lettieri, Pisa University Press.<br>
+  **Note studenti**:  Il professore ha suggerito i libri indicati, ma al più sono utili per chiarire alcuni concetti (non sono presenti tutti gli argomenti, inoltre ampie parti dei volumi non sono più trattate nel programma del corso). Il docente ha pubblicato sul suo sito dei PDF relativi ad alcuni argomenti del corso (non tutti).
+  
+- **Economia e organizzazione aziendale** - _Non necessario_<br>
+  **Testo consigliato**: _Nessuno_<br> 
+  **Note studenti**:  La prof.ssa non suggerisce libri, fornisce diapositive e dispense sul canale Teams. 
+  
+- **Fondamenti di automatica** - _Non necessario_<br>
+  **Testo consigliato**: TBD<br> 
+  **Note studenti**:  TBD
+  
+- **Ricerca operativa** - _Utile_<br>
+  **Testo consigliato**: M.Pappalardo-M.Passacantando, "Ricerca Operativa", Casa Editrice Pisa University Press.<br> 
+  **Note studenti**:  Il libro è molto utile per chiarire dubbi, ma gli appunti delle lezioni sono sufficienti.
 
 ### Libri del Terzo anno
 
