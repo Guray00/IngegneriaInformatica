@@ -199,6 +199,7 @@ Pietro Cok<br>
 Alessandro Corsi<br>
 Pia Eugenia D'Antonio<br>
 Roberto De Luca<br>
+Francesco De Lucchini<br>
 Angelo De Marco<br>
 Matteo Dondoli<br>
 Nilo Fabiano<br>
