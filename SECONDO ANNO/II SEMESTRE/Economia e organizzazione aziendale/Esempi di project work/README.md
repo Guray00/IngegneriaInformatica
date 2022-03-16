@@ -1,1 +1,1 @@
-La cartella contiene progetti che hanno ottenuto una valutazione tale da poter essere considerati validi esempi.
+La cartella contiene i progetti considerati eccellenti dalla prof.ssa, più ulteriori esempi (con valutazione alta) forniti dai nostri colleghi (che ringraziamo).
