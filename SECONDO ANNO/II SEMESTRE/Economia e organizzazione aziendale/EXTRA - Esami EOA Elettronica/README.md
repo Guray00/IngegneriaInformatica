@@ -1,0 +1,1 @@
+La cartella contiene prove d'esame erogate nel corso di Economia e Organizzazione Aziendale  della prof.ssa Luisa Pellegrini, nei corsi triennali di Ingegneria elettronica e Ingegneria delle telecomunicazioni. Si tenga conto che i programmi dei corsi potrebbero essere differenti.
