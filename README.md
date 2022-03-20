@@ -219,8 +219,9 @@ Tommaso Molesti<br>
 Alex Parri (che si ringrazia anche per lo schema delle propedeuticità)<br>
 Aleandro Prudenzano<br>
 Samuele Ricotta<br>
-Giacomo Sansone<br>
 Nicolò Salti<br>
+Lorenzo Salvatelli<br>
+Giacomo Sansone<br>
 Gianluca Schiano<br>
 Alessandro Simonelli<br>
 Giuseppe Soriano<br>
