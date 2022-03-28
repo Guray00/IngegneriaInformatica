@@ -1,0 +1,135 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2021-11-24
+	.extern c_incr_break
+a_incr_break:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_incr_break
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+	.extern c_decr_break
+a_decr_break:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_decr_break
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+
+//   SOLUZIONE 2021-11-24 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2021-11-24
+struct heap_des {
+	vaddr min;
+	vaddr max;
+	vaddr cur;
+};
+heap_des heaps[2];
+//   SOLUZIONE 2021-11-24 )
+// ( SOLUZIONE 2021-11-24
+	heap_des *h = &heaps[0];
+	h->min = allinea(mod_end, DIM_PAGINA);
+	h->cur = h->min;
+	h->max = fin_mio_c;
+//   SOLUZIONE 2021-11-24 )
+// ( SOLUZIONE 2021-11-24
+	heap_des *h = &heaps[1];
+	h->min = allinea(mod_end, DIM_PAGINA);
+	h->cur = h->min;
+	h->max = fin_utn_c;
+//   SOLUZIONE 2021-11-24 )
+// ( SOLUZIONE 2021-11-24
+extern "C" void c_incr_break(natq delta)
+{
+	int liv = liv_chiamante() == LIV_SISTEMA ? 0 : 1;
+	heap_des *h = &heaps[liv];
+
+	if (delta) {
+		if (delta & (DIM_PAGINA - 1)) {
+			flog(LOG_WARN, "incr_break: delta non allineato alla pagina");
+			c_abort_p();
+			return;
+		}
+
+		if (h->cur + delta < h->cur) {
+			flog(LOG_WARN, "incr_break: delta causa overflow");
+			c_abort_p();
+			return;
+		}
+		if (h->cur + delta >= h->max) {
+			flog(LOG_WARN, "incr_break: delta troppo grande");
+			c_abort_p();
+			return;
+		}
+		vaddr v = map(esecuzione->cr3,
+			      h->cur,
+			      h->cur + delta,
+			      BIT_RW | (liv ? BIT_US : 0),
+			      [](vaddr) {
+				  paddr p = alloca_frame();
+				  memset(reinterpret_cast<void*>(p), 0, DIM_PAGINA);
+				  return p;
+			      });
+		if (v != h->cur + delta) {
+			unmap(esecuzione->cr3, h->cur, v, [](paddr p, int) { rilascia_frame(p); });
+			delta = 0;
+		}
+		h->cur += delta;
+	}
+	esecuzione->contesto[I_RAX] = h->cur;
+}
+
+extern "C" void c_decr_break(natq delta)
+{
+	int liv = liv_chiamante() == LIV_SISTEMA ? 0 : 1;
+	heap_des *h = &heaps[liv];
+
+	if (delta) {
+		if (delta & (DIM_PAGINA - 1)) {
+			flog(LOG_WARN, "decr_break: delta non allineato alla pagina");
+			c_abort_p();
+			return;
+		}
+		if (delta > h->cur) {
+			flog(LOG_WARN, "decr_break: delta causa underflow");
+			c_abort_p();
+			return;
+		}
+		if (h->cur - delta < h->min) {
+			flog(LOG_WARN, "decr_break: delta troppo piccolo");
+			c_abort_p();
+			return;
+		}
+		vaddr v = h->cur - delta;
+		unmap(esecuzione->cr3, h->cur - delta, h->cur,
+				[&](paddr p, int) {
+					invalida_entrata_TLB(v);
+					v += DIM_PAGINA;
+					rilascia_frame(p);
+				});
+		h->cur -= delta;
+	}
+	esecuzione->contesto[I_RAX] = h->cur;
+}
+
+
+//   SOLUZIONE 2021-11-24 )
+
+

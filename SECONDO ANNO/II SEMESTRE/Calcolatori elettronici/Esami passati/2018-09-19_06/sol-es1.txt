@@ -1,0 +1,93 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2018-09-19
+extern "C" bool c_send(natl dst, const char *buf, natl len)
+{
+	if (!access(buf, len, false)) {
+		flog(LOG_WARN, "parametri non validi");
+		abort_p();
+	}
+
+	if (len > MAX_PAYLOAD * (DIM_RING - 1)) {
+		flog(LOG_WARN, "len non valido: %d");
+		abort_p();
+	}
+
+	sem_wait(net.mutex);
+
+	natl frags = num_frag(len);
+	natl tail = inputl(net.iTAIL);
+	while (ring_avail(tail, net.old_head) < frags) {
+		sem_signal(net.mutex);
+		sem_wait(net.sync);
+		sem_wait(net.mutex);
+		tail = inputl(net.iTAIL);
+	}
+
+	natl newtail = tail;
+	for (natl i = 0; i < frags; i++) {
+		msg* m = new(align_val_t{64}) msg;
+		if (!m)
+			goto cleanup;
+
+		m->src = myaddr;
+		m->dst = dst;
+		m->len = (len > MAX_PAYLOAD ? MAX_PAYLOAD : len);
+		m->seq = i;
+		memcpy(m->payload, buf, m->len);
+		buf += m->len;
+		len -= m->len;
+		net.m[newtail] = m;
+
+		slot *s = &net.s[newtail];
+		s->addr = trasforma(m);
+		s->len = m->len + 4 * sizeof(natl);
+		newtail = ring_next(newtail);
+	}
+	outputl(newtail, net.iTAIL);
+
+	sem_signal(net.mutex);
+
+	return true;
+
+cleanup:
+	for (; tail != newtail; tail = ring_next(tail)) {
+		delete net.m[tail];
+		net.m[tail] = nullptr;
+	}
+	sem_signal(net.mutex);
+	return false;
+}
+
+//   SOLUZIONE 2018-09-19 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2018-09-19
+	.extern c_waitnet
+a_waitnet:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_waitnet
+	iretq
+	.cfi_endproc
+
+	.extern c_send
+a_send:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_send
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2018-09-19 )
+
+

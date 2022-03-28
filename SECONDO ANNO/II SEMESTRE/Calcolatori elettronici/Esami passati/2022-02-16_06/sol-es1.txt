@@ -1,0 +1,93 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2022-02-16
+extern "C" void c_ma_map(vaddr src, vaddr dst, bool P, bool W)
+{
+	des_proc *m = esecuzione->monitored;
+
+	if (!m) {
+		flog(LOG_WARN, "ma_map: il processo non e' un monitor");
+		c_abort_p();
+		return;
+	}
+
+	// se P è true, src deve essere allineato alla pagina e deve appartenere alla
+	// parte utente/condivisa del processo monitor. Se W == true, deve
+	// essere anche accessibile in scrittura.
+	if (P && ((src & (DIM_PAGINA - 1)) || !c_access(src, DIM_PAGINA, W, true))) {
+		flog(LOG_WARN, "ma_map: indirizzo sorgente %p non valido", src);
+		c_abort_p();
+		return;
+	}
+
+	// dst deve essere allineato alla pagina e appartenere alla ma del processo
+	// monitorato
+	if ((dst & (DIM_PAGINA - 1)) || !in_ma(dst, m)) {
+		flog(LOG_WARN, "ma_map: indirizzo destinatario %p non valido", dst);
+		c_abort_p();
+		return;
+	}
+
+	// attraversiamo tutto il percorso di traduzione della pagina dst
+	for (tab_iter it(m->cr3, dst, DIM_PAGINA); it; it.next()) {
+		tab_entry& e = it.get_e();
+		int l = it.get_l();
+		// ci ricordiamo il valore precedente di flag e indirizzo fisico
+		// e prepariamo i nuovi valori
+		natq  org_flags = e & 0xff;
+		paddr org_addr  = extr_IND_FISICO(e);
+		// azzeriamo per il momento P e RW; li setteremo solo se serve
+		natq  new_flags = org_flags & ~(BIT_P | BIT_RW);
+		paddr new_addr  = org_addr;
+
+		if (l > 1) {
+			// settiamo US, RW e P su tutte le tabelle di livello > 1
+			new_flags |= (BIT_US | BIT_RW | BIT_P);
+			if (!(org_flags & BIT_P)) {
+				// la tabella di livello l-1 non era presente:
+				// creiamola ora
+				new_addr = alloca_tab();
+				if (!new_addr)
+					goto error;
+			}
+		} else {
+			// tabella di livello 1: il chiamante deve ricevere
+			// il valore attuale dei flag
+			esecuzione->contesto[I_RAX] = org_flags;		
+			// in ogni caso l'indirizzo fisico sarà
+			// quello corrispondente a src (anche se è già così)
+			new_addr = c_trasforma(src);
+			if (P) {
+				// azzeriamo A e D
+				new_flags &= ~(BIT_A|BIT_D);
+				// settiamo P, US e, se richiesto, anche RW
+				new_flags |= BIT_P | BIT_US | (W ? BIT_RW : 0);
+			} else {
+				new_flags = 0;
+			}
+		}
+		// potremmo aver cambiato il bit P dell'entrata corrente e
+		// dobbiamo aggiornare correttamente il contatore delle entrate
+		// valide della tabella corrente: incrementarlo se P è passato
+		// da 0 a 1, decrementarlo se è passato da 1 a 0, lasciarlo
+		// inalterato altrimenti.
+		if (!(org_flags & BIT_P) && (new_flags & BIT_P))
+			inc_ref(it.get_tab());
+		else if ((org_flags & BIT_P) && !(new_flags & BIT_P))
+			dec_ref(it.get_tab());
+		// sovrascriviamo l'entrata con i nuovi valori
+		// (se sono uguali ai vecchi non cambia niente)
+		e = new_flags;
+		set_IND_FISICO(e, new_addr);
+	}
+
+	return;
+
+error:
+	esecuzione->contesto[I_RAX] = 0xffffffffffffffff;
+};
+//   SOLUZIONE 2022-02-16 )
+
+

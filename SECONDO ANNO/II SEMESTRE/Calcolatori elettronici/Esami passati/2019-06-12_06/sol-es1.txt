@@ -1,0 +1,63 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2019-06-12
+ 	movq $3, %rdi
+ 	movq $0, %rsi
+	movq %rsp, %rdx
+	call c_breakpoint_exception
+//   SOLUZIONE 2019-06-12 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2019-06-12
+struct b_info {
+	des_proc* waiting;
+	natq rip;
+	natb orig;
+} b_info;
+
+extern "C" void c_breakpoint(natq rip)
+{
+	if (b_info.waiting) {
+		esecuzione->contesto[I_RAX] = 0xFFFFFFFF;
+		return;
+	}
+
+	if (rip < ini_utn_c || rip >= fin_utn_c) {
+		flog(LOG_WARN, "rip %p out of bounds [%p, %p)", rip, ini_utn_p, fin_utn_p);
+		c_abort_p();
+		return;
+	}
+
+	natb *bytes = reinterpret_cast<natb*>(rip);
+	b_info.rip = rip;
+	b_info.orig = *bytes;
+	*bytes = 0xCC;
+	b_info.waiting = esecuzione;
+	schedulatore();
+}
+
+
+extern "C" void c_breakpoint_exception(int tipo, natq errore, vaddr* p_saved_rip)
+{
+	if (!b_info.waiting || *p_saved_rip != b_info.rip + 1) {
+		gestore_eccezioni(tipo, errore, *p_saved_rip);
+		return;
+	}
+	natb *bytes = reinterpret_cast<natb*>(b_info.rip);
+	*bytes = b_info.orig;
+	(*p_saved_rip)--;
+	b_info.waiting->contesto[I_RAX] = esecuzione->id;
+	inspronti();
+	inserimento_lista(pronti, b_info.waiting);
+	b_info.waiting = 0;
+	schedulatore();
+}
+//   SOLUZIONE 2019-06-12 )
+
+

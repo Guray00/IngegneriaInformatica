@@ -1,0 +1,91 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2016-02-25
+	carica_gate	TIPO_INIPIPE	a_inipipe	LIV_UTENTE
+	carica_gate	TIPO_WRITEPIPE	a_writepipe	LIV_UTENTE
+//   SOLUZIONE 2016-02-25 )
+// ( SOLUZIONE 2016-02-25
+
+a_inipipe:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_inipipe
+	iretq
+	.cfi_endproc
+
+a_writepipe:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_writepipe
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2016-02-25 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2016-02-25
+extern "C" natl c_inipipe()
+{
+	if (nextpipe >= MAX_PIPES)
+		return 0xFFFFFFFF;
+
+	des_pipe *dp = &array_despipe[nextpipe];
+
+	dp->not_full = sem_ini(0);
+	dp->not_empty = sem_ini(0);
+	if (dp->not_full == 0xFFFFFFFF || dp->not_empty == 0xFFFFFFFF)
+		return 0xFFFFFFFF;
+
+	dp->head = dp->tail = dp->n = 0;
+	dp->writer_waiting = dp->reader_waiting = false;
+
+	return nextpipe++;
+}
+
+extern "C" void c_writepipe(natl p, char *buf, natl n)
+{
+	if (!pipe_valid(p)) {
+		flog(LOG_WARN, "pipe non valida %d", p);
+		abort_p();
+	}
+
+	if (!c_access(reinterpret_cast<vaddr>(buf), n, false)) {
+		flog(LOG_WARN, "buf non valido");
+		abort_p();
+	}
+	
+	struct des_pipe *dp = &array_despipe[p];
+
+	while (n) {
+		if (dp->n == BUFSIZE) {
+			dp->writer_waiting = true;
+			sem_wait(dp->not_full);
+		}
+
+		while (n && dp->n < BUFSIZE) {
+			dp->buf[dp->head] = *buf++;
+			dp->head = (dp->head + 1) % BUFSIZE;
+			dp->n++;
+			n--;
+		}
+
+		if (dp->reader_waiting) {
+			dp->reader_waiting = false;
+			sem_signal(dp->not_empty);
+		}
+	}
+}
+//   SOLUZIONE 2016-02-25 )
+
+

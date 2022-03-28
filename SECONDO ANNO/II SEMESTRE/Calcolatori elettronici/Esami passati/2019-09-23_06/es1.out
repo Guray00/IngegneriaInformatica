@@ -1,0 +1,18 @@
+proc 11: debugger di 8: chiamo bpattach
+proc 8: prima di catch_me()
+proc 11: debugger di 8: breapoint intercettato
+proc 8: eseguo catch_me(0)
+proc 8: prima di catch_me()
+proc 11: debugger di 8: breapoint intercettato
+proc 8: eseguo catch_me(1)
+proc 12: debugger di 10: chiamo bpattach
+proc 10: prima di catch_me()
+proc 9: prima di catch_me()
+proc 9: eseguo catch_me(0)
+proc 9: prima di catch_me()
+proc 9: eseguo catch_me(1)
+proc 12: debugger di 10: breapoint intercettato
+proc 10: eseguo catch_me(0)
+proc 10: prima di catch_me()
+proc 12: debugger di 10: breapoint intercettato
+proc 10: eseguo catch_me(1)

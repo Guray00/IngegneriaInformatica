@@ -1,0 +1,19 @@
+proc 15: chiamo proc_attach(11)
+proc 15: chiamo proc_attach(12)
+proc 14: chiamo proc_attach(9)
+proc 14: chiamo proc_attach(10)
+proc 13: chiamo proc_attach(7)
+proc 13: chiamo proc_attach(8)
+proc 7: eseguo 42/0
+proc 13: motivo terminazione: errore di divisione
+proc 8: eseguo mov rax, cr3
+proc 13: motivo terminazione: errore di protezione
+proc 9: termino normalmente
+proc 14: motivo terminazione: normale
+proc 10: eseguo mov rax, cr3
+proc 14: motivo terminazione: errore di protezione
+proc 11: eseguo 42/0
+proc 12: termino normalmente
+proc 15: motivo terminazione: normale
+proc 15: motivo terminazione: errore di divisione
+heap sistema disponibile: 1047616

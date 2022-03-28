@@ -1,0 +1,81 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2016-06-15
+extern "C" void c_cedmaread(natl id, char *buf, natl quanti)
+{
+	if (id >= next_ce) {
+		flog(LOG_WARN, "dispositivo %d non esistente", id);
+		abort_p();
+	}
+
+	if (!access(buf, quanti, true)) {
+		flog(LOG_WARN, "parametri non validi: %p, %d\n", buf, quanti);
+		abort_p();
+	}
+
+	des_ce *c = &array_ce[id];
+	sem_wait(c->mutex);
+	paddr f = trasforma(buf);
+	natw rem = 4096 - ((natq)f & 0xfff);
+	if (rem > quanti)
+		rem = quanti;
+	flog (LOG_DEBUG, "virtuale %lx fisico %lx primo trasferimento: %d byte",
+		buf, f, rem);
+	c->buf = buf + rem;
+	c->quanti = quanti - rem;
+	outputl((natq)f, c->iBMPTR);
+	outputl(rem, c->iBMLEN);
+	outputl(1, c->iCMD);
+	sem_wait(c->sync);
+	sem_signal(c->mutex);
+}
+
+extern "C" void estern_ce(int id)
+{
+	des_ce *c = &array_ce[id];
+
+	for (;;) {
+		inputl(c->iSTS);
+		if (c->quanti > 0) {
+			natw rem = c->quanti;
+			if (rem > 4096)
+				rem = 4096;
+			paddr f = trasforma(c->buf);
+			flog (LOG_DEBUG, "virtuale %lx fisico %lx trasferimento: %d byte",
+				c->buf, f, rem);
+			c->buf += rem;
+			c->quanti -= rem;
+			outputl((natq)f, c->iBMPTR);
+			outputl(rem, c->iBMLEN);
+			outputl(1, c->iCMD);
+		} else {
+			sem_signal(c->sync);
+		}
+		wfi();
+	}
+}
+//   SOLUZIONE 2016-06-15 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2016-06-15
+	fill_io_gate	IO_TIPO_CEREAD	a_cedmaread
+//   SOLUZIONE 2016-06-15 )
+// ( SOLUZIONE 2016-06-15
+	.extern	c_cedmaread
+a_cedmaread:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_cedmaread
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2016-06-15 )
+
+

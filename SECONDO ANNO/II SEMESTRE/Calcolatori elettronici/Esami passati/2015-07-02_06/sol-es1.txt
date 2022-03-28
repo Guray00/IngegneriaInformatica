@@ -54,7 +54,7 @@ extern "C" void c_shmem_attach(natl id)
 				return cfn * DIM_PAGINA;
 			});
 	if (last != end) {
-		unmap(esecuzione->cr3, start, last, [](vaddr, int) {});
+		unmap(esecuzione->cr3, start, last, [](paddr, int) {});
 		return;
 	}
 	esecuzione->avail_addr = end;

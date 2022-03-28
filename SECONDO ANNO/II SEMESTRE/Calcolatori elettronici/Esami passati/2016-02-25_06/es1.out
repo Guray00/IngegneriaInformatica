@@ -1,0 +1,21 @@
+writer 1: invio 3 byte
+writer 1: invio 3 byte
+reader 2: ricevo 6 byte
+reader 1: ricevo 3 byte
+writer 1: invio 3 byte
+reader 1: ricevo 3 byte
+writer 1: termino
+reader 1: ricevo 3 byte
+reader 1: 1-2-3-4-5
+reader 0: ricevo 3 byte
+writer 2: invio 4 byte
+writer 2: invio 3 byte
+reader 2: ricevo 1 byte
+reader 2: A-B-C-D
+writer 2: termino
+writer 0: invio 2 byte
+writer 0: invio 2 byte
+reader 0: ricevo 3 byte
+writer 0: invio 2 byte
+reader 0: a-b-c-
+writer 0: termino

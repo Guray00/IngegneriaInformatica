@@ -1,0 +1,92 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2020-02-07
+a_proc_attach:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_proc_attach
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+a_proc_wait:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_proc_wait
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2020-02-07 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2020-02-07
+	// scolleghiamo tutti gli eventuali slave
+	for (des_proc *slave = p->slaves; slave; slave = slave->next_slave) {
+		slave->master = nullptr;
+	}
+
+	// distruggiamo tutti gli eventuali slave in pausa
+	while (p->paused_slaves) {
+		des_proc* slave = rimozione_lista(p->paused_slaves);
+		distruggi_processo(slave);
+		flog(sev, "Processo slave %d distrutto", p->id);
+		processi--;
+	}
+
+	des_proc *master = p->master;
+	if (master) {
+		if (master->is_waiting) {
+			master->contesto[I_RAX] = 32;
+			inserimento_lista(pronti, master);
+			master->is_waiting = false;
+		} else {
+			p->last_exception = 32;
+			inserimento_lista(master->paused_slaves, p);
+			p = nullptr; // non distruggiamo il processo
+		}
+	}
+	if (p) {
+		distruggi_processo(p);
+		flog(sev, "Processo %d %s", p->id, mode);
+		processi--;
+	}
+	schedulatore();
+//   SOLUZIONE 2020-02-07 )
+// ( SOLUZIONE 2020-02-07
+extern "C" void c_proc_wait()
+{
+	// e' un errore se il processo non e' master;
+	if (!esecuzione->slaves) {
+		flog(LOG_WARN, "proc_wait() non chiamata da un master");
+		c_abort_p();
+		return;
+	}
+
+	if (esecuzione->paused_slaves) {
+		des_proc *slave;
+
+		slave = rimozione_lista(esecuzione->paused_slaves);
+		esecuzione->contesto[I_RAX] = slave->last_exception;
+		distruggi_processo(slave);
+		flog(LOG_INFO, "Processo slave %d distrutto", slave->id);
+		processi--;
+	} else {
+		esecuzione->is_waiting = true;
+		schedulatore();
+	}
+}
+//   SOLUZIONE 2020-02-07 )
+
+

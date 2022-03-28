@@ -1,0 +1,95 @@
+******************************************
+* util/question.tex
+******************************************
+
+
+
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2020-09-23 #1
+	carica_gate	TIPO_MPROTECT	a_mprotect	LIV_UTENTE
+//   SOLUZIONE 2020-09-23 )
+// ( SOLUZIONE 2020-09-23 #2
+a_mprotect:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_mprotect
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2020-09-23 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2020-09-23 #1
+//   SOLUZIONE 2020-09-23 )
+// ( SOLUZIONE 2020-09-23 #3
+	tab_iter it(root_tab, ini_utn_c, fin_utn_c - ini_utn_c);
+	for (it.post(); it; it.next_post()) {
+		tab_entry& e = it.get_e();
+
+		if (e & BIT_P && !it.is_leaf()) {
+			paddr tab = extr_IND_FISICO(e);
+			if (vdf[tab/DIM_PAGINA].owner == p->id) {
+				rilascia_frame(tab);
+				e = 0;
+			}
+		}
+	}
+//   SOLUZIONE 2020-09-23 )
+// ( SOLUZIONE 2020-09-23 #6
+extern "C" void c_mprotect(vaddr v, natq n, bool wen)
+{
+	if (v < ini_utn_c || v + n < v || v + n >= fin_utn_c) {
+		flog(LOG_WARN, "mprotect() su intervallo non consentito");
+		c_abort_p();
+		return;
+	}
+
+	for (tab_iter it(esecuzione->cr3, v, n); it; it.next()) {
+		tab_entry &e = it.get_e();
+
+		if (!(e & BIT_P))
+			continue;
+
+		bool cwen = e & BIT_RW;
+
+		if (!it.is_leaf()) {
+			paddr p = extr_IND_FISICO(e);
+			des_frame *df = &vdf[p/DIM_PAGINA];
+
+			if (df->owner != esecuzione->id) {
+				// dobbiamo clonare la tabella
+				paddr new_f = alloca_tab();
+				if (!new_f) {
+					esecuzione->contesto[I_RAX] = false;
+					return;
+				}
+				copy_des(p, new_f, 0, 512);
+				set_IND_FISICO(e, new_f);
+				df->owner = esecuzione->id;
+			}
+
+			if (wen && !cwen)
+				e |= BIT_RW;
+		} else if (wen != cwen) {
+			if (wen)
+				e |= BIT_RW;
+			else
+				e &= ~BIT_RW;
+			invalida_entrata_TLB(it.get_v());
+		}
+	}
+	esecuzione->contesto[I_RAX] = true;
+}
+//   SOLUZIONE 2020-09-23 )
+
+

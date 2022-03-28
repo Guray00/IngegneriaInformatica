@@ -1,0 +1,137 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2017-01-18
+	carica_gate	TIPO_R		a_reg		LIV_UTENTE
+	carica_gate	TIPO_LS		a_listen	LIV_UTENTE
+	carica_gate	TIPO_B		a_broadcast	LIV_UTENTE
+//   SOLUZIONE 2017-01-18 )
+// ( SOLUZIONE 2017-01-18
+
+a_reg:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_reg
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+a_listen:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_listen
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+a_broadcast:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_broadcast
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2017-01-18 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2017-01-18
+	natl b_id;
+//   SOLUZIONE 2017-01-18 )
+// ( SOLUZIONE 2017-01-18
+	natl last_id;
+	natl msg[MAX_BROADCAST];
+	des_proc* listeners;
+//   SOLUZIONE 2017-01-18 )
+// ( SOLUZIONE 2017-01-18
+	global_broadcast.last_id = 0;
+	global_broadcast.listeners = 0;
+//   SOLUZIONE 2017-01-18 )
+// ( SOLUZIONE 2016-09-20
+extern "C" void c_reg(enum broadcast_role role)
+{
+	broadcast_t *b = &global_broadcast;
+
+	if (role != B_BROADCASTER && role != B_LISTENER) {
+		flog(LOG_WARN, "parametro non valido: %d", role);
+		c_abort_p();
+		return;
+	}
+	if (esecuzione->b_reg != B_NONE) {
+		flog(LOG_WARN, "gia' registrato come %s",
+			(esecuzione->b_reg == B_BROADCASTER ? "broadcaster" : "listener"));
+		c_abort_p();
+		return;
+	}
+	if (role == B_BROADCASTER) {
+		if (b->broadcaster_registered) {
+			flog(LOG_WARN, "broadcaster gia' registrato");
+			c_abort_p();
+			return;
+		}
+		b->broadcaster_registered = true;
+	}
+	esecuzione->b_reg = role;
+}
+
+extern "C" void c_listen()
+{
+	broadcast_t *b = &global_broadcast;
+
+	if (esecuzione->b_reg != B_LISTENER) {
+		flog(LOG_WARN, "listen non registrata");
+		c_abort_p();
+		return;
+	}
+
+	if (esecuzione->b_id < b->last_id) {
+		esecuzione->contesto[I_RAX] = b->msg[esecuzione->b_id];
+		esecuzione->b_id++;
+		return;
+	}
+
+	inserimento_lista(b->listeners, esecuzione);
+	schedulatore();
+}
+
+extern "C" void c_broadcast(natl msg)
+{
+	broadcast_t *b = &global_broadcast;
+
+	if (esecuzione->b_reg != B_BROADCASTER) {
+		flog(LOG_WARN, "broadcast da processo non registrato");
+		c_abort_p();
+		return;
+	}
+	if (b->last_id >= MAX_BROADCAST) {
+		flog(LOG_WARN, "troppi messaggi");
+		c_abort_p();
+		return;
+	}
+	b->msg[b->last_id] = msg;
+	b->last_id++;
+	inspronti();
+	while (b->listeners) {
+		des_proc* work = rimozione_lista(b->listeners);
+		work->contesto[I_RAX] = msg;
+		work->b_id++;
+		inserimento_lista(pronti, work);
+	}
+	schedulatore();
+}
+//   SOLUZIONE 2016-09-20 )
+
+

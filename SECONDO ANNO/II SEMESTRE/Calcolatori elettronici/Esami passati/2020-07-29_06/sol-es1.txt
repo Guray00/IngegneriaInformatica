@@ -1,0 +1,120 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2020-07-29
+	carica_gate	TIPO_SIGNAL	a_signal	LIV_UTENTE
+	carica_gate	TIPO_SIGRET	a_signal_return	LIV_UTENTE
+//   SOLUZIONE 2020-07-29 )
+// ( SOLUZIONE 2020-07-29
+	.extern c_signal
+a_signal:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_signal
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+	.extern c_signal_return
+a_signal_return:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_signal_return
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2020-07-29 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2020-07-29 #1
+//   SOLUZIONE 2020-07-29 )
+// ( SOLUZIONE 2020-07-29 #2
+	/* puntatori ai vari signal handler */
+	sighandler sigh[32];
+	/* copia di contesto */
+	natq csave[N_REG];
+	/* true sse il processo ha ricevuto un segnale e non ha ancora
+	 * invocato signal_return */
+	bool in_sighandler;
+//   SOLUZIONE 2020-07-29 )
+// ( SOLUZIONE 2020-07-29 #3
+	if (esecuzione->sigh[tipo] && !esecuzione->in_sighandler) {
+		/* dobbiamo fare in modo che, al ritorno da questa funzione, si
+		 * salti al signal handler. Per far questo e' sufficiente
+		 * modificare il rip che e' stato salvato in pila dal
+		 * meccanismo delle interruzioni e che sara' letto dalla iret
+		 * al ritorno da questa funzione.  La salva_stato ha salvato in
+		 * contesto[I_RSP] il puntatore alla pila subito dopo il
+		 * salvataggio delle 5 parole lunghe, e dunque contesto[I_RSP]
+		 * punta proprio al rip che vogliamo modificare.
+		 */
+		natq *saved_rip = reinterpret_cast<natq*>(esecuzione->contesto[I_RSP]);
+		/* si noti che contesto[I_RSP] contiene un indirizzo virtuale,
+		 * ma possiamo usarlo direttamente in quanto e' ancora attivo
+		 * il giusto albero di traduzione
+		 */
+		*saved_rip = reinterpret_cast<natq>(esecuzione->sigh[tipo]);
+
+		/* salviamo tutto il contesto, sia perche' dovremo modificarlo
+		 * per poter passare i parametri al signal handler, sia perche'
+		 * il signal handler stesso potrebbe modificarlo se viene
+		 * interrotto.
+		 */
+		for (int i = 0; i < N_REG; i++)
+			esecuzione->csave[i] = esecuzione->contesto[i];
+		/* passiamo i parametri al signal handler */
+		esecuzione->contesto[I_RDI] = tipo;
+		esecuzione->contesto[I_RSI] = (tipo == 14 ? readCR2() : errore);
+		esecuzione->contesto[I_RDX] = reinterpret_cast<natq>(rip);
+		/* ci ricordiamo che il signal handler e' attivo, per
+		 * controllare che non vi siano annidamenti
+		 */
+		esecuzione->in_sighandler = true;
+		return;
+	}
+//   SOLUZIONE 2020-07-29 )
+// ( SOLUZIONE 2020-07-29 #5
+//   SOLUZIONE 2020-07-29 )
+// ( SOLUZIONE 2020-07-29 #6
+extern "C" void c_signal(int t, sighandler h)
+{
+	if (t < 0 || t >= 32 || t == 2) {
+		flog(LOG_WARN, "illegal type %d", t);
+		c_abort_p();
+		return;
+	}
+
+	esecuzione->sigh[t] = h;
+}
+
+extern "C" void c_signal_return(vaddr rip)
+{
+	/* controllo sull'annidamento delle eccezioni */
+	if (!esecuzione->in_sighandler) {
+		flog(LOG_WARN, "illegal call to signal_return");
+		c_abort_p();
+		return;
+	}
+	esecuzione->in_sighandler = false;
+
+	/* ripristino del contesto e del rip */
+	natq *saved_rip = reinterpret_cast<natq*>(esecuzione->contesto[I_RSP]);
+	*saved_rip = rip;
+	for (int i = 0; i < N_REG; i++)
+		esecuzione->contesto[i] = esecuzione->csave[i];
+	return;
+}
+//   SOLUZIONE 2020-07-29 )
+
+

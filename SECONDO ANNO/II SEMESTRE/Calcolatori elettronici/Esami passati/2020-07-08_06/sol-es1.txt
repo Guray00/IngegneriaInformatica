@@ -1,0 +1,261 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2020-07-08
+
+struct des_ce {
+	ioaddr iSNR, iCMD, iSTS, iADR;
+	natl mutex;
+	natl sync;
+	// numero di settori contenuti nella periferica
+	natl nsect;
+	// Buffer di appoggio per letture/scritture.
+	// Dobbiamo assicurarci che sia interamente contenuto
+	// in un frame. Assumendo che DIM_SECT sia un sottomultiplo
+	// di 4096, e' sufficiente allinearlo a DIM_SECT
+	char sector[DIM_SECT] __attribute__((aligned(DIM_SECT)));
+};
+des_ce array_ce[MAX_CE];
+natl next_ce = 0;
+
+extern "C" bool c_ceread(natl id, natl offset, char *buf, natl quanti)
+{
+	if (id >= next_ce) {
+		flog(LOG_WARN, "dispositivo ce%d non esistente", id);
+		abort_p();
+	}
+
+	if (!access(buf, quanti, true)) {
+		flog(LOG_WARN, "parametri non validi");
+		abort_p();
+	}
+
+	/* se quanti e' zero e' inutile procedere */
+	if (!quanti)
+		return true;
+
+	des_ce *ce = &array_ce[id];
+
+	// primo settore
+	natl snum = offset / DIM_SECT;
+
+	if (snum >= ce->nsect) {
+		flog(LOG_INFO, "settore %d fuori dai limiti [0, %d)", snum, ce->nsect);
+		return false;
+	}
+	// convertiamo a natq per evitare overflow
+	if ((natq)offset + quanti > (natq)ce->nsect * DIM_SECT) {
+		flog(LOG_INFO, "offset + quanti = %d supera il limite %d",
+				(natq)offset + quanti, (natq)ce->nsect * DIM_SECT);
+		return false;
+	}
+
+	// offset del primo byte nel primo settore
+	natl soff = offset % DIM_SECT;
+	// quanti byte copiare dal primo settore
+	natl tocopy = DIM_SECT - soff;
+	if (quanti < tocopy) {
+		tocopy = quanti;
+	}
+
+	// Visto che il buffer dell'utente puo' non essere residente, non
+	// possiamo avviare il bus mastering direttamente verso di esso.
+	// Faremo dunque sempre bus mastering verso il nostro buffer di appoggio,
+	// e da questo copieremo i byte nel buffer dell'utente. 
+	// Questo semplifica anche la gestione dei casi di lettura di settori
+	// incompleti.
+	// Si noti che, trovandoci nel modulo I/O, non dobbiamo preoccuparci di
+	// eventuali page fault durante la copia, in quanto non abbiamo vincoli
+	// di atomicita'.
+	//
+	// Visto che il buffer dell'utente puo' anche essere privato, la copia
+	// non potra' essere effettuata dal processo esterno. Svolgeremo dunque
+	// tutte le operazioni all'interno della primitiva stessa (visto che
+	// questa gira sempre nel contesto del processo che la ha invocata).
+	// Il processo esterno si limitera' a segnalarci che il trasferimento
+	// e' completo.
+
+	sem_wait(ce->mutex);
+	// leggiamo un settore alla volta e copiamo i byte richiesti dentro buf;
+	// 'quanti' e' il numero di byte ancora da copiare
+	// Nota: l'indirizzo fisico di 'ce->sector' e' stato scritto dentro ADR
+	// in fase di inizializzazione, dal momento che non cambia mai.
+	while (quanti) {
+		outputl(snum, ce->iSNR);
+		outputl(2, ce->iCMD);
+		sem_wait(ce->sync);
+		memcpy(buf, ce->sector + soff, tocopy);
+		snum++;
+		buf += tocopy;
+		quanti -= tocopy;
+
+		// dal secondo ciclo in poi copieremo tutti i byte del settore,
+		// tranne eventualmente per l'ultimo
+		soff = 0;
+		tocopy = DIM_SECT;
+		if (quanti < tocopy)
+			tocopy = quanti;
+	}
+	sem_signal(ce->mutex);
+	return true;
+}
+
+extern "C" bool c_cewrite(natl id, natl offset, char *buf, natl quanti)
+{
+	if (id >= next_ce) {
+		flog(LOG_WARN, "dispositivo ce%d non esistente", id);
+		abort_p();
+	}
+
+	if (!access(buf, quanti, false)) {
+		flog(LOG_WARN, "parametri non validi");
+		abort_p();
+	}
+
+	/* se quanti e' zero e' inutile procedere */
+	if (!quanti)
+		return true;
+
+	des_ce *ce = &array_ce[id];
+
+	natl snum = offset / DIM_SECT;
+
+	if (snum >= ce->nsect) {
+		flog(LOG_INFO, "settore %d fuori dai limiti [0, %d)", snum, ce->nsect);
+		return false;
+	}
+	if ((natq)offset + quanti > (natq)ce->nsect * DIM_SECT) {
+		flog(LOG_INFO, "offset + quanti = %d supera il limite %d",
+				(natq)offset + quanti, (natq)ce->nsect * DIM_SECT);
+		return false;
+	}
+
+	natl soff = offset % DIM_SECT;
+	natl tocopy = DIM_SECT - soff;
+	if (quanti < tocopy) {
+		tocopy = quanti;
+	}
+	sem_wait(ce->mutex);
+	while (quanti) {
+		outputl(snum, ce->iSNR);
+		// nel caso di scrittura dobbiamo stare attenti a non
+		// modificare byte non richiesti. Cio' potrebbe accadere nel
+		// primo settore, se soff != 0, o nell'ultimo, se tocopy < DIM_SECT.
+		// In questi casi dobbiamo prima leggere il contenuto
+		// attuale del settore
+		if (soff || tocopy < DIM_SECT) {
+			// SNR contiene gia' il valore corretto
+			outputl(2, ce->iCMD);
+			sem_wait(ce->sync);
+		}
+		// ora modifichiamo solo i byte richiesti
+		memcpy(ce->sector + soff, buf, tocopy);
+		// (ri)scriviamo il settore
+		outputl(1, ce->iCMD);
+		sem_wait(ce->sync);
+		snum++;
+		buf += tocopy;
+		quanti -= tocopy;
+	
+		soff = 0;
+		tocopy = DIM_SECT;
+		if (quanti < tocopy)
+			tocopy = quanti;
+	}
+	sem_signal(ce->mutex);
+	return true;
+}
+
+extern "C" void estern_ce(int id)
+{
+	des_ce *ce = &array_ce[id];
+
+	for (;;) {
+		// risposta alla richiesta di interruzione
+		inputl(ce->iSTS);
+		sem_signal(ce->sync);
+		wfi();
+	}
+}
+
+bool ce_init()
+{
+	for (natb bus = 0, dev = 0, fun = 0;
+	     pci_find_dev(bus, dev, fun, 0xedce, 0x1234);
+	     pci_next(bus, dev, fun))
+	{
+		if (next_ce >= MAX_CE) {
+			flog(LOG_WARN, "troppi dispositivi ce");
+			break;
+		}
+		des_ce *ce = &array_ce[next_ce];
+		natw base = pci_read_confl(bus, dev, fun, 0x10);
+		base &= ~0x1;
+		ce->iSNR = base;
+		ce->iCMD = base + 4;
+		ce->iSTS = base + 8;
+		ce->iADR = base + 12;
+		ce->nsect = inputl(ce->iSTS);
+		ce->nsect &= 0xFFFF; /* solo 16 bit sono significativi */
+		// visto che faremo i trasferimenti sempre e solo verso
+		// il buffer 'sector', possiamo scriverene l'indirizzo fisico
+		// dentro ADR una volta per tutte
+		outputl(trasforma(ce->sector), ce->iADR);
+
+		ce->mutex = sem_ini(1);
+		if (ce->mutex == 0xFFFFFFFF) {
+			flog(LOG_ERR, "semafori insufficienti");	
+			return false;
+		}
+		ce->sync = sem_ini(0);
+		if (ce->sync == 0xFFFFFFFF) {
+			flog(LOG_ERR, "semafori insufficienti");
+			return false;
+		}
+		natb irq = pci_read_confb(bus, dev, fun, 0x3c);
+		activate_pe(estern_ce, next_ce, MIN_EXT_PRIO + 0x70 + next_ce, LIV, irq);
+		flog(LOG_INFO, "ce%d: %2x:%1x:%1x base=%4x IRQ=%d size=%d mutex=%d sync=%d",
+				next_ce, bus, dev, fun, base, irq, ce->nsect, ce->mutex, ce->sync);
+		next_ce++;
+	}
+	return true;
+}
+//   SOLUZIONE 2020-07-08 )
+// ( SOLUZIONE 2020-07-08
+	if (!ce_init())
+		panic("inizializzazione CE fallita");
+//   SOLUZIONE 2020-07-08 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2020-07-08
+	fill_io_gate	IO_TIPO_CEREAD	a_ceread
+	fill_io_gate	IO_TIPO_CEWRITE	a_cewrite
+//   SOLUZIONE 2020-07-08 )
+// ( SOLUZIONE 2020-07-08
+	.extern		c_ceread
+a_ceread: 
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_ceread
+	iretq
+	.cfi_endproc
+
+	.extern	c_cewrite
+a_cewrite:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_cewrite
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2020-07-08 )
+
+

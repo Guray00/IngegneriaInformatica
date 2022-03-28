@@ -1,0 +1,113 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2018-02-23
+struct newproc_param_t {
+	void (*f)(int);
+	int a;
+	int s;
+	natl avail;
+} newproc_params;
+
+void proxy(natq)
+{
+	void (*f)(int);
+	int a, s;
+	
+	
+	f = newproc_params.f;
+	a = newproc_params.a;
+	s = newproc_params.s;
+	sem_signal(newproc_params.avail);
+
+	natl wd = startwatchdog(s);
+	if (wd == 0xffffffff) {
+		flog(LOG_WARN, "nessun watchdog disponibile");
+		abort_p();
+	}
+	if (!call_user(f, a)) {
+		flog(LOG_WARN, "call_user fallita");
+		stopwatchdog(wd);
+		abort_p();
+	}
+	stopwatchdog(wd);
+	terminate_p();
+}
+
+extern "C" natl c_newproc(void f(int), int a, natl prio, natl secs)
+{
+	sem_wait(newproc_params.avail);
+	newproc_params.f = f;
+	newproc_params.a = a;
+	newproc_params.s = secs;
+	natl id = activate_p(proxy, 0, prio, LIV_SISTEMA);
+	return id;
+}
+
+bool newproc_init()
+{
+	newproc_params.avail = sem_ini(1);
+	return (newproc_params.avail != 0xFFFFFFFF);
+}
+// SOLUZIONE 2018-02-23 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2018-02-23
+	fill_io_gate	IO_TIPO_NP	a_newproc
+//   SOLUZIONE 2018-02-23 )
+// ( SOLUZIONE 2018-02-23
+	.extern c_newproc
+a_newproc:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_newproc
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2018-02-23 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2018-02-23
+extern "C" void c_call_user(vaddr entry, int a)
+{
+	// pila utente
+	if (!crea_pila(esecuzione->cr3, fin_utn_p, DIM_USR_STACK, LIV_UTENTE)) {
+		flog(LOG_WARN, "creazione pila utente fallita");
+		esecuzione->contesto[I_RAX] = false;
+		return;
+	}
+
+	// pila sistema
+	natq *pl = reinterpret_cast<natq*>(esecuzione->contesto[I_RSP]);
+	for (int i = 0; i < 5; i++) {
+		esecuzione->pila_salvata[i] = pl[i];
+	}
+	pl[0] = entry;
+	pl[1] = SEL_CODICE_UTENTE;
+	pl[2] = BIT_IF;
+	pl[3] = fin_utn_p - sizeof(natq);
+	pl[4] = SEL_DATI_UTENTE;
+	esecuzione->punt_nucleo = reinterpret_cast<vaddr>(&pl[5]);
+
+	// contesto
+	for (int i = 0; i < N_REG; i++) {
+		esecuzione->contesto_salvato[i] = esecuzione->contesto[i];
+	}
+	esecuzione->livello = LIV_UTENTE;
+	esecuzione->downgraded = true;
+	esecuzione->contesto[I_RDI] = a;
+	esecuzione->contesto[I_RAX] = true;
+}
+//   SOLUZIONE 2018-02-23 )
+
+

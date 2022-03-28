@@ -1,0 +1,13 @@
+proc 12: master di 7: chiamo proc_attach
+proc 13: master di 8: chiamo proc_attach
+proc 12: master di 7: motivo terminazione: errore di divisione
+proc 13: master di 8: motivo terminazione: page fault
+proc 11: master di 6: chiamo proc_attach
+proc 14: master di 9: chiamo proc_attach
+proc 9: eseguo int3
+proc 14: master di 9: motivo terminazione: breakpoint
+proc 6: b vale 42
+proc 11: master di 6: motivo terminazione: normale
+proc 19: master di 10: chiamo proc_attach
+proc 10: eseguo mov rax, cr3
+proc 19: master di 10: motivo terminazione: errore di protezione

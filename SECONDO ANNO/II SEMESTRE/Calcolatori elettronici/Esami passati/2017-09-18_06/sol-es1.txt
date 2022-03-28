@@ -1,0 +1,37 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2017-09-18
+extern "C" void c_call_user(vaddr entry, natq regs[N_REG])
+{
+	// pila utente
+	if (!crea_pila(esecuzione->cr3, fin_utn_p, DIM_USR_STACK, LIV_UTENTE)) {
+		flog(LOG_WARN, "creazione pila utente fallita");
+		esecuzione->contesto[I_RAX] = false;
+		return;
+	}
+
+	// pila sistema
+	natq *pl = reinterpret_cast<natq*>(esecuzione->contesto[I_RSP]);
+	for (int i = 0; i < 5; i++) {
+		esecuzione->pila_salvata[i] = pl[i];
+	}
+	pl[0] = entry;
+	pl[1] = SEL_CODICE_UTENTE;
+	pl[2] = BIT_IF;
+	pl[3] = fin_utn_p - sizeof(natq);
+	pl[4] = SEL_DATI_UTENTE;
+	esecuzione->punt_nucleo = reinterpret_cast<vaddr>(&pl[5]);
+
+	// contesto
+	regs[I_RSP] = esecuzione->contesto[I_RSP];
+	for (int i = 0; i < N_REG; i++) {
+		esecuzione->contesto_salvato[i] = esecuzione->contesto[i];
+		esecuzione->contesto[i] = regs[i];
+	}
+	esecuzione->regs = regs;
+}
+//   SOLUZIONE 2017-09-18 )
+
+

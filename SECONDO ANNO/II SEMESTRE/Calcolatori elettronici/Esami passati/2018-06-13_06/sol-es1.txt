@@ -1,0 +1,102 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2018-06-13
+	natl old_head;
+	msg* m[DIM_RING];
+//   SOLUZIONE 2018-06-13 )
+// ( SOLUZIONE 2018-06-13
+extern "C" bool c_send(natl dst, const char *buf, natl len)
+{
+	if (len > MAX_PAYLOAD)
+		return false;
+
+	if (!access(buf, len, false)) {
+		flog(LOG_WARN, "parametri errati: %p %d", buf, len);
+		abort_p();
+	}
+
+	sem_wait(net.mutex);
+
+	natl tail = inputl(net.iTAIL);
+
+	if (ring_full(tail, net.old_head)) {
+		sem_signal(net.mutex);
+		return false;
+	}
+
+	msg *m = new(align_val_t{1024}) msg;
+	if (!m) {
+		sem_signal(net.mutex);
+		return false;
+	}
+
+	m->src = myaddr;
+	m->dst = dst;
+	m->len = len;
+	memcpy(m->payload, buf, len);
+	/* ricordiamo l'indirizzo virtuale del buffer
+	 * in modo da poterlo poi liberare
+	 */
+	net.m[tail] = m;
+
+	slot *s = &net.s[tail];
+	s->addr = trasforma(m);
+	s->len = len + 3 * sizeof(natl);
+	tail = ring_next(tail);
+	outputl(tail, net.iTAIL);
+
+	sem_signal(net.mutex);
+
+	return true;
+}
+
+extern "C" void estern_net(int i)
+{
+	for (;;) {
+		natl new_head = inputl(net.iHEAD);
+		sem_wait(net.mutex);
+		for (natl h = net.old_head; h != new_head; h = ring_next(h)) {
+			delete net.m[h];
+			net.m[h] = nullptr;
+		}
+		net.old_head = new_head;
+		sem_signal(net.mutex);
+		wfi();
+	}
+}
+
+// non usare: serve al programma di test
+extern "C" natl c_waitnet()
+{
+	for (;;) {
+		if (inputl(net.iHEAD) == inputl(net.iTAIL))
+			break;
+		delay(10);
+	}
+	return inputl(net.iRING + 4);
+}
+//   SOLUZIONE 2018-06-13 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2018-06-13
+	fill_io_gate	IO_TIPO_SEND	a_send
+//   SOLUZIONE 2018-06-13 )
+// ( SOLUZIONE 2018-06-13
+	.extern c_send
+a_send:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_send
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2018-06-13 )
+
+

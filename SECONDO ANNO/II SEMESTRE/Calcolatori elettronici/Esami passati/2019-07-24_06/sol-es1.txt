@@ -1,0 +1,85 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2019-07-24
+	carica_gate	TIPO_BPD	a_bpdetach	LIV_UTENTE
+//   SOLUZIONE 2019-07-24 )
+// ( SOLUZIONE 2019-07-24
+a_bpdetach:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_bpdetach
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2019-07-24 )
+// ( SOLUZIONE 2019-07-24
+ 	movq $3, %rdi
+ 	movq $0, %rsi
+//	movq (%rsp), %rdx
+	movq %rsp, %rdx
+//	call gestore_eccezioni
+	call c_breakpoint_exception
+//   SOLUZIONE 2019-07-24 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2019-07-24
+	if (!duplica(dest, rip))
+		return;
+
+	natb *bytes = reinterpret_cast<natb*>(trasforma(dest->cr3, rip));
+	esecuzione->bp_addr = rip;
+	esecuzione->bp_orig = *bytes;
+	*bytes = 0xCC;
+//   SOLUZIONE 2019-07-24 )
+// ( SOLUZIONE 2019-07-24
+void deduplica(des_proc *p, vaddr v)
+{
+	tab_iter it(p->cr3, v);
+	for (it.post(); it; it.next_post()) {
+		tab_entry e = it.get_e();
+		paddr dst = extr_IND_FISICO(e);
+		rilascia_frame(dst);
+	}
+	int idx = i_tab(v, MAX_LIV);
+	get_entry(p->cr3, idx) = get_entry(esecuzione->cr3, idx);
+}
+
+extern "C" void c_bpdetach()
+{
+	des_proc *dest;
+
+	if (!esecuzione->bp_slave) {
+		flog(LOG_WARN, "bpremove() errata");
+		c_abort_p();
+		return;
+	}
+
+	dest = esecuzione->bp_slave;
+
+	deduplica(dest, esecuzione->bp_addr);
+
+	if (esecuzione->bp_waiting) {
+		inspronti();
+		inserimento_lista(pronti, dest);
+		esecuzione->bp_waiting = false;
+		schedulatore();
+	}
+
+	esecuzione->bp_slave = nullptr;
+	esecuzione->bp_addr = 0;
+	esecuzione->bp_orig = 0;
+	dest->bp_master = nullptr;
+}
+
+//   SOLUZIONE 2019-07-24 )
+
+

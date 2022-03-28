@@ -1,0 +1,120 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2022-01-26
+extern "C" void c_ma_attach(natw pid, natq npag)
+{
+	if (pid > MAX_PROC_ID || pid == esecuzione->id) {
+		flog(LOG_WARN, "ma_attach: pid non valido: %d", pid);
+		c_abort_p();
+		return;
+	}
+
+	if (!npag || npag > MAX_MA_PAGES) {
+		flog(LOG_WARN, "ma_attach: numero di pagine %d non valido", npag); 
+		c_abort_p();
+		return;
+	}
+
+	if (esecuzione->monitored) {
+		flog(LOG_WARN, "ma_attach: il processo sta gia' monitorando %d", esecuzione->monitored->id);
+		c_abort_p();
+		return;
+	}
+
+	des_proc *p = proc_table[pid];
+
+	if (esecuzione->monitor || !p || p->monitor) {
+		esecuzione->contesto[I_RAX] = false;
+		return;
+	}
+
+	p->monitor = esecuzione;
+	p->last_cr2 = 0;
+	p->ma_npag = npag;
+	p->waiting = false;
+
+	esecuzione->monitored = p;
+	esecuzione->waiting = false;
+	esecuzione->pending_event = false;
+	esecuzione->contesto[I_RAX] = true;
+}
+
+extern "C" void c_ma_wait()
+{
+	des_proc *m = esecuzione->monitored;
+
+	if (esecuzione->pending_event) {
+		esecuzione->pending_event = false;
+		esecuzione->contesto[I_RAX] = m ? m->last_cr2 : 0;
+		return;
+	}
+
+	if (!m) {
+		flog(LOG_WARN, "ma_wait: il processo non e' un monitor");
+		c_abort_p();
+		return;
+	}
+
+	esecuzione->waiting = true;
+	schedulatore();
+}
+
+extern "C" void c_ma_map(vaddr src)
+{
+	des_proc *m = esecuzione->monitored;
+
+	if (!m) {
+		flog(LOG_WARN, "ma_map: il processo non e' un monitor");
+		c_abort_p();
+		return;
+	}
+
+	if (!m->waiting || !m->last_cr2) {
+		flog(LOG_WARN, "ma_map: il processo monitorato non aveva causato fault");
+		c_abort_p();
+		return;
+	}
+
+	if (!c_access(src, DIM_PAGINA, true, true)) {
+		flog(LOG_WARN, "ma_map: indirizzo sorgente %p non valido", src);
+		c_abort_p();
+		return;
+	}
+
+	esecuzione->contesto[I_RAX] = false;
+	vaddr dst = m->last_cr2 & ~(DIM_PAGINA-1);
+	vaddr end = map(m->cr3, dst, dst + DIM_PAGINA, BIT_US|BIT_RW,
+			[=](vaddr v) { return c_trasforma(src); });
+	if (end == dst + DIM_PAGINA) {
+		esecuzione->contesto[I_RAX] = true;
+		m->waiting = false;
+		inspronti();
+		inserimento_lista(pronti, m);
+		schedulatore();
+	}
+};
+
+bool check_ma(vaddr v) {
+	if (!esecuzione->monitor || v < ini_utn_p ||
+			v >= ini_utn_p + esecuzione->ma_npag * DIM_PAGINA) {
+		return false;
+	}
+
+	esecuzione->last_cr2 = v;
+	des_proc *m = esecuzione->monitor;
+	esecuzione->waiting = true;
+	if (m->waiting) {
+		m->contesto[I_RAX] = esecuzione->id;
+		m->waiting = false;
+		inserimento_lista(pronti, m);
+	} else {
+		m->pending_event = true;
+	}
+	schedulatore();
+	return true;
+}
+//   SOLUZIONE 2022-01-26 )
+
+

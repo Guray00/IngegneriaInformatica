@@ -1,0 +1,97 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2020-02-26
+	des_proc *master = esecuzione->master;
+
+	esecuzione->last_exception = tipo;
+	if (master) {
+		if (master->is_waiting) {
+			// il master ha chiamato proc_wait() e si è bloccato,
+			// quindi questo è il primo slave: risvegliamo il
+			// master facendo in modo che proc_wait() gli
+			// restituisca l'identificatore dello slave
+			master->contesto[I_RAX] = esecuzione->id;
+			inserimento_lista(pronti, master);
+			master->is_waiting = false;
+		}
+		// lo slave deve essere messo in pausa in ogni caso.
+		// Ne uscirà se il master chiama proc_cont() o termina.
+		inserimento_lista(master->paused_slaves, esecuzione);
+		schedulatore();
+		// saltiamo la c_abort_p()
+		return;
+	}
+	// il processo non è uno slave:
+	// procediamo con la distruzione del processo
+//   SOLUZIONE 2020-02-26 )
+// ( SOLUZIONE 2020-02-26
+	// scolleghiamo tutti gli eventuali slave
+	for (des_proc *slave = p->slaves; slave; slave = slave->next_slave) {
+		slave->master = nullptr;
+	}
+
+	// distruggiamo tutti gli eventuali slave in pausa
+	while (p->paused_slaves) {
+		des_proc *slave = rimozione_lista(p->paused_slaves);
+		distruggi_processo(slave);
+		flog(sev, "Processo slave %d distrutto", p->id);
+		processi--;
+	}
+
+	des_proc *master = p->master;
+	if (master) {
+		sgancia_slave(p);
+		// se non ci sono piu' slave e il master e' bloccato nella proc_wait,
+		// il master si deve risvegliare e la proc_wait deve restituirgli 0xFFFFFFFF
+		if (master->is_waiting && !master->slaves) {
+			master->is_waiting = false;
+			master->contesto[I_RAX] = 0xFFFFFFFF;
+			inserimento_lista(pronti, master);
+		}
+		
+	}
+//   SOLUZIONE 2020-02-26 )
+// ( SOLUZIONE 2020-02-26
+extern "C" void c_proc_wait()
+{
+	if (!esecuzione->slaves) {
+		esecuzione->contesto[I_RAX] = 0xFFFFFFFF;
+		return;
+	}
+
+	if (esecuzione->paused_slaves) {
+		esecuzione->contesto[I_RAX] = esecuzione->paused_slaves->id;
+	} else {
+		esecuzione->is_waiting = true;
+		schedulatore();
+	}
+}
+
+extern "C" void c_proc_cont(natl id, bool terminate)
+{
+	if (id >= MAX_PROC_ID) {
+		flog(LOG_WARN, "id non valido: %d", id);
+		c_abort_p();
+		return;
+	}
+
+	des_proc* slave = rimozione_lista_id(esecuzione->paused_slaves, id);
+	if (!slave) {
+		flog(LOG_WARN, "proc %d non e' uno slave", id);
+		c_abort_p();
+		return;
+	}
+	if (terminate) {
+		distruggi_processo(slave);
+		processi--;
+	} else {
+		inspronti();
+		inserimento_lista(pronti, slave);
+		schedulatore();
+	}
+}
+//   SOLUZIONE 2020-02-26 )
+
+

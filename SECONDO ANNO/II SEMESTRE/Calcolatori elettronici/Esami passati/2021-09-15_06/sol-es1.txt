@@ -1,0 +1,125 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2021-09-15
+	for (int i = 0; i < MAX_MSG_AREA_VIEW; i++) {
+		des_view* w = &p->view[i];
+		if (w->ma) {
+			des_ma *ma = w->ma;
+			ma->views--;
+			if (!ma->views) {
+				unmap(p->cr3, view_beg(w), view_end(w), [](paddr p, int) { rilascia_frame(p); });
+				ma->npag = 0;	
+			} else {
+				unmap(p->cr3, view_beg(w), view_end(w), [](paddr p, int) {});
+			}
+			w->base = 0;
+			w->ma = nullptr;
+		}
+	}
+//   SOLUZIONE 2021-09-15 )
+// ( SOLUZIONE 2021-09-15
+struct getv {
+	des_proc *p;
+	vaddr b;
+
+	getv(des_proc *p_, vaddr b_): p(p_), b(b_) {}
+
+	paddr operator()(vaddr v) {
+		paddr f = trasforma(p->cr3, b);
+		b += DIM_PAGINA;
+		return f;
+	}
+};
+
+extern "C" void c_mashare(void *vv, natl pid)
+{
+	// controllo parametri
+	des_proc *dst = des_p(pid);
+	des_proc *src = esecuzione;
+
+	src->contesto[I_RAX] = 0;
+
+	if (!dst)
+		return;
+
+	if (dst->livello == LIV_SISTEMA) {
+		flog(LOG_WARN, "masend a processo sistema non valida");
+		c_abort_p();
+		return;
+	}
+
+	vaddr v = reinterpret_cast<vaddr>(vv);
+	des_view* w = find_view(src, v);
+	if (!w)
+		return;
+
+	int j = find_free_view(dst);
+	if (j < 0)
+		return;
+
+	des_ma* ma = w->ma;
+	vaddr dbeg = dst->next_view;
+	vaddr dend = dbeg + ma->npag * DIM_PAGINA;
+
+	if (dend > fin_view_p)
+		return;
+
+	getv m(src, view_beg(w));
+
+	vaddr va = map(dst->cr3, dbeg, dend, BIT_RW | BIT_US, m);
+	if (va != dend) {
+		unmap(dst->cr3, dbeg, va, [](vaddr, int) {});
+		return;
+	}
+
+	ma->views++;
+	dst->view[j].ma = ma;
+	dst->view[j].base = dbeg;
+	dst->next_view = dend;
+
+	src->contesto[I_RAX] = dbeg;
+}
+
+extern "C" void c_marevoke(void *vv, natl pid)
+{
+	// controllo parametri
+	des_proc *dst = des_p(pid);
+	des_proc *src = esecuzione;
+
+	src->contesto[I_RAX] = false;
+
+	if (!dst)
+		return;
+
+	vaddr v = reinterpret_cast<vaddr>(vv);
+	des_view* w = find_view(src, v);
+	if (!w)
+		return;
+	des_ma* ma = w->ma;
+
+	while (des_view *dw = find_view(dst, ma)) {
+		vaddr beg = view_beg(dw),
+		      end = view_end(dw);
+
+		ma->views--;
+		if (!ma->views) {
+			unmap(dst->cr3, beg, end, [](paddr p, int l) { rilascia_frame(p); });
+			ma->npag = 0;
+		} else {
+			unmap(dst->cr3, beg, end, [](paddr p, int l) {});
+		}
+		if (src == dst) {
+			for ( ; beg != end; beg += DIM_PAGINA)
+				invalida_entrata_TLB(beg);
+		}
+		dw->base = 0;
+		dw->ma = nullptr;
+	}
+
+	src->contesto[I_RAX] = true;
+}
+//   SOLUZIONE 2021-09-15 )
+
+

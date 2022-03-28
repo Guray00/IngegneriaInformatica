@@ -1,0 +1,171 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2021-07-21
+	bool ma_wait;
+	des_proc *ma_sender;
+	int ma_pending;
+//   SOLUZIONE 2021-07-21 )
+// ( SOLUZIONE 2021-07-21
+		while (p->ma_sender) {
+			des_proc *w = rimozione_lista(p->ma_sender);
+			w->ma_pending = -1;
+			w->contesto[I_RAX] = false;
+			inserimento_lista(pronti, w);
+		}
+		p->ma_wait = false;
+		p->ma_pending = -1;
+//   SOLUZIONE 2021-07-21 )
+// ( SOLUZIONE 2021-07-21
+struct my_addrs {
+	paddr *pa;
+	int i;
+
+	my_addrs(paddr *pa__): pa(pa__), i(0) {}
+
+	void operator()(paddr p, int) {
+		pa[i++] = p;
+	}
+
+	paddr operator()(vaddr v) {
+		return pa[i++];
+	}
+};
+
+bool transfer(des_proc *src, int i, des_proc *dst, int j)
+{
+	vaddr sbeg = ma_beg(src->ma[i]);
+	vaddr send = ma_end(src->ma[i]);
+	natq npag = src->ma[i].npag;
+	vaddr dbeg = dst->next_ma;
+	vaddr dend = dbeg + npag * DIM_PAGINA;
+
+	if (dend > fin_ma_p)
+		return false;
+
+	paddr pa[MSG_AREA_PAGES];
+	my_addrs m(pa);
+	// primo passo: unmap e collezione degli indirizzi fisici
+	unmap(src->cr3, sbeg, send, m);
+	// secondo passo map nel processo destinatario
+	vaddr v = map(dst->cr3, dbeg, dend, BIT_RW | BIT_US, m);
+	if (v != dend) {
+		unmap(dst->cr3, dbeg, v, [](vaddr, int) {});
+		map(esecuzione->cr3, sbeg, send, BIT_US | BIT_RW, m);
+		return false;
+	}
+
+	src->ma[i].base = nullptr; 
+	src->ma[i].npag = 0;
+	dst->ma[j].base = reinterpret_cast<void*>(dbeg);
+	dst->ma[j].npag = npag;
+	dst->next_ma = dend;
+
+	return true;
+}
+
+extern "C" void c_masend(void *v, natl pid)
+{
+	// controllo parametri
+	des_proc *dst = des_p(pid);
+	des_proc *src = esecuzione;
+
+	src->contesto[I_RAX] = false;
+
+	if (!dst) {
+		return;
+	}
+
+	if (dst == src) {
+		flog(LOG_WARN, "masend a se stesso non valida");
+		c_abort_p();
+		return;
+	}
+
+	if (dst->livello == LIV_SISTEMA) {
+		flog(LOG_WARN, "masend a processo sistema non valida");
+		c_abort_p();
+		return;
+	}
+
+	int i = find_ma(src, v);
+	if (i < 0) {
+		flog(LOG_WARN, "masend: indirizzo %p non valido", v);
+		c_abort_p();
+		return;
+	}
+
+	if (!dst->ma_wait) {
+		inserimento_lista(dst->ma_sender, src);
+		src->ma_pending = i;
+		schedulatore();
+		return;
+	}
+
+	des_ma ma = src->ma[i];
+
+	int j = dst->ma_pending;
+	if (!transfer(src, i, dst, j))
+		return;
+
+	dst->ma_wait = false;
+	dst->ma_pending = -1;
+
+	src->contesto[I_RAX] = true;
+	dst->contesto[I_RAX] = reinterpret_cast<natq>(dst->ma[j].base);
+	dst->contesto[I_RDX] = dst->ma[j].npag;
+
+	inspronti();
+	inserimento_lista(pronti, dst);
+	schedulatore();
+
+	if (esecuzione == src) {
+		for (vaddr w = ma_beg(ma); w != ma_end(ma); w += DIM_PAGINA)
+			invalida_entrata_TLB(w);
+	}
+}
+
+extern "C" void c_marecv()
+{
+	des_proc *dst = esecuzione;
+	des_proc *towakeup = nullptr;
+
+	dst->contesto[I_RAX] = 0;
+	dst->contesto[I_RDX] = 0;
+
+	int j = find_free_ma(dst);
+	if (j < 0)
+		return;
+
+	dst->ma_wait = true;
+	dst->ma_pending = j;
+
+	bool r = false;
+	while (!r) {
+		des_proc *src = rimozione_lista(dst->ma_sender);
+
+		if (!src) {
+			schedulatore();
+			return;
+		}
+
+		inserimento_lista(towakeup, src);
+		r = transfer(src, src->ma_pending, dst, j);
+		src->contesto[I_RAX] = r;
+		src->ma_pending = -1;
+	}
+	dst->ma_wait = false;
+	dst->ma_pending = -1;
+	dst->contesto[I_RAX] = reinterpret_cast<natq>(dst->ma[j].base);
+	dst->contesto[I_RDX] = dst->ma[j].npag;
+	inspronti();
+	while (towakeup) {
+		des_proc *w = rimozione_lista(towakeup);
+		inserimento_lista(pronti, w);
+	}
+	schedulatore();
+}
+//   SOLUZIONE 2021-07-21 )
+
+

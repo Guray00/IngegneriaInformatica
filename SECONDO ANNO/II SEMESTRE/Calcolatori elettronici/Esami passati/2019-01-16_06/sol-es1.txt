@@ -1,0 +1,70 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2019-01-16
+extern "C" bool c_receive(natl& src, char *buf, natq& len)
+{
+	if (!access(&src, sizeof(src), true) ||
+	    !access(&len, sizeof(len), true) ||
+	    !access(buf, len, true))
+	{
+		flog(LOG_WARN, "parametri errati");
+		abort_p();
+	}
+
+	// mutua escusione tra i processi che vogliono usare receive
+	sem_wait(net.mutex);
+
+	bool rv = true;   // valore di ritorno
+	natq bufsz = len; // spazio rimasto nel buffer utente
+	len = 0;     	  // lunghezza del messaggio, da scoprire
+	slot *s;
+	do {
+		char *from;	// da dove copiare
+		natq howmany;	// quanti byte copiare
+
+		// aspettiamo che ci sia uno slot pronto
+		sem_wait(net.slots_ready);
+		s = &net.s[net.toread];
+		if (!len) {
+			// primo segmento del messaggio, contiene l'intestazione
+			msg_hdr* m = to_msg_hdr(s->addr);
+			src = m->src;
+			// i byte da copiare si trovano subito dopo l'intestazione
+			from = to_char_ptr(s->addr) + sizeof(msg_hdr);
+			len = s->len - sizeof(msg_hdr);
+			howmany = len;
+		} else {
+			// segmenti successivi: solo dati
+			from = to_char_ptr(s->addr);
+			howmany = s->len;
+			len += s->len;
+		}
+		if (howmany > bufsz) {
+			// spazio esaurito: tronchiamo il messaggio
+			// e ci ricordiamo di restituire errore
+			howmany = bufsz;
+			rv = false;
+		}
+		memcpy(buf, from, howmany);
+		buf += howmany;
+		bufsz -= howmany;
+		net.toread = ring_next(net.toread);
+
+		// ripristiniamo lo slot corrente e diamo alla scheda il
+		// permesso di usarne un altro
+		s->len = RXBUFSZ;
+		natl tail;
+		tail = inputl(net.iTAIL);
+		tail = ring_next(tail);
+		outputl(tail, net.iTAIL);
+	} while (!s->eop);
+
+	sem_signal(net.mutex);
+
+	return rv;
+}
+//   SOLUZIONE 2019-01-16 )
+
+

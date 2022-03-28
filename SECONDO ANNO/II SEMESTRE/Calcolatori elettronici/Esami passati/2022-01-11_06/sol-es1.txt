@@ -1,0 +1,103 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2022-01-11 #1
+//   SOLUZIONE 2022-01-11 )
+// ( SOLUZIONE 2022-01-11 #2
+	if (p->masize) {
+		// dobbiamo in ogni caso distruggere le tabelle, ma rilasciare
+		// il frame solo se non è condiviso con altri processi
+		unmap(root_tab, ini_utn_p, ini_utn_p + p->masize * DIM_PAGINA,
+				[](paddr p, int) {
+					des_frame *df = &vdf[p/DIM_PAGINA];
+					df->nma--;
+					if (!df->nma)
+						rilascia_frame(p);
+				});
+		p->masize = 0;
+	}
+//   SOLUZIONE 2022-01-11 )
+// ( SOLUZIONE 2022-01-11 #3
+	if (!npag || npag > MAX_MA_PAGES) {
+		flog(LOG_WARN, "macreate: invalid number of pages: %d",
+				npag, MAX_MA_PAGES);
+		c_abort_p();
+		return;
+	}
+
+	if (esecuzione->masize) {
+		flog(LOG_WARN, "macreate: process already owns an ma");
+		c_abort_p();
+		return;
+	}
+//   SOLUZIONE 2022-01-11 )
+// ( SOLUZIONE 2022-01-11 #4
+//   SOLUZIONE 2022-01-11 )
+// ( SOLUZIONE 2022-01-11 #5
+	if (!d) {
+		flog(LOG_WARN, "macopy: no such process: %d", dst);
+		return;
+	}
+
+	if (!esecuzione->masize) {
+		flog(LOG_WARN, "macopy: process does not own an ma");
+		c_abort_p();
+		return;
+	}
+
+	if (d->masize) {
+		flog(LOG_WARN, "macopy: dest process already owns an ma");
+		return;
+	}
+//   SOLUZIONE 2022-01-11 )
+// ( SOLUZIONE 2022-01-11 #6
+	//  - incrementiamo il contatore dei riferimenti di ogni frame
+	//  - marchiamo tutte le pagine della ma come read-only anche nel
+	//    processo sorgente
+	for (tab_iter it(esecuzione->cr3, ini_utn_p, dim); it; it.next()) {
+		if (!it.is_leaf())
+			continue;
+		tab_entry& e = it.get_e();
+		vaddr v = it.get_v();
+		paddr p = extr_IND_FISICO(e);
+
+		vdf[p/DIM_PAGINA].nma++;
+		e &= ~BIT_RW;
+		// abbiamo modificato RW: invalidamo una eventuale entrata nel TLB,
+		// altrimenti il processo sorgente potrebbe non vedere la modifica
+		invalida_entrata_TLB(v);
+	}
+	d->masize = esecuzione->masize;
+	esecuzione->contesto[I_RAX] = true;
+//   SOLUZIONE 2022-01-11 )
+// ( SOLUZIONE 2022-01-11 #7
+	// dobbiamo settare BIT_RW su tutto il percorso.
+	// Arrivati alla tabella di livello 1 dobbiamo anche copiare la pagina,
+	// se è ancora condivisa
+	for (tab_iter it(esecuzione->cr3, v); it; it.next()) {
+		tab_entry& e = it.get_e();
+		e |= BIT_RW;
+		if (!it.is_leaf())
+			continue;
+		paddr p = extr_IND_FISICO(e);
+		des_frame* df = &vdf[p/DIM_PAGINA];
+		if (df->nma > 1) {
+			paddr np = alloca_frame();
+			if (!np) {
+				flog(LOG_WARN, "out of memory");
+				c_abort_p();
+				return true;
+			}
+			memcpy(reinterpret_cast<void*>(np), reinterpret_cast<void*>(p), DIM_PAGINA);
+			set_IND_FISICO(e, np);
+			df->nma--;
+			vdf[np/DIM_PAGINA].nma = 1;
+		}
+	}
+//	si può dimostrare che in questo caso non c'è bisogno di invalidare il TLB
+//	invalida_entrata_TLB(v);
+	return true;
+//   SOLUZIONE 2022-01-11 )
+
+

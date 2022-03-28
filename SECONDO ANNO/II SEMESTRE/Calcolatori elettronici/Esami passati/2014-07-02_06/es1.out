@@ -1,7 +1,6 @@
 processo 1: reg
 processo 2: reg
 processo 3: reg
-
 processo 2: barrier approach
 processo 3: barrier approach
 processo 1: dereg
