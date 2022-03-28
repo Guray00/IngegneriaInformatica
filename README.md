@@ -183,6 +183,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 [Giovanni Enrico Loni](https://github.com/genricoloni)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
 [Federico Nardi](https://github.com/fedenardii)<br>
+[Lorenzo Valtriani - bobo](https://github.com/lorenzovaltriani)<br>
 
 **Collaboratori Materiale**
 
@@ -216,6 +217,7 @@ Gabriele Marcuccetti<br>
 Federico Matteoni<br>
 Alessio Meini<br>
 Tommaso Molesti<br>
+Alex Moriconi</br>
 Alex Parri (che si ringrazia anche per lo schema delle propedeuticità)<br>
 Aleandro Prudenzano<br>
 Samuele Ricotta<br>
@@ -227,7 +229,7 @@ Alessandro Simonelli<br>
 Giuseppe Soriano<br>
 Giorgio Charles Sorrentini<br>
 Andrea Trasacco<br>
-Lorenzo Valtriani<br>
+Lorenzo Valtriani, o meglio "bobo", o meglio "Il comandante"<br>
 Alessandro Versari<br>
 Sandro Wu<br>
 Francesco Zollo<br><br>
