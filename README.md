@@ -183,7 +183,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 [Giovanni Enrico Loni](https://github.com/genricoloni)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
 [Federico Nardi](https://github.com/fedenardii)<br>
-[Lorenzo Valtriani - bobo](https://github.com/lorenzovaltriani)<br>
+[Lorenzo Valtriani](https://github.com/lorenzovaltriani)<br>
 
 **Collaboratori Materiale**
 
