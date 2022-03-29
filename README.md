@@ -230,7 +230,7 @@ Alessandro Simonelli<br>
 Giuseppe Soriano<br>
 Giorgio Charles Sorrentini<br>
 Andrea Trasacco<br>
-Lorenzo Valtriani, o meglio "bobo", o meglio "Il comandante"<br>
+Lorenzo Valtriani<br>
 Alessandro Versari<br>
 Sandro Wu<br>
 Francesco Zollo<br><br>
