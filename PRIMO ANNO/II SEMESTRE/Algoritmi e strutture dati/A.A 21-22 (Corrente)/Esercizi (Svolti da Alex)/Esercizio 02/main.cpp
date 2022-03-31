@@ -1,54 +1,35 @@
-//Esercizio-02
-#include <iostream>
+
 #include <vector>
+#include <iostream>
 using namespace std;
 
-bool CheckPositivita(vector<int> &input);
-int Somma(vector<int> &input);
-int Prodotto(vector<int> &input);
+int OrdinamentoControllato(vector<int> &input);
 
 int main(){
-	vector<int>inputValori;
+	vector<int> inputValori;
+	int numeroValori;
 	int singoloValore;
-	int numeroLetture;
-	cin >> numeroLetture;
-	for(int i=0; i<numeroLetture; ++i){
-		cin >> singoloValore;
+	cin >> numeroValori;
+	for(int i=0; i<numeroValori; ++i){
+		cin>>singoloValore;
 		inputValori.push_back(singoloValore);
 	}
-
-	cout<<Somma(inputValori)<<endl;
-	cout<<Prodotto(inputValori)<<endl;
-	if(CheckPositivita(inputValori)){
-		cout<<"yes\n";
-	}else{
-		cout<<"no\n";
-	}
+	cout<<OrdinamentoControllato(inputValori)<<endl;
 }
 
-//Funzione che verifica se tutti i valori dell'array sono > 0
-bool CheckPositivita(vector<int> &input){
-	for(int i=0; i<input.size(); ++i){
-		if(input[i]<=0)
-			return false;
+int OrdinamentoControllato(vector<int> &input){
+	int contatoreScambi=0;
+	int valoreRiferimento;
+	int indiceControllo;
+	for(int i=1; i<input.size(); ++i){
+		valoreRiferimento=input[i];
+		indiceControllo=i-1;
+		while(indiceControllo>=0 && input[indiceControllo]>valoreRiferimento){
+			++contatoreScambi;
+			input[indiceControllo+1]=input[indiceControllo];
+			--indiceControllo;
+		}
+		input[indiceControllo+1]=valoreRiferimento;
 	}
-	return true;
-}
-
-//Funzione effettua la somma di tutti gli elementi del vettore
-int Somma(vector<int> &input){
-	int sommaRisultate=0;
-	for(int i=0; i<input.size(); ++i){
-		sommaRisultate+=input[i];
-	}
-	return sommaRisultate;
-}
-
-//Funzione effettua il prodotto di tutti gli elementi del vettore
-int Prodotto(vector<int> &input){
-	int prodottoRisultate=1;
-	for(int i=0; i<input.size(); ++i){
-		prodottoRisultate*=input[i];
-	}
-	return prodottoRisultate;
+	return contatoreScambi;
 }
