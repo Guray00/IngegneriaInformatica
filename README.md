@@ -210,15 +210,16 @@ Daniele Giaquinta<br>
 Edoardo Geraci<br>
 Dafne Iennaro<br>
 Giovanni Ligato<br>
-Giacomo Maldarella<br>
 Giovanni Enrico Loni<br>
+Giacomo Maldarella<br>
 Elia Marabotto<br>
 Gabriele Marcuccetti<br>
 Federico Matteoni<br>
 Alessio Meini<br>
 Tommaso Molesti<br>
 Alex Moriconi</br>
-Alex Parri (che si ringrazia anche per lo schema delle propedeuticità)<br>
+Alex Parri<br>
+Martina Panico<br>
 Aleandro Prudenzano<br>
 Rambod Rahmani<br>
 Samuele Ricotta<br>
