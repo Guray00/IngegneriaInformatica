@@ -1,1 +1,0 @@
-Implementazione su Minecraft di un sommatore binario a cinque cifre. Opera di Roberto De Luca.
