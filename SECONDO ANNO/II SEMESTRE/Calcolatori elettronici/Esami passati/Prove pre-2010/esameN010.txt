@@ -1,0 +1,304 @@
+Esame di Calcolatori Elettronici
+Ingegneria Informatica -Appello del 29/01/2003
+
+
+Sia data la seguente dichiarazione, contenuta nel file cc.h:
+#include <iostream.h>
+struct st { int vv1[4]; double vv2[4]; double vv3[4];};
+class cl 
+{	int a[4]; double b[4]; st s;
+public:
+	cl(st ss);
+	cl(cl& cla);
+	cl elab1(cl& cla, st ss);
+	cl elab2(cl& cla, st ss);
+	void stampa()
+	{	int i;
+		for (i=0;i<4;i++) cout << a[i] << ' ' ; cout << '\t';
+		for (i=0;i<4;i++) cout << b[i] << ' ' ; cout << endl;
+		for (i=0;i<4;i++) cout << s.vv1[i] << ' ' ; cout << '\t';
+		for (i=0;i<4;i++) cout << s.vv2[i] << ' ' ; cout << '\t';
+		for (i=0;i<4;i++) cout << s.vv3[i] << ' ' ; cout << endl;
+		cout << endl;
+	}
+};
+
+Esercizio 1)
+Realizzare in Assembler DJGPP le funzioni membro seguenti (scrivere sul file es1.s; tradurre, 
+collegare ed eseguire utilizzando i comandi indicati nelle avvertenze):
+#include "cc.h"
+cl::cl(st ss)
+{	int i;
+	for (i=0; i<4; i++)
+	{  a[i]=s.vv1[i]=ss.vv1[i]+5; b[i]=s.vv2[i]=ss.vv2[i]; 
+		s.vv3[i]=ss.vv3[i];  }
+}
+cl::cl(cl& cla)
+{	int i; s = cla.s;
+	for (i=0;i<4;i++) { a[i]=cla.a[i]+1; b[i]=cla.b[i]; }
+}
+cl cl::elab1(cl& cla, st ss)
+{	int i; cl cca(cla);
+	for (i=0;i<4;i++) { cca.a[i]=s.vv1[i]+ss.vv1[i]; 
+	cca.s.vv1[i]=cca.a[i]; }
+	return cca;
+}
+
+Esercizio 2)
+Realizzare in Assembler DJGPP la funzione membro seguente (scrivere sul file es2.s; tradurre, 
+collegare ed eseguire utilizzando i comandi indicati nelle avvertenze):
+#include "cc.h"
+cl cl::elab2(cl& cla, st ss)
+{	int i; cl cca(ss);
+	for (i=0;i<4;i++)
+		if (cla.b[i]<ss.vv3[i]) cca.s.vv2[i] += cca.s.vv3[i];
+			else cca.s.vv2[i] -= cca.s.vv3[i];
+	for (i=0;i<4;i++)
+		if (ss.vv3[i]< 10.0 ) cca.s.vv3[i] = cla.s.vv3[i]+cla.s.vv1[i];
+			else cca.s.vv3[i] = cla.s.vv3[i] + cla.s.vv2[i];
+	return cca;
+}
+
+
+
+Soluzioni
+
+.text
+.globl 	___2clG2st
+___2clG2st:
+	pushl %ebp
+	movl 	%esp, %ebp
+	subl 	$4, %esp				# i
+	pushl 	%ecx
+	pushl 	%edx
+	movl 	8(%ebp), %edx			# this
+	movl 	$0,-4(%ebp)
+cicl1:	cmpl 	$4, -4(%ebp)
+	jl	av1
+	jmp 	fin1
+av1:	movl 	-4(%ebp), %ecx
+	movl 	12(%ebp,%ecx,4), %eax		# ss.v1[i]
+	addl 	$5, %eax
+	movl 	%eax, 48(%edx,%ecx,4)		# s.vv1[i]
+	movl 	%eax, (%edx,%ecx,4)		# a[i]
+	movl	28(%ebp,%ecx,8), %eax		# prima parte; ss.vv2[i]
+	movl 	%eax, 64(%edx,%ecx,8)		# s.v2[i]
+	movl	%eax, 16(%edx,%ecx,8) 		# b[i]
+	movl	32(%ebp,%ecx,8), %eax		# seconda parte
+	movl 	%eax, 68(%edx,%ecx,8)
+	movl	%eax, 20(%edx,%ecx,8) 
+	movl 	60(%ebp,%ecx,8), %eax		# prima parte; ss.vv3[i]
+	movl 	%eax, 96(%edx,%ecx,8)		# s.vv3[i]
+	movl 	64(%ebp,%ecx,8),%eax		# seconda parte
+	movl 	%eax, 100(%edx,%ecx,8)
+	incl 	-4(%ebp)
+	jmp 	cicl1
+fin1:	movl 	%edx, %eax
+	popl 	%edx
+	popl 	%ecx
+	leave
+	ret
+
+.globl ___2clR2cl
+___2clR2cl:
+	pushl %ebp
+	movl 	%esp, %ebp
+	subl 	$4, %esp				# i
+	pushl 	%ebx
+	pushl 	%ecx
+	pushl 	%edx
+	pushl 	%edi
+	pushl 	%esi
+	movl 	8(%ebp), %edx			# this
+	movl 	12(%ebp), %ebx			# &cla
+	leal 	48(%edx), %edi			# &s
+	leal 	48(%ebx), %esi			# &cla.s
+	cld
+	movl 	$20, %ecx
+	rep
+	movsl
+	movl 	$0, -4(%ebp)
+cicl2:	cmpl 	$4, -4(%ebp)
+	jl 	av2
+	jmp 	fin2
+av2:	movl 	-4(%ebp), %ecx
+	movl 	(%ebx,%ecx,4), %eax		# cla.a[i]
+	incl 	%eax
+	movl 	%eax, (%edx,%ecx,4)		# a[i]
+	movl 	16(%ebx,%ecx,8), %eax		# prima parte; cla.b[i]
+	movl 	%eax, 16(%edx,%ecx,8)		# b[i]
+	movl 	20(%ebx,%ecx,8), %eax		# seconda parte
+	movl 	%eax, 20(%edx,%ecx,8)
+	incl 	-4(%ebp)
+	jmp 	cicl2
+fin2:	movl 	%edx, %eax
+	popl 	%esi
+	popl 	%edi
+	popl 	%edx
+	popl 	%ecx
+	popl 	%ebx
+	leave
+	ret
+
+.globl _elab1__2clR2clG2st
+_elab1__2clR2clG2st:
+	pushl 	%ebp
+	movl 	%esp, %ebp
+	subl 	$132, %esp			# i, cca (128 byte)
+	pushl 	%ebx
+	pushl 	%ecx
+	pushl 	%edi
+	pushl 	%esi
+	movl 	8(%ebp), %ebx			# indirizzo risultato
+	movl 	12(%ebp), %esi			# this
+	movl 	16(%ebp), %eax			# &cla
+	pushl 	%eax
+	leal 	-132(%ebp), %eax			# &cca
+	pushl 	%eax
+	call 	___2clR2cl			# costruttore di copia
+	addl 	$8, %esp
+	movl 	$0, -4(%ebp)			# i
+cicl3:	cmpl 	$4, -4(%ebp)
+	jl 	av3
+	jmp 	finc3
+av3:	movl 	-4(%ebp), %ecx
+	movl 	48(%esi,%ecx,4), %eax		# s.vv1[i]
+	addl 	20(%ebp,%ecx,4), %eax		# ss.vv1[i]
+	movl 	%eax, -132(%ebp,%ecx,4)		# cca.a[i]
+	movl 	-132(%ebp,%ecx,4), %eax		# cca.a[i]
+	movl 	%eax, -84(%ebp,%ecx,4)		# cca.s.vv1[i]
+	incl 	-4(%ebp)
+	jmp 	cicl3
+finc3:	leal 	-132(%ebp), %eax
+	pushl 	%eax				# &cca
+	pushl 	%ebx				# indirizzo risultato
+	call 	___2clR2cl			# costruttore di copia
+	addl 	$8, %esp
+	movl 	%ebx, %eax
+	popl 	%esi
+	popl 	%edi
+	popl	%ecx
+	popl 	%ebx
+	leave
+	ret
+
+// prova1.cpp
+// file esistente
+#include "cc.h"
+int main()
+{	int i;
+	st str1 = { 1,2,3,4,  5,6,7,8,  9,10,11,12 },
+	   str2 = { 11,12,13,14, 5,6,7,8,  9,10,11,12 };
+	cl cla1(str1); cla1.stampa();
+	cl cla2(cla1); cla2.stampa();
+	cla2 = cla1.elab1(cla2, str2); cla2.stampa();
+}
+
+Risultato:
+
+6 7 8 9		5 6 7 8 
+6 7 8 9		5 6 7 8 		9 10 11 12
+
+7 8 9 10		5 6 7 8 
+6 7 8 9		5 6 7 8 		9 10 11 12
+
+18 20 22 24 	5 6 7 8 
+17 19 21 23 	5 6 7 8 		9 10 11 12
+
+
+# es2.s
+.text
+dieci:.double 0e10;
+.globl _elab2__2clR2clG2st
+_elab2__2clR2clG2st:
+	pushl %ebp
+	movl 	%esp, %ebp
+	subl 	$132, %esp			# i, cca(128 byte)
+	pushl 	%ebx
+	pushl	%ecx
+	pushl	%edx
+	pushl 	%edi
+	pushl 	%esi
+	movl 	8(%ebp), %ebx			# indirizzo ritorno
+	addl 	$-80, %esp			# spazio per ss
+	movl 	%esp, %edi
+	leal 	20(%ebp), %esi
+	cld
+	movl 	$20, %ecx
+	rep
+	movsl
+	leal 	-132(%ebp), %eax			# indirizzo cca
+	pushl 	%eax
+	call 	___2clG2st			# costruttore
+	addl 	$84, %esp
+	movl 	$0, -4(%ebp)			# i
+cicl1:	cmpl 	$4, -4(%ebp)
+	jl 	avan1
+	jmp 	end1
+avan1:	movl  	-4(%ebp), %ecx
+	movl	16(%ebp), %edx			# &cca
+	fldl 	16(%edx,%ecx,8)			# cla.b[i]
+	fcompl 	68(%ebp,%ecx,8)			# ss.vv3[i]
+	fstsw 	%ax
+	testw	$0x0100, %ax
+	jz 	else1				# salta se ST >=
+	fldl 	-68(%ebp,%ecx,8)			# cca.s.vv2[i]
+	faddl 	-36(%ebp,%ecx,8)			# cca.s.vv3[i]
+	fstpl 	-68(%ebp,%ecx,8)
+	jmp 	oltre1
+else1:	fldl 	-68(%ebp,%ecx,8)
+	fsubl 	-36(%ebp,%ecx,8)
+	fstpl 	-68(%ebp,%ecx,8)
+oltre1:	incl 	-4(%ebp)
+	jmp 	cicl1
+end1:	movl 	$0, -4(%ebp)
+cicl2:	cmpl 	$4, -4(%ebp)
+	jl 	avan2
+	jmp 	end2
+avan2:	movl 	-4(%ebp), %ecx
+	fldl 	68(%ebp,%ecx,8)			# ss.vv3[i]
+	fcompl 	dieci
+	fstsw  	%ax
+	testw	$0x0100, %ax
+	jz 	else2				# salta se ST >=
+	movl 	16(%ebp), %edx			# &cla
+	fldl 	96(%edx,%ecx,8)			# cla.s.vv3[i]
+	fiaddl 	48(%edx,%ecx,4)			# cla.s.vv1[i]
+	fstpl 	-36(%ebp,%ecx,8)			# cca.s.vv3[i]
+	jmp 	oltre2
+else2:	fldl 	96(%edx,%ecx,8)			# cla.s.vv3[i]
+	faddl 	64(%edx,%ecx,8)			# cla.s.vv2[i] 
+	fstpl 	-36(%ebp,%ecx,8)			# cla.s.vv3[i]
+oltre2:	incl 	-4(%ebp)
+	jmp 	cicl2
+end2:	leal 	-132(%ebp), %eax			# &cca
+	pushl 	%eax
+	pushl 	%ebx				# indirizzo di ritorno
+	call 	___2clR2cl			# costruttore di copia
+	addl 	$8, %esp
+	movl  	%ebx, %eax
+	popl 	%esi
+	popl 	%edi
+	popl 	%edx
+	popl 	%ecx
+	popl 	%ebx
+	leave
+	ret
+
+
+// prova2.cpp
+// file esistente
+#include "cc.h"
+int main()
+{	int i;
+	st str1 = { 1,2,3,4, 5,6,7,8, 9,10,11,12 },
+	   str2 = { 11,12,13,14, 9,4,19,5, 5,12,6,13 };
+	cl cla1(str1), cla2(str2);
+	cla2 = cla1.elab2(cla2, str2);
+	cla2.stampa();
+}
+
+Risultato:
+
+17 18 19 20 	9 4 19 5 
+16 17 18 19 	4 16 13 18 	21 16 24 18

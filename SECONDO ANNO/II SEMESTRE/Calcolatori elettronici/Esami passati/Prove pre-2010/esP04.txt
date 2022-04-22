@@ -1,0 +1,407 @@
+Esame di Calcolatori Elettronici
+Ingegneria Informatica -Appello del 7/06/2005
+
+Sia data la seguente dichiarazione, contenuta nel file cc.h:
+#include <iostream.h>
+struct st1 { int i; int vi[4]; };
+struct st2 { double d; double vd[4]; };
+class cl 
+{	st1 s1; st2 s2;
+public:
+	cl(st1 ss); cl(st1 ss1, st2 ss2);
+	cl elab1(int arre1[], double arre2[]);
+	cl elab2(cl cc, st2 ss2);
+	void stampa()
+	{	cout << s1.i << '\t';
+		for (int i=0;i<4;i++)
+			cout << s1.vi[i] << ' '; cout << endl;
+		cout << s2.d << '\t';
+		for (int i=0;i<4;i++)
+			cout << s2.vd[i] << ' '; cout << endl << endl;
+	}
+};
+
+Esercizio 1)
+Realizzare in Assembler DJGPP le funzioni membro seguenti (scrivere sul file es1.s; tradurre, 
+collegare ed eseguire utilizzando i comandi indicati nelle avvertenze):
+#include "cc.h"
+cl::cl(st1 ss)
+{	s1 = ss; s2.d = ss.i;
+	for (int i=0; i<4; i++) s2.vd[i] = ss.vi[i];	}
+cl::cl(st1 ss1, st2 ss2)
+{	s1.i = ss1.i; s2.d = ss2.d;
+	for (int i=0; i<4; i++)
+	{ s1.vi[i]=ss1.vi[i]+1; s2.vd[i]=ss2.vd[i]+1.5; }
+}
+cl cl::elab1(int arre1[], double arre2[])
+{	st1 ss; ss.i = 2;
+	for (int i=0;i<4;i++) ss.vi[i] = arre1[i];
+	cl cla(ss); 
+	for (int i=0;i<4;i++) cla.s2.vd[i]+=arre2[i]; 
+	return cla;
+}
+
+Esercizio 2)
+Realizzare in Assembler DJGPP la funzione membro seguente (scrivere sul file es2.s; tradurre, 
+collegare ed eseguire utilizzando i comandi indicati nelle avvertenze):
+#include "cc.h"
+cl cl::elab2(cl cc, st2 ss2)
+{	cl cla(cc.s1);
+	for (int i=0;i<4;i++)
+	{	if (ss2.vd[i]<5.5) cla.s1.vi[i]= cla.s1.i + i;
+			else cla.s1.vi[i]= -i;
+		if (cc.s2.vd[i]<s2.vd[i]) cla.s2.vd[i]=ss2.vd[i]+s2.vd[i];
+			else cla.s2.vd[i]= -ss2.vd[i];
+	}
+	return cla;
+}
+
+Esercizio 3)
+Definire in Java quanto richiesto (scrivere nel file Esa.java, tradurre, collegare ed eseguire 
+utilizzando i comandi indicati nelle avvertenze).
+Il file contiene 1) una classe serializzabile Informazione, con un campo dati pubblico a di tipo 
+intero, 2) una classe serializzabile Esa, che realizza una lista di elementi (tipo serializzabile 
+Elemento) ciascuno dei quali ha un riferimento di tipo Informazione. I metodi (pubblici) della 
+classe Esa sono: void insTesta(Informazione oi) e void stampa() (stampa senza commenti, 
+utilizzando solo Console.scriviIntero(), gli interi contenuti negli elementi della lista), void salva() 
+(salva la lista su un file miofile.dat) e static Esa carica() (applicata alla classe Esa, restituisce un 
+riferimento di un oggetto di tipo Esa, deserializzato dal file miofile.dat).
+
+
+
+Soluzioni
+
+
+Esercizio 1
+
+.text
+.global ___2clG3st1
+___2clG3st1:
+        pushl   %ebp
+        movl    %esp, %ebp
+        subl    $4, %esp
+        pushl   %ecx
+        pushl   %edi
+        pushl   %esi
+        movl    8(%ebp), %edi			# this
+        leal    12(%ebp), %esi			# &ss
+        cld
+        movl    $5, %ecx
+        rep
+        movsl
+        movl    8(%ebp), %eax			# this
+        fildl   12(%ebp)				# ss.i
+        fstpl   20(%eax)				# s2.d
+        movl    $0, -4(%ebp)
+for1:   cmpl    $4, -4(%ebp)
+        jge     fine1
+        movl    -4(%ebp), %ecx
+        fildl   16(%ebp,%ecx,4)			# ss.vi[i]
+        fstpl   28(%eax,%ecx,8)			# s2.vd[i]
+        incl    -4(%ebp)
+        jmp     for1
+fine1:  popl    %esi
+        popl    %edi
+        popl    %ecx
+        leave
+        ret
+
+val:   .double 1.5
+.global ___2clG3st1G3st2
+___2clG3st1G3st2:
+        pushl   %ebp
+        movl    %esp,%ebp
+        subl    $4,%esp
+        pushl   %ebx
+        pushl   %ecx
+        movl    8(%ebp), %ebx 			# this
+        movl    12(%ebp), %eax			# ss1.i
+        movl    %eax, (%ebx)			# s1.i
+        movl    32(%ebp), %eax			# ss2.d prima parte
+        movl    %eax, 20(%ebx)			# s2.d
+        movl    36(%ebp), %eax			# ss2.d seconda parte
+        movl    %eax, 24(%ebx)			# s2.d
+        movl    $0,-4(%ebp)
+for2:   cmpl    $4,-4(%ebp)
+        jge     fine2
+        movl    -4(%ebp), %ecx
+        movl    16(%ebp,%ecx,4), %eax		# ss1.vi[i]
+        incl    %eax				# ss1.vi[i]+1
+        movl    %eax, 4(%ebx,%ecx,4)			# s1.vi[i]
+        fldl    40(%ebp,%ecx,8)			# ss2.vd[i]
+        faddl   val				# 1.5
+        fstpl   28(%ebx,%ecx,8)			# s2.vd[i]
+        incl    -4(%ebp)
+        jmp     for2
+fine2:  movl    8(%ebp), %eax
+        popl    %ecx
+        popl    %ebx
+        leave
+        ret
+
+
+.global _elab1__2clPiPd
+_elab1__2clPiPd:
+        pushl   %ebp
+        movl    %esp, %ebp
+        subl    $84, %esp
+        pushl   %ebx
+        pushl   %ecx
+        pushl   %edi
+        pushl   %esi
+        movl    $2, -20(%ebp)			# ss.i
+        movl    $0, -24(%ebp)			# i
+for3:   cmpl    $4, -24(%ebp)
+        jge     fine3
+        movl    -24(%ebp), %ecx
+        movl    16(%ebp), %ebx			# &arre1[]
+        movl    (%ebx,%ecx,4), %eax			# arre1[i]
+        movl    %eax, -16(%ebp,%ecx,4)		# ss.vi[i]
+        incl    -24(%ebp)
+        jmp     for3
+fine3:  subl    $20, %esp				# spazio per ss
+        movl    %esp, %edi
+        leal    -20(%ebp), %esi			# &ss
+        cld
+        movl    $5, %ecx
+        rep
+        movsl
+        leal    -84(%ebp), %eax			# &cla
+        pushl   %eax
+        call    ___2clG3st1
+        addl    $24, %esp        
+        movl    $0, -24(%ebp)
+for4:   cmpl    $4, -24(%ebp)
+        jge     fine4
+        movl    -24(%ebp), %ecx			# i
+        movl    20(%ebp), %ebx			# &arre2[]
+        fldl    (%ebx,%ecx,8)			# arre2[i]
+        faddl   -56(%ebp,%ecx,8)			# cla.s2.vd[i]
+        fstpl   -56(%ebp,%ecx,8)			# cla.s2.vd[i]
+        incl    -24(%ebp)
+        jmp     for4
+fine4:  movl    8(%ebp), %eax
+        leal    -84(%ebp), %esi
+        movl    %eax, %edi
+        cld
+        movl    $15, %ecx
+        rep
+        movsl
+        popl    %esi
+        popl    %edi
+        popl    %ecx
+        popl    %ebx
+        leave
+        ret
+
+
+Esercizio 2
+
+cinq:   .double 0e5.5
+.global _elab2__2clT0G3st2
+_elab2__2clT0G3st2:             
+        pushl   %ebp
+        movl    %esp, %ebp
+        subl    $64 , %esp
+        pushl   %ebx
+        pushl   %ecx
+        pushl   %edx
+        pushl   %esi
+        pushl   %edi
+        movl    12(%ebp), %ebx			# this
+        subl    $20, %esp				# spazio per cc.s1
+        movl    %esp, %edi			
+        leal    16(%ebp), %esi			# cc.s1
+        cld     
+        movl    $5, %ecx        
+        rep
+        movsl    
+        leal    -60(%ebp), %eax			# &cla		
+        pushl   %eax
+        call    ___2clG3st1
+        addl    $24, %esp
+        movl    $0, -64(%ebp)			# i
+for:    cmpl    $4, -64(%ebp)
+        jge     fine    
+	  movl    -64(%ebp), %ecx
+        fldl    84(%ebp, %ecx, 8)			# ss2.vd[i]
+        fcompl  cinq
+        fstsw   %ax
+        testw   $0x0100, %ax
+        jz      else
+        movl    -60(%ebp), %eax			# cla.s1.i
+        addl    %ecx, %eax
+        movl    %eax, -56(%ebp,%ecx,4)		# cla.s1.v[i]
+        jmp     avant
+else:   movl    %ecx, %eax
+        negl    %eax
+        movl    %eax, -56(%ebp,%ecx,4)		# cla.s1.v[i]
+avant:  fldl    44(%ebp,%ecx,8)			# cc.s2.vd[i]
+        fcompl  28(%ebx,%ecx,8)			# s2.vd[i]
+        fstsw   %ax
+        testw   $0x0100, %ax
+        jz      else2
+        fldl    84(%ebp,%ecx,8)			# ss2.vd[i]
+        faddl   28(%ebx,%ecx,8)			# s2.vd[i]
+        fstpl   -32(%ebp,%ecx,8)			# cla.s2.vd[i]
+        jmp     avant2
+else2:  fldz
+        fsubl   84(%ebp,%ecx,8)			# ss2.vd[i]
+        fstpl   -32(%ebp,%ecx,8)			# cla.s2.vd[i]
+avant2: incl    -64(%ebp)
+        jmp     for
+fine:   leal    -60(%ebp), %esi			# &cla
+        movl    8(%ebp), %edi			# indirizzo risultato   
+        cld
+        movl    $15, %ecx
+        rep
+        movsl
+        movl    8(%ebp), %eax
+        popl    %edi
+        popl    %esi
+        popl    %edx    
+        popl    %ecx
+        popl    %ebx
+        leave
+        ret
+
+
+
+Esercizio 3
+
+// file Esa.java
+import java.io.*;
+class Informazione implements Serializable
+{	public int a = 0;	}
+
+class Esa implements Serializable
+{	private class Elemento implements Serializable
+	{	Informazione inf; Elemento pun;	}
+	private Elemento testa = null;
+	public void insTesta(Informazione oi)
+	{	Elemento p = new Elemento();
+		p.inf = oi; p.pun = testa; testa = p;
+	}
+	public void stampa()
+	{	Elemento p = testa;
+		if (testa == null)
+			Console.scriviStringa("Lista vuota");
+		else while (p != null)
+		{ Console.scriviIntero(p.inf.a); p = p.pun;	}
+	}
+	public void salva() throws IOException
+	{	ObjectOutputStream oos = new ObjectOutputStream
+			(new FileOutputStream("miofile.dat"));
+		oos.writeObject(this);
+		oos.close();
+	}
+	public static Esa carica() throws ClassNotFoundException, IOException
+	{	ObjectInputStream ois = new ObjectInputStream
+			(new FileInputStream("miofile.dat"));
+		Esa tmp = (Esa)ois.readObject();
+		ois.close();
+		return tmp;
+	}
+}
+
+
+
+File esistenti
+
+// prova1.cpp
+#include "cc.h"
+int main()
+{   st1 ss1 = {5,  1,2,3,4};
+    st2 ss2 = {5.1, 1.1,2.1,3.1,4.1};
+    int a1[4] = { 11,12,13,14 };
+    double a2[4] = {11.2,12.2,13.2,14.2 };
+    cl cla1(ss1); cla1.stampa();
+    cl cla2(ss1, ss2); cla2.stampa();
+    cla1 = cla2.elab1(a1, a2); cla1.stampa();
+}
+    
+// prova2.cpp
+// prova2.cpp
+#include "cc.h"
+int main()
+{   st1 sa1 = {5,  7,8,3,4}, sa2 = {6,  7, 8, 9, 10 };
+    st2 sb1 = {5.1, 6.1,7.1,3.1,4.1},
+    sb2 = {6.2, 4.2, 5.2, 8.2, 9.2 };
+    cl cla1(sa1); cl cla2(sa2, sb2);
+    cla1 = cla2.elab2(cla1, sb1); cla1.stampa();
+}
+    
+    
+
+// file Pesa.java
+import java.io.*;
+public class Pesa
+{	public static void  main(String args[])
+			throws ClassNotFoundException, IOException
+	{	int i; Esa li1 = new Esa();
+		for (i=0; i<5; i++)
+		{	Informazione ii = new Informazione();
+			ii.a = i; li1.insTesta(ii);
+		}
+		Console.scriviStringa("Esa li1:");
+		li1.stampa();
+		li1.salva();
+		Esa li2 = Esa.carica(); 
+		Console.scriviStringa("Esa li2:");
+		li2.stampa();
+	}
+
+}
+
+// file Console.java
+// corpo omesso
+
+
+Comandi da utilizzare:
+
+Esercizio 1:	
+traduzione e collegamento	gcc es1.s prova1.cpp –lgpp
+esecuzione		a
+
+Esercizio 2:	
+traduzione e collegamento	gcc es1.s es2.s prova2.cpp –lgpp
+esecuzione		a
+
+Esercizio 3:	
+traduzione e collegamento	javac Pesa.java
+esecuzione		java Pesa
+
+
+Risultati:
+
+
+Esercizio 1:
+
+5	1 2 3 4
+5	1 2 3 4
+
+5	2 3 4 5
+5.1	2.6 3.6 4.6 5.6
+
+2	11 12 13 14
+2	22.2 24.2 26.2 28.2
+
+Esercizio 2:
+
+5	0 -1 7 8
+5	-6.1 -7.1 12.8 14.8
+
+Esercizio 3: 
+
+Esa li1:
+4
+3
+2
+1
+0
+Esa li2:
+4
+3
+2
+1
+0

@@ -1,0 +1,291 @@
+Esame di Calcolatori Elettronici
+Ingegneria Informatica - Appello del 11/01/2005
+
+Sia data la seguente dichiarazione, contenuta nel file cc.h:
+#include <iostream.h>
+struct st { int vv1[4]; double vv2[4]; };
+class cl 
+{	double d[4]; st s;
+public:
+	cl(st stru);
+	void elab1(double arre[], st stru);
+	void elab2(cl cc1, cl& cc2);
+	void stampa()
+	{	int i;
+		for (i=0;i<4;i++) cout << d[i] << ' '; cout << endl;
+		for (i=0;i<4;i++) cout << s.vv1[i] << ' '; cout << '\t';
+		for (i=0;i<4;i++) cout << s.vv2[i] << ' '; cout << endl; cout << endl;
+	}
+};
+
+Esercizio 1)
+Realizzare in Assembler DJGPP le funzioni membro seguenti (scrivere sul file es1.s; tradurre, collegare 
+ed eseguire utilizzando i comandi indicati nelle avvertenze):
+#include "cc.h"
+cl::cl(st stru)
+{	for (int i=0; i<4; i++)
+	{	d[i]=stru.vv2[i]+10;
+		s.vv1[i]=stru.vv1[i]+i; s.vv2[i]=stru.vv2[i]+stru.vv1[i];  
+	}
+}
+void cl::elab1(double arre[], st stru)
+{	int i; cl ss(stru);
+	for (i=0;i<4;i++)
+	{	s.vv1[i]=ss.s.vv1[i]; s.vv2[i]=arre[i]+ ss.s.vv2[i];	}
+}
+
+Esercizio 2)
+Realizzare in Assembler DJGPP la funzione membro seguente (scrivere sul file es2.s; tradurre, 
+collegare ed eseguire utilizzando i comandi indicati nelle avvertenze):
+#include "cc.h"
+void cl::elab2(cl cc1, cl& cc2)
+{	int i;
+	for (i=0;i<4;i++)
+	{	if (cc1.d[i]<20) cc2.d[i]=d[i]+s.vv2[i]; else cc2.d[i]= 0;
+		cc2.s.vv1[i]=s.vv1[i];
+		if (cc1.s.vv2[i]<s.vv2[i]) cc2.s.vv2[i]=s.vv2[i]-d[i];
+			else cc2.s.vv2[i]= s.vv1[i]-d[i];
+	}
+}
+
+Esercizio 3)
+Definire in Java quanto richiesto (scrivere nel file Esa.java, tradurre, collegare ed eseguire utilizzando i 
+comandi indicati nelle avvertenze).
+Il file contiene due classi di eccezione Ev ed Ep, e una classe Esa che realizza una pila di interi 
+utilizzando una lista. La classe Esa prevede un metodo pubblico void push(int i) che solleva una 
+eccezione di classe Ep se la pila contiene 5 elementi (non cattura l'eccezione ma la trasmette al 
+chiamante), e un metodo pubblico int pop() che solleva una eccezione di classe Ev se la pila è vuota 
+(non cattura l'eccezione ma e la trasmette al chiamante).
+
+
+
+Soluzioni
+
+
+Esercizio 1
+
+.text
+dieci:  .double 0e10
+
+.global ___2clG2st
+___2clG2st:
+        pushl   %ebp
+        movl    %esp, %ebp
+        subl    $4, %esp
+        pushl   %ebx
+        pushl   %ecx
+        movl    8(%ebp), %ebx   		# this
+        movl    $0, -4(%ebp)
+for1:	cmpl    $4, -4(%ebp)
+        jge     fine1
+        movl    -4(%ebp), %ecx  		# i
+        fldl    28(%ebp, %ecx, 8)       	# stru.vv2[i]
+        faddl   dieci
+        fstpl   (%ebx,%ecx, 8) 		# d[i]
+        movl    12(%ebp,%ecx,4), %eax 	# stru.vv1[i]
+        addl    %ecx, %eax      		# + i
+        movl    %eax, 32(%ebx,%ecx,4)	# s.vv1[i]
+        fildl   12(%ebp,%ecx,4)       	# stru.vv1[i]
+        faddl   28(%ebp,%ecx,8)       	# stru.vv2[i]
+        fstpl   48(%ebx, %ecx,8)		# s.vv2[i]
+        incl    -4(%ebp)
+        jmp     for1
+fine1:  movl    8(%ebp), %eax
+        popl    %ecx
+        popl    %ebx
+        leave
+        ret
+
+.global _elab1__2clPdG2st
+_elab1__2clPdG2st:
+        pushl   %ebp
+        movl    %esp, %ebp
+        subl    $84, %esp
+        pushl   %ebx
+        pushl   %ecx
+        pushl   %edi
+        pushl   %esi
+        movl    8(%ebp), %ebx   		# this
+        leal    16(%ebp), %esi		# &stru
+        subl    $48, %esp			# spazio per stru
+        movl    %esp, %edi
+        cld
+        movl    $12, %ecx
+        rep
+        movsl
+        leal    -84(%ebp), %esi		# &ss
+        pushl   %esi
+        call    ___2clG2st			# costruttore
+        addl    $52, %esp
+        movl    $0, -4(%ebp)
+for2:   cmpl    $4, -4(%ebp)
+        jge     fine2
+        movl    -4(%ebp), %ecx
+        movl    -52(%ebp,%ecx,4), %esi	# ss.s.vv1[i]
+        movl    %esi, 32(%ebx,%ecx,4)	# s.vv1[i]
+        movl    12(%ebp), %esi  		# &arre
+        fldl    (%esi,%ecx,8) 		# arre[i]
+        faddl   -36(%ebp,%ecx,8)      	# ss.s.vv2[i]
+        fstpl   48(%ebx,%ecx,8)       	# s.vv2[i]       
+        incl    -4(%ebp)
+        jmp     for2
+fine2:  popl    %esi
+        popl    %edi
+        popl    %ecx
+        popl    %ebx
+        leave
+        ret
+
+
+Esercizio 2
+
+.text
+venti:  .double 0e20
+.global _elab2__2clT0R2cl
+_elab2__2clT0R2cl:
+        pushl   %ebp
+        movl    %esp,%ebp
+        subl    $4,%esp
+        pushl   %ecx
+        pushl   %ebx
+        pushl   %edx
+        pushl   %eax
+        movl    8(%ebp), %ebx    		# this
+        movl    92(%ebp), %edx   		# &cc2 in edx
+        movl    $0, -4(%ebp)
+inifor: cmpl    $4, -4(%ebp)
+        jl      avan
+        jmp     fine
+avan:   movl    -4(%ebp), %ecx   		# i in ecx
+        fldl    venti
+        fcompl  12(%ebp,%ecx,8)		# cc1.d[i]
+        fstsw   %ax
+        testw   $0x4100, %ax
+        jnz     else1
+        fldl    (%ebx,%ecx,8)		# d[i]
+        faddl   48(%ebx,%ecx,8)		# s.vv2[i]
+        fstpl   (%edx,%ecx,8)		# cc2.d[i]
+        jmp     oper2
+else1:  fldz
+        fstpl   (%edx,%ecx,8)		# cc2.d[i]
+oper2:  movl    32(%ebx,%ecx,4),%eax		# s.vv1[i]
+        movl    %eax,32(%edx,%ecx,4)		# cc2.s.vv1[i]
+        fldl    48(%ebx,%ecx,8)		# s.vv2[i]
+        fcompl  60(%ebp,%ecx,8)		# cc1.s.vv2[i]
+        fstsw   %ax
+        testw   $0x4100,%ax
+        jnz     else2
+        fldl    48(%ebx,%ecx,8)		# s.vv2[i]
+        fsubl   (%ebx,%ecx,8)		# d[i]
+        fstpl   48(%edx,%ecx,8)		# cc2.s.vv2[i]
+        jmp     ancora
+else2:  fildl   32(%ebx,%ecx,4)		# s.vv1[i]
+        fsubl   (%ebx,%ecx,8)		# d[i]
+        fstpl   48(%edx,%ecx,8)		# cc2.s.vv2[i]
+ancora: incl    -4(%ebp)
+        jmp     inifor
+fine:   popl    %eax
+        popl    %edx
+        popl    %ebx
+        popl    %ecx
+        leave
+        ret
+
+
+Esercizio 3
+
+class Ev extends Exception { }
+class Ep extends Exception { }
+class Esa
+{	private class Elemento
+	{	int inf; Elemento pun;	}
+	private int numero = 0;
+	private Elemento testa = null;
+	public void push(int i) throws Ep
+	{	if (numero == 5) throw new Ep();
+		numero++; Elemento p = new Elemento();
+		p.inf = i; p.pun = testa; testa = p;
+	}
+	public int pop() throws Ev
+	{	if (numero == 0) throw new Ev();
+		numero--; int i = testa.inf; testa = testa.pun;
+		return i;
+	}
+	
+}
+
+
+File esistenti
+
+// file prova1.cpp
+#include "cc.h"
+int main()
+{   st sa = {1,2,3,4, 1.1,2.1,3.1,4.1 },
+       sb = {11,12,13,14, 11.1,12.1,13.1,14.1 };
+    double ar[4] = {21,22,23,24};
+    cl cla(sa); cla.stampa();
+    cla.elab1(ar, sb); cla.stampa();
+}
+    
+// file prova2.cpp
+#include "cc.h"
+int main()
+{      st ss1 = {1,2,3,4, 1.1,3.1,21.1,22.1},
+       ss2 = {11,12,13,14, 1.1,2.1,11.1,12.1};
+       cl cla1(ss1), cla2(ss2), cla3(ss1);
+       cla1.elab2(cla2, cla3);
+       cla3.stampa();
+}
+    
+// file Pesa.java
+class Pesa
+{	public static void main(String[] args)
+	{	int i, n = 0; Esa li = new Esa();
+		try { for (i=0; i<6; i++) { li.push(i); Console.scriviInt(i); } }
+		catch (Ep e) { Console.scriviStr("Pila piena"); } 
+		finally { Console.nuovaLinea(); }
+		try { for (i=0; i<6; i++) { n = li.pop(); Console.scriviInt(n); }}
+		catch (Ev e) { Console.scriviStr("Pila vuota"); }
+		finally { Console.nuovaLinea(); } 
+	}	
+}
+
+// file Console.java
+// corpo omesso
+
+Comandi da utilizzare:
+
+Esercizio 1:	
+traduzione e collegamento	gcc es1.s prova1.cpp –lgpp
+esecuzione		a
+
+Esercizio 2:	
+traduzione e collegamento	gcc es1.s es2.s prova2.cpp –lgpp
+esecuzione		a
+
+Esercizio 3:	
+traduzione e collegamento	javac Pesa.java
+esecuzione		java Pesa
+
+
+Risultati:
+
+Esercizio 1:
+
+11.1 12.1 13.1 14.1
+1 3 5 7		2.1 4.1 6.1 8.1
+
+11.1 12.1 13.1 14.1
+11 13 15 17	43.1 46.1 49.1 52.1
+
+
+Esercizio 2:
+
+13.2 18.2 0 0
+1 3 5 7		-10.1 -10.1 -26.1 -25.1
+
+
+Esercizio 3: 
+
+0 1 2 3 4 Pila piena
+4 3 2 1 0 Pila vuota

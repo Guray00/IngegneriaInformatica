@@ -1,0 +1,251 @@
+Esame di Calcolatori Elettronici
+Ingegneria Informatica
+Appello del 10/01/2002
+
+Testo
+
+Sia data la seguente dichiarazione, contenuta nel file cc.h:
+// cc.h
+#include <iostream.h>
+struct st { int vv1[8]; char cc[4]; double vv2[4]; };
+class cl 
+{	st s;
+public:
+	cl(st ss);
+	void elab1(st& ss, int n);
+	cl elab2(cl cc);
+	void stampa()
+	{	int i;
+		for (i=0;i<8;i++) cout<<s.vv1[i]<<' '; cout<<endl;
+		for (i=0;i<4;i++) cout<<s.cc[i]<<' '; cout<<endl;
+		for (i=0;i<4;i++) cout<<s.vv2[i]<<' '; cout<<endl<<endl;
+	}
+};
+
+Esercizio 1)
+Realizzare in Assembler DJGPP le funzioni membro cl() ed elab1() (scrivere sul file es1.s):
+#include "cc.h"
+cl::cl(st ss)
+{	s = ss;
+}
+void cl::elab1(st& ss, int n)
+{	for (int i=0;i<4;i++)
+	{	s.vv1[i]=ss.vv1[i]+n;  
+		s.cc[i]=ss.cc[i]+static_cast<char>(n); 
+		s.vv1[i+4]=ss.vv1[i+4]+ss.cc[i]-'0';
+	}
+}
+
+Esercizio 2)
+Realizzare in Assembler DJGPP la funzione membro elab2() (scrivere sul file es2.s):
+// es2.cpp
+#include "cc.h"
+cl cl::elab2(cl cc)
+{	cl ca = cc;
+	for (int i=0;i<4;i++)
+	{	if (ca.s.vv2[i]<10) ca.s.vv1[i]=static_cast<int>(s.vv2[i]+5);
+                               else ca.s.vv1[i]=static_cast<int>(s.vv2[i]+15);
+		ca.s.vv1[i+4]=ca.s.vv1[i];
+		ca.s.cc[i]=s.cc[i]-ca.s.cc[i]+'0';
+		ca.s.vv2[i]=ca.s.vv2[i]+s.vv2[i];
+	}
+	return ca;
+}
+
+Esercizio 3)
+Realizzare quanto richiesto in C++ (scrivere sul file es3.cpp ed eseguire).
+Scrivere un programma di prova costituito da una funzione main() che effettua le seguenti azioni:
+1. definisce una struttura ss1 di tipo st e inizializza il campo vv1 con gli interi da 1 a 8, il campo cc con i 
+   caratteri da '5' a '8', e il campo vv2 con i reali da 8.0 a 11.0;
+2. definisce una struttura ss2 di tipo st e inizializza il campo vv1 con gli interi da 11 a 18, il campo cc con i 
+   caratteri da '1' a '4', e il campo vv2 con i reali 5.0, 12.0, 13.0, 14.0;
+3. definisce tre oggetti classe cla1(ss1), cla2(ss2) e cla3 inizializzato con cla1, di tipo cl;
+4. applica la funzione membro stampa() a cla1 e cla2;
+5. prima applica a cla1 la funzione membro elab1() con parametri attuali ss2 e 5, quindi applica a cla1 la 
+   funzione membro stampa();
+6. prima applica a cla1 la funzione membro elab2()con parametro attuale cla2 e assegna il risultato a cla3, 
+   quindi applica a cla3 la funzione membro stampa().
+
+
+
+Soluzioni
+
+
+# es1.s
+.text
+.globl ___2clG2st
+___2clG2st:
+	pushl 	%ebp
+	movl 	%esp, %ebp
+	pushl 	%edi
+	pushl 	%esi
+	movl 	8(%ebp), %eax		# indirizzo oggetto in eax
+	movl 	%eax, %edi
+	leal 	12(%ebp), %esi		# indirizzo ss
+	cld
+	movl 	$17, %ecx
+	rep
+	movsl
+	popl 	%esi
+	popl 	%edi
+	leave
+	ret
+
+.globl _elab1__2clR2sti
+_elab1__2clR2sti:
+	pushl 	%ebp
+	movl 	%esp, %ebp
+	subl 	$4, %esp			# spazio per i
+	pushl 	%edi
+	pushl 	%esi
+	pushl	%eax
+	pushl 	%ebx
+	pushl	%ecx
+	movl 	$0, -4(%ebp)
+ciclo:	cmpl 	$4, -4(%ebp)
+	jl 	avanti
+	jmp 	finec
+avanti:	movl 	-4(%ebp), %ecx		# i in ecx
+	
+	movl 	12(%ebp), %ebx		# &ss
+	movl 	(%ebx,%ecx,4), %eax	# ss.vv1[i]
+	addl 	16(%ebp), %eax		# n
+	movl 	8(%ebp), %ebx		# indirizzo oggetto
+	movl 	%eax, (%ebx,%ecx,4)	# s.vv1[i]
+
+	movl 	12(%ebp), %ebx		# &ss
+	movb 	32(%ebx,%ecx), %al		# ss.cc[i]
+	addb 	16(%ebp), %al		# static_cast<char>(n)
+	movl 	8(%ebp), %ebx		# indirizzo oggetto
+	movb 	%al, 32(%ebx,%ecx)		# s.cc[i]
+
+	movl	%ecx, %esi
+	addl	$4, %esi			# i+4 in esi
+	movl 	12(%ebp), %ebx		# &ss	
+	movl 	(%ebx,%esi,4), %edi	# ss.vv1[i+4]
+	movb	32(%ebx, %ecx), %al	# ss.cc[i]
+	subb	$'0', %al
+	movsbl	%al, %eax
+	addl	%edi, %eax
+	movl 	8(%ebp), %ebx		# indirizo oggetto
+	movl 	%eax, (%ebx,%esi,4)	# s.vv1[i+4]
+
+	incl 	-4(%ebp)
+	jmp 	ciclo
+finec:	popl	%ecx
+	popl 	%ebx
+	popl	%eax
+	popl 	%esi
+	popl 	%edi
+	leave
+	ret
+
+
+# es2.s
+.text
+dieci:	.long 10
+cinque:	.long 5
+quin:	.long 15
+.globl _elab2__2clT0
+_elab2__2clT0:
+	pushl 	%ebp
+	movl 	%esp, %ebp
+	subl 	$72, %esp			# spazio per ca ed i
+	pushl 	%edi
+	pushl 	%esi
+	pushl 	%ebx
+	pushl 	%ecx
+	pushl 	%edx
+	movl 	12(%ebp), %edx		# indirizzo oggetto
+	leal 	-68(%ebp), %edi		# indirizzo ca
+	leal 	16(%ebp), %esi		# indirizzo cc
+	cld
+	movl 	$17, %ecx
+	rep
+	movsl
+	movl 	$0, -72(%ebp)		# i
+ciclo:	cmpl 	$4, -72(%ebp)
+	jl 	avanti
+	jmp 	finec
+avanti:	movl 	-72(%ebp), %ecx
+	fldl 	-32(%ebp,%ecx,8)		# ca.s.vv2[i]
+	fildl 	dieci
+	fcompp
+	fstsw 	%ax
+	testw 	$0x4100, %ax		# test di C3 C0
+	jne 	else			# salta se dieci e` minore o uguale
+	fildl 	cinque
+	fldl 	36(%edx,%ecx,8)		# s.vv2[i]
+	faddp 	%st, %st(1)
+	fistpl 	-68(%ebp,%ecx,4)		# ca.s.vv1[i]
+	jmp 	oltre
+else:	fildl 	quin
+	fldl 	36(%edx,%ecx,8)		# s.vv2[i]
+	faddp 	%st, %st(1)
+	fistpl 	-68(%ebp,%ecx,4)		# ca.s.vv1[i]
+
+oltre:	movl	%ecx, %ebx
+	addl	$4, %ebx			# i+4 in ebx
+	movl	-68(%ebp,%ecx,4), %eax	# ca.s.vv1[i]
+	movl	%eax, -68(%ebp,%ebx,4)	# ca.s.vv1[i+4]
+
+	movb	32(%edx,%ecx), %al		# s.cc[i]
+	subb	-36(%ebp,%ecx), %al	# ca.s.cc[i]
+	addb	$'0', %al
+	movb	%al, -36(%ebp,%ecx)	# ca.s.cc[i]
+
+	fldl 	-32(%ebp,%ecx,8)		# ca.s.vv2[i]
+	faddl 	36(%edx,%ecx,8)		# s.vv2[i]
+	fstpl 	-32(%ebp,%ecx,8)		# ca.s.vv2[i]
+
+	incl 	-72(%ebp)
+	jmp 	ciclo
+finec:	movl 	8(%ebp), %edi		# indirizzo risultato
+	leal 	-68(%ebp), %esi		# indirizzo ca
+	cld
+	movl 	$17,%ecx
+	rep
+	movsl
+	
+	movl 	8(%ebp), %eax
+	popl 	%edx
+	popl 	%ecx
+	popl 	%ebx
+	popl 	%esi
+	popl 	%edi
+	leave
+	ret
+
+
+// es3.cpp
+#include "cc.h"
+int main()
+{   st ss1 = {1,2,3,4,5,6,7,8,'5','6','7','8',8,9,10,11};
+    st ss2 = {11,12,13,14,15,16,17,18,'1','2','3','4',5,12,13,14};
+    cl cla1(ss1), cla2(ss2), cla3 = cla1;
+    cla1.stampa(); cla2.stampa();
+    cla1.elab1(ss2, 5); cla1.stampa();
+    cla3 = cla1.elab2(cla2); cla3.stampa();
+    return 0;
+}
+	
+
+Risultato
+    
+1 2 3 4 5 6 7 8 
+5 6 7 8 
+8 9 10 11 
+
+11 12 13 14 15 16 17 18 
+1 2 3 4 
+5 12 13 14 
+
+16 17 18 19 16 18 20 22 
+6 7 8 9 
+8 9 10 11 
+
+13 24 25 26 13 24 25 26 
+5 5 5 5 
+13 21 23 25 
+
+

@@ -1,0 +1,336 @@
+Esame di Calcolatori Elettronici
+Ingegneria Informatica -Appello del 27/01/2005
+
+Sia data la seguente dichiarazione, contenuta nel file cc.h:
+#include <iostream.h>
+struct st { int i; int vv1[4]; double vv2[4]; };
+class cl 
+{	int n; double d; st s;
+public:
+	cl(st stru);
+	st elab1(double arre[], st stru);
+	cl elab2(cl cc, double arre[]);
+	void stampa()
+	{	int i; cout << n << ' ' << d; cout << endl;
+		cout << s.i << '\t';
+		for (i=0;i<4;i++) cout << s.vv1[i] << ' '; cout << '\t';
+		for (i=0;i<4;i++) cout << s.vv2[i] << ' '; cout << endl; cout << endl;
+	}
+};
+
+Esercizio 1)
+Realizzare in Assembler DJGPP le funzioni membro seguenti (scrivere sul file es1.s; tradurre, collegare 
+ed eseguire utilizzando i comandi indicati nelle avvertenze):
+#include "cc.h"
+cl::cl(st stru)
+{	n = stru.vv1[0]; d = stru.vv2[0]; s.i = stru.vv1[3];
+	for (int i=0; i<4; i++) {s.vv1[i]=stru.vv1[i]+stru.i; s.vv2[i]=stru.vv2[i]; }
+}
+st cl::elab1(double arre[], st stru )
+{	n++; d+=arre[3]; s.i +=5;
+	for (int i=0;i<4;i++) { s.vv1[i]=stru.vv1[i]; s.vv2[i]=stru.vv2[i]+arre[i]; }
+	return s;
+}
+
+Esercizio 2)
+Realizzare in Assembler DJGPP la funzione membro seguente (scrivere sul file es2.s; tradurre, 
+collegare ed eseguire utilizzando i comandi indicati nelle avvertenze):
+#include "cc.h"
+cl cl::elab2(cl cc, double arre[])
+{	int i;  cl cla(cc.s);
+	for (int i=0;i<4;i++)
+	{	if (cc.s.vv2[i]<15) cla.s.vv1[i]= n + s.i + i; else cla.s.vv1[i]= -i;
+		if (arre[i]<cc.s.vv2[i]) cla.s.vv2[i]=arre[i]+s.vv2[i];
+			else cla.s.vv2[i]= -arre[i];
+	}
+	return cla;
+}
+
+Esercizio 3)
+Definire in Java quanto richiesto (scrivere nel file Esa.java, tradurre, collegare ed eseguire utilizzando i 
+comandi indicati nelle avvertenze).
+Il file contiene 1) una classe Lista, che realizza una lista di interi positivi, con i metodi protetti void 
+insTesta(int i), int estTesta() (restituisce 0 se la lista è vuota), void insFondo(int i), e 2) una classe Esa 
+derivata da Lista, che realizza un deposito di interi con i metodi pubblici void insDeposito(int i, int j) e 
+int estDeposito() utilizzando i metodi della classe Lista stessa Il metodo insDeposito() inserisce i due 
+argomenti nel deposito, in testa e in fondo alla lista, rispettivamente, e il metodo estDeposito() estrae un 
+elemento dal deposito, quello con informazione maggiore fra i primi due in testa alla lista, oppure 
+l'unico elemento della lista (restituisce 0 se il deposito è vuoto).
+
+
+
+Soluzioni
+
+
+Esercizio 1
+
+.text
+.global ___2clG2st
+___2clG2st:
+        pushl   %ebp
+        movl    %esp, %ebp
+        subl    $4, %esp                	# i
+        #spazio pushl
+        pushl   %ebx
+        pushl   %ecx
+        movl    8(%ebp), %eax           	# this
+        movl    16(%ebp), %ebx          	# stru.vv1[0]
+        movl    %ebx, (%eax)            	# n
+        movl    32(%ebp), %ebx		# stru.vv2[0]
+        movl    %ebx, 4(%eax)		# d
+        movl    36(%ebp), %ebx		# seconda parte
+        movl    %ebx, 8(%eax)		# seconda parte
+        movl    28(%ebp), %ebx          	# stru.vv1[3]
+        movl    %ebx, 12(%eax)          	# s.i
+        movl    $0, -4(%ebp)
+for1:   cmpl    $4, -4(%ebp)
+        jl      avan1
+        jmp     fine1
+avan1:  movl    -4(%ebp), %ecx
+        movl    16(%ebp,%ecx,4), %ebx	# stru.vv1[i]
+        addl    12(%ebp), %ebx		# stru.i
+        movl    %ebx, 16(%eax,%ecx,4)	# s.vv1[i]
+        movl    32(%ebp,%ecx,8), %ebx	# stru.vv2[i]
+        movl    %ebx, 32(%eax,%ecx,8)	# s.vv2[i]
+        movl    36(%ebp,%ecx,8), %ebx	# seconda parte
+        movl    %ebx, 36(%eax,%ecx,8)	# seconda parte
+        incl    -4(%ebp)
+        jmp     for1
+fine1:   popl    %ebx
+        popl    %ecx
+        leave
+        ret
+
+.global _elab1__2clPdG2st
+_elab1__2clPdG2st:
+        pushl   %ebp
+        movl    %esp, %ebp
+        subl    $4, %esp                	# i
+        pushl   %ebx
+        pushl   %ecx
+        pushl   %esi
+        pushl   %edi
+        movl    12(%ebp), %ebx          	# this
+        incl    (%ebx)                  	# n++
+        movl    16(%ebp), %edi          	# &arre[]
+        fldl    4(%ebx)                 	# d
+        faddl   24(%edi)			# arre[3]
+        fstpl   4(%ebx)			# d
+        movl    12(%ebx), %eax          	# s.i 
+        addl    $5, %eax			
+        movl    %eax, 12(%ebx)		# s.i
+        movl    $0, -4(%ebp)
+for2:   cmpl    $4, -4(%ebp)
+        jl      avan2
+        jmp     fine2
+avan2:  movl    -4(%ebp), %ecx		# i
+        movl    24(%ebp,%ecx,4), %eax	# stru.vv1[i]
+        movl    %eax, 16(%ebx,%ecx,4)	# s.vv1[i]
+        fldl    40(%ebp,%ecx,8)		# stru.vv2[i]
+        faddl   (%edi,%ecx,8)		# arre[i]
+        fstpl   32(%ebx,%ecx,8)		# s.vv2[i]
+        incl    -4(%ebp)
+        jmp     for2
+fine2:  leal    12(%ebx), %esi		# &s
+        movl    8(%ebp), %edi		# indirizzo risultato
+        cld
+        movl    $13, %ecx
+        rep
+        movsl
+        movl    8(%ebp), %eax
+        popl    %edi
+        popl    %esi
+        popl    %ecx
+        popl    %ebx
+        leave
+        ret
+
+
+Esercizio 2
+
+.text
+qui:    .double 0e15
+.global _elab2__2clT0Pd
+_elab2__2clT0Pd:
+        pushl   %ebp
+        movl    %esp, %ebp
+        subl    $68, %esp			# i, cla
+        pushl   %ebx
+        pushl   %ecx
+        pushl   %edx
+        pushl   %esi
+        pushl   %edi
+        subl    $52, %esp			# spazio per argomento del_costruttore
+        movl    %esp, %edi			# &argomento_attuale_del_costruttore
+        leal    28(%ebp), %esi		# &cc.s
+        cld
+        movl    $13, %ecx
+        rep
+        movsl
+        leal    -68(%ebp), %eax		# &risultato_del_costruttore
+        pushl   %eax
+        call    ___2clG2st			# costruttore
+        addl    $56, %esp			# ripulitura pila
+        movl    12(%ebp), %ebx          	# this
+        movl    80(%ebp), %edx          	# &arre[]
+        movl    $0, -4(%ebp)		# i
+inifor: cmpl    $4, -4(%ebp)
+        jl      avan1
+        jmp     finec
+avan1:  movl    -4(%ebp), %ecx
+        fldl    48(%ebp,%ecx,8)		# cc.s.vv2[i]
+        fcompl  qui
+        fstsw   %ax
+        testw   $0x0100, %ax
+        jz      else1
+        movl    (%ebx), %eax              	# n
+        addl    12(%ebx), %eax          	# s.i 
+        addl    %ecx, %eax			# i
+        movl    %eax, -52(%ebp,%ecx,4)	# cla.s.vv1[i]
+        jmp     dopo1
+else1:  movl    %ecx, %eax
+        negl    %eax
+        movl    %eax, -52(%ebp,%ecx,4)	# cla.s.vv1[i]
+dopo1:  fldl    (%edx,%ecx,8)		# arre[i]
+        fcompl  48(%ebp,%ecx,8)		# cc.s.vv2[i]
+        fstsw   %ax
+        testw   $0x0100, %ax
+        jz      else2
+        fldl    (%edx,%ecx,8)		# arre[i]
+        faddl   32(%ebx,%ecx,8)		# s.vv2[i]
+        fstpl   -36(%ebp,%ecx,8)		# cla.s.vv2[i]
+        jmp     dopo2
+else2:  fldl    (%edx,%ecx,8)		# arre[i]
+        fchs 				
+        fstpl   -36(%ebp,%ecx,8)		# cla.s.vv2[i]
+dopo2:  incl     -4(%ebp)
+        jmp     inifor
+finec:  leal    -68(%ebp), %esi		# &cla
+        movl    8(%ebp), %edi           	# indirizzo risu
+        cld
+        movl    $16, %ecx
+        rep
+        movsl
+        movl    8(%ebp), %eax
+        popl    %edi
+        popl    %esi
+        popl    %edx
+        popl    %ecx
+        popl    %ebx
+        leave
+        ret
+
+
+Esercizio 3
+
+class Lista
+{	private class Elemento
+	{  int inf; Elemento pun;  }
+	private Elemento testa = null;
+	protected void insTesta(int i)
+	{    Elemento p = new Elemento();
+	     p.inf = i; p.pun = testa; testa = p; 
+	}
+	protected int estTesta()
+	{   int i = 0;
+	    if (testa!=null)  {  i = testa.inf; testa = testa.pun;  }
+	    return i;
+	}
+	protected void insFondo(int i)
+        {    Elemento p = null; Elemento q;
+             for (q = testa; q != null; q = q.pun) p = q;
+             q = new Elemento(); q.inf = i; q.pun = null;
+             if (testa == null) testa = q; else p.pun = q;
+        }     
+}
+class Esa extends Lista
+{	public void insDeposito(int i, int j)
+	{  super.insTesta(i); super.insFondo(j);	}
+	public int estDeposito() 
+	{  int i = super.estTesta(); int j = super.estTesta();
+	   if (i==0) return 0;
+	   if (j==0) return i;
+	   if (i>j){ super.insTesta(j); return i;  }
+	   super.insTesta(i); return j;
+	}
+}
+
+
+File esistenti
+
+// file prova1.cpp
+#include "cc.h"
+int main()
+{   st sa = {5,  1,2,3,4, 1.1,2.1,3.1,4.1 },
+       sb = {10, 11,12,13,14, 11.1,12.1,13.1,14.1 };
+    double ar[4] = {21,22,23,24};
+    cl cla(sa); cla.stampa();
+    cla.elab1(ar, sb); cla.stampa();
+}
+
+// prova2.cpp
+#include "cc.h"
+int main()
+{      st ss1 = {5, 1,2,3,4, 1.1,2.1,3.1,4.1},
+       ss2 = {15, 11,12,13,14, 1.1,2.1,15.1,16.1};
+       double aa[] = { 2.1,3.1,4.1, 5.1 };
+       cl cla1(ss1), cla2(ss2), cla3(ss1);
+       cla3 = cla1.elab2(cla2, aa);
+       cla3.stampa();
+}
+    
+
+// file Pesa.java
+public class Pesa	
+{	public static void main(String[] args) 
+	{	Esa dd = new Esa();
+		dd.insDeposito(1,4); dd.insDeposito(3,2);
+		for (int i=0; i<5; i++) Console.scriviIntero(dd.estDeposito());
+	}
+}
+
+// file Console.java
+// corpo omesso
+
+
+Comandi da utilizzare:
+
+Esercizio 1:	
+traduzione e collegamento	gcc es1.s prova1.cpp –lgpp
+esecuzione		a
+
+Esercizio 2:	
+traduzione e collegamento	gcc es1.s es2.s prova2.cpp –lgpp
+esecuzione		a
+
+Esercizio 3:	
+traduzione e collegamento	javac Pesa.java
+esecuzione		java Pesa
+
+
+Risultati:
+
+
+Esercizio 1:
+
+1 1.1
+4	6 7 8 9		1.1 2.1 3.1 4.1
+
+2 25.1
+9	11 12 13 14	32.1 34.1 36.1 38.1
+
+
+Esercizio 2:
+
+26 1.1
+29	5 6 -2 -3		-2.1 -3.1 7.2 9.2
+
+
+Esercizio 3: 
+
+3
+4
+2
+1
+0
+
