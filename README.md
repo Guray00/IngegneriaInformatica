@@ -223,6 +223,7 @@ Martina Panico<br>
 Aleandro Prudenzano<br>
 Rambod Rahmani<br>
 Samuele Ricotta<br>
+Alessandro Sale<br>
 Nicolò Salti<br>
 Lorenzo Salvatelli<br>
 Giacomo Sansone<br>
