@@ -1,0 +1,1 @@
+Il materiale didattico realizzato dalla prof.ssa Martini è disponibile sul canale teams del corso, non sarà pubblicato su Github per ragioni di copyright. Sono disponibili i progetti degli anni passati considerati "eccellenti" dalla prof.ssa, più ulteriori progetti con valutazione alta forniti dai nostri colleghi.
