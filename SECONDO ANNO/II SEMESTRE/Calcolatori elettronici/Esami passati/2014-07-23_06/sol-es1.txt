@@ -94,7 +94,7 @@ extern "C" void c_barrier_destroy(natl id)
 		inserimento_lista(pronti, work);
 	}
 	schedulatore();
-	dealloca(b);
+	delete b;
 }
 //   SOLUZIONE 2014-07-23 )
 

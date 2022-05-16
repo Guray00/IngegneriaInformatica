@@ -7,8 +7,8 @@
 	natl old_head;
 //   SOLUZIONE 2018-07-25 )
 // ( SOLUZIONE 2018-07-25
-	if (!access(&len, sizeof(len), true) ||
-	    !access(buf, len, true))
+	if (!access(&len, sizeof(len), true, false) ||
+	    !access(buf, len, true, false))
 	{
 		flog(LOG_WARN, "parametri errati");
 		abort_p();

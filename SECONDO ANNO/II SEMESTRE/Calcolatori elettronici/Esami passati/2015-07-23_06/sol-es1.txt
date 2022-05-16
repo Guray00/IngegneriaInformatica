@@ -46,7 +46,7 @@ extern "C" void c_shmem_detach(natl id)
 	delete old;
 
 	unmap(esecuzione->cr3, indv, indv + npag * DIM_PAGINA,
-			[](vaddr v, int) {
+			[](vaddr v, paddr, int) {
 				invalida_entrata_TLB(v);
 			});
 }

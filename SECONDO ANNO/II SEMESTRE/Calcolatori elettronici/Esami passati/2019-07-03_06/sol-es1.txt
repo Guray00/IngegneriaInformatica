@@ -39,7 +39,7 @@ extern "C" void c_bpremove()
 		return;
 	}
 
-	natb *bytes = reinterpret_cast<natb*>(b_info.rip);
+	natb *bytes = reinterpret_cast<natb*>(c_trasforma(b_info.rip));
 	*bytes = b_info.orig;
 	des_proc *work;
 	while (b_info.intercepted) {

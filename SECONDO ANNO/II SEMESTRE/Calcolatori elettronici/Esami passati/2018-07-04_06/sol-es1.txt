@@ -8,9 +8,9 @@ extern "C" bool c_receive(natl& src, char *buf, natq& len)
 	bool rv = true;
 	natl tail;
 
-	if (!access(&src, sizeof(src), true) ||
-	    !access(&len, sizeof(len), true) ||
-	    !access(buf, len, true))
+	if (!access(&src, sizeof(src), true, false) ||
+	    !access(&len, sizeof(len), true, false) ||
+	    !access(buf, len, true, false))
 	{
 		flog(LOG_WARN, "parametri non validi");
 		abort_p();

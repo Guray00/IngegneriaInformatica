@@ -20,12 +20,12 @@ extern "C" void c_ceread(natl id, char *buf, natl& quanti, char stop)
 		abort_p();
 	}
 
-	if (!access(&quanti, sizeof(quanti), false)) {
+	if (!access(&quanti, sizeof(quanti), true, false)) {
 		flog(LOG_WARN, "parametro non valido: %p", &quanti);
 		abort_p();
 	}
 
-	if (!access(buf, quanti, true)) {
+	if (!access(buf, quanti, true, true)) {
 		flog(LOG_WARN, "parametri non validi: %p, %d", buf, quanti);
 		abort_p();
 	}

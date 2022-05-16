@@ -22,9 +22,7 @@ a_writepipe:
 	.cfi_def_cfa_offset 40
 	.cfi_offset rip, -40
 	.cfi_offset rsp, -16
-	call salva_stato
 	call c_writepipe
-	call carica_stato
 	iretq
 	.cfi_endproc
 //   SOLUZIONE 2016-02-25 )

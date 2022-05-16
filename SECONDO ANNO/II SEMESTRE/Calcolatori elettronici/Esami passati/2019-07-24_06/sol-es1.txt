@@ -18,6 +18,7 @@ a_bpdetach:
 	.cfi_endproc
 //   SOLUZIONE 2019-07-24 )
 // ( SOLUZIONE 2019-07-24
+	call salva_stato
  	movq $3, %rdi
  	movq $0, %rsi
 //	movq (%rsp), %rdx

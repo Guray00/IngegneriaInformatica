@@ -26,7 +26,7 @@ extern "C" bool c_ceread(natl id, natl offset, char *buf, natl quanti)
 		abort_p();
 	}
 
-	if (!access(buf, quanti, true)) {
+	if (!access(buf, quanti, true, false)) {
 		flog(LOG_WARN, "parametri non validi");
 		abort_p();
 	}
@@ -108,7 +108,7 @@ extern "C" bool c_cewrite(natl id, natl offset, char *buf, natl quanti)
 		abort_p();
 	}
 
-	if (!access(buf, quanti, false)) {
+	if (!access(buf, quanti, false, false)) {
 		flog(LOG_WARN, "parametri non validi");
 		abort_p();
 	}

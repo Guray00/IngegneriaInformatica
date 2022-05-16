@@ -94,10 +94,13 @@ extern "C" void c_bpcontinue()
 extern "C" void c_debug_exception(int tipo, natq errore, vaddr *p_rip)
 {
 	// Ripristiniamo il breakpoint
-	// La traduzione attiva e' quella dello slave, quindi possiamo
-	// usare esecuzione->bp_addr direttamente
+	// La traduzione attiva e' quella dello slave, quindi potremmo
+	// usare esecuzione->bp_addr direttamente. L'indirizzo è però
+	// molto probabilmente nella parte codice, protetta da scrittura.
+	// Per questo motivo utilizziamo comunque trasforma, in modo
+	// da accedere tramite la finestra di memoria.
 	if (esecuzione->bp_orig == 0xCC) {
-		natb *bytes = reinterpret_cast<natb*>(esecuzione->bp_addr);
+		natb *bytes = reinterpret_cast<natb*>(c_trasforma(esecuzione->bp_addr));
 		esecuzione->bp_orig = *bytes;
 		*bytes = 0xCC;
 	}

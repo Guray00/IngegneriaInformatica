@@ -5,9 +5,9 @@
 // ( SOLUZIONE 2019-01-16
 extern "C" bool c_receive(natl& src, char *buf, natq& len)
 {
-	if (!access(&src, sizeof(src), true) ||
-	    !access(&len, sizeof(len), true) ||
-	    !access(buf, len, true))
+	if (!access(&src, sizeof(src), true, false) ||
+	    !access(&len, sizeof(len), true, false) ||
+	    !access(buf, len, true, false))
 	{
 		flog(LOG_WARN, "parametri errati");
 		abort_p();

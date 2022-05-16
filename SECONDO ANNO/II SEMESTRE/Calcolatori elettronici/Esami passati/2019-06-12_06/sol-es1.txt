@@ -21,7 +21,7 @@ struct b_info {
 	natb orig;
 } b_info;
 
-extern "C" void c_breakpoint(natq rip)
+extern "C" void c_breakpoint(vaddr rip)
 {
 	if (b_info.waiting) {
 		esecuzione->contesto[I_RAX] = 0xFFFFFFFF;
@@ -34,7 +34,7 @@ extern "C" void c_breakpoint(natq rip)
 		return;
 	}
 
-	natb *bytes = reinterpret_cast<natb*>(rip);
+	natb *bytes = reinterpret_cast<natb*>(c_trasforma(rip));
 	b_info.rip = rip;
 	b_info.orig = *bytes;
 	*bytes = 0xCC;
@@ -49,7 +49,7 @@ extern "C" void c_breakpoint_exception(int tipo, natq errore, vaddr* p_saved_rip
 		gestore_eccezioni(tipo, errore, *p_saved_rip);
 		return;
 	}
-	natb *bytes = reinterpret_cast<natb*>(b_info.rip);
+	natb *bytes = reinterpret_cast<natb*>(c_trasforma(b_info.rip));
 	*bytes = b_info.orig;
 	(*p_saved_rip)--;
 	b_info.waiting->contesto[I_RAX] = esecuzione->id;
