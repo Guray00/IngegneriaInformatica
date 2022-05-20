@@ -1,1 +1,4 @@
-il professore non ha a disposizione delle proprie dispense sull'argomento, ma ha consigliato il capitolo 9 di una raccota di appunti di uno studente disponibile nel suo sito a questo link: https://calcolatori.iet.unipi.it/contrib/calcolatori_elettronici.pdf
+il professore non ha a disposizione delle proprie dispense sull'argomento, 
+ma ha consigliato il capitolo 9 di una raccota di appunti di uno studente 
+disponibile nel suo sito a questo link:
+https://calcolatori.iet.unipi.it/contrib/calcolatori_elettronici.pdf
