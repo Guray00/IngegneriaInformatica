@@ -1,0 +1,52 @@
+/*
+ * Programma B
+ * Test di semafori (mutua esclusione), delay e IO da terminale,
+ *  interazione con processi di un altro programma (condivisione
+ *  di un semaforo).
+ * Il programma usa la FPU (i risultati sono converiti ad interi perche'
+ *  printf() al momento non permette di fare altrimenti).
+ */
+ 
+#include <lib.h>
+#include <sys.h>
+
+/*
+ * Semaforo condiviso col programma C
+ */
+semaphore semaforo_0 value 1;
+
+/*
+ * Processi originati da B
+ */
+process proc_pb body pb(4), 13, LIV_UTENTE;
+process proc_pb1 body pb(5), 13, LIV_UTENTE;
+
+const int BUF_SIZE = 10;
+char b_buf[BUF_SIZE];
+
+process_body pb(int a)
+{
+	double da, db, dc;
+	int b_q;
+
+	printf(a, "Programma pb (Processo sul terminale %d)\n", a);
+	printf(a, "Esegue un ciclo acquisendo un mutex, in comune col");
+	printf(a, " programma C, leggendo\n una stringa, aspettando");
+	printf(a, " e rilasciando il mutex.\n");
+
+	b_buf[0] = 0;
+	while(b_buf[0] != 'q') {
+		printf(a, "Acquisizione mutex 0...");
+		sem_wait(semaforo_0);
+		printf(a, "fatto\n");
+		printf(a, "Premere INVIO per continuare (q INVIO per uscire)\n",
+				51);
+		b_q = 5;
+		readvterm_ln(a, b_buf, b_q);
+		printf(a, "Attesa di 6 secondi\n");
+		delay(120);
+		sem_signal(semaforo_0);
+		printf(a, "Mutex 0 rilasciato\n");
+	}
+}
+

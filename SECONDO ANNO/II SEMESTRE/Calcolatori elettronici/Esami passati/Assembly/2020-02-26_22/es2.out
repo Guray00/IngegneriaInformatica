@@ -1,0 +1,19 @@
+proc 17: chiamo proc_attach(13)
+proc 17: chiamo proc_attach(14)
+proc 16: chiamo proc_attach(11)
+proc 16: chiamo proc_attach(12)
+proc 15: chiamo proc_attach(9)
+proc 15: chiamo proc_attach(10)
+proc 9: eseguo 42/0
+proc 15: motivo terminazione di 9: errore di divisione
+proc 10: eseguo mov rax, cr3
+proc 15: motivo terminazione di 10: errore di protezione
+proc 11: termino normalmente
+proc 12: termino normalmente
+proc 16: tutti gli slave sono terminati
+proc 13: eseguo 42/0
+proc 14: eseguo mov int3
+proc 17: motivo terminazione di 14: breakpoint
+proc 14: sopravvissuto a int3
+proc 17: motivo terminazione di 13: errore di divisione
+differenza alloca/dealloca: 13

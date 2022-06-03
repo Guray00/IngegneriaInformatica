@@ -1,0 +1,115 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2019-09-23
+	carica_gate	TIPO_BPC	a_bpcontinue	LIV_UTENTE
+//   SOLUZIONE 2019-09-23 )
+// ( SOLUZIONE 2019-09-23
+a_bpcontinue:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_bpcontinue
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2019-09-23 )
+// ( SOLUZIONE 2019-09-23
+	movq $3, %rdi
+	movq $0, %rsi
+	movq %rsp, %rdx
+	call c_breakpoint_exception
+//   SOLUZIONE 2019-09-23 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2019-09-23
+extern "C" void c_bpcontinue()
+{
+	des_proc *self = des_p(esecuzione->id),
+		 *dest;
+
+	// e' un errore se il processo non e' master;
+	// i master hanno un campo bp_slave non-nullo
+	if (!self->bp_slave) {
+		flog(LOG_WARN, "bpcontinue() errata: chiamante non master");
+		c_abort_p();
+		return;
+	}
+
+	dest = self->bp_slave;
+
+	// e' un errore anche se lo slave non e' bloccato sul breakpoint;
+	// se e' bloccato deve essere nella lista bp_waiting del master
+	// (si veda c_breakpoint_exception piu' sopra)
+	if (!self->bp_waiting) {
+		flog(LOG_WARN, "bpcontinue() errata: slave non bloccato");
+		c_abort_p();
+		return;
+	}
+
+	// settiamo il trap flag nella pila dello slave
+	// vpila: indirizzo virtuale nella memoria dello slave
+	vaddr vpila = dest->contesto[I_RSP];
+	// se usassimo vpila scriveremmo nella pila del master invece che in
+	// quella dello slave, dal momento che la pila sistema usa una
+	// traduzione diversa in ogni processo.  Traduciamo allora vpila in
+	// indirizzo fisico, in modo da poter accedere alla pila dello slave
+	// tramite la finestra FM
+	faddr fpila = trasforma(self->bp_slave_id, vpila);
+	// (conversione in puntatore a natq, per convenienza)
+	natq *pila = reinterpret_cast<natq *>(fpila);
+	// ora scriviamo nella pila dello slave. In cima (pila[0])
+	// c'e' rip, segue il cpl (pila[1]) e poi i flag (pila[2])
+	enable_single_step(pila[2]);
+	
+	// ripristiniamo il byte sovrascritto dal breakpoint.  Per
+	// self->bp_addrv vale un discorso analago a vpila: non possiamo usare
+	// l'indirizzo direttamente, in quanto verrebbe tradotto nella memoria
+	// virtuale del master e non dello slave.
+	faddr bp_faddr = trasforma(self->bp_slave_id, dest->bp_addr);
+	// (conversione a puntatore a natb, per convenienza)
+	natb *bytes = reinterpret_cast<natb *>(bp_faddr);
+	// accesso tramite la finestra FM
+	*bytes = dest->bp_orig;
+	// scriviamo 0xcc in bp_orig, per ricordarci che abbiamo fatto
+	// continuare lo slave e che andra' ripristinato il breakpoint
+	dest->bp_orig = 0xCC;
+	// (il rip salvato nella pila dello slave era gia' stato riportato
+	// indietro di 1 nella c_breakpoint_exception)
+	
+	// risvegliamo lo slave
+	inspronti();
+	inserimento_lista(pronti, self->bp_waiting);
+	self->bp_waiting = 0;
+	schedulatore();
+}
+
+extern "C" void c_debug_exception(int tipo, natq errore, vaddr *p_rip)
+{
+	des_proc *self = des_p(esecuzione->id);
+
+	// Ripristiniamo il breakpoint
+	// La traduzione attiva e' quella dello slave, quindi possiamo
+	// usare self->bp_addr direttamente
+	if (self->bp_orig == 0xCC) {
+		natb *bytes = reinterpret_cast<natb*>(self->bp_addr);
+		self->bp_orig = *bytes;
+		*bytes = 0xCC;
+	}
+
+	// Resettiamo il TRAP_FLAG
+	// (sfruttiamo il puntatore al rip, che punta in cima alla pila)
+	natq* pila = reinterpret_cast<natq*>(p_rip);
+	// anche qui possiamo usare direttamente l'idirizzo virtuale
+	disable_single_step(pila[2]);
+} 
+//   SOLUZIONE 2019-09-23 )
+
+

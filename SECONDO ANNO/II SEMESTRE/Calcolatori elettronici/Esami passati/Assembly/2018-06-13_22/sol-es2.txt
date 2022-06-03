@@ -1,0 +1,88 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2018-06-13
+	natl old_head;
+	msg* m[DIM_RING];
+//   SOLUZIONE 2018-06-13 )
+// ( SOLUZIONE 2018-06-13
+extern "C" bool c_send(natl dst, const char *buf, natl len)
+{
+	if (len > MAX_PAYLOAD)
+		return false;
+
+	sem_wait(net.mutex);
+
+	natl tail;
+	
+	inputl(net.iTAIL, tail);
+
+	if (ring_full(tail, net.old_head)) {
+		sem_signal(net.mutex);
+		return false;
+	}
+
+	msg *m = static_cast<msg*>(mem_alloc_aligned(sizeof(msg), 1024));
+	if (!m) {
+		sem_signal(net.mutex);
+		return false;
+	}
+
+	m->src = myaddr;
+	m->dst = dst;
+	m->len = len;
+	memcpy(m->payload, buf, len);
+	/* ricordiamo l'indirizzo virtuale del buffer
+	 * in modo da poterlo poi liberare
+	 */
+	net.m[tail] = m;
+
+	slot *s = &net.s[tail];
+	s->addr = (natl)(natq)trasforma(m);
+	s->len = len + 3 * sizeof(natl);
+	tail = ring_next(tail);
+	outputl(tail, net.iTAIL);
+
+	sem_signal(net.mutex);
+
+	return true;
+}
+
+extern "C" void estern_net(int i)
+{
+	natl new_head;
+
+	for (;;) {
+		inputl(net.iHEAD, new_head);
+		sem_wait(net.mutex);
+		for (natl h = net.old_head; h != new_head; h = ring_next(h)) {
+			mem_free_aligned(net.m[h]);
+			net.m[h] = 0;
+		}
+		net.old_head = new_head;
+		sem_signal(net.mutex);
+		wfi();
+	}
+}
+//   SOLUZIONE 2018-06-13 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2018-06-13
+	fill_io_gate	IO_TIPO_SEND	a_send
+//   SOLUZIONE 2018-06-13 )
+// ( SOLUZIONE 2018-06-13
+	.extern c_send
+a_send:
+	cavallo_di_troia %rsi
+	movl %edx, %edx
+	cavallo_di_troia2 %rsi %rdx
+	call c_send
+	iretq
+//   SOLUZIONE 2018-06-13 )
+
+

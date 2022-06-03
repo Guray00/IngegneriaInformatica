@@ -1,0 +1,35 @@
+#!/bin/bash
+
+[ -n "$QEMU" ] || {
+	QEMU=qemu-system-i386
+	CEQEMU=$HOME/CE/bin/qemu-system-i386
+	[ -x "$CEQEMU" ] && QEMU=$CEQEMU
+}
+CEHDPATH=${CEHDPATH:-$HOME/CE/share/hd.img}
+
+DEBUG=
+if [ "$1" == -g ]; then
+	DEBUG="-s -S"
+	shift
+fi
+	
+trap 'stty sane' exit
+
+output="-serial stdio"
+if [ "$AUTOCORR" == 1 ]; then
+	output=-nographic
+fi
+
+hdc=
+if [ -f "$CDEPATH" ]; then
+	hdc="-hdc \"$CDEPATH\",format=raw"
+fi
+
+"$QEMU" $DEBUG		      		\
+	-kernel build/sistema 		\
+	-drive file=.swap,cache=unsafe,format=raw    \
+	$hdc                  		\
+	$output 	      		\
+	-no-reboot 	      		|
+util/show_log.pl
+	

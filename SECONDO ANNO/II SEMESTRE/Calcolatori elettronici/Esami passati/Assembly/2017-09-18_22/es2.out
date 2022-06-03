@@ -1,0 +1,11 @@
+inizio processo 15
+a=15 b=16
+inizio processo 26
+a=26 b=27
+fine processo 15
+fine processo 26
+inizio processo 300
+call_user fallita
+inizio processo 18
+a=18 b=19
+fine processo 18

@@ -1,0 +1,49 @@
+#include <sys.h>
+#include <lib.h>
+
+process m1 body mio_main(0), 100, LIV_UTENTE;
+
+semaphore s1 value 0;
+semaphore s2 value 0;
+
+natl pim;
+
+void p1(int a)
+{
+	sem_wait(s1);
+	sem_signal(s2);
+	pim_wait(pim);
+	printf("sezione critica %d", a);
+	pim_signal(pim);
+	printf("fine processo %d", a);
+	terminate_p();
+}
+
+void p2(int a)
+{
+	sem_wait(s2);
+	printf("fine processo %d", a);
+	terminate_p();
+}
+
+void p3(int a)
+{
+	pim_wait(pim);
+	printf("inizio sezione critica %d", a);
+	sem_signal(s1);
+	printf("fine sezione critica %d", a);
+	pim_signal(pim);
+	printf("fine processo %d", a);
+	pause();
+	terminate_p();
+}
+
+process_body mio_main(int a)
+{
+	pim = pim_init();
+	(void) activate_p(p1, 1, 90, LIV_UTENTE);
+	(void) activate_p(p2, 2, 89, LIV_UTENTE);
+	(void) activate_p(p3, 3, 88, LIV_UTENTE);
+}
+
+

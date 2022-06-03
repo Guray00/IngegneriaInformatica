@@ -1,0 +1,67 @@
+/*
+ * Programma C
+ * Test di semafori (mutua esclusione, condiviso con B), delay,
+ * allocazione di memoria dinamica e IO da terminale.
+ */
+
+#include <lib.h>
+#include <sys.h>
+
+/*
+ * Semaforo condiviso con B.
+ * Deve essere specificato cosi' perche' altrimenti il parser, usando
+ *  semaphore, inserirebbe due volte la chiamata di inizializzazione
+ *  in main()
+ */
+extern int semaforo_0;
+
+/*
+ * Processi originati da C
+ */
+process proc_pc body pc(6), 12, LIV_UTENTE;
+process proc_pc1 body pc(7), 12, LIV_UTENTE;
+
+process_body pc(int a)
+{
+	printf(a, "Programma pc (Processo sul terminale %d)\n", a);
+	printf(a, "Eseque 6 cicli di acquisizione del mutex in comune");
+	printf(a, " con B (e con le altre istanze di C), allocazione e");
+	printf(a, " rilascio di memoria, delay");
+	printf(a, " e rilascio del mutex.\n");
+
+	void *p1, *p2, *p3, *p4, *p5;
+
+	p1 = mem_alloc(256);
+	printf(a, "Allocati 256 byte in p1 = %x\n", p1);
+	p2 = mem_alloc(40);
+	printf(a, "Allocati 32 byte in p2 = %x\n", p2);
+	p3 = mem_alloc(4096);
+	printf(a, "Allocati 4096 byte in p3 = %x\n", p3);
+	p4 = mem_alloc(4096);
+	printf(a, "Allocati 4096 byte in p3 = %x\n", p4);
+	mem_free(p1);
+	printf(a, "Rilasciato p1\n");
+	p1 = mem_alloc(5);
+	printf(a, "Allocati 5 byte in p1 = %x\n", p1);
+	p5 = mem_alloc(5);
+	printf(a, "Allocati 5 byte in p5 = %x\n", p5);
+	mem_free(p1);
+	mem_free(p2);
+	mem_free(p3);
+	mem_free(p4);
+	mem_free(p5);
+	printf(a, "Rilasciati p1, p2, p3, p4, p5\n");
+
+	for(int i = 0; i < 6; ++i) {
+		printf(a, "Acquisizione mutex 0...");
+		sem_wait(semaforo_0);
+		printf(a, "fatto\n");
+		p1 = mem_alloc(4096);
+		printf(a, "Allocati 4096 byte in %x\n", p1);
+		printf(a, "Attesa di 3 secondi\n");
+		delay(60);
+		sem_signal(semaforo_0);
+		printf(a, "Mutex 0 rilasciato\n");
+	}
+}
+

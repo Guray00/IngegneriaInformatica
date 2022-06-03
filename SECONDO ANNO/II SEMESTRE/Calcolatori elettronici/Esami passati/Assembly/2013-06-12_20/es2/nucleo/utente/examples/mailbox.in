@@ -1,0 +1,61 @@
+/*
+ * Mailbox
+ */
+
+#include <sys.h>
+#include <lib.h>
+
+const int NMESG = 5;
+const int MSG_SIZE = 100;
+
+semaphore mailbox_piena value 0;
+semaphore mailbox_vuota value 1;
+
+process scrittore1 body pms(1), 5, LIV_UTENTE;
+process scrittore2 body pms(2), 5, LIV_UTENTE;
+process lettore   body pml(0), 5, LIV_UTENTE;
+
+struct mess {
+	int mittente;
+	char corpo[MSG_SIZE];
+};
+
+mess mailbox;
+
+process_body pms(int a)
+{
+	char buf[MSG_SIZE];
+	char *ptr;
+	for (int i = 0; i < NMESG; i++) {
+		ptr = copy("Messaggio numero ", buf);
+		convint(i, ptr);
+		sem_wait(mailbox_vuota);
+		mailbox.mittente = a;
+		copy(buf, mailbox.corpo);
+		sem_signal(mailbox_piena);
+		delay(20);
+	}
+	ptr = copy("fine scrittore", buf);
+	convint(a, ptr);
+	writeconsole(buf);
+}
+
+process_body pml(int a)
+{
+	char buf[100 + MSG_SIZE], *ptr;
+	char corpo[MSG_SIZE];
+	int mittente;
+	for (int i = 0; i < 2 * NMESG; i++) {
+		sem_wait(mailbox_piena);
+		mittente = mailbox.mittente;
+		copy(mailbox.corpo, corpo);
+		sem_signal(mailbox_vuota);
+		ptr = copy("mittente=", buf);
+		ptr = convint(mittente, ptr);
+		ptr = copy(" corpo=", ptr);
+		copy(corpo, ptr);
+		writeconsole(buf);
+	}
+	writeconsole("fine lettore");
+	pause();
+}

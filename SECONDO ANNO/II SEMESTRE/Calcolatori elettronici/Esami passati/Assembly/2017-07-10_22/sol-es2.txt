@@ -1,0 +1,101 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2017-07-10
+extern "C" bool c_cedmaread(natl id, natl quanti, char *buf)
+{
+	bool rv = false;
+	void* bounce = 0;
+
+	if (id >= next_ce) {
+		flog(LOG_WARN, "ce non riconosciuto: %d", id);
+		abort_p();
+	}
+
+	des_ce* ce = &array_ce[id];
+
+	sem_wait(ce->mutex);
+	while (quanti > 0) {
+		void* dst = buf;
+		natl tr = residentpart(buf, quanti);
+		// flog(LOG_DEBUG, "buf %p tr %d", buf, tr);
+		if (tr == 0) {
+			tr = DIM_PAGINA - ((natq)buf % DIM_PAGINA);
+			if (quanti < tr) {
+				tr = quanti;
+			}
+			// flog(LOG_DEBUG, "uso buffer intermedio per %p, %d", buf, tr);
+			if (!bounce) {
+				bounce = mem_alloc(DIM_PAGINA);
+				if (!bounce) {
+					flog(LOG_WARN, "mem_alloc(%d) fallita", DIM_PAGINA);
+					sem_signal(ce->mutex);
+					return false;
+				}
+			}
+			dst = bounce;
+		}
+
+		ce->error = false;
+		outputl((natq)dst, ce->iVPTRLO);
+		outputl((natq)dst >> 32, ce->iVPTRHI);
+		outputl(tr, ce->iCNT);
+		outputl((natq)readCR3(), ce->iCR3);
+		outputl(0, ce->iSTS);
+		outputl(1, ce->iCMD);
+		sem_wait(ce->sync);
+		rv = !ce->error;
+		//flog(LOG_DEBUG, "rv %s", (rv ? "true" : "false"));
+		if (dst == bounce && rv) {
+			memcpy(buf, dst, tr);
+		}
+		if (!rv)
+			break;
+		buf += tr;
+		quanti -= tr;
+	}
+	sem_signal(ce->mutex);
+	if (bounce)
+		mem_free(bounce);
+	return rv;
+}
+
+extern "C" void estern_ce(int id)
+{
+	des_ce *ce = &array_ce[id];
+	natl b;
+
+	for (;;) {
+		inputl(ce->iSTS, b);
+		ce->error = (b & 2);
+		sem_signal(ce->sync);
+		wfi();
+	}
+}
+//   SOLUZIONE 2017-07-10 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2017-07-10
+	fill_io_gate	IO_TIPO_CEDMAREAD	a_cedmaread
+//   SOLUZIONE 2017-07-10 )
+// ( SOLUZIONE 2017-07-10
+.EXTERN		c_cedmaread
+a_cedmaread:
+		.cfi_startproc
+		.cfi_def_cfa_offset 40
+		.cfi_offset rip, -40
+		.cfi_offset rsp, -16
+		cavallo_di_troia %rdx
+		movl %esi, %esi	# azzera la parte alta di %rsi
+		cavallo_di_troia2 %rdx %rsi
+		call c_cedmaread
+		iretq
+		.cfi_endproc
+//   SOLUZIONE 2017-07-10 )
+
+

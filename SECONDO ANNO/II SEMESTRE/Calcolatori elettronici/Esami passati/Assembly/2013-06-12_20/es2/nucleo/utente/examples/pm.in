@@ -1,0 +1,77 @@
+/*
+ * Programma M
+ * Mailbox
+ */
+
+#include <sys.h>
+#include <lib.h>
+
+/*
+ * Semaforo di mutua esclusione per la sincronizzazione tra le varie
+ *  istanze di pa
+ */
+semaphore mutex value 1;
+semaphore syncr value 0;
+
+/*
+ * Processi lettore e scrittore
+ */
+process scrittore body pms(10), 10, LIV_UTENTE;
+process lettore   body pml(10), 5, LIV_UTENTE;
+
+struct messaggio {
+	char *msg;
+	messaggio* next;
+};
+
+messaggio* mailbox = 0;
+volatile bool waiting = false;
+
+process_body pms(int a)
+{
+	for (int i = 0; i < 10; i++) {
+		printf(a, "scrittore: acquisisco il mutex\n");
+		sem_wait(mutex);
+		printf(a, "scrittore: mutex acquisito\n");
+		char* msg = (char*)mem_alloc(10);
+		printf(a, "scrittore: buffer a %x\n", msg);
+		snprintf(msg, 10, "msg %d", i);
+		printf(a, "scrittore: invio messaggio: '%s'\n", msg);
+		messaggio *nuovo = (messaggio*)mem_alloc(sizeof(messaggio));
+		nuovo->msg = msg;
+		nuovo->next = mailbox;
+		mailbox = nuovo;
+		if (waiting) {
+			printf(a, "scrittore: segnalo nuovo messaggio\n");
+			sem_signal(syncr);
+		}
+		printf(a, "scrittore: rilascio mutex\n");
+		sem_signal(mutex);
+	}
+	printf(a, "scrittore: fine\n");
+}
+
+process_body pml(int a)
+{
+	for (int i = 0; i < 10; i++) {
+		printf(a, "lettore: acquisisco il mutex\n");
+		sem_wait(mutex);
+		printf(a, "lettore: mutex acquisito\n");
+		while (mailbox == 0) {
+			printf(a, "lettore: aspetto messaggi\n");	
+			waiting = true;
+			sem_signal(mutex);
+			sem_wait(syncr);
+			sem_wait(mutex);
+		}
+		printf(a, "lettore: ricevuto '%s'\n", mailbox->msg);
+		messaggio* work = mailbox;
+		mailbox = mailbox->next;
+		printf(a, "lettore: buffer a %x\n", work->msg);
+		mem_free(work->msg);
+		mem_free(work);
+		printf(a, "lettore: rilascio mutex\n");
+		sem_signal(mutex);
+	}
+	printf(a, "lettore: fine\n");
+}

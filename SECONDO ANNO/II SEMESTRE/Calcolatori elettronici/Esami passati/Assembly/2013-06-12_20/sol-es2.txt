@@ -1,0 +1,76 @@
+******************************************
+* sistema/sistema.S
+******************************************
+
+// ( SOLUZIONE 2013-06-12
+	.global a_pim_wait
+	.extern c_pim_wait
+a_pim_wait:
+	call salva_stato
+	copia_param 1 0
+	call c_pim_wait
+	call carica_stato
+	iret
+
+	.global a_pim_signal
+	.extern c_pim_signal
+a_pim_signal:
+	call salva_stato
+	copia_param 1 0
+	call c_pim_signal
+	call carica_stato
+	iret
+//  SOLUZIONE 2013-06-12 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2013-06-12
+extern "C" void c_pim_wait(natl pim)
+{
+	if (!pim_valido(pim)) {
+		flog(LOG_WARN, "pim non valido: %d", pim);
+		abort_p();
+	}
+
+	des_pim* d = &array_despim[pim];
+
+	if (d->owner) {
+		if (d->owner->precedenza < esecuzione->precedenza)
+			d->owner->precedenza = esecuzione->precedenza;
+		inserimento_lista(d->waiting, esecuzione);
+		schedulatore();
+	} else {
+		d->owner = esecuzione;
+		d->orig_prio = esecuzione->precedenza;
+	}
+}
+
+extern "C" void c_pim_signal(natl pim)
+{
+	if (!pim_valido(pim)) {
+		flog(LOG_WARN, "pim non valido: %d", pim);
+		abort_p();
+	}
+
+	des_pim* d = &array_despim[pim];
+
+	esecuzione->precedenza = d->orig_prio;
+	inserimento_lista(pronti, esecuzione);
+	if (d->waiting) {
+		proc_elem *work;
+		rimozione_lista(d->waiting, work);
+		d->owner = work;
+		d->orig_prio = work->precedenza;
+		inserimento_lista(pronti, work);
+	} else {
+		d->owner = 0;
+		d->orig_prio = 0;
+	}
+	schedulatore();
+}
+//   SOLUZIONE 2013-06-12 )
+
+

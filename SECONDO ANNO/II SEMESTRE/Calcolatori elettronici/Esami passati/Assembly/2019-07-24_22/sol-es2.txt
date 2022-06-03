@@ -1,0 +1,86 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2019-07-24
+	carica_gate	TIPO_BPD	a_bpdetach	LIV_UTENTE
+//   SOLUZIONE 2019-07-24 )
+// ( SOLUZIONE 2019-07-24
+a_bpdetach:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_bpdetach
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2019-07-24 )
+// ( SOLUZIONE 2019-07-24
+	movq $3, %rdi
+	movq $0, %rsi
+	movq %rsp, %rdx
+	call c_breakpoint_exception
+//   SOLUZIONE 2019-07-24 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2019-07-24
+	if (!duplica(id, rip))
+		return;
+	
+	natb *bytes = reinterpret_cast<natb*>(trasforma(id, rip));
+	self->bp_addr = rip;
+	self->bp_orig = *bytes;
+	*bytes = 0xCC;
+//   SOLUZIONE 2019-07-24 )
+// ( SOLUZIONE 2019-07-24
+void deduplica(natl id, vaddr v)
+{
+	for (int i = 0; i <= 3; i++) {
+		tab_entry e = get_des(id, i + 1, v);
+		faddr dst = extr_IND_FISICO(e);
+		des_frame *pf_dst = descrittore_frame(dst);
+		rilascia_frame(pf_dst);	
+	}
+	tab_entry& e_slave = get_des(id, 4, v);
+	tab_entry e_master = get_des(esecuzione->id, 4, v);
+	e_slave = e_master;
+}
+
+extern "C" void c_bpdetach()
+{
+	des_proc *self = des_p(esecuzione->id),
+		 *dest;
+
+	if (!self->bp_slave) {
+		flog(LOG_WARN, "bpremove() errata");
+		c_abort_p();
+		return;
+	}
+
+	dest = self->bp_slave;
+
+	deduplica(self->bp_slave_id, self->bp_addr);
+
+	if (self->bp_waiting) {
+		inspronti();
+		inserimento_lista(pronti, self->bp_waiting);
+		self->bp_waiting = 0;
+		schedulatore();
+	}
+
+	self->bp_slave = 0;
+	self->bp_addr = 0;
+	self->bp_orig = 0;
+	self->bp_slave_id = 0;
+	dest->bp_master = 0;
+}
+
+//   SOLUZIONE 2019-07-24 )
+
+

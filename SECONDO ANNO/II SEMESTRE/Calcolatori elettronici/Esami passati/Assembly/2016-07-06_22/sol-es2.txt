@@ -1,0 +1,74 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2016-07-06
+struct des_ce {
+	ioaddr iCTL, iSTS, iRBR;
+	natl sync;
+	natl mutex;
+	char *buf;
+	natl quanti;
+	char stop;
+};
+//   SOLUZIONE 2016-07-06 )
+// ( SOLUZIONE 2016-07-06
+extern "C" void c_ceread(natl id, char *buf, natl& quanti, char stop)
+{
+	if (id >= next_ce) {
+		flog(LOG_WARN, "dispositivo %d non esistente", id);
+		abort_p();
+	}
+
+	des_ce *c = &array_ce[id];
+	sem_wait(c->mutex);
+	c->buf = buf;
+	c->quanti = quanti;
+	c->stop = stop;
+	outputb(1, c->iCTL);
+	sem_wait(c->sync);
+	quanti -= c->quanti;
+	sem_signal(c->mutex);
+}
+
+extern "C" void estern_ce(int id)
+{
+	des_ce *c = &array_ce[id];
+	natb b;
+
+	for (;;) {
+		outputb(0, c->iCTL);
+		inputb(c->iRBR, b);
+		*c->buf++ = b;
+		c->quanti--;
+		if (c->quanti == 0 || b == c->stop) {
+			sem_signal(c->sync);
+		} else {
+			outputb(1, c->iCTL);
+		}
+		wfi();
+	}
+}
+//   SOLUZIONE 2016-07-06 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2016-07-06
+	fill_io_gate	IO_TIPO_CEREAD	a_ceread
+//   SOLUZIONE 2016-07-06 )
+// ( SOLUZIONE 2016-07-06
+.EXTERN		c_cedmaread
+a_ceread:
+		cavallo_di_troia %rsi
+		cavallo_di_troia %rdx
+		cavallo_di_troia2 %rdx $4
+		movl (%rdx), %r9d
+		cavallo_di_troia2 %rsi %r9
+		call c_ceread
+		iretq
+//   SOLUZIONE 2016-07-06 )
+
+

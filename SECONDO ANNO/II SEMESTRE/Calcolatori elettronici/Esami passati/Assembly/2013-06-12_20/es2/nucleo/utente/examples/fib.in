@@ -1,0 +1,27 @@
+/*
+ * Fibonacci
+ */
+
+#include <sys.h>
+#include <lib.h>
+
+process fib body fib_body(0), 20, LIV_UTENTE;
+
+natl fibonacci(natl n)
+{
+	char buf[4096];
+	natl f;
+	if (n < 2)
+		f = 1;
+	else
+		f = fibonacci(n - 1) + fibonacci(n - 2);
+	convint(f, buf);
+	writeconsole(buf);
+	return f;
+}
+
+process_body fib_body(int a)
+{
+	fibonacci(2000);
+}
+

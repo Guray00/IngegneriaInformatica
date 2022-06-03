@@ -1,0 +1,89 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2018-01-17
+	carica_gate	TIPO_KILL	a_kill		LIV_UTENTE
+//   SOLUZIONE 2018-01-17 )
+// ( SOLUZIONE 2018-01-17
+	.global a_kill
+	.extern c_kill
+a_kill:
+	call salva_stato
+	call c_kill
+	call carica_stato
+	iretq
+//   SOLUZIONE 2018-01-17 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2018-01-17
+		des_proc *dp = des_p(id);
+		if (dp && dp->parent == pdes_proc)
+			dp->parent = pdes_proc->parent;
+//   SOLUZIONE 2018-01-17 )
+// ( SOLUZIONE 2018-01-17
+bool descendant(des_proc *parent, des_proc *target)
+{
+	if (parent == target)
+		return true;
+	for (des_proc *scan = target->parent; scan; scan = scan->parent)
+		if (scan == parent)
+			return true;
+	return false;
+}
+
+extern "C" void c_kill(natl id)
+{
+	des_proc *self = des_p(esecuzione->id);
+	des_proc *dest = des_p(id);
+
+	if (!dest) {
+		self->contesto[I_RAX] = (natq)false;
+		return;
+	}
+
+	// controllo sulla parentela
+	if (!descendant(self, dest)) {
+		flog(LOG_WARN, "%d->kill(%d) non permessa", esecuzione->id, id);
+		c_abort_p();
+		return;
+	}
+
+	self->contesto[I_RAX] = (natq)true;
+
+	if (self == dest) {
+		flog(LOG_DEBUG, "self kill");
+		c_terminate_p();
+		return;
+	}
+	proc_elem *work = estrazione_lista(pronti, id);
+	if (!work) {
+		for (natl sem = 0; sem < sem_allocati; sem++) {
+			des_sem *s = &array_dess[sem];
+
+			work = estrazione_lista(s->pointer, id);
+			if (work) {
+				s->counter++;
+				break;
+			}
+		}
+	}
+	if (!work) {
+		work = rimozione_lista_attesa(id);
+	}
+	if (!work) {
+		flog(LOG_ERR, "%d non trovato", id);
+		panic("errore interno");
+	}
+	distruggi_processo(work);
+	processi--;			//
+	dealloca(work);
+	flog(LOG_INFO, "Processo %d ucciso da %d", id, esecuzione->id);
+}
+//   SOLUZIONE 2018-01-17 )
+
+

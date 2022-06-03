@@ -1,0 +1,8 @@
+p0 start
+p3 start
+p5 start
+p2 start
+p1 start
+kill 0 fallita
+p3 end
+p0 end

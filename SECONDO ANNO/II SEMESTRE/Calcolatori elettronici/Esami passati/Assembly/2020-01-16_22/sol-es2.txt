@@ -1,0 +1,154 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2020-01-16
+a_proc_attach:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_proc_attach
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+a_proc_wait:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_proc_wait
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2020-01-16 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2020-01-16
+	des_proc *proc_master;
+	des_proc *proc_slave;
+	natl proc_exception;
+	struct proc_elem *proc_waiting;
+//   SOLUZIONE 2020-01-16 )
+// ( SOLUZIONE 2020-01-16
+	des_proc *self = des_p(esecuzione->id),
+		 *master = self->proc_master;
+
+	if (master) {
+		// il processo e' un slave
+
+		// scriviamo il tipo nel descrittore di processo del master.
+		master->proc_exception = tipo;
+
+		if (self->proc_waiting) {
+			// il master e' bloccato nella proc_wait().
+			// Dobbiamo risvegliarlo e fare in modo che la
+			// proc_wait() gli restituisca il tipo.
+			master->contesto[I_RAX] = master->proc_exception;
+			inserimento_lista(pronti, self->proc_waiting);
+			self->proc_waiting = 0;
+		}
+	}
+	// proseguiamo con la normale gestione dell'eccezione.
+//   SOLUZIONE 2020-01-16 )
+// ( SOLUZIONE 2020-01-16
+	pdes_proc->proc_exception = 0xFFFFFFFF;
+//   SOLUZIONE 2020-01-16 )
+// ( SOLUZIONE 2020-01-16
+	des_proc *master = pdes_proc->proc_master,
+		 *slave  = pdes_proc->proc_slave;
+
+	if (master) {
+		if (master->proc_exception == 0xFFFFFFFF) {
+			master->proc_exception = 32;
+		}
+		// il processo p e' uno slave (ha un master)
+		if (pdes_proc->proc_waiting) {
+			// il master e' in attesa dentro proc_wait(), ma
+			// lo slave sta terminando. Dobbiamo risvegliare
+			// il master e fare in modo che la proc_wait()
+			// restituisca il tipo di terminazione.
+			master->contesto[I_RAX] = master->proc_exception;
+			inserimento_lista(pronti, pdes_proc->proc_waiting);
+			// (schedulatore() e' gia' chiamata dal chiamante
+			// di distruggi_processo().)
+			pdes_proc->proc_waiting = 0;
+		}
+		// lo slave sta terminando e il master non deve piu'
+		// puntarlo.
+		master->proc_slave = 0;
+	} else if (slave) {
+		// il processo p e' un master (ha uno slave).
+		// Dobbiamo scollegare lo slave da p.
+		slave->proc_master = 0;
+	}
+//   SOLUZIONE 2020-01-16 )
+// ( SOLUZIONE 2020-01-16
+
+extern "C" void c_proc_wait()
+{
+	des_proc *self = des_p(esecuzione->id),
+		 *slave = self->proc_slave;
+
+	// e' un errore se il processo non e' master;
+	if (!slave && self->proc_exception == 0xFFFFFFFF) {
+		flog(LOG_WARN, "proc_wait() non chiamata da un master");
+		c_abort_p();
+		return;
+	}
+
+	// se lo slave non ha ancora aggiornato il campo
+	// proc_exception blocchiamo il master
+	if (self->proc_exception == 0xFFFFFFFF) {
+		slave->proc_waiting = esecuzione;
+		schedulatore();
+	} else {
+		// altrimenti restituiamo il tipo dell'eccezione
+		self->contesto[I_RAX] = self->proc_exception;
+	}
+}
+
+extern "C" void c_proc_attach(natl id)
+{
+	des_proc *self = des_p(esecuzione->id),
+		 *dest = des_p(id);
+
+	// e' un errore se il processo e' gia' master
+	if (self->proc_slave) {
+		flog(LOG_WARN, "proc_attach() duplicata");
+		c_abort_p();
+		return;
+	}
+
+	// e' un errore se un processo tenta di diventare
+	// master di se stesso
+	if (dest == self) {
+		flog(LOG_WARN, "proc_attach() ricorsiva");
+		c_abort_p();
+		return;
+	}
+
+
+	// la primitiva fallisce se il processo esecuzione e' uno slave,
+	// oppure se il processo id non esiste o e' gia' slave o master
+	if (self->proc_master || !dest || dest->proc_master || dest->proc_slave) {
+		self->contesto[I_RAX] = false;
+		return;
+	}
+
+	// colleghiamo master e slave
+	self->proc_slave = dest;
+	dest->proc_master = self;
+
+	self->contesto[I_RAX] = true;
+}
+//   SOLUZIONE 2020-01-16 )
+
+

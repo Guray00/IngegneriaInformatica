@@ -1,0 +1,45 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2017-09-18
+extern "C" void c_call_user(addr entry, natq regs[N_REG_GEN], natq *stack, natl n)
+{
+	struct des_proc *self = des_p(esecuzione->id);
+
+	// pila utente
+	if (!crea_pila_utente(esecuzione->id)) {
+		flog(LOG_WARN, "creazione pila utente fallita");
+		self->contesto[I_RAX] = false;
+		return;
+	}
+	if (!carica_pila_utente(esecuzione->id, stack, n)) {
+		flog(LOG_ERR, "memoria esaurita");
+		distruggi_pila_utente(esecuzione->id);
+		self->contesto[I_RAX] = false;
+		return;
+	}
+		
+	// pila sistema
+	natq *pl = (natq *)self->contesto[I_RSP];
+	for (int i = 0; i < 5; i++) {
+		self->pila_salvata[i] = pl[i];
+	}
+	pl[0] = (natq)entry;
+	pl[1] = SEL_CODICE_UTENTE;
+	pl[2] = BIT_IF;
+	pl[3] = (natq)fin_utn_p - n * sizeof(natq);
+	pl[4] = SEL_DATI_UTENTE;
+	self->punt_nucleo = reinterpret_cast<vaddr>(&pl[5]);
+
+	// contesto
+	regs[I_RSP] = self->contesto[I_RSP];
+	for (int i = 0; i < N_REG_GEN; i++) {
+		self->contesto_salvato[i] = self->contesto[i];
+		self->contesto[i] = regs[i];
+	}
+	self->regs = regs;
+}
+//   SOLUZIONE 2017-09-18 )
+
+

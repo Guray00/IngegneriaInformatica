@@ -1,0 +1,54 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2018-07-04
+extern "C" bool c_receive(natl& src, char *buf, natq& len)
+{
+	bool rv = true;
+
+	sem_wait(net.mutex);
+
+	sem_wait(net.messages);
+
+	slot *s = &net.s[net.toread];
+	struct msg *m = (struct msg *)(natq)s->addr;
+	if (m->len > len) {
+		rv = false;
+		goto out;
+	}
+	src = m->src;
+	len = m->len;
+	memcpy(buf, m->payload, len);
+	net.toread = ring_next(net.toread);
+
+	/* diamo alla scheda il permesso di usare un altro buffer */
+	natl tail;
+	inputl(net.iTAIL, tail);
+	tail = ring_next(tail);
+	outputl(tail, net.iTAIL);
+
+out:
+	sem_signal(net.mutex);
+
+	return rv;
+}
+//   SOLUZIONE 2018-07-04 )
+// ( SOLUZIONE 2018-07-04
+	/* lo riempiamo di buffer (riuseremo sempre gli stessi) */
+	for (natl i = 0; i < DIM_RING; i++) {
+		natl size = MAX_PAYLOAD + 3 * sizeof(natl);
+		addr buf = mem_alloc_aligned(size, 4096);
+		if (!buf) {
+			flog(LOG_ERR, "memoria insufficiente");
+			return false;
+		}
+		net.s[i].addr = (natl)(natq)trasforma(buf);
+		net.s[i].len = size;
+		flog(LOG_DEBUG, "slot %d: addr %p size %d", i, net.s[i].addr, net.s[i].len);
+	}
+	/* inizializziamo TAIL in modo che il ring risulti pieno */
+	outputl(DIM_RING - 1, net.iTAIL);
+//   SOLUZIONE 2018-07-04 )
+
+

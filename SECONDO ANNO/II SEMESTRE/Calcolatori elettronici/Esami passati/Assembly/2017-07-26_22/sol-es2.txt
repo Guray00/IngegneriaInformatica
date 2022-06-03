@@ -1,0 +1,100 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2017-07-26
+extern "C" bool c_cedmaread(natl id, natl quanti, char *buf)
+{
+	bool rv = false;
+
+	if (id >= next_ce) {
+		flog(LOG_WARN, "ce non riconosciuto: %d", id);
+		abort_p();
+	}
+
+	des_ce* ce = &array_ce[id];
+
+	natl ntr = nonrespart(buf, quanti); // ntr: next transfer
+	sem_wait(ce->mutex);
+	while (quanti > 0) {
+		void* bounce = 0;
+		void* dst = buf;
+		natl tr = ntr;
+		if (tr == 0) {
+			tr = DIM_PAGINA - ((natq)buf % DIM_PAGINA);
+			while (tr < quanti) {
+				ntr = nonrespart(buf + tr, quanti - tr);
+				if (ntr > 0) {
+					// ricordiamo ntr per il prossimo giro
+					break;
+				}
+				tr += DIM_PAGINA;
+			}
+			if (tr > quanti)
+				tr = quanti;
+		} else {
+			bounce = mem_alloc(tr);
+			if (bounce == 0) {
+				flog(LOG_WARN, "mem_alloc(%d) fallita", tr);
+				goto out;
+			}
+			dst = bounce;
+			ntr = 0; // la prossima parte e' sicuramente residente
+		}
+
+		ce->error = false;
+		outputl((natq)dst, ce->iVPTRLO);
+		outputl((natq)dst >> 32, ce->iVPTRHI);
+		outputl(tr, ce->iCNT);
+		outputl((natq)readCR3(), ce->iCR3);
+		outputl(0, ce->iSTS);
+		outputl(1, ce->iCMD);
+		sem_wait(ce->sync);
+		rv = !ce->error;
+		if (bounce && rv) {
+			memcpy(buf, dst, tr);
+			mem_free(bounce);
+		}
+		if (!rv)
+			break;
+		buf += tr;
+		quanti -= tr;
+	}
+out:
+	sem_signal(ce->mutex);
+	return rv;
+}
+
+extern "C" void estern_ce(int id)
+{
+	des_ce *ce = &array_ce[id];
+	natl b;
+
+	for (;;) {
+		inputl(ce->iSTS, b);
+		ce->error = (b & 2);
+		sem_signal(ce->sync);
+		wfi();
+	}
+}
+//   SOLUZIONE 2017-07-26 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2017-07-26
+	fill_io_gate	IO_TIPO_CEDMAREAD	a_cedmaread
+//   SOLUZIONE 2017-07-26 )
+// ( SOLUZIONE 2017-07-26
+.EXTERN		c_cedmaread
+a_cedmaread:
+		cavallo_di_troia %rdx
+		movl %esi, %esi # azzera la parte alta di %rsi
+		cavallo_di_troia2 %rdx %rsi
+		call c_cedmaread
+		iretq
+//   SOLUZIONE 2017-07-26 )
+
+

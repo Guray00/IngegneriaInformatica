@@ -1,0 +1,94 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2019-02-06
+
+extern "C" natq c_waitnet()
+{
+	slot *s;
+	natq len;
+
+	// mutua escusione tra i processi che vogliono usare net
+	sem_wait(net.mutex);
+
+	if (!net.last_len) {
+		do {
+			// aspettiamo che ci sia uno slot pronto
+			sem_wait(net.slots_ready);
+			if (!net.last_len)
+				net.last_idx = net.toread;
+			s = &net.s[net.toread];
+			net.last_len += s->len;
+			net.toread = ring_next(net.toread);
+		} while (!s->eop);
+	}
+	len = net.last_len;
+
+	sem_signal(net.mutex);
+
+	return len;
+}
+
+
+extern "C" void c_receive(char *buf, natq len)
+{
+	// mutua escusione tra i processi che vogliono usare net
+	sem_wait(net.mutex);
+
+	slot *s;
+	natl idx = net.last_idx;
+	natl n = 0; // quanti slot stiamo liberando
+	do {
+		s = &net.s[idx];
+
+		natq howmany = s->len;
+		if (howmany > len) {
+			// spazio esaurito: tronchiamo il messaggio
+			howmany = len;
+		}
+		memcpy(buf, (char *)(natq)s->addr, howmany);
+		buf += howmany;
+		len -= howmany;
+
+		// ripristiniamo lo slot corrente
+		s->len = RXBUFSZ;
+
+		n++;
+		idx = ring_next(idx);
+	} while (!s->eop);
+	// diamo alla scheda il permesso di usare n slot in piu'
+	natl tail;
+	inputl(net.iTAIL, tail);
+	tail += n;
+	if (tail >= DIM_RING)
+		tail -= DIM_RING;
+	outputl(tail, net.iTAIL);
+
+	/* ora si può ricevere un nuovo mesaggio */
+	net.last_len = 0;
+
+	sem_signal(net.mutex);
+}
+//   SOLUZIONE 2019-02-06 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2019-02-06
+	.extern c_waitnet
+a_waitnet:
+	call c_waitnet
+	iretq
+
+	.extern c_receive
+a_receive:
+	cavallo_di_troia %rdi
+	cavallo_di_troia2 %rdi %rsi
+	call c_receive
+	iretq
+//   SOLUZIONE 2019-02-06 )
+
+

@@ -1,0 +1,23 @@
+debugger 1: chiamo bpadd
+debugger 0: chiamo bpadd
+debugger 0: occupato
+proc1: prima della funzione
+debugger 1: breapoint intercettato, processo: 10
+proc2: prima della funzione
+debugger 1: breapoint intercettato, processo: 11
+proc2: eseguo funzione
+proc2: dopo la funzione
+proc1: eseguo funzione
+proc1: dopo la funzione
+debugger 2: chiamo bpadd
+proc3: prima della funzione
+debugger 2: breapoint intercettato, processo: 12
+proc8: prima della funzione
+debugger 2: breapoint intercettato, processo: 14
+proc5: prima della funzione
+proc8: eseguo funzione
+proc8: dopo la funzione
+proc3: eseguo funzione
+proc3: dopo la funzione
+proc5: eseguo funzione
+proc5: dopo la funzione

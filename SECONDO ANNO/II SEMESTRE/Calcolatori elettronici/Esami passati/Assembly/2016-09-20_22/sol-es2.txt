@@ -1,0 +1,103 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2016-09-20
+	carica_gate	TIPO_LS		a_listen	LIV_UTENTE
+	carica_gate	TIPO_B		a_broadcast	LIV_UTENTE
+//   SOLUZIONE 2016-09-20 )
+// ( SOLUZIONE 2016-09-20
+	.global a_listen
+a_listen:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_listen
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+	.global a_broadcast
+a_broadcast:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_broadcast
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2016-09-20 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2016-09-20
+void broadcast_all()
+{
+	struct broadcast *b = &global_broadcast;
+	struct proc_elem *work;
+
+	while (b->listeners) {
+		rimozione_lista(b->listeners, work);
+		struct des_proc *w = des_p(work->id);
+		w->contesto[I_RAX] = b->msg;
+		inserimento_lista(pronti, work);
+	}
+	b->nlisten = 0;
+}
+
+extern "C" void c_listen()
+{
+	struct des_proc *p = des_p(esecuzione->id);
+	struct broadcast *b = &global_broadcast;
+
+	if (!p->listen_reg) {
+		flog(LOG_WARN, "listen non registrata");
+		c_abort_p();
+		return;
+	}
+
+	b->nlisten++;
+	if (!b->broadcaster) {
+		inserimento_lista(b->listeners, esecuzione);
+	} else {
+		p->contesto[I_RAX] = b->msg;
+		inserimento_lista(pronti, esecuzione);
+		if (b->nlisten == b->registered) {
+			broadcast_all();
+			struct proc_elem *work;
+			rimozione_lista(b->broadcaster, work);
+			inserimento_lista(pronti, work);
+		}
+	}
+	schedulatore();
+}
+
+extern "C" void c_broadcast(natl msg)
+{
+	struct des_proc *p = des_p(esecuzione->id);
+	struct broadcast *b = &global_broadcast;
+
+	if (p->listen_reg) {
+		flog(LOG_WARN, "broadcast da processo listener");
+		c_abort_p();
+		return;
+	}
+	b->msg = msg;
+	if (b->nlisten == b->registered) {
+		inserimento_lista(pronti, esecuzione);
+		broadcast_all();
+	} else {
+		inserimento_lista(b->broadcaster, esecuzione);
+	}
+	schedulatore();
+}
+//   SOLUZIONE 2016-09-20 )
+
+

@@ -1,0 +1,60 @@
+/*
+ * Programma A
+ * Test di semafori (mutua esclusione), delay e IO da terminale
+ */
+
+#include <sys.h>
+#include <lib.h>
+
+/*
+ * Semaforo di mutua esclusione per la sincronizzazione tra le varie
+ *  istanze di pa
+ */
+semaphore semaforo_1 value 1;
+
+/*
+ * Processi che eseguono pa
+ */
+process proc_pa_1 body pa(1), 10, LIV_UTENTE;
+process proc_pa_2 body pa(2), 10, LIV_UTENTE;
+process proc_pa_3 body pa(3), 10, LIV_UTENTE;
+process proc_pa_4 body pa(4), 10, LIV_UTENTE; 
+
+#define BUFSIZE 20
+char a_buf[BUFSIZE];
+
+process_body pa(int a)
+{
+	int a_q;
+
+	printf(a, "Programma pa (Processo sul terminale %d)\n", a);
+
+	printf(a, "Esegue un ciclo chiamando delay(), acquisendo un mutex e");
+	printf(a, " leggendo una\nstringa da tastiera. Quando la riceve la");
+	printf(a, " stampa e rilascia il mutex.\nIl ciclo termina quando");
+ 	printf(a, " la stringa inizia per 'q'.\n\nAttenzione: quando tutti");
+ 	printf(a, " i processi sono terminati si puo' riavviare\npremendo");
+	printf(a, " CTRL-ALT-CANC.\n");
+	a_buf[0] = 0;
+	while(a_buf[0] != 'q') {
+		printf(a, "Attendo 5 secondi...\n");
+		/*
+		 * Un clock tick ogni 50ms, 100 tick = 5s
+		 */
+		delay(100);
+
+		printf(a, "Acquisisco il mutex 1...");
+		sem_wait(semaforo_1);
+		printf(a, "fatto\n");
+
+		printf(a, "Inserire una stringa (q INVIO per uscire): ");
+
+		a_q = 20;
+		readvterm_ln(a, a_buf, a_q);
+
+		printf(a, "Stringa letta: %s\n", a_buf);
+
+		printf(a, "Rilascio il mutex 1\n");
+		sem_signal(semaforo_1);
+	}
+}
