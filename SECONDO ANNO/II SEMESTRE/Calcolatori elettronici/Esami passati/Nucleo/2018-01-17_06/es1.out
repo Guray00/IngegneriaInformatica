@@ -1,3 +1,7 @@
+La prova con anche la soluzione proposta dal docente, non mostra 
+in ouput quello atteso ma bensì quello riportato di seguito.
+
+[OUTPUT ATTESO]
 p0 start
 p3 start
 p5 start
@@ -7,3 +11,14 @@ kill 0 fallita
 p3 end
 p0 end
 memoria non liberata: -8B
+
+[OUTPUT RISCONTRATO]
+p0 start
+p3 start
+p5 start
+p2 start
+p1 start
+kill 100 fallita
+p3 end
+p0 end
+memoria non liberata: -16B
