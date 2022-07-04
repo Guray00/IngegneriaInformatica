@@ -1,0 +1,4 @@
+Premessa fondamentale, per evitare una domanda ripetitiva: NON SIETE OBBLIGATI AD USARE LATEX!
+Il progetto nasce dal template per il frontespizio realizzato da Marco Antonio Corallo, che ringrazio. Seguono alcuni commenti per evidenziare la presenza di alcuni pacchetti che mi sono stati utili per la stesura della tesi. Chiaramente, dipende tutto dal tipo di lavoro che uno vuole eseguire, che determina anche le diverse esigenze. Durante la stesura ho passato molto tempo su siti e forum a cercare di risolvere alcuni probelmi di formattazione, ma in generale Latex è stato piuttosto versatile. 
+
+Si ringrazia Giacomo Sansone per il contributo. 
