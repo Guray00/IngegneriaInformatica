@@ -13,8 +13,12 @@
 - Schedulabilità dei sistemi hard real time. Fattore di utilizzazione, definizione e cosa comporta. Minimo comune multiplo dei periodi, come si ottiene e cosa significa nel sistema. Rate monotonic: condizione sufficiente per la schedulabilità, definizione e quanto vale. Condizione necessarie per EDF, è migliore EDF o RM? Può succedere che un algoritmo sia schedulabile con EDF e non RM? Cosa vuol dire che un algoritmo è ottimo? 
 - Produttore/consumatore con l'utilizzo dei semafori.
 - Soluzione non corretta al problema dei 5 filosofi. Soluzione corretta col monitor.  
-
-
+- Quali sono le tecniche per allocare un file in un disco virtuale, visto come un array di blocchi. Vediamo nel dettaglio le tecniche, partendo dalla prima
+- Illustrare il funzionamento dell’algoritmo di second-chance. Spiegare qual è il senso del bit di uso
+-  Definire il problema produttore-consumatore e spiegare come si risolve
+- Illustrare le 4 condizioni per lo stallo
+- Come si fa l’allocazione di memoria, quali sono le tecniche? Paginazione su domanda, spiegare come si gestisce il page-fault
+- Spiegare quali sono i due algoritmi per schedulare processi real-time
 
 # Domande Minici
 - System call per la gestione del ciclo di vita dei processi. (fork exit wait exec).
@@ -32,4 +36,15 @@ Come si scrive all'interno della pipe? Cosa ritornano le funzioni per usare le p
 - Permessi in Unix. chmod in base ottale (ricordarsi che il bit di SUID e SGID è in prima posizione nella rappresentazione in base ottale). Differenza dei permessi tra file e cartelle. Come vengono definiti i permessi speciali? Comandi per cambiare i permessi .
 - Thread, cos'è un thread in Unix/Linux. Funzioni sui thread. Necessario includere una libreria per usare i thread? Esiste il concetto nativo di thread in linux? Oppure è il programmatore a doverlo fare? Perché usiamo la libreria pthread invece del concetto nativo di thread di linux? Come vengono identificati i thread usando la libreria?
 Come si crea un thread usando pthread? Come si termina il thread? 
+
+# Domande Scritto Minici [dalla sessione estiva 21/22]
 - System call per la gestione dei segnali: signal e kill. 
+- Primitiva Fork() : descrizione ed esempio di utilizzo
+- Descrizione di Find e Locate e breve illustrazione delle loro differenze
+- Significato dei bit rwx per file e cartelle. Comando per modificare i permessi ed esempio esaustivo sia in rappresentazione simbolica che ottale
+- Es1.c del laboratorio 9 [A.A. 21/22], fare funzioni prelievo e deposito 
+- Spiegare la Pipe
+- Bit SUID e SGID, fare un esempio di utilizzo
+- Funzioni per il Job Control 
+- Es2.c del laboratorio 9 [A.A. 21/22]
+
