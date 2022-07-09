@@ -1,0 +1,211 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+    <head>
+        <title>Articoli</title>
+        <meta charset="utf-8">
+        <style>
+
+        #formdiv {
+            margin: 15px;
+            background-color: lightgray;
+            padding: 1em;
+            width: fit-content;
+            height: fit-content;
+        }
+
+        body {
+            display: flex;
+        }
+
+        article {
+            flex: 1 1 auto;
+        }
+
+        input, textarea {
+            display: block;
+            margin-bottom: 1em;
+        }
+
+        article > article{
+            background-color: beige;
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid black;
+        }
+
+        .trovato{
+            background-color: rgb(244, 118, 45);
+        }
+
+        </style>
+
+        <script>
+            /*
+             * Classe che rappresenta un articolo o un sotto-articolo
+             */
+            class Elemento {
+                // Crea un elemento con il titolo e il testo specificati
+                constructor(titolo, testo) {
+                    this.identificatore = "";
+                    this.titolo = titolo;
+                    this.testo = testo;
+                    this.figli = [];
+                }
+
+                // Restituisce un Articolo che contiene
+                // - un elemento h1 con l'identificatore e il titolo
+                // - un elemento p con il testo
+                // - un insieme di nodi figli che sono gli altri articoli
+                // in questo contenuti (sottoalbero)
+                toArticle(){
+                    const d = document.createElement("article");
+                    const t = document.createElement("h1");
+                    t.textContent = this.identificatore + " " + this.titolo;
+                    d.append(t);
+                    const p = document.createElement("p");
+                    p.textContent = this.testo;
+                    d.append(p); 
+                    for(const f of this.figli) {
+                        d.append(f.toArticle());
+                    }
+                    return d;
+                }
+                // Aggiunge un figlio all'elemento
+                addFiglio(f) {
+                    // Memorizza l'elemento figlio
+                    this.figli.push(f);
+                    // L'elemento radice ha un identificatore stringa vuota
+                    if(this.identificatore == "")
+                        f.identificatore = this.figli.length;
+                    else
+                        f.identificatore =  this.identificatore + "." + this.figli.length;
+                }
+                // Restituisce l'elemento figlio con indice specificato
+                getFiglio(index) {
+                    return this.figli[index];
+                }
+            }
+
+            /*
+             * Cerca il nodo con identificatore p
+             * La ricerca parte dal nodo n (e quindi viene esplorato
+             * solo tale sottoalbero)
+             * liv indica a che livello siamo arrivati nella ricerca
+             */
+            function trova(n, p, liv) {
+                if(n == null) return null;
+                if(n.identificatore == p || p == "")
+                    return n;
+                let v = p.split(".");
+                let i = v[liv];
+                return trova(n.getFiglio(i-1), p, liv+1);
+            }
+
+            /*
+             * Aggiunge l'elemento e come figlio dell'elemento 
+             * che ha identificatore p
+             * Se non c'è un elemento con identificatore p
+             * allora l'elemento e diventa figlio della radice
+             */
+            function aggiungi(e, p) {
+                // Comincia a cercare dalla radice
+                const n = trova(radice, p, 0);
+                if (n == null) {
+                    // il nodo padre non c'è
+                    radice.addFiglio(e);
+                } else {
+                    n.addFiglio(e);
+                }
+            }
+
+            /*
+             * Funzione eseguita quando viene premuto il bottone "cerca"
+             */
+            function cerca() {
+                // Stringa da cercare
+                const parola = document.getElementById("parola").value;
+                // Ottiene tutti gli articoli presenti nel documento
+                const a = document.getElementsByTagName("article");
+                // Esamina tutti gli articoli
+                for(let x of a) {
+                    // Prende il testo contenuto nell'elemento <p>
+                    // contenuto a sua volta nell'articolo      
+                    const t = x.childNodes[1].innerText;
+                    // Controlla se la stringa è presente e nel caso
+                    // cambia la classe dell'articolo
+                    if(t.indexOf(parola) >= 0)
+                        x.classList.add("trovato");
+                    else
+                        x.classList.remove("trovato");
+                }
+            }
+
+            /*
+             * Elemento radice della struttura ad albero
+             */ 
+            const radice = new Elemento("", "");
+
+            /*
+             * Verifica che il titolo sia formato solo da lettere 
+             * dall'alfabeto e spazi
+             */
+            function verifica(titolo) {
+                const r = /[^a-zA-Z ]/;
+                return ! r.test(titolo);
+            }
+
+            /*
+             * Inserisce un nuovo elemento
+             */
+            function inserisci(){
+                // Recupera i dati
+                const padre = document.getElementById("padre").value;
+                const titolo = document.getElementById("titolo").value;
+                const testo = document.getElementById("testo").value;
+
+                // Svuota i campi
+                document.getElementById("padre").value = "";
+                document.getElementById("titolo").value = "";
+                document.getElementById("testo").value = "";
+
+                // Verifica che il titolo abbia il formato giusto
+                const v = verifica(titolo);
+                if(!v || titolo === "" || testo === "") {
+                    alert("Titolo o testo non valido");
+                    return;
+                }
+
+                // Crea un Elemento con titolo e testo 
+                const e = new Elemento(titolo, testo);
+                // Aggiunge l'elemento nel posto giusto
+                aggiungi(e, padre);
+                // Ottiene una struttura ad albero formata da
+                // articoli che contengono articoli
+                // e la sostituisce a quella presente nel documento
+                let a = document.querySelector("article");
+                a.replaceWith(radice.toArticle());
+            }
+
+        </script>
+    
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:MediaServiceImageTags msdt:dt="string"></mso:MediaServiceImageTags>
+<mso:lcf76f155ced4ddcb4097134ff3c332f msdt:dt="string"></mso:lcf76f155ced4ddcb4097134ff3c332f>
+<mso:TaxCatchAll msdt:dt="string"></mso:TaxCatchAll>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+    <body>
+        <div id="formdiv">
+            <label for="padre">Elemento padre</label> <input type="text" id="padre">
+            <label for="titolo">Titolo</label><input type="text" id="titolo">
+            <label for="testo">Testo</label><textarea type="textarea" rows= 4 id="testo"></textarea>
+            <button onclick="inserisci()">Inserisci</button>
+            <hr>
+            <label for="parola">Cerca</label><input type="text" id="parola"></textarea>
+            <button onclick="cerca()">Cerca</button>
+        </div>
+        <article></article>
+    </body>
+</html>
