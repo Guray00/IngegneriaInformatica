@@ -1,0 +1,1 @@
+Per completezza anche file più vecchi sono stati mantenuti (nel caso qualche domande fosse stata persa), si invita però a modificare il file "definitivo" che raccoglie tutte le domande più aggiornato.

@@ -1,4 +1,7 @@
-# Domande Avvenuti
+# Domande orali Sistemi Operativi
+Le seguenti domande sono riprese da quanto è stato chiesto durante l'orale di Sistemi Operativi nel corso degli anni. L'elenco non è completo ed è da considerarsi solo una linea guida per l'impostazione dell'esame.
+
+## Domande Avvenuti
 - Com'è fatto lo schema di un device driver dal punto di vista del programma? Che azioni deve fare il device driver? 	Descrivere con precisione cosa succede dentro al device driver
 - Descrivere un generico semaforo. Come si implementa un semaforo? Far vedere il codice 
 - Come viene gestito un page fault in un sistema operativo? Dire precisamente l'ordine delle operazioni che vengono effettuati, gli eventi fondamentali del page fault (Avvenuti lo vuole passo per passo e nel dettaglio, come se stessimo descrivendo un algoritmo) 
@@ -20,7 +23,7 @@
 - Come si fa l’allocazione di memoria, quali sono le tecniche? Paginazione su domanda, spiegare come si gestisce il page-fault
 - Spiegare quali sono i due algoritmi per schedulare processi real-time
 
-# Domande Minici
+## Domande Minici
 - System call per la gestione del ciclo di vita dei processi. (fork exit wait exec).
 - Spiegare la terminazione di un processo
 - System call alarm e sleep
@@ -37,7 +40,7 @@ Come si scrive all'interno della pipe? Cosa ritornano le funzioni per usare le p
 - Thread, cos'è un thread in Unix/Linux. Funzioni sui thread. Necessario includere una libreria per usare i thread? Esiste il concetto nativo di thread in linux? Oppure è il programmatore a doverlo fare? Perché usiamo la libreria pthread invece del concetto nativo di thread di linux? Come vengono identificati i thread usando la libreria?
 Come si crea un thread usando pthread? Come si termina il thread? 
 
-# Domande Scritto Minici [dalla sessione estiva 21/22]
+###  Domande Scritto Minici [dalla sessione estiva 21/22]
 - System call per la gestione dei segnali: signal e kill. 
 - Primitiva Fork() : descrizione ed esempio di utilizzo
 - Descrizione di Find e Locate e breve illustrazione delle loro differenze
