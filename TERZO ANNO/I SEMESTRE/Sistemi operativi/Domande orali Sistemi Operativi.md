@@ -96,7 +96,7 @@ Come si crea un thread usando pthread? Come si termina il thread?
 #### Studente 6
 
 - Come si schedula un sistema hard-real-time?
-    - Il prof si impunta sul perché sull'asse orizzontale del grafico della temporizzazione c'è una freccia che punta verso destra. Continua a delirare con domande filosofiche sul perché su un'asse temporale una cosa a sinistra è precedente a una più a destra
+    - Il prof si impunta sul perché sull'asse orizzontale del grafico della temporizzazione c'è una freccia che punta verso destra. Continua con domande filosofiche sul perché su un'asse temporale una cosa a sinistra è precedente a una più a destra
 
 #### Studente 7
 
