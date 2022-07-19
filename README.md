@@ -189,6 +189,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 Luca Arduini<br>
 Giulio Bello<br>
+Giacomo Bertelli<br>
 Francesco Berti<br>
 Francesco Boldrini<br>
 Matteo Bernini<br>
