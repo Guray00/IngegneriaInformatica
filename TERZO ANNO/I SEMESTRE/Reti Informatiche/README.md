@@ -9,9 +9,47 @@ Per far funzionare correttamente la macchina virtuale è necessario prima compie
 
 Una volta fatto ciò la macchina dovrebbe partire senza troppe difficoltà
 
+---
 
 ## VS Code
 Per installare vscode è necessario seguire [questa](http://docenti.ing.unipi.it/f.pistolesi/reti/guidavisualstudio.pdf) guida scaricando il .deb di vscode relativo ad ottobre 2020 reperibile [qui](https://update.code.visualstudio.com/1.51.1/linux-deb-x64/stable)
+
+---
+
+## Risoluzione personalizzata
+Per impostare una risoluzione custom all'interno della macchina virtuale è sufficiente eseguire i seguenti comandi sostituendo 1920 e 1080 con i valori desiderati (attenzione, dove è richiesto di inserire l'output ricevuto copiare quello):
+
+### step 1
+```bash
+studenti@studenti:~$ cvt 1920 1080
+```
+
+Che restituisce:
+> `1920x1080 59.96 Hz (CVT 2.07M9) hsync: 67.16 kHz; pclk: 173.00 MHz Modeline "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync`
+
+
+### Step 2
+A noi interessa il contenuto dopo modeline, copiarlo e inserirlo come segue (il vostro output):
+
+```bash
+studenti@studenti:~$ xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+```
+
+### Step 3
+Adesso aggiungere la configurazione al sistema:
+```bash
+studenti@studenti:~$ xrandr --addmode Virtual1 "1920x1080_60.00"
+```
+Ora, dopo aver chiuso e riaperto le impostazioni, la nuova modalità dovrebbe essere cliccabile.
+
+### Step 4
+Per renderla persistente ai prossimi riavvi inserire i comandi di step2 e step3 in `~/.profile:`
+
+```bash
+studenti@studenti:~$ sudo gedit ~/.profile
+```
+
+---
 
 ## Errori
 
