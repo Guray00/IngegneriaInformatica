@@ -195,6 +195,7 @@ Francesco Boldrini<br>
 Matteo Bernini<br>
 Davide Bruni<br>
 Federico Casu<br>
+Leonardo Ceccarelli<br>
 Lorenzo Chesi<br>
 Luca Chiocchetti<br>
 Pietro Cok<br>
@@ -220,11 +221,13 @@ Federico Matteoni<br>
 Alessio Meini<br>
 Tommaso Molesti<br>
 Alex Moriconi</br>
+Dario Paroli<br>
 Alex Parri<br>
 Martina Panico<br>
 Aleandro Prudenzano<br>
 Rambod Rahmani<br>
 Samuele Ricotta<br>
+Gianmaria Saggini<br>
 Alessandro Sale<br>
 Nicolò Salti<br>
 Lorenzo Salvatelli<br>
