@@ -76,3 +76,30 @@ Pare essere un problema che non riguarda tutti gli utenti, navigando su internet
 - impostare la memoria a 2048MB RAM
 - in processore, impostare 2 core
 - in schermo, impostare 128MB ram per la memoria grafica e selezionare "VMSVGA graphics controller".
+
+
+### `/dev/sda1` contains a file system with errors, check forced.
+
+```bash
+/dev/sda1 contains a file system with errors, check forced.
+Inodes that were part of a corrupted orphan linked list found.
+
+/dev/sda1: UNEXPECTED INCONSISTENCY: RUN fsck MANUALLY.
+         (i.e., without -a or -p options)
+fsck exited with status code 4
+The root filesystem on /dev/sda1 requires a manual fsck
+
+BusyBox v1.22.1 (Ubuntu 1:1.22.0-19ubuntuu2) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+(initramfs)_
+```
+
+Per risolvere è sufficiente digitare nel prompt initramfs:
+
+```bash
+fsck -f /dev/sda1 
+```
+
+per riparare il filysistem file system. [Source](https://askubuntu.com/questions/955467/dev-sda1-contains-a-file-system-with-errors-check-forced)
+
