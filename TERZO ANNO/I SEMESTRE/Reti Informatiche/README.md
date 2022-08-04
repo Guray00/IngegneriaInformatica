@@ -4,10 +4,10 @@ Note sulla preparazione della macchina virtuale per l'esame di Reti Informatiche
 
 ## Premessa
 Per far funzionare correttamente la macchina virtuale è necessario prima compiere due operazioni dall impostazioni della macchina (su virtualbox):
-- video > abilitare l'accelarazione video
-- USB > selezionare usb 1.1
+- **video** > abilitare l'accelarazione video
+- **USB** 	> selezionare usb 1.1
 
-Una volta fatto ciò la macchina dovrebbe partire senza troppe difficoltà
+Una volta fatto ciò la macchina dovrebbe partire senza troppe difficoltà. In caso di ulteriori problemi, consultare la sezione [errori](#errori).
 
 ---
 
@@ -19,7 +19,7 @@ Per installare vscode è necessario seguire [questa](http://docenti.ing.unipi.it
 ## Risoluzione personalizzata
 Per impostare una risoluzione custom all'interno della macchina virtuale è sufficiente eseguire i seguenti comandi sostituendo 1920 e 1080 con i valori desiderati (attenzione, dove è richiesto di inserire l'output ricevuto copiare quello):
 
-### step 1
+### *step 1*
 ```bash
 studenti@studenti:~$ cvt 1920 1080
 ```
@@ -28,22 +28,22 @@ Che restituisce:
 > `1920x1080 59.96 Hz (CVT 2.07M9) hsync: 67.16 kHz; pclk: 173.00 MHz Modeline "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync`
 
 
-### Step 2
+### *Step 2*
 A noi interessa il contenuto dopo modeline, copiarlo e inserirlo come segue (il vostro output):
 
 ```bash
 studenti@studenti:~$ xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
 ```
 
-### Step 3
+### *Step 3*
 Adesso aggiungere la configurazione al sistema:
 ```bash
 studenti@studenti:~$ xrandr --addmode Virtual1 "1920x1080_60.00"
 ```
 Ora, dopo aver chiuso e riaperto le impostazioni, la nuova modalità dovrebbe essere cliccabile.
 
-### Step 4
-Per renderla persistente ai prossimi riavvi inserire i comandi di step2 e step3 in `~/.profile:`
+### *Step 4*
+Per renderla persistente ai prossimi riavvi inserire i comandi di *step2* e *step3* in `~/.profile:`
 
 ```bash
 studenti@studenti:~$ sudo gedit ~/.profile
@@ -53,7 +53,7 @@ studenti@studenti:~$ sudo gedit ~/.profile
 
 ## Errori
 
-### Assenza di virtualbox extension pack
+### 1. Assenza di virtualbox extension pack
 ```text
 Implementation of the USB 2.0 controller not found!
 Because the USB 2.0 controller state is part of the saved VM state, 
@@ -67,7 +67,7 @@ version of the 'Oracle VM VirtualBox Extension Pack' is installed (VERR_NOT_FOUN
 Per risolvere questo problema è sufficiente scaricare "Oracle VM VirtualBox Extension Pack"
 
 
-### Kernel Panic
+### 2. Kernel Panic
 ```text
 Kernel Panic - not syncing: Attempted to kill the idle task!
 ```
@@ -78,7 +78,7 @@ Pare essere un problema che non riguarda tutti gli utenti, navigando su internet
 - in schermo, impostare 128MB ram per la memoria grafica e selezionare "VMSVGA graphics controller".
 
 
-### `/dev/sda1` contains a file system with errors, check forced.
+### 3. `/dev/sda1` contains a file system with errors, check forced.
 
 ```bash
 /dev/sda1 contains a file system with errors, check forced.
