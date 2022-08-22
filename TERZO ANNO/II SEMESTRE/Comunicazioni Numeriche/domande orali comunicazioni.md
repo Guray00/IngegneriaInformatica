@@ -65,7 +65,7 @@
 - Th della probabilità totale
 - Proprietà della Distribuzione di probabiità
 - Proprietà della Densità di probabilità
--V alor medio di una ddp esponenziale monolatera
+- Valor medio di una ddp esponenziale monolatera
 - Th fondamentale per la trasformazione di Variabili Aleatorie
 - Relazione tra Varianza, Valore quadratico medio e Valor medio [σ^2 = m^2 – η^2]
 - Valor medio e varianza di una VA Gaussiana
