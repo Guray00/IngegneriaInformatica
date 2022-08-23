@@ -4,7 +4,6 @@
 ## Introduzione e Concetti generali
 - Relazioni Potenza media-Energia
 - Potenza istantanea nulla -> valor medio nullo
-- Th di Parseval [segnali periodici]
 - Formule di Poisson
 - Dimostrare che l'energia di un segnale periodico è infinita
 - Potenza media di seganle periodico equivale alla potenza sul periodo
@@ -16,6 +15,7 @@
 - Simmetria hermitiana della TSF
 - Trasformata di segnale Reale e Pari
 - Trasformata di segnale Reale e Dispari
+- Th di Parseval [segnali periodici]
 - Segnale alternativo
 
 ## TCF
@@ -34,6 +34,7 @@
 - TCF di un segnle periodico
 - TCF di un segnale periodicizzato 
 - Dimostrare la correttezza dell'ATCF
+- Th di Parseval [segnali continui]
 
 ## Convoluzione
 - Th della convoluzione
@@ -53,6 +54,7 @@
 - Th del campionamento [dimostrazion grafica]
 - Come si ricava la formla Y(F) = Xbarra(F)*P(F) usata nel th Teorema del campionamento?
 - Relazione TCF-TFS
+- Th di Parseval [per le sequenze]
 
 
 
