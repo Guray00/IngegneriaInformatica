@@ -28,7 +28,6 @@
 - Th della derivazione in frequenza
 - Th dell'integrazione
 - Th dell'integrazione completa
-- Th del prodotto
 - Th della modulazione [tutti]
 - Relazione TSF-TCF
 - TCF di un segnle periodico
@@ -39,6 +38,7 @@
 ## Convoluzione
 - Th della convoluzione
 - Proprietà della convoluzione
+- Th del prodotto
 - Convoluzione nel tempo <-> Prodotto in frequenza
 - Prodotto nel tempo <-> Convoluzione in frequenza
 - Relazione tra correlazione e convoluzione
