@@ -206,6 +206,7 @@ Francesco De Lucchini<br>
 Angelo De Marco<br>
 Matteo Dondoli<br>
 Nilo Fabiano<br>
+Giacomo Furia<br>
 Giulia Gastaldin<br>
 Kevin Giannandrea<br>
 Daniele Giaquinta<br>
@@ -217,6 +218,7 @@ Giacomo Maldarella<br>
 Elia Marabotto<br>
 Gabriele Marcuccetti<br>
 Maria Azzurra Malotti<br>
+Alessandro Marzini<br>
 Federico Matteoni<br>
 Alessio Meini<br>
 Tommaso Molesti<br>
@@ -227,6 +229,7 @@ Martina Panico<br>
 Aleandro Prudenzano<br>
 Rambod Rahmani<br>
 Samuele Ricotta<br>
+Alessio Ristori<br>
 Gianmaria Saggini<br>
 Alessandro Sale<br>
 Nicolò Salti<br>
