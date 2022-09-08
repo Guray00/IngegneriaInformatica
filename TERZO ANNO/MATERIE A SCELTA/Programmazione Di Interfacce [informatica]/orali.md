@@ -2,9 +2,9 @@
 La sequente contiene una lista incompleta di domande d'esame poste agli orali dal professore _Mazzei_ nell'anno 2021-2022. Le domande indicate con _[-]_ non sono state poste ma sono ritenute in linea con lo spirito delle domande.
 
 ## Scanner
-1. **sistemi fotometrici per scanner 3D**: a partire da una sorgente luminosa controllabile e ne analizza gli spostamenti delle ombre al variare dell’incidenza (della sorgente luminosa) vengono calcolati sia la profondità sia il colore.
+1. **Sistemi fotometrici per scanner 3D**: è un dispositivo Scanner 3D passivo, dova apartire da una sorgente luminosa controllabile, ne analizza gli spostamenti delle ombre ed al variare dell’incidenza (della sorgente luminosa) vengono calcolati sia la profondità sia il colore.
 
-2. **Come funziona uno scanner 3D stereoscopico**: due immaigini con distanza focale per simulare la profondità come l'essere umano mediante calcolo della profondità (depth + rgb)
+2. **Come funziona uno scanner 3D stereoscopico**: è un dispositivo Scanner 3D passivo, composto da due camere che scattano 2 foto diverse con distanza focale, ed attraverso la loro analiisi creano una terza immagine detta dethmap che indica la distanza pixel pixel da un oggetto (depth + rgb)
 
 3. **Come funziona uno scanner 3D a triangolazione**: a differenza del time of flight il laser non è coassiale ma con una angolazione differente, in modo che la camera venga indotta a trovare il punto del laser e tramite triangolazione si può ritrovare punto punto. 
 
@@ -14,7 +14,7 @@ La sequente contiene una lista incompleta di domande d'esame poste agli orali da
 
 6. **Come funziona un sensore time of flight**: sono sensori che inviano un impulso laser infrarosso e misurano il tempo di risposta, sono molto precisi e vengono usati per calcolare la distanza punto punto (a partire dal tempo).
 
-7. _[-] Che tipologie di 3d scanning esistono?:_ Passivi ovvero che non emettono radiazioni elettromagnetiche e si affidano all'illuminazione ambientale e attivi che invece emettono radiazioni elettromagnetiche.
+7. _[-] Che tipologie di 3d scanning esistono?:_ Ne esistono due tipologie: passivi, ovvero che non emettono radiazioni elettromagnetiche e si affidano all'illuminazione ambientale; attivi che invece emettono radiazioni elettromagnetiche.
 
 ---
 ## UX Design
