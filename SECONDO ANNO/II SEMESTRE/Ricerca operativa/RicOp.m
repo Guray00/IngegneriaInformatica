@@ -344,6 +344,16 @@ classdef RicOp
 
 				tmp.xNext = xk;
 
+                tb = table();
+				tb.('M') = categorical(sprintf("(%s)",join(RicOp.rationalCast(M),',')));
+                tb.('H') = categorical(sprintf("(%s)",join(RicOp.rationalCast(H),',')));
+                tb.('Direzione') = categorical(sprintf("(%s, %s)", RicOp.rationalCast(dk)));
+                tb.('Max spostamento') = categorical(RicOp.rationalCast(mtk));
+                tb.('Passo') = categorical(RicOp.rationalCast(tk));
+                tb.('xk next') = categorical(sprintf("(%s, %s)", RicOp.rationalCast(xk)));
+
+                disp(tb);
+
 				res = [res,tmp];
 
 			end
@@ -379,6 +389,13 @@ classdef RicOp
 			Ab = A(:,base);
 			An = A(:,nbase);
 			As = Ab^-1*An;
+
+            tb = table();
+            tb.('Base') = categorical(sprintf("(%s)",join(RicOp.rationalCast(base),',')));
+			tb.('Ab') = categorical(sprintf("(%s)",join(RicOp.rationalCast(Ab),',')));
+            tb.('An') = categorical(sprintf("(%s)",join(RicOp.rationalCast(An),',')));
+            tb.('As') = categorical(sprintf("(%s)",join(RicOp.rationalCast(As),',')));
+            disp(tb);
 			
 			len = length(f);
 			n = length(xb);
@@ -824,7 +841,7 @@ classdef RicOp
 
 			n_iter = 0; % Numero di iterazione
 
-			tab = table('Size',[iter 7],'VariableTypes', ["categorical","categorical","categorical","categorical","categorical","categorical","categorical"],'VariableNames', ["Base", "x", "y", "Degenere", "Indice Uscente", "Rapporti", "Indice Entrante"], 'RowNames', strcat("Iter ",string([1:iter]')));
+			tab = table('Size',[iter 9],'VariableTypes', ["categorical","categorical","categorical","categorical","categorical","categorical","categorical","categorical","categorical"],'VariableNames', ["Base", "x", "invAb", "y", "Degenere", "Indice Uscente", "A*Wh",  "Rapporti", "Indice Entrante"], 'RowNames', strcat("Iter ",string([1:iter]')));
 
 			while iter > 0
 
@@ -846,10 +863,13 @@ classdef RicOp
 				% fprintf("x: (%s)\n", join(RicOp.rationalCast(x),', '));
 				tab(n_iter,2) = {categorical(sprintf("(%s)", join(RicOp.rationalCast(x),', ')))};
 
+                %categorical(sprintf("(%s)",join(RicOp.rationalCast(invAb),',')));
+                tab(n_iter,3) = {categorical(sprintf("(%s)",join(RicOp.rationalCast(invAb),',')));};
+
 				y = zeros(length(b),1);
 				y(base) = (f*invAb)';
 				% fprintf("y: (%s)\n", join(RicOp.rationalCast(y),', '));
-				tab(n_iter,3) = {categorical(sprintf("(%s)", join(RicOp.rationalCast(y),', ')))};
+				tab(n_iter,4) = {categorical(sprintf("(%s)", join(RicOp.rationalCast(y),', ')))};
 
 				if all(y>=0)
 					fprintf("Ottimo\n");
@@ -859,7 +879,7 @@ classdef RicOp
 				tmp = (A*x)-b;
 				tmp(base) = [];
 				% fprintf("Degenere: %d\n", ismember(0,tmp));
-				tab(n_iter,4) = {categorical(ismember(0,tmp))};
+				tab(n_iter,5) = {categorical(ismember(0,tmp))};
 
 				h = -1;
 				for i=1:length(y)
@@ -869,7 +889,7 @@ classdef RicOp
 					end
 				end
 				% fprintf("Indice Uscente: %d\n",h);
-				tab(n_iter,5) = {categorical(h)};
+				tab(n_iter,6) = {categorical(h)};
 
 				Wh = [];
 				for i=1:length(base)
@@ -882,7 +902,10 @@ classdef RicOp
 				if all(testVoid<=0)
 					% P ha un valore ottimo +inf e D è vuoto
 					break
-				end
+                end
+
+                %categorical(sprintf("(%s)",join(RicOp.rationalCast(testVoid),',')));
+                tab(n_iter,7) = {categorical(sprintf("(%s)",join(RicOp.rationalCast(testVoid),',')));};
 
 				teta = inf;
 				rapportiTmp = zeros(1,length(b))-1;
@@ -906,9 +929,9 @@ classdef RicOp
 				rapporti = rapportiTmp(rapportiTmp > 0);
 
 				% fprintf("Rapporti: %s\n", join(RicOp.rationalCast(rapporti),' '));
-				tab(n_iter,6) = {categorical(join(RicOp.rationalCast(rapportiTmp),', '))};
+				tab(n_iter,8) = {categorical(join(RicOp.rationalCast(rapportiTmp),', '))};
 				% fprintf("Indice Entrante: %d\n\n",k);
-				tab(n_iter,7) = {categorical(k)};
+				tab(n_iter,9) = {categorical(k)};
 
 				base = sort([base(base~=h),k]);
 			end
@@ -1081,19 +1104,13 @@ classdef RicOp
 						j = find(ismember(archi, [ciclo(mod(i,lenC)+1),ciclo(i)],'rows'));
 						posM = [posM,j];
 
-					end
+                    end
 
-					if all([ciclo(i),ciclo(mod(i,lenC)+1)]==arco_entrante)
-						dir = 0;
-					elseif all([ciclo(mod(i,lenC)+1),ciclo(i)]==arco_entrante)
-						dir = 1;
-					end
+                end
 
-				end
-
-				if arco_entrante == U
-					dir = ~dir;
-				end
+                if ismember(arco_entrante,U,'rows')
+                    dir = 1;
+                end
 
 				if dir == 1
 					tmp = posP;
