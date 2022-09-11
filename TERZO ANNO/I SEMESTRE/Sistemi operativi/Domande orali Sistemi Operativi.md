@@ -80,17 +80,16 @@ Come si crea un thread usando pthread? Come si termina il thread?
 #### Studente 4
 
 - Come si rileva una situazione di stallo (deadlock detection)?
-    - Lo studente disegna un grafo con risorse e processi (non mi ricordo il nome) con un ciclo e il prof vuole sapere che codice può aver portato a questo grafo
+    - Lo studente disegna un grafo con risorse e processi (resource allocation graph) con un ciclo e il prof vuole sapere che codice può aver portato a questo grafo
     - In quale caso ci si pone il problema di usare signal-and-wait o signal-and-continue? (nei monitor)
     - Cos'è un monitor e com'è fatto(senza far riferimento ai 5 filosofi)? (Sta saltando di palo in frasca per qualche motivo)
-    - Cos'è una variabile condiction?
+    - Cos'è una variabile condition?
 
 #### Studente 5
 
 - Quali sono le strutture date UNIX per gestire i file?
     - Perché abbiamo la tabella dei file attivi? (Fa da cache degli i-node)
     - Perché se due processi aprono lo stesso file abbiamo due diverse entrate nella TFAS?
-    - Come si trova l'indice dell'i-node?
     - Come si arriva da un i-node al blocco giusto in memoria secondaria?
 
 #### Studente 6
