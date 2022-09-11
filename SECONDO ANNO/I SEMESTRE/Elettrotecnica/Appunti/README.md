@@ -1,4 +1,4 @@
-# NOTA
+# NOTA 
 
 Nell'eventualità dovessi trovare degli errori nei seguenti appunti:
 - Corrente in Continua.pdf
@@ -9,3 +9,7 @@ Nell'eventualità dovessi trovare degli errori nei seguenti appunti:
 - Esercizi Guidati Elettrotecnica.pdf
 
 Contatta su telegram l'utente https://t.me/france_boldrini per aggiornarli!
+
+# NOTA 2
+
+Il file "Appunti Elettrotecnica - A.A.21-22.pdf" è a cura di Matteo Giannini.
