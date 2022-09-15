@@ -29,7 +29,7 @@ Che restituisce:
 
 
 ### *Step 2*
-A noi interessa il contenuto dopo modeline, copiarlo e inserirlo come segue (il vostro output):
+A noi interessa il contenuto dopo `Modeline` (escluso), copiarlo e inserirlo come segue (il vostro output):
 
 ```bash
 studenti@studenti:~$ xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
@@ -40,7 +40,7 @@ Adesso aggiungere la configurazione al sistema:
 ```bash
 studenti@studenti:~$ xrandr --addmode Virtual1 "1920x1080_60.00"
 ```
-Ora, dopo aver chiuso e riaperto le impostazioni, la nuova modalità dovrebbe essere cliccabile.
+Ora, dopo aver chiuso e riaperto le impostazioni, la nuova risoluzione dovrebbe essere cliccabile.
 
 ### *Step 4*
 Per renderla persistente ai prossimi riavvi inserire i comandi di *step2* e *step3* in `~/.profile:`
