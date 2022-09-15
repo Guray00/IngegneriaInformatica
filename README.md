@@ -25,6 +25,7 @@ Per rendere la comunicazione più efficace, sono stati realizzati gruppi apposit
 ### Principali
 - **[ Gruppo Anno 1](https://kutt.it/inginf1)**
 - **[ Gruppo Anno 2](https://kutt.it/inginf2)**
+- **[ Gruppo Anno 3](https://t.me/inginfunipi3)**
 
 ### Off-Topic
 - **[Shitposting](https://t.me/joinchat/ALDXWEt7IxLWwQ1i5x4fvA)**
