@@ -90,7 +90,6 @@
 
 # Sistemi di comunicazione
 - Schema di un sistema di comunicazione numerico generico
-- Dimostrare che la risposta di un filtro lineare tempo inviariante è la convoluzione tra l ingresso e la risposta impulsiva
 - Definizione di replica fedele, specificare quando un filtro non introduce distorsioni lineari
 - Da criterio MAX SNR -> MIN PE a criterio di minima distanza
 - Condizione di Nyquist in tempo e in frequenza
