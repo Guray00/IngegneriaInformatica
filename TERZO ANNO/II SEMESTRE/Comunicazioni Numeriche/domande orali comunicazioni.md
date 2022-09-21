@@ -31,7 +31,6 @@
 - Th della modulazione [tutti]
 - Relazione TSF-TCF
 - TCF di un segnle periodico
-- Dimostrare la correttezza dell'ATCF
 - Th di Parseval [segnali continui]
 
 ## Convoluzione
