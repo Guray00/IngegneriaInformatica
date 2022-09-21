@@ -1,5 +1,5 @@
 # Domande orali Comunicazioni numeriche
-### IMPORTANTE: è noto che la materia si presta ad una grande quantità di domande ed è appurato che ogni singola dimostrazione svolta durante il corso potrebbe essere una papabile  domanda d'orale. Pertanto questa lista [che raccoglie domande d'orale proposte a partire dal 2018] non è da ritenersi completa ma unicamente come strumento di supporto [non esclusivo] durante la preparazione di tale esame   
+> ⚠️ **IMPORTANTE**: è noto che la materia si presta ad una grande quantità di domande ed è appurato che ogni singola dimostrazione svolta durante il corso potrebbe essere una papabile  domanda d'orale. Pertanto questa lista [che raccoglie domande d'orale proposte a partire dal 2018] non è da ritenersi completa ma unicamente come strumento di supporto [non esclusivo] durante la preparazione di tale esame   
 # Segnali 
 ## Introduzione e Concetti generali
 - Relazioni Potenza media-Energia
@@ -54,7 +54,7 @@
 - Relazione TCF-TFS
 - Th di Parseval [per le sequenze]
 
-
+---
 
 # Probabilità
 - Definizioni di probabilità
@@ -86,6 +86,8 @@
 - Proprietà della Densità spettrale di Energia
 - Risposta al gradino e relazione con risposta impulsiva
 - Risposta in frequenza [le tre definizioni]
+
+---
 
 # Sistemi di comunicazione
 - Schema di un sistema di comunicazione numerico generico
