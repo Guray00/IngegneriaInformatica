@@ -17,7 +17,7 @@ Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'
 
 ## Cache
 
-- Come funziona e come e' fatta la cache
+- Come funziona e come è fatta la cache
 - Scomposizione della cache (Memorie interne e fili)
 - Sincronizzazione
 - Perché se si usa la cache siamo più veloci
@@ -33,8 +33,16 @@ Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'
 - vantaggi della cache a indirizzamento diretto?
   > La rapidità e la semplicità della funzione che consente di allocare la cacheline. Il grande svantaggio è invece il poter mantenere solo una cacheline per ogni indice
 
-- perchè l'offset è su 3 bit?
+- Perchè l'offset è su 3 bit?
 	> Perchè ogni cacheline è grande 64 byte, che sono 8 quadword, raggiungibili con un offset di 3 bit
+
+- Parlare della cache (con disegno)
+
+- Se usiamo delle cache line più grandi come cambia la RAM delle etichette?
+  > Se faccio le cacheline più grandi essa diminuisce, al contrario aumentana
+
+- Principi di località e a cosa servono
+
 ---
 
 ## Primitive
@@ -72,6 +80,12 @@ Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'
 
 - in quali gate della IDT abbiamo DPL sistema?
 	> Eccezzioni, Interruzioni esterne e più in generale tutte le primitive che non vogliamo possano essere richiamate liberamente dall'utente (si pensi agli handler per l'I/O).
+
+- Come faccio a capire se la iretq ha tutte le informazioni che le servono?
+
+- In che modo è necessario dichiarare una variabile in modo che il processore non la ignori?
+  > volatile
+
 ---
 
 ## Interruzioni
@@ -91,18 +105,33 @@ Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'
 - Come gestire più richieste sullo stesso piedino apic
   > Annidamento delle interruzioni con l'utilizzo dei due registri ISR IRR.
 
-- cosa comporta programmare con le interruzioni attive
+- Cosa comporta programmare con le interruzioni attive
   > Perdere l'atomicità, in quanto un'operazione in corso potrebbe non essere portata a termine in quanto un'interruzione di priorità superiore potrebbe "scavalcarla".
 
-- quando si traduce una funzione in c++ sono ripristinati tutti i registri?
+- Quando si traduce una funzione in c++ sono ripristinati tutti i registri?
   > No, solamente i registri scratch vengono ripristinati.
 
-- quali sono le istruzioni che ci permettono di usare le interruzioni?
+- Quali sono le istruzioni che ci permettono di usare le interruzioni?
   > (???) CLI e STI.
 
-- quando si accodano le richieste di interruzione su IRR?
+- Quando si accodano le richieste di interruzione su IRR?
 
-- perchè quando si attraversa il gate viene salvato il registro del flag?
+- Perchè quando si attraversa il gate viene salvato il registro del flag?
+
+- Come gestiamo le periferiche che agiscono sullo stesso piedino dell'apic?
+
+- Quanti piedini ha l'APIC?
+  > 24
+
+- Chi configura i registri dell'APIC e la IDT?
+  > Il programmatore con le apposite funzioni della libce (tipo apic_set_VECT)
+
+- Chi stabilisce le classi di priorità nelle interruzioni e come si riconoscono?
+  > Sono stabilite in base ai 4 bit più significativi del tipo e, per quanto detto sopra, sono stabiliti dal programmatore.
+
+- Registri ISR e IRR dell'APIC.
+
+- Cosa sono le interruzioni e a cosa servono?
 ---
 
 
@@ -146,7 +175,7 @@ Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'
 
 ## MMU
 
-- quando una tabella di livello 4 punta a se stessa
+- Quando una tabella di livello 4 punta a se stessa
   > Traduzione identità, all'interno dell'indirizzamento riservato al sistema.
 
 - Che problemi dà la mmu attiva mentre è in atto un trasferimento di una periferica?
@@ -160,13 +189,24 @@ Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'
 - A cosa può servire avere il bit U/S in ogni tabella?
   > L'inserimento in ogni tabella consente un'uscita anticipata se la richiesta non è soddisfabile, senza dover arrivare fino alle foglie.
 
-- nel caso ci fosse un solo processo non servirebbe avere il bit U/S in ogni tabella, perché?
+- Nel caso ci fosse un solo processo non servirebbe avere il bit U/S in ogni tabella, perché?
 - Traduzione dell'indirizzo 4096 da virtuale a fisico avendo a disposizione una memoria con 8 frame liberi
-- perchè 12 bit di offset, imposto o scelto?
+- Perchè 12 bit di offset, imposto o scelto?
   > Dipende dall'architettura, è quando trova scritto il programmatore di sistema all'interno del manuale dell'architettura che sta sviluppando. Nel nostro caso appunto 12 bit.
 
-- se avessimo voluto un offset maggiore, sarebbe cambiato qualcosa?
+- Se avessimo voluto un offset maggiore, sarebbe cambiato qualcosa?
 
+- Finestra di sistema
+
+- MMU e TLB nella parte di I/O dedicati alle periferiche
+
+- Perché al software può interessare accedere alle tabelle di traduzione?
+  > Per esempio per crearle o distruggerle con la trasforma nel modulo I/O
+
+- Cosa succede step per step e quali sono le cose **minime** da allocare se ci troviamo alla fine della parte C++ di una primitiva che ha creato un processo (che si trova adesso nella variabile esecuzione) che possiede nel contesto l'indirizzo della tabella di livello 4 ma che è completamente vuota (cioè tutti i bit P a 0). Sia nel caso in cui il processo creato sia livello utente che sistema
+
+- Cosa succede se si ha nella tabella di livello 4 un'entrata (o più) che puntano a se stesse e quali sono le differenze col sistema che usiamo noi?
+  > Supponiamo che l'entrata che punta a se stessa sia la i-esima nella tabella di livello 4 e che stiamo traducendo l'indirizzo virtuale i cui 9 bit del 1° blocco usato per navigare nell'albero di traduzione corrispondono ad i. La MMU navigherà nell'albero e senza saperlo tornerà alla tabella di livello 4 (dovrebbe essere alla 3). Procederà a navigare l'albero sfruttando gli altri 3 blocchi arrivando così alla tabella di livello 2, anziché a quella di livello 1 come usuale. A questo punto la MMU assumerà che quella sia la traduzione (ovvero quell'indirizzo virtuale punterà al frame contenente le entrate della tabella di livello 1). Questo metodo permette di accedere alle tabelle di livello 1 ma non permette di accedere a tutti i frame della memoria fisica (almeno 512GiB non saranno raggiungibili), cosa invece il nostro metodo permette di fare con la finestra sistema.
 ---
 
 ## Memoria virtuale
@@ -194,6 +234,11 @@ Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'
 
 - Supponiamo di non volere la finestra sulla memoria nella memoria virtuale di ogni processo, ma alcune strutture dati devono poter essere accessibili, quali sono queste strutture dati?
 > Le strutture dati che devo avere necessariamente mappate sono:idt, la gdt->tss, la pila sistema, strutture dati, della ruotine di sistema mi serve solo quanto basta per cambiare la tabella di traduzione
+
+- Traduzione indirizzi virtuali in fisici
+
+- Trasforma
+
 ---
 
 ## TLB
@@ -211,8 +256,12 @@ Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'
 
 - TLB, descrittore di lv 1 e uso del bit D nella routine di PF (page fault?)
   
-- perchè non serve invalidare il tlb dopo aver eseguito una unmap?
+- Perchè non serve invalidare il tlb dopo aver eseguito una unmap?
   > Perchè se un'indirizzo non è più mappato, questo non potrà essere richiamato dal processore. Dunque l'entrata TLB verrà in seguito sostituita comunque con qualche traduzione più recente.
+
+- Parli del TLB
+- Cosa sono PCD e PWT?
+- Nel caso peggiore quanti accessi in memoria fa la MMU?
 
 ---
 
@@ -229,6 +278,8 @@ Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'
 - Esempio di una periferica
 - Cosa comporta iopl sistema? 
   > Iopl non controlla solo le operazioni di I/O ma anche altre operazioni come CLI e STI quindi se dessimo IOPL utente a qualcuno gli daremmo la possibilità di disabilitare le interruzioni)
+
+- Quali sono i problemi di avere delle periferiche che fanno DMA con gli indirizzi virtuali?
 
 ---
 
@@ -276,29 +327,36 @@ Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'
 
 ## DMA
 - Cosa è il DMA?
+
 - Accorgimenti sul buffer
   > Verificare il cavallo di Troia mediante la primitiva access
 
 - Quali accorgimenti cambiano con il processo esterno?
-- quando abbiamo bisogno di operare in DMA?
+
+- Quando abbiamo bisogno di operare in DMA?
+
 - problemi che si possono verificare con il DMA
+
 - Lettura e Scrittura di cacheline durante il DMA
-- se viene inviato EOI e non fosse presente wfi nel modulo i/o, cosa bisogna fare?
+
+- Se viene inviato EOI e non fosse presente wfi nel modulo i/o, cosa bisogna fare?
   > (non sono sicuro) Bisognerebbe implementare un meccanismo (direttamente dall'assembler) per eseguire salva_stato, EOI, schedulatore, carica_stato in modo da poter inviare la richiesta di fine interruzione, inserire il processo con priorità maggiore in esecuzione ma soprattutto salvare lo stato del processo esterno in modo che possa continuare da dove questo si è interrotto. Altrimenti bisognerebbe considerare l'eventualità in cui il processo esterno non possa fermarsi "in un punto specifico" ma che ogni volta che questo va in esecuzione tutta la funzione dovrà essere svolta (senza saltare la parte inziale).
 
----
+- Trasfermimento tra periferiche: è necessario che il buffer si trovi all'interno della memoria condivisa? nel dma?
 
-## Bus Mastering
 - Bus mastering: come capisco che un trasferimento è terminato? Che problemi ci sono?
   > Per capire se un trasferimento è terminato, in seguito alla ricezione da parte dell'apic dell'interruzione, la cpu esegue una lettura in uno dei registri della periferica in modo che tale richiesta venga aggiunta alle richieste del ponte PCI. Essendo che tale gestione avviene mediante una politica fifo, abbiamo la sicurezza che quando avremo eseguito la lettura il dato è stato correttamente copiato.
-- ci sono problemi di sincronizzazione tra un dispositivo e il ponte ospite/PCI?
+
+- Ci sono problemi di sincronizzazione tra un dispositivo e il ponte ospite/PCI?
   > Stessa domanda di sopra
-- BusMastering e Cache, quali problemi abbiamo?
+
+- Bus mastering e cache: quali problemi abbiamo?
+
 - Quale è la soluzione hardware per il trasferimento dell'ultimo byte dal dispositivo alla memoria?
 
 ---
 
-## Configurazione PCI
+## PCI
 
 - Spiegare cos'è lo spazio di configurazione del bus PCI
 - A cosa servono i BAR
@@ -319,26 +377,33 @@ Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'
 - Che coordinate bisogna passare al CAP? 
   > bus + numero di periferica + numero dispositivo (DEVICEID) + il numero della funzione  + offset del registro
 
-- quali vantaggi porta il bus pci?
+- Quali vantaggi porta il bus pci?
   > La possibilità di aggiungere periferiche in un secondo momento realizzate da altri produttori
+
+- Bus PCI e interazione con la cache
+---
+
+## Semafori
+
+- Come facciamo nel nostro nucleo a creare un modo per far sì che i processi partono e dopo un tot. di tempo vadano in fondo a coda pronti?
+  > La risposta probabilmente è creare una routine speciale legata al timer che fa salva stato, call c_primitiva, carica_stato, iretq, e nella funzione si fa inserimento forzato in fondo a coda pronti.
+- E se il processo si sospende su un semaforo?
+  > Si deve salvare in des_proc da quanto tempo era partito il processo prima di sospendersi
+
+- Parli in generale dei semafori, a cosa servono, codice della struct, primitive semaforiche...
+
+- Problema della mutua esclusione
+
 ---
 
 ## Pipeline
 
 - Quali sono le dipendenze sui dati e sui nomi
 - Esecuzione speculativa e out of order con disegni
-
-
+- Parli delle pipeline
 
 ---
 
-### da aggiungere 
+## Esecuzione speculativa
 
-- in che modo è necessario dichiarare una variabile in modo che il processore non la ignori
-  > volatile
-- come faccio a capire se la iretq ha tutte le informazioni che le servono?
-
-
-
-- trasfermimento tra periferiche: è necessario che il buffer si trovi all'interno della memoria condivisa? nel dma?
-- come gestiamo le periferiche che agiscono sullo stesso piedino dell'apic?
+- Parli dell'esecuzione speculativa
