@@ -215,6 +215,7 @@ Daniele Giaquinta<br>
 Edoardo Geraci<br>
 Dafne Iennaro<br>
 Giovanni Ligato<br>
+Lorenzo Lozzi<br>
 Giovanni Enrico Loni<br>
 Giacomo Maldarella<br>
 Elia Marabotto<br>
