@@ -6,7 +6,7 @@
 - Potenza istantanea nulla -> valor medio nullo
 - Formule di Poisson
 - Dimostrare che l'energia di un segnale periodico è infinita
-- Potenza media di seganle periodico equivale alla potenza sul periodo
+- Potenza media di segnale periodico equivale alla potenza sul periodo
 
 ## TSF
 - Proprietà TSF
