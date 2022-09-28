@@ -188,6 +188,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 **Collaboratori Materiale**
 
+Taulant Arapi<br>
 Luca Arduini<br>
 Giulio Bello<br>
 Giacomo Bertelli<br>
@@ -239,6 +240,7 @@ Alessandro Sale<br>
 Nicolò Salti<br>
 Lorenzo Salvatelli<br>
 Giacomo Sansone<br>
+Francesco Scarrone<br>
 Gianluca Schiano<br>
 Alessandro Simonelli<br>
 Giuseppe Soriano<br>

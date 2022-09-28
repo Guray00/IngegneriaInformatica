@@ -1,0 +1,25 @@
+PAGLIACCIATE FATTE SUL PROGETTO CONSEGNATO
+(in questa versione, aggiornata dopo la consegna, sono fixate)
+
+superficie_vano: dovevo mettere il - per quando è vano2
+check_sensore: "allungamento deve essere su un muro" dà true se sei nel prolungamento di un muro concavo (in caso anche muro_sensore e costo_costruzione_muro_from_sensore)
+stadio_in_ritardo: data null *or maggiore di _data*
+stima_gravita scala quadraticamente usando l'intensità che è mercalli
+
+nelle docs parla di errore per il colore del muro se è demolito, in realtà ho tolto il signal
+pag. 4: "impiegi"
+pag. 14: "composto" anziché "composti"
+5.2.4: "(si suppone che la query venga eseguita su un muro effettivamente costruito e intonacato)." wtf
+edificio bcnf, non abbiamo messo id in right
+intensità 6.3.1
+apertura, sinistra è maggiore destra
+
+-------
+
+NOTE POST CONSEGNA:
+per il limite inferiore della temperatura ci serviremo di un __sensore di freddo__ 🌚
+chi cazzo me l'ha fatti fare i turni da 5 minuti; i controlli potevi comunque farli con un cursore
+
+NOTE POST ESAME:
+i calcoli degli accessi annuali sono confusing, meglio metterli per operazione e magari alla fine tot per operazione / per anno
+siamo rimasti per 20 minuti a discutere della prima ridondanza con la vaglini; ci ha chiesto poco altro e ci ha dato 29.5
