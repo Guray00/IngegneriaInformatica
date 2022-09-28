@@ -197,6 +197,7 @@ Francesco Boldrini<br>
 Matteo Bernini<br>
 Davide Bruni<br>
 Federico Casu<br>
+Federico Cavedoni<br>
 Leonardo Ceccarelli<br>
 Lorenzo Chesi<br>
 Luca Chiocchetti<br>
