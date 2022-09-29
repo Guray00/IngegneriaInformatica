@@ -1,7 +1,8 @@
 # Orali di Calcolatori Elettronici
 
 Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'esame di Calcolatori Elettronici, con docente prof. Lettieri e ing. Leonardi (2022). <br>
-**ATTENZIONE**: *Le risposte riportate non sono esaustive e non è detto che siano corrette, per tale motivo si invita i lettori a proporre delle versioni ampliate e revisionate delle stesse. Si evidenzia in particolare come le risposte dovrebbero essere in molti casi molto più esaustive, e sono da prendersi dunque solo come linee guida.*
+
+> ⚠️ **ATTENZIONE**: *Le risposte riportate non sono esaustive e non è detto che siano corrette, per tale motivo si invita i lettori a proporre delle versioni ampliate e revisionate delle stesse. Si evidenzia in particolare come le risposte dovrebbero essere in molti casi molto più esaustive, e sono da prendersi dunque solo come linee guida.*
 
 ---
 
