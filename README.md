@@ -210,6 +210,7 @@ Francesco De Lucchini<br>
 Angelo De Marco<br>
 Matteo Dondoli<br>
 Nilo Fabiano<br>
+Giulio Federico<br>
 Giacomo Furia<br>
 Giulia Gastaldin<br>
 Kevin Giannandrea<br>
