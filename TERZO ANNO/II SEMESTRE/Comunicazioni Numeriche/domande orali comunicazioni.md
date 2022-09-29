@@ -1,4 +1,4 @@
-# Domande orali Comunicazioni numeriche
+# Domande orali Comunicazioni Numeriche
 > ⚠️ **IMPORTANTE**: è noto che la materia si presta ad una grande quantità di domande ed è appurato che ogni singola dimostrazione svolta durante il corso potrebbe essere una papabile  domanda d'orale. Pertanto questa lista [che raccoglie domande d'orale proposte a partire dal 2018] non è da ritenersi completa ma unicamente come strumento di supporto [non esclusivo] durante la preparazione di tale esame   
 # Segnali 
 ## Introduzione e Concetti generali
