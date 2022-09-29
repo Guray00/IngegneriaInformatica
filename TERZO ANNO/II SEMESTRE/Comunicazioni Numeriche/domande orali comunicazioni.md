@@ -79,7 +79,7 @@
 - Indici statistici per sistemi SLS
 - Proprietà della correazione per processi SSL
 - Verificare che un processo sia SSL
-- Dimostrare  chex(t) SSL entrante in SLS ->uscita y(t) SSL
+- Dimostrare  che x(t) SSL entrante in SLS ->uscita y(t) SSL
 - Risposta a gradino di un SLS
 - Proprietà dell'autocorrelazione
 - Autocorrelazione dela realizzazione di un processo SSL SLS [Ry(t1,t2) = Rx(t1,t2)⊗h(t1)⊗h(t2)]
