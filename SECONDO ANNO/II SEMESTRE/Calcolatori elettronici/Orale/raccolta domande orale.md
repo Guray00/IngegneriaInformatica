@@ -350,6 +350,8 @@ Di seguito trovate un elenco ordinato per argomenti riportante le domande per l'
 - Ci sono problemi di sincronizzazione tra un dispositivo e il ponte ospite/PCI?
   > Stessa domanda di sopra
 
+- Bus mastering: come capisco che un trasferimento è terminato mediante una soluzione puramente hardware?
+
 - Bus mastering e cache: quali problemi abbiamo?
 
 - Quale è la soluzione hardware per il trasferimento dell'ultimo byte dal dispositivo alla memoria?
