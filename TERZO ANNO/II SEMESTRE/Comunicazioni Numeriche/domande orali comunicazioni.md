@@ -50,7 +50,7 @@
 - Biunivocità TFS
 - Periodicità TFS
 - Th del campionamento [dimostrazion grafica]
-- Come si ricava la formla Y(F) = Xbarra(F)*P(F) usata nel th Teorema del campionamento?
+- Come si ricava la formula Y(F) = Xbarra(F)*P(F) usata nel th Teorema del campionamento?
 - Relazione TCF-TFS
 - Th di Parseval [per le sequenze]
 
