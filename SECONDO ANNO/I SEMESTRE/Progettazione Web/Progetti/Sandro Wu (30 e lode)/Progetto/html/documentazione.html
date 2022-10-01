@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<!-- Firefox 92.0.1 e Chrome 94.0.4606.61. -->
+
+<html>
+  <head>
+    <title>Simple Go Game</title>
+
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/topNavigation.css" />
+    <link rel="stylesheet" href="../css/leftNavigation.css" />
+
+    <style>
+      main{
+        font-size: large;
+        padding-bottom: 50px;
+      }
+      p{
+        font-size: 1.1em;
+      }
+      h2{
+        margin-top: 40px;
+      }
+
+      .nota.prof{
+        font-style: italic;
+        font-size: smaller;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--  
+      <?php include '../php/topNavigation.inc.php' ?>
+      <?php include '../php/leftNavigation.inc.php' ?>
+     -->
+
+    <!-- TOP NAVIGATION -->
+    <nav class="topNavigation">
+      <div class="logo">
+        <h1>Simple Go</h1>
+      </div>
+
+      <ul class="center">
+        <li>
+          <a href="./home.php"> <p>Home</p> </a>
+        </li>
+
+        <li>
+          <a href="./shared.php"> <p>Shared</p> </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- LEFT NAVIGATION -->
+    <nav class="leftNavigation" id="leftNav">
+      <div
+        class="menuToggle"
+        onclick="this.parentElement.classList.toggle('opened')"
+      ></div>
+      <ul>
+        <li>
+          <a href="./home.php">
+            <span class="icon home"></span>
+            <p>Home</p>
+          </a>
+        </li>
+        <li>
+          <a href="./shared.php">
+            <span class="icon share"></span>
+            <p>Shared</p>
+          </a>
+        </li>
+        <li class="line"></li>
+
+        <li>
+          <a href="./documentazione.html">
+            <span class="icon info"></span>
+            <p>Info</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <script>
+      const nav = document.getElementById("leftNav");
+
+      nav.tabIndex = 0;
+      nav.onblur = () => {
+        setTimeout(() => {
+          nav.classList.toggle("opened", false);
+        }, 200);
+      };
+    </script>
+
+    <main>
+      <h1>Documentazione</h1>
+      <p class="nota prof"> Nota: visto che &egrave; richiesto una pagina html statica per la documentazione, ho eliminato gli elementi dinamici dai menu' di navigazione, per cui in questa pagina &egrave; differente rispetto alle altre</p>
+      <p>Piattaforma per giocare al Gioco del GO</p>
+
+      <h2>Gioca!</h2>
+      <p>
+        Puoi giocare subito nella Home Page, ci sar&agrave; un goban (schacchiera del gioco) di prova
+      </p>
+      <p>Puoi impostare i parametri e giocare sul demo nella home oppure aprire la pagina apposita di gioco</p>
+
+      <h2>Esplora il sito!</h2>
+      <p>
+        Naviga facilmente tra le pagine disponibili dai men&ugrave; in alto ed a sinistra
+      </p>
+
+      <h2>Registrati!</h2>
+      <p>Registra o Accedi nella pagina di Login, basta compilare i campi</p>
+      <p>Se non ricordi la tua password, non preoccuparti! Puoi sempre recuperare il tuo account nella pagina di Login! </p>
+
+      <h2>Salva e Condividi!</h2>
+      <p>Ora che hai un account, puoi salvare e condividere le tue partite! Basta aprire la partita, dalla pagina vedrai i tasti appositi!</p>
+
+      <h2>Gioca le partite degli altri!</h2>
+      <p>Nella sezione Shared, trovi tutte le partite condivise dagli atri giocatori e da te</p>
+      <p>Basta cliccarci e potrai avere una copia della partita</p>
+
+      <h2>Riprendi le partite vecchie!</h2>
+      <p>Trovi tutte le tue partite salvate nella sezione MyGames e nella pagina del tuo profilo</p>
+    </main>
+  </body>
+</html>
