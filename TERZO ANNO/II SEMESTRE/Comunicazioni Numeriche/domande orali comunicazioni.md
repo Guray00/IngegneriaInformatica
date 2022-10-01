@@ -108,10 +108,9 @@
 
 ## PAM banda passante
 - Schema PAM in banda passante
-- Energia media per simbolo trasmesso PAM banda passante
+- Energia media (Es) per simbolo trasmesso PAM banda passante
 - Calcolare la DSP in uscita dal filtro di ricezione di una PAM in banda passante con modulazione in fase
 - Autocorrelazione del processo in uscita al filtro in ricezione di un ricevitore PAM in banda passante [con rumore]
-- Calcolare Es di una PAM in banda passante
 - Modello del segnale ricevuto in una PAM in banda passante
 
 
