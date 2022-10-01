@@ -1,4 +1,4 @@
-#ATTENZIONE
+# ATTENZIONE
 
 l'esame a distanza prevedeva che l'esercizio di traduzione in Assembly venisse chiesto all'orale. 
 dalla sessione estiva dell'A.A. 21/22 è previsto il ritorno degli esami in presenza,
