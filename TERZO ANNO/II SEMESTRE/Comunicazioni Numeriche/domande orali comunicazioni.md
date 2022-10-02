@@ -115,8 +115,7 @@
 
 
 ## QAM
-- Schema QAM [ricevitore e trasmettitore]
-- Schema modulatore QAM
+- Schema modulatore QAM [ricevitore e trasmettitore]
 - Densità spettrale di potenza del segnale trasmesso per una QAM
 - Ricavare il segnale ottenuto all'uscita del filtro in ricezione in una QAM, partendo dallo schema e dalla definizione del segnale trasmesso
 - Probabilità di errore nella QAM  e cosa influisce per il calcolo
