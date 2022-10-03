@@ -34,11 +34,9 @@
 - Th di Parseval [segnali continui]
 
 ## Convoluzione
-- Th della convoluzione
 - Proprietà della convoluzione
-- Th del prodotto
-- Convoluzione nel tempo <-> Prodotto in frequenza
-- Prodotto nel tempo <-> Convoluzione in frequenza
+- Th della convoluzione *(Convoluzione nel tempo <-> Prodotto in frequenza)*
+- Th del prodotto *(Prodotto nel tempo <-> Convoluzione in frequenza)*
 - Relazione tra correlazione e convoluzione
 
 ## Delta di Dirac

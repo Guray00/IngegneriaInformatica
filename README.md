@@ -6,18 +6,6 @@
 Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https://www.unipi.it/index.php/lauree/corso/10276) (Triennale) presso l'università di Pisa (classe L-8). Ciò che troverete all'interno di questa raccolta è realizzato direttamente dagli studenti che hanno frequentato, o che tutt'ora frequentano, il corso; per tale motivo non è in alcun modo da ritenersi ufficiale e quanto fornito non è controllato da alcun docente, se non dagli studenti stessi che segnalano eventuali problemi o apportano loro stessi modifiche e miglioramenti. Troverete anche materiale fornito dai docenti del corso, per esempio dispense e prove d'esame passate.
 <p align="center"><b>Quanto fornito è senza alcun scopo di lucro e vuole intendersi unicamente come aiuto per gli studenti</b></p>
 
-## Indice
-  - [Gruppi Telegram](#gruppi-telegram)
-    - [Principali](#principali)
-    - [Off-Topic](#off-topic)
-  - [Come scaricare le lezioni](#come-scaricare-le-lezioni)  
-<!--  - [Corsi](#corsi)
-    - [Corsi Anno I](#corsi-anno-i)
-    - [Corsi Anno II](#corsi-anno-ii)
-  - [Libri di testo](#libri-di-testo)
-    - [Libri del Primo anno](#libri-del-primo-anno) -->
-  - [Credits (in aggiornamento)](#credits-in-aggiornamento)
-
 
 ## Gruppi Telegram
 Per rendere la comunicazione più efficace, sono stati realizzati gruppi appositi:
@@ -68,8 +56,10 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
 ## Come scaricare le lezioni
 A causa del Nuovo Coronavirus 19 le lezioni nel prossimo futuro continueranno ad essere erogate in modalità a distanza. Per questo motivo è stato realizzato un fork che consente di scaricare le registrazioni presenti sulla piattaforma Microsoft Stream. Per ulteriori informazioni sul progetto e sul suo utilizzo trovate [qui](https://github.com//Guray00/destreamer-unipi) tutte le informazioni necessarie.
 
- ## Libri di testo
+## Come scaricare una sola cartella
+Spesso può fare comodo scaricare una sola cartella, ma ciò non è possibile nativamente. A tal proposito esiste [questo](https://download-directory.github.io/) sito che consente il download una volta specificato l'indirizzo della cartella. 
 
+## Libri di testo
 Di seguito trovate una lista dei libri di testo suggeriti per ogni corso (potrebbe non essere sempre aggiornato, verificare).
 I testi, in base all'esperienza degli studenti, si suddividono in:
 
