@@ -1,0 +1,66 @@
+#blocco-form {
+    /* comuni a entrambi */
+    margin-top: 10px;
+    border: 2px solid black;
+    /* centrare il blocco all'interno del blocco*/
+    position: relative;
+}
+
+#blocco-form > div {
+    /* comuni ad entrambi */
+    /* centrare il blocco all'interno del blocco */
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*border: 1px solid red;*/
+}
+
+#blocco-vetrina > div {
+    width: 100% !important;
+}
+
+.nome-elemento-form,
+.nome-prezzo-form {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+select,
+input[type="text"], input[type="tel"] {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white !important;
+}
+
+#invio{
+    font-weight: bold;
+}
+
+#error-span > div {
+    font-size: 18px;
+}
+
+#comuni-possibili > div::first-letter {
+    text-transform: uppercase;
+}
+
+#comuni-possibili {
+    /*border-radius: 15px;*/
+}
+
+#comuni-possibili > div:first-child {
+    margin-top: 10px;
+}
+
+#comuni-possibili,
+#comuni-possibili > div {
+    /*border: 1px solid black;*/
+    height: 2em;
+    /*padding-left: 15px;*/
+    border-radius: 5px;
+}
+
+#comuni-possibili > div:hover {
+    background-color: whitesmoke;
+}

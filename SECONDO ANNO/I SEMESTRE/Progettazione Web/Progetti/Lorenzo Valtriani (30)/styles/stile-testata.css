@@ -1,0 +1,54 @@
+body,
+select,
+input[type="text"], input[type="tel"] {
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', Calibri, sans-serif;
+}
+
+#testata {
+    width: auto;
+    height: 100px;
+    padding: 5px;
+    font-size: 26px;
+    border: 1px solid black;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#testata button {
+    width: auto;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 20px;
+    background-color: white;
+}
+
+#testata button a {
+  text-decoration: none;
+  color: black;
+}
+
+#testata img {
+    height: 100%;
+}
+
+/* telefono */
+@media only screen and (min-width: 300px) {
+    #testata > img {
+        margin-left: 25px;
+    }
+    #testata, #testata img {
+        height: 150px;
+    }
+}
+
+/* monitor */
+@media only screen and (min-width : 1024px) {
+    #testata > img {
+        margin-left: 0;
+    }
+    #testata, #testata img {
+        height: 100px;
+    }
+}

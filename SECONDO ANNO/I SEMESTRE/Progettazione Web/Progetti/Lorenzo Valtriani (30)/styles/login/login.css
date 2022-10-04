@@ -1,0 +1,112 @@
+ * {
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', Calibri, sans-serif;
+}
+
+body,
+#container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+  background-color: grey;
+}
+#container {
+    border: 10px solid black;
+    padding: 5% 10% 5% 10%;
+    background-color: skyblue;
+    width: 50%;
+}
+
+#login > div,
+#registrazione > div {
+  margin-left: 25%;
+}
+
+#login, #registrazione {
+  width: 80%;
+}
+
+#registrazione {
+  display: none;
+}
+
+.change {
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
+  font-size: 16px;
+}
+
+h3 {
+    margin: 0 0 5px 0;
+    font-size: 20px;
+}
+
+input {
+    border: 2px solid black;
+    border-radius: 0.2em;
+}
+
+button {
+    margin-top: 20px;
+    border: 1px solid black;
+    background-color: white;
+    width: 100px;
+    font-size: 20px;
+}
+
+.errors {
+    color: red;
+    text-align: left;
+    font-size: 14px;
+    height: 100px;
+    visibility: hidden;
+}
+
+.bi-eye,
+.bi-eye-slash {
+  font-size: 20px;
+  position: relative;
+  right: 35px;
+}
+
+
+
+/* quando lo schermo è piccolo */
+@media (max-width: 1150px) {
+    h3 {
+        font-size: 60px;
+    }
+    input {
+        font-size: 40px;
+        width: 100%;
+        height: 80px;
+        padding-left: 8px;
+    }
+    button {
+        font-size: 50px;
+        width: 250px;
+        height: 75px;
+    }
+    .errors {
+        font-size: 28px;
+    }
+}
+
+@media (min-width: 1150px){
+    h3 {
+        margin: 0 0 5px 0;
+        font-size: 20px;
+    }
+    input {
+        font-size: 16px;
+        width: 250px;
+        height: 40px;
+        padding-left: 8px;
+    }
+    #container > div > div{
+        margin-bottom: 15px;
+    }
+}
