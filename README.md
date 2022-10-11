@@ -185,6 +185,7 @@ Giacomo Bertelli<br>
 Francesco Berti<br>
 Francesco Boldrini<br>
 Matteo Bernini<br>
+Filippo Brogi<br>
 Davide Bruni<br>
 Federico Casu<br>
 Federico Cavedoni<br>
