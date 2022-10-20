@@ -22,7 +22,7 @@ Alla fine di questa guida potrai fare questo:
 
 ### 1. Installazione di WSL
 Aprire un Windows prompt dei comandi e immettere questo comando:
-```cmd
+```console
 wsl --install
 ```
 _Una guida più dettagliata può essere trovata [qui](https://docs.microsoft.com/it-it/windows/wsl/install), ma per quello che ci serve basta solo questo._
@@ -38,7 +38,7 @@ Per accedere al Subsystem Linux basta solo premere il pulsante blu con le doppie
 ### 3. Setup Linux environment
 
 Aprire un terminale **_bash_** su VS Code (`CTRL`+`ò`) e immetere i seguenti comandi:
-```bash
+```console
 sudo apt-get update
 sudo apt-get install build-essential gdb gcc-multilib musl-dev
 ```
@@ -53,9 +53,8 @@ sudo apt-get install build-essential gdb gcc-multilib musl-dev
 
 ### 5. Configurazione Workspace
 
-> È possibile eseguire la *procedura automatica* che creerà una cartella University (/home/{UniXUser}/University) con tutto il necessario.
-
-> Altimenti seguire la *procedura manuale*.
+> È possibile eseguire la [*procedura automatica*](#procedura-automatica) che creerà una cartella University (/home/{UniXUser}/University) con tutto il necessario. \
+> Altimenti seguire la [*procedura manuale*](#procedura-manuale).
 
 - #### Procedura Automatica
 
@@ -63,14 +62,14 @@ sudo apt-get install build-essential gdb gcc-multilib musl-dev
 
 Cercare su windows "Ubuntu", aprirlo e incollare sul **quel** terminale prima questo codice:
 
-```
+```console
 sudo apt install unzip -y
 ```
 inserire la tua password e poi questo codice:
-```
+```console
 mkdir University
 cd University
-wget "https://github.com/MainKronos/IngegneriaInformatica/raw/master/SECONDO%20ANNO/I%20SEMESTRE/Reti%20Logiche/VSCode%20Setup/setup.zip"
+wget "https://github.com/Guray00/IngegneriaInformatica/raw/master/SECONDO%20ANNO/I%20SEMESTRE/Reti%20Logiche/VSCode%20Setup/setup.zip"
 unzip -q -o setup.zip
 rm setup.zip
 code .
@@ -98,7 +97,7 @@ MyFolder				# Cartella che hai scelto
 Infine aprire la cartella `MyFolder` in VS Code, è importante aprire come directory principale `MyFolder` e non una sua sottodirectory altrimenti non funziona.
 Un modo rapido è eseguire questi comandi:
 
-```bash
+```console
 cd /My/Folder/Location/MyFolder
 code .
 ```
@@ -155,7 +154,3 @@ Per ulteriori informazioni: https://docs.microsoft.com/en-us/visualstudio/debugg
 - ### Voglio anche usare i comandi gdb
 
 Per usare i comandi gdb bisogna prima avviare il debug con almeno un breakpoint inserito (altrimenti non si vede nulla) e poi aprire la schermata debug (`CTRL`+`MAIUSC`+`Y`). A questo punto si può scivere tutti i comandi gdb ma devono essere preceduti da `-exec` (es. `-exec info registers`)
-
-## ~~Problemi Noti~~
-- [x] ~~Quando si esegue un file Assembly, utilizzando il debugger gdb, il terminale viene sempre sporcato dalla scritta simile a questa `[1] + Done                       "/usr/bin/gdb" --interpreter=mi -silent --tty=${DbgTerm} 0<"/tmp/Microsoft-MIEngine-In-crdr2mef.vog" 1>"/tmp/Microsoft-MIEngine-Out-wpbplk44.rbh"`.~~
-- [x] ~~Il ProblemMatcher di VS Code non riesce a individuare tutti gli errori/warning durante la fase di build del file Assembler (ci sto ancora lavorando).~~
