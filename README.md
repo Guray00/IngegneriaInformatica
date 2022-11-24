@@ -7,7 +7,7 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 <p align="center"><b>Quanto fornito è senza alcun scopo di lucro e vuole intendersi unicamente come aiuto per gli studenti</b></p>
 
 
-## Gruppi Telegram
+## Gruppi Telegram 
 Per rendere la comunicazione più efficace, sono stati realizzati gruppi appositi:
 
 ### Principali
