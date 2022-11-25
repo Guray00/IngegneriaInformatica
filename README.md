@@ -65,6 +65,7 @@ A causa del Nuovo Coronavirus 19 le lezioni nel prossimo futuro continueranno ad
 Spesso può fare comodo scaricare una sola cartella, ma ciò non è possibile nativamente. A tal proposito esiste [questo](https://download-directory.github.io/) sito che consente il download una volta specificato l'indirizzo della cartella. 
 
 ## Libri di testo
+
 Di seguito trovate una lista dei libri di testo suggeriti per ogni corso (potrebbe non essere sempre aggiornato, verificare).
 I testi, in base all'esperienza degli studenti, si suddividono in:
 
