@@ -1,4 +1,5 @@
 # Materiale Ingegneria Informatica @ UniPi
+
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
@@ -8,9 +9,11 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 
 
 ## Gruppi Telegram 
+
 Per rendere la comunicazione più efficace, sono stati realizzati gruppi appositi:
 
 ### Principali
+
 - **[ Gruppo Anno 1](https://kutt.it/inginf1)**
 - **[ Gruppo Anno 2](https://kutt.it/inginf2)**
 - **[ Gruppo Anno 3](https://t.me/inginfunipi3)**
