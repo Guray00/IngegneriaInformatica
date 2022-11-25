@@ -57,9 +57,11 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
 
 
 ## Come scaricare le lezioni
+
 A causa del Nuovo Coronavirus 19 le lezioni nel prossimo futuro continueranno ad essere erogate in modalità a distanza. Per questo motivo è stato realizzato un fork che consente di scaricare le registrazioni presenti sulla piattaforma Microsoft Stream. Per ulteriori informazioni sul progetto e sul suo utilizzo trovate [qui](https://github.com//Guray00/destreamer-unipi) tutte le informazioni necessarie.
 
 ## Come scaricare una sola cartella
+
 Spesso può fare comodo scaricare una sola cartella, ma ciò non è possibile nativamente. A tal proposito esiste [questo](https://download-directory.github.io/) sito che consente il download una volta specificato l'indirizzo della cartella. 
 
 ## Libri di testo
