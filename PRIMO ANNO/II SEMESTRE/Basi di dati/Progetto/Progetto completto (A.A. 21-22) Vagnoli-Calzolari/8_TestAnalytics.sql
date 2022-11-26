@@ -1,0 +1,9 @@
+-- TEST ANALYTICS
+
+CALL Analytics1('PVL943J4D0VDC411');
+
+CALL StatoEdificio('PVL943J4D0VDC411');
+CALL Analytics2('PVL943J4D0VDC411', @Risultato1);
+
+CALL StatoEdificio('FIO864T8K5QRG966');
+CALL Analytics2('FIO864T8K5QRG966', @Risultato2);

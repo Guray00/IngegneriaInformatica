@@ -193,6 +193,7 @@ Francesco Boldrini<br>
 Matteo Bernini<br>
 Filippo Brogi<br>
 Davide Bruni<br>
+Federico Calzolari<br>
 Federico Casu<br>
 Federico Cavedoni<br>
 Leonardo Ceccarelli<br>
@@ -246,6 +247,7 @@ Giuseppe Soriano<br>
 Giorgio Charles Sorrentini<br>
 Andrea Trasacco<br>
 Lorenzo Valtriani<br>
+Andrea Vagnoli<br>
 Alessandro Versari<br>
 Sandro Wu<br>
 Francesco Zollo<br><br>
