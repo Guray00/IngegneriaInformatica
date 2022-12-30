@@ -31,7 +31,7 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 
 - http
 
-- web caching
+- web caching (proxy server)
 
 
 ### Applicazioni di rete
