@@ -70,6 +70,7 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
   - come si negoziano i campi inutilizzati _(**L**ink **C**ontrol **P**rotocol)_
   - A cosa servono i byte di flag _(delimitatore del frame)_
   - quale protocollo di negoziazione dei parametri del protocollo IP si usa? _(ICMP)_
+  - bit transaprency
 
 - Slotted e unslotted **ALOHA**
 
@@ -170,6 +171,10 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
   - Come viene garantita la confidenzialità?
   - Qual è la caratteristica della chiave pubblica?
 
+- **Protocollo di autenticazione**
+  - Il professore propone un disegno con uno schema di autenticazione Client-Server ed un insieme di operazioni (invio di usernaame e password da parte del client, concede l'accesso). Il professore chiede dunque se il metodo è 'robusto'. _(non lo è perchè la password viene mandata in chiaro, suscettibile ad attacchi di tipo **Replay**)_
+  - A questo punto chiede quali operazioni possono invece essere fatte per rendere il metodo più sicuro. _(uso del nonce, validità temporale del nonce)_
+  - Chiede ulteriori operazioni per rendere il tutto più sicuro _()
 - 🟨 **IPsec**:
   - come si realizza
   - cosa sono le Security association
@@ -180,7 +185,7 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
   - Da cosa deriva i nome
   -  Ci sono due modi di raffigurarlo, dirli entrambi. (Il secondo dovrebbe essere quello con un ostacolo tra A e C)
   - chi riceve i messaggi se inviati da uno specifico nodo?
-  - come si risolve il problema *(virtual career sensing)* (viene chiesto anche di disegnare un grafico di temporizzazione)
+  - come si risolve il problema _(virtual career sensing, viene chiesto anche di disegnare un grafico di temporizzazione)_
   - Nell'A.A. 22/23 il problema del nodo esposto non è stato trattato, è stato chiesto all'orale ad uno studente che lo ha nominato. Potrebbe essere che lo studente stesse portando il programma dell'anno precedente
 
 - 🟥 protocollo **CSMA/CA**:
@@ -227,7 +232,7 @@ La prima parte dell'esame consiste nella discussione del progetto, alcune delle 
 
 - quali sono i requisiti per essere connessi ad internet? 
 
-- da dove si vede se abbiamo accesso al router di default? Qual è il suo ip? (vediamo dal file persistente in `/etc/network/interfaces` oppure col comando `ip route show`)
+- da dove si vede se abbiamo accesso al router di default? Qual è il suo ip? (vediamo dal file di configurazione persistente in `/etc/network/interfaces` oppure col comando `ip route show`)
 
 - da dove si vede se il dns è configurato? (guardare in `/etc/resolv.conf` per vedere se impsotato il dns server e `nslookup dominio` per testare  un dominio in particolare)
 
@@ -287,6 +292,7 @@ La prima parte dell'esame consiste nella discussione del progetto, alcune delle 
 
 -  **apache2**: 
    - struttura
+   - virtual hosts
    - come farlo partire
    - come si implementa
    - a cosa serve il virtual host
