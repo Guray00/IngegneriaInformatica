@@ -36,8 +36,8 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 
 ### Applicazioni di rete
 - 🟥 **CS** e **P2P**:
-  - differenze, pro e contro
-  - esempio file grande F, calcolare l'asintoto orizzontale nel caso P2P
+  - differenze, pro e contro, caratteristiche del Server _(capacità computazionale, molta banda, elevati tempi online)_, caratteristiche del peer _(i peer non devono necessariamente avere ricchezza di risorse)_
+  - esempio file grande F, calcolare l'asintoto orizzontale nel caso P2P _(anche con schema di connessione)_
   - In che senso noi intendiamo che un dispositivo può essere client o server? (Un dispositivo si dice che è server se in esso gira il processo server)
   - I peer devono essere sempre attivi? (NO)
   - È più vantaggioso utilizzare un approccio client-server o peer to peer per inviare un file? Qual è l’istante iniziale?(Quando il file viene messo a disposizione). E l’istante finale? 
@@ -87,7 +87,12 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 
 
 ### Internetworking
-- 🟧 protocollo **DHCP**: 
+- Assegnazione di indirizzi IP
+  - Differenza tra assegnazione statica e dinamica
+  - Vantaggi dell'assegnazione dinamica _(riutilizzo degli indirizzi IP; comodità dell'assegnazione automatica; cambio di rete implica cambio di indirizzo, con assegnazione statica non potrei farlo)_
+  - Questa domanda porta successivamente alla discussione del **DHCP**
+
+- 🟧 protocollo **DHCP**:
   - specificare i messaggi scambiati
   - schema di come  un host richiede e riceve un ip _(4 handshake)_
   - come avviene la comunicazione
@@ -97,8 +102,8 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
   - a cosa serve _(assegnare un ip pubblico a più host privati)_
   - per quale scopo è stato pensato _(ridurre il numero di ip necessari)_
   - disegno di cosa succede quando si utilizza il nat  
-  - limiti _(limite massimo connessioni dovuto alle porte del router, è un router nel mezzo per cui violata connessione end-to-end, la soluzione migliore è usare IPv6)_
-  - come si implementa 
+  - limiti _(limite massimo connessioni dovuto alle porte del router; è un router nel mezzo per cui violata connessione end-to-end, la soluzione migliore è usare IPv6)_
+  - come si implementa? dove si trova il NAT Server?
   - situazione particolare in cui questo meccanismo potrebbe non bastare e come si risolve _(se la richiesta parte dall'esterno potrebbe mancare l'associazione porta-ip privato, si può risolvere effettuando un port mapping manuale con iptables aggiungendo la regola)_
 
 
@@ -107,6 +112,9 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 - 🟥 **chiusura/apertura** connessione **TCP**: 
 	- come funziona
 	- perché il numero di sequenza iniziale è casuale _(per evitare che il client si connetta, chiuda la connessione e poi la riapra subito dopo ed allora nei buffer interni vi rimangono ancora vecchi dati)_
+	- Cosa succederebbe se invece venissero usati gli stessi numeri di sequenza? _(se un numero di sequenza non viene inviato nella 'vecchia' connessione, potrebbe essere interpreato come pacchetto dati della 'nuova connessione'. ovviamente è una situazione da evitare)_
+	- Uso del timer nella chiusura TCP 
+	- Se il server non è nelle condizioni di poter chiudere immediatamente la connessione, ad esempio perchè potrebbe avere ancora dati da inviare, come bisogna comportarsi? _(il server invia ACK, finisce di mandare i dati e poi manda FIN)_
 
 - 🟨 **Affidabilità** protocollo **TCP**:
   - come viene garantita _(ARQ e RTT stimato)_
@@ -152,10 +160,13 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
   - con chiave simmetrica e KDC _(**K**ey **D**istribution **C**enter)_
 
 - 🟨 **PGP** _(Pretty Good Privacy)_
-
-- 🟨 confidenzialità dei messaggi (?)
+  - che servizi offre? _(confidenzialità, integrità del messaggio, autenticazione del mittente)_
+  - come viene garantita l'autenticazione
 
 - 🟨 **SSL** _(**S**ecure **S**ocket **L**ayer)_ 
+  - A che livello è implementata? _(applicazione)_
+  - che servizi implementa questa libreria? _(autenticazione, integrità del messaggio, confidenzialità del messaggio)_
+  - Come viene garantita la confidenzialità?
   - Qual è la caratteristica della chiave pubblica?
 
 - 🟨 **IPsec**:
@@ -164,11 +175,12 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 
 
 ### Wireless and Mobile Network
-- 🟥 problema del **nodo nascosto** e **esposto** _(con precisione, anche su cosa sono i cerchi dei disegni)_ : 
+- 🟥 problema del **nodo nascosto** e **esposto**  _(con precisione, anche su cosa sono i cerchi dei disegni)_ : 
   - Da cosa deriva i nome
   -  Ci sono due modi di raffigurarlo, dirli entrambi. (Il secondo dovrebbe essere quello con un ostacolo tra A e C)
   - chi riceve i messaggi se inviati da uno specifico nodo?
-  - come si risolve il problema *(virtual career sensing)*
+  - come si risolve il problema *(virtual career sensing)* (viene chiesto anche di disegnare un grafico di temporizzazione)
+  - Nell'A.A. 22/23 il problema del nodo esposto non è stato trattato, è stato chiesto all'orale ad uno studente che lo ha nominato. Potrebbe essere che lo studente stesse portando il programma dell'anno precedente
 
 - 🟥 protocollo **CSMA/CA**:
   - specificare i passaggi
@@ -189,6 +201,7 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 ## Domande Pistolesi
 
 ### Progetto
+#### Progetto 2021/2022
 La prima parte dell'esame consiste nella discussione del progetto, alcune delle domande potrebbero riguardare:
 - motivare alcune scelte nel progetto
 - motivare la scelta di UDP, se utilizzato
@@ -198,9 +211,12 @@ La prima parte dell'esame consiste nella discussione del progetto, alcune delle 
 - Che svantaggio avresti avuto usando quelli non bloccanti?
 - Hai creato una lista di peer, dà una minore robustezza in caso di crash del server, perché? È colpa della lista?
 - in caso di caduta di un device cosa succede? 
+- come rilevo la caduta di un device? (segnali, recv...) anche nel caso di connessione **non aperta**
+- in caso di caduta del server, come viene gestita la cronologia dei messaggi nello stesso? 
 - Il fatto di mantenere sempre la connessione con il server che vantaggi e svantaggi ha?
 - Come avresti fatto per implementarlo con UDP?
-- nel progetto ci sono parti in cui è utile gestire la mutua esclusione?
+- nel progetto ci sono parti in cui è utile gestire la mutua esclusione, o leggere e scrivere concorrentemente in una stessa risorsa/area di memoria?
+- Come implementeresti un meccanismo alternativo per la gestione delle disconnessioni improvvise? [l'uso dei segnali sembra essere una risposta gradita]
 
 
 ### Parte teorica
@@ -280,4 +296,5 @@ La prima parte dell'esame consiste nella discussione del progetto, alcune delle 
 
 - tipi certificati perchè si usano, come fare se non li uso? 
 	i 2 host usano un protocollo di testo per scambiarsi i dati perchè convertendo i numeri in testo il char è sempre rappresentato con 1 byte non serve la certificazione
+
 
