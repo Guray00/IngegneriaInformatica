@@ -79,6 +79,7 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 - 🟨 formato **frame ethernet**: 
   - come è formato
   - dimensione _(almeno 64byte)_
+  - perchè la dimensione minimna del frame non è 0?
 
 - 🟥 **CSMA/CD ethernet**: 
 	- tempi sui segnali del mezzo
@@ -191,6 +192,7 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 
 - 🟥 **mobile ip**: 
   - Cosa vuol dire che cambia il punto di accesso? 
+  - Schema e significato dei suoi elementi
   - Come possiamo permettere le continuità del servizio in caso di mobilita? (fare disegno del problema con le parti in causa)
   - Come viene gestito lo spostamento nelle due modalità di routing indiretto e diretto?
   - Quale approccio utilizza il mobile ip? _(indiretto)_
@@ -208,6 +210,7 @@ La prima parte dell'esame consiste nella discussione del progetto, alcune delle 
 - perché sono stati utilizzati i thread nel progetto, se presenti
 - perchè si è utilizzato la select, se presente
 - Perché hai scelto di usare socket bloccanti con la IO-multiplexing?
+- Perchè IO-Multiplexing e non select?
 - Che svantaggio avresti avuto usando quelli non bloccanti?
 - Hai creato una lista di peer, dà una minore robustezza in caso di crash del server, perché? È colpa della lista?
 - in caso di caduta di un device cosa succede? 
