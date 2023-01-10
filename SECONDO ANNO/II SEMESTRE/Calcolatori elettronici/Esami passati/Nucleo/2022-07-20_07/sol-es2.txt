@@ -1,0 +1,104 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2022-07-20
+struct des_chan {
+	natl mutex;
+	natl sync;
+	char *buf;
+	natl quanti;
+};
+//   SOLUZIONE 2022-07-20 )
+// ( SOLUZIONE 2022-07-20
+	natl mutex;
+	natl nchan;
+	des_chan chan[MAX_CHAN];
+//   SOLUZIONE 2022-07-20 )
+// ( SOLUZIONE 2022-07-20
+extern "C" void c_ceread(natl id, natl n, char *buf, natl quanti)
+{
+	if (id >= next_ce) {
+		flog(LOG_WARN, "dispositivo %d non esistente", id);
+		abort_p();
+	}
+
+	if (!access(buf, quanti, true, true)) {
+		flog(LOG_WARN, "parametri non validi: %p, %d", buf, quanti);
+		abort_p();
+	}
+
+	des_ce *c = &array_ce[id];
+
+	if (n >= c->nchan) {
+		flog(LOG_WARN, "numero di canale %d non valido", n);
+		abort_p();
+	}
+
+	des_chan *ch = &c->chan[n];
+	sem_wait(ch->mutex);
+	ch->buf = buf;
+	ch->quanti = quanti;
+	sem_wait(c->mutex);
+	natw ctl = inputb(c->iCTL);
+	natw mask = 1 << n;
+	outputb(ctl | mask, c->iCTL);
+	sem_signal(c->mutex);
+	sem_wait(ch->sync);
+	sem_signal(ch->mutex);
+}
+
+extern "C" void estern_ce(int id)
+{
+	des_ce *c = &array_ce[id];
+
+	for (;;) {
+		natb n = inputb(c->iCHN);
+		des_chan *ch = &c->chan[n];
+		ch->quanti--;
+		if (ch->quanti == 0) {
+			sem_wait(c->mutex);
+			natw ctl = inputb(c->iCTL);
+			ctl &= ~(1 << n);
+			outputb(ctl, c->iCTL);
+			sem_signal(c->mutex);
+		}
+		char b = inputb(c->iRBR);
+		*ch->buf++ = b;
+		if (ch->quanti == 0) {
+			sem_signal(ch->sync);
+		}
+		wfi();
+	}
+}
+//   SOLUZIONE 2022-07-20 )
+// ( SOLUZIONE 2022-07-20
+		ce->mutex = sem_ini(1);
+		ce->nchan = inputb(ce->iCHN);
+		for (natl i = 0; i < ce->nchan; i++) {
+			ce->chan[i].mutex = sem_ini(1);
+			ce->chan[i].sync = sem_ini(0);
+		}
+//   SOLUZIONE 2022-07-20 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2022-07-20
+	fill_io_gate	IO_TIPO_CEREAD	a_ceread
+//   SOLUZIONE 2022-07-20 )
+// ( SOLUZIONE 2022-07-20
+	.extern	c_cedmaread
+a_ceread:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_ceread
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2022-07-20 )
+
+
