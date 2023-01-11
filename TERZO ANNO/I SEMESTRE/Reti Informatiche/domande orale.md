@@ -2,13 +2,14 @@
 <div align="center">
 Di seguito è presente una lista di domande poste dai professori G. Anastasi e F. Pistolesi durante gli esami di Reti Informatiche.
 <br>
-<b>aggiornato al:</b> <i>02/11/2022</i>
+<b>aggiornato al:</b> <i>10/01/2023</i>
 </div>
 <details>
   <summary>Credits</summary>
   <i>Hanno contribuito:<br>
   	 <ul> 
 	 	<li>M. Lampis</li>
+    <li>G. E. Loni</li>
 	 </ul>
   </i>
 </details>
@@ -223,8 +224,11 @@ La prima parte dell'esame consiste nella discussione del progetto, alcune delle 
 - in caso di caduta del server, come viene gestita la cronologia dei messaggi nello stesso? 
 - Il fatto di mantenere sempre la connessione con il server che vantaggi e svantaggi ha?
 - Come avresti fatto per implementarlo con UDP?
-- nel progetto ci sono parti in cui è utile gestire la mutua esclusione, o leggere e scrivere concorrentemente in una stessa risorsa/area di memoria?
+- 🟥 nel progetto ci sono parti in cui è utile gestire la mutua esclusione, o leggere e scrivere concorrentemente in una stessa risorsa/area di memoria?
 - Come implementeresti un meccanismo alternativo per la gestione delle disconnessioni improvvise? [l'uso dei segnali sembra essere una risposta gradita]
+
+#### Progetto 2022/2023
+- 🟥 nel progetto ci sono parti in cui è utile gestire la mutua esclusione, o leggere e scrivere concorrentemente in una stessa risorsa/area di memoria?
 
 
 ### Parte teorica
@@ -286,7 +290,7 @@ La prima parte dell'esame consiste nella discussione del progetto, alcune delle 
 
 - **firewall**: cos'è, dove posso trovarlo, a cosa serve, e come si configura
 
-- **iptables**: esempio, come aggiungere un record alla tabella
+- **iptables**: esempio, come aggiungere un record alla tabella, bloccare tutte le connessioni verso siti web
 
 - **NAT** e **PAT**: esempio con inserimento di una regola in una chain, a cosa servono, come funzionano
 
