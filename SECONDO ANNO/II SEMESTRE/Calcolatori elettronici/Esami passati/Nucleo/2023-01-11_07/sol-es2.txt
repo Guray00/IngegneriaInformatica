@@ -1,0 +1,69 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2023-01-11
+// cerca block nella buffer cache e restituisce
+// il puntatore al buf_des che lo contiene, o
+// nullptr se non lo trova
+buf_des* bufcache_search(natl block)
+{
+	des_ata *d = &hd;
+
+	for (int i = 0; i < MAX_BUF_DES; i++) {
+		buf_des *b = &d->bufcache[i];
+		if (b->full && b->block == block)
+			return b;
+	}
+	return nullptr;
+}
+//   SOLUZIONE 2023-01-11 )
+// ( SOLUZIONE 2023-01-11
+	sem_wait(d->mutex);
+	for (natl i = 0; i < quanti; i++) {
+		// cerchiamo il blocco nella buffercache. Se non lo
+		// troviamo rimpiazziamo l'lru
+		buf_des *b = bufcache_search(primo + i);
+		if (!b) {
+			b = &d->bufcache[d->lru];
+			starthd_in(d, b->buf, primo + i, 1);
+			sem_wait(d->sincr);
+			b->block = primo + i;
+			b->full = true;
+		}
+		memcpy(vetti + i * DIM_BLOCK, b->buf, DIM_BLOCK);
+		// ora b è l'mru
+		bufcache_promote(b);
+	}
+	sem_signal(d->mutex);
+//   SOLUZIONE 2023-01-11 )
+// ( SOLUZIONE 2023-01-11
+	sem_wait(d->mutex);
+	starthd_out(d, vetto, primo, quanti);
+	for (natl i = 0; i < quanti; i++) {
+		// politica write-through/no-allocate: scriviamo sull'hard disk
+		// in ogni caso e in buffercache solo se il blocco è presente
+		buf_des *b = bufcache_search(primo + i);
+		if (b) {
+			memcpy(b->buf, vetto + i * DIM_BLOCK, DIM_BLOCK);
+			// c'è stato un accesso al buffer e dobbiamo promuoverlo
+			bufcache_promote(b);
+		}
+	}
+	sem_wait(d->sincr);
+	sem_signal(d->mutex);
+//   SOLUZIONE 2023-01-11 )
+// ( SOLUZIONE 2023-01-11
+	// conviene inserire anche i buffer vuoti nella coda LRU (in un ordine
+	// qualsiasi), in modo da non dover considerare a parte il caso di
+	// buffer vuoto.
+	d->lru = d->mru = -1;
+	for (int i = 0; i < MAX_BUF_DES; i++) {
+		buf_des *b = &d->bufcache[i];
+		b->full = false;
+		b->next = b->prev = -1;
+		bufcache_promote(b);
+	}
+//   SOLUZIONE 2023-01-11 )
+
+
