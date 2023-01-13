@@ -184,6 +184,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 **Collaboratori Materiale**
 
+Sara Aliani<br>
 Taulant Arapi<br>
 Luca Arduini<br>
 Giulio Bello<br>
@@ -227,6 +228,7 @@ Federico Matteoni<br>
 Alessio Meini<br>
 Tommaso Molesti<br>
 Alex Moriconi</br>
+Federico Nardi<br>
 Dario Paroli<br>
 Alex Parri<br>
 Martina Panico<br>
