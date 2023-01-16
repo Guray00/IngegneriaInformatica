@@ -71,12 +71,12 @@ Le principali differenze emergono in diversi aspetti:
 * **Gestione**: i peer non garantiscono la loro presenza costante, una velocità di connessione adeguata e generalmente non implementano misure di sicurezza molto robuste, al contrario dei server che invece sono macchine performanti, sempre online e con importanti misure di sicurezza [firewall, autenticazione...]
 ### Caso di invio/trasmissione di file in entrambe le architetture
 Poniamo il caso di dover inviare un file di dimensione F ad N dispositivi. Poniamo alcuni dati:
-* $U~s~$, velocità di upload del **server**
-* $U~i~$, veolcità di upload del **peer**
-* $D~i~$, velocità di download del **peer i-esimo**
+* $U_{s}$, velocità di upload del **server**
+* $U_{i}$, veolcità di upload del **peer**
+* $D_{i}$, velocità di download del **peer i-esimo**
 
 Il tempo impiegato dal server per inviare a tutti i client è pari a NF/U~s~, mentre il tempo necessario per ricevere il file è F/D~i~.
-Di conseguenza il tempo necessario per la distribuzione del file ad N client è pari a $$\max\left\{\frac{NF}{U~s~}, \frac{F}{D~i}F\right\}$$ 
+Di conseguenza il tempo necessario per la distribuzione del file ad N client è pari a $$ \max\left\{\frac{NF}{U~s~}, \frac{F}{D~i}F\right\} $$ 
 
 che, per N->∞, è lineare. 
 Nel caso P2P abbiamo invece:
