@@ -76,7 +76,7 @@ Poniamo il caso di dover inviare un file di dimensione F ad N dispositivi. Ponia
 * $D_{i}$, velocità di download del **peer i-esimo**
 
 Il tempo impiegato dal server per inviare a tutti i client è pari a $\frac{NF}{U_{s}}$, mentre il tempo necessario per ricevere il file è$\frac{F}{D_{i}}$.
-Di conseguenza il tempo necessario per la distribuzione del file ad N client è pari a $$ \max\left\{\frac{NF}{U_{s}}, \frac{F}{D_{i}}\cdot F\right\} $$ 
+Di conseguenza il tempo necessario per la distribuzione del file ad N client è pari a $$ \max{\frac{NF}{U_{s}}, \frac{F}{D_{i}}\cdot F} $$ 
 
 che, per N->∞, è lineare. 
 Nel caso P2P abbiamo invece:
@@ -85,7 +85,7 @@ Nel caso P2P abbiamo invece:
 * $\frac{N F}{(U_{s} +Ʃ U_{i})}$, tempo per scaricare N copie usando upload massimo. Si noti che il denominatore può essere assunto come $(U_{s} + N \cdot U_{medio})$
 
 
-Dunque il tempo necessario del file sotto le medesime condizioni è: $$\max\left\{\frac{F}{U_{s}}, \frac{F}{min(D_{i})}, \frac{NF}{(U_{s} + N \cdot U_{medio})}\right\}$$ che, per N->∞, è pari a 
+Dunque il tempo necessario del file sotto le medesime condizioni è: $$max {\frac{F}{U_{s}}, \frac{F}{min(D_{i})}, \frac{NF}{(U_{s} + N \cdot U_{medio})}}$$ che, per N->∞, è pari a 
 $$\frac {F}{U_{medio}}$$.
 Se ne deduce che **asintoticamente** il paradigma P2P è migliore in fase di invio di file.
 
