@@ -76,7 +76,7 @@ Poniamo il caso di dover inviare un file di dimensione F ad N dispositivi. Ponia
 * $D_{i}$, velocità di download del **peer i-esimo**
 
 Il tempo impiegato dal server per inviare a tutti i client è pari a $\frac{NF}{U_{s}}$, mentre il tempo necessario per ricevere il file è$\frac{F}{D_{i}}$.
-Di conseguenza il tempo necessario per la distribuzione del file ad N client è pari a $$ max{\frac{NF}{U_{s}}, \frac{F}{D_{i}}\cdot F} $$ 
+Di conseguenza il tempo necessario per la distribuzione del file ad N client è pari a $$max {\frac{NF}{U_{s}}, \frac{F}{D_{i}}}$$ 
 
 che, per N->∞, è lineare. 
 Nel caso P2P abbiamo invece:
