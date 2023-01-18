@@ -123,7 +123,7 @@ Il procedimento è dunque il seguente: all'inizio un peer contatta il tracker e 
 
 ## Data Link Layer
 ### PPP (Point-to-Point Protocols)
-I **PPP** è un protocollo del tipo Data-link che permette la comunicazione tra due elementi, un mittente e un destinatario. Esso prevede:
+I **PPP** è un protocollo del livello Data-link che permette la comunicazione tra due elementi, un mittente e un destinatario. Esso prevede:
 * **Packet framing**: permette di incapsulare i datagrammi del livello di rete nel livello Data-link. In questo modo è possibile implementare tutti i protocolli del livello di rete;
 * **Bit transparency**: è possibile inviare bit arbitrari, senza che questi vengano modificati o interpretati;
 * **Error detection**, ma non la error correction(che può comunque essere implementata a livello di rete);
@@ -152,6 +152,15 @@ Il **byte stuffing** è una tecnica che permette di inserire nel frame dei bit d
  **01111110** -> **01111110 01111101**
  In questo modo il destinatario, che riceve la sequenza **01111110 01111101**, può distinguere il primo byte di controllo, che rimuove, dal secondo, che mantiene.
 
+### Link Control 
+Utilizzato per permettere agli endpoint di negoziarealcune configurazioni, come:
+* massima dimensione del frame;
+* un metodo di autenticazione;
+* scambio e configurazione di indirizzi IP;
+
+In particolare, le prime due configurazioni vengono negoziate tramite il **L**ink **C**ontrol **P**rotocol (LCP), mentre l'ultimo tramite il **I**nternet **P**rotocol **C**ontrol **P**rotocol (IPCP).
+
+
 ### Slotted e Unslotted ALOHA
 #### Slotted ALOHA
 Il **Slotted ALOHA** è un protocollo di accesso al mezzo che permette di gestire la collisione tra più trasmissioni. Per ipotesi supponiamo che i frame siano tutti della stessa dimensione, e che il mezzo sia in grado di trasmettere un frame alla volta. Di conseguenza possiamo immaginare di dividere il mezzo in slot temporali, in modo da poter trasmettere un frame per volta. Il protocollo è implementato nel seguente modo:
@@ -178,7 +187,7 @@ $$p_{eff} \approx 0.37$$
 che è pari ad un'efficienza del mezzo pari al 37%.  
 
 #### Unslotted ALOHA
-Viene eliminata la sincronizzazione dei nodi,: ciò comporta una maggiore probabilità di collisione, in quanto un frame inviato all'istante t_0_ può collidere con i frame inviati nella finestra temporale [t_0_, t_0_ + T]. La sua efficenza è quindi:
+Viene eliminata la sincronizzazione dei nodi,: ciò comporta una maggiore probabilità di collisione, in quanto un frame inviato all'istante t_0_ può collidere con i frame inviati nella finestra temporale $[t_{0}-1, t_{0}+1]$. La sua efficenza è quindi:
 $$p_{eff} = p  (1-p)^{2(N-1)}$$
 e quindi:
 $$p_{eff} =  \frac{1}{2e}$$
@@ -206,10 +215,10 @@ Si può quindi facilmente calcolare che la dimensione minima di un frame etherne
 #### CSMA/CD in Ethernet
 Si compone dei seguenti passaggi:
 1. La scheda di rete riceve i dati dal layer di rete, e forma il frame;
-2. Se il canale è rilevato come libero per un tempo di 96 bit, allora inizia la trasmissione del frame. Se il canale è occupato, si aspetta che sia libero per 96 bit, e poi si ripete il passaggio 2;
+2. Se il canale è rilevato come libero per un tempo di 96 bit, allora inizia la trasmissione del frame. Se il canale è occupato, si aspetta che sia libero per 96 bit, e poi si ripete il passaggio 2. Logicamente, il bit time è dipende dalla velocità di trasmissione del cavo;
 3. Se il frame viene inviato interamente con successo, allora passo al frame successivo;
 4. Se viene rilevata una collisione, si abortisce la trasmissione e si invia un jam signal, per un tempo di 48 bit.
-5. Dopo aver interrotto una trasmissione, attendo per un _exponential backoff_: all'n-esima collisione si sceglie un K appartenente all'insieme {0, 1, ..., 2^m^ - 1}, con m = min {n, 10}, e si attende K * 512 bit[ovvero la grandezza minima di un frame ethernet] prima di tornare al punto 1.
+5. Dopo aver interrotto una trasmissione, attendo per un _exponential backoff_: all'n-esima collisione si sceglie un K appartenente all'insieme {$0, 1, ..., 2^{m} - 1$}, con m = min {n, 10}, e si attende K * 512 bit, ovvero la grandezza minima di un frame ethernet, prima di tornare al punto 1.
 
 L'**exponential backoff** è un metodo per adattarsi al carico di trasmissione del mezzo, in modo da evitare collisioni. Se infatti il carico è alto, allora si attende più tempo prima di riprovare a trasmettere, in modo da non avere collisioni. Se il carico è basso, allora si attende meno tempo, in modo da non perdere tempo. Dopo 17 collisioni tuttavia il frame viene scartato.
 
@@ -219,27 +228,27 @@ L'**exponential backoff** è un metodo per adattarsi al carico di trasmissione d
 Il **protocollo DHCP** è un protocollo applicativo di livello 5 (applicazione) basato su UDP, che viene realizzato attraverso il _four-way-handshake_.
 Anche se distribuiamo indirizzi IP, il protocollo **NON** è di livello 3.
 Vengono infatti inviati in tutto 4 messaggi che sono rispettivamente:
-  1. **DHCP DISCOVER**, inviato dal client dalla porta 68, avendo quindi come IP sorgente 0.0.0.0:68, in broadcast alla porta 67 255.255.255.255:67. Il messaggio contiene inoltre due campi yiaddr, posto a 0.0.0.0, e il Transaction ID, generato casualmente
-  2. **DHCP OFFER**, inviato dal server DHCP, porta 67, in broadcast, porta 68 255.255.255.255:68. In questo modo anche il client che ha fatto richiesta, che ancora non possiede un indirizzo, è in grado di ricevere il messaggio monitorando tale porta. Stavolta il campo yiaddr contiene un indirizzo, che è quello che il server DHCP sta offrendo, mentre il Transaction ID è uguale al precedente. Un ulteriore campo, detto lifetime, contiene la durata temporale dell'associazione Host-IP
-   3. **DHCP REQUEST**, inviato dal client, che avrà ancora 0.0.0.0:68 come IP sorgente e 255.255.255.255:67 come IP destinatario. Il campo yiaddr conterrà l'indirizzo che ha ricevuto e che sta accettando. Riporterà inoltre il campo Lifetime e il Transaction ID, incrementato di 1
+  1. **DHCP DISCOVER**, inviato dal client dalla porta 68, avendo quindi come IP sorgente 0.0.0.0:68, in broadcast alla porta 67, dunque 255.255.255.255:67. Il messaggio contiene inoltre due campi _yiaddr_, posto a 0.0.0.0, e il Transaction ID, generato casualmente
+  2. **DHCP OFFER**, inviato dal server DHCP, porta 67, in broadcast, sulla porta 68 . In questo modo anche il client che ha fatto richiesta, che ancora non possiede un indirizzo, è in grado di ricevere il messaggio monitorando tale porta. Stavolta il campo _yiaddr_ contiene un indirizzo, che è quello che il server DHCP sta offrendo, mentre il Transaction ID è uguale al precedente. Un ulteriore campo, detto _lifetime_, contiene la durata temporale dell'associazione Host-IP
+   3. **DHCP REQUEST**, inviato dal client, che avrà ancora 0.0.0.0:68 come IP sorgente e 255.255.255.255:67 come IP destinatario. Il campo _yiaddr_ conterrà l'indirizzo che ha ricevuto e che sta accettando. Riporterà inoltre il campo _lifetime_ e il Transaction ID, incrementato di 1
    4. **DHCP ACK**, che è sostanzialmente uguale al DHCP OFFER, ma con il Transaction ID incrementato
    
 Il campo **lifetime** viene utilizzato per permettere il recupero, e dunque il riutilizzo, degli indirizzi non più utilizzati. Difatti prima della scadenza un host può 'rinnovare' la propria presenza e mantenere l'assegnazione IP-Host. In caso contrario, tale indirizzo potrà nuovamente essere riassegnato, il tutto senza bisogno che il client avvisi il server della disconnessione.
 Oltre all'indirizzo IP, il protocollo si occupa di configurare tutto il necessario per la connessione, come il server DNS, il gateway e la subnet mask.
 
 ### NAT
-Il **NAT**, **Network Address Translation**, è un meccanismo implementato nei router che permette l'uso di un solo IP pubblico per un'intera sottorete, fungendo da intermediario tra una rete locale e Internet.
+Il **NAT**, **Network Address Translation**, è un meccanismo implementato nei router che permette l'uso di un solo IP pubblico per un'intera sottorete, e dunque per tutti i dispositivi ad essa connessi, fungendo da intermediario tra una rete locale e Internet.
 Immaginiamo di avere appunto una rete composta da alcuni dispositivi che posseggono tutti un proprio indirizzo privato, valido solo all'interno di tale rete. La comunicazione tra tali dispositivi non rappresenta un problema, facendo parte della stessa rete, mentre la situazione cambia quando devono comunicare con dispositivi al di fuori della sottorete: il router infatti rifiuta di instradare pacchetti con al loro interno degli indirizzi IP privati.
 Il NAT in sostanza modifica l'indirizzo privato sorgente del dispositivo che vuole comunicare all'esterno con quello assegnato alla rete, ed eventualmente anche la porta, creando una entry in una speciale tabella di traduzione, a cui associa la tupla **_<source IP, porta sorgente>_** alla tupla **_<public IP, porta router>_**. In questo modo quando il router riceverà un pacchetto su una porta, potrà consultare la tabella, verificare se il pacchetto è destinato ad un host sulla rete privata, e modificherà eventualmente l'IP e la porta con quelle corrispondenti nella tabella di traduzione, per poi instradarlo nella rete locale
 I principali vantaggi sono:
-* **Economici**, infatti consente l'utilizzo di un solo indirizzo IP pubblico per una intera sottorete, rendendo necessaria l'acquisizione di solo uno di essi
-* **Sicurezza**, poichè gli indirizzi privati vengono nascosti da quello pubblico condiviso dalla rete. Questo permette sia di non instradare pacchetti direttamente verso gli Host, e rende più difficile per eventuali attaccanti individuare e attaccare i dispositivi nella sottorete
-* **Scalabilità**, in quanto l'aggiunta di nuovi dispositivi è semplice, non richiede sforzi onerosi e utilizza protocolli già eventualmente implementati, come ad esempio il DHCP che non NON va in conflitto con il NAT
+* **Economicità**, infatti consente l'utilizzo di un solo indirizzo IP pubblico per una intera sottorete, rendendo necessaria l'acquisizione di solo uno di essi;
+* **Sicurezza**, poichè gli indirizzi privati vengono nascosti da quello pubblico condiviso dalla rete. Questo permette sia di non instradare pacchetti direttamente verso gli Host, e rende più difficile per eventuali attaccanti individuare e attaccare i dispositivi nella sottorete;
+* **Scalabilità**, in quanto l'aggiunta di nuovi dispositivi è semplice, non richiede sforzi onerosi e utilizza protocolli già eventualmente implementati, come ad esempio il DHCP, che non **NON** va in conflitto con il NAT.
   
 Dall'altra parte, abbiamo anche degli svantaggi:
-* **Difficoltà in connessioni P2P**, infatti potrebbe non essere presenti entry nella tabella di traduzione nel caso di connessioni "in entrata". Una soluzione potrebbe essere quella di creare manualmente una entry permanente nella tabella, o sfruttare un ibrido C-S/P2P come nel caso di Skype, dove il server fornisce ai client tutte le informazioni per instauare una connessione P2P
-* **Numero di porte limitato**: esse sono poco più di 60.000, quindi in ogni caso non sarà possibile avere più di quel numero di connessioni simultanee 
-* **Layer di lavoro**: di fatto il NAT lavora nel router, che è un dispositivo di livello 3, e va a modificare informazioni del layer di livello 4, violando la connessione end-to-end. Questo di fatto non è uno svantaggio,difatti non presenta potenziali problemi in fase di utilizzo, ma una controversia riguardante i vari Layer e la loro 'autonomia'. La soluzione a tale controversia sarebbe l'implementazione del protocollo IPV6
+* **Difficoltà in connessioni P2P**, infatti potrebbero non essere presenti entry nella tabella di traduzione nel caso di connessioni "in entrata". Una soluzione potrebbe essere quella di creare manualmente una entry permanente nella tabella, o sfruttare un ibrido C-S/P2P come nel caso di Skype, dove il server fornisce ai client tutte le informazioni per instauare una connessione P2P;
+* **Numero di porte limitato**: esse sono poco più di 60.000, quindi in ogni caso non sarà possibile avere più di quel numero di connessioni simultanee dalla stessa sottorete;
+* **Layer di lavoro**: di fatto il NAT lavora nel router, che è un dispositivo di livello 3, e va a modificare informazioni del layer di livello 4, violando la connessione end-to-end. Questo di fatto non è uno svantaggio,difatti non presenta potenziali problemi in fase di utilizzo, ma una controversia riguardante i vari Layer e la loro 'autonomia'. La soluzione a tale controversia sarebbe l'implementazione del protocollo IPV6.
     
 
 ## Transport Layer
@@ -262,7 +271,7 @@ Il frame TCP è composto da:
   * **SYN**: synchronize, 1 bit;
   * **FIN**: finish, 1 bit;
 * **Receive Window**: dimensione della finestra di ricezione, 16 bit;
-* **checksum**: controllo della valifità del segmento, 16 bit;
+* **checksum**: controllo della validità del segmento, 16 bit;
 * **URG Pointer**: puntatore urgente, 16 bit;
 * **Options**: lunghezza variabile, poco usato;
 * **Payload**: dati da trasferire, lunghezza variabile da 20 a 60 byte.
@@ -282,7 +291,7 @@ La chiusura della connessione TCP avviene in tali fasi:
 2. Il server risponde con ACK attivo ed eventualmente i dati che ancora deve inviare. Successivamente chiude la connessione e invia un pacchetto TCP con il flag FIN impostato ad 1.
 3. Il client, ricevuto quest'ultimo pacchetto, risponde con ACK attivo, e chiude la connessione.
 
-Se il FIN del server non riceve risposta, lo stesso provvede a rinviarlo: siaa il client che il server rimangono dunque in attessa della conferma della chiusura della connessione.
+Se il FIN del server non riceve risposta, lo stesso provvede a rinviarlo: sia il client che il server rimangono dunque in attessa della conferma della chiusura della connessione.
 
 #### Affidaibilità della connessione TCP
 IL TCP crea un servizio affidabile usando uno schema ARQ: Acknowledgements, Retransmission e Timeout. Quest'ultimo elemento è il più complesso da considerare, perchè ovviamente non è possibile calcolarlo a priori, specialmente se esso dipende dai router intermedi che sono fuori dal controllo degli host. Ci si basa dunque su delle stime che considerano l'RTT degli ultimi pacchetti inviati, e l'ACK relativo agli stessi. Si usa, in sostanza, una media esponenziale mobile:
@@ -309,7 +318,7 @@ Gli scenari di ritrasmissione sono i seguenti:
 
 Ogni volta che si effettua si raddoppia il timeout (risulta dunque essere esponenziale), che è in realtà una tecnica di controllo della congestione, in quanto aspettiamo a reinviare un pacchetto evitando di congestionare una rete che potenzialmente potrebbe esserlo.
 
-##### Fast Retransmit
+#### Fast Retransmit
 In caso di ricezione di ACK cumulativi in cui però uno è mancante, allora possiamo implementare una politica che ci permette di reinviare il pacchetto mancante, senza attendere il timeout. Questo avviene in particolare alla ricezione di 3 ACK duplicati (cioè 4 ACK dello stesso segmento). Si noti che TCP non è ne Go-Back-N ne Selective Repeat, ma un protocollo ibrido in quanto ritrasmette dal primo segmento senza ACK, e non N segmenti indietro, pur non prevedendo l'ACK dei singoli segmenti.
 
 #### Il ricevitore
@@ -339,12 +348,12 @@ Abbiamo congestione quando troppe sorgenti inviano troppi dati troppo velocement
 * **End-to-end**: il trasmettitore adatta la sua trasmissione solo quando si hanno perdite di pacchetti e rallentamenti. Questo approccio conservativo è quello implementato da TCP.
 
 
-##### End-to-end congestion control in TCP
+#### End-to-end congestion control in TCP
 L'obiettivo della tecnica è fare in modo che tutte le sorgenti inviino dati il più velocemente possibile, senza che la rete si congestioni.
 Per limitare il rate di trasmissione possiamo diminuire il numero di byte inviati nella stessa finestra temporale, abbassando il numero di segmenti non ACKati ad un valore detto _cwnd_ (congestion window), tale che
 $$LastByteSent - LastByteAcked ≤ cwnd$$
 Il valore è in realtà il minimo tra la dimensione della _congestion window_ e la dimensione della _receiver window_. Possiamo dunque affermare che il _cwnd_ è un valore dinamico che cambia a seconda della congestione della rete.
-Il TCP, per accorgersi della presenza di una congestione, fa uso di ACK e dei segmenti perduti: se ho ottenuto ACK allora non c'è congestione, e posso continuare ad inviare ad un ritmo sostenuto, provando anche ad aumentarlo; di contro se ci sono segmenti persi, si assume che ciò sia dovuto alla congestione della reted e quindi si abbassa il ritmo di trasmissione.
+Il TCP, per accorgersi della presenza di una congestione, fa uso di ACK e dei segmenti perduti: se ho ottenuto ACK allora non c'è congestione, e posso continuare ad inviare ad un ritmo sostenuto, provando anche ad aumentarlo; di contro se ci sono segmenti persi, si assume che ciò sia dovuto alla congestione della rete e quindi si abbassa il ritmo di trasmissione.
 L'algoritmo di _congestion control_ ha come idea di fare _probing_ della bandwith:
 * quando **ricevo** ACK incremento il rateo della trasmissione;
 * quando invece **perdo** segmenti, abbasso il rateo della trasmissione.
@@ -364,11 +373,11 @@ Meccanismo usato per garantire l'integrità di un messaggio. Il MAC è un valore
 * faccio l'hash della nuova combinazione.
 
 #### Prevenzione del record&playback attack con MAC
-Il record&playback attack è un attacco che consiste nel registrare un messaggio e riprodurlo in seguito, per poi inviarlo al destinatario. Il problema è che il messaggio viene inviato con la stessa data e ora di quando è stato registrato, e quindi il destinatario non può capire se il messaggio è stato registrato e riprodotto o se è stato inviato in tempo reale. Per ovviare a questo problema, si può aggiungere al messaggio una data e ora di invio, che viene calcolata dal mittente e che viene aggiunta al messaggio prima di calcolare il MAC. In questo modo il destinatario può verificare se il messaggio è stato inviato in tempo reale (decidendo anche un'eventuale tolleranza) o se è stato registrato e riprodotto. In alternativa, si può aggiungere al messaggio un nonce, ovvero un numero casuale che viene generato dal mittente, sempre diverso per ogni messaggio, e che viene aggiunto al messaggio prima di calcolare il MAC. In questo modo non si possono utilizzare messaggi registrati in precedenza, poichè il nonce è diverso per ogni messaggio.
+Il _record&playback_ attack è un attacco che consiste nel registrare un messaggio e riprodurlo in seguito, per poi inviarlo al destinatario. Il problema è che il messaggio viene inviato con la stessa data e ora di quando è stato registrato, e quindi il destinatario non può capire se il messaggio è stato registrato e riprodotto o se è stato inviato in tempo reale. Per ovviare a questo problema, si può aggiungere al messaggio una data e ora di invio, che viene calcolata dal mittente e che viene aggiunta al messaggio prima di calcolare il MAC. In questo modo il destinatario può verificare se il messaggio è stato inviato in tempo reale (decidendo anche un'eventuale tolleranza) o se è stato registrato e riprodotto. In alternativa, si può aggiungere al messaggio un nonce, ovvero un numero casuale che viene generato dal mittente, sempre diverso per ogni messaggio, e che viene aggiunto al messaggio prima di calcolare il MAC. In questo modo non si possono utilizzare messaggi registrati in precedenza, poichè il nonce è diverso per ogni messaggio.
 
 ### Firma digitale
-Si tratta del corrispondente digitale della firma cartacea. Deve necessariamente rispettare queste proprietaà:
-* **verificabile**: chi riceve il messaggio deve poter verificare che sia stato firmato dal mittente;
+Si tratta del corrispondente digitale della firma cartacea. Deve **necessariamente** rispettare tutte queste proprietà:
+* **verificabilità**: chi riceve il messaggio deve poter verificare che sia stato firmato dal mittente;
 * **non ripudiabilità**: il mittente non può negare di aver firmato il messaggio;
 * **non forgiaibilità**: nessuno può firmare un messaggio al posto di un altro;
 * **integrità del messaggio**: il messaggio non può essere alterato senza che la firma venga invalidata.
@@ -379,7 +388,7 @@ Il protocollo di firma digitale è composto dalla parte di firma e dalla parte d
 * **generazione della chiave pubblica e privata**: la chiave pubblica viene inviata al mittente, mentre la chiave privata viene tenuta segreta;
 * **generazione del messaggio**: il mittente genera il messaggio che vuole firmare;
 * **generazione hash del messaggio**: il mittente calcola l'hash del messaggio;
-* **firma dell'hash**: il mittente firma l'hash del messaggio con la sua chiave privata. Questo perchè sarebbe troppo dispendioso calcolare l'hash ddell'intero messaggio;
+* **firma dell'hash**: il mittente firma l'hash del messaggio con la sua chiave privata. Questo perchè sarebbe troppo dispendioso calcolare l'hash dell'intero messaggio;
 * **concatenazione**: il mittente concatena il messaggio con la firma.
   
 La parte di verifica è composta da:
@@ -442,7 +451,7 @@ I **nonce** sono utilizzati per evitare attacchi di tipo _reply_: cambiando il n
 
 ### IPSEC
 IPSEC è un servizio di sicurezza che opera a livello di rete. Si basa su un insieme di protocolli che permettono di garantire la sicurezza dei pacchetti IP. Questi offrono autenticazione e integrità, mentre la confidenzialità dipende dallo specifico protocollo.
-Prendiamo in analisi l'**ESP**(Encapsulating Security Protocol), che è un protocollo di sicurezza che si basa su un protocollo di autenticazione e cifratura, in un caso reale di utilizzo in una VPN.
+Prendiamo in analisi l'**ESP**(Encapsulating Security Protocol), che è un protocollo di sicurezza che si basa su autenticazione e cifratura, in un caso reale di utilizzo in una VPN.
 Una VPN sfrutta l'internet pubblica per creare una rete privata tra alcuni nodi: la connessione tra due entità di questa rete è detta _Secure Association_. Se ci sono N nodi nella rete, ci saranno 2 + 2N _Secure Associations_. Ogni nodo, per far funzionare il meccanismo, mantiene in memoria, in particolare dentro il **SAD** [Security Association Database], queste informazioni:
 *  **Security Parameter Index**, che individua la SA che l'host sta gestendo, 32 bit;
 *  **IP dell'interfaccia di origine**
@@ -471,7 +480,7 @@ Il padding è aggiunto, se necessario, per permettere l'uso di algoritmi di cifr
 Il nome deriva dal fatto di avere tre ricestrasmettitori (A, B, C), e che due di essi vogliano entrambi comunicare con il terzo. Supponiamo che A e C vogliamo dunque comunicare con B: quest'ultimo riceverà i segnali di A e C, che non vedranno la collisione. Solo B vedrà la collisione, e rende inutile anche l'operazione di _carrier sensing_ di coloro che trasmettono, e dunque non sarà possibile effettuare una sua mitigazione. Questo problema si presenta anche quando si ha un ostacolo che rende impossibile la comunicazione. La tecnica usata per risolvere questo problemaa è il **Virtual Carrier Sense** (VCS), contrapposto al _sensing fisico_.
 
 ### Virtual Carrier Sense
-Viene eseguita una sorta di prenotazione del mezzo di comunicazione. Supponiamo che un nodo voglia trasmettere: andrà ad ascoltare il canale; nel caso in cui sia libero per un tempo _DIFS_, allora invierà un pacchetto _RTS_ (Request To Send)_, che viene ricevuto sia dalla stazione base che da quelle vicine. Tutti coloro che vedono tale pacchetto imposterà un timer, detto _NAV RTS_ (Network Allocation Vector RTS), per un tempo pari a quello contenuto nel campo _duration_ del pacchetto RTS. Dopo un tempo _SIFS_ la stazione base procederà a rispondere con un pacchetto _CTS_ (Clear To Send): anche questo pacchetto contiene un campo _duration_, minore del valore contenuto in _RTS_. Esso farà partire il timer _NAV CTS_, anche a coloro che non avevano sentito in precedenza il _NAV RTS_. Quando la sorgente recepisce il CTS, fa ACK della trasmissione, attende un tempo _SIFS_ e successivamente inizia a trasmettere il frame. Una volta terminata la trasmissione, attende un tempo _SIFS_ e fa ACK della ricezione. ITutti i nodi vedranno quindi il termine della trasmissione, attenderanno  un tempo _DIFS_ e successivamente un altro timer di backoff scelto randomicamente. 
+Viene eseguita una sorta di prenotazione del mezzo di comunicazione. Supponiamo che un nodo voglia trasmettere: andrà ad ascoltare il canale; nel caso in cui sia libero per un tempo _DIFS_, allora invierà un pacchetto _RTS_ (Request To Send), che viene ricevuto sia dalla stazione base che da quelle vicine. Chiunque ascolti tale pacchetto imposterà un timer, detto _NAV RTS_ (Network Allocation Vector RTS), per un tempo pari a quello contenuto nel campo _duration_ del pacchetto RTS. Dopo un tempo _SIFS_ la stazione base procederà a rispondere con un pacchetto _CTS_ (Clear To Send): anche questo pacchetto contiene un campo _duration_, minore del valore contenuto in _RTS_. Esso farà partire il timer _NAV CTS_, anche a coloro che non avevano sentito in precedenza il _NAV RTS_. Quando la sorgente recepisce il CTS, fa ACK della trasmissione, attende un tempo _SIFS_ e successivamente inizia a trasmettere il frame. Una volta terminata la trasmissione, attende un tempo _SIFS_ e fa ACK della ricezione. Tutti i nodi vedranno quindi il termine della trasmissione, attenderanno  un tempo _DIFS_ e successivamente un altro timer di backoff scelto randomicamente. 
 E' importante notare come la collisione è ancora presente, nel caso specifico in cui due nodi inviano RTS nello stesso momento. Esso tuttavia è pensato per essere abbastanza piccolo da rendere minore possibile la probabilità di collisione e soprattutto, anche se dovesse accadere, verrebbe perso solo il tempo relativo a RTS, che è appunto abbastanza piccolo.
 Tra i contro di questo protocollo c'è indubbiamente l'aumento di overhead in preparazione alla trasmissione vera e propria: per tale motivo questo non viene usato nel caso in cui la dimensione del frame sia paragonabile a quella del pacchetto RTS; verrà infatti inviato direttamente il frame.
 
@@ -485,9 +494,9 @@ Il punto del protocllo _CSMA/CA_ è quello di **prevenire** le collissioni (che 
 2. se ciò accade, allora inizia a trasmettere il frame;
 3. subito dopo la ricezione del frame, il destinatario mute da ricezione a trasmissione, entro un tempo _SIFS_ (Switching time) tale che _SIFS_ < _DIFS_;
 4. invia un ack al mittente.
-  
+
 _SIFS_ deve **necessariamente** essere minore di _DIFS_ altrimenti un nodo potrebbe rilevare il mezzo come libero, e potrebbe trasmettere un frame, mentre il mittente originale sta ancora aspettando l'ACK.
-Inoltre il protocollo permette di evitare la collisione tra due frame che vengono inviati dopo aver osservato il mezzo libero per un tempo _DIFS_ grazie ad un backoff time scelto casualmente, da aggiungere al _DIFS_ di attesa del punto 1. Se infatti viene rilevato l'uso del mezzo durante il tempo di backoff, il timer viene congelato, e verrà risvegliato dopo la fine della trasmissione e l’ attesa del nuovo periodo DIFS. Come tempo di backoff si sceglie un numero random di slot da aspettare in [0, CW-1]. Inizialmente CW vale cwim (standard del protocollo), quando si ha un ACK mancante si raddoppia CW fino ad arrivare a CWmax. Questo protocollo tuttavia non ci risolve il problema del nodo nascosto: se i due nodi che vogliono comunicare non si vedono tra di loro ognuno vedrà il canale libero ed andrà a trasmettere causando una collisione in ricezione sull’access point.
+Inoltre il protocollo permette di evitare la collisione tra due frame che vengono inviati dopo aver osservato il mezzo libero per un tempo _DIFS_ grazie ad un backoff time scelto casualmente, da aggiungere al _DIFS_ di attesa del punto 1. Se infatti viene rilevato l'uso del mezzo durante il tempo di backoff, il timer viene congelato, e verrà risvegliato dopo la fine della trasmissione e l’ attesa del nuovo periodo DIFS. Come tempo di backoff si sceglie un numero random di slot da aspettare in [0, CW-1]. Inizialmente CW vale _cwim_ (standard del protocollo), quando si ha un ACK mancante si raddoppia CW fino ad arrivare a _CWmax_. Questo protocollo tuttavia non ci risolve il problema del nodo nascosto: se i due nodi che vogliono comunicare non si vedono tra di loro ognuno vedrà il canale libero ed andrà a trasmettere causando una collisione in ricezione sull’access point.
 
 ### Mobile IP
 Introduciamo il concetto di mobilità: un host è in grado di spostarsi nel mentre che esso è connesso ad una rete, ha le sue connessioni TCP con un server, etc...
@@ -502,7 +511,7 @@ Nell'ultimo caso non possiamo pensare di gestire il tutto tramite una continua c
 Definiamo alcuni elementi: 
 * **home agent**: è il router che si occupa di gestire la mobilità dell'host mobile, e si trova nella home network;
 * **home network**: è la rete in cui si trova inizialmente l'host mobile; **permanent address**: è l'indirizzo IP che l'home agent ha nella home network;
-* **foreing agent**: è il router in cui si trova attualemnte l'host mobile, diversa dalla home network;
+* **foreing agent**: è il router in cui si trova attualemnte l'host mobile, diversa dalla home network.
 
 Partiamo dalle cose che **NON** possiamo fare: non possiamo annunciare attraverso i protocolli di routing lo spostamento dell'host, perchè il routing funziona sulla base della rete e non del singolo host. La situazione deve inevitabilmente essere gestita dall'home agent e dall'host. Quando l'host mobile si sposta nella _foreing network_, contatta il _foreing agent_ e gli dice di regitrarlo presso l'_home agent_. Il _foreing agent_ contatta quindi l'home agent, avvisandolo che se dovessero arrivare pacchetti diretti verso l'host mobile, essi dovranno essere reindirizzati verso la nuova rete. Tutti coloro che inviano all'host pacchetti non sono a conoscenza dello spostamento, e continuerà ad inviare i pacchetti allo stesso indirizzo; questa tecnica è quindi trasparente rispetto ai mittenti dei pacchetti verso l'host mobile. In caso di nuovo spostamento, c'è ovviamente bisogno di una nuova registrazione: il rischio è che se gli spostamenti sono molto frequenti, sarebbe più il tempo utilizzato per notificare lo spostamento rispetto a quello di permanenza nella rete stessa. Il lato negativo di questa strategia è che esiste la possibilità che il traffico venga triangolato anche quando ciò è inutile ed evitabile. Questo fenomeno è detto _triangolo di routing_. In conclusione, possiamo affermare che questa strategia è quella utilizzata di default da Mobile IP.
 
