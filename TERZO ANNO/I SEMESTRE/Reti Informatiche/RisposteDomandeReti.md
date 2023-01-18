@@ -201,7 +201,7 @@ L'**Ethernet** è un protocollo **connectionless** di livello 2, non affidabile,
 * **dati**: i dati propri del protocollo di livello superiore, campo di lunghezza variabile che può essere di 46 byte al minimo e di 1500 byte al massimo;
 * **CRC**, 4 byte per l'error detection, ma non la correction.
   
-Si può quindi facilmente calcolare che la dimensione minima di un frame ethernet è di 64 byte, ovvero 512 bit, mentre la dimensione massima è di 1518 byte.
+Si può quindi facilmente calcolare che la dimensione minima di un frame ethernet è di 64 byte (8 byte di Preamble, 6 byte per l'indirizzo sorgente, 46 byte di dati, 4 byte di CRC), ovvero 512 bit, mentre la dimensione massima è di 1518 byte.
 
 #### CSMA/CD in Ethernet
 Si compone dei seguenti passaggi:
