@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lamg="it-IT">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            body
+            {
+                display: flex;
+                justify-content: center;
+            }
+            section
+            {
+                width: 100%;
+                min-height: 350px;
+                margin: 15px;
+                padding: 15px;
+            }
+            #inserisci
+            {
+                background-color: lightblue;
+            }
+            #appuntamenti
+            {
+                background-color: lightyellow;
+            }
+            #istogramma
+            {
+                background-color: pink;
+                display: flex;
+            }
+            #error_msg
+            {
+                padding: 20px;
+                position: absolute;
+                background-color: white;
+                border: 3px solid black;
+                display: none;
+                margin-top: 20px;
+            }
+            .nomegiorno
+            {
+                height: 20px;
+                margin-bottom: 2px;
+            }
+            .barra
+            {
+                width: 0px;
+                height: 20px;
+                background-color: blue;
+                margin-bottom: 2px;
+            }
+            .wrong
+            {
+                border: 2px solid red;
+            }
+            table
+            {
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            td
+            {
+                border: 1px solid black;
+                padding: 3px;
+            }
+            .full_day
+            {
+                background-color: orange;
+            }
+            .full
+            {
+                background-color: red;
+            }
+            input[type="text"], input[type="tel"]
+            {
+                width: 130px;
+                box-sizing: border-box;
+                margin-bottom: 5px;
+                padding: 5px;
+            }
+            select
+            {
+                background-color: white;
+                border: 1px solid gray;
+            }
+            label
+            {
+                width: 100px;
+                display: inline-block;
+            }
+            button
+            {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "error_msg">Per tale giorno ci sono già troppi appuntamenti</div>
+        <section id="inserisci">
+            <label for="nome">Nome</label>
+            <input placeholder = "Mario" id="nome" type="text">
+            <br>
+            <label for="cognome">Cognome</label>
+            <input placeholder = "Rossi" id="cognome" type="text">
+            <br>
+            <label for="telefono">Telefono</label>
+            <input placeholder = "555776688" id="telefono" type="tel">
+            <br>
+            <label for="giorno" multiple>Giorno</label>
+            <select id="giorno">
+                <option value = "Lun">Lunedì</option>
+                <option value = "Mar">Martedì</option>
+                <option value = "Mer">Mercoledì</option>
+                <option value = "Gio">Giovedì</option>
+                <option value = "Ven">Venerdì</option>
+                <option value = "Sab">Sabato</option>
+                <option value = "Dom">Domenica</option>
+            </select>
+            <br>
+            <button id="inserisci_butt">Inserisci</button>
+        </section>
+        <section id="appuntamenti">
+            <input name = "ordina" id = "ordina_nome" type = "radio">
+            <label for = "ordina_nome">Nome</label>
+            <br>
+            <input name = "ordina" id = "ordina_cognome" type = "radio">
+            <label for = "ordina_cognome">Cognome</label>
+        </section>
+        <section id="istogramma">
+            <div id="nomegiorni">
+                <div class="nomegiorno">Lun</div>
+                <div class="nomegiorno">Mar</div>
+                <div class="nomegiorno">Mer</div>
+                <div class="nomegiorno">Gio</div>
+                <div class="nomegiorno">Ven</div>
+                <div class="nomegiorno">Sab</div>
+                <div class="nomegiorno">Dom</div>
+            </div>
+            <div id="barre"><div class="barra" id="Lun"></div><div class="barra" id="Mar"></div><div class="barra" id="Mer"></div><div class="barra" id="Gio"></div><div class="barra" id="Ven"></div><div class="barra" id="Sab"></div><div class="barra" id="Dom"></div></div>
+        </section>
+
+        <script>
+            let app = new Array();
+            let giorni = {Lun: 0, Mar: 0, Mer: 0, Gio: 0, Ven: 0, Sab: 0, Dom: 0};
+            document.getElementById("inserisci_butt").onclick = inserisci;
+            document.getElementById("nome").onchange = check_nome;
+            document.getElementById("cognome").onchange = check_cog;
+            document.getElementById("telefono").onchange = check_telefono;
+            document.getElementById("ordina_nome").onchange = riordina;
+            document.getElementById("ordina_cognome").onchange = riordina;
+            
+            function check_nome_cog_str(str)
+            {
+                if(str.length == 0)
+                    return false;
+                for(let i = 0; i < str.length; i++)
+                {
+                    let a = str[i];
+                    if(i == 0)
+                    {
+                        if(a < 'A' || a > 'Z')
+                            return false;
+                    }
+                    else
+                    {
+                        if(a < 'a' || a > 'z')
+                            return false;
+                    }
+                }
+                return true;
+            }
+            function check_nome()
+            {
+                let nome = document.getElementById("nome").value;
+                if(check_nome_cog_str(nome))
+                {
+                    document.getElementById("nome").classList.remove("wrong");
+                    return true;
+                }
+                document.getElementById("nome").classList.add("wrong");
+                return false;
+            }
+            function check_cog()
+            {
+                let cog = document.getElementById("cognome").value;
+                if(check_nome_cog_str(cog))
+                {
+                    document.getElementById("cognome").classList.remove("wrong");
+                    return true;
+                }
+                document.getElementById("cognome").classList.add("wrong");
+                return false;
+            }
+            function check_telefono()
+            {   
+                let str = document.getElementById("telefono").value;
+                if(str.length != 9)
+                {
+                    document.getElementById("telefono").classList.add("wrong");
+                    return false;
+                }
+                for(let i = 0; i < 9; i++)
+                {
+                    let a = str[i];
+                    if(a < '0' || a > '9')
+                    {
+                        document.getElementById("telefono").classList.add("wrong");
+                        return false;
+                    }
+                }
+                document.getElementById("telefono").classList.remove("wrong");
+                return true;
+            }
+            function Appuntamento(nome, cognome, telefono, giorno)
+            {
+                this.nome = nome;
+                this.cognome = cognome;
+                this.telefono = telefono;
+                this.giorno = giorno;
+                return this;
+            }
+            function error()
+            {
+                document.getElementById("error_msg").style.display = "block";
+                setTimeout(function(){document.getElementById("error_msg").style.display = "none";}, 3000)
+            }
+            function inserisci()
+            {
+                let n = check_nome();
+                let c = check_cog();
+                let t = check_telefono();
+                if(!n || !c || !t)
+                    return;
+                let nome = document.getElementById("nome").value;
+                let cognome = document.getElementById("cognome").value;
+                let telefono = document.getElementById("telefono").value;
+                let giorno = document.getElementById("giorno").value;
+                if(giorni[giorno] == 5)
+                {
+                    error();
+                    return;
+                }
+                giorni[giorno]++;
+                app.push(new Appuntamento(nome, cognome, telefono, giorno));
+                display_app();
+                let b = document.getElementById("barre").firstChild;
+                while(b)
+                {
+                    if(giorni[b.id] == 5)
+                        b.classList.add("full");
+                    b.style.width = giorni[b.id] * 20 + "px";
+                    b = b.nextSibling;
+                }
+                document.getElementById("nome").value = "";
+                document.getElementById("cognome").value = "";
+                document.getElementById("telefono").value = "";
+            }
+            function riordina()
+            {
+                ordina();
+                display_app();
+            }
+            function ordina()
+            {
+                if(document.getElementById("ordina_nome").checked)
+                {
+                    app.sort(function(a, b){
+                        if(a.nome > b.nome)
+                            return 1;
+                        return -1;
+                    })
+                    return;
+                }
+                if(document.getElementById("ordina_cognome").checked)
+                {
+                    app.sort(function(a, b){
+                        if(a.cognome > b.cognome)
+                            return 1;
+                        return -1;
+                    })
+                    return;
+                }
+            }
+            function display_app()
+            {
+                ordina();
+                if(document.getElementById("app_tab"))
+                    document.getElementById("appuntamenti").removeChild(document.getElementById("app_tab"))
+                let table = document.createElement("table");
+                table.id = "app_tab";
+                for(let i = 0; i < app.length; i++)
+                {
+                    let r = document.createElement("tr");
+
+                    let nome = document.createElement("td");
+                    nome.textContent = app[i].nome;
+                    r.appendChild(nome);
+                    let cog = document.createElement("td");
+                    cog.textContent = app[i].cognome;
+                    r.appendChild(cog);
+                    let tel = document.createElement("td");
+                    tel.textContent = app[i].telefono;
+                    r.appendChild(tel);
+                    let giorno = document.createElement("td");
+                    giorno.textContent = app[i].giorno;
+                    r.appendChild(giorno);
+                    if(giorni[app[i].giorno] == 5)
+                        r.classList.add("full_day");
+                    table.appendChild(r);
+                }
+                document.getElementById("appuntamenti").appendChild(table);
+            }
+        </script>
+    </body>
+</html>
