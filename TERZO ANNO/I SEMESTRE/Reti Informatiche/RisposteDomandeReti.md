@@ -1,8 +1,8 @@
 Documento redatto basandosi su [questa](https://github.com/drw0if/Appunti/tree/main/Reti_informatiche) dispensa, le diapositive di [Anastasi](https://github.com/Guray00/IngegneriaInformatica/tree/master/TERZO%20ANNO/I%20SEMESTRE/Reti%20Informatiche/Diapositive%20Anastasi) e di [Pistolesi](http://docenti.ing.unipi.it/f.pistolesi/teaching.html). Alcune risposte sono state elaborate a partire da alcune query di richiesta a [ChatGPT](https://chat.openai.com/chat). Le domande sono quelle presenti nel file [DomandeReti.md](https://github.com/Guray00/IngegneriaInformatica/blob/master/TERZO%20ANNO/I%20SEMESTRE/Reti%20Informatiche/domande%20orale.md), non è da considerarsi esaustivo e/o completo in ogni sua parte. 
 
-## Anastasi
-### Applicazioni di Rete
-#### DNS
+# Anastasi
+## Applicazioni di Rete
+### DNS
 E un protocollo di **risoluzione** di indirizzi che opera con UDP, per garantire **reattività**, che opera sulla porta 53. Permette la **traduzione di indirizzi simbolici** [es. google.it] nel loro indirizzo IP corrispondente [es. 64.233.167.99]. Per richiedere la registrazione di un indirizzo ci si rivolge ad un _register_, che aggiungerà i record necessari al suo database. Tra gli altri servizi, il DNS offer tra gli altri:
 * **traduzione** da hostname ad indirizzo IP;
 * **host aliasing**, ovver la traduzione da un _hostname_ ad uno _canonico_;
@@ -11,20 +11,19 @@ E un protocollo di **risoluzione** di indirizzi che opera con UDP, per garantire
 
 Ovviamente non esiste un solo server DNS, che risulterebbe essere un _single point of failure_ per l'intera rete mondiali, ma ne sono presenti 13, detti _root server_, che a loro volta hanno dei server 'regionali' per servire meglio le richiesta da una o l'altra parte del mondo. Esistono inoltre i **TLD server**, ovvero i Top-Level-Domain server, che gestiscono tutti i domini di primo livello [.com, .org etc] e quelli relativi ai paesi [.it, .uk etc]. Abbiamo poi gli **Authoritative server**, che si occupano di risolvere tutti i sottodomini di un dominio, e sono comuni all'interno di organizzazioni e server provider.
 Nella realtà i client contattano i **local DNS server**, i quali risolvono la richiesta contattando altri server DNS agendo come proxy e implementando un sistema di cache. La risoluzione può avvenire in due modi: iterativamente o ricorsivamente.
-###### Risoluzione Iterativa
+##### Risoluzione Iterativa
 In ordine accade ciò:
 1. Il client chiede la local server DNS la risoluzione di un indirizzo
 2. Il local DNS server contatta il root DNS per ottenere l'indirizzo del TLD Server responsabile del dominio richiesto
 3. Il local DNS contatta il TLD server che risponde con l'IP dell'authoritative server che gestice l'indirizzo
 4. Contatta quest'utlimo server che risolve infine l'indirizzo richiesto dal client
 
-###### Risoluzione ricorsiva
+##### Risoluzione ricorsiva
 In questo metodo le singole richieste non vengono effettuate tutte dal local DNS, ma dal server contattato che a sua volta restituisce il risultato a chi ha fatto richiesta, fino a tornare al client, proprio come un algoritmo ricorsivo. Si noti che in questo modo il carico sui server intermedi, che generalmente sono abbstaza liberi, aumenta.
 
-###### Cache  e Record di un server DNS
+##### Cache  e Record di un server DNS
 Ogni server, compreso l'host stesso, ha la propria cache, la cui vita utile è generalmente di 2 giorni. In particolare, i TLD sono cachati nei locale DNS perchè sono tutte le richieste verso lo stesso TLD DNS server. 
-La struttura di un record DNS è del tipo:
-        _<name, value, type, ttl>_
+La struttura di un record DNS è del tipo _<name, value, type, ttl>_.
 Il campo _ttl_ è il Time-To-live, cioè il tempo per il quale la entry è valida. 
 Il campo _type_ assume diversi valori con diversi significati:
 * **tipo A**: in questo caso il campo _name_ contiene l'hostname, mentre _value_ contiene l'indirizzo IP;
@@ -33,8 +32,8 @@ Il campo _type_ assume diversi valori con diversi significati:
 * **tipo MX**: MX sta per Mail eXchange, _name_ contiene il dominio, _value_ il nome canonico del mailserver associato al dominio 
 
 ### HTTP
-E' il protocollo usato per  la navigazione sul web. Una pagina web è formata da alcuni elementi, che viene scaricata quando richiesta, e al suo interno avrà dei collegamenti, detti URL, per accedere ad altre risorse presenti nel server contattato. Ha un **approccio Client-Server**, dove il client è il browser di un utente, che comunica attraverso la porta 80 via TCP. Il protocollo è _stateless_, dunque ogni richiesta è a sè stante, rendendo incorrelabili tra loro richieste al server fatto dallo stesso client: in tal modo il protocollo è più semplice, ma lascia dello spazio di azione per implementare politiche di _riconciliazione_ tra client e server.
-Può essere **persistente** quando permette lo scambio di più oggetti sulla stessa connessione, di contro sarà **non persistente** quando al massimo un solo oggetto viene scambiato durante la connessione.
+E' il protocollo usato per  la navigazione sul web. Una pagina web è formata da alcuni elementi, viene scaricata quando richiesta, e al suo interno avrà dei collegamenti, detti URL, per accedere ad altre risorse presenti nel server contattato. Ha un **approccio Client-Server**, dove il client è il browser di un utente, che comunica attraverso la porta 80 via TCP. Il protocollo è _stateless_, dunque ogni richiesta è a sè stante, rendendo incorrelabili tra loro richieste al server fatto dallo stesso client: in tal modo il protocollo è più semplice, ma lascia dello spazio di azione per implementare politiche di _riconciliazione_ tra client e server.
+Può essere **persistente** quando permette lo scambio di più oggetti sulla stessa connessione; di contro sarà **non persistente** quando al massimo un solo oggetto viene scambiato durante la connessione.
 
 ##### Formnato del messaggio HTTP
 Il messaggio HTTP è composto da una riga di intestazione, che contiene informazioni sul messaggio stesso, e da un corpo, che contiene il messaggio vero e proprio. Il formato è il seguente:
@@ -65,52 +64,52 @@ I cookie possono contenere, tra le altre cose, informazioni di autenticazione, p
 ### Web cache - Proxy
 Un proxy è un server, solitamente installato dagli ISP, che si mette tra il client e il server, e che memorizza le risorse scaricate, in modo da poterle servire in caso di richieste future. Questo permette di **ridurre il carico** sul server, e di velocizzare la navigazione. Il proxy server si comporta dunque in realtà **sia come client**, quando chiede al server se le sue risorse sono aggiornate, **sia come server**, quando serve le risorse ai client. 
 
-### Paradigmi Client-Server e Peer2Peer
-##### Principali differenze, pro e contro di ognuno
-Il **paradigma Client-Server** si serve di una macchina nel quale gira il processo Server, detta anch'essa Server, che fornisce i servizi ai dispositivi che li richiedono, detti client. Il servizio dunque viene erogato fintanto che il server è raggiungibile.
+## Paradigmi Client-Server e Peer2Peer
+### Principali differenze, pro e contro di ognuno
+Il **paradigma Client-Server** si serve di una macchina nel quale gira il processo Server, detta anch'essa Server, che fornisce i servizi ai dispositivi che li richiedono, detti client. Il servizio dunque viene erogato fintanto che il server è **raggiungibile**.
 Il **paradigma Peer to Peer** invece fa affidamento ad una rete in cui i dispositivi possono fungere sia da client che da server, all'evenienza, detti appunto peer, che comunicano tra loro senza bisogno di un server centrale.
 Le principali differenze emergono in diversi aspetti:
 * **Scalabilità**: un'architettura P2P è più facilemente scalabile, poichè sarebbe sufficiente aggiungere dei peer alla rete, che sono di fatto dispositivi da normali prestazioni, mentre nell'altro caso aumentare la potenza di calcolo, la memoria di un server o addirittura aggiungerne di nuovi può essere economicamente impegnativo.
 * **Gestione**: i peer non garantiscono la loro presenza costante, una velocità di connessione adeguata e generalmente non implementano misure di sicurezza molto robuste, al contrario dei server che invece sono macchine performanti, sempre online e con importanti misure di sicurezza [firewall, autenticazione...]
-#### Caso di invio/trasmissione di file in entrambe le architetture
+### Caso di invio/trasmissione di file in entrambe le architetture
 Poniamo il caso di dover inviare un file di dimensione F ad N dispositivi. Poniamo alcuni dati:
-* $U_{s}$, velocità di upload del **server**
-* $U_{i}$, veolcità di upload del **peer**
-* $D_{i}$, velocità di download del **peer i-esimo**
+* $U_{s}$, velocità di upload del **server**;
+* $U_{i}$, veolcità di upload del **peer**;
+* $D_{i}$, velocità di download del **peer i-esimo**.
 
 Il tempo impiegato dal server per inviare a tutti i client è pari a $\frac{NF}{U_{s}}$, mentre il tempo necessario per ricevere il file è $\frac{F}{D_{i}}$.
 Di conseguenza il tempo necessario per la distribuzione del file ad N client è pari a $$max {\frac{NF}{U_{s}}, \frac{F}{D_{i}}}$$ 
 
 che, per N->∞, è lineare. 
 Nel caso P2P abbiamo invece:
-*  $\frac{F}{U_{s}}$, tempo per la prima copia
-* $\frac{F}{min{D_{i}}}$, tempo per caricare il file nel nodo con velocità minore
-* $\frac{N F}{(U_{s} +Ʃ U_{i})}$, tempo per scaricare N copie usando upload massimo. Si noti che il denominatore può essere assunto come $(U_{s} + N \cdot U_{medio})$
+*  $\frac{F}{U_{s}}$, tempo per la prima copia;
+* $\frac{F}{min{D_{i}}}$, tempo per caricare il file nel nodo con velocità minore;
+* $\frac{N F}{(U_{s} +Ʃ U_{i})}$, tempo per scaricare N copie usando upload massimo. Si noti che il denominatore può essere assunto come $(U_{s} + N \cdot U_{medio})$.
 
 
-Dunque il tempo necessario del file sotto le medesime condizioni è: $$max {\frac{F}{U_{s}}, \frac{F}{min(D_{i})}, \frac{NF}{(U_{s} + N \cdot U_{medio})}}$$ che, per N->∞, è pari a 
-$$\frac {F}{U_{medio}}$$.
+Dunque il tempo necessario del file sotto le medesime condizioni è: $$max {\frac{F}{U_{s}}, \frac{F}{min(D_{i})}, \frac{NF}{(U_{s} + N \cdot U_{medio})}}$$ che, per N->∞, è pari a:
+$$\frac {F}{U_{medio}}$$
 Se ne deduce che **asintoticamente** il paradigma P2P è migliore in fase di invio di file.
 
-#### Databse P2P per la ricerca e l'individuazione di risorse
+### Databse P2P per la ricerca e l'individuazione di risorse
 La filosofia del paradigma P2P è la **struttura decentralizzata**, che potrebbe incontrare delle difficoltà in fase di individuazione delle risorse da reperire. L'idea è quella di creare un database contenente delle tuple _<chiave, valore>_ dove la chiave rappresenta il contenuto messo a disposizione o da individuare, mentre il valore rappresenta l'indirizzo IP del nodo che possiede tale risorsa, in modo che i peer possano consultare questo database e richiedere direttamente la risorsa. Non essendoci però un server centrale, perlomeno nella versione 'pura' del P2P, anche questo metodo potrebbe essere di difficile implementazione.
 
-##### Centralized Index
+#### Centralized Index
 Questo approccio si allontana da un'architettura P2P pura, in quanto prevede l'esistenza di un **server centrale** che possiede tale database e risponda alle query dei peer per la localizzazione delle risorse, mentre lo scambio avviene tra i due Peer. Sono presenti alcune criticità:
 * come qualunque servizio centralizzato, il server costituisce un _single point of failuer_ per il servizio di ricerca della risorsa;
-* performance del server, che potrebbero essere ridotte dato che deve rispondere da solo a tutte le richieste dei perr;
-* responsabilità legali del gestore del server, in caso di problemi di copyright e simili, come nel caso Napster
+* performance del server, che potrebbero essere ridotte dato che deve rispondere da solo a tutte le richieste dei peer;
+* responsabilità legali del gestore del server, in caso di problemi di copyright e simili, come nel caso Napster.
 
-##### Query flooding
+#### Query flooding
 Contrariamente al precedente, questo approccio è completamente **decentralizzato**: in sostanza l'indice è distribuito su tutti i nodi, che sono connessi tra di loro a formare un grafo. La richiesta viene quindi forgiata ed **inviata da un nodo ai suoi adiacenti**, che **a loro volta la invieranno** ai loro adiacenti, per poi tornare indietro una volta che la risorsa viene individuata. Il termine _flooding_ deriva proprio dal fatto che il numero di richieste all'interno della rete è molto elevato; per evitare problemi di prestazioni in caso di reti molto grandi si può fare ricorso alle _limited-scope query_. Questo metodo fa in modo che la richiesta venga propagata un numero limitato di volte, introducendo però di contro la possibilità di incorrere in falsi negtivi. Un'implementazione di questa tecnica era quella presente in **GNUtella**, che faceva uso di una lista di utenti più attivi o di un track server con tutti gli indirizzi dei peer. Per entrare nella rete, un nuovo peer recuperava un piccolo insieme di tali indirizzi, in modo da formare la sua lista di nodi adiacenti stabilendo con loro una connessione TCP. Viene dunque inviato loro un _ping_ settato ad un certo valore, che decresce ogni volta che il messaggio viene propagato; ogni peer che riceve questo ping risponderà a sua volta con un _pong_ con le  informazioni necessarie per instaurare una connessione TCP
 
-##### Ricerca gerarichica
+#### Ricerca gerarichica
 Una soluzione che è un ibrido tra il **query flooding** e il **centralized index**: sono presenti dei _supernodi_, ovvero dei peer con elevata banda e lunghi tempi di permanenza online, che formano una seconda rete tra di loro. Ogni supernodo possiede inoltre una porzione dell'indice. Un peer può connettersi ad uno di questi supernodi per informarli del loro contenuto e per effettuare query di ricerca, che viene propagata eventualmente all'interno della sottorete. Una volta ricevuta risposta, viene instaurata una connessione P2P tra i due peer interessati
 
-##### Distributed hash table
+#### Distributed hash table
 E' la tecnica usata su eMule: si assegna un identificatore di peer nel range [0,2^n-1^], così come le chiavi, che si ottengono passando la chiave di ricerca ad una funzione di hash. Le tuple formate sono associate ai peer in modo che ogni chiave sia associata al peer con l'ID immediatamente successivo, creando di fatto una lista circolare. L'intera lista può essere controllata con complessità O(N), che può scendere a O(logN). La persistenza della lista viene gestita attraverso dei ping che ogni nodo invia periodicamente al suo suo successore e al successore del successore, aggiustando la lista in caso di disconnessioni.
 
-##### BitTorrent
+#### BitTorrent
 Abbiamo dei compiti specifici che possono essere svolti da qualunque nodo della rete:
 * **Torrent server**, mantiene in memoria i file .torrent e permette a chiunque di scaricarli;
 * **Tracker**, server che traccia i peer che fanno parte della rete di distribuzione;
@@ -152,8 +151,8 @@ Il **byte stuffing** è una tecnica che permette di inserire nel frame dei bit d
  **01111110** -> **01111110 01111101**
  In questo modo il destinatario, che riceve la sequenza **01111110 01111101**, può distinguere il primo byte di controllo, che rimuove, dal secondo, che mantiene.
 
-### Link Control 
-Utilizzato per permettere agli endpoint di negoziarealcune configurazioni, come:
+#### Link Control 
+Utilizzato per permettere agli endpoint di negoziare alcune configurazioni, come:
 * massima dimensione del frame;
 * un metodo di autenticazione;
 * scambio e configurazione di indirizzi IP;
@@ -210,7 +209,7 @@ L'**Ethernet** è un protocollo **connectionless** di livello 2, non affidabile,
 * **dati**: i dati propri del protocollo di livello superiore, campo di lunghezza variabile che può essere di 46 byte al minimo e di 1500 byte al massimo;
 * **CRC**, 4 byte per l'error detection, ma non la correction.
   
-Si può quindi facilmente calcolare che la dimensione minima di un frame ethernet è di 64 byte (8 byte di Preamble, 6 byte per l'indirizzo sorgente, 46 byte di dati, 4 byte di CRC), ovvero 512 bit, mentre la dimensione massima è di 1518 byte.
+Si può quindi facilmente calcolare che la dimensione minima di un frame ethernet è di 64 byte (6 byte per l'indirizzo sorgente, 6 byte per l'indirizzo destinatario, 2 byte di tipo,  46 byte di dati, 4 byte di CRC), ovvero 512 bit, mentre la dimensione massima è di 1526 byte.
 
 #### CSMA/CD in Ethernet
 Si compone dei seguenti passaggi:
@@ -220,7 +219,7 @@ Si compone dei seguenti passaggi:
 4. Se viene rilevata una collisione, si abortisce la trasmissione e si invia un jam signal, per un tempo di 48 bit.
 5. Dopo aver interrotto una trasmissione, attendo per un _exponential backoff_: all'n-esima collisione si sceglie un K appartenente all'insieme {$0, 1, ..., 2^{m} - 1$}, con m = min {n, 10}, e si attende K * 512 bit, ovvero la grandezza minima di un frame ethernet, prima di tornare al punto 1.
 
-L'**exponential backoff** è un metodo per adattarsi al carico di trasmissione del mezzo, in modo da evitare collisioni. Se infatti il carico è alto, allora si attende più tempo prima di riprovare a trasmettere, in modo da non avere collisioni. Se il carico è basso, allora si attende meno tempo, in modo da non perdere tempo. Dopo 17 collisioni tuttavia il frame viene scartato.
+L'**exponential backoff** è un metodo per adattarsi al carico di trasmissione del mezzo, in modo da evitare collisioni. Se infatti il carico è alto, allora si attende più tempo prima di riprovare a trasmettere, in modo da non avere collisioni. Se il carico è basso, allora si attende meno tempo, in modo da perderne il meno possibile. Dopo 17 collisioni, tuttavia, il frame viene comunque scartato.
 
 
 ## Internetworking
@@ -228,10 +227,10 @@ L'**exponential backoff** è un metodo per adattarsi al carico di trasmissione d
 Il **protocollo DHCP** è un protocollo applicativo di livello 5 (applicazione) basato su UDP, che viene realizzato attraverso il _four-way-handshake_.
 Anche se distribuiamo indirizzi IP, il protocollo **NON** è di livello 3.
 Vengono infatti inviati in tutto 4 messaggi che sono rispettivamente:
-  1. **DHCP DISCOVER**, inviato dal client dalla porta 68, avendo quindi come IP sorgente 0.0.0.0:68, in broadcast alla porta 67, dunque 255.255.255.255:67. Il messaggio contiene inoltre due campi _yiaddr_, posto a 0.0.0.0, e il Transaction ID, generato casualmente
-  2. **DHCP OFFER**, inviato dal server DHCP, porta 67, in broadcast, sulla porta 68 . In questo modo anche il client che ha fatto richiesta, che ancora non possiede un indirizzo, è in grado di ricevere il messaggio monitorando tale porta. Stavolta il campo _yiaddr_ contiene un indirizzo, che è quello che il server DHCP sta offrendo, mentre il Transaction ID è uguale al precedente. Un ulteriore campo, detto _lifetime_, contiene la durata temporale dell'associazione Host-IP
-   3. **DHCP REQUEST**, inviato dal client, che avrà ancora 0.0.0.0:68 come IP sorgente e 255.255.255.255:67 come IP destinatario. Il campo _yiaddr_ conterrà l'indirizzo che ha ricevuto e che sta accettando. Riporterà inoltre il campo _lifetime_ e il Transaction ID, incrementato di 1
-   4. **DHCP ACK**, che è sostanzialmente uguale al DHCP OFFER, ma con il Transaction ID incrementato
+  1. **DHCP DISCOVER**, inviato dal client dalla porta 68, avendo quindi come IP sorgente 0.0.0.0:68, in broadcast alla porta 67, dunque 255.255.255.255:67. Il messaggio contiene inoltre due campi _yiaddr_, posto a 0.0.0.0, e il Transaction ID, generato casualmente. Dato che è possibile avere più server DHCP nella stessa rete, inviando i messaggi in broadcast tutti questi server possono vedere la richiesta, offrire un proprio indirizzo ed eventualmente procedere con il protocollo;
+  2. **DHCP OFFER**, inviato dal server DHCP, porta 67, in broadcast. In questo modo anche il client che ha fatto richiesta, che ancora non possiede un indirizzo, è in grado di ricevere il messaggio monitorando tale porta. Stavolta il campo _yiaddr_ contiene un indirizzo, che è quello che il server DHCP sta offrendo, mentre il Transaction ID è uguale al precedente. Un ulteriore campo, detto _lifetime_, contiene la durata temporale dell'associazione Host-IP;
+   3. **DHCP REQUEST**, inviato dal client, che avrà ancora 0.0.0.0:68 come IP sorgente e 255.255.255.255:67 come IP destinatario. Il campo _yiaddr_ conterrà l'indirizzo che ha ricevuto e che sta accettando. Riporterà inoltre il campo _lifetime_ e il Transaction ID, incrementato di 1. Un server DHCP che vede un _yiaddr_ diverso da quello da lui proposto capirà che il client ha accettato la richiesta di un altro server;
+   4. **DHCP ACK**, che è sostanzialmente uguale al DHCP OFFER, ma con il Transaction ID incrementato.
    
 Il campo **lifetime** viene utilizzato per permettere il recupero, e dunque il riutilizzo, degli indirizzi non più utilizzati. Difatti prima della scadenza un host può 'rinnovare' la propria presenza e mantenere l'assegnazione IP-Host. In caso contrario, tale indirizzo potrà nuovamente essere riassegnato, il tutto senza bisogno che il client avvisi il server della disconnessione.
 Oltre all'indirizzo IP, il protocollo si occupa di configurare tutto il necessario per la connessione, come il server DNS, il gateway e la subnet mask.
@@ -329,7 +328,7 @@ Il ricevitore 'vede' i seguenti  eventi:
 * arrivo di un segmento che riempie un gap formato da un segmento del tipo precedente. Invia ACK cumulativo senza attendere i 500ms;
 
 #### Flow Control 
-Il TCP fa uso di **buffer** per la ricezione dei dati, quindi bisognaa fare in modo che esso non venga sovrascritto da una trasmissione successiva, causando una perdita di dati. Il trasmettitore si occupa di monitorare il buffer, mantenendo in memoria:
+Il TCP fa uso di **buffer** per la ricezione dei dati, quindi bisogna fare in modo che esso non venga sovrascritto da una trasmissione successiva, causando una perdita di dati. Il trasmettitore si occupa di monitorare il buffer, mantenendo in memoria:
 * la dimensione del buffer;
 * l'indice dell'ultimo byte ACkato (LastByteAcked);
 * l'indice dell'ultimo byte inviato (LastByteSent).
@@ -343,14 +342,14 @@ Il protocollo **NON** considera come spazio libero eventuali buchi causati dalla
 Il ricevitore invia, ad ogni ACK, lo spazio libero rimanente nel suo buffer nek campo _Window Size_. Se esso vale 0, il trasmettitore smette di inviare dati e invia periodicamente un segmento di dimensione 1, finchè il ricevitore non ha spazio libero, in modo che il ricevitore possa aggiornarlo della situazione corrente. Se infatti il trasmettitore non gli inviasse tale messaggio, non potrebbe conoscere la situazione corrente e continuerebbe a trasmettere dati, causando una perdita degli stessi.
 
 #### Congestion Control
-Abbiamo congestione quando troppe sorgenti inviano troppi dati troppo velocemente affinchè la rete riesca a gestire tutto ciò: abbiamo perdita di pacchetti, grandi delay e lunghe code. Questo avviene nei **router intermedi** che devono smistare il traffico. Esistono due approcci risolutivi:
+Abbiamo congestione quando troppe sorgenti inviano troppi dati troppo velocemente affinchè la rete riesca a gestire il tutto: abbiamo perdita di pacchetti, grandi delay e lunghe code. Questo avviene nei **router intermedi** che devono smistare il traffico. Esistono due approcci risolutivi:
 * **Network assisted**: i router forniscono feedback al trasmettitore, che può quindi adattare la sua trasmissione;
 * **End-to-end**: il trasmettitore adatta la sua trasmissione solo quando si hanno perdite di pacchetti e rallentamenti. Questo approccio conservativo è quello implementato da TCP.
 
 
 #### End-to-end congestion control in TCP
 L'obiettivo della tecnica è fare in modo che tutte le sorgenti inviino dati il più velocemente possibile, senza che la rete si congestioni.
-Per limitare il rate di trasmissione possiamo diminuire il numero di byte inviati nella stessa finestra temporale, abbassando il numero di segmenti non ACKati ad un valore detto _cwnd_ (congestion window), tale che
+Per limitare il rate di trasmissione possiamo diminuire il numero di byte inviati nella stessa finestra temporale, abbassando il numero di segmenti non ACKati ad un valore detto _cwnd_ (congestion window), tale che:
 $$LastByteSent - LastByteAcked ≤ cwnd$$
 Il valore è in realtà il minimo tra la dimensione della _congestion window_ e la dimensione della _receiver window_. Possiamo dunque affermare che il _cwnd_ è un valore dinamico che cambia a seconda della congestione della rete.
 Il TCP, per accorgersi della presenza di una congestione, fa uso di ACK e dei segmenti perduti: se ho ottenuto ACK allora non c'è congestione, e posso continuare ad inviare ad un ritmo sostenuto, provando anche ad aumentarlo; di contro se ci sono segmenti persi, si assume che ciò sia dovuto alla congestione della rete e quindi si abbassa il ritmo di trasmissione.
@@ -409,7 +408,7 @@ Quando un utente vuole inviare un messaggio crittografato a qualcun altro, utili
 Inoltre, PGP può essere utilizzato per crittografare interi dischi o partizioni, rendendo i dati inaccessibili senza la chiave privata corrispondente.
 
 ### Secure Socket Layer (SSL)
-Secure Socket Layer (SSL) è un protocollo di sicurezza posto tra il livello di trasporto e il livello applicazione. Mette a disposizione delle API per fornire crittografia a livello applicazione, permettendo di concentrarsi sulla logica dell'applicazione. Viene garantita la confidenzialità, l'integrità dei dati e l'autenticazione degli endpoint.
+Secure Socket Layer (SSL) è un protocollo di sicurezza posto tra il livello di trasporto e il livello applicazione. Mette a disposizione delle API per fornire crittografia a livello applicazione, permettendo di concentrarsi sulla logica della stessa. Viene garantita la confidenzialità, l'integrità dei dati e l'autenticazione degli endpoint.
 Una sua versione semplificata è formata da:
 1. **Handshake**: il client e il server usano i propri certificati per autenticarsi e scambiare una chiave condivisa;
 2. **Key Derivation**: il client e il server usano la chiave condivisa per generare una chiave di sessione. In particolare vengono generate:
@@ -417,7 +416,7 @@ Una sua versione semplificata è formata da:
    * $M_{client}$: chiave per generare il MAC dal client al server;
    * $K_{server}$: chiave per cifrare i messaggi dal server al client;
    * $M_{server}$: chiave per generare il MAC dal server al client;
-  3. **Data Transfer**: i messaggi vengono cdivisi in blocchi, detti _record_, alla quale viene concatenato un MAC e un campo _lenght_ per poter discernere tra MAC e record, e permettere record di dimensione diversa. In questa fase si inserisce inoltre un numero di sequenza usato per calcolare il MAC, in modo da proteggersi dagli attacchi _record&playback_. Per evitare inoltre _truncation attacks_, si usa un campo _type_ usato anch'esso per il calcolo del MAC. In sostanza il record sarà composto da:
+  1. **Data Transfer**: i messaggi vengono cdivisi in blocchi, detti _record_, alla quale viene concatenato un MAC e un campo _lenght_ per poter discernere tra MAC e record, e permettere record di dimensione diversa. In questa fase si inserisce inoltre un numero di sequenza usato per calcolare il MAC, in modo da proteggersi dagli attacchi _record&playback_. Per evitare inoltre _truncation attacks_, si usa un campo _type_ usato anch'esso per il calcolo del MAC. In sostanza il record sarà composto da:
      * $version$: versione del protocollo;
      * $type$: tipo di record;
      * $length$: lunghezza del record;
@@ -477,10 +476,10 @@ Il padding è aggiunto, se necessario, per permettere l'uso di algoritmi di cifr
 ## Wireless and Mobile Networks
 
 ### Problema del nodo nascosto
-Il nome deriva dal fatto di avere tre ricestrasmettitori (A, B, C), e che due di essi vogliano entrambi comunicare con il terzo. Supponiamo che A e C vogliamo dunque comunicare con B: quest'ultimo riceverà i segnali di A e C, che non vedranno la collisione. Solo B vedrà la collisione, e rende inutile anche l'operazione di _carrier sensing_ di coloro che trasmettono, e dunque non sarà possibile effettuare una sua mitigazione. Questo problema si presenta anche quando si ha un ostacolo che rende impossibile la comunicazione. La tecnica usata per risolvere questo problemaa è il **Virtual Carrier Sense** (VCS), contrapposto al _sensing fisico_.
+Il nome deriva dal fatto di avere tre ricestrasmettitori (A, B, C), e che due di essi vogliano entrambi comunicare con il terzo. Supponiamo che A e C vogliamo dunque comunicare con B: quest'ultimo riceverà i segnali di A e C, che non vedranno la collisione. Solo B vedrà la collisione, e rende inutile anche l'operazione di _carrier sensing_ di coloro che trasmettono, e dunque non sarà possibile effettuare una sua mitigazione. Questo problema si presenta anche quando si ha un ostacolo che rende impossibile la comunicazione. La tecnica usata per risolvere questo problema è il **Virtual Carrier Sense** (VCS), contrapposto al _sensing fisico_.
 
 ### Virtual Carrier Sense
-Viene eseguita una sorta di prenotazione del mezzo di comunicazione. Supponiamo che un nodo voglia trasmettere: andrà ad ascoltare il canale; nel caso in cui sia libero per un tempo _DIFS_, allora invierà un pacchetto _RTS_ (Request To Send), che viene ricevuto sia dalla stazione base che da quelle vicine. Chiunque ascolti tale pacchetto imposterà un timer, detto _NAV RTS_ (Network Allocation Vector RTS), per un tempo pari a quello contenuto nel campo _duration_ del pacchetto RTS. Dopo un tempo _SIFS_ la stazione base procederà a rispondere con un pacchetto _CTS_ (Clear To Send): anche questo pacchetto contiene un campo _duration_, minore del valore contenuto in _RTS_. Esso farà partire il timer _NAV CTS_, anche a coloro che non avevano sentito in precedenza il _NAV RTS_. Quando la sorgente recepisce il CTS, fa ACK della trasmissione, attende un tempo _SIFS_ e successivamente inizia a trasmettere il frame. Una volta terminata la trasmissione, attende un tempo _SIFS_ e fa ACK della ricezione. Tutti i nodi vedranno quindi il termine della trasmissione, attenderanno  un tempo _DIFS_ e successivamente un altro timer di backoff scelto randomicamente. 
+Viene eseguita una sorta di prenotazione del mezzo di comunicazione. Supponiamo che un nodo voglia trasmettere: andrà ad ascoltare il canale. Nel caso in cui esso sia libero per un tempo _DIFS_, allora invierà un pacchetto _RTS_ (Request To Send), che viene ricevuto sia dalla stazione base che da quelle vicine. Chiunque ascolti tale pacchetto imposterà un timer, detto _NAV RTS_ (Network Allocation Vector RTS), per un tempo pari a quello contenuto nel campo _duration_ del pacchetto RTS. Dopo un tempo _SIFS_ la stazione base procederà a rispondere con un pacchetto _CTS_ (Clear To Send): anche questo pacchetto contiene un campo _duration_, minore del valore contenuto in _RTS_. Esso farà partire il timer _NAV CTS_, anche a coloro che non avevano sentito in precedenza il _NAV RTS_. Quando la sorgente recepisce il CTS, fa ACK della trasmissione, attende un tempo _SIFS_ e successivamente inizia a trasmettere il frame. Una volta terminata la trasmissione, attende un tempo _SIFS_ e fa ACK della ricezione. Tutti i nodi vedranno quindi il termine della trasmissione, attenderanno  un tempo _DIFS_ e successivamente un altro timer di backoff scelto randomicamente. 
 E' importante notare come la collisione è ancora presente, nel caso specifico in cui due nodi inviano RTS nello stesso momento. Esso tuttavia è pensato per essere abbastanza piccolo da rendere minore possibile la probabilità di collisione e soprattutto, anche se dovesse accadere, verrebbe perso solo il tempo relativo a RTS, che è appunto abbastanza piccolo.
 Tra i contro di questo protocollo c'è indubbiamente l'aumento di overhead in preparazione alla trasmissione vera e propria: per tale motivo questo non viene usato nel caso in cui la dimensione del frame sia paragonabile a quella del pacchetto RTS; verrà infatti inviato direttamente il frame.
 
@@ -492,7 +491,7 @@ Si parla in questo caso di _Collision Avoidance_, perchè il _Collision Detectio
 Il punto del protocllo _CSMA/CA_ è quello di **prevenire** le collissioni (che possono comunque avvenire), utilizzando uno schema **ARQ** (**A**utomatic **R**epeat re**Q**uest) con una divisione in piccoli slot, usati comunque solo per dare l'inizio alle operazioni. Queste, in ordine, sono:
 1. la sorgente che vuole trasmettere ascolta il mezzo e verifica che esso sia libero per un tempo _DIFS_;
 2. se ciò accade, allora inizia a trasmettere il frame;
-3. subito dopo la ricezione del frame, il destinatario mute da ricezione a trasmissione, entro un tempo _SIFS_ (Switching time) tale che _SIFS_ < _DIFS_;
+3. subito dopo la ricezione del frame, il destinatario muta da ricezione a trasmissione, entro un tempo _SIFS_ (Switching time) tale che _SIFS_ < _DIFS_;
 4. invia un ack al mittente.
 
 _SIFS_ deve **necessariamente** essere minore di _DIFS_ altrimenti un nodo potrebbe rilevare il mezzo come libero, e potrebbe trasmettere un frame, mentre il mittente originale sta ancora aspettando l'ACK.
@@ -513,13 +512,13 @@ Definiamo alcuni elementi:
 * **home network**: è la rete in cui si trova inizialmente l'host mobile; **permanent address**: è l'indirizzo IP che l'home agent ha nella home network;
 * **foreing agent**: è il router in cui si trova attualemnte l'host mobile, diversa dalla home network.
 
-Partiamo dalle cose che **NON** possiamo fare: non possiamo annunciare attraverso i protocolli di routing lo spostamento dell'host, perchè il routing funziona sulla base della rete e non del singolo host. La situazione deve inevitabilmente essere gestita dall'home agent e dall'host. Quando l'host mobile si sposta nella _foreing network_, contatta il _foreing agent_ e gli dice di regitrarlo presso l'_home agent_. Il _foreing agent_ contatta quindi l'home agent, avvisandolo che se dovessero arrivare pacchetti diretti verso l'host mobile, essi dovranno essere reindirizzati verso la nuova rete. Tutti coloro che inviano all'host pacchetti non sono a conoscenza dello spostamento, e continuerà ad inviare i pacchetti allo stesso indirizzo; questa tecnica è quindi trasparente rispetto ai mittenti dei pacchetti verso l'host mobile. In caso di nuovo spostamento, c'è ovviamente bisogno di una nuova registrazione: il rischio è che se gli spostamenti sono molto frequenti, sarebbe più il tempo utilizzato per notificare lo spostamento rispetto a quello di permanenza nella rete stessa. Il lato negativo di questa strategia è che esiste la possibilità che il traffico venga triangolato anche quando ciò è inutile ed evitabile. Questo fenomeno è detto _triangolo di routing_. In conclusione, possiamo affermare che questa strategia è quella utilizzata di default da Mobile IP.
+Partiamo dalle cose che **NON** possiamo fare: non possiamo annunciare attraverso i protocolli di routing lo spostamento dell'host, perchè il routing funziona sulla base della rete e non del singolo host. La situazione deve inevitabilmente essere **gestita dall'home agent e dall'host**. Quando l'host mobile si sposta nella _foreing network_, contatta il _foreing agent_ e gli dice di regitrarlo presso l'_home agent_. Il _foreing agent_ contatta quindi l'home agent, avvisandolo che se dovessero arrivare pacchetti diretti verso l'host mobile, essi dovranno essere **reindirizzati** verso la nuova rete. Tutti coloro che inviano all'host pacchetti non sono a conoscenza dello spostamento, e continuerà ad inviare i pacchetti allo stesso indirizzo; questa tecnica è quindi trasparente rispetto ai mittenti dei pacchetti verso l'host mobile. In caso di nuovo spostamento, c'è ovviamente bisogno di una nuova registrazione: il rischio è che se gli spostamenti sono molto frequenti, sarebbe più il tempo utilizzato per notificare lo spostamento rispetto a quello di permanenza nella rete stessa. Il lato negativo di questa strategia è che esiste la possibilità che il traffico venga triangolato anche quando ciò è inutile ed evitabile. Questo fenomeno è detto _triangolo di routing_. In conclusione, possiamo affermare che questa strategia è quella utilizzata di default da Mobile IP.
 
 #### Direct routing
-Gli elementi in gioco sono gli stessi dell'_indirect routing_ ma, al contrario di quest'ultimo, riusciamo ad evitare la triangolazione dei dati, perchè il mittente invierà direttamente al dispositivo mobile i pacchetti. Vediamo come:
-quando il dispositivo arriva in una nuova rete, farà in modo di notificare all'home agent del suo spostamento. Questo, quando vedrà arrivare un pacchetto destinato all'host mobile, avviserà il mittente che il destinatario non si trova più nella _home network_, e sarà lui stesso ad occuparsi di reinviare il pacchetto al nuovo indirizzo del dispositivo mobile. In caso di ulteriore spostamento, ci saarà una notifica. I principali problemi di questa strategia sono due, uno tecnico ed uno 'etico':
-* tecnico: abbiamo un aumento di overhead per la notifica del nuovo indirizzo, per la notifica del nuovo spostamento, e il tempoo di reinvio del pacchetto;
-* etico: possono sorgere problemi di privacy in quanto il mittente sarà a conoscenza di tutti i nostri spostamenti di rete in rete.
+Gli elementi in gioco sono gli stessi dell'_indirect routing_ ma, al contrario di quest'ultimo, riusciamo ad evitare la triangolazione dei dati, perchè il mittente **invierà direttamente** al dispositivo mobile i pacchetti. Vediamo come:
+quando il dispositivo arriva in una nuova rete, farà in modo di notificare all'home agent del suo spostamento. Questo, quando vedrà arrivare un pacchetto destinato all'host mobile, avviserà il mittente che il destinatario non si trova più nella _home network_, e sarà lui stesso ad occuparsi di reinviare il pacchetto al nuovo indirizzo del dispositivo mobile. In caso di ulteriore spostamento, ci sarà una notifica. I principali problemi di questa strategia sono due, uno tecnico ed uno 'etico':
+* **tecnico**: abbiamo un aumento di overhead per la notifica del nuovo indirizzo, per la notifica del nuovo spostamento, e il tempo di reinvio del pacchetto;
+* **etico**: possono sorgere problemi di privacy in quanto il mittente sarà a conoscenza di tutti i nostri spostamenti di rete in rete.
 
 #### Formato del pacchetto Mobile IP
 Oltre ai classici campi del protocollo ICMP, abbiamo delle aggiunte specifiche per il protocollo Mobile IP. Il pacchetto completo sarà formato da questi campi:
@@ -535,15 +534,15 @@ I nuovi campi sono:
 * **RBHFMGV bit**: 8 bit di informazioni aggiuntive. I bit sono:
   * **H/F**: indica se si tratta di foreing o home agent;
   * **R**: indica se è necessaria la registrazione;
-* **care-of address**: 32 bit, è l'indirizzo del dispositivo mobile;
+* **care-of address**: 32 bit, è l'indirizzo del dispositivo mobile.
 
 #### Registrazione
 Si tratta di una procedura in questi passi:
 1. l'host mobile aspetta di ricevere un ICMP dall'agent discovery;
 2. invia poi un pacchetto ICMP al router che si trova nella _foreing network_. Il pacchetto contiene questi campi:
-    * **COA**: care-of address, ovvero l'indirizzo del dispositivo mobile scelto;
-     * **HA**: home agent, ovvero l'indirizzo del router che si trova nella _home network_;
-     * **MA**: mobile agent, ovvero l'indirizzo del router che si trova nella _foreing network_;
+    * **COA**: _care-of address_, ovvero l'indirizzo del dispositivo mobile scelto;
+     * **HA**: _home agent_, ovvero l'indirizzo del router che si trova nella _home network_;
+     * **MA**: _mobile agent_, ovvero l'indirizzo del router che si trova nella _foreing network_;
      * **lifetime**: durata della registrazione;
      * **sequence number**: numero di sequenza del pacchetto, in modo analogo al DHCP;
 3. il _foreing agent_ riceve il pacchetto e lo inoltra all'home agent, aggiungendo una nota sul tipo di encapsulation da usare;
@@ -583,7 +582,7 @@ Il comando `ip addr add` invece ci permette di aggiungere un indirizzo IP ad una
 ## Quali sono i requisiti per essere connessi ad internet?
 Sono 4, e sono:
 * **indirizzo IP**: è l'indirizzo che identifica un dispositivo nella rete. Per essere connesso ad internet è necessario avere un indirizzo IP pubblico;
-* **maschera di rete**, sequenza di 32 bit con tanti bit a 1 quanti sono nquelli che identificano la rete. Grazie ad essa ricaviamo:
+* **maschera di rete**, sequenza di 32 bit con tanti bit (più significativi) a 1 quanti sono quelli che identificano la rete. Grazie ad essa ricaviamo:
   * **indirizzo di rete**, con **AND** bit a bit tra indirizzo IP e maschera di rete;
   * **indirizzo di broadcast**, con **OR** bit a bit tra indirizzo IP e NOT maschera di rete;
 * **indirizzo del gateway**;
@@ -753,7 +752,7 @@ La prima regola che matcha, dal basso verso l'alto, viene eseguita. Se nessuna r
 * **inclusive**: il firewall è aperto a tutto, tranne che alle regole esplicitamente bloccate;
 * **exclusive**: il firewall è chiuso a tutto, tranne che alle regole esplicitamente aperte.
 
-## iptaables
+## iptables
 iptables è un programma da riga di comando che permette di configurare il netfilter, il componente del kernel Linux che offre funzionalità di:
 * **stateful e stateless packet filtering**: permette di filtrare i pacchetti in ingresso e in uscita;
 * **NA[P]T**: permette di fare NAT e port forwarding;
