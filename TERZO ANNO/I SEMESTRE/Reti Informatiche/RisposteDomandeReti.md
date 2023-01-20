@@ -1,4 +1,4 @@
-Documento redatto basandosi su [questa](https://github.com/drw0if/Appunti/tree/main/Reti_informatiche) dispensa, le diapositive di [Anastasi](https://github.com/Guray00/IngegneriaInformatica/tree/master/TERZO%20ANNO/I%20SEMESTRE/Reti%20Informatiche/Diapositive%20Anastasi) e di [Pistolesi](http://docenti.ing.unipi.it/f.pistolesi/teaching.html). Alcune risposte sono state elaborate a partire da alcune query di richiesta a [ChatGPT](https://chat.openai.com/chat). Le domande sono quelle presenti nel file [DomandeReti.md](https://github.com/Guray00/IngegneriaInformatica/blob/master/TERZO%20ANNO/I%20SEMESTRE/Reti%20Informatiche/domande%20orale.md), non è da considerarsi esaustivo e/o completo in ogni sua parte. 
+Documento redatto basandosi su [questa](https://github.com/drw0if/Appunti/tree/main/Reti_informatiche) dispensa per la parte di Anastasi e di Pistolesi, [questa](https://github.com/Guray00/IngegneriaInformatica/blob/master/TERZO%20ANNO/I%20SEMESTRE/Reti%20Informatiche/Dispense%20studenti/Appunti%20di%20Laboratorio.pdf) dispensa per la parte riguardante il Laboratorio di Pistolesi, le diapositive di [Anastasi](https://github.com/Guray00/IngegneriaInformatica/tree/master/TERZO%20ANNO/I%20SEMESTRE/Reti%20Informatiche/Diapositive%20Anastasi) e di [Pistolesi](http://docenti.ing.unipi.it/f.pistolesi/teaching.html). Alcune risposte sono state elaborate a partire da alcune query di richiesta a [ChatGPT](https://chat.openai.com/chat). Le domande sono quelle presenti nel file [DomandeReti.md](https://github.com/Guray00/IngegneriaInformatica/blob/master/TERZO%20ANNO/I%20SEMESTRE/Reti%20Informatiche/domande%20orale.md), non è da considerarsi esaustivo e/o completo in ogni sua parte. 
 
 # Anastasi
 ## Applicazioni di Rete
@@ -564,7 +564,7 @@ Brevemente, `ip addr show` e `ip addr add` sono due comandi che ci permettono di
   ```noprefixroute```
     ```valid_lft forever preferred_lft forever```
 
-Gli elementi che ci interessano sono:
+Gli elementi che ci interessano sono: 
 * `2: eth0`: è il numero di interfaccia e il nome dell'interfaccia;
 * `<BROADCAST,MULTICAST,UP,LOWER_UP>`: sono i flag dell'interfaccia. In questo caso l'interfaccia è in broadcast, multicast, è attiva e è in funzione;
 * `mtu 1500`: **Maximum Transmission Unit**, è la dimensione massima del pacchetto che può essere inviato sulla rete. In questo caso è 1500 byte;
@@ -578,6 +578,10 @@ Gli elementi che ci interessano sono:
 * `scope global`: è lo scope dell'indirizzo IP. In questo caso è globale.
 
 Il comando `ip addr add` invece ci permette di aggiungere un indirizzo IP ad una interfaccia di rete. Per esempio, `ip addr add 192.168.1.42/24 broadcast 192.168.1.255 dev eth0` aggiunge una configurazione specificando indirizzo IP, subnet mask, indirizzo di broadcast e interfaccia di rete. L'interfaccia è **RESETTATA** al riavvio della macchina, e dovrà eventualmente essere settata in UP. Per renderla permanente si usa il file di configurazione `/etc/network/interfaces`, tramite i comandi `ifup` e `ifdown`.
+
+Digitando il comando inoltre, avremo come prima interfaccia quella di loopback, ovvero `lo`. Questa interfaccia è necessaria per poter comunicare con se stessi, e non ha indirizzo IP. Inoltre, è sempre UP, e non ha coda. Viene usata per eseguire test di connessione, e per eseguire il ping.
+
+Per rimuovere un indirizzo IP, si usa il comando `ip addr flush dev [nome interfaccia]`. Per esempio, `ip addr flush dev eth0` rimuove l'indirizzo IP dalla interfaccia `eth0`.
 
 ## Quali sono i requisiti per essere connessi ad internet?
 Sono 4, e sono:
@@ -614,14 +618,39 @@ Meccanismo usato dai sistemi Unix per ricavare nomi di host da diverse fonti. Il
 ## Come vedere se la macchina è connessa ad internet? Come verifico la configurazione?
 Per vedere se la macchina è connessa ad internet, verifichiamo innanzitutto che sia presente ed attiva una configurazione, tramite il comando `ip addr show`. Per verificare la connessione ad internet, un modo può essere quello di tentare una connessione tramite il comando `ping nome_dominio`. Se la connessione è andata a buon fine, riceveremo alcuni dati sulla connessione, come il numero di pacchetti persi, il tempo di risposta, ecc, altrimenti riceveremo un messaggio di errore.
 
-## DNS
-Sfrutta un database distribuito e gerarchico su più server DNS, e si occupa della traduzione di nomi di host in indirizzi IP. Il file di configurazione è `/etc/resolv.conf`. Basta conoscere un solo indirizzo di server DNS, o al limite l'indirizzo secondario dello stesso server DNS, per poter risolvere i nomi di host., in quanto se esso non è in grado di risolvere la nostra richiesta, si rivolgerà ad altri server DNS.
+## Provo a fare un ping a un dominio, ma non ricevo risposta. Quali possono essere le cause?
+Vanno in questo caso controllate questi punti:
+* **presenza di una configurazione**, tramite il comando `ip addr show`;
+* **accesso al gateway**, controllando il file di configurazione `/etc/network/interfaces`, oppure tramite il comando `ip route show` che restituirà l'indirizzo del gateway;
+* **accesso al DNS**, controllando il file di configurazione `/etc/resolv.conf`, oppure tramite il comando `cat /etc/resolv.conf` che restituirà gli indirizzi dei server DNS. Senza il DNS non siamo in grado di risolvere i nomi di host, e quindi non possiamo fare ping a un dominio
+* **controllo del firewall**, controllando il file di configurazione `/etc/hosts.allow` e `/etc/hosts.deny`, oppure tramite il comando `iptables -L` che restituirà le regole del firewall. Il firewall potrebbe avere una specifica regola per l'indirizzo IP richiesto, oppure potrebbe avere come regola di default il blocco di tutti i pacchetti in ingresso. La soluzione sarebbe quella di aggiungere una regola per consentire il traffico in ingresso, oppure di rimuovere la regola di default.
 
+
+## DNS
+Sfrutta un database distribuito e gerarchico su più server DNS, e si occupa della traduzione di nomi di host in indirizzi IP. Il file di configurazione è `/etc/resolv.conf`. Basta conoscere un solo indirizzo di server DNS, o al limite l'indirizzo secondario dello stesso server DNS, per poter risolvere i nomi di host., in quanto se esso non è in grado di risolvere la nostra richiesta, si rivolgerà ad altri server DNS. 
+
+## DHCP
+Protocollo che permette di assegnare automaticamente indirizzi IP alle macchine. Il file di configurazione è `/etc/dhcp/dhcpd.conf`. E' possibile installare in una macchina UNIX un server DHCP, che si occuperà di assegnare gli indirizzi IP alle macchine. Il server DHCP può essere configurato in modo tale da assegnare indirizzi IP statici o dinamici. In questo caso, il server DHCP assegna un indirizzo IP dinamico, che viene rilasciato alla macchina quando questa si connette alla rete. Il server DHCP può essere configurato in modo tale da assegnare indirizzi IP statici o dinamici. In questo caso, il server DHCP assegna un indirizzo IP dinamico, che viene rilasciato alla macchina quando questa si connette alla rete. La macchina in cui gira il processo server DHCP deve necessariamente avere una configurazione statica dell'indirizzo, modificabile in 
+`etc/network/interfaces`.
 ## Come posso conrtrollare se una macchina ha indirizzo statico o dinamico?
 Si deve controllare nel file `etc/network/interfaces` se l'interfaccia è settata in `static` o `dhcp`. Se è settata in `static`, allora è un indirizzo statico, altrimenti è dinamico, ed è appunto stato settato tramite DHCP.
 
+## Comando `ping`
+Protocollo di servizio che rileva malfunzionamenti, scambia informazioni di controllo e messaggi di errore. E' incapsulato nel protocollo IP, nel campo ICMP, nel quale troveremo i messaggi di errore. Il comando `ping` invia un pacchetto **ICMP Echo Request** ad un host, e riceve in risposta un pacchetto **ICMP Echo Reply**. Il comando `ping` è un comando di sistema, e non è un vero e proprio protocollo di rete. 
+L'output di un comando `ping` è del tipo:
+`PING google.com (142.251.209.46) 56(84) bytes of data.`
+  `64 bytes from mil04s51-in-f14.1e100.net (142.251.209.46): icmp_seq=1 ttl=115 time=19.3 ms`
+  `64 bytes from mil04s51-in-f14.1e100.net (142.251.209.46): icmp_seq=2 ttl=115 time=14.4 ms`
+  `64 bytes from mil04s51-in-f14.1e100.net (142.251.209.46): icmp_seq=3 ttl=115 time=12.9 ms`
+  `^C // Ctrl+C`
+  `--- google.com ping statistics ---`
+  `3 packets transmitted, 3 received, 0% packet loss, time 2004ms`
+`rtt min/avg/max/mdev = 12.936/15.516/19.260/2.709 ms`
+
+Si noti come l'RTT (Round Trip Time) sia sempre diverso tra un pacchetto e l'altro, perchè generalmente un pacchetto segue sempre una traiettoria diversa, e quindi il tempo di risposta sarà sempre diverso. Al temrmine, vengono mostrate delle statistiche sulla connessione, come il numero di pacchetti persi, il tempo di risposta, ecc. E' comunque possibile usare delle opzioni per specificare il numero di pacchetti da inviare, il timeout, ecc.
+
 ## Traceroute
-Mostra il percorso che un pacchetto IP effettua per raggiungere un _host destinatario_. Il percorso è di fatto composto dagli indirizzi IP dei router che ha attraversato. Sfrutta la gestione dei **TTL**, inviando all'host una serie di terne di pacchetti **UDP** con TTL crescente. Tiene traccia degli indirizzi IP dei router che ha attraversato, e li mostra in ordine all'interno di messaggi **ICMP Time Exceeded**, finchè l'ultimo pacchetto non raggiunge il destinatario.Quando ciò avviene, esso risponderà con un **ICMP Destination Unreachable**, che indica che il pacchetto è arrivato al destinatario. Questo avviene perchè avendo UDP bisogno di una porta, ne viene scelta una a caso ed è improbabile che essa sia in ascolto. Nel caso in cui l'output mostri a schermo una serie di asterischi, vuol dire che è scattato il timeout, oppure non era implementato ICMP nei router. Inoltre, usa le porte 33434 e 33435.
+Mostra il percorso che un pacchetto IP effettua per raggiungere un _host destinatario_. Il percorso è di fatto composto dagli indirizzi IP dei router che ha attraversato. Sfrutta la gestione dei **TTL**, inviando all'host una serie di terne di pacchetti **UDP** con TTL crescente. Tiene traccia degli indirizzi IP dei router che ha attraversato, e li mostra in ordine all'interno di messaggi **ICMP Time Exceeded**, finchè l'ultimo pacchetto non raggiunge il destinatario.Quando ciò avviene, esso risponderà con un **ICMP Destination Unreachable**, che indica che il pacchetto è arrivato al destinatario. Questo avviene perchè avendo UDP bisogno di una porta, ne viene scelta una a caso ed è improbabile che essa sia in ascolto. Nel caso in cui l'output mostri a schermo una serie di asterischi, vuol dire che è scattato il timeout, oppure non era implementato ICMP nei router. Ques'ultima potrebbe essere una scelta dell'host contattato, per prevenire attacchi DoS. Inoltre, usa le porte 33434 e 33435.
 Gli svantaggi sono: 
 * i pacchetti possono seguire più percorsi, e così gli IP;
 * se i pacchetti e i messaggi ICMP seguono percorsi differenti, il calcolo del round-trip è inaffidabile.
@@ -631,6 +660,7 @@ Sono 4: `htonl`, `htons`, `ntohl` e `ntohs`, e sono da interpretare come Host/Ne
 
 ## `Socket()`, `listen()`, `bind()`, `accept()`, `connect()`
 Il socket è l'estremità di un **canale di comhnicazione** tra due processi in esecuzione su macchine diverse connesse in rete. Si sfrutta tramite alcune primitive di sistema.
+
 ### `Socket()`
 La primitiva di sistema `Socket()` permette la creazione di, appunto, un nuovo socket. Gli argomenti della funzione sono:
 * `int domain`: famiglis di protocolli da usare. Due esempi sono: 
@@ -649,6 +679,7 @@ Questa primitiva si usa per associare una coppia <**IP:porta**> ad un socket. Gl
 * `const struct sockaddr *addr`: puntatore alla struttra sockaddr che si vuole associare al socket;
 * `addr_len`: lunghezza della struttura sockaddr.
 La funzione restituisce 0 se è andata a buon fine, -1 altrimenti.
+
 ### `listen()`
 Specifica che il socket è pronto ad accettare connessioni, e può ovviamente essere usata sono sugli **SOCK_STREAM** (i socket UDP non hanno bisogno di instaurare una connesione). Gli argomenti sono: 
 * `int sockfd`: il descrittore del socket;
@@ -701,8 +732,8 @@ I socket bloccanti sono quelli che si comportano come le funzioni di I/O standar
 
 ## `Fork()`
 Primitiva usata su server concorrenti per far creare al **sistema operativo** dei processi figli che si occuperanno di gestire le connessioni con i client. Il processo creato è un perfetto clone del padre, ed esegue lo stesso suon codice. Il valore di ritorno è:
-* 0 se siamo nel processo figlio;
-* PID del processo figlio se siamo nel processo padre.
+* **0** se siamo nel processo figlio;
+* **PID** del processo figlio se siamo nel processo padre.
 Possiamo utilizzare il valore di ritorno per differenziare il codice eseguito dal padre e dal figlio.
 Visto che entrambi i processi condivideranno gli stessi descrittori di socket, è opportuno chiudere il socket di comunicaiìzione nel processo padre, e chiudere quello d'ascolto nel processo figlio.
 
@@ -726,21 +757,49 @@ La funzione ritorna il numero di descrittori pronti, -1 in caso di errore. Se il
 Un server concorrente è un server che crea un processo figlio per ogni connessione, mentre un server multiplexato è un server che usa la primitiva `select()` per gestire più connessioni contemporaneamente. Bisogna prestare attenzione all'uso dei processi figli perchè essi hanno in comune con il padre tutte le strutture dati, e quindi possono accedere a risorse condivise: una gestione non ottimale del codice potrebbe portare ad inconsistenze.
 
 ## Protocolli text e binary
-I protocolli text sono quelli che usano il formato testuale per trasmettere i dati, mentre i protocolli binary sono quelli che usano il formato binario per trasmettere i dati. I protocolli text sono più facili da implementare, ma sono più lenti e più difficili da debuggare. I protocolli binary sono più veloci e più facili da debuggare, ma sono più difficili da implementare. Per implementare un protocollo text si usa la funzione `sscanf()` per leggere i dati, e la funzione `sprintf()` per scrivere i dati. Per implementare un protocollo binary si usa la funzione `read()` per leggere i dati, e la funzione `write()` per scrivere i dati. Ha inoltre necessità dell'universalità dei dati, ovvero che i dati siano rappresentati allo stesso modo su tutti i sistemi. Per questo motivo si usa il tipo opaco uintN_t, che rappresenta un intero a N bit (8, 16, 32) senza segno.
+I protocolli text sono quelli che usano il formato testuale per trasmettere i dati, mentre i protocolli binary sono quelli che usano il formato binario per trasmettere i dati. I protocolli text sono più facili da implementare, ma sono più lenti e più difficili da debuggare. I protocolli binary sono più veloci e più facili da debuggare, ma sono più difficili da implementare. Per implementare un protocollo text si usa la funzione `sscanf()` per leggere i dati, e la funzione `sprintf()` per scrivere i dati. Per implementare un protocollo binary si usa la funzione `read()` per leggere i dati, e la funzione `write()` per scrivere i dati. Ha inoltre necessità dell'universalità dei dati, ovvero che i dati siano rappresentati allo stesso modo su tutti i sistemi. Per questo motivo si usa il tipo opaco _uintN_t_, che rappresenta un intero a N bit (8, 16, 32) senza segno.
 Se non utilizzassi andrei incontro a problemi di:
 * **endianess**: il formato dei dati è diverso su sistemi big-endian e sistemi little-endian;
 * **padding**: il padding è diverso su sistemi a 32 bit e sistemi a 64 bit, potrebbero variare anche da compilatore a compilatore;
 * **dimensione dei dati**: la dimensione dei dati potrebbe variare a seconda dell'architettura del sistema.
 
+## Socket UDP
+Non c'è differenza tra socket di ascolto e di comunicazione, e viene meno tutta la fase di instaurazione della connessione. I dati vengono inviati direttamente, senza alcuna garanzia della consegna e della correttezza dei dati ricevuti. Il socket UDP è più veloce del socket TCP, ma è meno affidabile. Il socket UDP è utilizzato per applicazioni che non necessitano di affidabilità, come ad esempio il protocollo DNS. Usa le seguenti primitive:
+
+### `sendto()`
+Invia un messaggio ad un socket. La funzione prende in input:
+* `int sockfd`: il descrittore del socket;
+* `const void *buf`: puntatore al buffer che contiene i dati da inviare;
+* `size_t len`: la lunghezza del messaggio in byte;
+* `int flags`: opzioni;
+* `sockaddr* dest_addr`: puntatore alla struttura che contiene l'indirizzo del destinatario;
+* `socklen_t addrlen`: la lunghezza della struttura.
+Restituisce il numero di byte inviati, -1 in caso di errore.
+Si suppone che con una chiamata si riesca ad inviare tutto il messaggio, ovvero
+trasferire il messaggio dal buffer dell’applicazione al buffer di invio del socket.
+Volendo inviare un file, dobbiamo dividerlo in chunk e caricarli sul buffer di invio del socket: la funzione restituisce un valore inferiore di quello inserito. Inviare qualcosa significa riversare il contenuto del buffer applicazione nel buffer kernel. Se si verifica un errore, a livello applicazione non ci interessa, perché ci pensa il protocollo di trasporto. È bloccante: il programma si ferma finché non ha scritto tutto il messaggio
+
+### `recvfrom()`
+Riceve un messaggio da un socket. La funzione prende in input:
+* `int sockfd`: il descrittore del socket;
+* `const void *buf`: puntatore al buffer che contiene i dati da inviare;
+* `size_t len`: la lunghezza del messaggio in byte;
+* `int flags`: opzioni;
+* `sockaddr *src_addr`: puntatore alla struttura che contiene l'indirizzo del mittente;
+* `socklen_t *addrlen`: puntatore alla lunghezza della struttura.
+
+Restituisce il numero di byte ricevuti, -1 in caso di errore, 0 se il socket remoto si è chiuso. È bloccante: il programma si ferma finché non ha letto qualcosa.
+
+
 ## Firewall
-Un firewall è un dispositivo hardware o software che filtra i pacchetti in ingresso e in uscita. Il firewall può essere:
+Un firewall è un dispositivo hardware o software, o più in generale un **meccanismo di protezione**, che filtra i pacchetti in ingresso e in uscita. Il firewall può essere:
 * **stateful**: controlla il flusso dei pacchetti e tiene traccia delle connessioni TCP e UDP, e quindi il loro ordine;
 * **stateless**: non controlla il flusso dei pacchetti, e quindi il loro ordine, analizza solo campi statici.
 
 Può essere implementato su due livelli:
 * **network layer**: packet filtering che filtra i pacchetti in ingresso e in uscita;
 * **application layer**: deep packet inspection che filtra i pacchetti in ingresso e in uscita, e che può anche modificare i pacchetti. Può comprendere i dati a livello applicazione, e quindi può essere utilizzato per filtrare i pacchetti in base al contenuto dei dati, tenendo dunque conto del contesto.
-Il firewall funziona con una tabella di regole, ccomposta da _criteria_, che sono le caratteristiche del pacchetto, e _target_, che sono le azioni da eseguire. Le regole vengono applicate in ordine, e la prima regola che soddisfa i criteri viene eseguita. Se nessuna regola soddisfa i criteri, viene applicata la regola di default. Le sono nella struttura:
+Il firewall funziona con una tabella di regole, composta da _criteria_, che sono le caratteristiche del pacchetto, e _target_, che sono le azioni da eseguire. Le regole vengono applicate in ordine, e la prima regola che soddisfa i criteri viene eseguita. Se nessuna regola soddisfa i criteri, viene applicata la regola di default. Le sono nella struttura:
 * **indice**: indice della regola;
 * **IP source**: indirizzo IP sorgente;
 * **porta source**: porta sorgente;
@@ -753,7 +812,7 @@ La prima regola che matcha, dal basso verso l'alto, viene eseguita. Se nessuna r
 * **exclusive**: il firewall è chiuso a tutto, tranne che alle regole esplicitamente aperte.
 
 ## iptables
-iptables è un programma da riga di comando che permette di configurare il netfilter, il componente del kernel Linux che offre funzionalità di:
+iptables è un programma da riga di comando che permette di configurare il netfilter; è il componente del kernel Linux offre funzionalità di:
 * **stateful e stateless packet filtering**: permette di filtrare i pacchetti in ingresso e in uscita;
 * **NA[P]T**: permette di fare NAT e port forwarding;
 * **packet mangling**: permette di modificare i pacchetti in ingresso e in uscita;
