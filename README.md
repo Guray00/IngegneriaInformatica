@@ -248,6 +248,7 @@ Gianluca Schiano<br>
 Alessandro Simonelli<br>
 Giuseppe Soriano<br>
 Giorgio Charles Sorrentini<br>
+Carmine Tranfa<br>
 Andrea Trasacco<br>
 Lorenzo Valtriani<br>
 Andrea Vagnoli<br>
