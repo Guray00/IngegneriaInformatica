@@ -243,7 +243,7 @@ Si compone dei seguenti passaggi:
 2. Se il canale è rilevato come libero per un tempo di 96 bit, allora inizia la trasmissione del frame. Se il canale è occupato, si aspetta che sia libero per 96 bit, e poi si ripete il passaggio 2. Logicamente, il bit time è dipende dalla velocità di trasmissione del cavo;
 3. Se il frame viene inviato interamente con successo, allora passo al frame successivo;
 4. Se viene rilevata una collisione, si abortisce la trasmissione e si invia un jam signal, per un tempo di 48 bit.
-5. Dopo aver interrotto una trasmissione, attendo per un _exponential backoff_: all'n-esima collisione si sceglie un $K$ appartenente all'insieme ${0, 1, ..., 2^{m} - 1}$, con $m = min {n, 10}$, e si attende $K * 512$ bit, ovvero la grandezza minima di un frame ethernet, prima di tornare al punto 1.
+5. Dopo aver interrotto una trasmissione, attendo per un _exponential backoff_: all'n-esima collisione si sceglie un $K$ appartenente all'insieme {${0, 1, ..., 2^{m} - 1}$}, con *m* = min {n, 10}, e si attende $K * 512$ bit, ovvero la grandezza minima di un frame ethernet, prima di tornare al punto 1.
 
 L'**exponential backoff** è un metodo per adattarsi al carico di trasmissione del mezzo, in modo da evitare collisioni. Se infatti il carico è alto, allora si attende più tempo prima di riprovare a trasmettere, in modo da non avere collisioni. Se il carico è basso, allora si attende meno tempo, in modo da perderne il meno possibile. Dopo 17 collisioni, tuttavia, il frame viene comunque scartato.
 
