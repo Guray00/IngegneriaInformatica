@@ -91,8 +91,8 @@ Poniamo il caso di dover inviare un file di dimensione F ad N dispositivi. Ponia
 
 Il tempo impiegato dal server per inviare a tutti i client è pari a $\frac{NF}{U_{s}}$, mentre il tempo necessario per ricevere il file è $\frac{F}{D_{i}}$.
 Di conseguenza il tempo necessario per la distribuzione del file ad N client è pari a 
-$$\max\left\{\frac{NF}{U_{s}}, \frac{F}{D_{i}}\right\}$$
-che, per $N\to\infin$, è lineare.\
+$$\max {\frac{NF}{U_{s}}, \frac{F}{D_{i}}}$$
+che, per N->∞, è lineare.\
 Nel caso P2P abbiamo invece:
 
 * $\frac{F}{U_{s}}$, tempo per la prima copia;
@@ -100,8 +100,8 @@ Nel caso P2P abbiamo invece:
 * $\frac{N F}{(U_{s} +Ʃ U_{i})}$, tempo per scaricare N copie usando upload massimo. Si noti che il denominatore può essere assunto come $(U_{s} + N \cdot U_{medio})$.
 
 Dunque il tempo necessario del file sotto le medesime condizioni è: 
-$$\max\left\{\frac{F}{U_{s}}, \frac{F}{min(D_{i})}, \frac{NF}{(U_{s} + N \cdot U_{medio})}\right\}$$ 
-che, per $N\to\infin$, è pari a:
+$$\max{\frac{F}{U_{s}}, \frac{F}{min(D_{i})}, \frac{NF}{(U_{s} + N \cdot U_{medio})}}$$ 
+che, per N->∞, è pari a:
 $$\frac {F}{U_{medio}}$$
 Se ne deduce che **asintoticamente** il paradigma P2P è migliore in fase di invio di file.
 
@@ -202,7 +202,7 @@ I contro di questo protocollo sono:
 
 L'efficienza di questo protocollo è probabilistica, e dipende dalla probabilità che tutti i nodi inviino correttamente il frame. Questa è pari alla probabilità che un nodo invii correttamente il frame e che gli altri nodi non provino a reinviare il frame, cioè:
 $$p_{eff} = p(1-p)^{n-1}$$
-Asintooticamente, per $N\to\infin$, e per un $p'$ che massimizzi tale probabilità, otteniamo che:
+Asintooticamente, per N->∞, e per un $p'$ che massimizzi tale probabilità, otteniamo che:
 $$p_{eff} = \frac{1}{e}$$
 e quindi:
 $$p_{eff} \approx 0.37$$
@@ -243,7 +243,7 @@ Si compone dei seguenti passaggi:
 2. Se il canale è rilevato come libero per un tempo di 96 bit, allora inizia la trasmissione del frame. Se il canale è occupato, si aspetta che sia libero per 96 bit, e poi si ripete il passaggio 2. Logicamente, il bit time è dipende dalla velocità di trasmissione del cavo;
 3. Se il frame viene inviato interamente con successo, allora passo al frame successivo;
 4. Se viene rilevata una collisione, si abortisce la trasmissione e si invia un jam signal, per un tempo di 48 bit.
-5. Dopo aver interrotto una trasmissione, attendo per un _exponential backoff_: all'n-esima collisione si sceglie un $K$ appartenente all'insieme $\left\{0, 1, ..., 2^{m} - 1\right\}$, con $m = min \left\{n, 10\right\}$, e si attende $K * 512$ bit, ovvero la grandezza minima di un frame ethernet, prima di tornare al punto 1.
+5. Dopo aver interrotto una trasmissione, attendo per un _exponential backoff_: all'n-esima collisione si sceglie un $K$ appartenente all'insieme ${0, 1, ..., 2^{m} - 1}$, con $m = min {n, 10}$, e si attende $K * 512$ bit, ovvero la grandezza minima di un frame ethernet, prima di tornare al punto 1.
 
 L'**exponential backoff** è un metodo per adattarsi al carico di trasmissione del mezzo, in modo da evitare collisioni. Se infatti il carico è alto, allora si attende più tempo prima di riprovare a trasmettere, in modo da non avere collisioni. Se il carico è basso, allora si attende meno tempo, in modo da perderne il meno possibile. Dopo 17 collisioni, tuttavia, il frame viene comunque scartato.
 
