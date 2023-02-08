@@ -234,6 +234,7 @@ Dario Paroli<br>
 Alex Parri<br>
 Alessandro Placanica<br>
 Aleandro Prudenzano<br>
+Antonio Querci<br>
 Rambod Rahmani<br>
 Nicola Ramacciotti<br>
 Giampiero Ribechini<br>
