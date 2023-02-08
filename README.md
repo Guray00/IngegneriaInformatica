@@ -229,9 +229,10 @@ Alessio Meini<br>
 Tommaso Molesti<br>
 Alex Moriconi</br>
 Federico Nardi<br>
+Martina Panico<br>
 Dario Paroli<br>
 Alex Parri<br>
-Martina Panico<br>
+Alessandro Placanica<br>
 Aleandro Prudenzano<br>
 Rambod Rahmani<br>
 Nicola Ramacciotti<br>
