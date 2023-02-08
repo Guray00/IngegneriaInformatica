@@ -2,7 +2,7 @@
 <div align="center">
 Di seguito è presente una lista di domande poste dai professori G. Anastasi e F. Pistolesi durante gli esami di Reti Informatiche.
 <br>
-<b>aggiornato al:</b> <i>10/01/2023</i>
+<b>aggiornato al:</b> <i>31/01/2023</i>
 </div>
 <details>
   <summary>Credits</summary>
@@ -56,7 +56,10 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
   - Se uno si registra con il torrent server come fa il tracker a sapere che il nuovo peer si è registrato? 
   - In generale, rapporto tra peer nuovo e tracker? 
   - Come misura lui la velocità di upload degli altri peer verso di lui? 
+  - Come faccio a sapere quali sono i chunk più rari?
+  - Come stilo la classifica dei peer?
   - Poi fa una classifica, e una volta fatta la classifica? 
+  - Perchè favorisco i peer che hanno una velocità di upload maggiore?
   - Cosa c’è da ricordare sulla fase di upload? 
   - Nomi del meccanismo della graduatoria e della scelta casuale? 
   - Quali sono le caratteristiche innovative di bit torrent nella condivisione di file?
@@ -157,6 +160,8 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
   - proprietà _(verificabilità, non alterabilità, integrità, non replicabilità)_ 
   - implementazione (con schema)
   - perchè il mac non è definibile una firma digitale
+  - come garantisco l'autenticazione del mittente
+  - Come faccio ad essere sicuro che quella che ricevo sia effettivamente la chiave del mittente? _(Certification Authority)_
 
 - 🟨 **metodi** per inviare una **chiave di sessione** con riservatezza 
   - con chiave pubblica _(in particolare il disegno)_
@@ -171,6 +176,7 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
   - che servizi implementa questa libreria? _(autenticazione, integrità del messaggio, confidenzialità del messaggio)_
   - Come viene garantita la confidenzialità?
   - Qual è la caratteristica della chiave pubblica?
+  - Perchè usiamo SSL e non PGP? (Possiamo usare le API)
 
 - **Protocollo di autenticazione**
   - Il professore propone un disegno con uno schema di autenticazione Client-Server ed un insieme di operazioni (invio di usernaame e password da parte del client, concede l'accesso). Il professore chiede dunque se il metodo è 'robusto'. _(non lo è perchè la password viene mandata in chiaro, suscettibile ad attacchi di tipo **Replay**)_
@@ -242,7 +248,9 @@ La prima parte dell'esame consiste nella discussione del progetto, alcune delle 
 
 - NSS switch _(**N**ame **S**erver **S**witch)_
 
-- come vedere se la macchina è connessa a internet e verifica configurazione
+- come vedere se la macchina è connessa a internet e verifica configurazione 
+
+- Perchè non basta verificare un solo dominio con `nsllookup` per verificare la connessione ad internet/configurazione del DNS?
 
 - DNS
 
