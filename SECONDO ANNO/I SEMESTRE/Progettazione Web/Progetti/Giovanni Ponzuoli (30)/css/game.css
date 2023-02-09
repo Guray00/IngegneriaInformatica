@@ -1,0 +1,61 @@
+body {
+    background-color: cornsilk;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#field {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#game {
+    margin: 0px 75px;
+}
+
+#gameField {
+    border-spacing: 25px;
+}
+
+#gameField tr td {
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    border-radius: 10px;
+    box-shadow: rgba(225, 65, 65, 0.4) 5px 5px;
+}
+
+#gameField tr td.covered,
+#gameField tr td.suggested,
+#gameField tr td.swapped {
+    background-image: url('../images/cards/c.png');
+}
+
+#gameField tr td.found {
+    border: none;
+    box-shadow: none;
+    background-image: none;
+}
+
+#gameField tr td.suggested {
+    box-shadow: rgba(0, 255, 0, 0.8) 5px 5px;
+}
+
+#gameField tr td.swapped {
+    box-shadow: rgba(255, 255, 0, 0.8) 5px 5px;
+}
+
+#turnPlayerReminder {
+    margin: 0px 20px 0px 20px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 900;
+    color: white;
+    background-color: rgba(128, 0, 128, 0.9);
+    border: solid purple 5px;
+    border-radius: 10px;
+}
