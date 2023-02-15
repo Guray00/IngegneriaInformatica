@@ -376,6 +376,7 @@ Il ricevitore, invece, mantiene in memoria:
 * l'indice dell'ultimo byte ricevuto (LastByteReceived).
 
 Il protocollo **NON** considera come spazio libero eventuali buchi causati dalla ricezione _out-of-order_ perchè tale buco sarà prima o poi colmato. La dimensione totale occupata sarà quindi pari a $LastByteReceived - NextByteExpected$, mentre la dimensione libera sarà pari a $BufferSize - (LastByteReceived - NextByteExpected)$.\
+Il trasmettitore riceverà il feedback della situazione corrente dal ricevitore, che gli comunicherà la dimensione libera del suo buffer, tramite il campo _Window Size_ del segmento TCP, e invierà una quantità di dati pari a $WindowSize - (LastByteSent - LastByteAcked)$.
 Il ricevitore invia, ad ogni ACK, lo spazio libero rimanente nel suo buffer nek campo _Window Size_. Se esso vale 0, il trasmettitore smette di inviare dati e invia periodicamente un segmento con un byte di dati, finchè il ricevitore non ha spazio libero, in modo che il ricevitore possa aggiornarlo della situazione corrente. Se infatti il trasmettitore non gli inviasse tale messaggio, non potrebbe conoscere la situazione corrente e continuerebbe a trasmettere dati, causando una perdita degli stessi.
 
 #### Congestion Control
