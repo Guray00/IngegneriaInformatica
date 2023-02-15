@@ -9,10 +9,11 @@
 - [whydela](https://github.com/whydela/ProgettoReti)
 - [Marco Lampis](https://github.com/Guray00/progettoReti)
 - [Scimmiaparlante](https://github.com/Scimmiaparlante/ProgettoRetiInformatiche)
-- [DarioZippo](https://github.com/DarioZippo/Progetto_Reti_Informatiche)
+- [Dario Zippo](https://github.com/DarioZippo/Progetto_Reti_Informatiche)
 - [Ettore Ricci](https://github.com/Etto48/ProgettoRetiInformatiche)
 - [Alice Orlandini](https://github.com/AliceOrlandini/ProgettoRetiInformatiche)
 - [mattebernini](https://github.com/mattebernini/chaTT)
+- [Giovanni Enrico Loni](https://github.com/genricoloni/Computer-Network-project)
 
 ## 2020 - 2021
 
