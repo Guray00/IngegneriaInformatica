@@ -1,4 +1,4 @@
-# Lista Progetti Rti Informatiche
+# Lista Progetti Reti Informatiche
 
 ## 2022 - 2023
 
@@ -14,15 +14,15 @@
 - [Alice Orlandini](https://github.com/AliceOrlandini/ProgettoRetiInformatiche)
 - [mattebernini](https://github.com/mattebernini/chaTT)
 - [Giovanni Enrico Loni](https://github.com/genricoloni/Computer-Network-project)
+- [Giacomo Sansone](https://github.com/pcineverdies/chat-app-RI)
+- [Luca Cappabianca](https://github.com/Kappa1305/ProgettoRetiInformatiche)
 
 ## 2020 - 2021
 
 - [Gabriele Marino](https://github.com/gabrielemarino-gm/Progetto-Reti-Informatiche-2020-2021)
-- [Giacomo Sansone](https://github.com/pcineverdies/chat-app-RI)
 - [Tredici](https://github.com/Tredici/il-progettino)
 - [Frusco](https://github.com/Frusco/peer-to-peer-statistics-data-processing-system-for-covid-19)
 - [Alessandro](https://github.com/just-hms/CS-P2P-Hybrid-Chat-C)
-- [Luca Cappabianca](https://github.com/Kappa1305/ProgettoRetiInformatiche)
 - [Pietro Francaviglia](https://github.com/frankpietro/progetto_reti_informatiche)
 - [Lorenzo La Piana](https://github.com/Metaluppolo/Progetto-Universitario-Reti-Informatiche)
 - [Hdjdox](https://github.com/hdjdoxDev/progetto_reti_informatiche)
