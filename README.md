@@ -170,6 +170,10 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 ## Credits (in aggiornamento)
 
+<a href="https://github.com/Guray00/IngegneriaInformatica/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Guray00/IngegneriaInformatica" />
+</a>
+
 Questo progetto si basa sull'aiuto spontaneo da parte degli studenti della triennale di Ingegneria Informatica. Ogni contributo è gradito!
 
 I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedenti motivo per cui non è stato possibile rintracciare il contributore, se il tuo nome non è presente scrivici su telegram o realizza una issue a questo progetto (stessa procedura se vuoi richiedere la rimozione del tuo nome).
