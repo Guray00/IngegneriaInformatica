@@ -1,0 +1,96 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2023-02-01
+	bool dirty;
+//   SOLUZIONE 2023-02-01 )
+// ( SOLUZIONE 2023-02-01
+	sem_wait(d->mutex);
+	for (natl i = 0; i < quanti; i++) {
+		// cerchiamo il blocco nella buffercache. Se non lo
+		// troviamo rimpiazziamo l'lru
+		buf_des *b = bufcache_search(primo + i);
+		if (!b) {
+			b = &d->bufcache[d->lru];
+			if (b->dirty) {
+				starthd_out(d, b->buf, b->block, 1);
+				sem_wait(d->sincr);
+			}
+			starthd_in(d, b->buf, primo + i, 1);
+			sem_wait(d->sincr);
+			b->block = primo + i;
+			b->full = true;
+			b->dirty = false;
+		}
+		memcpy(vetti + i * DIM_BLOCK, b->buf, DIM_BLOCK);
+		// ora b è l'mru
+		bufcache_promote(b);
+	}
+	sem_signal(d->mutex);
+//   SOLUZIONE 2023-02-01 )
+// ( SOLUZIONE 2023-02-01
+	sem_wait(d->mutex);
+	for (natl i = 0; i < quanti; i++) {
+		// politica write-back: scriviamo solo in buffercache
+		// non c'è bisogno di caricare il blocco dall'hard disk,
+		// in quanto dobbiamo sovrascriverlo interamente.
+		buf_des *b = bufcache_search(primo + i);
+		if (!b) {
+			b = &d->bufcache[d->lru];
+			if (b->dirty) {
+				starthd_out(d, b->buf, b->block, 1);
+				sem_wait(d->sincr);
+			}
+			b->block = primo + i;
+			b->full = true;
+		}
+		memcpy(b->buf, vetto + i * DIM_BLOCK, DIM_BLOCK);
+		b->dirty = true;
+		// c'è stato un accesso al buffer e dobbiamo promuoverlo
+		bufcache_promote(b);
+	}
+	sem_signal(d->mutex);
+//   SOLUZIONE 2023-02-01 )
+// ( SOLUZIONE 2023-02-01
+extern "C" void c_synchd()
+{
+	des_ata *d = &hd;
+
+	sem_wait(d->mutex);
+	for (int i = 0; i < MAX_BUF_DES; i++) {
+		buf_des *b = &d->bufcache[i];
+		if (b->dirty) {
+			starthd_out(d, b->buf, b->block, 1);
+			sem_wait(d->sincr);
+			b->dirty = false;
+		}
+	}
+	sem_signal(d->mutex);
+}
+//   SOLUZIONE 2023-02-01 )
+// ( SOLUZIONE 2023-02-01
+		b->dirty = false;
+//   SOLUZIONE 2023-02-01 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2023-02-01
+	fill_io_gate	IO_TIPO_SHD	a_synchd
+//   SOLUZIONE 2023-02-01 )
+// ( SOLUZIONE 2023-02-01
+	.extern	c_synchd
+a_synchd:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_synchd
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2023-02-01 )
+
+

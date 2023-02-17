@@ -1,0 +1,119 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2023-02-15
+extern "C" void c_bufread_n(natb *vetti, natl first_byte, natl nbytes)
+{
+	if (!access(vetti, nbytes, true)) {
+		flog(LOG_WARN, "bufread_n: parametri non validi: %p, %d", vetti, nbytes);
+		abort_p();
+	}
+
+	des_ata *d = &hd;
+
+	natl block = first_byte / DIM_BLOCK;
+	natl offset = first_byte % DIM_BLOCK;
+	natl toread = DIM_BLOCK - offset < nbytes ? DIM_BLOCK - offset : nbytes;
+	sem_wait(d->mutex);
+	while (nbytes > 0) {
+		buf_des *b = bufcache_search(block);
+		if (!b) {
+			b = &d->bufcache[d->lru];
+			if (b->dirty) {
+				starthd_out(d, b->buf, b->block, 1);
+				sem_wait(d->sincr);
+			}
+			starthd_in(d, b->buf, block, 1);
+			sem_wait(d->sincr);
+			b->block = block;
+			b->full = true;
+			b->dirty = false;
+		}
+		memcpy(vetti, b->buf + offset, toread);
+		bufcache_promote(b);
+		vetti += toread;
+		nbytes -= toread;
+		offset = 0;
+		toread = DIM_BLOCK < nbytes ? DIM_BLOCK : nbytes;
+		block++;
+	}
+	sem_signal(d->mutex);
+}
+
+extern "C" void c_bufwrite_n(natb *vetto, natq first_byte, natq nbytes)
+{
+	if (!access(vetto, nbytes, false)) {
+		flog(LOG_WARN, "bufwrite_n: parametri non validi: %p, %d", vetto, nbytes);
+		abort_p();
+	}
+
+	des_ata *d = &hd;
+
+	natl block = first_byte / DIM_BLOCK;
+	natl offset = first_byte % DIM_BLOCK;
+	natl towrite = DIM_BLOCK - offset < nbytes ? DIM_BLOCK - offset : nbytes;
+	sem_wait(d->mutex);
+	while (nbytes > 0) {
+		buf_des *b = bufcache_search(block);
+		if (!b) {
+			b = &d->bufcache[d->lru];
+			if (b->dirty) {
+				starthd_out(d, b->buf, b->block, 1);
+				sem_wait(d->sincr);
+			}
+			if (towrite < DIM_BLOCK) {
+				starthd_in(d, b->buf, block, 1);
+				sem_wait(d->sincr);
+			}
+			b->block = block;
+			b->full = true;
+		}
+		memcpy(b->buf + offset, vetto, towrite);
+		b->dirty = true;
+		bufcache_promote(b);
+		vetto += towrite;
+		nbytes -= towrite;
+		offset = 0;
+		towrite = DIM_BLOCK < nbytes ? DIM_BLOCK : nbytes;
+		block++;
+	}
+	sem_signal(d->mutex);
+}
+//   SOLUZIONE 2023-02-15 )
+// ( SOLUZIONE 2023-02-15
+		b->dirty = false;
+//   SOLUZIONE 2023-02-15 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2023-02-15
+	fill_io_gate	IO_TIPO_BRD	a_bufread_n
+	fill_io_gate	IO_TIPO_BWR	a_bufwrite_n
+//   SOLUZIONE 2023-02-15 )
+// ( SOLUZIONE 2023-02-15
+	.extern	c_bufread_n
+a_bufread_n:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_bufread_n
+	iretq
+	.cfi_endproc
+
+	.extern	c_bufwrite_n
+a_bufwrite_n:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_bufwrite_n
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2023-02-15 )
+
+
