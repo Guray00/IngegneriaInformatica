@@ -1,0 +1,98 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2022-06-29
+extern "C" void c_ceread(natl id, char *buf, natl quanti)
+{
+	if (id >= next_ce) {
+		flog(LOG_WARN, "dispositivo %d non esistente", id);
+		abort_p();
+	}
+
+	if (!access(buf, quanti, true, true)) {
+		flog(LOG_WARN, "parametri non validi: %p, %d", buf, quanti);
+		abort_p();
+	}
+
+	if (!quanti)
+		return;
+
+	des_ce *c = &array_ce[id];
+	sem_wait(c->free_chan);
+	sem_wait(c->mutex);
+	natw i;
+	for (i = 0; i < MAX_CHAN; i++) {
+		if (!c->chan[i].active)
+			break;
+	}
+	des_chan *ch = &c->chan[i];
+	ch->active = true;
+	paddr p = trasforma(buf);
+	natq rem = DIM_PAGINA - (p & 0xfff);
+	if (rem > quanti)
+		rem = quanti;
+	ch->buf = buf + rem;
+	ch->quanti = quanti - rem;
+	outputl(p, c->iBMPTR);
+	outputl(rem, c->iBMLEN);
+	outputl(i, c->iCHN);
+	sem_signal(c->mutex);
+	sem_wait(ch->sync);
+	sem_signal(c->free_chan);
+}
+
+extern "C" void estern_ce(int id)
+{
+	des_ce *c = &array_ce[id];
+
+	for (;;) {
+		sem_wait(c->mutex);
+		natl sts = inputl(c->iSTS);
+		for (natw i = 0; i < MAX_CHAN; i++) {
+			natl mask = 1U << i;
+			des_chan *ch = &c->chan[i];
+			if (!ch->active || (sts & mask))
+				continue;
+			if (ch->quanti) {
+				natq rem = DIM_PAGINA;
+				if (rem > ch->quanti)
+					rem = ch->quanti;
+				paddr p = trasforma(ch->buf);
+				ch->buf += rem;
+				ch->quanti -= rem;
+				outputl(p, c->iBMPTR);
+				outputl(rem, c->iBMLEN);
+				outputl(i, c->iCHN);
+			} else {
+				ch->active = false;
+				sem_signal(ch->sync);
+			}
+		}
+		sem_signal(c->mutex);
+		wfi();
+	}
+}
+//   SOLUZIONE 2022-06-29 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2022-06-29
+	fill_io_gate	IO_TIPO_CEREAD	a_ceread
+//   SOLUZIONE 2022-06-29 )
+// ( SOLUZIONE 2022-06-29
+	.extern	c_cedmaread
+a_ceread:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_ceread
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2022-06-29 )
+
+

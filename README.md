@@ -170,6 +170,10 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 ## Credits (in aggiornamento)
 
+<a href="https://github.com/Guray00/IngegneriaInformatica/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Guray00/IngegneriaInformatica" />
+</a>
+
 Questo progetto si basa sull'aiuto spontaneo da parte degli studenti della triennale di Ingegneria Informatica. Ogni contributo è gradito!
 
 I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedenti motivo per cui non è stato possibile rintracciare il contributore, se il tuo nome non è presente scrivici su telegram o realizza una issue a questo progetto (stessa procedura se vuoi richiedere la rimozione del tuo nome).
@@ -184,6 +188,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 **Collaboratori Materiale**
 
+Sara Aliani<br>
 Taulant Arapi<br>
 Luca Arduini<br>
 Giulio Bello<br>
@@ -227,12 +232,16 @@ Federico Matteoni<br>
 Alessio Meini<br>
 Tommaso Molesti<br>
 Alex Moriconi</br>
+Federico Nardi<br>
+Martina Panico<br>
 Dario Paroli<br>
 Alex Parri<br>
-Martina Panico<br>
+Alessandro Placanica<br>
 Aleandro Prudenzano<br>
+Antonio Querci<br>
 Rambod Rahmani<br>
 Nicola Ramacciotti<br>
+Giampiero Ribechini<br>
 Samuele Ricotta<br>
 Alessio Ristori<br>
 Gianmaria Saggini<br>
@@ -245,6 +254,7 @@ Gianluca Schiano<br>
 Alessandro Simonelli<br>
 Giuseppe Soriano<br>
 Giorgio Charles Sorrentini<br>
+Carmine Tranfa<br>
 Andrea Trasacco<br>
 Lorenzo Valtriani<br>
 Andrea Vagnoli<br>

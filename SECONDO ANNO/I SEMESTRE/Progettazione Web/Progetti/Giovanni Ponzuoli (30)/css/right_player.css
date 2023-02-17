@@ -1,0 +1,53 @@
+#rightPlayer {
+    width: 100px;
+    margin-top: 30px;
+    padding: 10px;
+    background-color: rgba(255, 0, 0, 0.9);
+    border: red solid 5px;
+    border-radius: 30px;
+    text-align: center;
+    font-style: oblique;
+    font-size: 15px;
+    font-weight: 900;
+    color: white;
+}
+
+#rightPlayer.wait {
+    box-shadow: rgba(255, 0, 0, 0.4) -10px 10px;
+}
+
+#rightPlayer.play {
+    box-shadow: rgba(0, 255, 0, 0.8) -10px 10px;
+}
+
+#rightPlayer #rightTwentyFivePercent:hover {
+    content: url(../images/players/checkedTwentyFiveRight.png);
+}
+
+#rightPlayer #rightTwentyFivePercent.used:hover {
+    content: url(../images/players/uncheckedTwentyFiveRight.png);
+}
+
+#rightPlayer #rightSwap:hover {
+    content: url(../images/players/checkedSwapRight.png);
+}
+
+#rightPlayer #rightSwap.used:hover {
+    content: url(../images/players/uncheckedSwapRight.png);
+}
+
+#rightPlayer #rightTwice:hover {
+    content: url(../images/players/checkedTwiceRight.png);
+}
+
+#rightPlayer #rightTwice.used:hover {
+    content: url(../images/players/uncheckedTwiceRight.png);
+}
+
+#rightPlayer #rightProfile:hover {
+    content: url(../images/players/checkedStatsRight.png);
+}
+
+#rightPlayer #rightLogout:hover {
+    content: url(../images/players/checkedLogoutRight.png);
+}

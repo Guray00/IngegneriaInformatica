@@ -40,7 +40,8 @@ Come si scrive all'interno della pipe? Cosa ritornano le funzioni per usare le p
 - Thread, cos'è un thread in Unix/Linux. Funzioni sui thread. Necessario includere una libreria per usare i thread? Esiste il concetto nativo di thread in linux? Oppure è il programmatore a doverlo fare? Perché usiamo la libreria pthread invece del concetto nativo di thread di linux? Come vengono identificati i thread usando la libreria?
 Come si crea un thread usando pthread? Come si termina il thread? 
 
-###  Domande Scritto Minici [dalla sessione estiva 21/22]
+###  Domande Scritto Minici 
+#### Sessione estiva 21/22
 - System call per la gestione dei segnali: signal e kill. 
 - Primitiva Fork() : descrizione ed esempio di utilizzo
 - Descrizione di Find e Locate e breve illustrazione delle loro differenze
@@ -50,6 +51,15 @@ Come si crea un thread usando pthread? Come si termina il thread?
 - Bit SUID e SGID, fare un esempio di utilizzo
 - Funzioni per il Job Control 
 - Es2.c del laboratorio 9 [A.A. 21/22]
+  
+#### Sessione invernale 22/23
+- primitiva fork, cosa fa e un esempio di utilizzo
+- variabili condizione, cosa sono, a cosa servono e quali operazioni si possono fare su di esse
+- quali classi di utenti sono definite sui file e a quali classi di utenti vengono applicati i permessi relativi ai file 
+- Es3.c del laboratorio 9 [A.A. ]
+
+
+
 
 ### Domande orali sistemi operativi 18/07/2022
 

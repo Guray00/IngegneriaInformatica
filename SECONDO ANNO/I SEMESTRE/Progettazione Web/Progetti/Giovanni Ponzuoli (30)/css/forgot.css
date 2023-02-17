@@ -1,0 +1,92 @@
+body {
+    background-image: url('../images/backgrounds/Forgot.png');
+    background-size: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: large;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+body>form {
+    margin: auto;
+}
+
+body>form>fieldset {
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: rgb(4, 4, 177);
+    font-size: 28px;
+    font-weight: 800;
+    border-radius: 25px;
+}
+
+#usrForgot>fieldset,
+#pwdForgot>fieldset {
+    border: green solid 10px;
+    box-shadow: rgba(0, 128, 0, 0.4) 10px 10px;
+}
+
+body>form>fieldset>p {
+    margin: 5px;
+}
+
+body>form>fieldset input[type=text],
+body>form>fieldset input[type=password] {
+    text-align: center;
+    width: 300px;
+    padding: 4px 12px;
+    font: inherit;
+    font-size: 75%;
+    border: rgb(4, 4, 177) solid 2px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 128, 0, 0.4) 10px 10px;
+}
+
+body>form>fieldset>legend,
+input[type=submit] {
+    width: 250px;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 1em 0em;
+    border-radius: 10px;
+}
+
+#usrForgot>fieldset>legend,
+#pwdForgot>fieldset>legend {
+    background-color: green;
+}
+
+input[type=submit] {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 28px;
+    border: white solid 3px;
+}
+
+#usrForgot input[type=submit],
+#pwdForgot input[type=submit] {
+    background-color: green;
+    box-shadow: rgba(0, 128, 0, 0.4) 10px 10px;
+}
+
+#invalidUsrCredentials,
+#invalidPwdCredentials {
+    font-size: 75%;
+    color: rgb(4, 4, 177);
+}
+
+body>form>fieldset>nav {
+    font-size: 75%;
+    color: green;
+}
+
+body>form>fieldset>nav>a:visited,
+body>form>fieldset>nav>a {
+    font-size: 75%;
+    color: rgb(4, 4, 177);
+    text-decoration: none;
+}

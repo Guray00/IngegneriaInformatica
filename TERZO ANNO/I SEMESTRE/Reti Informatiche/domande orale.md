@@ -2,13 +2,14 @@
 <div align="center">
 Di seguito è presente una lista di domande poste dai professori G. Anastasi e F. Pistolesi durante gli esami di Reti Informatiche.
 <br>
-<b>aggiornato al:</b> <i>02/11/2022</i>
+<b>aggiornato al:</b> <i>31/01/2023</i>
 </div>
 <details>
   <summary>Credits</summary>
   <i>Hanno contribuito:<br>
   	 <ul> 
 	 	<li>M. Lampis</li>
+    <li>G. E. Loni</li>
 	 </ul>
   </i>
 </details>
@@ -31,13 +32,13 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 
 - http
 
-- web caching
+- web caching (proxy server)
 
 
 ### Applicazioni di rete
 - 🟥 **CS** e **P2P**:
-  - differenze, pro e contro
-  - esempio file grande F, calcolare l'asintoto orizzontale nel caso P2P
+  - differenze, pro e contro, caratteristiche del Server _(capacità computazionale, molta banda, elevati tempi online)_, caratteristiche del peer _(i peer non devono necessariamente avere ricchezza di risorse)_
+  - esempio file grande F, calcolare l'asintoto orizzontale nel caso P2P _(anche con schema di connessione)_
   - In che senso noi intendiamo che un dispositivo può essere client o server? (Un dispositivo si dice che è server se in esso gira il processo server)
   - I peer devono essere sempre attivi? (NO)
   - È più vantaggioso utilizzare un approccio client-server o peer to peer per inviare un file? Qual è l’istante iniziale?(Quando il file viene messo a disposizione). E l’istante finale? 
@@ -55,7 +56,10 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
   - Se uno si registra con il torrent server come fa il tracker a sapere che il nuovo peer si è registrato? 
   - In generale, rapporto tra peer nuovo e tracker? 
   - Come misura lui la velocità di upload degli altri peer verso di lui? 
+  - Come faccio a sapere quali sono i chunk più rari?
+  - Come stilo la classifica dei peer?
   - Poi fa una classifica, e una volta fatta la classifica? 
+  - Perchè favorisco i peer che hanno una velocità di upload maggiore?
   - Cosa c’è da ricordare sulla fase di upload? 
   - Nomi del meccanismo della graduatoria e della scelta casuale? 
   - Quali sono le caratteristiche innovative di bit torrent nella condivisione di file?
@@ -70,6 +74,7 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
   - come si negoziano i campi inutilizzati _(**L**ink **C**ontrol **P**rotocol)_
   - A cosa servono i byte di flag _(delimitatore del frame)_
   - quale protocollo di negoziazione dei parametri del protocollo IP si usa? _(ICMP)_
+  - bit transaprency
 
 - Slotted e unslotted **ALOHA**
 
@@ -79,6 +84,7 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 - 🟨 formato **frame ethernet**: 
   - come è formato
   - dimensione _(almeno 64byte)_
+  - perchè la dimensione minimna del frame non è 0?
 
 - 🟥 **CSMA/CD ethernet**: 
 	- tempi sui segnali del mezzo
@@ -87,7 +93,12 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 
 
 ### Internetworking
-- 🟧 protocollo **DHCP**: 
+- Assegnazione di indirizzi IP
+  - Differenza tra assegnazione statica e dinamica
+  - Vantaggi dell'assegnazione dinamica _(riutilizzo degli indirizzi IP; comodità dell'assegnazione automatica; cambio di rete implica cambio di indirizzo, con assegnazione statica non potrei farlo)_
+  - Questa domanda porta successivamente alla discussione del **DHCP**
+
+- 🟧 protocollo **DHCP**:
   - specificare i messaggi scambiati
   - schema di come  un host richiede e riceve un ip _(4 handshake)_
   - come avviene la comunicazione
@@ -97,8 +108,8 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
   - a cosa serve _(assegnare un ip pubblico a più host privati)_
   - per quale scopo è stato pensato _(ridurre il numero di ip necessari)_
   - disegno di cosa succede quando si utilizza il nat  
-  - limiti _(limite massimo connessioni dovuto alle porte del router, è un router nel mezzo per cui violata connessione end-to-end, la soluzione migliore è usare IPv6)_
-  - come si implementa 
+  - limiti _(limite massimo connessioni dovuto alle porte del router; è un router nel mezzo per cui violata connessione end-to-end, la soluzione migliore è usare IPv6)_
+  - come si implementa? dove si trova il NAT Server?
   - situazione particolare in cui questo meccanismo potrebbe non bastare e come si risolve _(se la richiesta parte dall'esterno potrebbe mancare l'associazione porta-ip privato, si può risolvere effettuando un port mapping manuale con iptables aggiungendo la regola)_
 
 
@@ -107,6 +118,9 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 - 🟥 **chiusura/apertura** connessione **TCP**: 
 	- come funziona
 	- perché il numero di sequenza iniziale è casuale _(per evitare che il client si connetta, chiuda la connessione e poi la riapra subito dopo ed allora nei buffer interni vi rimangono ancora vecchi dati)_
+	- Cosa succederebbe se invece venissero usati gli stessi numeri di sequenza? _(se un numero di sequenza non viene inviato nella 'vecchia' connessione, potrebbe essere interpreato come pacchetto dati della 'nuova connessione'. ovviamente è una situazione da evitare)_
+	- Uso del timer nella chiusura TCP 
+	- Se il server non è nelle condizioni di poter chiudere immediatamente la connessione, ad esempio perchè potrebbe avere ancora dati da inviare, come bisogna comportarsi? _(il server invia ACK, finisce di mandare i dati e poi manda FIN)_
 
 - 🟨 **Affidabilità** protocollo **TCP**:
   - come viene garantita _(ARQ e RTT stimato)_
@@ -146,29 +160,40 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
   - proprietà _(verificabilità, non alterabilità, integrità, non replicabilità)_ 
   - implementazione (con schema)
   - perchè il mac non è definibile una firma digitale
+  - come garantisco l'autenticazione del mittente
+  - Come faccio ad essere sicuro che quella che ricevo sia effettivamente la chiave del mittente? _(Certification Authority)_
 
 - 🟨 **metodi** per inviare una **chiave di sessione** con riservatezza 
   - con chiave pubblica _(in particolare il disegno)_
   - con chiave simmetrica e KDC _(**K**ey **D**istribution **C**enter)_
 
 - 🟨 **PGP** _(Pretty Good Privacy)_
-
-- 🟨 confidenzialità dei messaggi (?)
+  - che servizi offre? _(confidenzialità, integrità del messaggio, autenticazione del mittente)_
+  - come viene garantita l'autenticazione
 
 - 🟨 **SSL** _(**S**ecure **S**ocket **L**ayer)_ 
+  - A che livello è implementata? _(applicazione)_
+  - che servizi implementa questa libreria? _(autenticazione, integrità del messaggio, confidenzialità del messaggio)_
+  - Come viene garantita la confidenzialità?
   - Qual è la caratteristica della chiave pubblica?
+  - Perchè usiamo SSL e non PGP? (Possiamo usare le API)
 
+- **Protocollo di autenticazione**
+  - Il professore propone un disegno con uno schema di autenticazione Client-Server ed un insieme di operazioni (invio di usernaame e password da parte del client, concede l'accesso). Il professore chiede dunque se il metodo è 'robusto'. _(non lo è perchè la password viene mandata in chiaro, suscettibile ad attacchi di tipo **Replay**)_
+  - A questo punto chiede quali operazioni possono invece essere fatte per rendere il metodo più sicuro. _(uso del nonce, validità temporale del nonce)_
+  - Chiede ulteriori operazioni per rendere il tutto più sicuro _()
 - 🟨 **IPsec**:
   - come si realizza
   - cosa sono le Security association
 
 
 ### Wireless and Mobile Network
-- 🟥 problema del **nodo nascosto** e **esposto** _(con precisione, anche su cosa sono i cerchi dei disegni)_ : 
+- 🟥 problema del **nodo nascosto** e **esposto**  _(con precisione, anche su cosa sono i cerchi dei disegni)_ : 
   - Da cosa deriva i nome
   -  Ci sono due modi di raffigurarlo, dirli entrambi. (Il secondo dovrebbe essere quello con un ostacolo tra A e C)
   - chi riceve i messaggi se inviati da uno specifico nodo?
-  - come si risolve il problema *(virtual career sensing)*
+  - come si risolve il problema _(virtual career sensing, viene chiesto anche di disegnare un grafico di temporizzazione)_
+  - Nell'A.A. 22/23 il problema del nodo esposto non è stato trattato, è stato chiesto all'orale ad uno studente che lo ha nominato. Potrebbe essere che lo studente stesse portando il programma dell'anno precedente
 
 - 🟥 protocollo **CSMA/CA**:
   - specificare i passaggi
@@ -179,6 +204,7 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 
 - 🟥 **mobile ip**: 
   - Cosa vuol dire che cambia il punto di accesso? 
+  - Schema e significato dei suoi elementi
   - Come possiamo permettere le continuità del servizio in caso di mobilita? (fare disegno del problema con le parti in causa)
   - Come viene gestito lo spostamento nelle due modalità di routing indiretto e diretto?
   - Quale approccio utilizza il mobile ip? _(indiretto)_
@@ -189,18 +215,26 @@ Di seguito è presente una lista di domande poste dai professori G. Anastasi e F
 ## Domande Pistolesi
 
 ### Progetto
+#### Progetto 2021/2022
 La prima parte dell'esame consiste nella discussione del progetto, alcune delle domande potrebbero riguardare:
 - motivare alcune scelte nel progetto
 - motivare la scelta di UDP, se utilizzato
 - perché sono stati utilizzati i thread nel progetto, se presenti
 - perchè si è utilizzato la select, se presente
 - Perché hai scelto di usare socket bloccanti con la IO-multiplexing?
+- Perchè IO-Multiplexing e non select?
 - Che svantaggio avresti avuto usando quelli non bloccanti?
 - Hai creato una lista di peer, dà una minore robustezza in caso di crash del server, perché? È colpa della lista?
 - in caso di caduta di un device cosa succede? 
+- come rilevo la caduta di un device? (segnali, recv...) anche nel caso di connessione **non aperta**
+- in caso di caduta del server, come viene gestita la cronologia dei messaggi nello stesso? 
 - Il fatto di mantenere sempre la connessione con il server che vantaggi e svantaggi ha?
 - Come avresti fatto per implementarlo con UDP?
-- nel progetto ci sono parti in cui è utile gestire la mutua esclusione?
+- 🟥 nel progetto ci sono parti in cui è utile gestire la mutua esclusione, o leggere e scrivere concorrentemente in una stessa risorsa/area di memoria?
+- Come implementeresti un meccanismo alternativo per la gestione delle disconnessioni improvvise? [l'uso dei segnali sembra essere una risposta gradita]
+
+#### Progetto 2022/2023
+- 🟥 nel progetto ci sono parti in cui è utile gestire la mutua esclusione, o leggere e scrivere concorrentemente in una stessa risorsa/area di memoria?
 
 
 ### Parte teorica
@@ -208,13 +242,15 @@ La prima parte dell'esame consiste nella discussione del progetto, alcune delle 
 
 - quali sono i requisiti per essere connessi ad internet? 
 
-- da dove si vede se abbiamo accesso al router di default? Qual è il suo ip? (vediamo dal file persistente in `/etc/network/interfaces` oppure col comando `ip route show`)
+- da dove si vede se abbiamo accesso al router di default? Qual è il suo ip? (vediamo dal file di configurazione persistente in `/etc/network/interfaces` oppure col comando `ip route show`)
 
 - da dove si vede se il dns è configurato? (guardare in `/etc/resolv.conf` per vedere se impsotato il dns server e `nslookup dominio` per testare  un dominio in particolare)
 
 - NSS switch _(**N**ame **S**erver **S**witch)_
 
-- come vedere se la macchina è connessa a internet e verifica configurazione
+- come vedere se la macchina è connessa a internet e verifica configurazione 
+
+- Perchè non basta verificare un solo dominio con `nsllookup` per verificare la connessione ad internet/configurazione del DNS?
 
 - DNS
 
@@ -262,12 +298,13 @@ La prima parte dell'esame consiste nella discussione del progetto, alcune delle 
 
 - **firewall**: cos'è, dove posso trovarlo, a cosa serve, e come si configura
 
-- **iptables**: esempio, come aggiungere un record alla tabella
+- **iptables**: esempio, come aggiungere un record alla tabella, bloccare tutte le connessioni verso siti web
 
 - **NAT** e **PAT**: esempio con inserimento di una regola in una chain, a cosa servono, come funzionano
 
 -  **apache2**: 
    - struttura
+   - virtual hosts
    - come farlo partire
    - come si implementa
    - a cosa serve il virtual host
@@ -280,4 +317,5 @@ La prima parte dell'esame consiste nella discussione del progetto, alcune delle 
 
 - tipi certificati perchè si usano, come fare se non li uso? 
 	i 2 host usano un protocollo di testo per scambiarsi i dati perchè convertendo i numeri in testo il char è sempre rappresentato con 1 byte non serve la certificazione
+
 

@@ -1,0 +1,23 @@
+/* creare dei box rettangolari di colore rosso e bordo blu */
+div {
+  width: 50px;
+  height: 70px;
+  border: 3px solid blue;
+  background-color: red;
+  /* rendere la transizione dolce di durata 2 secondi */
+  transition: transform 2s, background-color 2s; 
+  margin: 2px;
+  
+}
+
+/* colorare di verde quelli pari */
+div:nth-child(even) {
+  background-color: green;
+  
+}
+
+/* fare una rotazione di 90 gradi e cambiare il colore in giallo al passaggio del mouse */
+div:hover {
+    transform : rotate(90deg);
+    background-color: yellow;
+}

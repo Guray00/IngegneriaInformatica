@@ -1,0 +1,103 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2022-09-14
+struct des_chan {
+	natl sync;
+	bool active;
+};
+//   SOLUZIONE 2022-09-14 )
+// ( SOLUZIONE 2022-09-14
+	natl mutex;
+	natl free_chan;
+	des_chan chan[MAX_CHAN];
+//   SOLUZIONE 2022-09-14 )
+// ( SOLUZIONE 2022-09-14
+extern "C" void c_ceread(natl id, char *buf, natl quanti)
+{
+	if (id >= next_ce) {
+		flog(LOG_WARN, "dispositivo %d non esistente", id);
+		abort_p();
+	}
+
+	if (!access(buf, quanti, true, false)) {
+		flog(LOG_WARN, "parametri non validi: %p, %d", buf, quanti);
+		abort_p();
+	}
+
+	if (!quanti)
+		return;
+
+	des_ce *c = &array_ce[id];
+	sem_wait(c->free_chan);
+	sem_wait(c->mutex);
+	natw i;
+	for (i = 0; i < MAX_CHAN; i++) {
+		if (!c->chan[i].active)
+			break;
+	}
+	des_chan *ch = &c->chan[i];
+	ch->active = true;
+	paddr cr3 = readCR3();
+	outputl(cr3, c->iBMCR3);
+	vaddr v = reinterpret_cast<vaddr>(buf);
+	outputl(v, c->iBMPTR_LOW);
+	outputl(v >> 32, c->iBMPTR_HIGH);
+	outputl(quanti, c->iBMLEN);
+	outputl(i, c->iCHN);
+	sem_signal(c->mutex);
+	sem_wait(ch->sync);
+	sem_signal(c->free_chan);
+}
+
+extern "C" void estern_ce(int id)
+{
+	des_ce *c = &array_ce[id];
+
+	for (;;) {
+		sem_wait(c->mutex);
+		natl sts = inputl(c->iSTS);
+		for (natw i = 0; i < MAX_CHAN; i++) {
+			natl mask = 1U << i;
+			des_chan *ch = &c->chan[i];
+			if (ch->active && !(sts & mask)) {
+				ch->active = false;
+				sem_signal(ch->sync);
+			}
+		}
+		sem_signal(c->mutex);
+		wfi();
+	}
+}
+//   SOLUZIONE 2022-09-14 )
+// ( SOLUZIONE 2022-09-14
+		ce->mutex = sem_ini(1);
+		ce->free_chan = sem_ini(MAX_CHAN);
+		for (int i = 0; i < MAX_CHAN; i++) {
+			ce->chan[i].sync = sem_ini(0);
+			ce->chan[i].active = false;
+		}
+//   SOLUZIONE 2022-09-14 )
+
+
+******************************************
+* io/io.s
+******************************************
+
+// ( SOLUZIONE 2022-09-14
+	fill_io_gate	IO_TIPO_CEREAD	a_ceread
+//   SOLUZIONE 2022-09-14 )
+// ( SOLUZIONE 2022-09-14
+	.extern	c_cedmaread
+a_ceread:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_ceread
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2022-09-14 )
+
+
