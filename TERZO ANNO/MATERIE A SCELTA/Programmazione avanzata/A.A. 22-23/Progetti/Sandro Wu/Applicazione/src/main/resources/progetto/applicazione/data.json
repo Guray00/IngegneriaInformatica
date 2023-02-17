@@ -1,0 +1,1437 @@
+{
+    "user": [
+        {
+            "id": 1,
+            "name": "Test",
+            "hash": "$2a$10$1BAQ6Ae9YJ/Mg4.4BGHqNuSjwQr1ArlBwKGoP4xVauwWGEOkhh92C"
+        },
+        {
+            "id": 2,
+            "name": "Sandro",
+            "hash": "$2a$10$vO09i83tTkdLcJmHbqE7JetsKDJY2dAKwsANJjI2NW8/9P3Cna0ce"
+        }
+    ],
+    "session": [
+        {
+            "id": 1,
+            "token": "pass",
+            "user_id": 1,
+            "expire": "2050-01-07 15:06:10"
+        },
+        {
+            "id": 0,
+            "token": "UnitTestToken",
+            "user_id": 0,
+            "expire": "2050-01-01 00:00:00"
+        }
+    ],
+    "subscription": [
+        {
+            "id": 1,
+            "user_id": 1,
+            "name": "Base Subscription",
+            "status": "Active"
+        },
+        {
+            "id": 2,
+            "user_id": 1,
+            "name": "Advanced Pack Subscription",
+            "status": "Active"
+        },
+        {
+            "id": 3,
+            "user_id": 2,
+            "name": "Premium Plan Sub",
+            "status": "Active"
+        },
+        {
+            "id": 4,
+            "user_id": 2,
+            "name": "Student Plan",
+            "status": "Active"
+        }
+    ],
+    "service": [
+        {
+            "id": 1,
+            "name": "Virtual Machines",
+            "category": "Compute"
+        },
+        {
+            "id": 2,
+            "name": "Disks",
+            "category": "Compute"
+        },
+        {
+            "id": 3,
+            "name": "Kubernetes Services",
+            "category": "Compute"
+        },
+        {
+            "id": 4,
+            "name": "Virtual Machine Scale Sets",
+            "category": "Compute"
+        },
+        {
+            "id": 5,
+            "name": "Virtual Machines (Classic)",
+            "category": "Compute"
+        },
+        {
+            "id": 6,
+            "name": "Service Fabric Clusters",
+            "category": "Compute"
+        },
+        {
+            "id": 7,
+            "name": "Batch Accounts",
+            "category": "Compute"
+        },
+        {
+            "id": 8,
+            "name": "App Services",
+            "category": "Compute"
+        },
+        {
+            "id": 9,
+            "name": "App Service Plans",
+            "category": "Compute"
+        },
+        {
+            "id": 10,
+            "name": "Functions",
+            "category": "Web"
+        },
+        {
+            "id": 11,
+            "name": "Continuous WebJobs",
+            "category": "Web"
+        },
+        {
+            "id": 12,
+            "name": "Triggered WebJobs",
+            "category": "Web"
+        },
+        {
+            "id": 13,
+            "name": "API Management Services",
+            "category": "Web"
+        },
+        {
+            "id": 14,
+            "name": "App Services",
+            "category": "Web"
+        },
+        {
+            "id": 15,
+            "name": "App Service Plans",
+            "category": "Web"
+        },
+        {
+            "id": 16,
+            "name": "CDN Profiles",
+            "category": "Web"
+        },
+        {
+            "id": 17,
+            "name": "App Service Slots",
+            "category": "Web"
+        },
+        {
+            "id": 18,
+            "name": "SignalR",
+            "category": "Web"
+        },
+        {
+            "id": 19,
+            "name": "Notification Hubs",
+            "category": "Web"
+        },
+        {
+            "id": 20,
+            "name": "Media Services",
+            "category": "Web"
+        },
+        {
+            "id": 21,
+            "name": "Network Interfaces",
+            "category": "Networking"
+        },
+        {
+            "id": 22,
+            "name": "DNS Zones",
+            "category": "Networking"
+        },
+        {
+            "id": 23,
+            "name": "Firewalls",
+            "category": "Networking"
+        },
+        {
+            "id": 24,
+            "name": "Network Watcher Connections",
+            "category": "Networking"
+        },
+        {
+            "id": 25,
+            "name": "Application Gateways",
+            "category": "Networking"
+        },
+        {
+            "id": 26,
+            "name": "Virtual Network Gateways",
+            "category": "Networking"
+        },
+        {
+            "id": 27,
+            "name": "VPN Gateways",
+            "category": "Networking"
+        },
+        {
+            "id": 28,
+            "name": "CDN Profiles",
+            "category": "Networking"
+        },
+        {
+            "id": 29,
+            "name": "Network Connections",
+            "category": "Networking"
+        },
+        {
+            "id": 30,
+            "name": "Traffic Manager Profiles",
+            "category": "Networking"
+        },
+        {
+            "id": 31,
+            "name": "ExpressRoute Circuits",
+            "category": "Networking"
+        },
+        {
+            "id": 32,
+            "name": "Load Balancers",
+            "category": "Networking"
+        },
+        {
+            "id": 33,
+            "name": "SQL Servers",
+            "category": "Databases"
+        },
+        {
+            "id": 34,
+            "name": "Database for PostgreSQL Servers",
+            "category": "Databases"
+        },
+        {
+            "id": 35,
+            "name": "Database for MySQL Servers",
+            "category": "Databases"
+        },
+        {
+            "id": 36,
+            "name": "Redis",
+            "category": "Databases"
+        },
+        {
+            "id": 37,
+            "name": "SQL Database",
+            "category": "Databases"
+        },
+        {
+            "id": 38,
+            "name": "Cosmos DB",
+            "category": "Databases"
+        },
+        {
+            "id": 39,
+            "name": "SQL Elastic Pools",
+            "category": "Databases"
+        },
+        {
+            "id": 40,
+            "name": "Data Factories (V2)",
+            "category": "Databases"
+        },
+        {
+            "id": 41,
+            "name": "SQL Managed Instances",
+            "category": "Databases"
+        },
+        {
+            "id": 42,
+            "name": "Database for MariaDB Servers",
+            "category": "Databases"
+        },
+        {
+            "id": 43,
+            "name": "Storage Accounts",
+            "category": "Storage"
+        },
+        {
+            "id": 44,
+            "name": "Storage Accounts (Classic)",
+            "category": "Storage"
+        },
+        {
+            "id": 45,
+            "name": "Recovery Services Vaults",
+            "category": "Storage"
+        },
+        {
+            "id": 46,
+            "name": "Blob Storage",
+            "category": "Storage"
+        },
+        {
+            "id": 47,
+            "name": "Table Storage",
+            "category": "Storage"
+        },
+        {
+            "id": 48,
+            "name": "Data Lake",
+            "category": "Storage"
+        },
+        {
+            "id": 49,
+            "name": "Queue Storage",
+            "category": "Storage"
+        },
+        {
+            "id": 50,
+            "name": "File Share",
+            "category": "Storage"
+        },
+        {
+            "id": 51,
+            "name": "Storage Sync Services",
+            "category": "Storage"
+        },
+        {
+            "id": 52,
+            "name": "Kubernetes Services",
+            "category": "Containers"
+        },
+        {
+            "id": 53,
+            "name": "Container Instances",
+            "category": "Containers"
+        },
+        {
+            "id": 54,
+            "name": "Service Fabric Clusters",
+            "category": "Containers"
+        },
+        {
+            "id": 55,
+            "name": "Batch Accounts",
+            "category": "Containers"
+        },
+        {
+            "id": 56,
+            "name": "Container Registries",
+            "category": "Containers"
+        },
+        {
+            "id": 57,
+            "name": "Log Analytics Workspaces",
+            "category": "Analytics"
+        },
+        {
+            "id": 58,
+            "name": "Data Factories (V2)",
+            "category": "Analytics"
+        },
+        {
+            "id": 59,
+            "name": " Data factory (V1)",
+            "category": "Analytics"
+        },
+        {
+            "id": 60,
+            "name": "Power BI Embedded",
+            "category": "Analytics"
+        },
+        {
+            "id": 61,
+            "name": "HDInsight Clusters",
+            "category": "Analytics"
+        },
+        {
+            "id": 62,
+            "name": "Data Factory Pipelines",
+            "category": "Analytics"
+        },
+        {
+            "id": 63,
+            "name": "Analysis Services",
+            "category": "Analytics"
+        },
+        {
+            "id": 64,
+            "name": "Event Hubs Namespace",
+            "category": "Analytics"
+        },
+        {
+            "id": 65,
+            "name": "Data Lake Analytics",
+            "category": "Analytics"
+        },
+        {
+            "id": 66,
+            "name": "Stream Analytics Jobs",
+            "category": "Analytics"
+        },
+        {
+            "id": 67,
+            "name": "Service Bus",
+            "category": "Integration"
+        },
+        {
+            "id": 68,
+            "name": "Relays",
+            "category": "Integration"
+        },
+        {
+            "id": 69,
+            "name": "API Management Services",
+            "category": "Integration"
+        },
+        {
+            "id": 70,
+            "name": "Service Bus Queues",
+            "category": "Integration"
+        },
+        {
+            "id": 71,
+            "name": "Event Grid",
+            "category": "Integration"
+        },
+        {
+            "id": 72,
+            "name": "Logic Apps",
+            "category": "Integration"
+        },
+        {
+            "id": 73,
+            "name": "Service Bus Topics",
+            "category": "Integration"
+        },
+        {
+            "id": 74,
+            "name": "Cognitive Search",
+            "category": "AI+Machine Learning"
+        },
+        {
+            "id": 75,
+            "name": "Machine Learning",
+            "category": "AI+Machine Learning"
+        },
+        {
+            "id": 76,
+            "name": "Cognitive Services",
+            "category": "AI+Machine Learning"
+        },
+        {
+            "id": 77,
+            "name": "Stream Analytics Jobs",
+            "category": "Internet of Things"
+        },
+        {
+            "id": 78,
+            "name": "Device Provisioning Services",
+            "category": "Internet of Things"
+        },
+        {
+            "id": 79,
+            "name": "Logic Apps",
+            "category": "Internet of Things"
+        },
+        {
+            "id": 80,
+            "name": "Maps Accounts",
+            "category": "Internet of Things"
+        },
+        {
+            "id": 81,
+            "name": "IoT Hubs",
+            "category": "Internet of Things"
+        },
+        {
+            "id": 82,
+            "name": "Automation Accounts",
+            "category": "Management + Governance"
+        },
+        {
+            "id": 83,
+            "name": "Application Insights",
+            "category": "DevOps"
+        },
+        {
+            "id": 84,
+            "name": "Key Vaults",
+            "category": "Security"
+        },
+        {
+            "id": 85,
+            "name": "Autoscale Settings",
+            "category": "Other"
+        },
+        {
+            "id": 86,
+            "name": "Host Pools",
+            "category": "Other"
+        }
+    ],
+    "plan": [
+        {
+            "id": 1,
+            "name": "Basic Plan",
+            "cost": "10.57"
+        },
+        {
+            "id": 2,
+            "name": "Basic Plan",
+            "cost": "14.35"
+        },
+        {
+            "id": 3,
+            "name": "Basic Plan",
+            "cost": "3.41"
+        },
+        {
+            "id": 4,
+            "name": "Basic Plan",
+            "cost": "17.18"
+        },
+        {
+            "id": 5,
+            "name": "Basic Plan",
+            "cost": "9.24"
+        },
+        {
+            "id": 6,
+            "name": "Basic Plan",
+            "cost": "16.57"
+        },
+        {
+            "id": 7,
+            "name": "Basic Plan",
+            "cost": "6.82"
+        },
+        {
+            "id": 8,
+            "name": "Basic Plan",
+            "cost": "5.63"
+        },
+        {
+            "id": 9,
+            "name": "Basic Plan",
+            "cost": "8.25"
+        },
+        {
+            "id": 10,
+            "name": "Basic Plan",
+            "cost": "2.60"
+        },
+        {
+            "id": 11,
+            "name": "Basic Plan",
+            "cost": "12.96"
+        },
+        {
+            "id": 12,
+            "name": "Basic Plan",
+            "cost": "6.96"
+        },
+        {
+            "id": 13,
+            "name": "Basic Plan",
+            "cost": "16.63"
+        },
+        {
+            "id": 14,
+            "name": "Basic Plan",
+            "cost": "1.78"
+        },
+        {
+            "id": 15,
+            "name": "Basic Plan",
+            "cost": "9.32"
+        },
+        {
+            "id": 16,
+            "name": "Basic Plan",
+            "cost": "11.48"
+        },
+        {
+            "id": 17,
+            "name": "Basic Plan",
+            "cost": "3.32"
+        },
+        {
+            "id": 18,
+            "name": "Basic Plan",
+            "cost": "3.46"
+        },
+        {
+            "id": 19,
+            "name": "Basic Plan",
+            "cost": "4.34"
+        },
+        {
+            "id": 20,
+            "name": "Basic Plan",
+            "cost": "17.59"
+        },
+        {
+            "id": 21,
+            "name": "Basic Plan",
+            "cost": "16.85"
+        },
+        {
+            "id": 22,
+            "name": "Basic Plan",
+            "cost": "14.66"
+        },
+        {
+            "id": 23,
+            "name": "Basic Plan",
+            "cost": "11.91"
+        },
+        {
+            "id": 24,
+            "name": "Basic Plan",
+            "cost": "18.00"
+        },
+        {
+            "id": 25,
+            "name": "Basic Plan",
+            "cost": "5.39"
+        },
+        {
+            "id": 26,
+            "name": "Basic Plan",
+            "cost": "14.01"
+        },
+        {
+            "id": 27,
+            "name": "Basic Plan",
+            "cost": "11.52"
+        },
+        {
+            "id": 28,
+            "name": "Basic Plan",
+            "cost": "7.29"
+        },
+        {
+            "id": 29,
+            "name": "Basic Plan",
+            "cost": "9.15"
+        },
+        {
+            "id": 30,
+            "name": "Basic Plan",
+            "cost": "11.08"
+        },
+        {
+            "id": 31,
+            "name": "Basic Plan",
+            "cost": "5.95"
+        },
+        {
+            "id": 32,
+            "name": "Basic Plan",
+            "cost": "2.95"
+        },
+        {
+            "id": 33,
+            "name": "Basic Plan",
+            "cost": "11.33"
+        },
+        {
+            "id": 34,
+            "name": "Basic Plan",
+            "cost": "5.12"
+        },
+        {
+            "id": 35,
+            "name": "Basic Plan",
+            "cost": "8.11"
+        },
+        {
+            "id": 36,
+            "name": "Basic Plan",
+            "cost": "1.89"
+        },
+        {
+            "id": 37,
+            "name": "Basic Plan",
+            "cost": "1.72"
+        },
+        {
+            "id": 38,
+            "name": "Basic Plan",
+            "cost": "7.81"
+        },
+        {
+            "id": 39,
+            "name": "Basic Plan",
+            "cost": "9.00"
+        },
+        {
+            "id": 40,
+            "name": "Basic Plan",
+            "cost": "2.14"
+        },
+        {
+            "id": 41,
+            "name": "Basic Plan",
+            "cost": "12.85"
+        },
+        {
+            "id": 42,
+            "name": "Basic Plan",
+            "cost": "11.97"
+        },
+        {
+            "id": 43,
+            "name": "Basic Plan",
+            "cost": "18.62"
+        },
+        {
+            "id": 44,
+            "name": "Basic Plan",
+            "cost": "13.86"
+        },
+        {
+            "id": 45,
+            "name": "Basic Plan",
+            "cost": "11.70"
+        },
+        {
+            "id": 46,
+            "name": "Basic Plan",
+            "cost": "18.44"
+        },
+        {
+            "id": 47,
+            "name": "Basic Plan",
+            "cost": "6.62"
+        },
+        {
+            "id": 48,
+            "name": "Basic Plan",
+            "cost": "10.36"
+        },
+        {
+            "id": 49,
+            "name": "Basic Plan",
+            "cost": "8.57"
+        },
+        {
+            "id": 50,
+            "name": "Basic Plan",
+            "cost": "19.73"
+        },
+        {
+            "id": 51,
+            "name": "Basic Plan",
+            "cost": "11.55"
+        },
+        {
+            "id": 52,
+            "name": "Basic Plan",
+            "cost": "3.31"
+        },
+        {
+            "id": 53,
+            "name": "Basic Plan",
+            "cost": "1.15"
+        },
+        {
+            "id": 54,
+            "name": "Basic Plan",
+            "cost": "12.06"
+        },
+        {
+            "id": 55,
+            "name": "Basic Plan",
+            "cost": "12.12"
+        },
+        {
+            "id": 56,
+            "name": "Basic Plan",
+            "cost": "11.93"
+        },
+        {
+            "id": 57,
+            "name": "Basic Plan",
+            "cost": "0.45"
+        },
+        {
+            "id": 58,
+            "name": "Basic Plan",
+            "cost": "19.56"
+        },
+        {
+            "id": 59,
+            "name": "Basic Plan",
+            "cost": "0.37"
+        },
+        {
+            "id": 60,
+            "name": "Basic Plan",
+            "cost": "2.03"
+        },
+        {
+            "id": 61,
+            "name": "Basic Plan",
+            "cost": "18.21"
+        },
+        {
+            "id": 62,
+            "name": "Basic Plan",
+            "cost": "1.38"
+        },
+        {
+            "id": 63,
+            "name": "Basic Plan",
+            "cost": "19.81"
+        },
+        {
+            "id": 64,
+            "name": "Basic Plan",
+            "cost": "2.98"
+        },
+        {
+            "id": 65,
+            "name": "Basic Plan",
+            "cost": "19.85"
+        },
+        {
+            "id": 66,
+            "name": "Basic Plan",
+            "cost": "18.08"
+        },
+        {
+            "id": 67,
+            "name": "Basic Plan",
+            "cost": "0.85"
+        },
+        {
+            "id": 68,
+            "name": "Basic Plan",
+            "cost": "13.35"
+        },
+        {
+            "id": 69,
+            "name": "Basic Plan",
+            "cost": "19.23"
+        },
+        {
+            "id": 70,
+            "name": "Basic Plan",
+            "cost": "4.60"
+        },
+        {
+            "id": 71,
+            "name": "Basic Plan",
+            "cost": "19.95"
+        },
+        {
+            "id": 72,
+            "name": "Basic Plan",
+            "cost": "9.99"
+        },
+        {
+            "id": 73,
+            "name": "Basic Plan",
+            "cost": "18.76"
+        },
+        {
+            "id": 74,
+            "name": "Basic Plan",
+            "cost": "11.72"
+        },
+        {
+            "id": 75,
+            "name": "Basic Plan",
+            "cost": "17.23"
+        },
+        {
+            "id": 76,
+            "name": "Basic Plan",
+            "cost": "11.20"
+        },
+        {
+            "id": 77,
+            "name": "Basic Plan",
+            "cost": "16.39"
+        },
+        {
+            "id": 78,
+            "name": "Basic Plan",
+            "cost": "17.17"
+        },
+        {
+            "id": 79,
+            "name": "Basic Plan",
+            "cost": "5.34"
+        },
+        {
+            "id": 80,
+            "name": "Basic Plan",
+            "cost": "6.70"
+        },
+        {
+            "id": 81,
+            "name": "Basic Plan",
+            "cost": "0.65"
+        },
+        {
+            "id": 82,
+            "name": "Basic Plan",
+            "cost": "4.13"
+        },
+        {
+            "id": 83,
+            "name": "Basic Plan",
+            "cost": "9.95"
+        },
+        {
+            "id": 84,
+            "name": "Basic Plan",
+            "cost": "12.97"
+        },
+        {
+            "id": 85,
+            "name": "Basic Plan",
+            "cost": "8.02"
+        },
+        {
+            "id": 86,
+            "name": "Basic Plan",
+            "cost": "3.20"
+        },
+        {
+            "id": 87,
+            "name": "Medium Plan",
+            "cost": "32.20"
+        },
+        {
+            "id": 88,
+            "name": "Advanced Plan",
+            "cost": "27.20"
+        },
+        {
+            "id": 89,
+            "name": "Premium Plan",
+            "cost": "44.20"
+        }
+    ],
+    "service_plan": [
+        {
+            "service_id": 1,
+            "plan_id": 1
+        },
+        {
+            "service_id": 2,
+            "plan_id": 2
+        },
+        {
+            "service_id": 3,
+            "plan_id": 3
+        },
+        {
+            "service_id": 4,
+            "plan_id": 4
+        },
+        {
+            "service_id": 5,
+            "plan_id": 5
+        },
+        {
+            "service_id": 6,
+            "plan_id": 6
+        },
+        {
+            "service_id": 7,
+            "plan_id": 7
+        },
+        {
+            "service_id": 8,
+            "plan_id": 8
+        },
+        {
+            "service_id": 9,
+            "plan_id": 9
+        },
+        {
+            "service_id": 10,
+            "plan_id": 10
+        },
+        {
+            "service_id": 11,
+            "plan_id": 11
+        },
+        {
+            "service_id": 12,
+            "plan_id": 12
+        },
+        {
+            "service_id": 13,
+            "plan_id": 13
+        },
+        {
+            "service_id": 14,
+            "plan_id": 14
+        },
+        {
+            "service_id": 15,
+            "plan_id": 15
+        },
+        {
+            "service_id": 16,
+            "plan_id": 16
+        },
+        {
+            "service_id": 17,
+            "plan_id": 17
+        },
+        {
+            "service_id": 18,
+            "plan_id": 18
+        },
+        {
+            "service_id": 19,
+            "plan_id": 19
+        },
+        {
+            "service_id": 20,
+            "plan_id": 20
+        },
+        {
+            "service_id": 21,
+            "plan_id": 21
+        },
+        {
+            "service_id": 22,
+            "plan_id": 22
+        },
+        {
+            "service_id": 23,
+            "plan_id": 23
+        },
+        {
+            "service_id": 24,
+            "plan_id": 24
+        },
+        {
+            "service_id": 25,
+            "plan_id": 25
+        },
+        {
+            "service_id": 26,
+            "plan_id": 26
+        },
+        {
+            "service_id": 27,
+            "plan_id": 27
+        },
+        {
+            "service_id": 28,
+            "plan_id": 28
+        },
+        {
+            "service_id": 29,
+            "plan_id": 29
+        },
+        {
+            "service_id": 30,
+            "plan_id": 30
+        },
+        {
+            "service_id": 31,
+            "plan_id": 31
+        },
+        {
+            "service_id": 32,
+            "plan_id": 32
+        },
+        {
+            "service_id": 33,
+            "plan_id": 33
+        },
+        {
+            "service_id": 34,
+            "plan_id": 34
+        },
+        {
+            "service_id": 35,
+            "plan_id": 35
+        },
+        {
+            "service_id": 36,
+            "plan_id": 36
+        },
+        {
+            "service_id": 37,
+            "plan_id": 37
+        },
+        {
+            "service_id": 38,
+            "plan_id": 38
+        },
+        {
+            "service_id": 39,
+            "plan_id": 39
+        },
+        {
+            "service_id": 40,
+            "plan_id": 40
+        },
+        {
+            "service_id": 41,
+            "plan_id": 41
+        },
+        {
+            "service_id": 42,
+            "plan_id": 42
+        },
+        {
+            "service_id": 43,
+            "plan_id": 43
+        },
+        {
+            "service_id": 44,
+            "plan_id": 44
+        },
+        {
+            "service_id": 45,
+            "plan_id": 45
+        },
+        {
+            "service_id": 46,
+            "plan_id": 46
+        },
+        {
+            "service_id": 47,
+            "plan_id": 47
+        },
+        {
+            "service_id": 48,
+            "plan_id": 48
+        },
+        {
+            "service_id": 49,
+            "plan_id": 49
+        },
+        {
+            "service_id": 50,
+            "plan_id": 50
+        },
+        {
+            "service_id": 51,
+            "plan_id": 51
+        },
+        {
+            "service_id": 52,
+            "plan_id": 52
+        },
+        {
+            "service_id": 53,
+            "plan_id": 53
+        },
+        {
+            "service_id": 54,
+            "plan_id": 54
+        },
+        {
+            "service_id": 55,
+            "plan_id": 55
+        },
+        {
+            "service_id": 56,
+            "plan_id": 56
+        },
+        {
+            "service_id": 57,
+            "plan_id": 57
+        },
+        {
+            "service_id": 58,
+            "plan_id": 58
+        },
+        {
+            "service_id": 59,
+            "plan_id": 59
+        },
+        {
+            "service_id": 60,
+            "plan_id": 60
+        },
+        {
+            "service_id": 61,
+            "plan_id": 61
+        },
+        {
+            "service_id": 62,
+            "plan_id": 62
+        },
+        {
+            "service_id": 63,
+            "plan_id": 63
+        },
+        {
+            "service_id": 64,
+            "plan_id": 64
+        },
+        {
+            "service_id": 65,
+            "plan_id": 65
+        },
+        {
+            "service_id": 66,
+            "plan_id": 66
+        },
+        {
+            "service_id": 67,
+            "plan_id": 67
+        },
+        {
+            "service_id": 68,
+            "plan_id": 68
+        },
+        {
+            "service_id": 69,
+            "plan_id": 69
+        },
+        {
+            "service_id": 70,
+            "plan_id": 70
+        },
+        {
+            "service_id": 71,
+            "plan_id": 71
+        },
+        {
+            "service_id": 72,
+            "plan_id": 72
+        },
+        {
+            "service_id": 73,
+            "plan_id": 73
+        },
+        {
+            "service_id": 74,
+            "plan_id": 74
+        },
+        {
+            "service_id": 75,
+            "plan_id": 75
+        },
+        {
+            "service_id": 76,
+            "plan_id": 76
+        },
+        {
+            "service_id": 77,
+            "plan_id": 77
+        },
+        {
+            "service_id": 78,
+            "plan_id": 78
+        },
+        {
+            "service_id": 79,
+            "plan_id": 79
+        },
+        {
+            "service_id": 80,
+            "plan_id": 80
+        },
+        {
+            "service_id": 81,
+            "plan_id": 81
+        },
+        {
+            "service_id": 82,
+            "plan_id": 82
+        },
+        {
+            "service_id": 83,
+            "plan_id": 83
+        },
+        {
+            "service_id": 84,
+            "plan_id": 84
+        },
+        {
+            "service_id": 85,
+            "plan_id": 85
+        },
+        {
+            "service_id": 86,
+            "plan_id": 86
+        },
+        {
+            "service_id": 1,
+            "plan_id": 87
+        },
+        {
+            "service_id": 1,
+            "plan_id": 88
+        },
+        {
+            "service_id": 2,
+            "plan_id": 89
+        }
+    ],
+    "resource": [
+        {
+            "id": 1,
+            "name": "Ubuntu 18.04",
+            "subscription_id": 1,
+            "service_id": 1,
+            "status": "Active",
+            "plan": "Basic plan"
+        },
+        {
+            "id": 2,
+            "name": "Device DB",
+            "subscription_id": 1,
+            "service_id": 37,
+            "status": "Active",
+            "plan": "Basic plan"
+        },
+        {
+            "id": 3,
+            "name": "device API",
+            "subscription_id": 1,
+            "service_id": 10,
+            "status": "Active",
+            "plan": "Basic plan"
+        },
+        {
+            "id": 4,
+            "name": "Storage",
+            "subscription_id": 1,
+            "service_id": 43,
+            "status": "Active",
+            "plan": "Basic plan"
+        }
+    ],
+    "cost_log": [
+        {
+            "id": 1,
+            "resource_id": 1,
+            "start_date": "2022-10-02 09:32:55",
+            "end_date": "2022-11-01 00:00:00",
+            "cost": 10.57
+        },
+        {
+            "id": 2,
+            "resource_id": 1,
+            "start_date": "2022-11-01 00:00:00",
+            "end_date": "2022-12-01 00:00:00",
+            "cost": 12.37
+        },
+        {
+            "id": 3,
+            "resource_id": 1,
+            "start_date": "2022-12-01 00:00:00",
+            "end_date": "2023-01-01 00:00:00",
+            "cost": 9.20
+        },
+        {
+            "id": 4,
+            "resource_id": 2,
+            "start_date": "2022-10-11 11:03:30",
+            "end_date": "2022-11-01 00:00:00",
+            "cost": 4.32
+        },
+        {
+            "id": 5,
+            "resource_id": 2,
+            "start_date": "2022-11-01 00:00:00",
+            "end_date": "2022-12-01 00:00:00",
+            "cost": 7.59
+        },
+        {
+            "id": 6,
+            "resource_id": 2,
+            "start_date": "2022-12-01 00:00:00",
+            "end_date": "2023-01-01 00:00:00",
+            "cost": 8.77
+        },
+        {
+            "id": 7,
+            "resource_id": 3,
+            "start_date": "2022-10-03 15:23:12",
+            "end_date": "2022-11-01 00:00:00",
+            "cost": 11.43
+        },
+        {
+            "id": 8,
+            "resource_id": 3,
+            "start_date": "2022-11-01 00:00:00",
+            "end_date": "2022-12-01 00:00:00",
+            "cost": 12.37
+        },
+        {
+            "id": 9,
+            "resource_id": 3,
+            "start_date": "2022-12-01 00:00:00",
+            "end_date": "2023-01-01 00:00:00",
+            "cost": 13.40
+        },
+        {
+            "id": 10,
+            "resource_id": 4,
+            "start_date": "2022-10-17 10:21:40",
+            "end_date": "2022-11-01 00:00:00",
+            "cost": 12.80
+        },
+        {
+            "id": 11,
+            "resource_id": 4,
+            "start_date": "2022-11-01 00:00:00",
+            "end_date": "2022-12-01 00:00:00",
+            "cost": 18.30
+        },
+        {
+            "id": 12,
+            "resource_id": 4,
+            "start_date": "2022-12-01 00:00:00",
+            "end_date": "2023-01-01 00:00:00",
+            "cost": 20.70
+        }
+    ],
+    "action_log": [
+        {
+            "id": 1,
+            "user_id": 1,
+            "time": "2022-10-02 09:32:55",
+            "action": "[12080] Created resource - Virtual Machines - Ubuntu 18.04"
+        },
+        {
+            "id": 2,
+            "user_id": 1,
+            "time": "2022-10-11 11:03:30",
+            "action": "[12080] Created resource - SQL Database - Device DB"
+        },
+        {
+            "id": 3,
+            "user_id": 1,
+            "time": "2022-10-03 15:23:12",
+            "action": "[12080] Created resource - Functions - device API"
+        },
+        {
+            "id": 4,
+            "user_id": 1,
+            "time": "2022-10-17 10:21:40",
+            "action": "[12080] Created resource - Storage Accounts - Storage"
+        }
+    ]
+}

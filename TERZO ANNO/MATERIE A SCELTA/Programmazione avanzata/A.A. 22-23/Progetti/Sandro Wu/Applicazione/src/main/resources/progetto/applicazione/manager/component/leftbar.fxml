@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="sidebar" prefHeight="730.0" prefWidth="250.0" styleClass="sidebar"
+   stylesheets="@/styles/leftbar.css" xmlns="http://javafx.com/javafx/8"
+   xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="progetto.applicazione.manager.component.LeftBarController">
+   <left>
+      <VBox fx:id="sectionLinks" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308"
+         prefHeight="686.0" prefWidth="300.0" spacing="5" styleClass="sidebarVBox"
+         BorderPane.alignment="CENTER">
+         <children>
+            <StackPane fx:id="linkSubscription" prefHeight="55.0" prefWidth="250.0"
+               styleClass="barSection">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true"
+                     preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                     <image>
+                        <Image url="@/icons/Subscriptions.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="30.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <StackPane maxWidth="-Infinity" prefHeight="55.0"
+                     prefWidth="220.0" userData="1" StackPane.alignment="CENTER_RIGHT">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Subscription"
+                           textAlignment="CENTER" StackPane.alignment="CENTER_LEFT">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </StackPane>
+            <StackPane fx:id="linkServices" prefHeight="55.0" prefWidth="250.0"
+               styleClass="barSection">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true"
+                     preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                     <image>
+                        <Image url="@/icons/services.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="30.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <StackPane maxWidth="-Infinity" prefHeight="55.0"
+                     prefWidth="220.0" StackPane.alignment="CENTER_RIGHT">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Services"
+                           textAlignment="CENTER" StackPane.alignment="CENTER_LEFT">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </StackPane>
+            <StackPane fx:id="linkActivitylog" prefHeight="55.0" prefWidth="250.0"
+               styleClass="barSection">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true"
+                     preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                     <image>
+                        <Image url="@/icons/activitylog.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="30.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <StackPane maxWidth="-Infinity" prefHeight="55.0"
+                     prefWidth="220.0" StackPane.alignment="CENTER_RIGHT">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Activity Log"
+                           textAlignment="CENTER" StackPane.alignment="CENTER_LEFT">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </StackPane>
+            <StackPane fx:id="linkInvoices" prefHeight="55.0" prefWidth="250.0"
+               styleClass="barSection">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true"
+                     preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                     <image>
+                        <Image url="@/icons/invoices.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="30.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <StackPane maxWidth="-Infinity" prefHeight="55.0"
+                     prefWidth="220.0" StackPane.alignment="CENTER_RIGHT">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Invoices"
+                           textAlignment="CENTER" StackPane.alignment="CENTER_LEFT">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </StackPane>
+            <StackPane fx:id="linkCostcenter" prefHeight="55.0" prefWidth="250.0"
+               styleClass="barSection">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true"
+                     preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                     <image>
+                        <Image url="@/icons/costcenter.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="30.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <StackPane maxWidth="-Infinity" prefHeight="55.0"
+                     prefWidth="220.0" StackPane.alignment="CENTER_RIGHT">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cost Center"
+                           textAlignment="CENTER" StackPane.alignment="CENTER_LEFT">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </StackPane>
+            <StackPane fx:id="linkAllservices" prefHeight="55.0" prefWidth="250.0"
+               styleClass="barSection">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="39.0" pickOnBounds="true"
+                     preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                     <image>
+                        <Image url="@/icons/allservices.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="30.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <StackPane maxWidth="-Infinity" prefHeight="55.0"
+                     prefWidth="220.0" StackPane.alignment="CENTER_RIGHT">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="All Services"
+                           textAlignment="CENTER" StackPane.alignment="CENTER_LEFT">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </StackPane>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets top="30.0" />
+         </padding>
+      </VBox>
+   </left>
+   <top>
+      <StackPane fx:id="toogleSidebar" onMouseClicked="#toogleSideBar" prefHeight="55.0"
+         prefWidth="300.0" styleClass="toogleSidebar">
+         <children>
+            <Group StackPane.alignment="CENTER_LEFT">
+               <children>
+                  <Line endX="30.0" layoutX="500.0" layoutY="221.0" stroke="#0078d4"
+                     strokeLineCap="ROUND" strokeWidth="4.0" />
+                  <Line endX="30.0" layoutX="500.0" layoutY="231.0" stroke="#0078d4"
+                     strokeLineCap="ROUND" strokeWidth="4.0" />
+                  <Line endX="30.0" layoutX="500.0" layoutY="241.0" stroke="#0078d4"
+                     strokeLineCap="ROUND" strokeWidth="4.0" />
+               </children>
+               <BorderPane.margin>
+                  <Insets left="20.0" top="20.0" />
+               </BorderPane.margin>
+            </Group>
+         </children>
+      </StackPane>
+   </top>
+</BorderPane>

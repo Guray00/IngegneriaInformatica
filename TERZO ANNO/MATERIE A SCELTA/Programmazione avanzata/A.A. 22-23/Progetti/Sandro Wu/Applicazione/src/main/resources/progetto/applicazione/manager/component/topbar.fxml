@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane fx:id="topbar" alignment="CENTER_LEFT" minWidth="500.0" prefHeight="70.0"
+   prefWidth="1280.0" styleClass="topbar" stylesheets="@/styles/topbar.css"
+   xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="progetto.applicazione.manager.component.TopBarController">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="iSlans Could Services Manager"
+         wrappingWidth="393.7861328125" StackPane.alignment="CENTER_LEFT">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <StackPane prefHeight="70.0" prefWidth="1215.0" StackPane.alignment="CENTER_RIGHT">
+         <children>
+            <ImageView fitHeight="28.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true"
+               StackPane.alignment="CENTER_RIGHT">
+               <image>
+                  <Image url="@/icons/user.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+            <Text fx:id="usernameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Username"
+               StackPane.alignment="CENTER_RIGHT">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets right="50.0" />
+               </StackPane.margin>
+            </Text>
+            <Group StackPane.alignment="CENTER_RIGHT">
+               <children>
+                  <MenuButton alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="52.0"
+                     prefWidth="65.0" style="-fx-background-color: transparent;">
+                     <items>
+                        <MenuItem fx:id="logoutMenuItem" mnemonicParsing="false"
+                           onAction="#logoutAction" text="Logout" />
+                     </items>
+                  </MenuButton>
+               </children>
+               <StackPane.margin>
+                  <Insets right="-20.0" />
+               </StackPane.margin>
+            </Group>
+         </children>
+      </StackPane>
+   </children>
+   <padding>
+      <Insets left="32.0" right="32.0" />
+   </padding>
+</StackPane>

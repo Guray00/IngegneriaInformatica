@@ -1,0 +1,13 @@
+.titled-pane .title {
+	-fx-background-color: #0078d494;
+	-fx-background-insets: 0;
+	-fx-background-radius: 0;
+}
+.titled-pane AnchorPane,
+.tablePanel {
+	-fx-padding: 0 !important;
+}
+.tablePanel > AnchorPane {
+	-fx-padding: 0 !important;
+	-fx-background-color: white;
+}

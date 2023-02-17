@@ -1,0 +1,47 @@
+.sidebar {
+	-fx-background-color: white;
+}
+
+.toogleSidebar:hover,
+.barSection:hover {
+	-fx-background-color: rgba(0, 0, 0, 0.03);
+}
+
+.sidebar Text {
+	-fx-fill: #0078d4;
+}
+
+.sidebarVBox > StackPane > StackPane {
+	-fx-padding: 0 0 0 10;
+}
+.sidebarVBox Text {
+	/* -fx-underline: true; */
+	-fx-cursor: HAND;
+}
+
+/* 
+ * SIDEBAR CLOSE TOGGLE
+ */
+.toogleSidebar {
+	-fx-padding: 0 20px 0 20px;
+}
+.sidebar {
+	/* -fx-translate-x: 0; */
+
+	-fx-border-width: 0 1px 0 0;
+	-fx-border-color: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.closed {
+	/*-fx-translate-x: 0;*/
+	-fx-max-width: 50px;
+}
+
+.sidebar.closed > .sidebarVBox,
+.sidebar.closed > .sidebarVBox * {
+	visibility: hidden;
+	-fx-translate-x: -100;
+	-fx-scale-x: 0;
+	-fx-max-width: 5px !important;
+	-fx-font-size: 0.1;
+}

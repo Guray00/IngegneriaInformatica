@@ -1,0 +1,13 @@
+.topbar {
+	-fx-background-color: #0078d4;
+	/* -fx-background-color: var(--color); */
+}
+
+.topbar .menu-button .arrow {
+	/* -fx-fill: white; */
+	-fx-background-color: white;
+}
+
+.topbar Text {
+	-fx-fill: white;
+}
