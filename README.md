@@ -233,6 +233,7 @@ Alessio Meini<br>
 Tommaso Molesti<br>
 Alex Moriconi</br>
 Federico Nardi<br>
+Salvatore Noce <br>
 Martina Panico<br>
 Dario Paroli<br>
 Alex Parri<br>
