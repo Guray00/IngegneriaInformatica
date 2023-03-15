@@ -1,0 +1,268 @@
+:root {
+    --primary-color: #9FA8DA;
+    --base-color: #121212;
+    --background-color: #212121;
+    --alt-color: #4f4f4f;
+    --text-color: #bababa;
+    --disabled-color: #191919;
+}
+body{
+    background-color: var(--base-color);
+    color: var(--text-color);
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+header{
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    padding: 5px 50px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+}
+main{
+    margin: 100px auto 100px auto;
+    max-width: 1280px;
+    min-height: calc(100vh - 340px);
+    width: 60%;
+}
+article{
+    background-color: var(--background-color);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    min-width: 540px;
+}
+article > h2 {
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid var(--primary-color);
+    position: relative;
+}
+article > h2.loading::before {
+    content: '';
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    background: linear-gradient(90deg, var(--background-color) 50%, transparent 50%);
+    background-repeat: repeat-x;
+    background-size: 25px 1px;
+    background-position: 0 0;
+
+    animation: loading 10s linear infinite;
+}
+
+@keyframes loading{
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
+
+article > section {
+    padding: 15px;
+}
+#form-input {
+    display: grid;
+    grid-template-areas:
+    ". c d"
+    "a c d"
+    "a c e"
+    "b c e"
+    "b c f"
+    "t c f";
+    grid-template-columns: minmax(30%, 400px) minmax(30%, 400px) fit-content(100%);
+    grid-auto-rows: 1fr;
+    gap: 30px;
+    align-items: center;
+    justify-items: center;
+    padding: 15px 30px;
+}
+#form-input > div {
+    position: relative;
+    width: 100%;
+    height: min-content;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+#form-input > div:nth-child(1){grid-area: a;}
+#form-input > div:nth-child(2){grid-area: b;}
+#form-input > div:nth-child(3){grid-area: t;}
+#form-input > div:nth-child(4){grid-area: c;}
+#form-input > div:nth-child(5){grid-area: d;}
+#form-input > div:nth-child(6){grid-area: e;}
+#form-input > div:nth-child(7){grid-area: f;}
+#form-input textarea {
+    resize: none;
+}
+
+@media screen and (max-width: 1470px) {
+    #form-input {
+        grid-template-areas:
+        "a c"
+        "b c"
+        "d c"
+        "e c"
+        "f c"
+        "t c";
+        grid-template-columns: minmax(274px, 50%) minmax(150px, 50%);
+        gap: 0 30px;
+        /* padding: 15px 10px; */
+    }
+}
+
+
+
+button {
+    min-width: 200px;
+    width: 100%;
+    margin: 10px 0;
+    border: 2px solid var(--alt-color);
+    background-color: transparent;
+    border-radius: 4px;
+    color: var(--primary-color);
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+    margin: auto;
+}
+button:hover {
+    border-color: var(--primary-color);
+}
+input[type=text], textarea {
+    appearance: textfield;
+}
+input[type=date]::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+}
+input[type=number], input[type=text], input[type=email], input[type=date], input[type=color], textarea, select {
+    background: none;
+    font-size: 18px;
+    padding: 10px;
+    border: 2px solid var(--alt-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    display: block;
+    margin: 11px 0 0 0;
+    min-width: 250px;
+}
+textarea{
+    min-width: 150px;
+}
+input[type=text]:disabled, input[type=date]:disabled, textarea:disabled, select:disabled, button:disabled {
+    border: 2px solid var(--disabled-color);
+    color: var(--alt-color);
+    cursor: not-allowed;
+}
+input[type=text]:disabled + label, input[type=date]:disabled + label, select:disabled + label, textarea:disabled + label {
+    color: var(--alt-color);
+}
+input[type=text]::placeholder, input[type=date]::placeholder, textarea::placeholder, select::placeholder {
+    color: var(--alt-color);
+}
+input[type=text]:focus, input[type=date]:focus, textarea:focus, select:focus {
+    outline: none;
+    border: 2px solid var(--primary-color);
+}
+input[type=text]:focus + label, input[type=date]:focus + label, select:focus + label, textarea:focus + label {
+    color: var(--primary-color);
+}
+input[type=number] + label, input[type=text] + label, input[type=date] + label, select + label, textarea + label {
+    padding: 0 10px;
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: normal;
+    position: absolute;
+    background-color: var(--background-color);
+    top: 2px;
+    left: 25px;
+    user-select: none;
+}
+
+input[type=checkbox] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+label:has(input[type=checkbox]) {
+    position: relative;
+    padding: 0 20px;
+    font-size: 18px;
+    user-select: none;
+    cursor: pointer;
+    margin: 10px 0;
+    color: #bababa;
+    display: block;
+}
+
+label:has(input[type=checkbox]:disabled) {
+    color: #4f4f4f;
+}
+input[type=checkbox]:checked + span::before {
+    content: "✓";
+}
+input[type=checkbox] + span {
+    border-radius: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: transparent;
+    border: 2px solid #4f4f4f;
+
+}
+input[type=checkbox] + span::before{
+    font-weight: 900;
+    text-align: center;
+    content: " ";
+    color: white;
+    height: 15px;
+    width: 15px;
+    font-size: 15px;
+    background-color: transparent;
+    display: block;
+    text-align: center;
+}
+input[type=checkbox]:checked + span {
+    background-color: #9FA8DA;
+    border-color: #9FA8DA;
+}
+input[type=checkbox]:disabled + span {
+    border-color: #191919;
+}
+
+#toast {
+    visibility: hidden;
+    opacity: 0;
+    min-width: 150px;
+    max-width: 350px;
+    background-color: var(--background-color);
+    box-shadow: 0 0 10px var(--base-color);
+    border: 1px solid var(--base-color);
+    border-radius: 4px;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    margin: 0 5%;
+    top: -53px;
+    user-select: none;
+    transition: all 0.5s;
+    white-space: pre-line;
+}
+#toast.active {
+    opacity: 100;
+    top: 25px;
+    visibility: visible;
+}
+
+.error {
+    color: var(--primary-color) !important;
+    font-weight: 600;
+}

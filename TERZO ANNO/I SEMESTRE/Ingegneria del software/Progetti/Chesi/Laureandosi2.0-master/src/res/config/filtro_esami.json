@@ -1,0 +1,107 @@
+{
+	"t-bio": {
+		"*": {
+			"esami-non-avg": [],
+			"esami-non-cdl": [
+				"PROVA FINALE"
+			]
+		}
+	},
+	"t-ele": {
+		"*": {
+			"esami-non-avg": [],
+			"esami-non-cdl": [
+				"PROVA FINALE"
+			]
+		}
+	},
+	"t-inf": {
+		"*": {
+			"esami-non-avg": [
+				"PROVA DI LINGUA INGLESE (B1)",
+				"PROVA DI LINGUA INGLESE",
+				"PROVA DI LINGUA INGLESE B2",
+				"TIROCINIO"
+			],
+			"esami-non-cdl": [
+				"PROVA FINALE",
+				"LIBERA SCELTA PER RICONOSCIMENTI",
+				"TEST DI VALUTAZIONE DI INGEGNERIA"
+			]
+		},
+		"1234": {
+			"esami-non-avg": [
+				"TEST3"
+			],
+			"esami-non-cdl": [
+				"TEST4"
+			]
+		}
+	},
+	"t-tel": {
+		"*": {
+			"esami-non-avg": [],
+			"esami-non-cdl": [
+				"PROVA FINALE"
+			]
+		}
+	},
+	"m-bio": {
+		"*": {
+			"esami-non-avg": [],
+			"esami-non-cdl": [
+				"PROVA FINALE"
+			]
+		}
+	},
+	"m-ele": {
+		"*": {
+			"esami-non-avg": [],
+			"esami-non-cdl": [
+				"PROVA FINALE"
+			]
+		}
+	},
+	"m-coe": {
+		"*": {
+			"esami-non-avg": [],
+			"esami-non-cdl": [
+				"PROVA FINALE"
+			]
+		}
+	},
+	"m-aid": {
+		"*": {
+			"esami-non-avg": [],
+			"esami-non-cdl": [
+				"PROVA FINALE"
+			]
+		}
+	},
+	"m-cyb": {
+		"*": {
+			"esami-non-avg": [
+				"TESI"
+			],
+			"esami-non-cdl": [
+				"PROVA FINALE"
+			]
+		}
+	},
+	"m-rob": {
+		"*": {
+			"esami-non-avg": [],
+			"esami-non-cdl": [
+				"PROVA FINALE"
+			]
+		}
+	},
+	"m-tel": {
+		"*": {
+			"esami-non-avg": [],
+			"esami-non-cdl": [
+				"PROVA FINALE"
+			]
+		}
+	}
+}

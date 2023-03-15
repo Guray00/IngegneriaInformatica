@@ -1,0 +1,4366 @@
+{
+	"123456": {
+		"Esami": {
+			"Esame": [
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "073II",
+					"DES": "ELETTROTECNICA",
+					"DATA_ESAME": "01/07/2019",
+					"VOTO": "26 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10344268
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "074II",
+					"DES": "RETI LOGICHE",
+					"DATA_ESAME": "02/02/2021",
+					"VOTO": "22 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10344264
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "004AA",
+					"DES": "ANALISI MATEMATICA I",
+					"DATA_ESAME": "06/12/2017",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 9643503
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "544II",
+					"DES": "SISTEMI OPERATIVI",
+					"DATA_ESAME": "07/01/2022",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11486446
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "080II",
+					"DES": "PROGETTAZIONE WEB",
+					"DATA_ESAME": "07/04/2022",
+					"VOTO": "30 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10344267
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "245AA",
+					"DES": "CRITTOGRAFIA",
+					"DATA_ESAME": "09/01/2020",
+					"VOTO": "23 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 10670191
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "591AA",
+					"DES": "ALGEBRA LINEARE E ANALISI MATEMATICA II",
+					"DATA_ESAME": "09/02/2018",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 9643505
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "170AA",
+					"DES": "RICERCA OPERATIVA",
+					"DATA_ESAME": "09/07/2019",
+					"VOTO": "19 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10344262
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "633AA",
+					"DES": "CLOUD E GREEN COMPUTING",
+					"DATA_ESAME": "09/07/2020",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 10732518
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "173AA",
+					"DES": "CALCOLO NUMERICO",
+					"DATA_ESAME": "10/04/2019",
+					"VOTO": "20 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10344265
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "247ZZ",
+					"DES": "PROVA DI LINGUA INGLESE (B1)",
+					"DATA_ESAME": "16/07/2021",
+					"VOTO": null,
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": "Idoneo",
+					"PESO": 3,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 11249151
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "078II",
+					"DES": "CALCOLATORI ELETTRONICI",
+					"DATA_ESAME": "16/09/2021",
+					"VOTO": "21 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10344266
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "757II",
+					"DES": "BASI DI DATI",
+					"DATA_ESAME": "17/04/2019",
+					"VOTO": "23 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10232454
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "077II",
+					"DES": "FONDAMENTI DI AUTOMATICA",
+					"DATA_ESAME": "17/09/2019",
+					"VOTO": "26 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10344263
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "756II",
+					"DES": "ALGORITMI E STRUTTURE DATI",
+					"DATA_ESAME": "18/06/2018",
+					"VOTO": "21 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 9643508
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "116II",
+					"DES": "ECONOMIA E ORGANIZZAZIONE AZIENDALE",
+					"DATA_ESAME": "22/02/2020",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10344261
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "304ZZ",
+					"DES": "PROVA FINALE",
+					"DATA_ESAME": "22/07/2022",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 3,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11632545
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "758II",
+					"DES": "FONDAMENTI DI PROGRAMMAZIONE",
+					"DATA_ESAME": "23/02/2017",
+					"VOTO": "23 ",
+					"RIC_ID": 4,
+					"TIPO_RIC": " Convalidato",
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 9643506
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "076II",
+					"DES": "ELETTRONICA DIGITALE",
+					"DATA_ESAME": "24/02/2021",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11142543
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "758II",
+					"DES": "FONDAMENTI DI PROGRAMMAZIONE",
+					"DATA_ESAME": "26/02/2018",
+					"VOTO": "21 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 3,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 9768909
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "011BB",
+					"DES": "FISICA GENERALE I",
+					"DATA_ESAME": "27/02/2019",
+					"VOTO": "21 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10232453
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "075II",
+					"DES": "COMUNICAZIONI NUMERICHE",
+					"DATA_ESAME": "27/07/2020",
+					"VOTO": "23 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 10810463
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "374II",
+					"DES": "INGEGNERIA DEL SOFTWARE",
+					"DATA_ESAME": "27/11/2019",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 10658600
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "545II",
+					"DES": "RETI INFORMATICHE",
+					"DATA_ESAME": "28/06/2022",
+					"VOTO": "26 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11607688
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": "Ordinario ",
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/08/2016",
+					"ANNO_IMM": 2016,
+					"DATA_CHIUSURA": "22/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "TEST1",
+					"DES": "TEST DI VALUTAZIONE DI INGEGNERIA",
+					"DATA_ESAME": "28/09/2017",
+					"VOTO": null,
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": "Idoneo",
+					"PESO": 2,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 1,
+					"ANNO_CORSO": 0,
+					"adsce_id": 9648241
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "DONNARUMMA GIANLUIGI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "28/07/2022",
+					"ANNO_IMM": 2022,
+					"DATA_CHIUSURA": {
+						"@nil": "true"
+					},
+					"AA_CHIUSURA": {
+						"@nil": "true"
+					},
+					"STA_STU_COD": "A",
+					"MOT_STASTU_COD": "IMM",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": {
+						"@nil": "true"
+					},
+					"DES": {
+						"@nil": "true"
+					},
+					"DATA_ESAME": {
+						"@nil": "true"
+					},
+					"VOTO": null,
+					"RIC_ID": {
+						"@nil": "true"
+					},
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": {
+						"@nil": "true"
+					},
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": {
+						"@nil": "true"
+					},
+					"ANNO_CORSO": {
+						"@nil": "true"
+					},
+					"adsce_id": {
+						"@nil": "true"
+					}
+				}
+			]
+		}
+	},
+	"234567": {
+		"Esami": {
+			"Esame": [
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "915II",
+					"DES": "NANOELETTRONICA E FOTONICA",
+					"DATA_ESAME": "02/07/2020",
+					"VOTO": "20 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10791188
+				},
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "317II",
+					"DES": "SISTEMI DI ELABORAZIONE",
+					"DATA_ESAME": "08/07/2020",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10794387
+				},
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "307II",
+					"DES": "ELETTRONICA ANALOGICA",
+					"DATA_ESAME": "09/04/2021",
+					"VOTO": "19 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10220937
+				},
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "309II",
+					"DES": "ELETTRONICA DELLE TELECOMUNICAZIONI",
+					"DATA_ESAME": "11/01/2021",
+					"VOTO": "27 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10220936
+				},
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "314II",
+					"DES": "PROGETTAZIONE DI SISTEMI DIGITALI",
+					"DATA_ESAME": "13/01/2020",
+					"VOTO": "30 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10681482
+				},
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "313II",
+					"DES": "PROGETTAZIONE DI SENSORI E MICROSISTEMI",
+					"DATA_ESAME": "15/04/2021",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11167164
+				},
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "311II",
+					"DES": "SISTEMI EMBEDDED",
+					"DATA_ESAME": "17/09/2020",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10879990
+				},
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "274ZW",
+					"DES": "PROVA FINALE",
+					"DATA_ESAME": "18/02/2022",
+					"VOTO": "30 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 18,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11528406
+				},
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "098II",
+					"DES": "DISPOSITIVI ELETTRONICI",
+					"DATA_ESAME": "20/06/2019",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10371487
+				},
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "310II",
+					"DES": "ELETTRONICA DI POTENZA E DI CONTROLLO",
+					"DATA_ESAME": "22/04/2020",
+					"VOTO": "26 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10220934
+				},
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "315II",
+					"DES": "PROGETTAZIONE DI SISTEMI MICROELETTRONICI",
+					"DATA_ESAME": "23/09/2019",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10220938
+				},
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "318II",
+					"DES": "TECNOLOGIE MICROELETTRONICHE",
+					"DATA_ESAME": "27/02/2019",
+					"VOTO": "20 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10220940
+				},
+				{
+					"MATRICOLA": 234567,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ALESSANDRO BASTONI",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "24/10/2018",
+					"ANNO_IMM": 2018,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+					"COD": "319II",
+					"DES": "TELECOMUNICAZIONI",
+					"DATA_ESAME": "29/01/2019",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10220935
+				}
+			]
+		}
+	},
+	"345678": {
+		"Esami": {
+			"Esame": [
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "374II",
+					"DES": "INGEGNERIA DEL SOFTWARE",
+					"DATA_ESAME": "01/02/2021",
+					"VOTO": "30 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11108256
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "TEST1",
+					"DES": "TEST DI VALUTAZIONE DI INGEGNERIA",
+					"DATA_ESAME": "02/09/2019",
+					"VOTO": null,
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": "Idoneo",
+					"PESO": 2,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 1,
+					"ANNO_CORSO": 0,
+					"adsce_id": 10480774
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "545II",
+					"DES": "RETI INFORMATICHE",
+					"DATA_ESAME": "03/11/2022",
+					"VOTO": "26 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11814936
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "756II",
+					"DES": "ALGORITMI E STRUTTURE DATI",
+					"DATA_ESAME": "05/10/2020",
+					"VOTO": "30 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10612313
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "078II",
+					"DES": "CALCOLATORI ELETTRONICI",
+					"DATA_ESAME": "06/07/2022",
+					"VOTO": "21 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11620016
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "075II",
+					"DES": "COMUNICAZIONI NUMERICHE",
+					"DATA_ESAME": "06/10/2022",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11779239
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "173AA",
+					"DES": "CALCOLO NUMERICO",
+					"DATA_ESAME": "08/02/2021",
+					"VOTO": "26 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11114610
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "257AA",
+					"DES": "PROGRAMMAZIONE DI INTERFACCE",
+					"DATA_ESAME": "11/12/2021",
+					"VOTO": "30 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11469660
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "076II",
+					"DES": "ELETTRONICA DIGITALE",
+					"DATA_ESAME": "12/07/2022",
+					"VOTO": "18 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11622985
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "544II",
+					"DES": "SISTEMI OPERATIVI",
+					"DATA_ESAME": "12/09/2022",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11706898
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "1717Z",
+					"DES": "PROVA DI LINGUA INGLESE B2",
+					"DATA_ESAME": "12/11/2020",
+					"VOTO": null,
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": "Idoneo",
+					"PESO": 3,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11037736
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "170AA",
+					"DES": "RICERCA OPERATIVA",
+					"DATA_ESAME": "13/01/2022",
+					"VOTO": "18 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11209042
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "591AA",
+					"DES": "ALGEBRA LINEARE E ANALISI MATEMATICA II",
+					"DATA_ESAME": "13/07/2020",
+					"VOTO": "30 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10612314
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "862II",
+					"DES": "FONDAMENTI DI PROGRAMMAZIONE",
+					"DATA_ESAME": "16/01/2020",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10612316
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "304ZZ",
+					"DES": "PROVA FINALE",
+					"DATA_ESAME": "18/11/2022",
+					"VOTO": "29 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 3,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11825252
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "073II",
+					"DES": "ELETTROTECNICA",
+					"DATA_ESAME": "20/09/2021",
+					"VOTO": "18 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11357501
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "074II",
+					"DES": "RETI LOGICHE",
+					"DATA_ESAME": "23/02/2022",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11541200
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "080II",
+					"DES": "PROGETTAZIONE WEB",
+					"DATA_ESAME": "23/09/2021",
+					"VOTO": "27 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11363349
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "011BB",
+					"DES": "FISICA GENERALE I",
+					"DATA_ESAME": "24/02/2021",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10612312
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "861II",
+					"DES": "BASI DI DATI",
+					"DATA_ESAME": "26/11/2020",
+					"VOTO": "27 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10612315
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "004AA",
+					"DES": "ANALISI MATEMATICA I",
+					"DATA_ESAME": "28/02/2020",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10480299
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "245AA",
+					"DES": "CRITTOGRAFIA",
+					"DATA_ESAME": "28/03/2022",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11475994
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "116II",
+					"DES": "ECONOMIA E ORGANIZZAZIONE AZIENDALE",
+					"DATA_ESAME": "28/07/2021",
+					"VOTO": "29 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11245473
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "077II",
+					"DES": "FONDAMENTI DI AUTOMATICA",
+					"DATA_ESAME": "29/11/2021",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11467078
+				},
+				{
+					"MATRICOLA": 345678,
+					"DES_CAT": "Ordinario ",
+					"NOME": "NICCOLO BARELLA",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "29/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/11/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "212ZW",
+					"DES": "LIBERA SCELTA PER RICONOSCIMENTI",
+					"DATA_ESAME": "30/03/2022",
+					"VOTO": null,
+					"RIC_ID": 2,
+					"TIPO_RIC": "S",
+					"DES_RIC": "Ricon. per tirocinio o stage",
+					"GIUDIZIO": "Idoneo",
+					"PESO": 6,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 1,
+					"ANNO_CORSO": 3,
+					"adsce_id": 11561502
+				}
+			]
+		}
+	},
+	"456789": {
+		"Esami": {
+			"Esame": [
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "555II",
+					"DES": "CIRCUITI E DISPOSITIVI OTTICI E A MICROONDE",
+					"DATA_ESAME": "04/12/2020",
+					"VOTO": "30  e lode",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11042751
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "289II",
+					"DES": "ELABORAZIONE E TRASMISSIONE DELLE IMMAGINI",
+					"DATA_ESAME": "11/01/2021",
+					"VOTO": "30  e lode",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11070360
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "299II",
+					"DES": "SICUREZZA NELLE RETI",
+					"DATA_ESAME": "11/06/2020",
+					"VOTO": "30  e lode",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10812268
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "291II",
+					"DES": "METODI E TECNOLOGIE PER IL TELERILEVAMENTO",
+					"DATA_ESAME": "17/02/2021",
+					"VOTO": "30  e lode",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11132852
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "292II",
+					"DES": "MICROELETTRONICA PER LE TELECOMUNICAZIONI",
+					"DATA_ESAME": "19/07/2021",
+					"VOTO": "30  e lode",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10482386
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "552II",
+					"DES": "TEORIA DELLA DECISIONE E DELLA STIMA",
+					"DATA_ESAME": "20/01/2020",
+					"VOTO": "30  e lode",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10482385
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "286II",
+					"DES": "COMUNICAZIONI ELETTRICHE",
+					"DATA_ESAME": "21/02/2020",
+					"VOTO": "29 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10482381
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "562II",
+					"DES": "TECNOLOGIE E DISPOSITIVI PER SISTEMI WIRELESS",
+					"DATA_ESAME": "22/04/2021",
+					"VOTO": "30  e lode",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11169074
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "553II",
+					"DES": "COMUNICAZIONI WIRELESS",
+					"DATA_ESAME": "23/09/2020",
+					"VOTO": "30  e lode",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 10894318
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "536II",
+					"DES": "COMUNICAZIONI DIGITALI",
+					"DATA_ESAME": "27/07/2020",
+					"VOTO": "30  e lode",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10482380
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "290II",
+					"DES": "INGEGNERIA DEL TELETRAFFICO",
+					"DATA_ESAME": "27/08/2019",
+					"VOTO": "30  e lode",
+					"RIC_ID": 2,
+					"TIPO_RIC": "ANT",
+					"DES_RIC": "Riconoscimento attività didattiche",
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10482384
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "535II",
+					"DES": "FONDAMENTI DI RADAR",
+					"DATA_ESAME": "28/04/2020",
+					"VOTO": "30  e lode",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10482383
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "283II",
+					"DES": "ANTENNE E PROPAGAZIONE",
+					"DATA_ESAME": "30/09/2019",
+					"VOTO": "30  e lode",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10482382
+				},
+				{
+					"MATRICOLA": 456789,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "POLITANO MATTEO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "25/07/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "30/09/2021",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+					"COD": "272ZW",
+					"DES": "PROVA FINALE",
+					"DATA_ESAME": "30/09/2021",
+					"VOTO": null,
+					"RIC_ID": 2,
+					"TIPO_RIC": "M",
+					"DES_RIC": "Ricon. per progetto di mobilità",
+					"GIUDIZIO": "Idoneo",
+					"PESO": 24,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11143042
+				}
+			]
+		}
+	},
+	"567890": {
+		"Esami": {
+			"Esame": [
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "934II",
+					"DES": "BIOMETRICS SYSTEMS",
+					"DATA_ESAME": "07/01/2022",
+					"VOTO": "22 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11486530
+				},
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "932II",
+					"DES": "DEPENDABILITY",
+					"DATA_ESAME": "07/06/2022",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11591093
+				},
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "929II",
+					"DES": "APPLIED CRYPTOGRAPHY",
+					"DATA_ESAME": "08/07/2021",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 11026666
+				},
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "930II",
+					"DES": "HARDWARE AND EMBEDDED SECURITY",
+					"DATA_ESAME": "09/06/2021",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 11026665
+				},
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "933II",
+					"DES": "NETWORK SECURITY",
+					"DATA_ESAME": "10/01/2022",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11487890
+				},
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "938II",
+					"DES": "ELECTRONICS AND COMMUNICATION TECHNOLOGIES",
+					"DATA_ESAME": "11/01/2021",
+					"VOTO": "21 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 11070457
+				},
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "714AA",
+					"DES": "LANGUAGE-BASED TECHNOLOGY FOR SECURITY",
+					"DATA_ESAME": "11/06/2021",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 11026663
+				},
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "715AA",
+					"DES": "SECURE SOFTWARE ENGINEERING",
+					"DATA_ESAME": "19/01/2022",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11520700
+				},
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "005PN",
+					"DES": "ORGANIZATIONAL SCIENCES AND INFORMATION AND TECHNOLOGY LAW (OL)",
+					"DATA_ESAME": "20/09/2021",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 11026667
+				},
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "713AA",
+					"DES": "DATA AND SYSTEM SECURITY",
+					"DATA_ESAME": "22/02/2021",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 11026662
+				},
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "937II",
+					"DES": "PENETRATION AND DEFENCE LABORATORY",
+					"DATA_ESAME": "25/02/2022",
+					"VOTO": "21 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11541700
+				},
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "931II",
+					"DES": "ARTIFICIAL INTELLIGENCE FOR CYBERSECURITY",
+					"DATA_ESAME": "26/01/2022",
+					"VOTO": "23 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11507194
+				},
+				{
+					"MATRICOLA": 567890,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "ACERBI FRANCESCO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "17/09/2020",
+					"ANNO_IMM": 2020,
+					"DATA_CHIUSURA": "26/07/2022",
+					"AA_CHIUSURA": 2021,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "CYBERSECURITY (WCY-LM)",
+					"COD": "1863Z",
+					"DES": "TESI",
+					"DATA_ESAME": "26/07/2022",
+					"VOTO": null,
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": "Eccellente",
+					"PESO": 18,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 11026664
+				}
+			]
+		}
+	},
+	"dafault": {
+		"Esami": {
+			"Esame": [
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "075II",
+					"DES": "COMUNICAZIONI NUMERICHE",
+					"DATA_ESAME": "05/06/2018",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 9890009
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "549II",
+					"DES": "FONDAMENTI DI INFORMATICA II",
+					"DATA_ESAME": "06/03/2017",
+					"VOTO": "22 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 9130377
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "076II",
+					"DES": "ELETTRONICA DIGITALE",
+					"DATA_ESAME": "06/11/2018",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 10180748
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "247ZZ",
+					"DES": "PROVA DI LINGUA INGLESE",
+					"DATA_ESAME": "08/03/2016",
+					"VOTO": null,
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": "Idoneo",
+					"PESO": 3,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 9200139
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "170AA",
+					"DES": "RICERCA OPERATIVA",
+					"DATA_ESAME": "11/07/2017",
+					"VOTO": "23 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 9390379
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "080II",
+					"DES": "PROGETTAZIONE WEB",
+					"DATA_ESAME": "13/09/2017",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 9390378
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "374II",
+					"DES": "INGEGNERIA DEL SOFTWARE",
+					"DATA_ESAME": "13/10/2017",
+					"VOTO": "30 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 9728127
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "304ZZ",
+					"DES": "PROVA FINALE",
+					"DATA_ESAME": "14/10/2019",
+					"VOTO": "29 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 3,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 10620588
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "074II",
+					"DES": "RETI LOGICHE",
+					"DATA_ESAME": "15/01/2018",
+					"VOTO": "26 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 9390376
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "011BB",
+					"DES": "FISICA GENERALE I",
+					"DATA_ESAME": "16/06/2016",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 9130379
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "073II",
+					"DES": "ELETTROTECNICA",
+					"DATA_ESAME": "19/01/2017",
+					"VOTO": "24 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 9390373
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "545II",
+					"DES": "RETI INFORMATICHE",
+					"DATA_ESAME": "19/02/2019",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 10396286
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "116II",
+					"DES": "ECONOMIA E ORGANIZZAZIONE AZIENDALE",
+					"DATA_ESAME": "19/06/2019",
+					"VOTO": "22 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 9390374
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "302ZZ",
+					"DES": "TIROCINIO",
+					"DATA_ESAME": "20/07/2019",
+					"VOTO": null,
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": "Ottimo",
+					"PESO": 6,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 10455567
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "591AA",
+					"DES": "ALGEBRA LINEARE E ANALISI MATEMATICA II",
+					"DATA_ESAME": "21/09/2016",
+					"VOTO": "21 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 9130380
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "078II",
+					"DES": "CALCOLATORI ELETTRONICI",
+					"DATA_ESAME": "21/09/2018",
+					"VOTO": "21 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 9390375
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "004AA",
+					"DES": "ANALISI MATEMATICA I",
+					"DATA_ESAME": "22/01/2016",
+					"VOTO": "18 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 9130381
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "550II",
+					"DES": "FONDAMENTI DI INFORMATICA I",
+					"DATA_ESAME": "25/02/2016",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 9130378
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "173AA",
+					"DES": "CALCOLO NUMERICO",
+					"DATA_ESAME": "26/02/2018",
+					"VOTO": "20 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 9390380
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "544II",
+					"DES": "SISTEMI OPERATIVI",
+					"DATA_ESAME": "28/01/2019",
+					"VOTO": "27 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 10276416
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "546II",
+					"DES": "PROGRAMMAZIONE",
+					"DATA_ESAME": "28/02/2018",
+					"VOTO": "26 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 3,
+					"adsce_id": 9845111
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "08/11/2015",
+					"ANNO_IMM": 2015,
+					"DATA_CHIUSURA": "14/10/2019",
+					"AA_CHIUSURA": 2018,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+					"COD": "077II",
+					"DES": "FONDAMENTI DI AUTOMATICA",
+					"DATA_ESAME": "29/06/2017",
+					"VOTO": "18 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 9390377
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "882II",
+					"DES": "INTERNET OF THINGS",
+					"DATA_ESAME": "01/07/2020",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10789310
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "883II",
+					"DES": "LARGE-SCALE AND MULTI-STRUCTURED DATABASES",
+					"DATA_ESAME": "03/02/2020",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10639734
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "888II",
+					"DES": "PROCESS MINING AND INTELLIGENCE",
+					"DATA_ESAME": "08/04/2021",
+					"VOTO": "29 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11160806
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "696AA",
+					"DES": "OPTIMIZATION METHODS AND GAME THEORY",
+					"DATA_ESAME": "08/06/2020",
+					"VOTO": "27 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10639733
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "886II",
+					"DES": "MULTIMEDIA INFORMATION RETRIEVAL AND COMPUTER VISION",
+					"DATA_ESAME": "11/06/2021",
+					"VOTO": "27 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11205803
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "583II",
+					"DES": "ADVANCED NETWORK ARCHITECTURES AND WIRELESS SYSTEMS",
+					"DATA_ESAME": "12/01/2021",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": {
+						"@nil": "true"
+					},
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11073555
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "697AA",
+					"DES": "STATISTICA",
+					"DATA_ESAME": "13/01/2020",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10683241
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "1801Z",
+					"DES": "FINAL EXAMINATION",
+					"DATA_ESAME": "18/02/2022",
+					"VOTO": "30 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 24,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11529566
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "876II",
+					"DES": "CLOUD COMPUTING",
+					"DATA_ESAME": "18/09/2020",
+					"VOTO": "29 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10639735
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "893II",
+					"DES": "SYMBOLIC AND EVOLUTIONARY ARTIFICIAL INTELLIGENCE",
+					"DATA_ESAME": "22/09/2021",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11360400
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "877II",
+					"DES": "COMPUTATIONAL INTELLIGENCE AND DEEP LEARNING",
+					"DATA_ESAME": "24/02/2021",
+					"VOTO": "29 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 6,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 2,
+					"adsce_id": 11142658
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "875II",
+					"DES": "BUSINESS AND PROJECT MANAGEMENT",
+					"DATA_ESAME": "27/07/2021",
+					"VOTO": "25 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 9,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10639737
+				},
+				{
+					"MATRICOLA": 123456,
+					"DES_CAT": {
+						"@nil": "true"
+					},
+					"NOME": "PINCO PALLINO",
+					"COD_FIS": "ABCDEFX12X12X123X",
+					"INIZIO_CARRIERA": "15/10/2019",
+					"ANNO_IMM": 2019,
+					"DATA_CHIUSURA": "18/02/2022",
+					"AA_CHIUSURA": 2020,
+					"STA_STU_COD": "X",
+					"MOT_STASTU_COD": "TIT",
+					"CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+					"COD": "878II",
+					"DES": "DATA MINING AND MACHINE LEARNING",
+					"DATA_ESAME": "28/02/2020",
+					"VOTO": "28 ",
+					"RIC_ID": 0,
+					"TIPO_RIC": {
+						"@nil": "true"
+					},
+					"DES_RIC": {
+						"@nil": "true"
+					},
+					"GIUDIZIO": {
+						"@nil": "true"
+					},
+					"PESO": 12,
+					"PIANO": "Y",
+					"ABBR_FLG": 0,
+					"SOVRAN_FLG": 0,
+					"ANNO_CORSO": 1,
+					"adsce_id": 10639537
+				}
+			]
+		}
+	}
+}
