@@ -1,0 +1,890 @@
+{
+  "Esami": {
+    "Esame": [
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "073II",
+        "DES": "ELETTROTECNICA",
+        "DATA_ESAME": "01/07/2019",
+        "VOTO": "26 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10344268
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "074II",
+        "DES": "RETI LOGICHE",
+        "DATA_ESAME": "02/02/2021",
+        "VOTO": "22 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10344264
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "004AA",
+        "DES": "ANALISI MATEMATICA I",
+        "DATA_ESAME": "06/12/2017",
+        "VOTO": "24 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 12,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 9643503
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "544II",
+        "DES": "SISTEMI OPERATIVI",
+        "DATA_ESAME": "07/01/2022",
+        "VOTO": "25 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 3,
+        "adsce_id": 11486446
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "080II",
+        "DES": "PROGETTAZIONE WEB",
+        "DATA_ESAME": "07/04/2022",
+        "VOTO": "30 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10344267
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "245AA",
+        "DES": "CRITTOGRAFIA",
+        "DATA_ESAME": "09/01/2020",
+        "VOTO": "23 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": {
+          "@nil": "true"
+        },
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 3,
+        "adsce_id": 10670191
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "591AA",
+        "DES": "ALGEBRA LINEARE E ANALISI MATEMATICA II",
+        "DATA_ESAME": "09/02/2018",
+        "VOTO": "25 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 12,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 9643505
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "170AA",
+        "DES": "RICERCA OPERATIVA",
+        "DATA_ESAME": "09/07/2019",
+        "VOTO": "19 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10344262
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "633AA",
+        "DES": "CLOUD E GREEN COMPUTING",
+        "DATA_ESAME": "09/07/2020",
+        "VOTO": "25 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": {
+          "@nil": "true"
+        },
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 3,
+        "adsce_id": 10732518
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "173AA",
+        "DES": "CALCOLO NUMERICO",
+        "DATA_ESAME": "10/04/2019",
+        "VOTO": "20 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10344265
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "247ZZ",
+        "DES": "PROVA DI LINGUA INGLESE (B1)",
+        "DATA_ESAME": "16/07/2021",
+        "VOTO": null,
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": "Idoneo",
+        "PESO": 3,
+        "PIANO": {
+          "@nil": "true"
+        },
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 11249151
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "078II",
+        "DES": "CALCOLATORI ELETTRONICI",
+        "DATA_ESAME": "16/09/2021",
+        "VOTO": "21 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10344266
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "757II",
+        "DES": "BASI DI DATI",
+        "DATA_ESAME": "17/04/2019",
+        "VOTO": "23 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10232454
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "077II",
+        "DES": "FONDAMENTI DI AUTOMATICA",
+        "DATA_ESAME": "17/09/2019",
+        "VOTO": "26 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10344263
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "756II",
+        "DES": "ALGORITMI E STRUTTURE DATI",
+        "DATA_ESAME": "18/06/2018",
+        "VOTO": "21 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 9643508
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "116II",
+        "DES": "ECONOMIA E ORGANIZZAZIONE AZIENDALE",
+        "DATA_ESAME": "22/02/2020",
+        "VOTO": "24 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10344261
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "304ZZ",
+        "DES": "PROVA FINALE",
+        "DATA_ESAME": "22/07/2022",
+        "VOTO": "28 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 3,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 3,
+        "adsce_id": 11632545
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "758II",
+        "DES": "FONDAMENTI DI PROGRAMMAZIONE",
+        "DATA_ESAME": "23/02/2017",
+        "VOTO": "23 ",
+        "RIC_ID": 4,
+        "TIPO_RIC": " Convalidato",
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 9643506
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "076II",
+        "DES": "ELETTRONICA DIGITALE",
+        "DATA_ESAME": "24/02/2021",
+        "VOTO": "28 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 3,
+        "adsce_id": 11142543
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "758II",
+        "DES": "FONDAMENTI DI PROGRAMMAZIONE",
+        "DATA_ESAME": "26/02/2018",
+        "VOTO": "21 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 3,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 9768909
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "011BB",
+        "DES": "FISICA GENERALE I",
+        "DATA_ESAME": "27/02/2019",
+        "VOTO": "21 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 12,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10232453
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "075II",
+        "DES": "COMUNICAZIONI NUMERICHE",
+        "DATA_ESAME": "27/07/2020",
+        "VOTO": "23 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 3,
+        "adsce_id": 10810463
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "374II",
+        "DES": "INGEGNERIA DEL SOFTWARE",
+        "DATA_ESAME": "27/11/2019",
+        "VOTO": "24 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 3,
+        "adsce_id": 10658600
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "545II",
+        "DES": "RETI INFORMATICHE",
+        "DATA_ESAME": "28/06/2022",
+        "VOTO": "26 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 3,
+        "adsce_id": 11607688
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": "Ordinario ",
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "29/08/2016",
+        "ANNO_IMM": 2016,
+        "DATA_CHIUSURA": "22/07/2022",
+        "AA_CHIUSURA": 2021,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA INFORMATICA (IFO-L)",
+        "COD": "TEST1",
+        "DES": "TEST DI VALUTAZIONE DI INGEGNERIA",
+        "DATA_ESAME": "28/09/2017",
+        "VOTO": null,
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": "Idoneo",
+        "PESO": 2,
+        "PIANO": {
+          "@nil": "true"
+        },
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 1,
+        "ANNO_CORSO": 0,
+        "adsce_id": 9648241
+      },
+      {
+        "MATRICOLA": 123456,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "DONNARUMMA GIANLUIGI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "28/07/2022",
+        "ANNO_IMM": 2022,
+        "DATA_CHIUSURA": {
+          "@nil": "true"
+        },
+        "AA_CHIUSURA": {
+          "@nil": "true"
+        },
+        "STA_STU_COD": "A",
+        "MOT_STASTU_COD": "IMM",
+        "CORSO": "ARTIFICIAL INTELLIGENCE AND DATA ENGINEERING (WAI-LM)",
+        "COD": {
+          "@nil": "true"
+        },
+        "DES": {
+          "@nil": "true"
+        },
+        "DATA_ESAME": {
+          "@nil": "true"
+        },
+        "VOTO": null,
+        "RIC_ID": {
+          "@nil": "true"
+        },
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": {
+          "@nil": "true"
+        },
+        "PIANO": {
+          "@nil": "true"
+        },
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": {
+          "@nil": "true"
+        },
+        "ANNO_CORSO": {
+          "@nil": "true"
+        },
+        "adsce_id": {
+          "@nil": "true"
+        }
+      }
+    ]
+  }
+}

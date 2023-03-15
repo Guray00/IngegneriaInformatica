@@ -1,0 +1,11 @@
+{
+  "Entries": {
+    "Entry": {
+      "nome": "NICCOLO",
+      "cognome": "BARELLA",
+      "cod_fis": "ABCDEFX12X12X123X",
+      "data_nascita": "2000-02-04T00:00:00.000+01:00",
+      "email_ate": "nome.cognome@studenti.unipi.it"
+    }
+  }
+}

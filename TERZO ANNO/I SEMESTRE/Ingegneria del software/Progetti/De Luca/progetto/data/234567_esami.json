@@ -1,0 +1,463 @@
+{
+  "Esami": {
+    "Esame": [
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "915II",
+        "DES": "NANOELETTRONICA E FOTONICA",
+        "DATA_ESAME": "02/07/2020",
+        "VOTO": "20 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": {
+          "@nil": "true"
+        },
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10791188
+      },
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "317II",
+        "DES": "SISTEMI DI ELABORAZIONE",
+        "DATA_ESAME": "08/07/2020",
+        "VOTO": "28 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10794387
+      },
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "307II",
+        "DES": "ELETTRONICA ANALOGICA",
+        "DATA_ESAME": "09/04/2021",
+        "VOTO": "19 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10220937
+      },
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "309II",
+        "DES": "ELETTRONICA DELLE TELECOMUNICAZIONI",
+        "DATA_ESAME": "11/01/2021",
+        "VOTO": "27 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10220936
+      },
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "314II",
+        "DES": "PROGETTAZIONE DI SISTEMI DIGITALI",
+        "DATA_ESAME": "13/01/2020",
+        "VOTO": "30 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10681482
+      },
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "313II",
+        "DES": "PROGETTAZIONE DI SENSORI E MICROSISTEMI",
+        "DATA_ESAME": "15/04/2021",
+        "VOTO": "24 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 11167164
+      },
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "311II",
+        "DES": "SISTEMI EMBEDDED",
+        "DATA_ESAME": "17/09/2020",
+        "VOTO": "28 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10879990
+      },
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "274ZW",
+        "DES": "PROVA FINALE",
+        "DATA_ESAME": "18/02/2022",
+        "VOTO": "30 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 18,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 11528406
+      },
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "098II",
+        "DES": "DISPOSITIVI ELETTRONICI",
+        "DATA_ESAME": "20/06/2019",
+        "VOTO": "24 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10371487
+      },
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "310II",
+        "DES": "ELETTRONICA DI POTENZA E DI CONTROLLO",
+        "DATA_ESAME": "22/04/2020",
+        "VOTO": "26 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10220934
+      },
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "315II",
+        "DES": "PROGETTAZIONE DI SISTEMI MICROELETTRONICI",
+        "DATA_ESAME": "23/09/2019",
+        "VOTO": "24 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 12,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10220938
+      },
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "318II",
+        "DES": "TECNOLOGIE MICROELETTRONICHE",
+        "DATA_ESAME": "27/02/2019",
+        "VOTO": "20 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10220940
+      },
+      {
+        "MATRICOLA": 234567,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "ALESSANDRO BASTONI",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "24/10/2018",
+        "ANNO_IMM": 2018,
+        "DATA_CHIUSURA": "18/02/2022",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA ELETTRONICA (WIE-LM)",
+        "COD": "319II",
+        "DES": "TELECOMUNICAZIONI",
+        "DATA_ESAME": "29/01/2019",
+        "VOTO": "25 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10220935
+      }
+    ]
+  }
+}

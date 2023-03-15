@@ -1,0 +1,490 @@
+{
+  "Esami": {
+    "Esame": [
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "555II",
+        "DES": "CIRCUITI E DISPOSITIVI OTTICI E A MICROONDE",
+        "DATA_ESAME": "04/12/2020",
+        "VOTO": "30  e lode",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 11042751
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "289II",
+        "DES": "ELABORAZIONE E TRASMISSIONE DELLE IMMAGINI",
+        "DATA_ESAME": "11/01/2021",
+        "VOTO": "30  e lode",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 11070360
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "299II",
+        "DES": "SICUREZZA NELLE RETI",
+        "DATA_ESAME": "11/06/2020",
+        "VOTO": "30  e lode",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10812268
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "291II",
+        "DES": "METODI E TECNOLOGIE PER IL TELERILEVAMENTO",
+        "DATA_ESAME": "17/02/2021",
+        "VOTO": "30  e lode",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": {
+          "@nil": "true"
+        },
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 11132852
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "292II",
+        "DES": "MICROELETTRONICA PER LE TELECOMUNICAZIONI",
+        "DATA_ESAME": "19/07/2021",
+        "VOTO": "30  e lode",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10482386
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "552II",
+        "DES": "TEORIA DELLA DECISIONE E DELLA STIMA",
+        "DATA_ESAME": "20/01/2020",
+        "VOTO": "30  e lode",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10482385
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "286II",
+        "DES": "COMUNICAZIONI ELETTRICHE",
+        "DATA_ESAME": "21/02/2020",
+        "VOTO": "29 ",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10482381
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "562II",
+        "DES": "TECNOLOGIE E DISPOSITIVI PER SISTEMI WIRELESS",
+        "DATA_ESAME": "22/04/2021",
+        "VOTO": "30  e lode",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": {
+          "@nil": "true"
+        },
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 11169074
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "553II",
+        "DES": "COMUNICAZIONI WIRELESS",
+        "DATA_ESAME": "23/09/2020",
+        "VOTO": "30  e lode",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 6,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 10894318
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "536II",
+        "DES": "COMUNICAZIONI DIGITALI",
+        "DATA_ESAME": "27/07/2020",
+        "VOTO": "30  e lode",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 12,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10482380
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "290II",
+        "DES": "INGEGNERIA DEL TELETRAFFICO",
+        "DATA_ESAME": "27/08/2019",
+        "VOTO": "30  e lode",
+        "RIC_ID": 2,
+        "TIPO_RIC": "ANT",
+        "DES_RIC": "Riconoscimento attività didattiche",
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10482384
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "535II",
+        "DES": "FONDAMENTI DI RADAR",
+        "DATA_ESAME": "28/04/2020",
+        "VOTO": "30  e lode",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10482383
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "283II",
+        "DES": "ANTENNE E PROPAGAZIONE",
+        "DATA_ESAME": "30/09/2019",
+        "VOTO": "30  e lode",
+        "RIC_ID": 0,
+        "TIPO_RIC": {
+          "@nil": "true"
+        },
+        "DES_RIC": {
+          "@nil": "true"
+        },
+        "GIUDIZIO": {
+          "@nil": "true"
+        },
+        "PESO": 9,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 1,
+        "adsce_id": 10482382
+      },
+      {
+        "MATRICOLA": 456789,
+        "DES_CAT": {
+          "@nil": "true"
+        },
+        "NOME": "POLITANO MATTEO",
+        "COD_FIS": "ABCDEFX12X12X123X",
+        "INIZIO_CARRIERA": "25/07/2019",
+        "ANNO_IMM": 2019,
+        "DATA_CHIUSURA": "30/09/2021",
+        "AA_CHIUSURA": 2020,
+        "STA_STU_COD": "X",
+        "MOT_STASTU_COD": "TIT",
+        "CORSO": "INGEGNERIA DELLE TELECOMUNICAZIONI (WIT-LM)",
+        "COD": "272ZW",
+        "DES": "PROVA FINALE",
+        "DATA_ESAME": "30/09/2021",
+        "VOTO": null,
+        "RIC_ID": 2,
+        "TIPO_RIC": "M",
+        "DES_RIC": "Ricon. per progetto di mobilità",
+        "GIUDIZIO": "Idoneo",
+        "PESO": 24,
+        "PIANO": "Y",
+        "ABBR_FLG": 0,
+        "SOVRAN_FLG": 0,
+        "ANNO_CORSO": 2,
+        "adsce_id": 11143042
+      }
+    ]
+  }
+}
