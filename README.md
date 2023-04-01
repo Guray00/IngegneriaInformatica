@@ -197,6 +197,7 @@ Francesco Berti<br>
 Francesco Boldrini<br>
 Matteo Bernini<br>
 Filippo Brogi<br>
+Leonardo Brugnano<br>
 Davide Bruni<br>
 Federico Calzolari<br>
 Federico Casu<br>
