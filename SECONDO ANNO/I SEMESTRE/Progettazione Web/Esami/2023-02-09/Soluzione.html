@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title>Document</title>
+    <style>
+        #scheda {
+            background-color: yellowgreen;
+            width: fit-content;
+        }
+
+        div {
+            padding: 1em;
+            background-color: yellow;
+        }
+
+        #mappa,
+        #tentativi {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        h1, h2, p {
+            font: bold 2em sans-serif;
+            color: black;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 1em;
+            font: bold 1.5em sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        #mappa td {
+            border: 1px solid black;
+            height: 3em;
+            width: 3em;
+            background-color: white;
+            font: bold 1em sans-serif;
+            text-align: center;
+        }
+
+        #mappa td.selezionata {
+            background-color: orange;
+        }
+
+        #mappa td.tesoro {
+            background-color: green;
+        }
+        #mappa td.tesoro.lamp {
+            background-color: red;
+        }
+
+        #tentativi td {
+            border: 1px solid white;
+            height: 3em;
+            width: 3em;
+            background-color: darkgray;
+            font: bold 1em sans-serif;
+            text-align: center;
+            color: darkgray;
+        }
+
+        #tentativi td.scoperta {
+            background-color: white;
+        }
+    </style>
+    <script>
+        const PERIODO = 200;
+        const ATTENDI = 5000;
+        const QUANTI_PERIODI = ATTENDI/PERIODO;
+
+        const NUM_RIGHE = 10;
+        const NUM_COLONNE = 10;
+        const NUM_TENTATIVI = 5;
+
+        // Posizioni associate ai tentativi e al tesoro
+        let posizione;
+        const premi = new Array(NUM_TENTATIVI);
+        const VALORE_PREMI = [10, 50, 100];
+        let tesoro;
+        let casellaDaGrattare = 0;
+        
+        // bottoni
+        let bScopri;
+        let bGratta;
+
+        // timer
+        let tim;
+
+
+        // Mescola gli elementi dell'array passato come argomento
+        // limitandosi a quanti valori
+        function mescolaArray(ar, quanti) {
+            for(let i=0; i<quanti; i++){
+                // Prende un elemento a caso 
+                let j = i + Math.floor(Math.random() * (ar.length-i));
+                // e lo scambia con quello corrente (può anche essere se stesso)                
+                [ar[i], ar[j]] = [ar[j], ar[i]];
+            }
+        }
+
+        // Genera le posizioni di tesoro e tentativi
+        function generaPosizioni() {
+            posizione = [...Array(NUM_RIGHE*NUM_COLONNE).keys()];
+            mescolaArray(posizione, NUM_TENTATIVI);
+            const y = Math.floor(Math.random() * posizione.length);
+            tesoro = posizione[y];
+        }
+
+        // Crea una tabella per la mappa
+        function creaMappa() {
+            let contatore = 0;
+            const t = document.createElement("table");
+            for (let i = 0; i < NUM_RIGHE; i++) {
+                const r = document.createElement("tr");
+                t.appendChild(r);
+                for (let j = 0; j < NUM_COLONNE; j++) {
+                    const d = document.createElement("td");
+                    d.id = contatore;
+                    contatore++;
+                    r.appendChild(d);
+                }
+            }
+            const div = document.getElementById("mappa");
+            div.appendChild(t);
+        }
+
+        // Crea una tabella per i tentativi
+        function creaTentativi() {
+            const t = document.createElement("table");
+            let r = document.createElement("tr");
+            t.appendChild(r);
+            for (let i = 0; i < NUM_TENTATIVI; i++) {
+                const d = document.createElement("td");
+                const v = posizione[i];
+                const riga = Math.floor(v / NUM_COLONNE);
+                const colonna = v % NUM_COLONNE;
+                d.innerText = riga + ", " + colonna;
+                r.appendChild(d);
+            }
+            r = document.createElement("tr");
+            t.appendChild(r);
+            for (let i = 0; i < NUM_TENTATIVI; i++) {
+                const d = document.createElement("td");
+                const pr = generaPremio();
+                d.innerText = "EUR " + pr;
+                premi[i] = pr;
+                r.appendChild(d);
+            }
+            const div = document.getElementById("tentativi");
+            div.appendChild(t);
+        }
+
+        // Restituisce 10, 50, o 100
+        function generaPremio() {
+            return VALORE_PREMI[Math.floor(Math.random()*VALORE_PREMI.length)];
+        }
+
+        // Moatra il tesoro sulla mappa
+        function scopriTesoro() {
+            const x = document.getElementById(tesoro);
+            x.classList.add("tesoro")
+            bScopri.disabled = true;
+            bGratta.disabled = false;
+        }
+
+        // Esegue un tentativo
+        function grattaCasella() {
+            const c = posizione[casellaDaGrattare];
+            const d = document.getElementById(c);
+            const r = document.querySelectorAll("#tentativi td");
+            r[casellaDaGrattare].classList.add("scoperta");
+            r[casellaDaGrattare + NUM_TENTATIVI].classList.add("scoperta");
+
+            if (c != tesoro) {
+                d.classList.add("selezionata");
+            } else {
+                bGratta.disabled = true;
+                messaggio("Hai vinto " + premi[casellaDaGrattare] + " euro");
+                let q = 0;
+                tim = setInterval(() => {
+                    d.classList.toggle("lamp");
+                    q++;
+                    if (q == QUANTI_PERIODI) {
+                        clearInterval(tim);
+                        ricomincia();
+                    }
+                }, PERIODO);
+                return;
+            }
+            casellaDaGrattare++;
+            if (casellaDaGrattare == NUM_TENTATIVI) {
+                bGratta.disabled = true;
+                messaggio("Ritenta, sarai più fortunato");
+                setTimeout(ricomincia, ATTENDI);
+            }
+        }
+
+        function ricomincia() {
+            const pm = document.getElementById("pm");
+            pm.innerText = "";
+
+            casellaDaGrattare = 0;
+            combinazioni = [];
+            generaPosizioni();
+            const t1 = document.querySelector("#mappa>table");
+            t1.remove();
+            creaMappa();
+
+            const t2 = document.querySelector("#tentativi>table");
+            t2.remove();
+            creaTentativi();
+
+            bScopri.disabled = false;
+            bGratta.disabled = true;
+        }
+
+        function messaggio(mess) {
+            const pm = document.getElementById("pm");
+            pm.innerText = mess;
+        }
+
+        function init() {
+            generaPosizioni();
+            creaMappa();
+            creaTentativi();
+            bScopri = document.getElementById("scopri");
+            bGratta = document.getElementById("gratta");
+            bScopri.addEventListener("click", scopriTesoro);
+            bGratta.addEventListener("click", grattaCasella);
+            bGratta.disabled = true;
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <div id="scheda">
+        <h1>Gratta e Vinci</h1>
+        <div id="mappa">
+            <h2>Mappa del tesoro</h2>
+        </div>
+        <div id="tentativi">
+            <h2>I tuoi tentativi</h2>
+        </div>
+        <button id="scopri">Scopri</button>
+        <button id="gratta">Gratta</button>
+        <p id="pm"></p>
+    </div>
+</body>
+
+</html>
