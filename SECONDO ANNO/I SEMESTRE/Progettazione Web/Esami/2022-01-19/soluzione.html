@@ -1,342 +1,314 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-        body{
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            background: green;
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+    <head>
+        <title>Speed Tombola</title>
+        <meta charset="utf-8">
+        <style>
+        body {
+            background-color: green;
+			font-weight: bold;
+            padding: 2em;
         }
-
-        .main > *{
-            margin: 1rem;
+        #cartella {
+            background-color: coral;
+            width: fit-content;
+            height: fit-content;
+            border: 3px solid black;
         }
-
-        h2{
+        h1 {
             color: yellow;
         }
-
-        .messaggio{
+        button {
+				padding: 0.5em;
+				font-weight: bold;
+                font-size: 1.2rem;
+                margin: 2rem 1rem 0 0;
+		}
+        p {
             color: white;
+            font-size: 1.5em;
+        }
+        .casella {
+           background-color: white;
+           width: 3rem;
+           height: 3rem;
+           margin: 1rem;
+           text-align: center;				
+           font-weight: bold;
+           font-size: 2rem;
+        }
+        .casella.selezionata {
+           background-color: lightblue;
+        }
+        .casella.cinquina {
+           background-color: lightgreen;
+        }
+        </style>
+
+        <script>
+
+        // Implementato come una macchina a stati finiti
+        // Questi sono i possibili stati
+        const FERMO = 0;
+        const AVVIATO = 1;
+        const VERIFICA_CINQUINA = 2;
+        const ATTESA = 3;
+
+        // Stato del gioco
+        let stato = FERMO;    
+        // Contiene i numeri da estrarre
+        let numeriDaEstrarre = [];
+        // Contiene i numeri già estratti
+        let numeriEstratti = [];
+        // Handle del timer
+        let timerid;
+        // I numeri della cinquina
+        let cinq = [];
+        // Riga delle caselle della cinquina
+        let cinq_r = []; 				
+
+        // Funzione eseguita al caricamento
+        function costruisci() {
+            generaCartella();
+            inizializza();
         }
 
-        table{
-            border-spacing: 1em;
-            border: 2px solid black;
-            background: orange;
-        }
-
-        td{
-            width: 50px;
-            height: 50px;
-            background: white;
-            border: 2px inset black;
-            text-align: center;
-            font-size: 25px;
-            font-weight: 900;
-        }
-
-        .estratto{
-            background: lightblue;
-        }
-
-        .scelto{
-            background: rgba(72, 247, 72, 0.541);
-        }
-
-
-    </style>
-</head>
-<body>
-    
-    <div class="main">
-        <h2>Speed Tombola</h2>
-        <div class="messaggio"></div>
-
-        <div class="scheda">
-            <table>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <button class="avvia">Avvia</button>
-        <button class="cinquina" disabled>Cinquina</button>
-    </div>
-
-
-
-
-    <script>
-
-        function set_up(){
-            // creazione tabella
-            create_table();
-
-            let mess = "Premi Avvia aper iniziare";
-            document.querySelector(".messaggio").textContent = mess;
-
-            // creazione array dei numeri
-            let arr = [];
-            for(let i = 1; i <= 90;i++){
-                arr.push(i);
+        // Crea una cartella vuota
+        function generaCartella() {
+        // Crea una cartella con tre righe di caselle
+            const cartella = document.getElementById("cartella");
+            for (let i = 0; i < 3; i++) {
+				const row = document.createElement("div"); // una riga
+                cartella.appendChild(row);
+                for(let j=0; j<9; j++) {
+                    const square = document.createElement("input");
+				    square.setAttribute("class", "casella");
+				    square.setAttribute("readonly", "readonly");
+				    square.setAttribute("onclick","gestisciClick(this)");
+					square.id = "square-" + i + "-" + j;
+					row.appendChild(square);
+                }
             }
-            shuffle(arr);
-            // console.log(arr);
+        }
 
+        // Riempie la cartella e inizializza lo stato
+        function inizializza() {
+            stato = FERMO;
+            showMessage("Premi Avvia per iniziare");
+            preparaNumeri();
+            riempiCartella();
+            updateButtonStatus();
+        }
 
-            let interval;
+        // Genera i 90 numeri della tombola con ordine casuale
+        function preparaNumeri() {
+            numeriEstratti = [];
+            numeriDaEstrarre = arrayRandom(1, 90);  
+        }
 
-            // tasti
-            let start = document.querySelector(".avvia");
-            let fine = document.querySelector(".cinquina");
+        // Genera un array contenente tutti i valori tra inizio e fine (inclusi)
+        // secondo un ordine casuale
+        function arrayRandom(inizio, fine) {
+            let a = [];
+            for(let i=inizio; i<= fine; i++)
+                a.push(i);
+            mescolaArray(a);
+            return a;  
+        }
 
+        // Mescola gli elementi dell'array passato come argomento
+        function mescolaArray(ar){
+            // Comincia dal fondo
+            let corrente = ar.length;
+            let indice;
+            while (corrente > 0) {
+                // Prende un elemento a caso prima di quello corrente
+                indice = Math.floor(Math.random() * corrente);
+                corrente--;
+                // e lo scambia con quello corrente (può anche essere se stesso)                
+                [ar[corrente], ar[indice]] = [ar[indice], ar[corrente]];
+            }
+        }
 
-            // array numeri estratti
-            let estratti = [];
+        // Crea una matrice con numeri a caso
+        // La matrice è 9x3 e non 3x9, poi uso indici 
+        // invertiti
+        function matriceRandom() {
+            let m = new Array(9);
+            for(let j=0; j<9; j++) {
+                let i = j*10;
+                let f = i+9;
+                let v = arrayRandom(i, f);
+                m[j] = v.slice(0, 3);
+            }
+            return m;
+        }
 
-            start.onclick = () => {
-                start.disabled = true;
-                fine.disabled = false;
-
-                // inizia l'estrazione dei numeri
-                interval = setInterval(() => {
-                    if(arr.length == 0){
-                        clearInterval(interval);
-                        perso();
-                        return;
+        // Riempie la cartella con i numeri casuali
+        function riempiCartella() {
+            let mat = matriceRandom();
+            for(let i=0; i<3; i++) {
+                // Ogni riga ha 9 caselle
+                // 5 hanno il numero, 4 sono vuote
+                const piene = pieneACaso();
+                for(let j=0; j<9; j++) {
+                    const square = document.getElementById("square-" + i + "-" + j);
+					if(piene[j]){
+                        square.value = mat[j][i];
+                    } else {
+                        square.value = "";
                     }
-                    let estratto = arr.pop();
-                    estratti.push(estratto);
-                    // mostra a schermo
-                    let m = "E' stato estratto il numero: ";
-                    document.querySelector(".messaggio").textContent = m + estratto;
-                }, 1000);
-            }
-
-
-            fine.onclick = () => {
-                fine.disabled = true;
-                // termina estrazione
-                clearInterval(interval);
-                alert("Clicca su 5 caselle");
-                // controlla la vittoria
-                verifica(estratti);                           
-            }
-        }
-
-        function create_table(){
-            let caselle = document.querySelectorAll("td");
-            console.log(caselle);
-            for(let i = 0; i < 27;i++){
-                if(i < 9){
-                    caselle[i].classList.add("row-1");
-                }else if(i < 19){
-                    caselle[i].classList.add("row-2");
-                }else{
-                    caselle[i].classList.add("row-3");
-                }
-                caselle[i].classList.add("col-" + (i%9+1));
-
-
-                caselle[i].onclick = () => {
-                    if(caselle[i].classList.contains("numero")){
-                        caselle[i].classList.add("estratto");
-                    }
-                }
-            }
-
-            // riempimento tabella
-            let poss_num = [];
-            
-            for(let i = 0; i < 9;i++){
-                let col = [];
-                for(let j = i*10+1; j <= i*10+10;j++){
-                    col.push(j);
-                }
-                shuffle(col);
-                col.splice(3);
-                col.sort(compare);
-                poss_num.push(col);
-            }
-
-            // console.log(poss_num);
-            // posizioni
-            for(let i = 0; i < 3;i++){
-                let numbers_positions = [];
-                for(let k = 0; k < 9;k++){
-                    numbers_positions.push(k);
-                }
-                shuffle(numbers_positions);
-                numbers_positions.splice(5,4);
-                numbers_positions.sort();
-
-                console.log(numbers_positions);
-                
-
-                while(numbers_positions.length > 0){
-                    let pos = caselle[i*9+numbers_positions[0]];
-                    //console.log(pos);
-                    pos.classList.add("numero");
-                    //console.log("col: " + numbers_positions[0]);
-                    //console.log("row: " + i*9);
-                    pos.textContent = poss_num[numbers_positions[0]][0];
-
-                    poss_num[numbers_positions[0]].splice(0, 1);
-                    
-                    numbers_positions.splice(0, 1);
-                }
-            }
-
-
-        }
-
-        function verifica(estratti){
-                // riga scelta
-                let row = null;
-                // numeri scelti
-                let numeri = [];
-                let caselle = document.querySelectorAll("td");
-                for(let i = 0; i < 27; i++){
-                    caselle[i].onclick = () => {
-                        if(caselle[i].classList.contains("numero")){
-                            caselle[i].style.background = "green";
-                            numeri.push(parseInt(caselle[i].textContent));
-
-                            if(row == null){
-                                if(caselle[i].classList.contains("row-1")){
-                                    row = "row-1";
-                                }else if(caselle[i].classList.contains("row-2")){
-                                    row = "row-2";
-                                }else{
-                                    row = "row-3";
-                                }
-                            }
-
-                            // controlla che la casella scelta sia sulla stessa riga
-                            if(!caselle[i].classList.contains(row)){
-                                perso();
-                                return;
-                            }
-
-                        }
-                    
-                        // quando ho cliccato su almeno 5 caselle controllo che i numeri siano stati estratti
-                        if(numeri.length >= 5){
-                            verifica_numeri(estratti, numeri);
-                        }
+                    square.classList.remove("selezionata");
+                    square.classList.remove("cinquina");
                 }
             }
         }
 
-        function verifica_numeri(estratti, numeri, row){
-            // ordina i due array per comodità
-            estratti.sort();
-            numeri.sort();
-            console.log(estratti);
-            console.log(numeri);
-            if(estratti.length < 5){
-                perso();
-                return;
-            }
+        // Restituisce un array di 9 booleani, quelli messi a true indicano le
+        // caselle con il numero
+        function pieneACaso(){
+            let a = new Array();
+            for(let i=0; i<5; i++)
+                a[i] = true;
+            for(let i=5; i<9; i++)
+                a[i] = false;
+            mescolaArray(a);
+            return a;
+        }
 
-            for(let i = 0; i < numeri.length;i++){
-                if(!is_there(numeri[i], estratti)){
-                    perso();
+        // L'utente ha cliccato su una casella
+        function gestisciClick(elem) {
+            // Se il gioco non è stato avviato, deve ripartire, o se la casella è vuota non faccio niente
+			if (stato === FERMO || stato === ATTESA || elem.value === "") 
+				return;
+            // Stiamo controllando la cinquina dell'utente    
+            if(stato === VERIFICA_CINQUINA) {
+                // Le caselle diventano verdi
+                elem.classList.add("cinquina");
+                // Prendo il numero della casella
+                let valore = Number(elem.value);
+                // Controllo che siano tutti diversi
+                if(cinq.indexOf(valore) >= 0) {
+                    // Valore già presente
+                    fine(false);
                     return;
                 }
-            } 
-
-            console.log("fine");
-            
-            document.querySelector(".messaggio").textContent = "Hai vinto";
-        }
-
-        function is_there(n, arr){
-            for(let i = 0; i < arr.length; i++){
-                if(arr[i] == n)
-                return true;
+                // immetto nell'array
+                cinq.push(valore);
+                // Prendo anche il numero della riga in modo da verificare che non siano 
+                // su righe diverse
+                const s = elem.id;
+                const r = s.split("-")[1];
+                cinq_r.push(r);
+                // Se sono state cliccate 5 caselle allora controllo se i 
+                // valori sono usciti veramente e se sono su un'unica riga
+                if(cinq.length == 5) {
+                    if(cinq.every(n => numeriEstratti.includes(n)) && 
+                       cinq_r.every( v => v === cinq_r[0])) fine(true); // Vinto
+                    else fine(false); // Perso
+                }
+                return;
             }
-            return false;
+            // Siamo in una fase di gioco normale, le caselle diventano blu
+			elem.classList.toggle("selezionata");
+		}
+
+        // Mostra un messaggio per dire all'utente se ha vinto o ha perso
+        function fine(vittoria) {
+            stato = ATTESA;
+            updateButtonStatus();
+            if(vittoria) showMessage("Hai vinto");
+            else showMessage("Hai perso");
+            // Dopo 5 secondi si torna allo stato iniziale
+            setTimeout("inizializza()", 5000);
         }
-
-
-/*--------------------------------------Funzione fornita dal testo--------------------------------*/
-        function shuffle(arr) {
-            let rand, temp, i;
-            for (i = arr.length - 1; i > 0; i --) {
-            rand = Math.floor((i + 1) * Math.random());// numero a caso tra 0 e i (inclusi)
-            temp = arr[rand];// scambia il valore i-esimo con quello di indice rand
-            arr[rand] = arr[i];
-            arr[i] = temp;
-            }
-            return arr;
-        }
-
-        function get_possible_numbers(col){
-            let arr = [];
-            for(let i = col*10; i < 10;i++){
-                arr.push(i);
-            }
-            shuffle(arr);
-            console.log(arr);
-            return arr;
-        }
-
-        // funzione comparazione per la sort
-        function compare(a, b){
-            return parseInt(a) < parseInt(b) ? -1 : 1;
-        }
-
-        function perso(){
-            document.querySelector(".messaggio").textContent = "Hai perso";
-        }
-
         
+        // Mostro all'utente un nuovo messaggio
+        function showMessage(mess) {
+            const m = document.getElementById("messaggio");
+            m.innerText = mess;
+		}
 
-        set_up();
-    </script>
-</body>
+        // Il gioco ha inizio
+        function start(){
+            stato = AVVIATO;
+            // Aggiorna lo stato dei bottoni
+			updateButtonStatus();
+            // Avvia un timer con periodo 1 secondo
+            timerid = setInterval(estrai, 1000);
+		}
+
+        // Estra un nuovo numero
+        function estrai(){
+            // Controllo se non ci sono più numeri da estrarre
+            if(numeriDaEstrarre.length == 0) {
+                // Non ci sono più numeri
+                // Fermo il timer
+                clearInterval(timerid);
+                // Mostro un messaggio
+                fine(false);
+                return;
+            }
+            // Estraggo il nuovo numero: 
+            // è il primo dell'array che contiene quelli ancora da estrarre
+            let estratto = numeriDaEstrarre.pop();
+            // Lo metto nell'array dei numeri già estratti
+            numeriEstratti.push(estratto);
+            console.log(numeriEstratti);
+            // Mostro all'utente un messaggio con il nuovo numero
+            showMessage("E' stato estratto il numero: " + estratto);
+        }
+
+        // L'utente dice di aver fatto cinquina
+        function cinquina(){
+            // Fermo il timer
+            clearInterval(timerid);
+            // Chiedo all'utente di cliccare sulle 5 caselle
+            alert("Clicca sulle 5 caselle");
+            stato = VERIFICA_CINQUINA;
+            updateButtonStatus();
+            cinq = [];
+            cinq_r = [];
+        }
+
+        // Abilita/disabilita i botton a seconda dello stato
+		function updateButtonStatus(){
+            const startButton = document.getElementById("start");
+            const verificaButton = document.getElementById("cinquina");
+            switch(stato) {
+                case FERMO:
+                    startButton.disabled = false;
+                    verificaButton.disabled = true;
+                    break;
+                case AVVIATO:
+                    startButton.disabled = true;
+                    verificaButton.disabled = false;
+                    break;
+                case VERIFICA_CINQUINA:
+                case ATTESA:    
+                    startButton.disabled = true;
+                    verificaButton.disabled = true;
+                    break;
+            }	
+		}
+        </script>
+    
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:MediaServiceImageTags msdt:dt="string"></mso:MediaServiceImageTags>
+<mso:lcf76f155ced4ddcb4097134ff3c332f msdt:dt="string"></mso:lcf76f155ced4ddcb4097134ff3c332f>
+<mso:TaxCatchAll msdt:dt="string"></mso:TaxCatchAll>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+    <body onload="costruisci()">
+        <h1>Speed Tombola</h1>
+        <p id="messaggio"></p> 
+        <div id="cartella">
+        </div>
+        <div id="keypad">
+              <button id="start" type="button" onclick="start()">Avvia</button>
+              <button id="cinquina" type="button" onclick="cinquina()" disabled>Cinquina</button>
+        </div>
+    </body>
 </html>

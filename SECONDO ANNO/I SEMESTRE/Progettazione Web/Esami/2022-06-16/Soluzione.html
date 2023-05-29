@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Contaore</title>
+    <meta charset="utf-8">
+    <style>
+        button {
+            background-color: yellow;
+        }
+        .inselezione {
+            color: red;
+        }
+        table {
+            background-color: orange;
+            height: fit-content;
+            width: fit-content;
+            margin-top: 1em;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            width: 2em;
+            text-align: center;          
+        }
+        body, button {
+            font: 12pt Arial, Helvetica, sans-serif;
+        }
+        #container {
+            height: 100%; 
+            width: 100%;
+        }
+        #left, #middle, #right {
+            display: inline-block; 
+            vertical-align: top; 
+            min-height: 30em;
+            padding: 2em;
+            width: 30%; 
+        }
+        #left {
+            background: lightblue;
+        }
+        #middle {
+            background: lightgreen;
+        }
+        #right {
+            background: lightpink;
+        }
+    </style>
+<script>
+    const NUM_COL = 5;
+    let inrimozione = false;
+
+    // Imposta i listener
+    function inizializza() {
+        const settimanaButton = document.getElementById("settimana");
+        const rimuoviButton = document.getElementById("rimuovi");
+        const aggiungiButton = document.getElementById("aggiungi");
+        const t2 = document.getElementById("lista");
+
+        aggiungiButton.addEventListener("click", aggiungi);
+        rimuoviButton.addEventListener("click", rimuovi);
+        settimanaButton.addEventListener("click", settimana);
+        t2.addEventListener("click", rimuoviAux);
+        rimuoviButton.disabled = true;
+        settimanaButton.disabled = true;
+    }
+
+    /*
+     * Aggiunge un nuovo lavoratore alla lista 
+     */
+    function aggiungi() {
+            let n = prompt("Inserisci il nume del nuovo lavoratore");
+            const t2 = document.getElementById("lista");
+            const li = document.createElement("li");
+            li.innerText = n;
+            t2.appendChild(li);
+
+            const rimuoviButton = document.getElementById("rimuovi");
+            const settimanaButton = document.getElementById("settimana");
+            rimuoviButton.disabled = false;
+            settimanaButton.disabled = false;
+    }
+
+    /*
+     * Listener per elementi della lista di lavoratori durante rimozione
+     */
+    function rimuoviAux(e) {
+        
+        const aggiungiButton = document.getElementById("aggiungi");
+        const settimanaButton = document.getElementById("settimana");
+        const rimuoviButton = document.getElementById("rimuovi");
+        const t2 = document.getElementById("lista");
+        if(!inrimozione) {
+            return;        
+        }
+        t2.removeChild(e.target);
+        for(let c of t2.children)
+            c.classList.remove("inselezione");
+        aggiungiButton.disabled = false;
+        settimanaButton.disabled = false;
+        if(t2.children.length === 0) {
+            rimuoviButton.disabled = true;
+        }
+    }
+
+    /*
+     * Rimuove un lavoratore dalla lista
+     */
+    function rimuovi() {
+        const aggiungiButton = document.getElementById("aggiungi");
+        const settimanaButton = document.getElementById("settimana");
+        const t2 = document.getElementById("lista");
+        for(let c of t2.children)
+            c.classList.add("inselezione");
+        aggiungiButton.disabled = true;
+        settimanaButton.disabled = true;
+        inrimozione = true;
+    }
+
+    /*
+     * Calcola il numero totale di ore lavorate
+     */ 
+    function aggiornaStatistiche() {
+        const tabelle = document.querySelectorAll("table");
+        let totale = 0;
+        let completate = 0;
+        // Conta le ore lavorate nelle settimane complete
+        for(let t of tabelle) {
+            let totaleTabella = 0;
+            const rows = t.querySelectorAll("tr");
+            let righePiene = 0;
+            for(let r of rows.values()) {
+                let q = 0;
+                const cells = r.querySelectorAll("td");
+                for(let i=1; i<cells.length; i++) {
+                    const v = parseInt(cells[i].innerText);
+                    if(v) {
+                        totaleTabella += v;
+                        q++;
+                    }
+                }
+                if(q === NUM_COL) {
+                    righePiene ++;
+                }
+            }            
+            if(righePiene === rows.length) {
+                t.querySelectorAll("td").forEach(c => c.contentEditable = false);
+                t.style.backgroundColor = "lightgreen";
+                totale += totaleTabella;
+                completate++;
+            }
+        }
+        if(totale > 0){
+                document.getElementById("stats").innerText = "Totale ore: " + totale;
+        }
+        const settimanaButton = document.getElementById("settimana");
+        settimanaButton.disabled = completate != tabelle.length;
+    }
+
+    /*
+     * Aggiunge una nuova settimana
+     */
+    function settimana() {
+        const settimanaButton = document.getElementById("settimana");
+        const div = document.getElementById("left");
+        const ul = document.getElementById("lista");
+        // Numero di lavoratori
+        const quanteRighe = ul.childElementCount;
+        const tab = document.createElement("table");
+        // Le statistiche vengono aggiornate quando il puntatore del mouse esce dalla tabella
+        tab.addEventListener("mouseout", aggiornaStatistiche);
+        settimanaButton.disabled = true;
+
+        // Crea la tabella vera e propria
+        for(let i = 0; i < quanteRighe; i++) {    
+            const row = document.createElement("tr");
+            tab.appendChild(row);
+            const nome = document.createElement("td");
+            // La prima casella di ogni riga contiene il nome di un lavoratore
+            nome.innerText = ul.children[i].innerText;
+            row.appendChild(nome);
+            // Crea le rimanenti caselle
+            for(let j=0; j<NUM_COL; j++) {
+                const casella = document.createElement("td");
+                casella.contentEditable = true;
+                row.appendChild(casella);
+            }
+        }
+        // Aggiunge la tabella
+        div.appendChild(tab);
+    }
+</script>
+</head>
+
+<body onload=inizializza()>
+
+    <div id="container">
+        <div id="left">        
+            <button id="settimana" type="button">Nuova settimana</button>
+        </div>
+        <div id="middle">
+            <button id="aggiungi" type="button">Aggiungi lavoratore</button>
+            <button id="rimuovi" type="button">Rimuovi lavoratore</button>
+            <ul id="lista">
+            </ul>
+        </div>
+        <div id="right">
+            <p id="stats">
+                Statistiche
+            </p>
+        </div>
+    </div>    
+
+</body >    
+</html>
