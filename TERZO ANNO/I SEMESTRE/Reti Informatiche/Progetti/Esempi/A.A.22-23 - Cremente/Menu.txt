@@ -1,0 +1,8 @@
+A1 - 4 - 小春卷 xiao chun juan - mini involtini primavera
+A2 - 5 - 馄饨汤 hun tun tang - zuppa wantan
+P1 - 8 - 猪肉玉米饺子 zhu rou yu mi jiao yi - gyoza con maiale e mais
+P2 - 10 - 红烧牛肉面 hong shao niu rou mian - noodles con brodo di manzo brasato
+S1 - 10 - 酸辣粉 suan la fen - noodles di riso speziati
+S2 - 9 - 麻辣豆腐 ma la dou fu - tofu piccante stile sichuan
+D1 - 4 - 冰粉 bing fen - granita con sciroppo
+D2 - 4 - 驴打滚 lü da gun - ludagun, dolce tipico
