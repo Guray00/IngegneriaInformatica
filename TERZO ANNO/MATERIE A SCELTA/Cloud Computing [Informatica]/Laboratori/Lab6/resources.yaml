@@ -1,0 +1,10 @@
+- recipeId: pasta_carbonara
+  name: Pasta alla carbonara
+  description: Gli spaghetti alla carbonara sono un classico primo piatto della cucina italiana.
+  complexity: 3
+  ingredients:
+    - spaghetti
+    - tuorli
+    - guanciale
+    - pecorino romano
+    - pepe nero
