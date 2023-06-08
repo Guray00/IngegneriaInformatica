@@ -1,0 +1,62 @@
+******************************************
+* util/question.tex
+******************************************
+
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2023-06-07
+	cow_root = alloca_tab();
+	if (!cow_root)
+		return false;
+	vaddr v = map(cow_root, ini_utn_w, ini_utn_w + DIM_USR_COW, BIT_US,
+			[](vaddr v) {
+				paddr f = alloca_frame();
+				memset(reinterpret_cast<void*>(f), 0, DIM_PAGINA);
+				return f;
+			});
+	if (v != ini_utn_w + DIM_USR_COW) {
+		unmap(cow_root, ini_utn_w, v,
+			[](vaddr, paddr p, int) {
+				rilascia_frame(p);
+			});
+		return false;
+	}
+	return true;
+//   SOLUZIONE 2023-06-07 )
+// ( SOLUZIONE 2023-06-07
+	if (esecuzione->livello != LIV_UTENTE || v < ini_utn_w || v >= ini_utn_w + DIM_USR_COW)
+		return false;
+
+	vaddr b = base(v, 0);
+	for (tab_iter it(esecuzione->cr3, b, DIM_PAGINA); it; it.next()) {
+		tab_entry& e = it.get_e();
+		if (!(e & BIT_P))
+			fpanic("indirizzo cow %lx non mappato", b);
+		if (e & BIT_RW)
+			continue;
+		paddr new_frame;
+		paddr old_frame = extr_IND_FISICO(e);
+		if (it.get_l() > 1) {
+			new_frame = alloca_tab();
+			if (!new_frame)
+				return false;
+			copy_des(old_frame, new_frame, 0, 512);
+		} else {
+			new_frame = alloca_frame();
+			if (!new_frame)
+				return false;
+			memcpy(reinterpret_cast<void*>(new_frame),
+			       reinterpret_cast<void*>(old_frame), DIM_PAGINA);
+			invalida_entrata_TLB(it.get_v());
+		}
+		set_IND_FISICO(e, new_frame);
+		e |= BIT_RW;
+	}
+	return true;
+//   SOLUZIONE 2023-06-07 )
+
+
