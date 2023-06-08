@@ -227,6 +227,7 @@ Lorenzo Lozzi<br>
 Giovanni Enrico Loni<br>
 Matteo Lombardi<br>
 Giacomo Maldarella<br>
+Lorenzo Mancinelli<br><>
 Elia Marabotto<br>
 Gabriele Marcuccetti<br>
 Maria Azzurra Malotti<br>
