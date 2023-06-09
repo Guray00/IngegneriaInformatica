@@ -1,0 +1,59 @@
+Scrivere il numero di nodi del grafo(da 0 a n-1):6
+ Sicuro? Digitare 1 per confermare, 0, per ricominciare1
+nodo: 0:
+quanti nodi?3
+ indicare posizione nodo(da 0 a n-1), il suo costo e la sua capacita'
+1 8 7
+3 8 8
+4 3 10
+}
+nodo: 1:
+quanti nodi?2
+ indicare posizione nodo(da 0 a n-1), il suo costo e la sua capacita'
+2 6 11
+3 5 9
+}
+nodo: 2:
+quanti nodi?1
+ indicare posizione nodo(da 0 a n-1), il suo costo e la sua capacita'
+3 8 9
+}
+nodo: 3:
+quanti nodi?2
+ indicare posizione nodo(da 0 a n-1), il suo costo e la sua capacita'
+4 5 6
+5 10 8
+}
+nodo: 4:
+quanti nodi?1
+ indicare posizione nodo(da 0 a n-1), il suo costo e la sua capacita'
+5 9 10
+}
+nodo: 5:
+quanti nodi?0
+ indicare posizione nodo(da 0 a n-1), il suo costo e la sua capacita'
+}
+[0]->(1,8,7)->(3,8,8)->(4,3,10)
+[1]->(2,6,11)->(3,5,9)
+[2]->(3,8,9)
+[3]->(4,5,6)->(5,10,8)
+[4]->(5,9,10)
+[5]
+Sei soddisfatto? Se si, digitare 1, altrimenti 0
+1
+
+Digitare la partenza e la destinazione(da 0 a n-1):0 5
+ Digitare 1 per confermare la scelta; 0, per ricominciare
+1
+N:{0 }, CF(0)= {1,3,4}, p = (0,0,-1,0,0,-1), Pi = (0,8,+inf,8,3,+inf)
+N:{0 4 }, CF(4)= {5}, p = (0,0,-1,0,0,4), Pi = (0,8,+inf,8,3,12)
+N:{0 1 4 }, CF(1)= {2,3}, p = (0,0,1,0,0,4), Pi = (0,8,14,8,3,12)
+N:{0 1 3 4 }, CF(3)= {4,5}, p = (0,0,1,0,0,4), Pi = (0,8,14,8,3,12)
+N:{0 1 3 4 5 }, CF(5)= {}, p = (0,0,1,0,0,4), Pi = (0,8,14,8,3,12)
+
+Percorso: 0->3->5, delta = 8, flusso = 8
+Percorso: 0->4->5, delta = 10, flusso = 18
+Nt: {5 }
+Ns: {0 1 2 3 4 }
+la capacita' del taglio minimo pari a: 18
+Process finished with exit code 0
