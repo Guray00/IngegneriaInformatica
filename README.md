@@ -196,6 +196,7 @@ Giacomo Bertelli<br>
 Francesco Berti<br>
 Francesco Boldrini<br>
 Matteo Bernini<br>
+Francesco Bonistalli<br>
 Filippo Brogi<br>
 Leonardo Brugnano<br>
 Davide Bruni<br>
@@ -216,6 +217,7 @@ Angelo De Marco<br>
 Matteo Dondoli<br>
 Nilo Fabiano<br>
 Giulio Federico<br>
+Niccolò Franchi<br>
 Giacomo Furia<br>
 Giulia Gastaldin<br>
 Kevin Giannandrea<br>
@@ -234,6 +236,7 @@ Maria Azzurra Malotti<br>
 Alessandro Marzini<br>
 Federico Matteoni<br>
 Alessio Meini<br>
+Luca Minuti<br>
 Tommaso Molesti<br>
 Alex Moriconi</br>
 Federico Nardi<br>
@@ -241,6 +244,7 @@ Salvatore Noce <br>
 Martina Panico<br>
 Dario Paroli<br>
 Alex Parri<br>
+Tommaso Pellegrini<br>
 Alessandro Placanica<br>
 Aleandro Prudenzano<br>
 Antonio Querci<br>
