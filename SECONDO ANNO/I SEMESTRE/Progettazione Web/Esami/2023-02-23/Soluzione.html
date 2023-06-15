@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Appuntamenti</title>
+    <style>
+        body {
+            display: flex;
+        }
+        body>div {
+            margin: 1rem;
+            height: 30rem;
+            padding: 1rem;
+        }
+        input:invalid {
+            border: 2px red solid;
+        }
+        #sx {
+            width: 15%;
+            background-color: orange;
+            display: table;
+        }
+        #cx {
+            background-color: yellow;
+        }
+        #dx {
+            width: 15%;
+            background-color: lightgreen;
+        }
+        .r {
+            display: table-row;
+        }
+        .r input,
+        label,
+        button {
+            display: table-cell;
+            padding: 0.25rem;
+            height: 1.5rem;
+            margin: 0.25rem;
+        }
+        .r p {
+            display: table-cell;
+            padding: 0.25rem;
+            height: 1.5rem;
+            margin: 0.25rem;
+            font-weight: bold;
+            font-size: x-large;
+        }
+        .casella {
+            background-color: white;
+            width: 1rem;
+            height: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .casella.nonvuoto {
+            background-color: lightblue;
+        }
+
+        .casella.nonvuoto.pieno {
+            background-color: red;
+        }
+
+        span {
+            width: 4em;
+            display: inline-block;
+        }
+        #dx {
+            font-size:large;
+        }
+        #dx>table{
+            border: 1px black solid;
+            border-collapse: collapse;
+            width: 80%;
+            margin: 1em;
+        }
+        #dx td,th {
+            padding: 0.2em;
+            text-align: right;
+        }
+        #dx tr:nth-child(2n) {
+            background-color: white;
+        }
+        #dx tr:nth-child(odd) {
+            background-color: lightcyan;
+        }
+    </style>
+    <script>
+        const NUM_RIGHE = 12;
+        const NUM_COLONNE = 31;
+        const MESE = ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"];
+        const calendario = [];
+        const MAX_APP = 5;
+        let attesa;
+        let insBut;
+        let alfa;
+
+        class Giorno {
+             // Costruisce un giorno, inizialmente privo di appuntamenti
+            constructor(mese, giorno) {
+                this.mese = mese;
+                this.giorno = giorno;
+                this.appuntamenti = [];
+            }
+            // Aggiunge un appuntamento e restituisce true se possibile, false altrimenti
+            aggiungi(nome, cognome) {
+                if (this.appuntamenti.length == MAX_APP) return false;
+                this.appuntamenti.push([this.appuntamenti.length+1, nome, cognome]);
+                return this.appuntamenti.length < MAX_APP;
+            }
+            // Restituisce un array che contiene tutti gli appuntamenti (ordine per inserimento)
+            getAppuntamenti() {
+                return this.appuntamenti;
+            }
+            // Restituisce un array che contiene tutti gli appuntamenti (ordine alfabetico)
+            getAppuntamentiAlfa(){
+                let copia = [...this.appuntamenti];
+                copia.sort((a, b) => a[2].localeCompare(b[2]));
+                return copia;
+            }
+            // Indica se il giorno è pieno
+            pieno() {
+                return this.appuntamenti.length === MAX_APP;
+            }
+        }
+
+        // Resituisce il numero di giorni presenti nel mese passato come argomento (con riferimento al 2023)
+        function numGiorni(mese) {
+            switch (mese) {
+                case 2: return 28;
+                case 11:
+                case 4:
+                case 6:
+                case 9: return 30;
+                default: return 31;
+            }
+        }
+
+        // Crea la tabella nella parte centrale
+        function creaTabella() {
+            const tabella = document.getElementById("tabella");
+            let contatore = 0;
+            for (let i = 0; i < NUM_RIGHE; i++) {
+                const row = document.createElement("div"); // una riga
+                tabella.appendChild(row);
+                const m = document.createElement("span");
+                m.innerText = MESE[i];
+                row.appendChild(m);
+                for (let j = 1; j <= numGiorni(i + 1); j++) {
+                    const casella = document.createElement("input");
+                    casella.setAttribute("class", "casella");
+                    casella.setAttribute("readonly", "readonly");
+                    casella.id = MESE[i] + "-" + j;
+                    calendario[MESE[i] + "-" + j] = new Giorno(i + 1, j);
+                    row.appendChild(casella);
+                    casella.addEventListener("click", casellaCliccata);
+                }
+            }
+        }
+
+        // Quando una casella viene cliccata, viene eseguito questo handler
+        function casellaCliccata(event) {
+            // L'evento viene ignorato se non è ancora terminata la gestione dell'evento precedente
+            if (attesa)
+                return;
+            // Recupera l'oggetto giorno associato alla casella
+            const g = calendario[event.target.id];
+            // Riferimento alla parte verde dell'interfaccia
+            const d = document.getElementById("dx");
+
+            // Recupera gli appuntamenti ordinati per inserimento o per cognome
+            let ap;
+            if(alfa) 
+                ap = g.getAppuntamentiAlfa();
+            else    
+                ap = g.getAppuntamenti();
+            const p = document.createElement("p");
+
+            // Visualizza gli appuntamenti nella parte verde
+            if (ap.length === 0) {
+                p.innerText = "Non ci sono appuntamenti";
+                d.appendChild(p);
+            } else {
+                const t = document.createElement("table");
+                d.appendChild(t);
+
+                // Crea l'intestazione della tabella
+                const h1 = document.createElement("th");
+                const h2 = document.createElement("th");
+                const h3 = document.createElement("th");
+                h1.innerText = "N.";
+                h2.innerText = "Nome";
+                h3.innerText = "Cognome";
+                t.appendChild(h1);
+                t.appendChild(h2);
+                t.appendChild(h3);
+
+                // Crea una riga per ogni appuntamento
+                for (let x of ap) {
+                    const r = document.createElement("tr");
+                    t.appendChild(r);
+                    const o = document.createElement("td");
+                    o.innerText = x[0];
+                    const n = document.createElement("td");
+                    n.innerText = x[1];
+                    const c = document.createElement("td");
+                    c.innerText = x[2];
+                    r.appendChild(o);
+                    r.appendChild(n);
+                    r.appendChild(c);
+                }
+            }
+            // L'evento di visualizzazione è in corso
+            attesa = true;
+            // Tra 5 secondi la parte in verde viene svuotata ed è possibile 
+            // gestire altri eventi
+            setTimeout(()=> {
+                while(d.hasChildNodes())
+                    d.removeChild(d.firstChild);
+                attesa = false;
+            }, 5000);
+        }
+
+        // Inserisce un nuovo appuntamento
+        function inserisciAppuntamento() {
+            // Recupera i valori dal form
+            const nome = document.getElementById("nome").value;
+            const cognome = document.getElementById("cognome").value;
+            const mese = document.getElementById("mese").value;
+            const giorno = document.getElementById("giorno").value;
+
+            // Recupera l'oggetto giorno
+            const g = calendario[mese + "-" + giorno];
+
+            // Se pieno mostra messaggio
+            if(g.pieno()) {
+                alert("Giorno pieno");
+                return;
+            }
+            // Altrimenti aggiunge il nuovo appuntamento e cambia la classe
+            // in modo da visualizzare la casella con un colore diverso
+            const cas = document.getElementById(mese + "-" + giorno);
+            if (g.aggiungi(nome, cognome)) {
+                cas.classList.add("nonvuoto");
+            } else {
+                cas.classList.add("pieno");
+            }
+        }
+
+        // Controlla la validità dei campi di input
+        function controlla() {
+            const gg = document.getElementById("giorno");
+            const mm = document.getElementById("mese");
+            const nn = document.getElementById("nome");
+            const cc = document.getElementById("cognome");
+            const mv = mm.value;
+            const gv = gg.value;
+            let index = MESE.findIndex((e) => e==mv);
+            if(index >= 0 && numGiorni(index) >= gv && gv >=1
+               && nn.validity.valid && cc.validity.valid) {
+                insBut.disabled = false;
+            } else {
+                insBut.disabled = true;
+            }
+        }
+
+
+        // Crea la tabella e registra i gestori di eventi
+        function inizializza() {
+            creaTabella();
+            
+            // Handler del bottone inserisci
+            insBut = document.getElementById("inserisci");
+            insBut.addEventListener("click", inserisciAppuntamento);
+            insBut.disabled = true;
+
+            // Handler per validità
+            const sx = document.getElementById("sx");
+            sx.addEventListener("input", controlla);
+
+            // Handler associati alla pressione di un tasto e al suo
+            // rilascio. Utilizzati per capire se la lettera A è premuta quando 
+            // l'utente clicca sulla tabella
+            document.addEventListener("keydown", (event) => {
+                if(event.code === "KeyA" && !alfa){
+                    alfa = true;
+                }
+            });
+            document.addEventListener("keyup", (event) => {
+                if(event.code === "KeyA") {
+                    alfa = false;
+                }
+            });
+        }
+    </script>
+</head>
+
+<body onload="inizializza()">
+    <div id="sx">
+        <div class="r">
+            <label for="nome">Nome</label><input type="text" id="nome" placeholder="Mario" pattern="^[A-Z][a-z]+$" required>
+        </div>
+        <div class="r">
+            <label for="cognome">Cognome</label><input type="text" id="cognome" placeholder="Rossi"
+                pattern="^[A-Z][a-z]+$" required>
+        </div>
+        <div class="r">
+            <label for="mese">Mese</label><input type="text" id="mese" placeholder="Giu"
+                pattern="^(Gen|Feb|Mar|Apr|Mag|Giu|Lug|Ago|Set|Ott|Nov|Dic)$" required>
+        </div>
+        <div class="r">
+            <label for="giorno">Giorno</label><input type="text" id="giorno" placeholder="12" pattern="^([1-9]|[12][0-9]|3[01])$" required>
+        </div>
+        <div class="r">
+            <button id="inserisci">Inserisci</button>
+        </div>
+    </div>
+    <div id="cx">
+        <div id="tabella">
+
+        </div>
+    </div>
+    <div id="dx">
+        <div id="app">
+
+        </div>
+    </div>
+
+</body>
+
+</html>
