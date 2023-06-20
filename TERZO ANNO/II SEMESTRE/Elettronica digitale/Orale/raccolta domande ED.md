@@ -22,9 +22,9 @@ Raccolta di domande dell’orale di Elettronica Digitale del prof. Piotto (dal 2
 ## DIODO PN
 
 - Perché il potenziale di built-in della giunzione non può essere misurato
-- Metodo della Retta di Carico
 - Fenomeno di breakdown: effetto zener, effetto valanga ed influenza della temperatura
 - Diodo Zener
+- Metodo della Retta di Carico
 - Raddrizzatore a doppia semionda
 - Raddrizzatore a ponte di Graetz
 - rilevatore di picco e perché il condensatore non ha effetto
