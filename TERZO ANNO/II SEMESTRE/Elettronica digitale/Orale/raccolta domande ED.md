@@ -25,12 +25,12 @@ Raccolta di domande dell’orale di Elettronica Digitale del prof. Piotto (dal 2
 - Fenomeno di breakdown: effetto zener, effetto valanga ed influenza della temperatura
 - Diodo Zener
 - Metodo della Retta di Carico
+- rilevatore di picco e perché il condensatore non ha effetto
 - Raddrizzatore a doppia semionda
 - Raddrizzatore a ponte di Graetz
-- rilevatore di picco e perché il condensatore non ha effetto
 - Regolatore di tensione con Zener: cosa accade se il carico è molto grande, normale, nullo
-- Modello per piccoli segnali: condizioni di applicabilità
 - Problemi della logica a diodi
+- Modello per piccoli segnali: condizioni di applicabilità
 
 ---
 
