@@ -1,0 +1,103 @@
+---PRIMA PARTE---
+Test costruttore e operatore uscita:
+GOLD
+SILVER
+
+Test funzione prenota:
+GOLD
+1
+2
+3
+4
+5
+6
+SILVER
+7
+8
+9
+10
+11
+12
+13
+
+Test funzione cancella:
+GOLD
+1
+6
+SILVER
+8
+9
+10
+11
+12
+13
+
+---SECONDA PARTE---
+Test operatore int():
+Silver partecipanti: 3
+Test funzione chiudi:
+AMMESSI
+1	0
+6	0
+8	1
+9	1
+10	1
+
+Test prenota e cancella a prenotazione chiusa:
+GOLD
+1
+6
+SILVER
+8
+9
+10
+11
+12
+13
+
+Test distruttore:
+(distruttore chiamato)
+---TERZA PARTE---
+GOLD
+1
+2
+3
+SILVER
+4
+5
+6
+
+Test intensivo funzione prenota:
+GOLD
+1
+2
+3
+SILVER
+4
+5
+6
+
+Test intensivo funzione cancella:
+GOLD
+1
+2
+3
+SILVER
+4
+5
+6
+
+Test intensivo operator int():
+GOLD
+1
+2
+3
+7
+8
+9
+SILVER
+4
+5
+6
+
+Silver partecipanti: 0

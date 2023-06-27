@@ -1,0 +1,34 @@
+
+Test del costruttore. Deve stampare: < 0 0 0 0 >
+< 0 0 0 0 >
+
+
+Test della set. Deve stampare: < 0 7 -3 6 >
+< 0 7 -3 6 >
+
+
+Test della set oltre l'attuale dimensione. Deve stampare: < 0 7 -3 6 0 7 >
+< 0 7 -3 6 0 7 >
+
+Conto il numero di minimi relativi. Deve stampare: 2
+2
+
+Testa della azzera. Deve stampare: Deve stampare: < 0 7 0 0 0 7 >
+< 0 7 0 0 0 7 >
+
+
+Test dell'operatore di assegnamento. Deve stampare: < 0 7 0 0 0 7 >
+< 0 7 0 0 0 7 >
+
+
+Test del distruttore (v2 sta per essere distrutto)
+< 0 7 0 0 0 0 0 0 0 0 0 0 7 >
+
+
+2
+< 0 7 0 0 0 0 0 0 0 0 0 0 7 0 8 0 8 6 >
+
+< 0 0 0 0 0 2 >
+
+0
+Test di chiamata al costruttore con dimensione negativa

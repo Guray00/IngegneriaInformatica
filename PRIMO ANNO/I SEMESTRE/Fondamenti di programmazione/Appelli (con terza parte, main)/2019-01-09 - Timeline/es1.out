@@ -1,0 +1,23 @@
+--- PRIMA PARTE ---
+Test del costruttore:
+-----
+-----
+
+Test della pubblica:
+-----
+(*)montagna.png
+(*)mare.jpg
+gatto.png
+cane.png
+famiglia.jpg
+gatto.png
+-----
+
+Test della cancella:
+-----
+(*)montagna.png
+cane.png
+famiglia.jpg
+gatto.png
+-----
+

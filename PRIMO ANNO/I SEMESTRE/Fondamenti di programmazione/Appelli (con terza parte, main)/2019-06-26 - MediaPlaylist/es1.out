@@ -1,0 +1,18 @@
+--- PRIMA PARTE---
+Test del costruttore di default:
+mp
+[-]
+
+Test inserisci:
+mp
+[1]<We are the champions, Video>
+[2]<Stairway to heaven, Audio>
+[3]<Another brick in the, Video>
+[4]<We are the champions, Audio>
+
+Test elimina:
+mp
+[1]<Stairway to heaven, Audio>
+[2]<Another brick in the, Video>
+[3]<We are the champions, Audio>
+

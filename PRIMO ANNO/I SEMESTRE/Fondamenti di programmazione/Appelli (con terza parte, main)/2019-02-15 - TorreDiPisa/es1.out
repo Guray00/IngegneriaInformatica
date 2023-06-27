@@ -1,0 +1,20 @@
+--- PRIMA PARTE --- 
+Test del costruttore:
+========
+========
+
+Test di operatore +=:
+       ========
+       ||||||||
+    ||||||||
+   ||||||||
+========
+
+       ========
+       ||||||||
+    ||||||||
+   ||||||||
+========
+
+Test di operatore int():
+Pendenza media: 4

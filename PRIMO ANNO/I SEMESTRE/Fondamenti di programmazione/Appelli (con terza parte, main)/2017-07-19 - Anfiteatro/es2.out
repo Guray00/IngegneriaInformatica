@@ -1,0 +1,32 @@
+
+--- PRIMA PARTE ---
+
+Chiamata al costruttore
+<[0],[0],[0],[0]>
+Chiamata alla funzione aggiungiMattonelle()
+<[7],[0],[0],[0]>
+Altra chiamata alla funzione aggiungiMattonelle()
+<[7],[12],[0],[0]>
+
+Chiamata alla funzione aggiungiColonna()
+<[7],[12],[0],[0],[8]>
+
+--- SECONDA PARTE ---
+
+Chiamata alla funzione togliColonna()
+<[12],[0],[0],[8]>
+
+Test dell'operatore assegnamento 
+a1 ( *prima* dell'assegnamento ) <[0],[0]>
+a1 ( *dopo* l'assegnamento ) <[12],[0],[0],[8]>
+
+Test del distruttore (a1 sta per essere distrutto)
+
+--- TERZA PARTE ---
+
+<[0],[0]>
+<[3],[3]>
+<[3],[3]>
+<[6],[3]>
+<[6]>
+<>

@@ -1,0 +1,16 @@
+--- PRIMA PARTE ---
+Test costruttore
+1: 1 1 1 1 1
+2: 1 1 1 1 1
+3: 1 1 1 1 1
+
+Test acquista
+1: 1 1 0 1 1
+2: 1 1 1 1 0
+3: 0 1 1 1 1
+
+Test aggiungi
+1: 1 3 0 1 1
+2: 1 1 5 1 0
+3: 0 4 1 1 1
+

@@ -1,0 +1,80 @@
+---PRIMA PARTE---
+Test del costruttore di default:
+Numero pazienti: 0
+[CODICE ROSSO]
+[CODICE GIALLO]
+[CODICE VERDE]
+[CODICE BIANCO]
+
+Test di ricovero:
+Numero pazienti: 4
+[CODICE ROSSO]
+->Mario Rossi
+->Giuseppe Gialli
+[CODICE GIALLO]
+[CODICE VERDE]
+->Paolo Verdi
+[CODICE BIANCO]
+->Maria Neri
+
+Test di prossimo:
+Prossimo: Mario Rossi
+Prossimo: Giuseppe Gialli
+Prossimo: Paolo Verdi
+
+Numero pazienti: 1
+[CODICE ROSSO]
+[CODICE GIALLO]
+[CODICE VERDE]
+[CODICE BIANCO]
+->Maria Neri
+
+---SECONDA PARTE---
+Test dell'operatore =:
+Numero pazienti: 1
+[CODICE ROSSO]
+[CODICE GIALLO]
+[CODICE VERDE]
+[CODICE BIANCO]
+->Maria Neri
+
+Test del costruttore di copia:
+Numero pazienti: 3
+[CODICE ROSSO]
+[CODICE GIALLO]
+[CODICE VERDE]
+->Luigi Viola
+[CODICE BIANCO]
+->Maria Neri
+->Carlo Bianchi
+
+Test del distruttore:
+(ps2 e' stato distrutto)
+
+---TERZA PARTE---
+Numero pazienti: 2
+[CODICE ROSSO]
+[CODICE GIALLO]
+->Maria Rosaria Gialli
+[CODICE VERDE]
+[CODICE BIANCO]
+->Maria Neri
+
+1
+1
+0
+Numero pazienti: 0
+[CODICE ROSSO]
+[CODICE GIALLO]
+[CODICE VERDE]
+[CODICE BIANCO]
+
+Numero pazienti: 3
+[CODICE ROSSO]
+[CODICE GIALLO]
+[CODICE VERDE]
+->Luigi Viola
+[CODICE BIANCO]
+->Maria Neri
+->Carlo Bianchi
+

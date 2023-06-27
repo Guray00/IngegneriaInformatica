@@ -1,0 +1,17 @@
+--- PRIMA PARTE ---
+Test costruttore
+
+
+
+
+
+Test funzione forma_fila
+   A A A 
+A A A A A A 
+  A A A A 
+? ? ? ? ? ? 
+
+Test operatore int
+Larghezza: 6
+Test distruttore
+Distruttore chiamato

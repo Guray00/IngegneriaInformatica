@@ -1,0 +1,46 @@
+Test del costruttore
+- - - - - - - 
+- - - - - - - 
+- - - - - - - 
+- - - - - - - 
+- - - - - - - 
+- - - - - - - 
+- - - - - - - 
+
+Test s.aggiungi
+- - - - t - - 
+- - a e r e o 
+- - - - e - - 
+- - m - n - - 
+- - o - o - - 
+a u t o - - - 
+- - o - - - - 
+
+Test s1.aggiungi
+- c - - - - 
+g a t t o - 
+- n - - - - 
+- e - - - - 
+- - - - - - 
+- m u c c a 
+
+Test dell'operatore di assegnamento s1 = s
+- - - - t - - 
+- - a e r e o 
+- - - - e - - 
+- - m - n - - 
+- - o - o - - 
+a u t o - - - 
+- - o - - - - 
+
+Primo test s1.esiste
+La parola cercata esiste! :)
+
+Secondo test s1.esiste
+La parola cercata non esiste! :(
+
+Test operator!
+5
+
+Test del distruttore
+(s2 e' stato distrutto)

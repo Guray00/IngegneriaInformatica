@@ -1,0 +1,31 @@
+--- PRIMA PARTE ---
+Test del costruttore:
+[]
+
+Test operatore +=:
+[WhatsApp]
+[Shazam], TripAdvisor, PlayStore, WhatsApp
+
+--- SECONDA PARTE ---
+
+Test di foreground:
+[TripAdvisor], Shazam, PlayStore, WhatsApp
+[TripAdvisor], Shazam, PlayStore, WhatsApp
+
+Test operatore -=:
+[TripAdvisor], PlayStore, WhatsApp
+[TripAdvisor], PlayStore, WhatsApp
+
+Test di chiudi_tutte:
+[]
+
+Test distruttore:
+[Facebook], YouTube
+(g e' stato distrutto)
+
+--- TERZA PARTE ---
+[]
+[Twitter]
+[]
+[]
+[]

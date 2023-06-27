@@ -1,0 +1,22 @@
+Test costruttore e op. di uscita (deve stampare 'PONTE APERTO=>AAA')
+PONTE APERTO=>AAA
+
+Test della aggiungi (deve stampare 'PONTE APERTO=>AAA=>BB=>C')
+PONTE APERTO=>AAA=>BB=>C
+
+Altro test della aggiungi e dell'op. di compl. bit a bit (deve stampare 3)
+3
+
+PONTE APERTO=>C
+
+PONTE APERTO
+
+PONTE APERTO
+
+PONTE APERTO
+
+PONTE CHIUSO
+
+PONTE APERTO=>HHH
+
+(Test del distruttore)

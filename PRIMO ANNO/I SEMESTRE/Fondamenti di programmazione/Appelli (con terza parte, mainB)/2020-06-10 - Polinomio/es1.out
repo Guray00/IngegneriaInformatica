@@ -1,7 +1,0 @@
-P(x) = -3x^2 +7x^1 -4
-
-Valuto il polinomio P(x) in x=3: 
-P(3) = -10
-
-Test distruttore:
-distruttore invocato.

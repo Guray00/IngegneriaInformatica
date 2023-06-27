@@ -1,0 +1,81 @@
+--- PRIMA PARTE ---
+Test costruttore
+
+
+
+
+
+Test funzione forma_fila
+   A A A 
+A A A A A A 
+  A A A A 
+? ? ? ? ? ? 
+
+Test operatore int
+Larghezza: 6
+Test distruttore
+Distruttore chiamato
+--- SECONDA PARTE ---
+Test costruttore di copia
+   A A A 
+A A A A A A 
+  A A A A 
+? ? ? ? ? ? 
+     A A A 
+  A A A A A A 
+    A A A A 
+A A A A A A A A 
+
+Test operatore +
+     A A A 
+  A A A A A A 
+    A A A A 
+A A A A A A A A 
+     A A A 
+  A A A A A A 
+    A A A A 
+? ? ? ? ? ? ? ? 
+
+Test operatore -=
+       A 
+     A A A 
+      A A 
+A A A A A A A A 
+
+test operatore +=
+      A A A 
+  A A A A A A A 
+       A A 
+A A A A A A A A A 
+
+--- TERZA PARTE ---
+Test operatore int con nessuna fila formata
+Larghezza: 0
+Test funzione forma_fila con input non validi
+A A 
+? ? 
+? ? 
+
+Test operatore -= con flotte di numero di file diverso o con file non formate
+      A A A 
+  A A A A A A A 
+       A A 
+A A A A A A A A A 
+
+  A A 
+ A A A 
+A A A A 
+
+    A 
+A A A A A 
+? ? ? ? ? 
+
+test operatore += con input non validi o con file non formate
+  A A A 
+A A A A A 
+ A A A A 
+
+      A A A 
+A A A A A A A A A 
+? ? ? ? ? ? ? ? ? 
+

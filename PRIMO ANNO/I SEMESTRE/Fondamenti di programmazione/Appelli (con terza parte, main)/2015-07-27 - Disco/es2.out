@@ -1,0 +1,34 @@
+Test del costr., della 'riserva' e dell'op. <<. Deve stampare: '11000000' 
+11000000
+
+Altri test della 'riserva'. Deve stampare: '11222300' 
+11222300
+
+Test della 'cancella' del file con id==2. Deve stampare: '11000300'
+11000300
+
+Altro test della 'riserva'. Deve stampare: '11444340'
+11444340
+
+Test della 'deframmenta'. Deve stampare '44443110'
+44443110
+
+Test dell'operatore ! di formattazione. Deve stampare '11111200'
+11111200
+
+Test distruttore e 'getQuantiDischi'. Deve stampare 2 (d2 viene distrutto)
+2
+
+12233333300000
+
+
+54433333344500
+
+
+55444433333300
+
+
+3
+
+55444433333360
+

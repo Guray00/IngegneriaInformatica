@@ -1,0 +1,124 @@
+--- PRIMA PARTE ---
+Test del costruttore:
+   - 
+  - - 
+ - - - 
+- - - - 
+   |
+
+Test della aggiungiPallina:
+   R 
+  - - 
+ - - V 
+- B V - 
+   |
+
+--- SECONDA PARTE ---
+Test operator+=: 
+     R 
+    - - 
+   - - V 
+  - B V - 
+ - - - - - 
+- - - - - - 
+     |
+
+     R 
+    - - 
+   R - V 
+  - B V - 
+ - - - R - 
+- - B - - - 
+     |
+
+Test della coloreMassimo: 
+R
+
+Test del distruttore: 
+(a1 e' stato distrutto)
+
+--- TERZA PARTE ---
+Test aggiuntivi operator+=:
+     R 
+    - - 
+   R - V 
+  - B V - 
+ - - - R - 
+- - B - - - 
+     |
+
+     R 
+    - - 
+   R - V 
+  - B V - 
+ - - - R - 
+- - B - - - 
+     |
+
+               R 
+              - - 
+             R - V 
+            - B V - 
+           - - - R - 
+          - - B - - - 
+         - - - - - - - 
+        - - - - - - - - 
+       - - - - - - - - - 
+      - - - - - - - - - - 
+     - - - - - - - - - - - 
+    - - - - - - - - - - - - 
+   - - - - - - - - - - - - - 
+  - - - - - - - - - - - - - - 
+ - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - 
+               |
+
+Test aggiuntivi coloreMassimo:
+               R 
+              - - 
+             R - V 
+            - B V - 
+           - - - R - 
+          - - B - - - 
+         - - - - - - - 
+        - - - - - - - - 
+       - - - - - - - - - 
+      - - - - - - - - - - 
+     - - - - - - - - - - - 
+    V - - - - - - - - - - - 
+   - - - - - - - - - - - - - 
+  - - - - - - - - - - - - - - 
+ - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - V - - - 
+               |
+
+V
+
+               R 
+              - - 
+             R - V 
+            - B V - 
+           - - - R - 
+          - - B - - - 
+         - - - - - - - 
+        - - - - - - - - 
+       - - - - - - - - - 
+      - - - - - - - - - - 
+     - - - - - - - - - - - 
+    V - - - - - - - - - - - 
+   - - - - - - - - - - - - - 
+  - R - - - - - - - - - - - - 
+ - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - V - - - 
+               |
+
+R
+
+Test attributo const di coloreMassimo:
+  - 
+ - - 
+- - - 
+  |
+
+R
+

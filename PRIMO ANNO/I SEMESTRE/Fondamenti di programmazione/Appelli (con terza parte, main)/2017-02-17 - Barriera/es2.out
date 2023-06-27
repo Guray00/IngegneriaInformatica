@@ -1,0 +1,64 @@
+--- PRIMA PARTE ---
+[1] (libero)
+[2] (libero)
+[3] (libero)
+[4] (chiuso)
+[5] (chiuso)
+
+[1] AAABBB=>GGGHHH
+[2] CCCDDD=>IIIJJJ
+[3] EEEFFF
+[4] (chiuso)
+[5] (chiuso)
+
+[1] (libero)
+[2] CCCDDD=>IIIJJJ
+[3] (libero)
+[4] (chiuso)
+[5] (chiuso)
+
+--- SECONDA PARTE ---
+apriOppureChiudi: -1 caselli aperti
+[1] (chiuso)
+[2] CCCDDD=>IIIJJJ
+[3] (libero)
+[4] (chiuso)
+[5] (chiuso)
+
+[1] (chiuso)
+[2] CCCDDD=>IIIJJJ=>OOOPPP
+[3] KKKLLL=>MMMNNN
+[4] (chiuso)
+[5] (chiuso)
+
+apriOppureChiudi: 1 caselli aperti
+[1] (chiuso)
+[2] CCCDDD=>IIIJJJ=>OOOPPP
+[3] KKKLLL=>MMMNNN
+[4] (chiuso)
+[5] (libero)
+
+Sono presenti 5 veicoli alla barriera
+
+Test del distruttore sull'oggetto b2
+[1] QQQRRR
+[2] (libero)
+[3] (libero)
+[4] (chiuso)
+[5] (chiuso)
+
+(b2 e' stato distrutto)
+--- TERZA PARTE ---
+[1] (chiuso)
+[2] CCCDDD=>IIIJJJ=>OOOPPP
+[3] KKKLLL=>MMMNNN
+[4] (chiuso)
+[5] SSSTTT
+
+Altro test apriOppureChiudi:1 caselli aperti
+[1] (chiuso)
+[2] CCCDDD=>IIIJJJ=>OOOPPP
+[3] KKKLLL=>MMMNNN
+[4] (libero)
+[5] SSSTTT
+

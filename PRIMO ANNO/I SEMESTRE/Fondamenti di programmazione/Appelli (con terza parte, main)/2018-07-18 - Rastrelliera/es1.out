@@ -1,0 +1,23 @@
+--- PRIMA PARTE ---
+Test del costruttore:
+GIALLO	<10>	[] [] [] [] [] [] [] [] [] [] 
+VERDE	<10>	[] [] [] [] [] [] [] [] [] [] 
+ROSSO	<10>	[] [] [] [] [] [] [] [] [] [] 
+NERO	<10>	[] [] [] [] [] [] [] [] [] [] 
+Test di carica e di calcolaPeso:
+il peso del bilanciere b1 e': 21
+GIALLO	<6>	[] [] [] [] [] [] 
+VERDE	<6>	[] [] [] [] [] [] 
+ROSSO	<7>	[] [] [] [] [] [] [] 
+NERO	<10>	[] [] [] [] [] [] [] [] [] [] 
+Altro test di carica e di calcolaPeso:
+il bilanciere b2 e' scarico
+GIALLO	<6>	[] [] [] [] [] [] 
+VERDE	<6>	[] [] [] [] [] [] 
+ROSSO	<7>	[] [] [] [] [] [] [] 
+NERO	<10>	[] [] [] [] [] [] [] [] [] [] 
+Test di scarica:
+GIALLO	<10>	[] [] [] [] [] [] [] [] [] [] 
+VERDE	<10>	[] [] [] [] [] [] [] [] [] [] 
+ROSSO	<10>	[] [] [] [] [] [] [] [] [] [] 
+NERO	<10>	[] [] [] [] [] [] [] [] [] [] 

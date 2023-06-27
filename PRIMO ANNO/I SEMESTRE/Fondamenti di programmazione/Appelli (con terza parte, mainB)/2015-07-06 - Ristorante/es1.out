@@ -1,9 +1,0 @@
-Test costruttore e op. uscita. Deve stampare: 'Posti liberi 14, in attesa nessuno' 
-Posti liberi 14, in attesa nessuno
-
-Test della 'aggiungi'. Deve stampare: 'Posti liberi 2, in attesa  Verdi(4) Bianchi(6) Neri(2) Rossini(5)' 
-Posti liberi 2, in attesa Verdi(4) Bianchi(6) Neri(2) Rossini(5) 
-
-Testa dell'op. -= (7). Deve stampare: 'Posti liberi 5, in attesa Bianchi(6) Neri(2) Rossini(5)'
-Posti liberi 5, in attesa Bianchi(6) Neri(2) Rossini(5) 
-

@@ -1,0 +1,11 @@
+--- PRIMA PARTE ---
+Test del costruttore e dell'operatore di uscita (caso coda seggio vuota)
+Elettori che hanno votato: 0
+
+Elettori in coda: 0
+
+Test della nuovoElettore: arrivo di tre elettori
+Elettori che hanno votato: 0
+
+Elettori in coda: 3
+

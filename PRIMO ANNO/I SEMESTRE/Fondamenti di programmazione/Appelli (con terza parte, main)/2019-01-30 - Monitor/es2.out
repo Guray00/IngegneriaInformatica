@@ -1,0 +1,68 @@
+--- PRIMA PARTE --- 
+Test del costruttore:
+[4]
+
+Test di inserisci:
+[4]
+paperino
+pluto
+pippo
+
+Altro test di inserisci:
+[4]
+rockerduck
+nonnapaper
+paperone
+paperino
+
+--- SECONDA PARTE --- 
+Test del costruttore di copia:
+[4]
+rockerduck
+nonnapaper
+paperone
+paperino
+
+Test di operator+:
+[7]
+gambadileg
+topolino
+rockerduck
+nonnapaper
+paperone
+paperino
+
+[7]
+qua
+quo
+qui
+gambadileg
+topolino
+rockerduck
+nonnapaper
+
+Test del distruttore: 
+(m3 e' stato distrutto)
+
+--- TERZA PARTE ---
+Test aggiuntivo del costruttore (input negativo):
+[3]
+
+Test aggiuntivo del costruttore (input nullo):
+[3]
+
+Test aggiuntivi di inserisci:
+[3]
+minnie
+
+gastone
+
+Test aggiuntivi di operator+:
+[8]
+minnie
+
+gastone
+
+Test aggiuntivi del costr. di copia
+[5]
+

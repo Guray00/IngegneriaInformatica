@@ -1,0 +1,25 @@
+--- PRIMA PARTE ---
+Test del costruttore:
+[1>
+[2]
+[3]
+[4]
+
+Test di writeT:
+[1]Lazio
+[2]Toscan
+[3]Umbria
+[4>
+
+Altro test di writeT:
+[1]Sicili
+[2>Toscan
+[3]Umbria
+[4]Sardeg
+
+Test del costruttore di copia:
+[1]Sicili
+[2>Toscan
+[3]Umbria
+[4]Sardeg
+

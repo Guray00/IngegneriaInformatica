@@ -1,0 +1,32 @@
+--- PRIMA PARTE ---
+Test del costruttore e dell'operatore di uscita (caso coda seggio vuota)
+Elettori che hanno votato: 0
+
+Elettori in coda: 0
+
+Test della nuovoElettore: arrivo di tre elettori
+Elettori che hanno votato: 0
+
+Elettori in coda: 3
+
+--- SECONDA PARTE ---
+Test della nuovoVoto: primo elettore
+Elettori che hanno votato: 1
+->34
+Elettori in coda: 2
+
+Test dello spoglioDeiVoti
+Spoglio impossibile!
+
+Test della nuovoVoto: altri due elettori
+Elettori che hanno votato: 3
+->34->63->29
+Elettori in coda: 0
+
+Test dello spoglioDeiVoti
+Favorevoli: 1
+Contrari: 2
+Vittoria dei contrari!
+
+Test del distruttore (s sta per essere distrutto)
+

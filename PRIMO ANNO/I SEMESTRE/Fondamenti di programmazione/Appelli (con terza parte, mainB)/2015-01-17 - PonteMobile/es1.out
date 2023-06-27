@@ -1,6 +1,0 @@
-Test costruttore e op. di uscita (deve stampare 'PONTE APERTO=>AAA')
-PONTE APERTO=>AAA
-
-Test della aggiungi (deve stampare 'PONTE APERTO=>AAA=>BB=>C')
-PONTE APERTO=>AAA=>BB=>C
-
