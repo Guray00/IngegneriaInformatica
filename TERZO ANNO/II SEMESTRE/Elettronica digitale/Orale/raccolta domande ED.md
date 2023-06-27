@@ -72,7 +72,7 @@ Raccolta di domande dell’orale di Elettronica Digitale del prof. Piotto (dal 2
 
 ## REGOLATORI DI TENSIONE
 
-- Calcolo della resistenza vista in reazione
+- Calcolo della resistenza vista in reazione di un regolatore di tensione lineare serie
 - Regolatore lineare serie: perché si usa un doppio condensatore, come ottenere Vo = 5 V se hai Vz = 4.7 V _(solo ragionamento)_
 - 78xx e 79xx
 - Regolatore di corrente con regolatore di tensione monolitico 75xx: limite della R di carico
