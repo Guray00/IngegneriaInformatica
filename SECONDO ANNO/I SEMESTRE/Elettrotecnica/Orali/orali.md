@@ -9,7 +9,7 @@
 ## Domande singole
 
 
-- __Partitore di corrente__: 
+- __Partitore di corrente o Partitore di tensione__: 
   - descrivere di cosa si tratta
   - ricavare l'equazione generale
 
