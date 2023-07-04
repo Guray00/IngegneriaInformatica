@@ -15,8 +15,16 @@ class tsp {
         int riga,colonna;
         int Vi,Vs;
     };
+    struct appoggio{
+        int Vi,Vs;
+        bool hamiltoniano;
+        bool vuoto;
+        bool tagliato;
+    };
+
     scelta * testa;
     int v[10];
+    appoggio w[15];
     //funzioni di utilità
     bool hamiltoniano(int * scelti);
     void converti_indice(int,int &, int&);
@@ -29,7 +37,7 @@ class tsp {
     int escludi(int,int,int*);
     int converti_riga_colonna(int,int);
     void resetta(int*&,bool = true);
-    void branch(scelta *,scelta *,int,int &,int &,int*&,int = 0, int = 0, int = 0);
+    void branch(scelta *,scelta *,int,int &,int &,int*&,int = 0, int = 0, int = 0, int = 0);
     int k_albero(int,bool,int*&);
     int nodo_vicino(int, int, int *&,int &,int = 0);
     int * trova_indici_proibiti(int);
@@ -41,6 +49,11 @@ class tsp {
     int conta_nodi_mancanti(int, int *);
     tsp & operator = (const tsp &);
     tsp(const tsp &);
+    void aggiorna_Vs();
+    void trova_Vs(int,int,int &,bool &);
+    void stampa_risultato();
+    void taglia_rami();
+    void segna_tagliato(int,int);
 public:
     tsp();
     void Branch_Bound();

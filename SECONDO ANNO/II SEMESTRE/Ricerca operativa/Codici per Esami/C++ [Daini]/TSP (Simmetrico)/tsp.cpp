@@ -1,3 +1,4 @@
+
 //
 // Created by Utente on 09/06/2023.
 //
@@ -20,8 +21,8 @@ tsp::tsp() {
     for(int i = 0, k = 0; i < 4;++i){
         cout << i+1 << ' ';//scrittura indice riga
 
-    for(int h = 4 - i ; h < 4; ++h) // valori non necessari da conoscere per la simmetria del problema
-        cout << '-' << ' ';
+        for(int h = 4 - i ; h < 4; ++h) // valori non necessari da conoscere per la simmetria del problema
+            cout << '-' << ' ';
 
         for(int j = i; j < 4;++j,++k)
             cout << v[k] << ' ';//scrittura valore
@@ -44,6 +45,15 @@ tsp::tsp() {
 
     }
     testa = nullptr;
+
+    for(int i = 0; i < 15; ++i){
+        w[i].Vi = 0;
+        w[i].Vs = 0;
+        w[i].hamiltoniano = false;
+        w[i].vuoto = false;
+        w[i].tagliato = false;
+    }
+
 }
 
 void tsp::converti_indice(int indice, int &riga, int &colonna) {
@@ -97,10 +107,10 @@ int tsp::nodo_vicino(int k,int primo,int *& scelti,int& tot,int quanti) {
         }
 
     }
-        if(quanti < 4)
-            converti_indice(k,r,c);
-        else
-            k = converti_riga_colonna(r,c);
+    if(quanti < 4)
+        converti_indice(k,r,c);
+    else
+        k = converti_riga_colonna(r,c);
     //output
     if(quanti == 0)
         cout << "Archi: (" << r << '-' << c << ')' << ',';
@@ -230,7 +240,7 @@ int tsp::k_albero(int k,bool stampa,int *& scelti) {
 
     int r,c;
     if(stampa)
-    cout << "Archi collegati a " << k << ": ";
+        cout << "Archi collegati a " << k << ": ";
     for(int i = 0; i < 2 - quanti_u; ++i){
         if(stampa && i != 0)
             cout << ',';
@@ -249,7 +259,7 @@ int tsp::k_albero(int k,bool stampa,int *& scelti) {
 
     cout << endl;
     if(stampa)
-    cout << "Vi = " << somma << endl;
+        cout << "Vi = " << somma << endl;
     return somma;
 }
 
@@ -277,7 +287,7 @@ int tsp::trova_min(int indice, int *& scelti) {
     int * ignora;
     ignora = trova_indici_proibiti(indice);
     for(int i = 0; i < 10; ++i){
-    // se ho trovato l'indice da ignorare che è collegato con il nodo indice, allora non lo prendo in considerazione
+        // se ho trovato l'indice da ignorare che è collegato con il nodo indice, allora non lo prendo in considerazione
         int k = 0;
         for(; k < 4;++k)
             if(ignora[k] == i)
@@ -294,36 +304,36 @@ int tsp::trova_min(int indice, int *& scelti) {
 }
 
 void tsp::crea_albero(scelta *& tree, int pos,int riga, int colonna,bool includi,int h) {
-if(h < 0 || h > pos ) return;
-if(pos == 1 && !tree){
-    tree = new scelta;
-    tree->includi = false;
-    tree->sinistra  = tree->destra = nullptr;
-    tree->riga = tree->colonna = tree->Vi = tree->Vs = -1;
-    //istanzio a sinistra e a destra gli archi
-    tree->sinistra = new scelta;
-    tree->sinistra->includi = false;
-    tree->sinistra->sinistra = tree->sinistra->destra = nullptr;
-    tree->sinistra->riga = riga;
-    tree->sinistra->colonna = colonna;
-    tree->sinistra->Vs =tree->Vi = -1;
+    if(h < 0 || h > pos ) return;
+    if(pos == 1 && !tree){
+        tree = new scelta;
+        tree->includi = false;
+        tree->sinistra  = tree->destra = nullptr;
+        tree->riga = tree->colonna = tree->Vi = tree->Vs = -1;
+        //istanzio a sinistra e a destra gli archi
+        tree->sinistra = new scelta;
+        tree->sinistra->includi = false;
+        tree->sinistra->sinistra = tree->sinistra->destra = nullptr;
+        tree->sinistra->riga = riga;
+        tree->sinistra->colonna = colonna;
+        tree->sinistra->Vs =tree->Vi = -1;
 
-    tree->destra = new scelta;
-    tree->destra->includi = true;
-    tree->destra->sinistra = tree->destra->destra = nullptr;
-    tree->destra->riga = riga;
-    tree->destra->colonna = colonna;
-    tree->destra->Vs = tree->destra->Vi = -1;
-    return;
-}
+        tree->destra = new scelta;
+        tree->destra->includi = true;
+        tree->destra->sinistra = tree->destra->destra = nullptr;
+        tree->destra->riga = riga;
+        tree->destra->colonna = colonna;
+        tree->destra->Vs = tree->destra->Vi = -1;
+        return;
+    }
 
     if(!tree){
-       tree = new scelta;
-       tree->sinistra = tree->destra = nullptr;
-       tree->riga = riga;
-       tree->colonna = colonna;
-       tree->Vi = tree->Vs = -1;
-       tree->includi = includi;
+        tree = new scelta;
+        tree->sinistra = tree->destra = nullptr;
+        tree->riga = riga;
+        tree->colonna = colonna;
+        tree->Vi = tree->Vs = -1;
+        tree->includi = includi;
     }
 
     crea_albero(tree->sinistra,pos,riga,colonna,false,++h);
@@ -368,23 +378,26 @@ void tsp::Branch_Bound() {
     bool ok = false;
     int r[3],c[3];
     while(!ok){
-    for(int i = 0; i < 3;++i){
-        cin >> r[i] >> c[i];
-    }
-    cout << "Digitare 1 per confermare la combinazione,0 per ripeterla" << endl;
-    cin >> ok;
+        for(int i = 0; i < 3;++i){
+            cin >> r[i] >> c[i];
+        }
+        cout << "Digitare 1 per confermare la combinazione,0 per ripeterla" << endl;
+        cin >> ok;
     }
 
     for(int i = 0; i < 3; ++i)
         crea_albero(testa,i+1,r[i],c[i]);
 
     branch(testa,testa,indice_Vi,Vs,Vi,scelti);
+    aggiorna_Vs();
+    taglia_rami();
+    stampa_risultato();
 }
 
 void tsp::resetta(int *& scelti,bool non_ammessi) {
     for(int i = 0; i < 10;++i)
         if( (non_ammessi && scelti[i] != -1 && scelti[i] != 2) || (!non_ammessi && scelti[i] != 2))
-        scelti[i] = false;
+            scelti[i] = false;
 }
 
 int tsp::includi(int riga,int colonna, int k,int *& scelti) {
@@ -404,7 +417,7 @@ int tsp::includi(int riga,int colonna, int k,int *& scelti) {
     if(vuoto(scelti))
         return -1;
 
-        return indice;
+    return indice;
 }
 
 int tsp::converti_riga_colonna(int riga, int colonna) {
@@ -415,7 +428,7 @@ int tsp::converti_riga_colonna(int riga, int colonna) {
     }
 
     if(riga == 1 && colonna == 2){
-            indice = 0;
+        indice = 0;
     }
 
     if(riga == 1 && colonna == 3){
@@ -469,108 +482,107 @@ int tsp::escludi(int riga,int colonna,int * scelti) {
 
 }
 
-void tsp::branch(scelta * albero,scelta * copia,int k,int &Vs,int &Vi,int *& scelti,int h,int riga, int colonna) {
-if(!albero) {
-    if(h == 4) {
-        int ind = converti_riga_colonna(riga,colonna);
-        scelti[ind] = 0;
+void tsp::branch(scelta * albero,scelta * copia,int k,int &Vs,int &Vi,int *& scelti,int h,int riga, int colonna,int i) {
+    if(!albero) {
+        if(h == 4) {
+            int ind = converti_riga_colonna(riga,colonna);
+            scelti[ind] = 0;
+        }
+        return;
     }
-    return;
-}
-if(albero == copia){
-    cout << endl << "Testa albero: [Vi,Vs] = " << Vi << ',' << Vs;
-    cout << endl;
-}
+
     int somma = 0;
     int ind;
 
     //cerco roba già inclusa e la aggiungo già alla somma
-    for(int i = 0; i < 10;++i)
-        if(scelti[i] == 1){
-            somma += v[i];
-            scelti[i] = 2;
+    for(int j = 0; j < 10;++j)
+        if(scelti[j] == 1){
+            somma += v[j];
+            scelti[j] = 2;
         }
 
-if( albero != copia && albero->includi){
-    //int riga,int colonna
-    ind = includi(albero->riga,albero->colonna,k,scelti);
+    if( albero != copia && albero->includi){
+        //int riga,int colonna
+        ind = includi(albero->riga,albero->colonna,k,scelti);
 
-    if(ind == -1){
-            cout << endl << "Vuoto" << endl;
+        if(ind == -1){
             scelti[ind] = false;
             resetta(scelti);
             trasforma_2(scelti);
+            w[i].vuoto = true;
+            w[i].Vi = Vi;
+            w[i].Vs = Vs;
             return;
         }
-    if(h == 3){
-        for(int i = 1; i <= 5;++i){
-            int quanti_nodi = conta_nodi_collegati(i,scelti,-1);
-            if(quanti_nodi == 3){
-                cout << endl << "Vuoto" << endl;
-                scelti[ind] = false;
-                resetta(scelti);
-                trasforma_2(scelti);
-                return;
-            }
 
+        if(h == 3){
+            for(int j = 1; j <= 5;++j){
+                int quanti_nodi = conta_nodi_collegati(j,scelti,-1);
+                if(quanti_nodi == 3){
+                    scelti[ind] = false;
+                    resetta(scelti);
+                    trasforma_2(scelti);
+                    w[i].vuoto = true;
+                    w[i].Vi = Vi;
+                    w[i].Vs = Vs;
+                    return;
+                }
+
+            }
         }
-    }
-    // devo contare i nodi e vedere quanti ce ne sono già collegati
+        // devo contare i nodi e vedere quanti ce ne sono già collegati
         somma += v[ind];
         scelti[ind] = 2;
         somma += k_albero(k,false,scelti);
         //devo trasformare quell'elemento incluso in scelto di tipo 2
-
-}else if(albero != copia && !albero->includi){
-    //int riga,int colonna
+        w[i].Vi = somma;
+        w[i].Vs = Vs;
+    }else if(albero != copia && !albero->includi){
+        //int riga,int colonna
         ind = escludi(albero->riga,albero->colonna,scelti);
-    // devo controllare se i nodi dell'albero hanno 2 nodi
-    int quanti_tolti = 0;
-    if(h == 3)
-    for (int i = 1; i <= 5;++i)
-        if (conta_nodi_mancanti(i,scelti) == 3) {
-            cout << endl << "Vuoto" << endl;
-            scelti[ind] = false;
-            resetta(scelti);
-            trasforma_2(scelti);
-            return;
-        }
+        // devo controllare se i nodi dell'albero hanno 2 nodi
+        int quanti_tolti = 0;
+        if(h == 3)
+            for (int j = 1; j <= 5;++j)
+                if (conta_nodi_mancanti(j,scelti) == 3) {
+                    scelti[ind] = false;
+                    resetta(scelti);
+                    trasforma_2(scelti);
+                    w[i].Vi = Vi;
+                    w[i].Vs = Vs;
+                    w[i].vuoto = true;
+                    return;
+                }
+
         somma += k_albero(k,false,scelti);
+        w[i].Vi = somma;
+        w[i].Vs = Vs;
     }
 
-
-    if(albero != copia && somma > Vs){
-        cout << endl << "Taglio: Vi = " << somma << " che e' > " << Vs << endl;
-        albero->Vs = somma;
-        albero->Vi = Vi;
-        scelti[ind] = 0;
-        resetta(scelti);
-        trasforma_2(scelti);
-        return;
-    }
-
-    if(albero != copia && ( hamiltoniano(scelti) || Vs == somma)){
+    if(albero != copia && hamiltoniano(scelti)){
         albero->Vs = somma;
         albero->Vi = somma;
-        cout << endl << "Taglio: Vs = " << somma << " = " << somma;
-        if(Vs != somma)
-            cout << ", in quanto ciclo hamiltoniano." << endl;
-        else
-            cout << ", in quanto Vs e Vi hanno stesso valore." << endl;
-
         Vi = Vs = somma;
         scelti[ind] = 0;
         resetta(scelti);
         trasforma_2(scelti);
+        w[i].hamiltoniano = true;
+        w[i].Vs = Vs;
+        w[i].Vi = Vi;
         return;
     }
 
-if(albero != copia) {
-    Vi = somma;
-    cout << endl << "[Vi,Vs] = [" << Vi << ',' << Vs << ']' << endl;
-    albero->Vi = Vi;
-    albero->Vs = Vs;
-}
+    if(albero != copia) {
+        Vi = somma;
+        albero->Vi = Vi;
+        albero->Vs = Vs;
+        w[i].Vs = Vs;
+        w[i].Vi = Vi;
+    }
+    else{
+        w[i].Vi = Vi;
+        w[i].Vs = Vs;
+    }
 
     resetta(scelti);
 
@@ -580,15 +592,18 @@ if(albero != copia) {
     // i 2 rimasti diventano 1
     trasforma_2(scelti);
 
-    branch(albero->sinistra,copia,k,Vs,Vi,scelti,++h,albero->riga,albero->colonna);
+    branch(albero->sinistra,copia,k,Vs,Vi,scelti,++h,albero->riga,albero->colonna,i * 2 + 1);
     --h;
+
     int indi;
-    branch(albero->destra,copia,k,Vs,Vi,scelti,++h,albero->riga,albero->colonna);
+    branch(albero->destra,copia,k,Vs,Vi,scelti,++h,albero->riga,albero->colonna,i * 2 + 2);
     --h;
-        if(albero != copia) {
-            indi = converti_riga_colonna(albero->riga, albero->colonna);
-            scelti[indi] = 0;
-        }
+
+
+    if(albero != copia) {
+        indi = converti_riga_colonna(albero->riga, albero->colonna);
+        scelti[indi] = 0;
+    }
 
 }
 
@@ -598,41 +613,41 @@ int *tsp::trova_indici_proibiti(int k) {
     if(k == 1) {
         int trova[4] = {0, 1, 2, 3};
         for(int i = 0; i < 4;++i)
-        v[i] = trova[i];
+            v[i] = trova[i];
     }
 
     else if(k == 2) {
         int trova[4] = {0, 4, 5, 6};
-       for(int i = 0; i < 4; ++i)
-           v[i] = trova[i];
+        for(int i = 0; i < 4; ++i)
+            v[i] = trova[i];
     }
 
     else if(k == 3) {
         int trova[4] = {1, 4, 7, 8};
-       for(int i = 0; i < 4; ++i)
-           v[i] = trova[i];
+        for(int i = 0; i < 4; ++i)
+            v[i] = trova[i];
     }
 
     else if (k == 4) {
         int trova[4] = {2, 5, 7, 9};
-       for(int i = 0; i < 4; ++i)
-           v[i] = trova[i];
+        for(int i = 0; i < 4; ++i)
+            v[i] = trova[i];
     }
 
     else {
         int trova[4] = {3, 6, 8, 9};
-       for(int i = 0; i < 4; ++i)
-           v[i] = trova[i];
+        for(int i = 0; i < 4; ++i)
+            v[i] = trova[i];
     }
 
     return v;
 }
 
 void tsp::escludi_nodi_k(int nodo,int *& scelti) {
-if(nodo <= 0 || nodo > 5){
-    cout << "Errore: i nodi sono numeri interi positivi e sono previsti al piu' 5 nodi" << endl;
-    exit(1);
-}
+    if(nodo <= 0 || nodo > 5){
+        cout << "Errore: i nodi sono numeri interi positivi e sono previsti al piu' 5 nodi" << endl;
+        exit(1);
+    }
     int * proibito = trova_indici_proibiti(nodo);
     for(int i = 0; i < 4;++i)
         if(!scelti[proibito[i]])
@@ -644,7 +659,7 @@ tsp::~tsp() {
 }
 
 void tsp::elimina_albero(scelta *& elimina) {
-if(!elimina) return ;
+    if(!elimina) return ;
     elimina_albero(elimina->sinistra);
     elimina_albero(elimina->destra);
     delete elimina;
@@ -652,10 +667,10 @@ if(!elimina) return ;
 }
 
 int tsp::conta_nodi_collegati(int nodo, int *scelti,int k) {
-if(nodo < 1 || nodo > 5){
-    cout << "I nodi sono naturali e non puo' essere piu' grande di 5" << endl;
-    exit(1);
-}
+    if(nodo < 1 || nodo > 5){
+        cout << "I nodi sono naturali e non puo' essere piu' grande di 5" << endl;
+        exit(1);
+    }
     int riga,colonna;
     int quanti_scelti = 0;
     if(nodo == 1){
@@ -775,7 +790,9 @@ void tsp::stampa_nodo(int nodo,int * scelti) {
         if(nodo > i)
             cout << i << nodo;
 
-        if(i != 5)
+        if(i == 5 || (nodo == 5 && i == 4))
+            continue;
+
             cout << " + ";
     }
     cout << " = 2" << endl;
@@ -856,6 +873,150 @@ int tsp::conta_nodi_mancanti(int nodo, int *scelti) {
     return quanti;
 }
 
+void tsp::aggiorna_Vs() {
+    int inizio = 0,fine = 0,Vs_i = 0;
+    bool trovato = false;
+    trova_Vs(inizio,fine,Vs_i,trovato);
+    int inizio2 = 1, fine2 = 2;
+    trova_Vs(inizio2,fine2,Vs_i,trovato);
+    int inizio3 = 3, fine3 = 6;
+    trova_Vs(inizio3,fine3,Vs_i,trovato);
+    int inizio4 = 7, fine4 = 14;
+    trova_Vs(inizio4,fine4,Vs_i,trovato);
+
+}
+
+void tsp::trova_Vs(int inizio, int fine, int &Vs_i, bool & trovato) {
+    if(inizio < 0 || fine < 0){
+        cout << "Errore: non possono essere indici negativi" << endl;
+        exit(1);
+    }
+    if(inizio > fine){
+        cout << "Errore: l'indice iniziale non puo' essere piu' grande di quella finale" << endl;
+        exit(1);
+    }
+    if(fine >= 15){
+        cout << "Errore: l'indice finale e' troppo grande" << endl;
+        exit(1);
+    }
+
+    if(inizio == 0 && fine == 0){
+        if(w[inizio].hamiltoniano && !w[inizio].vuoto)
+            w[inizio].Vs = w[inizio].Vi;
+        Vs_i = w[inizio].Vs;
+    }
+
+    else{
+        bool piccolo;
+        // ricerca primo hamiltoniano
+        bool hamiltoniano = false;
+        int i = inizio;
+        int Vs;
+        for(; i <= fine;++i){
+            if(w[i].hamiltoniano){
+                hamiltoniano = true;
+                break;
+            }
+        }
+        // se troviamo il primo, cerchiamo di trovare la Vs più piccola possibile fra le Vs possibili
+        if(hamiltoniano) {
+            if(!trovato)
+                trovato = true;
+            int primo_hamiltoniano = i;
+            ++i;
+            Vs = w[primo_hamiltoniano].Vi;
+            for (; i <= fine; ++i) {
+                if (w[i].hamiltoniano && w[i].Vi < Vs)
+                    Vs = w[i].Vi;
+
+            }
+            // controllo eventualmente se la nuova Vs sia più piccola di quella già salvata
+            piccolo = false;
+
+            if(Vs_i < Vs) {
+                Vs = Vs_i;
+                piccolo = true;
+            }
+
+            else if(Vs_i > Vs)
+                Vs_i = Vs;
+
+            }
+
+            else{
+                Vs = Vs_i;
+                piccolo = true;
+            }
+        // a questo punto aggiorniamo le Vs
+        for (int j = inizio; j <= fine; ++j) {
+            if ((!w[j].hamiltoniano && !w[j].vuoto) || (piccolo && w[j].hamiltoniano && !w[j].vuoto))
+                w[j].Vs = Vs;
+        }
+
+        }
+
+}
+
+void tsp::stampa_risultato() {
+    for (int i = 0, h = 0, j = 1; i < 15 && h != 4; ++i) {
+        if (i == 0) {
+            cout << "P: ";
+            if (!w[i].tagliato && ( (w[i].hamiltoniano && w[i].Vi == w[i].Vs) || w[i].Vi == w[i].Vs)) {
+                cout << "Vi = Vs = " << w[i].Vi << endl;
+            } else if (!w[i].tagliato) {
+                cout << "[Vi,Vs] = [" << w[i].Vi << ',' << w[i].Vs;
+                if(w[i].hamiltoniano)
+                    cout << ", e' anche un ciclo hamiltoniano" << endl;
+
+            }
+            cout << endl;
+        } else {
+
+            if (!w[i].tagliato) {
+                cout << "P" << h + 1 << ',' << j << ": ";
+                if ((w[i].hamiltoniano && w[i].Vi == w[i].Vs) || (!w[i].vuoto && w[i].Vi == w[i].Vs))
+                    cout << "Vi = Vs = " << w[i].Vi << endl;
 
 
+                else if (!w[i].vuoto) {
+                    cout << "[Vi,Vs] = [" << w[i].Vi << ',' << w[i].Vs << "]\n";
+                    if(w[i].hamiltoniano)
+                        cout << ", e' anche un ciclo hamiltoniano" << endl;
+                }
 
+                else
+                    cout << "Vuoto" << endl;
+
+            }
+
+                if (i == 0 || i == 2 || i == 6) {
+                    ++h;
+                    j = 1;
+                    cout << endl;
+                } else
+                    ++j;
+
+        }
+
+    }
+
+}
+
+void tsp::taglia_rami() {
+for(int i = 0; i < 15; ++i){
+    if( ( w[i].vuoto || w[i].Vi >= w[i].Vs || w[i].hamiltoniano) && !w[i].tagliato)
+        segna_tagliato(i,i);
+
+}
+}
+
+void tsp::segna_tagliato(int pos,int inizio) {
+if(pos >= 15)
+    return;
+
+    if(pos != inizio)
+        w[pos].tagliato = true;
+
+    segna_tagliato(pos * 2 + 1,inizio);
+    segna_tagliato(pos * 2 + 2,inizio);
+}
