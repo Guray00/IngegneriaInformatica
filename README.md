@@ -18,6 +18,8 @@ Per rendere la comunicazione più efficace, sono stati realizzati gruppi apposit
 - **[ Gruppo Anno 2](https://kutt.it/inginf2)**
 - **[ Gruppo Anno 3](https://t.me/inginfunipi3)**
 
+Segnaliamo l'esistenza di un nuovo gruppo Whatsapp per le **matricole dell'A.A.2023-2024** (l'unico gestito da iscritti al corso di laurea): https://chat.whatsapp.com/DHzy8yMZ7ID4maerImnUTA
+
 ### Off-Topic
 - **[Shitposting](https://t.me/joinchat/ALDXWEt7IxLWwQ1i5x4fvA)**
 - **[Gaming](https://t.me/joinchat/Cb7psFd1nwYjtrMekE51hg)**
