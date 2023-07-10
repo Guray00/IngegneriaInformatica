@@ -8,7 +8,7 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 <p align="center"><b>Quanto fornito è senza alcun scopo di lucro e vuole intendersi unicamente come aiuto per gli studenti</b></p>
 
 
-## Gruppi Telegram 
+## Gruppi per comunicazione tra studenti 
 
 Per rendere la comunicazione più efficace, sono stati realizzati gruppi appositi:
 
@@ -18,7 +18,7 @@ Per rendere la comunicazione più efficace, sono stati realizzati gruppi apposit
 - **[ Gruppo Anno 2](https://kutt.it/inginf2)**
 - **[ Gruppo Anno 3](https://t.me/inginfunipi3)**
 
-Segnaliamo l'esistenza di un nuovo gruppo Whatsapp per le **matricole dell'A.A.2023-2024** (l'unico gestito da iscritti al corso di laurea): https://chat.whatsapp.com/DHzy8yMZ7ID4maerImnUTA
+Segnaliamo l'esistenza di un nuovo gruppo Whatsapp per le **matricole dell'A.A.2023-2024** (l'unico gestito da iscritti al corso di laurea, diffidate di gruppi gestiti da persone che nulla hanno a che vedere con Ingegneria Informatica): https://chat.whatsapp.com/DHzy8yMZ7ID4maerImnUTA
 
 ### Off-Topic
 - **[Shitposting](https://t.me/joinchat/ALDXWEt7IxLWwQ1i5x4fvA)**
