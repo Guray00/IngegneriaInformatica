@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>exam</title>
+
+        <style>
+
+ 
+            body {
+                align-items: center;
+            }
+
+            table {
+
+                border: 1px solid black;
+                border-collapse: collapse;
+                width: 200px;
+                height: 200px;
+
+            }
+
+            #matrice {
+                width: 9em;
+                height: 9em;
+                padding-top: 20px;
+                padding-left: 20px;
+                padding-bottom: 60px;
+            }
+            #container {
+                background-color: pink;
+                width: 300px;
+                margin: 0 auto;
+            }
+
+            tr {
+                height: 2em;
+                width: 6em;
+            }
+
+            td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                height: 2em;
+                width: 2em;
+                text-align: center;
+                
+                
+            }
+
+            #bottone {
+                padding-top: 20px;
+                padding-left: 20px;
+                padding-bottom: 20px;
+            }
+
+            .guessed {
+                background-color: dodgerblue;
+            }
+
+            .wrong {
+                background-color: red;
+            }
+
+            .vittoria {
+                background-color: greenyellow;
+            }
+
+        </style>
+
+
+        <script>
+
+
+                let posizioni = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+                let sequenza = [0, 1, 2, 3, 4, 5, 6, 7, 8] 
+
+
+                let count = 0;
+
+            function refresh(){
+                for(let i = 0; i < 9; i++){
+                    let t = document.getElementById(i);
+                    t.innerText = '';
+                }
+
+            }
+
+            function shuffle(array){
+                array.sort(() => Math.random() - 0.5);
+            }
+
+
+
+            function inizioGioco(){
+
+                let b = document.getElementById("avvia");
+
+                b.disabled = true;
+
+                //genero la sequenza
+
+                for(let i = 0; i < 9; i++){
+                        let t = document.getElementById(i);
+
+                        t.innerText = '';
+                        t.removeAttribute("class")
+                    }
+
+                let p = document.getElementById("punteggio");
+
+                if (p != null){
+                    console.log("rimuovo", p.innerText)
+                    p.remove();
+                }
+
+
+
+
+                shuffle(sequenza);
+                console.log(posizioni, sequenza);
+
+
+
+                for(let i = 0; i < 9; i++){
+                    let t = document.getElementById(i);
+                    t.innerText = sequenza[i] + 1;
+
+                }
+
+
+                setTimeout(refresh, 3000);
+
+                for(let i = 0; i < 9; i++){
+                    let t = document.getElementById(i);
+
+                    t.addEventListener("click", getClick);
+                }
+
+                
+                
+            }
+
+            function vittoria(){
+
+
+
+                let d = document.createElement("div");
+
+                let x = document.getElementById("container");
+
+                for(let i = 0; i < 9; i++){
+                    let t = document.getElementById(i);
+
+                    t.setAttribute("class", "vittoria");
+                }
+                    
+
+                d.innerText = "Hai vinto!";
+                d.setAttribute("id", "punteggio");
+
+
+                x.append(d);
+
+                let b = document.getElementById("avvia");
+
+                b.disabled = false;
+
+                count = 0;
+                    
+
+
+            }
+
+                function getClick(event) {
+                var targetElement = event.target;
+                var targetId = targetElement.id;
+                console.log("ID dell'oggetto cliccato:", targetId);
+
+                console.log(sequenza[targetId], count)
+                if(sequenza[targetId] == count){
+                    let e = document.getElementById(targetId);
+                    e.innerText = ++count;
+                    e.setAttribute("class", "guessed");
+                    console.log("gg");
+                    
+                    if (count == 9)
+                        vittoria();
+                }
+                else {
+                    console.log("hai perso");
+                    let e = document.getElementById(targetId);
+                    e.innerText = sequenza[targetId] + 1;
+                    e.setAttribute("class", "wrong");
+
+
+                    for(let i = 0; i < 9; i++){
+                        let t = document.getElementById(i);
+
+                        t.removeEventListener("click", getClick);
+                    }
+
+                    let d = document.createElement("div");
+
+                    let x = document.getElementById("container");
+                    
+
+                    d.innerText = "Hai fatto "+  (count ) + " punti";
+                    d.setAttribute("id", "punteggio")
+
+                    x.append(d);
+
+                    let b = document.getElementById("avvia");
+
+                    b.disabled = false;
+
+                    count = 0;
+                    
+
+                    
+                }
+
+                
+            }
+
+            function init(){
+
+                //creo la tabella
+
+                let g = document.getElementById("matrice");
+
+                let t = document.createElement("table");
+
+                counter = 0;
+
+                for(let i = 0; i < 3; i++){
+                    let r = document.createElement("tr");
+
+                    let d1 = document.createElement("td");
+                    let d2 = document.createElement("td");
+                    let d3 = document.createElement("td");
+
+                    d1.setAttribute("id", counter++);
+                    d2.setAttribute("id", counter++);
+                    d3.setAttribute("id", counter++);
+
+                    r.appendChild(d1);
+                    r.appendChild(d2);
+                    r.appendChild(d3);
+
+                    t.appendChild(r);
+                }
+                g.appendChild(t)
+
+                let b = document.getElementById("avvia");
+                b.addEventListener("click", inizioGioco);
+            }
+
+
+
+        </script>
+
+
+    </head>
+
+    <body onload="init()">
+        <div id="container">
+            <div id="matrice">
+                
+
+            </div>
+            <div id="bottone">
+            <button id="avvia">Avvia</button>
+        </div>
+    </div>
+    </body>
+
+    </html>
