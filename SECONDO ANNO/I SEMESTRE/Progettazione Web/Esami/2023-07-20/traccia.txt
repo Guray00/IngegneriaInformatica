@@ -1,0 +1,1 @@
+la traccia è identica a quella del 2022-07-28, fatto salvo il fatto che le checkbox delle righe della tabella, appena viene inserito un nuovo record, sono di default già clickate
