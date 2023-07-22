@@ -93,7 +93,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       1) "Lipschutz_Schaums" <br>
       2) "E. Giusti:  Analisi Matematica 2  ed. Boringhieri"<br>
       3) "Bramanti-Pagani-Salsa, Analisi Matematica 2, Zanichelli"<br>
-      4) "Pagani-Salsa, Analisi Matematica Vol 2, Zanichelli"
+      4) "Pagani-Salsa, Analisi Matematica Vol 2, Zanichelli0"<br>
   **Note studenti**: I professore di Algebra Lineare mette delle slide a disposizione che possono essere integrate con l'uso dei libri Il professore di Analisi 2 usa la lavagna e gli appunti con integrazione del libro possono andar bene.
 
 
