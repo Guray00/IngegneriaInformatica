@@ -80,7 +80,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 ### Libri del Primo anno  
 
 - **Analisi Matematica I** - _Consigliato_<br>
-  **Testo consigliato**: "Analisi 1" di Enrico Giusti- Volume 1 Edizione 3.  
+  **Testo consigliato**: "Analisi 1" di Enrico Giusti- Volume 1 Edizione 3 (ed anche quelle successive).  
 
 - **Fondamenti di Programmazione** - _Utile_    
   **Testo consigliato**:<br> 
@@ -92,13 +92,15 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   **Testo consigliato**:<br> 
       1) "Lipschutz_Schaums" <br>
       2) "E. Giusti:  Analisi Matematica 2  ed. Boringhieri"<br>
-  **Note studenti**: I professori mette delle slide a disposizione che possono essere integrate con l'uso dei libri.
+      3) "Bramanti-Pagani-Salsa, Analisi Matematica 2, Zanichelli"<br>
+      4) "Pagani-Salsa, Analisi Matematica Vol 2, Zanichelli"
+  **Note studenti**: I professore di Algebra Lineare mette delle slide a disposizione che possono essere integrate con l'uso dei libri Il professore di Analisi 2 usa la lavagna e gli appunti con integrazione del libro possono andar bene.
 
 
 - **Basi di Dati** - _Utile_  
   **Testo consigliato**:<br> 
       1) "Basi di Dati" di _Paolo Atzeni, Stefano Ceri & altri_<br>
-  **Note studenti**: I professori mettono delle slide a disposizione, quelle di Pistolesi su SQL sono molto valide.   
+  **Note studenti**: I professori mettono delle slide a disposizione molto valide e ricche di contenuti.
 
 - **Fisica Generale I** - _Consigliato_    
   **Testo consigliato**:<br> 
@@ -142,7 +144,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   
 - **Fondamenti di automatica** - _Non necessario_<br>
   **Testo consigliato**: TBD<br> 
-  **Note studenti**:  TBD
+  **Note studenti**: I professori mettono a disposizione delle slides in Inglese discrete. Si consiglia l'integrazione degli appunti.
   
 - **Ricerca operativa** - _Utile_<br>
   **Testo consigliato**: M.Pappalardo-M.Passacantando, "Ricerca Operativa", Casa Editrice Pisa University Press.<br> 
