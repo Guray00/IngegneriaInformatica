@@ -266,6 +266,7 @@ Francesco Scarrone<br>
 Gianluca Schiano<br>
 Alessandro Simonelli<br>
 Giuseppe Soriano<br>
+Walter Soro<br>
 Giorgio Charles Sorrentini<br>
 Carmine Tranfa<br>
 Andrea Trasacco<br>
