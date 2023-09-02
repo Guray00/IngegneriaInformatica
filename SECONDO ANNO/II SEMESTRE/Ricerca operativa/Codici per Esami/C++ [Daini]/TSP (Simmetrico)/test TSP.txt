@@ -1,0 +1,46 @@
+07/06/23
+es1:
+Inserire in ordine lessicografico i valori dei costi dei nodi del TSP simmetrico:    
+23 18 17 21 22 16 16 20 19 14
+La tabella e' la seguente:
+  2 3 4 5 
+1 23 18 17 21 
+2 - 22 16 16 
+3 - - 20 19 
+4 - - - 14 
+Digitare 1 per confermare la combinazione e 0 per correggere l'errore
+1
+Digitare rispettivamente gli indici per il k_albero e il nodo vicino
+2 2
+Archi non collegati a 2:(4,5)
+Archi non collegati a 2:(1,4)
+Archi non collegati a 2:(1,3)
+Archi collegati a 2: (2,4),(2,5)
+Vi = 81
+
+I nodi violati sono:
+Nodo: 3 con equazione: X13 + X23 + X34 + X35 = 2
+Nodo: 4 con equazione: X14 + X24 + X34 + X45 = 2
+
+Archi: (2-4),(4-5),(3-5),(1-3),(1-2),Vs = 90
+Scrivere quali sono i nodi interessati per il Branch e Bound per 3 volte di fila, rispettando l'ordine in cui si desidera istanziarle:
+2 4
+2 5
+4 5
+Digitare 1 per confermare la combinazione,0 per ripeterla
+1
+
+
+
+
+
+P: [Vi,Vs] = [81,90]
+
+P11: Vi = Vs = 87
+P12: [Vi,Vs] = [81,87]
+
+P23: Vi = Vs = 87
+P24: [Vi,Vs] = [81,87]
+
+P37: Vi = Vs = 86
+P38: Vuoto
