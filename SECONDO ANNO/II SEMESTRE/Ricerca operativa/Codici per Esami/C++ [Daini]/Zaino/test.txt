@@ -1,0 +1,32 @@
+test
+
+Inserire la dimensione
+7
+
+Indicare i valori v(i coefficienti della funzione obbiettivo):
+19 9 18 22 15 21 8
+
+digitare i pesi in ordine, come il problema elenca(elementi del vincolo del problema dello zaino): 
+71 40 116 68 76 244 264
+
+
+Indicare la capienza massima:
+331
+
+ scegliere le seguenti opzioni:
+1) zaino intero, soltanto
+2) Branch And Bound con zaino binario all'inizio
+3) solo zaino binario
+4) zaino intero + Branch And Bound con zaino binario all'inizio
+altro: esci
+4
+La soluzione dello zaino intero con rilassato x >= 0 e': (0, 0, 0, 331/68, 0, 0, 0), con Vs = 107
+Soluzione per lo zaino binario per trovare la valutazione inferiore: (1, 1, 0, 1, 1, 0, 0), con Vi = 65
+Soluzione per lo zaino binario per trovare la valutazione superiore: (1, 1, 76/116, 1, 1, 0, 0), con Vs = 76
+P: [65,76]
+P1,1:[74,71]Vs < Vi => tagliato
+P1,2:[65,75]
+P2,3:[74,71]Vs < Vi => tagliato
+P2,4:[74,74]Vi = Vs => tagliato
+
+
