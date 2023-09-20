@@ -1,8 +1,8 @@
 # Materiale Ingegneria Informatica @ UniPi
 
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
+[![forthebadge](https://github.com/BraveUX/for-the-badge/blob/master/src/images/badges/built-with-love.svg)]()
+[![forthebadge](https://github.com/BraveUX/for-the-badge/blob/master/src/images/badges/uses-git.svg)]()
+[![forthebadge](https://github.com/BraveUX/for-the-badge/blob/master/src/images/badges/check-it-out.svg)]()
 <br><br>
 Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https://www.unipi.it/index.php/lauree/corso/10276) (Triennale) presso l'università di Pisa (classe L-8). Ciò che troverete all'interno di questa raccolta è realizzato direttamente dagli studenti che hanno frequentato, o che tutt'ora frequentano, il corso; per tale motivo non è in alcun modo da ritenersi ufficiale e quanto fornito non è controllato da alcun docente, se non dagli studenti stessi che segnalano eventuali problemi o apportano loro stessi modifiche e miglioramenti. Troverete anche materiale fornito dai docenti del corso, per esempio dispense e prove d'esame passate.
 <p align="center"><b>Quanto fornito è senza alcun scopo di lucro e vuole intendersi unicamente come aiuto per gli studenti</b></p>
