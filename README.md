@@ -228,12 +228,13 @@ Kevin Giannandrea<br>
 Daniele Giaquinta<br>
 Edoardo Geraci<br>
 Dafne Iennaro<br>
+Lorenzo Leoncini<br>
 Giovanni Ligato<br>
 Lorenzo Lozzi<br>
 Giovanni Enrico Loni<br>
 Matteo Lombardi<br>
 Giacomo Maldarella<br>
-Lorenzo Mancinelli<br><>
+Lorenzo Mancinelli<br>
 Elia Marabotto<br>
 Gabriele Marcuccetti<br>
 Maria Azzurra Malotti<br>
@@ -242,7 +243,7 @@ Federico Matteoni<br>
 Alessio Meini<br>
 Luca Minuti<br>
 Tommaso Molesti<br>
-Alex Moriconi</br>
+Alex Moriconi<br>
 Saverio Mosti<br>
 Federico Nardi<br>
 Salvatore Noce <br>
@@ -275,5 +276,6 @@ Lorenzo Valtriani<br>
 Andrea Vagnoli<br>
 Alessandro Versari<br>
 Sandro Wu<br>
+Giulio Zingrillo<br>
 Francesco Zollo<br><br>
 Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto.
