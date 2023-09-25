@@ -355,14 +355,12 @@ A = \begin{bmatrix}
     0 & 0 & -2
 \end{bmatrix}
 \qquad
-
 B = \begin{bmatrix}
     0 \\
     1 \\
     1
 \end{bmatrix}
 \qquad
-
 C = \begin{bmatrix}
     1 & 0 & 1
 \end{bmatrix}
