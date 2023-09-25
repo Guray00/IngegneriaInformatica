@@ -433,3 +433,73 @@ D = 5
 $$
 
 Ragg. e Oss.
+
+# Esame del 13/09/2023
+
+Gli studenti vengono divisi in gruppi, ad ognuno dei quali è associata una traccia da svolgere. 
+Le tracce sono due, e sono riportate di seguito.
+Il tempo per svolgere gli esercizi è di circa 30 minuti.
+A seguito iniziano gli orali.
+
+## Traccia A
+
+### Domanda 1
+
+Bode e Nyquist
+
+### Domanda 2
+
+Data la funzione
+
+$$G(s) = \frac{20}{(s^2+2s+5)}$$
+
+1. Errore a gradino nullo
+2. Margine fase > 40°
+
+### Domanda 3
+
+$$
+A = \begin{bmatrix}
+     -1 & 1 & 0\\
+     0 & -1 & 0\\
+     0 & 0 & 2
+\end{bmatrix}
+\qquad
+B = \begin{bmatrix}
+    0\\
+    -1\\
+    -3
+\end{bmatrix}
+\qquad
+C = \begin{bmatrix}
+    2 & 0 & 0
+\end{bmatrix}
+\qquad
+D = 2
+$$
+
+1. Modi 
+2. Entrambe le stabilità
+3. Ragg. e Osserv.
+
+### Domanda 4
+Final value theorem
+
+## Traccia B
+
+### Domanda 1
+Data la funzione
+
+$$G(s) = \frac{50}{(s)\cdot(s+4)}$$
+
+Calcolare e rappresentare risposta impulsiva
+
+### Domanda 2
+1. Modi sistema
+2. Stab. int.
+3. Raggiung.
+4. Oss.
+5. Bibo
+
+### Domanda 3
+Definire ed illustrare margine di fase e ampiezza
