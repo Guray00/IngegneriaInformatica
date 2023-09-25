@@ -316,6 +316,8 @@ $$
 # Esame del 25/07/2023
 
 Gli studenti vengono divisi in gruppi, ad ognuno dei quali è associata una traccia da svolgere. Le tracce sono due, e sono riportate di seguito.
+Il tempo per svolgere gli esercizi è di circa 1h.
+A seguito iniziano gli orali.
 
 ## Traccia A
 
@@ -368,3 +370,66 @@ C = \begin{bmatrix}
 $$
 
 Discussione Stabilità e Raggiungibilità
+
+## Traccia B
+
+### Domanda 1
+
+Risposta nel tempo vs risposta in frequenza.
+Quali sono i vantaggi e gli svantaggi?
+
+### Domanda 2
+
+Data la funzione
+
+$$G(s) = \frac{70}{(s^2+3s+16)}$$
+
+1. Risposta impulsiva
+2. Grafico qualitativo
+
+### Domanda 3
+
+Diagramma Nyquist
+
+### Domanda 4
+
+Controllore rete anticip./ritard.
+Req:
+1. Errore regime zero
+2. Margine fase > 75°
+
+### Domanda 5
+$$
+A = \begin{bmatrix}
+    -1 & 1 & 0 & 0\\
+    -1 & -1 & 0 & 0\\
+    0 & 0 & -1 & 1\\
+    0 & 0 & 0 & -1
+\end{bmatrix}
+\qquad
+$$
+
+Nodi e Stabilità
+
+### Domanda 6
+$$
+A = \begin{bmatrix}
+     1 & 0 & 0\\
+     0 & -2 & 1\\
+     0 & 0 & -2
+\end{bmatrix}
+\qquad
+B = \begin{bmatrix}
+    0\\
+    1\\
+    -2
+\end{bmatrix}
+\qquad
+C = \begin{bmatrix}
+    -1 & 1 & 0
+\end{bmatrix}
+\qquad
+D = 5
+$$
+
+Ragg. e Oss.
