@@ -312,3 +312,61 @@ $$
 1. Stabilità interna e analisi modale
 2. Raggiungibilità e osservabilità
 3. Stabilità BIBO
+
+# Esame del 25/07/2023
+
+Gli studenti vengono divisi in gruppi, ad ognuno dei quali è associata una traccia da svolgere. Le tracce sono due, e sono riportate di seguito.
+
+## Traccia A
+
+### Domanda 1
+
+Cosa di intende per Diagramma di Bode e Diagramma Nyquist
+
+### Domanda 2
+
+Data la funzione
+
+$$G(s) = \frac{50}{(s + 15)\cdot(s^2+144s+1.06)}$$
+
+1. Calcolo risposta impulsiva
+2. Grafico qualitativo
+3. Discussione Prestazioni
+
+### Domanda 3
+
+Diagramma Nyquist ed analisi stabilità
+
+### Domanda 4
+
+Progetto controllore con luogo radici
+-non oscillatorio
+
+### Domanda 5
+
+Definizione stabilità interna 
+
+### Domanda 6
+
+$$
+A = \begin{bmatrix}
+    -1 & 1 & 0 \\
+    0 & -1 & 0 \\
+    0 & 0 & -2
+\end{bmatrix}
+\qquad
+
+B = \begin{bmatrix}
+    0 \\
+    1 \\
+    1
+\end{bmatrix}
+\qquad
+
+C = \begin{bmatrix}
+    1 & 0 & 1
+\end{bmatrix}
+\qquad
+$$
+
+Discussione Stabilità e Raggiungibilità
