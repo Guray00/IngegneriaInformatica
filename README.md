@@ -210,6 +210,7 @@ Federico Cavedoni<br>
 Leonardo Ceccarelli<br>
 Lorenzo Chesi<br>
 Luca Chiocchetti<br>
+Riccardo Ciucci<br>
 Pietro Cok<br>
 Gjergj Coli<br>
 Alessandro Corsi<br>
@@ -223,6 +224,7 @@ Nilo Fabiano<br>
 Giulio Federico<br>
 Niccolò Franchi<br>
 Giacomo Furia<br>
+Simone Gallo<br>
 Giulia Gastaldin<br>
 Kevin Giannandrea<br>
 Daniele Giaquinta<br>
