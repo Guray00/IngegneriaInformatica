@@ -1,0 +1,15 @@
+Progetto anno 2021-2022 
+
+Autore: Carmine Tranfa
+Discussione: 23/01/2023 
+Prof: Vaglini
+
+ERRORI:
+- 	nello schema ER non ristrutturato gli attributi ValoreSingolo.valore 
+	e ValoreAssiale.valore_x andavano spostati sull'entità Misura e devono 
+	chiamarsi uguali;
+- 	nella ristrutturazione dell'entità Lavoro manca l'attributo "tipo" 
+	che permette di definire quale relazione (delle 3) si lega al lavoro
+	(non basta il trigger di controllo a posteriori).
+
+Voto finale: 29
