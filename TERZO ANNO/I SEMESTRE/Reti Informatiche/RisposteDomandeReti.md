@@ -25,7 +25,7 @@ In ordine accade ciò:
 In questo metodo le singole richieste non vengono effettuate tutte dal local DNS, ma dal server contattato che a sua volta restituisce il risultato a chi ha fatto richiesta, fino a tornare al client, proprio come un algoritmo ricorsivo. Si noti che in questo modo il carico sui server intermedi, che generalmente sono abbstaza liberi, aumenta.
 
 ##### Cache  e Record di un server DNS
-Ogni server, compreso l'host stesso, ha la propria cache, la cui vita utile è generalmente di 2 giorni. In particolare, i TLD sono cachati nei locale DNS perchè sono tutte le richieste verso lo stesso TLD DNS server. 
+Ogni server, compreso l'host stesso, ha la propria cache, la cui vita utile è generalmente di 2 giorni. In particolare, i TLD sono cachati nei locale DNS perché sono tutte le richieste verso lo stesso TLD DNS server. 
 La struttura di un record DNS è del tipo _<name, value, type, ttl>_.\
 Il campo _ttl_ è il Time-To-live, cioè il tempo per il quale la entry è valida.\
 Il campo _type_ assume diversi valori con diversi significati:
@@ -91,7 +91,7 @@ Poniamo il caso di dover inviare un file di dimensione F ad N dispositivi. Ponia
 
 Il tempo impiegato dal server per inviare a tutti i client è pari a $\frac{NF}{U_{s}}$, mentre il tempo necessario per ricevere il file è $\frac{F}{D_{i}}$.
 Di conseguenza il tempo necessario per la distribuzione del file ad N client è pari a 
-$$\max {\frac{NF}{U_{s}}, \frac{F}{D_{i}}}$$
+$$\max \{\frac{NF}{U_{s}}, \frac{F}{D_{i}}\}$$
 che, per N->∞, è lineare.\
 Nel caso P2P abbiamo invece:
 
@@ -100,7 +100,7 @@ Nel caso P2P abbiamo invece:
 * $\frac{N F}{(U_{s} +Ʃ U_{i})}$, tempo per scaricare N copie usando upload massimo. Si noti che il denominatore può essere assunto come $(U_{s} + N \cdot U_{medio})$.
 
 Dunque il tempo necessario del file sotto le medesime condizioni è: 
-$$\max{\frac{F}{U_{s}}, \frac{F}{min(D_{i})}, \frac{NF}{(U_{s} + N \cdot U_{medio})}}$$ 
+$$\max\{\frac{F}{U_{s}}, \frac{F}{min(D_{i})}, \frac{NF}{(U_{s} + N \cdot U_{medio})}\}$$ 
 che, per N->∞, è pari a:
 $$\frac {F}{U_{medio}}$$
 Se ne deduce che **asintoticamente** il paradigma P2P è migliore in fase di invio di file.
@@ -323,7 +323,7 @@ La chiusura della connessione TCP avviene in tali fasi:
 Se il FIN del server non riceve risposta, lo stesso provvede a rinviarlo: sia il client che il server rimangono dunque in attessa della conferma della chiusura della connessione.
 
 #### Affidaibilità della connessione TCP
-IL TCP crea un servizio affidabile usando uno schema ARQ: Acknowledgements, Retransmission e Timeout. Quest'ultimo elemento è il più complesso da considerare, perchè ovviamente non è possibile calcolarlo a priori, specialmente se esso dipende dai router intermedi che sono fuori dal controllo degli host. Ci si basa dunque su delle stime che considerano l'RTT degli ultimi pacchetti inviati, e l'ACK relativo agli stessi. Si usa, in sostanza, una media esponenziale mobile:
+IL TCP crea un servizio affidabile usando uno schema ARQ: Acknowledgements, Retransmission e Timeout. Quest'ultimo elemento è il più complesso da considerare, perché ovviamente non è possibile calcolarlo a priori, specialmente se esso dipende dai router intermedi che sono fuori dal controllo degli host. Ci si basa dunque su delle stime che considerano l'RTT degli ultimi pacchetti inviati, e l'ACK relativo agli stessi. Si usa, in sostanza, una media esponenziale mobile:
 $$RTT_{n+1} = \alpha \cdot RTT_{n} + (1-\alpha) \cdot E RTT_{n}$$ 
 dove:
 
@@ -375,7 +375,7 @@ Il ricevitore, invece, mantiene in memoria:
 * l'indice dell'eventuale buco mancante in caso di ricezione _out-of-order_ (NextByteExpected);
 * l'indice dell'ultimo byte ricevuto (LastByteReceived).
 
-Il protocollo **NON** considera come spazio libero eventuali buchi causati dalla ricezione _out-of-order_ perchè tale buco sarà prima o poi colmato. La dimensione totale occupata sarà quindi pari a $LastByteReceived - NextByteExpected$, mentre la dimensione libera sarà pari a $BufferSize - (LastByteReceived - NextByteExpected)$.\
+Il protocollo **NON** considera come spazio libero eventuali buchi causati dalla ricezione _out-of-order_ perché tale buco sarà prima o poi colmato. La dimensione totale occupata sarà quindi pari a $LastByteReceived - NextByteExpected$, mentre la dimensione libera sarà pari a $BufferSize - (LastByteReceived - NextByteExpected)$.\
 Il trasmettitore riceverà il feedback della situazione corrente dal ricevitore, che gli comunicherà la dimensione libera del suo buffer, tramite il campo _Window Size_ del segmento TCP, e invierà una quantità di dati pari a $WindowSize - (LastByteSent - LastByteAcked)$.
 Il ricevitore invia, ad ogni ACK, lo spazio libero rimanente nel suo buffer nek campo _Window Size_. Se esso vale 0, il trasmettitore smette di inviare dati e invia periodicamente un segmento con un byte di dati, finchè il ricevitore non ha spazio libero, in modo che il ricevitore possa aggiornarlo della situazione corrente. Se infatti il trasmettitore non gli inviasse tale messaggio, non potrebbe conoscere la situazione corrente e continuerebbe a trasmettere dati, causando una perdita degli stessi.
 
@@ -430,7 +430,7 @@ Il protocollo di firma digitale è composto dalla parte di firma e dalla parte d
 * **generazione della chiave pubblica e privata**: la chiave pubblica viene inviata al mittente, mentre la chiave privata viene tenuta segreta;
 * **generazione del messaggio**: il mittente genera il messaggio che vuole firmare;
 * **generazione hash del messaggio**: il mittente calcola l'hash del messaggio;
-* **firma dell'hash**: il mittente firma l'hash del messaggio con la sua chiave privata. Questo perchè sarebbe troppo dispendioso calcolare l'hash dell'intero messaggio;
+* **firma dell'hash**: il mittente firma l'hash del messaggio con la sua chiave privata. Questo perché sarebbe troppo dispendioso calcolare l'hash dell'intero messaggio;
 * **concatenazione**: il mittente concatena il messaggio con la firma.
   
 La parte di verifica è composta da:
@@ -531,10 +531,10 @@ E' importante notare come la collisione è ancora presente, nel caso specifico i
 Tra i contro di questo protocollo c'è indubbiamente l'aumento di overhead in preparazione alla trasmissione vera e propria: per tale motivo questo non viene usato nel caso in cui la dimensione del frame sia paragonabile a quella del pacchetto RTS; verrà infatti inviato direttamente il frame.
 
 ### Protocollo CSMA/CA
-Si parla in questo caso di _Collision Avoidance_, perchè il _Collision Detection_ non può essere usato in questo contesto. Infatti:
+Si parla in questo caso di _Collision Avoidance_, perché il _Collision Detection_ non può essere usato in questo contesto. Infatti:
 
-* il dispositivo WiFi che sta trasmettendo non può ascoltare il canale, perchè sta trasmettendo. E' infatti dotato di una sola antenna, una soluzione potrebbe essere quella di usare due antenne;
-* il problema del nodo nascosto non viene risolto perchè non è possibile individuare collisioni quando accadono sul nodo intermedio, e non su quello che sta trasmettendo.
+* il dispositivo WiFi che sta trasmettendo non può ascoltare il canale, perché sta trasmettendo. E' infatti dotato di una sola antenna, una soluzione potrebbe essere quella di usare due antenne;
+* il problema del nodo nascosto non viene risolto perché non è possibile individuare collisioni quando accadono sul nodo intermedio, e non su quello che sta trasmettendo.
   
 Il punto del protocllo _CSMA/CA_ è quello di **prevenire** le collissioni (che possono comunque avvenire), utilizzando uno schema **ARQ** (**A**utomatic **R**epeat re**Q**uest) con una divisione in piccoli slot, usati comunque solo per dare l'inizio alle operazioni. Queste, in ordine, sono:
 
@@ -562,10 +562,10 @@ Definiamo alcuni elementi:
 * **home network**: è la rete in cui si trova inizialmente l'host mobile; **permanent address**: è l'indirizzo IP che l'home agent ha nella home network;
 * **foreing agent**: è il router in cui si trova attualemnte l'host mobile, diversa dalla home network.
 
-Partiamo dalle cose che **NON** possiamo fare: non possiamo annunciare attraverso i protocolli di routing lo spostamento dell'host, perchè il routing funziona sulla base della rete e non del singolo host. La situazione deve inevitabilmente essere **gestita dall'home agent e dall'host**. Quando l'host mobile si sposta nella _foreing network_, contatta il _foreing agent_ e gli dice di regitrarlo presso l'_home agent_. Il _foreing agent_ contatta quindi l'home agent, avvisandolo che se dovessero arrivare pacchetti diretti verso l'host mobile, essi dovranno essere **reindirizzati** verso la nuova rete. Tutti coloro che inviano all'host pacchetti non sono a conoscenza dello spostamento, e continuerà ad inviare i pacchetti allo stesso indirizzo; questa tecnica è quindi trasparente rispetto ai mittenti dei pacchetti verso l'host mobile. In caso di nuovo spostamento, c'è ovviamente bisogno di una nuova registrazione: il rischio è che se gli spostamenti sono molto frequenti, sarebbe più il tempo utilizzato per notificare lo spostamento rispetto a quello di permanenza nella rete stessa. Il lato negativo di questa strategia è che esiste la possibilità che il traffico venga triangolato anche quando ciò è inutile ed evitabile. Questo fenomeno è detto _triangolo di routing_. In conclusione, possiamo affermare che questa strategia è quella utilizzata di default da Mobile IP.
+Partiamo dalle cose che **NON** possiamo fare: non possiamo annunciare attraverso i protocolli di routing lo spostamento dell'host, perché il routing funziona sulla base della rete e non del singolo host. La situazione deve inevitabilmente essere **gestita dall'home agent e dall'host**. Quando l'host mobile si sposta nella _foreing network_, contatta il _foreing agent_ e gli dice di regitrarlo presso l'_home agent_. Il _foreing agent_ contatta quindi l'home agent, avvisandolo che se dovessero arrivare pacchetti diretti verso l'host mobile, essi dovranno essere **reindirizzati** verso la nuova rete. Tutti coloro che inviano all'host pacchetti non sono a conoscenza dello spostamento, e continuerà ad inviare i pacchetti allo stesso indirizzo; questa tecnica è quindi trasparente rispetto ai mittenti dei pacchetti verso l'host mobile. In caso di nuovo spostamento, c'è ovviamente bisogno di una nuova registrazione: il rischio è che se gli spostamenti sono molto frequenti, sarebbe più il tempo utilizzato per notificare lo spostamento rispetto a quello di permanenza nella rete stessa. Il lato negativo di questa strategia è che esiste la possibilità che il traffico venga triangolato anche quando ciò è inutile ed evitabile. Questo fenomeno è detto _triangolo di routing_. In conclusione, possiamo affermare che questa strategia è quella utilizzata di default da Mobile IP.
 
 #### Direct routing
-Gli elementi in gioco sono gli stessi dell'_indirect routing_ ma, al contrario di quest'ultimo, riusciamo ad evitare la triangolazione dei dati, perchè il mittente **invierà direttamente** al dispositivo mobile i pacchetti. Vediamo come:
+Gli elementi in gioco sono gli stessi dell'_indirect routing_ ma, al contrario di quest'ultimo, riusciamo ad evitare la triangolazione dei dati, perché il mittente **invierà direttamente** al dispositivo mobile i pacchetti. Vediamo come:
 quando il dispositivo arriva in una nuova rete, farà in modo di notificare all'home agent del suo spostamento. Questo, quando vedrà arrivare un pacchetto destinato all'host mobile, avviserà il mittente che il destinatario non si trova più nella _home network_, e sarà lui stesso ad occuparsi di reinviare il pacchetto al nuovo indirizzo del dispositivo mobile. In caso di ulteriore spostamento, ci sarà una notifica. I principali problemi di questa strategia sono due, uno tecnico ed uno 'etico':
 
 * **tecnico**: abbiamo un aumento di overhead per la notifica del nuovo indirizzo, per la notifica del nuovo spostamento, e il tempo di reinvio del pacchetto;
@@ -711,10 +711,10 @@ PING google.com (142.251.209.46) 56(84) bytes of data.
 rtt min/avg/max/mdev = 12.936/15.516/19.260/2.709 ms
 ```
 
-Si noti come l'RTT (Round Trip Time) sia sempre diverso tra un pacchetto e l'altro, perchè generalmente un pacchetto segue sempre una traiettoria diversa, e quindi il tempo di risposta sarà sempre diverso. Al temrmine, vengono mostrate delle statistiche sulla connessione, come il numero di pacchetti persi, il tempo di risposta, ecc. E' comunque possibile usare delle opzioni per specificare il numero di pacchetti da inviare, il timeout, ecc.
+Si noti come l'RTT (Round Trip Time) sia sempre diverso tra un pacchetto e l'altro, perché generalmente un pacchetto segue sempre una traiettoria diversa, e quindi il tempo di risposta sarà sempre diverso. Al temrmine, vengono mostrate delle statistiche sulla connessione, come il numero di pacchetti persi, il tempo di risposta, ecc. E' comunque possibile usare delle opzioni per specificare il numero di pacchetti da inviare, il timeout, ecc.
 
 ## Traceroute
-Mostra il percorso che un pacchetto IP effettua per raggiungere un _host destinatario_. Il percorso è di fatto composto dagli indirizzi IP dei router che ha attraversato. Sfrutta la gestione dei **TTL**, inviando all'host una serie di terne di pacchetti **UDP** con TTL crescente. Tiene traccia degli indirizzi IP dei router che ha attraversato, e li mostra in ordine all'interno di messaggi **ICMP Time Exceeded**, finchè l'ultimo pacchetto non raggiunge il destinatario.Quando ciò avviene, esso risponderà con un **ICMP Destination Unreachable**, che indica che il pacchetto è arrivato al destinatario. Questo avviene perchè avendo UDP bisogno di una porta, ne viene scelta una a caso ed è improbabile che essa sia in ascolto. Nel caso in cui l'output mostri a schermo una serie di asterischi, vuol dire che è scattato il timeout, oppure non era implementato ICMP nei router. Ques'ultima potrebbe essere una scelta dell'host contattato, per prevenire attacchi DoS. Inoltre, usa le porte 33434 e 33435.\
+Mostra il percorso che un pacchetto IP effettua per raggiungere un _host destinatario_. Il percorso è di fatto composto dagli indirizzi IP dei router che ha attraversato. Sfrutta la gestione dei **TTL**, inviando all'host una serie di terne di pacchetti **UDP** con TTL crescente. Tiene traccia degli indirizzi IP dei router che ha attraversato, e li mostra in ordine all'interno di messaggi **ICMP Time Exceeded**, finchè l'ultimo pacchetto non raggiunge il destinatario.Quando ciò avviene, esso risponderà con un **ICMP Destination Unreachable**, che indica che il pacchetto è arrivato al destinatario. Questo avviene perché avendo UDP bisogno di una porta, ne viene scelta una a caso ed è improbabile che essa sia in ascolto. Nel caso in cui l'output mostri a schermo una serie di asterischi, vuol dire che è scattato il timeout, oppure non era implementato ICMP nei router. Ques'ultima potrebbe essere una scelta dell'host contattato, per prevenire attacchi DoS. Inoltre, usa le porte 33434 e 33435.\
 Gli svantaggi sono: 
 
 * i pacchetti possono seguire più percorsi, e così gli IP;
@@ -833,7 +833,7 @@ La funzione `select()` prende in input:
 La funzione ritorna il numero di descrittori pronti, -1 in caso di errore. Se il timeout è scaduto, ritorna 0; inoltre è una funzione bloccante, e ritorna solo quando almeno un descrittore è pronto.
 
 ## Differenza tra server concorrente e multiplexato
-Un server concorrente è un server che crea un processo figlio per ogni connessione, mentre un server multiplexato è un server che usa la primitiva `select()` per gestire più connessioni contemporaneamente. Bisogna prestare attenzione all'uso dei processi figli perchè essi hanno in comune con il padre tutte le strutture dati, e quindi possono accedere a risorse condivise: una gestione non ottimale del codice potrebbe portare ad inconsistenze.
+Un server concorrente è un server che crea un processo figlio per ogni connessione, mentre un server multiplexato è un server che usa la primitiva `select()` per gestire più connessioni contemporaneamente. Bisogna prestare attenzione all'uso dei processi figli perché essi hanno in comune con il padre tutte le strutture dati, e quindi possono accedere a risorse condivise: una gestione non ottimale del codice potrebbe portare ad inconsistenze.
 
 ## Protocolli text e binary
 I protocolli text sono quelli che usano il formato testuale per trasmettere i dati, mentre i protocolli binary sono quelli che usano il formato binario per trasmettere i dati. I protocolli text sono più facili da implementare, ma sono più lenti e più difficili da debuggare. I protocolli binary sono più veloci e più facili da debuggare, ma sono più difficili da implementare. Per implementare un protocollo text si usa la funzione `sscanf()` per leggere i dati, e la funzione `sprintf()` per scrivere i dati. Per implementare un protocollo binary si usa la funzione `read()` per leggere i dati, e la funzione `write()` per scrivere i dati. Ha inoltre necessità dell'universalità dei dati, ovvero che i dati siano rappresentati allo stesso modo su tutti i sistemi. Per questo motivo si usa il tipo opaco _uintN_t_, che rappresenta un intero a N bit (8, 16, 32) senza segno.
@@ -959,7 +959,7 @@ che significa:
 ## apache2
 Apache è un web server, che permette di gestire richieste HTTP e HTTPS. La struttura di Apache è basata su moduli, che possono essere abilitati o disabilitati tramite `a2enmod` e `a2dismod`. Tramite il virtual hosting possiamo inoltre  gestire diversi siti web con nome diverso nello stesso server fisico: questa configurazione può essere eseguita nei file contenuti in `sites-available` e abilitata con `a2ensite`. Per disabilitare un sito web si usa `a2dissite`. I moduli multiprocesso permettono di seguire più richieste contemporaneamente, controllando socket, porte e processare le richieste usando thread e/o processi figli. Su UNIX possiamo scegliere tra:
 
-* **prefork**: il server crea in anticipo un certo numero di processi figli (da qui il **pre**forking), che sono detti _worker_ vengono usati per gestire le richieste. Quando un _worker_ termina la gestione della richiesta, torna disponibile per gestirne una nuova. Il padre gestisce il pool dei figli in modo da averne sempre alcuni disponibili. Questo metodo permette di evitare l'overflow della fork ad ogni richiesta, e il numero di fork può essere impostato nella configurazione. Gode della massima compatibilità, poichè funziona anche con i moduli e le librerie che non supprtano il multitrhead. È un metodo stabile perchè alla caduta di un _worker_, cade solo una connessione; tutta via abbiamo una grande occupazione di memoria, poichè ogni _worker_ ha una copia di tutto il codice del server;
-* **worker**: rende il server sia multiprocesso che multithread. All'avvio abbiamo un prefork, ogni figlio genera un _listener_ che si occupa di accettare e smistare le connessioni, e un pool di worker per servire effettivamente le richieste. Abbiamo un ridotto overhead e un risparmio di memoria grazie ai thread in caso di autotuning (quando c'è bisogno di aprire altri thread in caso quelli repsenti non siano sufficienti). È un metodo stabile perchè alla caduta di un _worker_, cade solo una connessione;
-* **event**: versione migliorata di **worker**, ed è la metodo di default in apache 2.4. Oltre ad accettare le connessioni, il listener gestisce le connessioni temporaneamente inattive: se un _worker_ sta servendo un client che tarda ad inviare una richiesta, invece di attendere restituisce il controllo del socket al _listener_ e passa ad un'altra richiesta. La richiesta tardiva verrà poi gestita, quando arriverà, ad un altro worker libero. Con questa politica il numero di connessioni servite contemporaneamente, a parità di numero di thread, aumenta, perchè eliminiamo i tempi morti.
+* **prefork**: il server crea in anticipo un certo numero di processi figli (da qui il **pre**forking), che sono detti _worker_ vengono usati per gestire le richieste. Quando un _worker_ termina la gestione della richiesta, torna disponibile per gestirne una nuova. Il padre gestisce il pool dei figli in modo da averne sempre alcuni disponibili. Questo metodo permette di evitare l'overflow della fork ad ogni richiesta, e il numero di fork può essere impostato nella configurazione. Gode della massima compatibilità, poichè funziona anche con i moduli e le librerie che non supprtano il multitrhead. È un metodo stabile perché alla caduta di un _worker_, cade solo una connessione; tutta via abbiamo una grande occupazione di memoria, poichè ogni _worker_ ha una copia di tutto il codice del server;
+* **worker**: rende il server sia multiprocesso che multithread. All'avvio abbiamo un prefork, ogni figlio genera un _listener_ che si occupa di accettare e smistare le connessioni, e un pool di worker per servire effettivamente le richieste. Abbiamo un ridotto overhead e un risparmio di memoria grazie ai thread in caso di autotuning (quando c'è bisogno di aprire altri thread in caso quelli repsenti non siano sufficienti). È un metodo stabile perché alla caduta di un _worker_, cade solo una connessione;
+* **event**: versione migliorata di **worker**, ed è la metodo di default in apache 2.4. Oltre ad accettare le connessioni, il listener gestisce le connessioni temporaneamente inattive: se un _worker_ sta servendo un client che tarda ad inviare una richiesta, invece di attendere restituisce il controllo del socket al _listener_ e passa ad un'altra richiesta. La richiesta tardiva verrà poi gestita, quando arriverà, ad un altro worker libero. Con questa politica il numero di connessioni servite contemporaneamente, a parità di numero di thread, aumenta, perché eliminiamo i tempi morti.
 
