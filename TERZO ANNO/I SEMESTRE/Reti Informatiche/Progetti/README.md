@@ -3,6 +3,7 @@
 ## 2022 - 2023
 
 - [Simone Calò](https://github.com/Leemone01/Progetto-Reti-Informatiche-2023)
+- [Luca Ostinelli](https://github.com/lucaosti/progettoRetiInformatiche)
 
 ## 2021 - 2022
 
