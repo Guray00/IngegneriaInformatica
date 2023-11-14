@@ -221,6 +221,7 @@ Matteo Dondoli<br>
 Nilo Fabiano<br>
 Giulio Federico<br>
 Niccolò Franchi<br>
+Jonathan Frattacci<br>
 Giacomo Furia<br>
 Simone Gallo<br>
 Giulia Gastaldin<br>
