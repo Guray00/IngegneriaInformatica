@@ -186,6 +186,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 [Gabriele Frassi](https://github.com/gabrielefrax)<br>
 [Giovanni Enrico Loni](https://github.com/genricoloni)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
+[Andrea Covelli] (https://github.com/AndreaCovelli)<br>
 [Lorenzo Valtriani](https://github.com/lorenzovaltriani)<br>
 
 **Collaboratori Materiale**
