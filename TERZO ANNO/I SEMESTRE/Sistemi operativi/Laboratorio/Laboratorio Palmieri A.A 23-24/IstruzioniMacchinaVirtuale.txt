@@ -1,0 +1,49 @@
+La distribuzione di riferimento per il corso e l'esame e': Debian 8.6
+Cio' vuol dire che l'esame viene svolto usando una macchina con Debian 8.6
+
+
+Si consiglia di usare la macchina virtuale predisposta per i corsi
+di Sistemi Operativi e di Reti Informatiche, presente qui:
+
+http://www2.ing.unipi.it/c.vallati/files/reti/debian-studenti.ova
+
+Se volete procedere con un'installazione da zero (su macchina fisica o su macchina
+virtuale), dopo l'installazione dovete:
+
+- Installare sudo (opzionale)
+
+    # apt-get install sudo
+    # adduser vostro_nome sudo
+    
+- Disabilitare Network Manager (crea conflitto con la configurazione manuale
+delle interfacce di rete spiegata a lezione)
+
+    # systemctl stop NetworkManager.service
+    # systemctl disable NetworkManager.service
+
+- Installare il server Web (se non lo avete fatto in fase di installazione del SO)
+
+    # apt-get install apache2
+
+- E' possibile che altri comandi non siano installati, eventualmente usare apt-get
+
+
+Attenzione
+==========
+Disabilitando Network Manager, e' possibile che in fase di avvio il sistema
+si blocchi in attesa di connessione con il messaggio:
+
+    A start job is running for LSB: Raise network interf...38s / no limit)
+
+Per risolverlo e' sufficiente configurare VirtualBox (o qualsiasi software si stia usando)
+in modo che la scheda di rete virtuale sia collegata.
+In seguito, per usare la macchina con la scheda scollegata, e' necessario
+creare il file:
+
+    /etc/systemd/system/networking.service.d/timeout.conf
+    
+contenente il testo:
+
+    [Service]
+    TimeoutStartSec=15
+
