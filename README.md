@@ -249,6 +249,7 @@ Alex Moriconi<br>
 Saverio Mosti<br>
 Federico Nardi<br>
 Salvatore Noce <br>
+Luca Ostinelli<br>
 Martina Panico<br>
 Dario Paroli<br>
 Alex Parri<br>
