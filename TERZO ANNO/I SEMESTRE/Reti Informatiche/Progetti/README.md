@@ -4,6 +4,7 @@
 
 - [Simone Calò](https://github.com/Leemone01/Progetto-Reti-Informatiche-2023)
 - [Luca Ostinelli](https://github.com/lucaosti/Progetto_RetiInformatiche)
+- [Lorenzo Chesi](https://github.com/MainKronos/RistorazioneDigitale)
 
 ## 2021 - 2022
 
