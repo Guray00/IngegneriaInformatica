@@ -1,0 +1,6 @@
+Nella cartella MySQl ci sono tutti i file presenti in query.sql, ma suddivisi per parti, così da poter consulatare in maniera più chiara le query.
+query.sql è il file sql con tutte le procedure, così da poter mettere in esecuzione tutti i codici scritti in linguaggio MySQL.
+Ecco una descrizione rapida dei file pdf:
+- 'FilmSphere_Scarno' è il file pdf dello schema concettuale del progetto prima della ristrutturazione
+- 'FilmSphere_Ristrutturato' è il file pdf dello schema concettulae del progetto dopo la ristrutturazione
+- 'Documentazione' è il pdf contenente la documentazione del progetto.

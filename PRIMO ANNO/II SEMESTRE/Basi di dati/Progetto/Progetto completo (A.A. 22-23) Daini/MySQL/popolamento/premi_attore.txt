@@ -1,0 +1,281 @@
+Premiazione Attori
+
+(1,'Vivien', 'Leigh','Scarlett O Hara', 0),
+/*
+Premio Oscar
+1940 – Miglior attrice per Via col vento
+1952 – Miglior attrice per Un tram che si chiama Desiderio
+
+BAFTA
+1953 – Migliore attrice britannica per Un tram che si chiama Desiderio
+
+Mostra internazionale d'arte cinematografica
+1951 – Coppa Volpi alla miglior attrice per Un tram che si chiama Desiderio
+
+New York Film Critics Circle Awards
+1939 – Miglior attrice protagonista per Via col vento
+1951 – Miglior attrice protagonista per Un tram che si chiama Desiderio
+
+*/
+(2,'Clark', 'Gable','Rhett Butler', 0),
+/*
+Premio Oscar
+1935 – Migliore attore per Accadde una notte
+*/
+(3,'Humphrey', 'Bogart', NULL, 0),
+/*
+Premio Oscar
+1952 – Miglior attore protagonista per La regina d'Africa
+
+National Board of Review
+1937 – National Board of Review Award al miglior attore per Legione nera
+1937 – National Board of Review Award al miglior attore per Una pallottola per Roy e Il mistero del falco
+1944 – National Board of Review Award al miglior attore per Acque del sud
+*/
+
+(4,'Ingrid', 'Bergman', NULL, 0),
+/*
+Premio Oscar
+1945 – Migliore attrice per Angoscia
+1957 – Migliore attrice per Anastasia
+1975 – Migliore attrice non protagonista per Assassinio sull'Orient Express
+
+Golden Globe
+1945 – Migliore attrice in un film drammatico per Angoscia
+1946 – Migliore attrice in un film drammatico per Le campane di Santa Maria
+1957 – Migliore attrice in un film drammatico per Anastasia
+
+BAFTA
+1975 – Migliore attrice non protagonista per Assassinio sull'Orient Express
+
+David di Donatello
+1957 – Migliore attrice straniera per Anastasia
+1979 – Migliore attrice straniera per Sinfonia d'autunno
+
+Nastro d'argento
+1951 – Migliore attrice straniera in Italia per Stromboli (Terra di Dio)
+1953 – Migliore attrice protagonista per Europa '51
+
+Premio Cesar
+1976 – Premio Cesar onorario
+
+*/
+(5,'Tyrone', 'Power', NULL, 0),
+/*
+*/
+(6,'Marlene', 'Dietrich', NULL, 0),
+/*
+David di Donatello
+1962 – Miglior attrice protagonista per Vincitori e vinti
+
+*/
+
+(7,'Marcello', 'Mastroianni', NULL, 0),
+/*
+David di Donatello
+1964 – Miglior attore protagonista per Ieri, oggi e domani
+1965 – Miglior attore protagonista per Matrimonio all'italiana
+1983 – Premio alla carriera
+1986 – Miglior attore protagonista per Ginger e Fred
+1986 – Medaglia d'oro del comune di Roma
+1988 – Miglior attore protagonista per Oci ciornie
+1995 – Miglior attore protagonista per Sostiene Pereira
+1997 – Premio alla carriera (postumo)
+
+Nastro d'argento
+1955 – Miglior attore protagonista per Giorni d'amore
+1958 – Miglior attore protagonista per Le notti bianche
+1961 – Miglior attore protagonista per La dolce vita
+1962 – Miglior attore protagonista per Divorzio all'italiana
+1986 – Miglior attore protagonista per Ginger e Fred
+1988 – Miglior attore protagonista per Oci ciornie
+1991 – Miglior attore protagonista per Verso sera
+1997 – Nastro d'argento speciale (postumo)
+
+Globo d'oro
+1976 – Miglior attore per La donna della domenica, Per le antiche scale e Todo modo
+1977 – Miglior attore per Una giornata particolare
+1984 – Miglior attore per Enrico IV
+1986 – Miglior attore per Ginger e Fred e Maccheroni
+1991 – Miglior attore per Verso sera
+
+Grolla d'oro
+1955: miglior attore per Giorni d'amore e Peccato che sia una canaglia
+1976: miglior attore per Per le antiche scale, La donna della domenica e Todo modo
+1978: Premio speciale per Una giornata particolare
+
+BAFTA
+1963 – Miglior attore internazionale per Divorzio all'italiana
+1964 – Miglior attore internazionale per Ieri, oggi e domani.
+
+Festival di Cannes
+1970 – Prix d'interprétation masculine per Dramma della gelosia (tutti i particolari in cronaca)
+1987 – Prix d'interprétation masculine per Oci ciornie
+
+Golden Globe
+1963 – Miglior attore in un film commedia o musicale per Divorzio all'italiana
+
+Premio Cesar
+1993 – Premio Cesar onorario
+
+*/
+
+(8,'Anita', 'Ekberg', NULL, 0)
+/*
+Golden Globe
+1956 – Miglior attrice debuttante
+
+*/
+(9,'Marlon', 'Brando', NULL, 0),
+/*
+Premio Oscar
+1955 – Migliore attore per Fronte del porto
+1973 – Migliore attore per Il padrino
+
+Premi BAFTA
+1953 – Miglior attore protagonista per Viva Zapata!
+1954 – Miglior attore protagonista per Giulio Cesar
+1955 – Miglior attore protagonista per Fronte del porto
+
+Jussi Awards
+1951 - Jussi Awards come miglior attore per Il mio corpo ti appartiene
+1952 - Jussi Awards come miglior attore per Un tram che si chiama Desiderio
+2001 – Jussi Award alla carriera
+
+Festival di Cannes
+1953 - Prix d'interpretation masculine per il miglior attore per Viva Zapata!
+
+New York Film Critics Circle Awards
+1954 - New York Film Critics Circle Awards per il miglior attore protagonista per Fronte del porto
+
+David di Donatello
+1958 - David di Donatello per il miglior attore straniero per Sayonara
+
+Jussi Awards
+2001 – Jussi Awards alla carriera
+
+*/
+
+(10,'Al', 'Pacino', NULL, 0),
+/*
+Oscar
+miglior attore protagonista per Scent of a Woman - Profumo di donna, nel 1993
+*/
+
+(11,'Mark', 'Hamill', NULL, 0)
+/*
+
+*/
+
+(12,'Harrison', 'Ford', NULL,0),
+/*
+Golden Globe
+2002 – Golden Globe alla carriera
+
+Festival di Cannes
+2023 – Palma d'oro onoraria
+
+Saturn Award
+1982 – Miglior attore per I predatori dell'arca perduta
+1996 – Life Achievement Award
+2016 – Miglior attore per Star Wars: Il risveglio della Forza
+
+People Choice Awards
+1998 – Migliore star maschile cinematografica
+1999 – Migliore star maschile cinematografica di tutti i tempi
+2000 – Migliore star maschile cinematografica
+
+*/
+(13,'Tom', 'Hanks', NULL,0),
+/*
+Premio Oscar
+1994 – Miglior attore per Philadelphia
+1995 – Miglior attore per Forrest Gump
+
+Golden Globe
+1988 – Miglior attore in un film commedia o musicale per Big
+1994 – Miglior attore in un film drammatico per Philadelphia
+1995 – Miglior attore in un film drammatico per Forrest Gump
+2001 – Miglior attore in un film drammatico per Cast Away
+
+Premi BAFTA
+2004 – BAFTA Stanley Kubrick Britannia Award for Excellence in Film
+
+Screen Actors Guild Awards
+1995 – Miglior attore protagonista per Forrest Gump
+1996 – Miglior cast per Apollo 13
+
+People Choice Awards
+1996 – Miglior attore per Apollo 13
+2012 – Attore preferito
+2017 – Attore preferito in un film drammatico
+
+Razzie Awards
+2022 – Premio Peggior coppia a Tom Hanks & la sua faccia piena di lattice (insieme al suo ridicolo accento) in Elvis
+Premio come Peggior attore non protagonista, per il ruolo del col. Tom Parker in Elvis
+*/
+(14,'Robin', 'Wright', NULL, 0)
+/*op
+*/
+(15,'Leonardo', 'Di Caprio', NULL, 0),
+/*
+Premio Oscar
+2016 – Miglior attore protagonista per Revenant - Redivivo
+
+Golden Globe
+2014 – Miglior attore in un film commedia o musicale per The Wolf of Wall Street
+2016 – Miglior attore in un film drammatico per Revenant - Redivivo
+
+British Academy Film Awards
+2016 – Miglior attore protagonista per Revenant - Redivivo
+
+Screen Actors Guild Award
+2016 – Miglior attore protagonista per Revenant - Redivivo
+
+Razzie Awards
+1998 - Peggior coppia (nella parte dei gemelli)
+*/
+
+(16,'Kate', 'Winslet', NULL, 0),
+/*
+Premio Oscar
+2009 – Migliore attrice per The Reader - A voce alta
+
+Golden Globe
+2009 – Migliore attrice in un film drammatico per Revolutionary Road
+2009 – Migliore attrice non protagonista per The Reader - A voce alta
+2016 – Migliore attrice non protagonista per Steve Jobs
+2022 – Migliore attrice in una miniserie o film televisivo per Omicidio a Easttown
+
+British Academy Film Awards
+1996 – Migliore attrice non protagonista per Ragione e sentimento
+2009 – Migliore attrice per The Reader - A voce alta
+2016 – Migliore attrice non protagonista per Steve Jobs
+2023 – Migliore attrice protagonista per I AM RUTH
+
+Premio Emmy
+2009 – Miglior attrice per Revolutionary Road
+
+*/
+
+(17,'Bruce', 'Willis', NULL, 0)
+
+/*
+
+Premio Emmy
+1987 – Miglior attore in una serie drammatica per Moonlighting
+
+Razzie Awards
+1998 – Peggior attore protagonista per Armageddon – Giudizio finale, Codice Mercury e Attacco al potere
+*/
+
+(18,'Haley', 'Joel Osment', NULL, 0)
+/*
+Critics Choice Awards
+2000 – Miglior giovane interprete per The Sixth Sense – Il sesto senso
+
+Young Artist Award
+1995 – Miglior giovane attore sotto i 10 anni in un film per Forrest Gump
+
+
+*/
