@@ -277,3 +277,25 @@ module ParteControllo(
     end
 
 endmodule
+
+/*
+    ROM
+    c0=0, c1=1
+
+    u-addr   b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0   ceff   u-addrT   u-addrF
+    S0       b00000000000001                                 X      S1        S1 
+    S1       b00000000010000                                 X      S2        S2 
+    S2       b000001001X0000                                 X      S3        S3 
+    S3       b01001000000010                                 X      S4        S4 
+    S4       b00000001000000                                 X      S5        S5 
+    S5       b0000001X000000                                 X      S6        S6 
+    S6       b0001X000000000                                 X      S7        S7 
+    S7       b00000001000000                                 X      S8        S8 
+    S8       b0000001X000000                                 X      S9        S9 
+    S9       b1X000000000011                                 X      S10       S10 
+    S10      b00000000010000                                 X      S11       S11
+    S11      b000000001X01XX                                 0      S12       S11
+    S12      b00000000010000                                 X      S13       S13
+    S13      b00100000000000                                 X      S14       S14
+    S14      b000000001X1000                                 1      S0        S14
+*/
