@@ -13,12 +13,10 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 Per rendere la comunicazione più efficace, sono stati realizzati gruppi appositi:
 
 ### Principali
-
-- **[ Gruppo Anno 1](https://kutt.it/inginf1)**
-- **[ Gruppo Anno 2](https://kutt.it/inginf2)**
-- **[ Gruppo Anno 3](https://t.me/inginfunipi3)**
-
-Segnaliamo l'esistenza di un nuovo gruppo Whatsapp per le **matricole dell'A.A.2023-2024** (l'unico gestito da iscritti al corso di laurea, diffidate di gruppi gestiti da persone che nulla hanno a che vedere con Ingegneria Informatica): https://chat.whatsapp.com/DHzy8yMZ7ID4maerImnUTA
+- **[Community WhatsApp Ingegneria Informatica](https://chat.whatsapp.com/JJsJBSWCb0kCsUq9HkqbOo)**
+- **[Gruppo Telegram Anno 1](https://kutt.it/inginf1)**
+- **[Gruppo Telegram Anno 2](https://kutt.it/inginf2)**
+- **[Gruppo Telegram Anno 3](https://t.me/inginfunipi3)**
 
 ### Off-Topic
 - **[Shitposting](https://t.me/joinchat/ALDXWEt7IxLWwQ1i5x4fvA)**
@@ -188,6 +186,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 [Gabriele Frassi](https://github.com/gabrielefrax)<br>
 [Giovanni Enrico Loni](https://github.com/genricoloni)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
+[Andrea Covelli](https://github.com/AndreaCovelli)<br>
 [Lorenzo Valtriani](https://github.com/lorenzovaltriani)<br>
 
 **Collaboratori Materiale**
@@ -223,6 +222,7 @@ Matteo Dondoli<br>
 Nilo Fabiano<br>
 Giulio Federico<br>
 Niccolò Franchi<br>
+Jonathan Frattacci<br>
 Giacomo Furia<br>
 Simone Gallo<br>
 Giulia Gastaldin<br>
@@ -281,4 +281,4 @@ Alessandro Versari<br>
 Sandro Wu<br>
 Giulio Zingrillo<br>
 Francesco Zollo<br><br>
-Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto.
+Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto..
