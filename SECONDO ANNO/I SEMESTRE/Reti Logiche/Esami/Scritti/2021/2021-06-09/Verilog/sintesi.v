@@ -238,7 +238,7 @@ module ParteControllo(
         (STAR==S12)? 14'b00000000010000:
         (STAR==S13)? 14'b00100000000000:
         (STAR==S14)? 14'b000000001X1000:
-        /*default*/  14'b00XXXXXXXXXXXX;
+        /*default*/  14'bXXXXXXXXXXXXXX;
 
     always @(reset_ == 0) #1 STAR <= S0;
 
