@@ -1,0 +1,3 @@
+l'algoritmo è funzionante ed efficiente, il problema risiede nella metodologia di utilizzo del
+print finale, utilizzare la sort della stl non è consentito in quanto ha tempo peggiore di nlogn,
+perciò dovrà essere corretta con una visita
