@@ -1,0 +1,5 @@
+da fare:
+
+cicli hamiltoniani?
+creazione di matrici per modelli di problemi (fatte per assegnamento e bin-packing, dovrei fare copertura)
+dato un flusso o un potenziale, trova l'altro e costi ridotti
