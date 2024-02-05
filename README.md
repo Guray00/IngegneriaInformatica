@@ -183,10 +183,11 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 **Maintainer**
 
+[Andrea Covelli](https://github.com/AndreaCovelli)<br>
 [Gabriele Frassi](https://github.com/gabrielefrax)<br>
 [Giovanni Enrico Loni](https://github.com/genricoloni)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
-[Andrea Covelli](https://github.com/AndreaCovelli)<br>
+[Federico Nardi](https://github.com/fedenardii)<br>
 [Lorenzo Valtriani](https://github.com/lorenzovaltriani)<br>
 
 **Collaboratori Materiale**
