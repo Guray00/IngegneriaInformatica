@@ -281,5 +281,6 @@ Andrea Vagnoli<br>
 Alessandro Versari<br>
 Sandro Wu<br>
 Giulio Zingrillo<br>
-Francesco Zollo<br><br>
+Francesco Zollo<br>
+Giuseppe "Attila" Attadia<br><br>
 Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto..
