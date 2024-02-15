@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+		.container{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.columnContainer{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+		}
+		#timer, #tries{
+			border: 1px solid black;
+			width: 50px;
+			height: 25px;
+			margin-right: 5px;
+			margin-left: 5px;
+			text-align: right;
+			vertical-align: middle;
+			line-height: 25px;
+		}
+		.GuessDigit, .digit{
+				border: 1px solid black;
+				width: 50px;
+				height: 50px;
+				margin-top: 50px;
+				/* text centering */
+				text-align: center;
+				vertical-align: middle;
+				line-height: 50px;
+		}
+    </style>
+	</head>
+
+	<body>
+		<div class="columnContainer">
+			<div class="container">
+				<h4>Tempo: </h4>
+				<div id="timer">0</div>
+				<h4>Tentativi: </h4>
+				<div id="tries">0</div>
+				<button type="button" name="button" id="start">START</button>
+			</div>
+			<div class="container" id="rightDigits"></div>
+			<div class="container" id="digits"></div>
+		</div>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+		var container = document.getElementById('rightDigits');
+		for (var i = 0; i < 4; i++) {
+			var digit = document.createElement('div');
+			digit.setAttribute('id', 'GuessDigit' + i);
+			digit.setAttribute('class', 'GuessDigit');
+			container.appendChild(digit);
+		}
+		container = document.getElementById('digits');
+		for (var i = 0; i < 10; i++) {
+			var digit = document.createElement('div');
+			digit.setAttribute('id', i);
+			digit.setAttribute('class', 'digit');
+			digit.textContent = i;
+			digit.addEventListener('click', function(e){
+				if(!play){
+					return;
+				}
+				for (var i = 0; i < 4; i++) {
+					if(e.target.id == generatedNumber[i]){
+						var gotIt = document.getElementById('GuessDigit' + i);
+						gotIt.textContent = e.target.id;
+						if(++rights == 4){
+							clearInterval(timer);
+							clearInterval(checkInterval);
+
+							openWindow(true);
+						}
+						return;
+					}
+				}
+				if(--document.getElementById('tries').textContent == 0 && play){
+					clearInterval(timer);
+					clearInterval(checkInterval);
+					openWindow(false);
+				}
+			});
+			container.appendChild(digit);
+		}
+		var generatedNumber = [];
+		var play = false;
+		var rights = 0;
+		var start = document.getElementById('start');
+		var timer;
+		var checkInterval;
+		start.addEventListener('click', function(){
+			play = true;
+			start.disabled = true;
+			document.getElementById('tries').textContent = 3;
+			document.getElementById('timer').textContent = 15;
+
+			timer = setInterval(function(){
+				--document.getElementById('timer').textContent;
+			},1000);
+
+			checkInterval = setInterval(function(){
+				if(document.getElementById('timer').textContent == 0){
+				clearInterval(timer);
+				clearInterval(checkInterval);
+				openWindow(false);
+			}
+			},1000);
+
+			for (var i = 0; i < 4; i++) {
+				do {
+					var number = Math.floor(Math.random() * 10);
+				} while (generatedNumber.indexOf(number) != -1);
+				generatedNumber.push(number);
+			}
+			console.log(generatedNumber);
+		});
+
+		function openWindow(win){
+			var loseWindow = window.open('','','width=200,height=100');
+			var text;
+			if(!win){
+				text = 'Riprova, sarai più fortunato!';
+			}else{
+				var time = 15 - parseInt(document.getElementById('timer').textContent);
+				text = 'Tempo Impiegato: '+time;
+			}
+			loseWindow.document.write(text);
+			setTimeout(function () {
+				loseWindow.close();
+				document.getElementById('timer').textContent = 0;
+				document.getElementById('tries').textContent = 0;
+				start.disabled = false;
+				play = false;
+				rights = 0;
+				generatedNumber = [];
+				var tiles = document.getElementsByClassName('GuessDigit');
+				for (var i = 0; i < tiles.length; i++) {
+					tiles[i].textContent = '';
+				}
+			}, 3000);
+		}
+  </script>
+</html>

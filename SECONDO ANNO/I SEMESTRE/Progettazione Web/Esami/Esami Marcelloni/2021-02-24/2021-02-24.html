@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+		.container{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.columnContainer{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+		}
+		.tile{
+			width: 30px;
+			height: 30px;
+			margin: 5px;
+			box-shadow: -3px -3px 2px grey inset,
+              		3px 3px 2px grey inset;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 20px;
+			background-color: white;
+			padding: 4px;
+		}
+		#clock{
+			width: 100px;
+			height: 30px;
+			margin: 5px;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 30px;
+			background-color: black;
+			color: white;
+			box-shadow: -1px -1px 3px lightgrey inset,
+              		1px 1px 2px  lightgrey inset;
+		}
+		table{
+			border: 2px solid black;
+			table-layout: fixed;
+		}
+		#firstTable{
+			width: 500px;
+			height: 100px;
+			margin-bottom: 20px;
+		}
+		#secondTable{
+			width: 600px;
+			height: 100px;
+			table-layout: auto;
+		}
+		#tableContainer{
+			align-items: flex-start;
+		}
+		input{
+			text-align: center;
+		}
+    </style>
+	</head>
+
+	<body>
+		<div class="columnContainer" id="mainContainer">
+			<h2>Departures</h2>
+			<div id="clock"></div>
+			<div class="columnContainer" id="tableContainer">
+				<table id="firstTable">
+					<th>Scheduled Time</th>
+					<th>Expected Time</th>
+					<th>Destination Time</th>
+					<th>Flight n.</th>
+					<th>Gate</th>
+					<th>Remarks</th>
+				</table>
+
+				<table id="secondTable">
+					<th>Scheduled Time</th>
+					<th>Expected Time</th>
+					<th>Destination Time</th>
+					<th>Flight n.</th>
+					<th>Gate</th>
+					<th>Remarks</th>
+					<th>Approve</th>
+				</table>
+			</div>
+		</div>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+	// clock
+	var clock = document.getElementById('clock');
+	setInterval(function(){
+		var today = new Date();
+		var hh = today.getHours();
+		var mm = today.getMinutes();
+		var sec = today.getSeconds();
+		clock.textContent = hh + ":" + ((mm < 10) ? '0' + mm : mm) + ":" + ((sec < 10) ? '0' + sec : sec);
+	},1000);
+
+	var firstTable = document.getElementById('firstTable');
+	for (var i = 0; i < 6; i++) {
+		var row = document.createElement('tr');
+		row.setAttribute('id', 'firstRow'+i);
+		row.setAttribute('class', 'firstRow');
+		for (var j = 0; j < 6; j++) {
+			var tile = document.createElement('td');
+			tile.setAttribute('class', 'tile');
+			tile.setAttribute('id', 'firstTile'+ (parseInt(i)*6 + parseInt(j)));
+			tile.textContent = '-';
+			row.appendChild(tile);
+		}
+		firstTable.appendChild(row);
+	}
+
+	var secondTable = document.getElementById('secondTable');
+	for (var i = 0; i < 6; i++) {
+		var row = document.createElement('tr');
+		row.setAttribute('id', 'secondRow'+i);
+		row.setAttribute('class', 'secondRow');
+		for (var j = 0; j < 7; j++) {
+			var tile = document.createElement('td');
+			tile.setAttribute('class', 'tile');
+			tile.setAttribute('id', 'secondTile'+ (parseInt(i)*6 + parseInt(j)));
+			row.appendChild(tile);
+		}
+		secondTable.appendChild(row);
+	}
+	var secondRows = document.getElementsByClassName('secondRow');
+	for (var i = 0; i < secondRows.length; i++) {
+		var children = secondRows[i].children;
+
+		var sTime = document.createElement('input');
+		sTime.setAttribute('type', 'text');
+		sTime.setAttribute('id', 'sTime' + i);
+		sTime.setAttribute('placeholder', '00:00');
+		children[0].appendChild(sTime);
+
+		var eTime = document.createElement('input');
+		eTime.setAttribute('type', 'text');
+		eTime.setAttribute('id', 'eTime' + i);
+		eTime.setAttribute('placeholder', '00:00');
+		children[1].appendChild(eTime);
+
+		var dest = document.createElement('input');
+		dest.setAttribute('type', 'text');
+		dest.setAttribute('id', 'dest' + i);
+		dest.setAttribute('placeholder', 'Los Angeles');
+		children[2].appendChild(dest);
+
+		var number = document.createElement('input');
+		number.setAttribute('type', 'text');
+		number.setAttribute('id', 'number' + i);
+		number.setAttribute('placeholder', 'AZ456');
+		children[3].appendChild(number);
+
+		var gate = document.createElement('input');
+		gate.setAttribute('type', 'text');
+		gate.setAttribute('id', 'gate' + i);
+		gate.setAttribute('placeholder', 'B23');
+		children[4].appendChild(gate);
+
+		var rem = document.createElement('input');
+		rem.setAttribute('type', 'text');
+		rem.setAttribute('id', 'rem' + i);
+		rem.setAttribute('placeholder', '-');
+		children[5].appendChild(rem);
+
+		// buttons
+		var btnContainer = document.createElement('div');
+		btnContainer.setAttribute('class', 'container');
+		var btn1 = document.createElement('button');
+		btn1.textContent = "Set";
+		btn1.setAttribute('id','Set' + i);
+		btn1.addEventListener('click', function(e){
+			var index = e.target.id.split('t');
+			var sTime = document.getElementById('sTime' + index[1]).value;
+			var eTime = document.getElementById('eTime' + index[1]).value;
+			var dest = document.getElementById('dest' + index[1]).value;
+			var number= document.getElementById('number' + index[1]).value;
+			var gate = document.getElementById('gate' + index[1]).value;
+			var rem = document.getElementById('rem' + index[1]).value;
+
+			var okay = true;
+			if (!(/^[0-2][0-4]:[0-2][0-4]/.test(sTime))) {
+				document.getElementById('sTime' + index[1]).style.borderColor = 'red';
+					document.getElementById('sTime' + index[1]).style.backgroundColor = 'red';
+					okay = false;
+			}
+			if (!(/^[0-2][0-4]:[0-2][0-4]/.test(eTime))) {
+				document.getElementById('eTime' + index[1]).style.borderColor = 'red';
+					document.getElementById('eTime' + index[1]).style.backgroundColor = 'red';
+					okay = false;
+			}
+			if (!(/^[A-Z]{2}[0-9]{3}/.test(number))) {
+				document.getElementById('number' + index[1]).style.borderColor = 'red';
+					document.getElementById('number' + index[1]).style.backgroundColor = 'red';
+					okay = false;
+			}
+			if (!(/^[A-Z][0-9]{2}/.test(gate))) {
+				document.getElementById('gate' + index[1]).style.borderColor = 'red';
+					document.getElementById('gate' + index[1]).style.backgroundColor = 'red';
+					okay = false;
+			}
+
+			if(okay){
+				var tiles = document.getElementById('firstRow' + index[1]).children;
+				tiles[0].textContent = sTime;
+				tiles[1].textContent = eTime;
+				tiles[2].textContent = dest;
+				tiles[3].textContent = number;
+				tiles[4].textContent = gate;
+				tiles[5].textContent = (rem == '') ? '-' : rem;
+			}
+
+		})
+		btnContainer.appendChild(btn1);
+
+
+		var btn2 = document.createElement('button');
+		btn2.textContent = "Takeoff";
+		btn2.setAttribute('id', 'Takeoff' + i);
+		btn2.addEventListener('click', function(e){
+			e.target.disabled = true;
+			var index = e.target.id.split('ff');
+			var counter = 0;
+			var lampeggio = setInterval(function(){
+				counter++;
+				if(counter == 11){
+					counter = 0;
+					clearInterval(lampeggio);
+					e.target.disabled = false;
+					var rows = document.getElementsByClassName('firstRow');
+					for (var i = index[1]; i < rows.length -1; i++) {
+						var children1 = rows[i].children;
+						var children2 = rows[parseInt(i)+1].children;
+						for (var j = 0; j < children1.length; j++) {
+							children1[j].textContent = children2[j].textContent;
+						}
+					}
+
+					var secondR = document.getElementsByClassName('secondRow');
+					for (var i = index[1]; i < secondR.length -1; i++) {
+						var children1 = secondR[i].children;
+						var children2 = secondR[parseInt(i)+1].children;
+						for (var j = 0; j < children1.length-1; j++) {
+							var child1 = children1[j].children;
+							var child2 = children2[j].children;
+							for (var k = 0; k < child1.length; k++) {
+								child1[k].value = child2[k].value;
+							}
+						}
+					}
+
+					var children = rows[5].children;
+					for (var i = 0; i < children.length; i++) {
+						children[i].textContent = '-';
+					}
+					var children = secondR[5].children;
+
+					for (var i = 0; i < children.length; i++) {
+						var child = children[i].children;
+						for (var j = 0; j < child.length; j++) {
+							child[j].value = '';
+						}
+					}
+				return;
+				}
+
+				var tiles = document.getElementById('firstRow' + index[1]).children;
+				for (var i = 0; i < tiles.length; i++) {
+					if(counter%2 == 0){
+						tiles[i].style.backgroundColor = 'white';
+					}else{
+						tiles[i].style.backgroundColor = 'red';
+					}
+				}
+			},500);
+		});
+
+		btnContainer.appendChild(btn2);
+
+
+		var btn3 = document.createElement('button');
+		btn3.textContent = "Cancel";
+		btn3.setAttribute('id', 'Cancel' + i);
+		btn3.addEventListener('click',function(e){
+			var index = e.target.id.split('l');
+			var rows = document.getElementsByClassName('firstRow');
+			for (var i = index[1]; i < rows.length -1; i++) {
+				var children1 = rows[i].children;
+				var children2 = rows[parseInt(i)+1].children;
+				for (var j = 0; j < children1.length; j++) {
+					children1[j].textContent = children2[j].textContent;
+				}
+			}
+
+			var secondR = document.getElementsByClassName('secondRow');
+			for (var i = index[1]; i < secondR.length -1; i++) {
+				var children1 = secondR[i].children;
+				var children2 = secondR[parseInt(i)+1].children;
+				for (var j = 0; j < children1.length-1; j++) {
+					var child1 = children1[j].children;
+					var child2 = children2[j].children;
+					for (var k = 0; k < child1.length; k++) {
+						child1[k].value = child2[k].value;
+					}
+				}
+			}
+
+			var children = rows[5].children;
+			for (var i = 0; i < children.length; i++) {
+				children[i].textContent = '-';
+			}
+			var children = secondR[5].children;
+
+			for (var i = 0; i < children.length; i++) {
+				var child = children[i].children;
+				for (var j = 0; j < child.length; j++) {
+					child[j].value = '';
+				}
+			}
+		})
+		btnContainer.appendChild(btn3);
+		children[6].appendChild(btnContainer);
+	}
+  </script>
+</html>

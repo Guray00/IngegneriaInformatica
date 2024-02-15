@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Esami</title>
+    <style>
+        body {
+            display: flex;
+        }
+        body>div {
+            margin: 1rem;
+            width: 33%;
+            height: 10cm;
+            padding: 1rem;
+        }
+        tr.evidenzia {
+            background-color: yellow;
+        }
+        #center>table {
+            border-collapse: collapse;
+            margin-top: 1cm;
+            border: 1px solid black;
+        }
+        #center td{
+            border: 1px solid black;
+            padding: 3px;
+        }
+        #sx{
+            background-color:orange;
+            float: left;
+            display: table;
+        }
+        .r {
+            display: table-row;
+        }
+
+        .r input, label, button{
+            display: table-cell;
+            padding: 3px;
+            height: 1.5rem;
+            margin: 3px;
+        }
+        #center {
+            background-color: lightskyblue;
+        }
+        #dx {
+            background-color: lightgreen;
+            float: right;
+        }
+    </style>
+    <script>
+        class Elemento {
+            constructor(nome, cognome, matricola, voto) {
+                this.nome = nome;
+                this.cognome = cognome;
+                this.matricola = matricola;
+                this.voto = voto;
+            }
+            getRiga(){
+                const tr = document.createElement('tr');
+                const tdNome = document.createElement('td');
+                const tdCognome = document.createElement('td');
+                const tdMatricola = document.createElement('td');
+                const tdVoto = document.createElement('td');
+                tdNome.innerText = this.nome;
+                tdCognome.innerText = this.cognome;
+                tdMatricola.innerText = this.matricola;
+                tdVoto.innerText = this.voto;
+                tr.appendChild(tdNome);
+                tr.appendChild(tdCognome);
+                tr.appendChild(tdMatricola);
+                tr.appendChild(tdVoto);
+                return tr;
+            }
+        }
+        const vet = [];
+
+        function ordina() {
+            const matOrdine = document.getElementById('matOrdine').checked;
+            if(matOrdine) {
+                console.log("Ordino per matricola");
+                vet.sort((a, b) => a.matricola - b.matricola);
+            } else {
+                console.log("Ordino per cognome");
+                vet.sort((a, b) => a.cognome.localeCompare(b.cognome));
+            }
+            const tabella = document.getElementById("tabella");
+            removeAllChildren(tabella);
+            for(let v of vet){
+                tabella.appendChild(v.getRiga());
+            }
+            evidenzia();
+        }
+
+        const d = document.createElement("dialog");
+
+        function inizializza(){
+            d.innerText = "Un elemento con tale numero di matricola esiste già";
+            document.body.appendChild(d);
+        }
+        function inserisci(){
+            const nome = document.getElementById("nome").value;
+            const cognome = document.getElementById("cognome").value;
+            const matricola = Number(document.getElementById("matricola").value);
+            const voto = document.getElementById("voto").value;
+            const elemento = new Elemento(nome, cognome, matricola, voto);
+            if(presente(matricola)){      
+                d.show();
+                setTimeout(() => d.close(), 3000);
+                return;
+            }
+            vet.push(elemento);
+            ordina();
+            generaIstogramma();
+            console.log("inserito");
+        }
+
+        function presente(m) {
+            for(let v of vet){
+                if(v.matricola === m) return true;
+            }
+            return false;
+        }
+        function removeAllChildren(element) {
+            while (element.firstChild) {
+                element.removeChild(element.firstChild);
+            }
+        }
+        function evidenzia(){
+            let max = vet[0].voto;
+            const tabella = document.getElementById("tabella");
+            const righe = tabella.getElementsByTagName('tr');
+            for(let v of vet){
+                if(v.voto > max)
+                    max = v.voto;
+            }
+            for(let i = 0; i < vet.length; i++){
+                if(vet[i].voto == max)
+                    righe[i].classList.add('evidenzia');
+                else
+                    righe[i].classList.remove('evidenzia');
+            }
+        }
+        function generaIstogramma(){
+            let occ = []
+            for(let e of vet) {
+                occ[e.voto] = (occ[e.voto] || 0) + 1;
+            }
+            console.log(occ);
+            const isto = document.getElementById("isto");
+            removeAllChildren(isto);
+            let insuff = 0;
+            for(let i = 0; i<18; i++) {
+                insuff += occ[i] || 0;
+            }
+            const tr = document.createElement('tr');
+            const td1 = document.createElement('td');
+            const td2 = document.createElement('td');
+            td1.innerText = "Insuff.";
+            const div = document.createElement('div');
+            div.style.width = insuff * 10 + "px";
+            div.style.height = "10px";
+            div.style.backgroundColor = "blue";
+            td2.appendChild(div);
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            isto.appendChild(tr);
+            for(let i = 18; i <= 30; i++){
+                const tr = document.createElement('tr');
+                const td1 = document.createElement('td');
+                const td2 = document.createElement('td');
+                td1.innerText = i;
+                const div = document.createElement('div');
+                div.style.width = (occ[i] ? occ[i] * 10 : 0) + "px";
+                div.style.height = "10px";
+                div.style.backgroundColor = "blue";
+                td2.appendChild(div);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                isto.appendChild(tr);
+            }
+        }
+    </script>
+    </head>
+<body onload="inizializza()">
+<div id="sx">
+    <div class="r">
+        <label for="nome">Nome</label><input type="text" id="nome" placeholder="Nome">
+    </div>
+    <div class="r">
+        <label for="cognome">Cognome</label><input type="text" id="cognome" placeholder="Cognome">
+    </div>
+    <div class="r">
+        <label for="matricola">Matricola</label><input type="text" id="matricola" placeholder="Matricola">
+    </div>
+    <div class="r">
+        <label for="voto">Voto</label><input type="number" id="voto" placeholder="Voto">
+    </div>
+    <div class="r">
+    <button id="inserisci" onclick="inserisci()">Inserisci</button>
+    </div>
+</div>
+<div id="center">
+    <input type="radio" id="matOrdine" name="criterio" value="matricola" onclick="ordina()" checked>Matricola<br>
+    <input type="radio" id="cogOrdine" name="criterio" value="cognome" onclick="ordina()">Cognome<br>
+    <table id="tabella">
+    </table>
+</div>
+<div id="dx">
+    <table id="isto">
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>GANTT</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body {
+            display: flex;
+        }
+
+        #formdiv {
+            background-color: lightgray;
+            padding: 1em;
+            margin: 1em;
+            width: fit-content;
+            height: fit-content;
+        }
+
+        #gantt {
+            flex: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 1em;
+        }
+
+        td {
+            width: 5%;
+            height: 5%;
+            border: 1px black dashed;
+            font-weight: bolder;
+            text-align: right;
+            padding: 0.5em;
+        }
+
+        td:first-child {
+            border: 1px black solid;
+            background-color: lightblue;
+        }
+
+        th {
+            font-weight: bold;
+            background-color: beige;
+            padding: 1em;
+        }
+
+        dialog {         
+            width: fit-content;
+            height: fit-content;
+            background-color: darksalmon;
+            padding: 1em;
+            font-weight: bold;
+            border: 2px black solid;
+            border-radius: 20px;
+            position: absolute;
+            top: 10%;
+            left: 30%;
+        }
+
+        .pieno {
+            background-color: aquamarine;
+        }
+
+        input,
+        textarea {
+            display: block;
+            margin-bottom: 1em;
+        }
+    </style>
+    <script>
+        'use strict';
+        /*
+         * Classe che rappresenta un'attività o una sotto-attività
+         */
+        class Task {
+            // Crea un elemento 
+            constructor(identificatore, descrizione, inizio, fine) {
+                this.identificatore = identificatore;
+                this.descrizione = descrizione;
+                this.inizio = inizio;
+                this.fine = fine;
+            }
+
+            // Restituisce una riga che contiene
+            // - l'identificatore
+            // - tanti elementi quanti sono i mesi
+            toRow() {
+                const d = document.createElement("tr");
+                const t = document.createElement("td");
+                t.textContent = this.identificatore;
+                d.appendChild(t);
+                for (let i = 1; i <= 12; i++) {
+                    const f = document.createElement("td");
+                    if (i >= this.inizio && i <= this.fine) {
+                        f.classList.add("pieno");
+                        f.addEventListener("click", () => {
+                            const dial = document.getElementById("dia");
+                            const par = document.getElementById("testo");
+                            par.textContent = this.descrizione + ", mese " + i;
+                            dial.show();
+                        });
+                    }
+                    d.append(f);
+                }
+                return d;
+            }
+        }
+
+        /*
+         * Resituisce l'attività o la sotto-attività con identificatore e
+         */
+        function cerca(e) {
+            return contenitore.find(x => x.identificatore === e);
+        }
+
+        /*
+         * Aggiunge un'attività o una sotto-attività
+         */
+        function aggiungi(e) {
+            const at = e.identificatore;
+            if(cerca(at)){                    
+                    alert("Attività o sotto-attività già presente");
+                    return false;
+            }
+            const sep = at.split('.');
+            if (sep.length === 2) {
+                // E' una sotto-attività
+                const madre = sep[0];
+                const p = cerca(madre);
+                if (p === undefined) {
+                    alert("Attività madre non esistente");
+                    return false;
+                }
+
+                if (e.inizio < p.inizio || e.fine > p.fine) {
+                    alert("Inizio o fine non compatibili con attività madre");
+                    return false;
+                }
+            }
+            contenitore.push(e);
+            contenitore.sort((a, b) => a.identificatore - b.identificatore);
+            return true;
+        }
+
+        /*
+         * Crea una tabella secondo le attività e le sotto-attività presenti
+         */
+        function ottieniGantt() {
+            const g = document.createElement("table");
+            const r = document.createElement("tr");
+            r.appendChild(document.createElement("th"));
+            g.append(r);
+            for (let i = 1; i <= 12; i++) {
+                const h = document.createElement("th");
+                h.textContent = i;
+                r.appendChild(h);
+            }
+            for (let e of contenitore)
+                g.appendChild(e.toRow());
+            return g;
+        }
+
+
+        /*
+         * Elemento radice della struttura ad albero
+         */
+        const contenitore = [];
+
+        /*
+         * Verifica che l'identificatore abbia il formato previsto
+         */
+        function verificaIdentificatore(i) {
+            const r = /^(\d|\d\.\d)$/;
+            return r.test(i);
+        }
+
+        /*
+         * Inserisce un nuovo elemento
+         */
+        function inserisci() {
+            // Recupera i dati
+            const identificatore = document.getElementById("identificatore").value;
+            const descrizione = document.getElementById("descrizione").value;
+            let inizio = document.getElementById("inizio").value;
+            let fine = document.getElementById("fine").value;
+
+
+            // Svuota i campi
+            document.getElementById("identificatore").value = "";
+            document.getElementById("descrizione").value = "";
+            document.getElementById("inizio").value = "";
+            document.getElementById("fine").value = "";
+
+            // Controlla identificatore
+            if (identificatore === "" || !verificaIdentificatore(identificatore)) {
+                alert("Identificatore non valido");
+                return;
+            }         
+
+            // Controlla la descrizione
+            if (descrizione === "") {
+                alert("Descrizione non valida");
+                return;
+            }
+
+            // Controlla inizio e fine
+            inizio = Number(inizio);
+            fine = Number(fine);
+            if (fine < inizio) {
+                alert("Inizio non può essere dopo fine");
+                return;
+            }
+
+            // Crea una attività o sotto-attività
+            const e = new Task(identificatore, descrizione, inizio, fine);
+            if (aggiungi(e)) {
+                let a = document.getElementById("gantt");
+                if (a.firstChild)
+                    a.removeChild(a.firstChild);
+                a.appendChild(ottieniGantt());
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <dialog id="dia">
+        <p id=testo ></p>
+        <form method="dialog">
+          <button>Chiudi</button>
+        </form>
+      </dialog>
+    <div id="formdiv">
+        <label for="padre">Identificatore</label> <input type="text" id="identificatore">
+        <label for="descrizione">Descrizione</label><input type="text" id="descrizione">
+        <label for="inizio">Inizio</label><input type="number" min=1 max=12 id="inizio">
+        <label for="fine">Fine</label><input type="number" min=1 max=12 id="fine">
+
+        <button onclick="inserisci()">Inserisci</button>
+    </div>
+    <div id="gantt"></div>
+</body>
+
+</html>

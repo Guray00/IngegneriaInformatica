@@ -1,0 +1,256 @@
+<html>
+    <head>
+        <title>2023-09-14</title>
+        <meta charset="utf-8">
+        <style>
+        body {
+            background-color: orange;
+			font-weight: bold;
+            padding: 2em;
+        }
+        #tabella {
+            width: fit-content;
+            height: fit-content;
+            border: 3px solid black;
+        }
+        button {
+				padding: 0.5em;
+				font-weight: bold;
+                font-size: 1.2rem;
+                margin: 2rem 1rem 0 0;
+		}
+        p {
+            color: white;
+            font-size: 1.5em;
+        }
+        .casella {
+           background-color: white;
+           width: 3rem;
+           height: 3rem;
+           text-align: center;				
+           font-weight: bold;
+           font-size: 2rem;
+        }
+        .casella.top {
+           background-color: lightgreen;
+        }
+        </style>
+
+        <script>
+
+        // Al prossimo scattare del timer deve essere generata una nuova cifra
+        let nuovaCifra = true;
+        // Numero di colonne della tabella
+        const NUM_COL = 5;
+        // Numero di righe della tabella
+        const NUM_RIG = 5;
+        // Intervallo
+        const INTERVALLO = 500;
+        // Numero di volte che la lettera si è già spostata sulla riga iniziale
+        let numMuoviTop = 0;
+        // Posizione corrente della lettera
+        let posTop;
+        // La cifra che si sposta
+        let cifra;
+        // Cella vuota
+        const VUOTO = "";
+        // Direzione sx o dx
+        let direzione = 0;
+        // ID del timer
+        let timerid;
+        // Punti fatti
+        let punti = 0;
+
+
+        // Funzione eseguita al caricamento
+        function costruisci() {
+            // Crea la tabella
+            generaTabella();
+            // Inizializzazione
+            inizializza();
+        }
+
+        // Crea una tabella vuota
+        function generaTabella() {
+            const tabella = document.getElementById("tabella");
+
+            // Prima riga
+            const row = document.createElement("div"); 
+            tabella.appendChild(row);
+            for(let j=0; j<NUM_COL; j++) {
+               const casella = document.createElement("input");
+			    casella.setAttribute("class", "casella top");
+			    casella.setAttribute("readonly", "readonly");
+				casella.id = "top-" + j;
+				row.appendChild(casella);
+            }
+
+            // Le altre righe
+            for (let i = 0; i < NUM_RIG; i++) {
+				const row = document.createElement("div"); // una riga
+                tabella.appendChild(row);
+                for(let j=0; j<NUM_COL; j++) {
+                    const casella = document.createElement("input");
+				    casella.setAttribute("class", "casella");
+				    casella.setAttribute("readonly", "readonly");
+					casella.id = "casella-" + i + "-" + j;
+					row.appendChild(casella);
+                }
+            }
+        }
+
+        // Imposta i listener
+        function inizializza() {
+            // Setta listener per bottone di avvio
+            const startButton = document.getElementById("start");
+            startButton.addEventListener("click", start);
+            // Setta listener per tastiera
+            document.addEventListener('keydown', (event) => {
+                giu();
+                }, false);
+        }
+
+        // Il gioco ha inizio
+        function start(){
+            // Per partite successive alla prima...
+            if(punti > 0) {
+                // ... esegue alcune operazioni di inizializzazione
+                punti = 0;
+                const e = document.getElementById("messaggio");
+                e.innerText = "";
+                for (let i = 0; i < NUM_RIG; i++) {
+                    for(let j=0; j<NUM_COL; j++) {
+					    let id = "casella-" + i + "-" + j;
+                        document.getElementById(id).value = VUOTO
+                    }
+                }
+            }
+            // Aggiorna lo stato dei bottoni
+			updateButtonStatus();
+            // Avvia un timer con periodo pari a INTERVALLO
+            timerid = setInterval(aggiorna, INTERVALLO);
+		}
+
+        // Chiamata ogni INTERVALLO ms
+        function aggiorna(){
+            if(nuovaCifra){
+                // Bisogna generare una nuova lettera X
+                punti++;
+                nuovaCifra = false;
+                // Sceglie una colonna a caso
+                posTop = colonnaCasuale();
+                // Genera una cifra a caso
+                cifra = Math.floor(Math.random()*10);
+                // Sceglie una direzione a caso
+                direzione = posTop === 0 ? +1 : -1;
+                // Immette la lettera nella riga top
+                let e = document.getElementById("top-"+posTop);
+                e.value = cifra;
+                // Contatore del numero di spostamenti
+                numMuoviTop = 0;
+            } else {
+                muovi();
+            }
+        }
+
+        // Restituisce l'indice di una colonna a caso
+        function colonnaCasuale() {
+            return Math.random() < 0.5 ? 0 : NUM_COL-1;
+        }
+
+        // Muove la lettera di una posizione a sx o dx
+        // Se ha terminato un giro la manda giù
+        function muovi() {
+            // Svuoto la casella top in cui la lettera si trova
+            let e = document.getElementById("top-"+posTop);
+            e.value = VUOTO;
+            // Aggiorno la posizione
+            posTop = posTop + direzione;
+            // Metto la cifra nella casella
+            let e2 = document.getElementById("top-"+posTop);
+            e2.value = cifra;
+            // Aggiorno il contatore degli spostamenti
+            numMuoviTop++;
+            // Se un giro è terminato...
+            if(numMuoviTop == NUM_COL-1){
+                // ... mando giù la lettera
+                giu();
+            }
+        }
+
+        // La lettera viene mandata giù quando è terminato un giro oppure
+        // se il giocatore preme un tasto qualunque
+        function giu() {
+            // Controllo se una nuova lettera è stata generata
+            // In caso negativo non faccio niente
+            if(nuovaCifra)
+                return;   
+            nuovaCifra = true;
+            // Svuoto la casella top in cui la lettera si trova
+            let e = document.getElementById("top-"+posTop);
+            e.value = VUOTO;
+            // Cerco la prima riga casella nella colonna corrente
+            let r = trovaRiga(posTop);
+            if(r !== NUM_RIG-1) {
+                let ee = document.getElementById("casella-"+ (r+1) +"-"+posTop);
+                if (ee.value == cifra){
+                    ee.value = VUOTO;
+                    return;
+                } 
+            }
+            // La colonna è piena... 
+            if(r === -1) {
+                // ... e il gioco finisce
+                fine();
+                return;
+            }
+            // Metto la lettera più in basso possibile
+            let e2 = document.getElementById("casella-"+r+"-"+posTop);
+            e2.value = cifra;
+        }
+
+        // Il gioco è terminato
+        function fine() {
+            // Arresto il timer
+            clearInterval(timerid);
+            // Mostro un messaggio con i punti fatti
+            mostraPunti();
+        }
+
+        // Mostra i punti fatti
+        function mostraPunti(){
+            const e = document.getElementById("messaggio");
+            e.innerText = "Hai fatto " + (punti - 1) + " punti";
+            updateButtonStatus();
+        }
+
+        // Cerca la prima casella libera partendo dal fondo
+        // relativamente alla colonna col
+        // Se la colonna è tutta piena restituisce -1
+        function trovaRiga(col) {
+            for(let i=NUM_RIG-1; i>=0; i--) {
+                let c = document.getElementById("casella-" + i + "-" + col).value;
+                if(c == VUOTO)
+                    return i;
+            }        
+            return -1;
+        }
+
+        // Aggiorna lo stato del bottone di avvio
+        function updateButtonStatus(){
+            const startButton = document.getElementById("start");
+            startButton.disabled = !startButton.disabled;
+        }
+
+        </script>
+    </head>
+
+    <body onload="costruisci()">
+        <div id="tabella">
+        </div>
+        <div id="keypad">
+              <button id="start" type="button">Avvia</button>
+        </div>
+        <p id="messaggio"></p> 
+    </body>
+</html>

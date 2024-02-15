@@ -1,0 +1,188 @@
+<!-- PROPOSTA DEL MAINTAINER GABRIELE FRASSI -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Slot Machine</title>
+        <style>
+            .cella_slot {
+                width:50px;
+                height:50px;
+                margin-bottom:10px;
+                text-align:center;
+                font-size:19px;
+                font-weight:bolder;
+            }
+            .red {
+                background-color: red;
+                color:white;
+            }
+            button {
+                padding:5px;
+            }
+            .colonna {
+                float:left;
+                text-align:center;
+            } 
+            #colonna_1, #colonna_2, #colonna_3 {
+                width:50px;
+                margin-right:20px;
+            }
+            label {
+                font-weight: bolder;
+                display: block;
+            }
+        </style>
+    </head>
+    <body onload="begin()">
+        <h1>Slot Machine</h1>
+        <div class="colonna" id="colonna_1">
+
+        </div>
+        <div class="colonna" id="colonna_2">
+
+        </div>
+        <div class="colonna" id="colonna_3">
+
+        </div>
+        <div class="colonna">
+            <label>Puntata</label>
+            <input type="text" id="puntata" style="text-align:right;"><br><br>
+            <button onclick="avvia(this)" id="avvio_gioco">Avvia</button>
+        </div>
+        <script>
+        var CELLE = new Array();
+        var VELOCITA = [200, 300, 900, 1000];
+        var PUNTATA = null; 
+
+        var ROTAZIONE_COLONNA = {};
+        ROTAZIONE_COLONNA[1] = null;
+        ROTAZIONE_COLONNA[2] = null;
+        ROTAZIONE_COLONNA[3] = null;
+
+        var BOTTONI_FERMA = {};
+        BOTTONI_FERMA[1] = null;
+        BOTTONI_FERMA[2] = null;
+        BOTTONI_FERMA[3] = null;
+
+        var COLONNE_FERMATE = 0; 
+        var FINESTRA = null;
+
+        function begin() {
+            var colonne = new Array();
+            colonne[0] = document.getElementById('colonna_1');
+            colonne[1] = document.getElementById('colonna_2');
+            colonne[2] = document.getElementById('colonna_3');
+
+            for(var i = 0; i < colonne.length; i++) {
+                CELLE[i] = new Array();
+                var lettera_num = 65;
+                for(var l = 0; l < 3; l++) {
+                    CELLE[i][l] = document.createElement('input');
+                    CELLE[i][l].classList.add('cella_slot');
+                    CELLE[i][l].readOnly = true;
+                    CELLE[i][l].value = String.fromCharCode(lettera_num++);
+                    colonne[i].appendChild(CELLE[i][l]);
+                }
+
+                BOTTONI_FERMA[i+1] = document.createElement('button');
+                BOTTONI_FERMA[i+1].textContent = 'Ferma';
+                BOTTONI_FERMA[i+1].disabled = true;
+                colonne[i].appendChild(BOTTONI_FERMA[i+1]);
+                BOTTONI_FERMA[i+1].onclick = new Function("ferma(" + (i + 1) + ")");
+            }
+        }
+
+        function avvia(button) {
+            var puntata = document.getElementById('puntata');
+            if(puntata.value.trim() == '' || isNaN(puntata.value) || !(puntata.value > 0 && puntata.value <= 100)) {
+                alert("La puntata indicata non è corretta, si prega di riprovare.");
+                return;
+            }
+
+            button.disabled = true;
+
+            var puntata = document.getElementById('puntata');
+            puntata.disabled = true;
+            PUNTATA = puntata.value;
+
+            var random = {};
+            random[1] = VELOCITA[Math.floor(Math.random()*VELOCITA.length)];
+            random[2] = VELOCITA[Math.floor(Math.random()*VELOCITA.length)];
+            random[3] = VELOCITA[Math.floor(Math.random()*VELOCITA.length)];
+
+            for(el in BOTTONI_FERMA) 
+                BOTTONI_FERMA[el].disabled = false;
+
+            for(var i = 1; i <= 3; i++)
+                ROTAZIONE_COLONNA[i] = setInterval(rotazione, random[i], i);
+        }
+
+        function rotazione(colonna) {
+            var celle = CELLE[colonna-1];
+            
+            for(var i = 0; i < celle.length; i++) {
+                var num_lettera = celle[i].value.charCodeAt(0);
+                if(num_lettera == 90) // Per ricominciare da A dopo essere arrivati alla Z 
+                    num_lettera = 64; // 64 perche' dopo incremento
+
+                celle[i].value = String.fromCharCode(++num_lettera);
+            }
+        }
+
+        function ferma(colonna) {
+            if(!(colonna >= 1 && colonna <= 3)) {
+                alert("Qualcosa è andato storto");
+                return;
+            } 
+
+            BOTTONI_FERMA[colonna].disabled = true;
+            clearInterval(ROTAZIONE_COLONNA[colonna]);
+
+            CELLE[colonna-1][1].classList.add('red');
+            COLONNE_FERMATE++;
+            
+            if(COLONNE_FERMATE == 3)
+                fine_partita();
+        }
+
+        function fine_partita() {
+            var cella_1 = CELLE[0][1].value;
+            var cella_2 = CELLE[1][1].value;
+            var cella_3 = CELLE[2][1].value;
+
+            var MESSAGGIO;
+            if(cella_1 == cella_2 && cella_2 == cella_3)
+                MESSAGGIO = 'Hai vinto ' + (PUNTATA*10);
+            else 
+                MESSAGGIO = 'Hai perso';
+
+            FINESTRA = window.open('', '', 'width=300px,height=200px');
+            FINESTRA.document.write('<!DOCTYPE HTML><html><head><title>Fine</title></head><body><h1>' + MESSAGGIO + '</h1></body></html>')
+            setTimeout(new Function("FINESTRA.close(); reset_gioco();"), 5000);
+        }
+
+        function reset_gioco() {
+            ROTAZIONE_COLONNA[1] = null;
+            ROTAZIONE_COLONNA[2] = null;
+            ROTAZIONE_COLONNA[3] = null;
+
+            COLONNE_FERMATE = 0; 
+            FINESTRA = null;
+
+            for(var i = 0; i < CELLE.length; i++) {
+                CELLE[i][1].classList.remove('red');
+                var lettera_num = 65;
+                for(var l = 0; l < 3; l++) 
+                    CELLE[i][l].value = String.fromCharCode(lettera_num++);
+            }
+
+            var input_puntata = document.getElementById('puntata');
+            puntata.disabled = false;
+            puntata.value = ''; 
+
+            var bottone_avvio = document.getElementById('avvio_gioco');
+            bottone_avvio.disabled = false;
+        }
+        </script>
+    </body>
+</html>

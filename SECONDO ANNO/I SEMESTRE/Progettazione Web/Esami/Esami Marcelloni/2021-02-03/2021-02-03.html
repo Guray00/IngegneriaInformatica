@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+		.container{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.columnContainer{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+		}
+		.tile{
+			width: 50px;
+			height: 50px;
+			margin: 5px;
+			box-shadow: -1px -1px 3px grey inset,
+              		1px 1px 2px  black inset;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 50px;
+			font-size: 2em;
+			background-color: white;
+		}
+		#leftContainer{
+			margin-right: 50px;
+		}
+		#rightContainer{
+			align-self: flex-start;
+		}
+		#mainContainer{
+			background-color: lightgrey;
+			padding: 20px;
+			margin-left: auto;
+			margin-right: auto;
+			width: 70%;
+		}
+    </style>
+	</head>
+
+	<body>
+		<div class="columnContainer" id="mainContainer">
+			<h2>Slot Machine</h2>
+			<div class="container">
+				<div class="container" id="leftContainer"></div>
+				<div class="columnContainer" id="rightContainer">
+					<h3>Puntata</h3>
+					<input type="number" name="" value="" id="puntata">
+					<button type="button" name="button" id="avvia">Avvia</button>
+				</div>
+			</div>
+		</div>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+	function createField(){
+		var container = document.getElementById('leftContainer');
+		for (var i = 0; i < 3; i++) {
+			var column = document.createElement('div');
+			column.setAttribute('class', 'columnContainer');
+			column.setAttribute('id', 'col'+i);
+			for (var j = 0; j < 3; j++) {
+				var tile = document.createElement('div');
+				tile.setAttribute('class', 'tile');
+				tile.setAttribute('id', 'col'+i+j);
+				tile.textContent = String.fromCharCode((65 + parseInt(j)));
+				column.appendChild(tile);
+			}
+			var btn = document.createElement('button');
+			btn.setAttribute('id', i);
+			btn.setAttribute('class', 'btn');
+			btn.textContent = 'Ferma';
+			btn.disabled = true;
+			btn.addEventListener('click', function(e){
+				if (e.target.id == 0) {
+					clearInterval(firstI);
+				}else if (e.target.id == 1) {
+					clearInterval(secondI);
+				}else{
+					clearInterval(thirdI);
+				}
+				var winTile = document.getElementById('col' +e.target.id + '1');
+				win.push(winTile.textContent);
+				winTile.style.backgroundColor = 'red';
+				e.target.disabled = true;
+
+				// handle end of game
+				counter++;
+				if(counter == 3){
+					var winWindow = window.open('','','width=200,height=100');
+					var text = '';
+					if (win[0] == win[1] && win[0]==win[2]) {
+						text = 'Hai vinto ' + parseInt(bet)*10;
+					}else {
+
+						text = 'Hai perso';
+					}
+					winWindow.document.write(text);
+					setTimeout(function () {
+						winWindow.close();
+						var container = document.getElementById('leftContainer').children;
+						for (var i = container.length-1; i >=0 ; i--) {
+							container[i].remove();
+						}
+						avvia.disabled = false;
+						counter = 0;
+						win = [];
+						document.getElementById('puntata').value = '';
+						createField();
+					 }, 5000);
+				}
+			});
+			column.appendChild(btn);
+
+			container.appendChild(column);
+		}
+	}
+	createField();
+	var win = [];
+	var firstI;
+	var counter = 0;
+	var secondI;
+	var thirdI;
+	var bet;
+	var avvia = document.getElementById('avvia');
+	avvia.addEventListener('click', function(){
+		var btns = document.getElementsByClassName('btn');
+		for (var i = 0; i < btns.length; i++) {
+			btns[i].disabled = false;
+		}
+		bet = document.getElementById('puntata').value;
+		if (bet > 100 || bet == '') {
+			alert('inserire una puntata valida (<= 100)');
+			return;
+		}
+
+		avvia.disabled = true;
+	 	var firstRot = (Math.floor(Math.random() * 10 + 1))*100;
+		var secondRot = (Math.floor(Math.random() * 10 + 1))*100;
+ 		var thirdRot = (Math.floor(Math.random() * 10 + 1))*100;
+		// rotation
+		firstI = setInterval(function(){
+			var tiles = document.getElementById('col0').children;
+			for (var i = 0; i < 3; i++) {
+				tiles[i].textContent = String.fromCharCode(parseInt(tiles[i].textContent.charCodeAt()) + 1);
+				if (tiles[i].textContent == '[') {
+					tiles[i].textContent = 'A';
+				}
+			}
+		},firstRot);
+
+		secondI = setInterval(function(){
+			var tiles = document.getElementById('col1').children;
+			for (var i = 0; i < 3; i++) {
+				tiles[i].textContent = String.fromCharCode(parseInt(tiles[i].textContent.charCodeAt()) + 1);
+				if (tiles[i].textContent == '[') {
+					tiles[i].textContent = 'A';
+				}
+			}
+		},secondRot);
+
+		thirdI = setInterval(function(){
+			var tiles = document.getElementById('col2').children;
+			for (var i = 0; i < 3; i++) {
+				tiles[i].textContent = String.fromCharCode(parseInt(tiles[i].textContent.charCodeAt()) + 1);
+				if (tiles[i].textContent == '[') {
+					tiles[i].textContent = 'A';
+				}
+			}
+		},thirdRot);
+	});
+  </script>
+</html>

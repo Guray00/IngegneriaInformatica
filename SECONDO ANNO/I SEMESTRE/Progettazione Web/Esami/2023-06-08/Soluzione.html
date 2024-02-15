@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Appuntamenti</title>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        body>div {
+            height: 20rem;
+            padding: 1rem;
+        }
+
+        #sx {
+            width: 50%;
+            background-color: lightblue;
+            display: table;
+            box-sizing: border-box;
+        }
+
+        #giu {
+            width: 100%;
+            background-color: lightyellow;
+        }
+
+        #dx {
+            width: 50%;
+            background-color: lightpink;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+
+        #dx>table {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        #dx td,th {
+            border: 1px solid black;
+            padding: 3px;
+        }
+
+        #andamento td{
+            vertical-align: bottom;
+            text-align: center;
+        }
+
+        .r {
+            display: table-row;
+        }
+
+        .barra {
+            width: 50px;
+        }
+        .barra.casa {
+            background-color: blue;
+        }
+        .barra.trasporto {
+            background-color: red;
+        }
+        .barra.alimentari {
+            background-color: green;
+        }
+
+        .r input,
+        label,
+        button,
+        select {
+            display: table-cell;
+            padding: 3px;
+            height: 1.5rem;
+            margin: 3px;
+        }
+
+        input:invalid {
+            border-color: rgba(255, 0, 0, 0.798);
+        }
+    </style>
+    <script>
+        // Tipologie di spesa
+        const tipologie = ["casa", "trasporto", "alimentari"];
+
+        // Array contenente le spese
+        const spe = [];
+
+        // Rappresenta una spesa
+        class Spesa {
+            constructor(desc, amm, mes, tip) {
+                this.descrizione = desc;
+                this.ammontare = amm;
+                this.mese = mes;
+                this.tipologia = tip;
+            }
+            // Restituisce una riga della tabella
+            getRiga() {
+                const tr = document.createElement('tr');
+                const tdDesc = document.createElement('td');
+                const tdAmm = document.createElement('td');
+                const tdMes = document.createElement('td');
+                const tdTip = document.createElement('td');
+                tdDesc.innerText = this.descrizione;
+                tdAmm.innerText = this.ammontare;
+                tdMes.innerText = this.mese;
+                tdTip.innerText = this.tipologia;
+                tr.appendChild(tdDesc);
+                tr.appendChild(tdAmm);
+                tr.appendChild(tdMes);
+                tr.appendChild(tdTip);
+                return tr;
+            }
+        }
+
+        // Inserisce una nuova spesa
+        function inserisci() {
+            if (!document.getElementById("descrizione").checkValidity() ||
+                !document.getElementById("tipologia").checkValidity() || 
+                !document.getElementById("mese").checkValidity()||
+                !document.getElementById("ammontare").checkValidity()) 
+                return;
+            const d = document.getElementById("descrizione").value;
+            const a = Number(document.getElementById("ammontare").value);
+            const m = Number(document.getElementById("mese").value);
+            const t = document.getElementById("tipologia").value;
+            const elemento = new Spesa(d, a, m, t);
+
+            // Inserisce l'elemento nel vettore
+            spe.push(elemento);
+
+            // Crea la tabella
+            const tabella = document.getElementById("tabella");
+            tabella.appendChild(elemento.getRiga());
+
+            // Genera l'andamento delle spese
+            generaAndamento();
+        }
+
+        function removeAllChildren(element) {
+            while (element.firstChild) {
+                element.removeChild(element.firstChild);
+            }
+        }
+
+        // Restituisce un oggetto che contiene quanto speso per le diverse
+        // tipologie nel mese m
+        function spesePerTipologia(m) {
+            let r = {};
+            for(let t of tipologie){
+                r[t] = 0;
+                for(let s of spe) {
+                    if(s.tipologia === t && s.mese === m) {
+                        r[t] += Number(s.ammontare);
+                    }
+                }
+            }
+            console.log("Spese mese " + m + ": " + JSON.stringify(r));
+            return r;
+        }
+
+        // Genera l'istogramma con l'andamento delle spese
+        // Deve essere normalizzato per il valore massimo
+        // speso in un mese
+        function generaAndamento() {
+
+            // Calcola la spesa mensile massima
+            let max = 0;
+            let totali = Array(12);
+            totali.fill(0);
+            for(let s of spe) {
+                totali[s.mese] += s.ammontare;
+            }
+            for(let t of totali)
+                if(t > max)
+                    max = t;
+            console.log("Spesa massima mensile: " + max);
+
+            // Svuota la tabella
+            const anda = document.getElementById("andamento");
+            removeAllChildren(anda);
+
+            // Crea due righe
+            const tr1 = document.createElement('tr');
+            const tr2 = document.createElement('tr');
+            anda.appendChild(tr1);
+            anda.appendChild(tr2);
+
+            // La prima casella della prima riga contiene il massimo
+            let mtd = document.createElement('td');
+            mtd.innerText = String(max);
+            mtd.style.verticalAlign = "top";
+            tr1.appendChild(mtd);
+            // La prima casella della seconda riga è vuota
+            tr2.appendChild(document.createElement('td'));
+
+            // Genera la tabella
+            for(let m = 1; m<=12; m++){
+                let spese = spesePerTipologia(m);
+                const td1 = document.createElement('td');
+                tr1.appendChild(td1);
+                
+                for(let tip of tipologie) {
+                    let s1 = document.createElement('div');
+                    s1.classList.add("barra");
+                    s1.classList.add(tip);
+                    s1.style.height = spese[tip] * 250 / max + "px";
+                    td1.appendChild(s1);
+                }
+
+                const td2 = document.createElement('td'); 
+                td2.innerText = String(m);
+                tr2.appendChild(td2);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="sx">
+        <div class="r">
+            <label for="descrizione">Descrizione</label><input type="text" id="descrizione" placeholder="Acquisto TV" pattern="[A-z a-z]+"
+                required>
+        </div>
+        <div class="r">
+            <label for="ammontare">Ammontare</label><input type="number" id="ammontare" placeholder="500"
+                min="1" required>
+        </div>
+        <div class="r">
+            <label for="mese">Mese</label>
+            <select name="mese" id="mese">
+                <option value="1">Gennaio</option>
+                <option value="2">Febbraio</option>
+                <option value="3">Marzo</option>
+                <option value="4">Aprile</option>
+                <option value="5">Maggio</option>
+                <option value="6">Giugno</option>
+                <option value="7">Luglio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Settembre</option>
+                <option value="10">Ottobre</option>
+                <option value="11">Novembre</option>
+                <option value="12">Dicembre</option>
+            </select>
+        </div>
+        <div class="r">
+            <label for="tipologia">Tipologia</label>
+            <select name="tipologia" id="tipologia">
+                <option value="casa">Casa</option>
+                <option value="trasporto">Trasporto</option>
+                <option value="alimentari">Alimentari</option>
+            </select>
+        </div>
+        <div class="r">
+            <button id="inserisci" onclick="inserisci()">Inserisci</button>
+        </div>
+    </div>
+    <div id="dx">
+        <table id="tabella">
+            <tr><th>Descrizione</th><th>Ammontare</th><th>Mese</th><th>Tipologia</th></tr>
+        </table>
+    </div>
+    <div id="giu">
+        <table id="andamento">
+        </table>
+    </div>
+</body>
+
+</html>

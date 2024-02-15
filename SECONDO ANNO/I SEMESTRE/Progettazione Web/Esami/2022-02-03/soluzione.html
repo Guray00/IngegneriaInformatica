@@ -1,4 +1,4 @@
-<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<html>
     <head>
         <title>Lettere</title>
         <meta charset="utf-8">
@@ -106,7 +106,6 @@
             startButton.addEventListener("click", start);
             // Setta listener per tastiera
             document.addEventListener('keydown', (event) => {
-                const keyName = event.key;
                 giu();
                 }, false);
         }
@@ -169,6 +168,13 @@
             let e = document.getElementById("top-"+posTop);
             e.value = VUOTO;
             // Calcolo la nuova posizione a seconda della direzione
+            // The remainder operator (%) returns the remainder left over 
+            // when one operand is divided by a second operand. It always takes 
+            // the sign of the dividend.
+            // When both operands are non-zero and finite, the remainder r is 
+            // calculated as r := n - d * q where q is the integer such that r has 
+            // the same sign as the dividend n while being as close to 0 as possible.
+            // To obtain a modulo in JavaScript, in place of n % d, use ((n % d) + d) % d.
             posTop = (((posTop + direzione) % NUM_COL) + NUM_COL) % NUM_COL;
             // Metto la lettera X nella casella
             let e2 = document.getElementById("top-"+posTop);
@@ -240,15 +246,7 @@
         }
 
         </script>
-    
-<!--[if gte mso 9]><xml>
-<mso:CustomDocumentProperties>
-<mso:MediaServiceImageTags msdt:dt="string"></mso:MediaServiceImageTags>
-<mso:lcf76f155ced4ddcb4097134ff3c332f msdt:dt="string"></mso:lcf76f155ced4ddcb4097134ff3c332f>
-<mso:TaxCatchAll msdt:dt="string"></mso:TaxCatchAll>
-</mso:CustomDocumentProperties>
-</xml><![endif]-->
-</head>
+    </head>
 
     <body onload="costruisci()">
         <div id="tabella">

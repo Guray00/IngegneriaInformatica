@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<title>Esame2020-01-17</title>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+      body{
+        background-color: #d9d9d9;
+      }
+      h2, h4{
+        text-align:center;
+      }
+      h2{
+        color:#595959;
+      }
+      h4{
+        color:white;
+      }
+      .winElement, td{
+        width:100px;
+        height:50px;
+        display: inline-block;
+        border: 1px solid black;
+        margin-bottom:10px;
+      }
+      #winSum{
+        width:150px;
+        height:20px;
+        background-color:white;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom: 10px;
+      }
+      #WinNumberContainer, #yourNumbers, .buttons{
+        display: flex;
+        justify-content: center;
+      }
+      .Container{
+        background-color:#666666;
+      }
+      #winSum{
+        text-align: center;
+      }
+      tr.spaceUnder>td {
+        margin-bottom: 50px;
+      }
+    </style>
+	</head>
+
+	<body>
+    <h2>Gratta e Vinci</h2>
+    <div class="Container">
+      <h4>Numeri Vincenti</h4>
+      <div class="Container" id="WinNumberContainer">
+      </div>
+    </div>
+    <div class="Container">
+      <h4>Vincita</h4>
+      <div id="winSum"></div>
+      <h4>I tuoi Numeri</h4>
+      <div class="Container" id="yourNumbers">
+        <table class="table">
+          <tr>
+            <td id="number0" class="number"></td><td id="number1" class="number"></td><td id="number2" class="number"></td><td id="number3" class="number"></td><td id="number4" class="number"></td>
+          </tr>
+          <tr class="spaceUnder">
+            <td id="win0" class="win"></td><td id="win1" class="win"></td><td id="win2" class="win"></td><td id="win3" class="win"></td><td id="win4" class="win"></td>
+          </tr>
+          <tr>
+            <td id="number5" class="number"></td><td id="number6" class="number"></td><td id="number7" class="number"></td><td id="number8" class="number"></td><td id="number9" class="number"></td>
+          </tr>
+          <tr>
+            <td id="win5" class="win"></td><td id="win6" class="win"></td><td id="win7" class="win"></td><td id="win8" class="win"></td><td id="win9" class="win"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="buttons">
+        <button type="button" name="scopri" id="scopri">SCOPRI</button>
+        <button type="button" name="gratta" id="gratta" disabled>GRATTA</button>
+      </div>
+    </div>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+
+    var winNumberContainer = document.getElementById('WinNumberContainer');
+    for (var i = 0; i < 5; ++i) {
+      var number = document.createElement('div');
+      number.setAttribute('id', 'winElement'+i);
+      number.setAttribute('class', 'winElement');
+      winNumberContainer.appendChild(number);
+    }
+    var scopri = document.getElementById('scopri');
+    var gratta = document.getElementById('gratta');
+    var number = [];
+    scopri.addEventListener('click', function(e) {
+      scopri.disabled = true;
+      gratta.disabled = false;
+      var isItOkay = -1;
+      for (var i = 0; i < 5; ++i) {
+
+        var generatedNumber;
+        do {
+          generatedNumber = Math.floor(Math.random() * 30)+1;
+          isItOkay = number.indexOf(generatedNumber);
+        } while(isItOkay != -1);
+
+        var element = document.getElementById('winElement'+i);
+        element.textContent = generatedNumber;
+        number.push(generatedNumber);
+      }
+    })
+
+    var yourNumbers = [];
+    var wins = [5,10,20,100,1000,10000]
+    var i = 0;
+    gratta.addEventListener('click', function(e) {
+      var isItOkay = -1;
+        var generatedNumber;
+        do {
+          generatedNumber = Math.floor(Math.random() * 30)+1;
+          isItOkay = yourNumbers.indexOf(generatedNumber);
+        } while(isItOkay != -1);
+
+        var element = document.getElementById('number'+i);
+        element.textContent = generatedNumber;
+        yourNumbers.push(generatedNumber);
+
+        var generatedWin = Math.floor(Math.random() * 5);
+        var elementWin = document.getElementById('win'+i);
+        elementWin.textContent = wins[generatedWin];
+
+        if (number.indexOf(generatedNumber) != -1) {
+          var winSum = document.getElementById('winSum');
+          (winSum.textContent == '') ? winSum.textContent = parseInt(wins[generatedWin]) : winSum.textContent = parseInt(winSum.textContent) + parseInt(wins[generatedWin]);
+        }
+        i = parseInt(i) + 1;
+
+        if (i == 10) {
+          i = 0;
+          gratta.disabled = true;
+          winWindow = window.open('','','width=200,height=100');
+          var wintotal = ( document.getElementById('winSum').textContent == '') ? 0 :  document.getElementById('winSum').textContent;
+          winWindow.document.write('Hai vinto ' + wintotal + ' Euro');
+          setTimeout(function () {
+             winWindow.close();
+             scopri.disabled = false;
+             number = [];
+             yourNumbers = [];
+             var numbersElements = document.getElementsByClassName('number');
+             var winsElements = document.getElementsByClassName('win');
+             var winNumbersElements = document.getElementsByClassName('winElement');
+
+             for (var i = 0; i < numbersElements.length; i++) {
+               numbersElements[i].textContent = '';
+             }
+             for (var i = 0; i < winsElements.length; i++) {
+               winsElements[i].textContent = '';
+             }
+             for (var i = 0; i < winNumbersElements.length; i++) {
+               winNumbersElements[i].textContent = '';
+             }
+             document.getElementById('winSum').textContent = '';
+           }, 5000);
+        }
+    })
+
+  </script>
+</html>

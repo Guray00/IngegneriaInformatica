@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+	<meta charset="utf-8"> 
+    <meta name = "author" content = "author">
+	<title>List</title>
+
+	<!-- CSS -->
+	<style type="text/css">
+	
+		body{
+			text-align: left;
+			font-weight: bold;
+			color: black;
+		}
+	
+		div{
+			padding: 0.4em;
+		}
+		
+		#left{
+			width: 15em;
+			float: left;
+		}
+		
+		button {
+			padding: 0.4em;
+			font-size: 16px;
+			font-weight: bold;
+		}
+				
+		#right{
+			display:block;
+			font-weight:bold;
+			padding: 1.5em;
+			width: 25em;
+		}
+
+
+	
+	</style>
+
+	<!-- Javascript -->
+	<script type="text/javascript">
+	<!--
+	
+	var MAX_PEOPLE = 6; // max number of people in the list.
+	
+	// Insert the name and surname in the panel on the right
+	function insert()
+	{
+		var letters = /^[A-Za-z\s]+$/;
+		if (document.getElementById("level").value=="-" || 
+		    document.getElementById("name").value=="-"  ||
+				document.getElementById("surname").value=="-")
+				{
+				 		alert("Campi non riempiti");
+						return;
+				} 
+		if (!document.getElementById("name").value.match(letters) ||
+			 !document.getElementById("surname").value.match(letters))
+			 {
+			 	alert("Devi inserire solo caratteri alfabetici");
+				return;
+			}
+		// Get the sorted list of person
+		var sortedList = getSortedList();
+		
+		// Create the input for a new person to add to the list
+		inputField = document.createElement("input"); 
+		inputField.setAttribute("readonly", "readonly");
+		var rightDiv = document.getElementById("right");
+		rightDiv.appendChild(inputField);
+		
+		//Fill the input with the sorted list
+		fillInput(sortedList)
+		
+		// Reset the input box on the left
+		resetInputs();
+
+		// Update the button if necessary
+		var number = document.getElementById("right").getElementsByTagName("input").length;
+		document.getElementById("inservice").disabled=false;
+		if (number >= MAX_PEOPLE)
+			document.getElementById("insert").disabled=true;
+		
+	}
+	
+	// Get the sorted list
+	function getSortedList()
+	{
+		var sortedList = new Array();
+	
+		var inputs = document.getElementById("right").getElementsByTagName("input");
+		for (var i = 0; i < inputs.length; i++)
+			sortedList[i] = inputs[i].value;
+		
+		// Get the full name of the person
+		sortedList[inputs.length] = document.getElementById("level").value + " " + 
+		document.getElementById("surname").value + " " + document.getElementById("name").value;
+		
+		// Return the array sorted in the lexicographic order. See documentation for more details.
+		return sortedList.sort();
+		
+	}
+	
+	// Fill all the input with the string in the array (sortedList)
+	function fillInput(sortedList)
+	{
+		var inputs = document.getElementById("right").getElementsByTagName("input");
+		for (var i = 0; i < inputs.length; i++)
+			inputs[i].value = sortedList[i];
+	
+	}
+	
+	function resetInputs()
+	{
+	 	document.getElementById("level").value="-"; 
+		document.getElementById("name").value="-";
+		document.getElementById("surname").value="-";
+	}
+	
+	// First element in the list in service
+	function inservice()
+	{
+		var rightDiv = document.getElementById("right");
+		var inputs=rightDiv.getElementsByTagName("input");
+		if (inputs.length==1) 
+			// Update the button
+			document.getElementById("inservice").disabled=true;
+		
+		if (inputs.length>0) rightDiv.removeChild(inputs[0]);
+		document.getElementById("insert").disabled=false;
+		
+	}
+	
+				
+	//-->
+	</script>
+
+	</head>
+	<body>  
+		<div id="panel">
+			<div id="left">
+				<div id="nameWrapper">
+					<label>
+						Nome:<br>
+						<input id="name" type="text" value="-">	
+					</label>
+				</div>
+				<div id="surnameWrapper">
+					<label>
+						Cognome: <br>
+						<input id="surname" type="text" value="-">
+					</label>
+				</div>
+				<div id="levelWrapper">
+					<label>
+						Livello: <br>
+						<select id="level"> 
+						<option value="-">-</option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						 </select>
+					</label>
+				</div>
+				<div id="buttonWrapper">
+					<button id="insert" onclick="insert()">INSERISCI</button>
+					<button id="inservice"	onclick="inservice()" disabled>SERVI</button>
+				</div>
+			</div>
+			<div id="right">
+			
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+	<meta charset="utf-8"> 
+    <meta name = "author" content = "author">
+	<title>Game</title>
+
+	<!-- CSS -->
+	<style type="text/css">
+	
+		body{
+			color: black;
+		}
+		
+		
+		#servizio{
+			width:40em;
+			text-align: center;
+		}
+		
+		p{
+			font-size: 2em;
+			text-align: center;
+			font-weight: bold;
+			
+		}
+	
+		#cornice{
+			width: 10em;
+			height: 10em;
+			border: 0.5em solid black;
+			margin: 2em;
+			padding:5em;
+			float:left;	
+		}
+		
+		#quadrato{
+			background: black;
+			width: 10em;
+			height: 10em;
+		}
+		
+		table{
+			margin: 2em;
+			float:left;	
+			text-align: center;
+			font-size: 1em;
+			border: 0.1em solid black;
+		}
+		
+		th,td
+		{
+			border:1px solid black;
+		}
+		
+		#tdfoot
+		{
+			border:4px solid black;
+			font-weight: bold;
+		}
+		
+		button {
+			padding: 0.4em;
+			margin: 2em;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		
+			
+	</style>
+
+	<!-- Javascript -->
+	<script type="text/javascript">
+	<!--
+	
+	var numVolte=0; // counter of the trials
+	var listenKey=0;
+	var clock;
+	var timeInizio=0;
+	var maxVolte=5;
+	
+	function onKeyHandler(e) 
+	{ 
+		if (listenKey==1)
+		{
+			e = (!e) ? window.event : e; 			//Explorer -> !e
+			var key = (e.which != null) ? e.which : e.keyCode;      //Firefox -> e.which 
+			if (key==32) 
+			{
+				var d = new Date();
+				timeFine=d.getTime();
+			}
+			var elem=document.getElementsByTagName("td");
+			elem[Math.floor(numVolte/2)].firstChild.nodeValue=timeFine-timeInizio;
+			listenKey=0;
+		}   
+	}
+
+	// Initialize service
+	function begin()
+	{
+		document.getElementById("quadrato").style.visibility="hidden";
+		var table = document.getElementById("tempi");
+		var tbody = table.getElementsByTagName('tbody')[0];
+		for (var i=0; i<maxVolte+1; i++)
+		{
+			var tr = document.createElement('tr');
+		    var td = document.createElement('td');
+			var tx = document.createTextNode('-');
+			td.appendChild(tx);
+			tr.appendChild(td);
+			tbody.appendChild(tr);
+		}
+		elem=tbody.getElementsByTagName("td");
+		elem[maxVolte].setAttribute("id","tdfoot");
+		document.onkeydown = onKeyHandler;
+	}
+
+		
+	// Update the position of the cars
+	function showSquare()
+	{
+		//termina
+		numVolte++;
+		if (numVolte%2!=0)
+			{
+				var d = new Date();
+				timeInizio=d.getTime();
+				document.getElementById("quadrato").style.visibility="visible";
+				listenKey=1;
+			}
+			else
+			{
+				document.getElementById("quadrato").style.visibility="hidden";
+				if (listenKey==1) 
+				{
+					var elem=document.getElementsByTagName("td");
+					elem[Math.floor((numVolte-1)/2)].firstChild.nodeValue=3000;
+					listenKey=0;
+				}
+			}
+		if (numVolte==maxVolte*2)
+		{
+			numVolte=1;
+			clearInterval(clock);
+			var media=0;
+			var elem=document.getElementsByTagName("td");
+			for (var i=0;i<maxVolte;i++)
+				media+=parseInt(elem[i].firstChild.nodeValue);
+			
+			document.getElementById("tdfoot").firstChild.nodeValue=media/maxVolte;
+			updateButtonStatus();
+		}	
+	}	
+	
+	// Changes the button-status of slot machine
+	function updateButtonStatus()
+	{
+		var button = document.getElementById("start");
+		button.disabled = !button.disabled;	
+	}	
+	
+				
+	// start
+	function start()
+	{
+		if (numVolte>0)
+		{
+			var table = document.getElementById("tempi");
+			var elem = table.getElementsByTagName('td');
+			for (var i=0; i<maxVolte+1; i++)
+				elem[i].firstChild.nodeValue='-';
+			numVolte=0;
+		}
+	 	updateButtonStatus();
+		clock=setInterval("showSquare()", 3000);
+	}
+	 		
+	//-->
+	</script>
+
+	</head>
+	<body onLoad="begin()">  
+	<div id="servizio">	
+	<p>Test Riflessi</p>
+		<div id="cornice">
+		<div id="quadrato">
+		</div>
+		</div>
+		<div id="Test">
+		<table id="tempi">
+		<thead><th>Tempi di Reazione</th></thead>
+		<tbody>
+		</tbody>
+		</table>
+		<button id="start" onclick="start()">START</button>
+		</div>
+	</div>
+	</body>
+</html>

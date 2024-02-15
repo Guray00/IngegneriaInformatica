@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Appuntamenti</title>
+    <style>
+        body {
+            display: flex;
+        }
+
+        body>div {
+            margin: 1rem;
+            width: 33%;
+            height: 20rem;
+            padding: 1rem;
+        }
+
+        tr.evidenzia {
+            background-color: orange;
+        }
+
+        #center>table {
+            border-collapse: collapse;
+            margin-top: 1rem;
+            border: 1px solid black;
+        }
+
+        #center td {
+            border: 1px solid black;
+            padding: 3px;
+        }
+
+        #sx {
+            background-color: lightblue;
+            float: left;
+            display: table;
+        }
+
+        #center {
+            background-color: lightyellow;
+        }
+
+        #dx {
+            background-color: lightpink;
+            float: right;
+        }
+
+        .r {
+            display: table-row;
+        }
+
+        .r input,
+        label,
+        button, select {
+            display: table-cell;
+            padding: 3px;
+            height: 1.5rem;
+            margin: 3px;
+        }
+        input:invalid {
+            border-color: rgba(255, 0, 0, 0.798);
+        }
+    </style>
+    <script>
+        // Rappresenta un appuntamento
+        class Appuntamento {
+            constructor(nome, cognome, telefono, giorno) {
+                this.nome = nome;
+                this.cognome = cognome;
+                this.telefono = telefono;
+                this.giorno = giorno;
+            }
+            // Restituisce una riga della tabella
+            getRiga() {
+                const tr = document.createElement('tr');
+                const tdNome = document.createElement('td');
+                const tdCognome = document.createElement('td');
+                const tdTelefono = document.createElement('td');
+                const tdGiorno = document.createElement('td');
+                tdNome.innerText = this.nome;
+                tdCognome.innerText = this.cognome;
+                tdTelefono.innerText = this.telefono;
+                tdGiorno.innerText = this.giorno;
+                tr.appendChild(tdNome);
+                tr.appendChild(tdCognome);
+                tr.appendChild(tdTelefono);
+                tr.appendChild(tdGiorno);
+                return tr;
+            }
+        }
+
+        // Array contenente gli appuntamenti
+        const vet = [];
+
+        // I giorni della settimana
+        const settimana = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"];
+
+        // Quanti appuntamenti per ogni giorno della settimana
+        const occ = {};
+
+        // Numero massimo di appuntamenti per giorno
+        const MAX_GIORNO = 5;
+
+        // Dialog utilizzata per i messaggi di errore
+        const d = document.createElement("dialog");
+
+        // Inserisce un nuovo elemento nella tabella
+        function inserisci() {
+            if (!document.getElementById("nome").checkValidity() ||
+                !document.getElementById("cognome").checkValidity() || 
+                !document.getElementById("telefono").checkValidity()) 
+                return;
+            const nome = document.getElementById("nome").value;
+            const cognome = document.getElementById("cognome").value;
+            const telefono = Number(document.getElementById("telefono").value);
+            const giorno = document.getElementById("giorno").value;
+            const elemento = new Appuntamento(nome, cognome, telefono, giorno);
+            // Se per quel giorno ci sono troppi appuntamenti
+            // mostra la dialog di errore e la fa sparire dopo 3 secondi
+            if (occ[giorno] === MAX_GIORNO) {
+                d.show();
+                setTimeout(() => d.close(), 3000);
+                return;
+            }
+            // Inserisce l'elemento nel vettore
+            vet.push(elemento);
+            if(occ[giorno]) occ[giorno]++; 
+            else occ[giorno] = 1; 
+            // Ordina
+            ordina();
+            // Genera l'istogramma degli appuntamenti
+            generaIstogramma();
+        }
+
+        /*
+         Ordina la tabella per nome o per cognome sulla base dell radio button selezionato
+         */
+        function ordina() {
+            const nomeOrdine = document.getElementById('nomeOrdine').checked;
+            if (nomeOrdine) {
+                vet.sort((a, b) => a.nome.localeCompare(b.nome));
+            } else {
+                vet.sort((a, b) => a.cognome.localeCompare(b.cognome));
+            }
+            const tabella = document.getElementById("tabella");
+            removeAllChildren(tabella);
+            for (let v of vet) {
+                tabella.appendChild(v.getRiga());
+            }
+            evidenzia();
+        }
+
+        // Evidenzia le righe degli appuntamenti se necessario
+        function evidenzia() {
+            const tabella = document.getElementById("tabella");
+            const righe = tabella.getElementsByTagName('tr');
+            for (let i = 0; i < vet.length; i++) {
+                if (occ[vet[i].giorno] === MAX_GIORNO)
+                    righe[i].classList.add('evidenzia');
+                else
+                    righe[i].classList.remove('evidenzia');
+            }
+        }
+
+        // Inizializza dialog, anche se non visibile
+        function inizializza() {
+            d.innerText = "Per tale giorno ci sono già troppi appuntamenti";
+            document.body.appendChild(d);
+        }
+
+        // Usata per svuotare l'istogramma
+        function removeAllChildren(element) {
+            while (element.firstChild) {
+                element.removeChild(element.firstChild);
+            }
+        }
+
+        // Genera un istogramma sulla base del numero di appuntamenti di ogni giorno della settimana
+        function generaIstogramma() {
+            let occ = []
+            for (let e of vet) {
+                occ[e.giorno] = (occ[e.giorno] || 0) + 1;
+            }
+            const isto = document.getElementById("isto");
+            removeAllChildren(isto);
+            const div = document.createElement('div');
+
+            for (let i = 0; i < 7; i++) {
+                const tr = document.createElement('tr');
+                const td1 = document.createElement('td');
+                const td2 = document.createElement('td');
+                td1.innerText = settimana[i];
+                const div = document.createElement('div');
+                div.style.width = (occ[settimana[i]] ? occ[settimana[i]] * 20 : 0) + "px";
+                div.style.height = "20px";
+                if (occ[settimana[i]] === MAX_GIORNO) {
+                    div.style.backgroundColor = "red";
+                } else {
+                    div.style.backgroundColor = "blue";
+                }
+                td2.appendChild(div);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                isto.appendChild(tr);
+            }
+        }
+    </script>
+</head>
+
+<body onload="inizializza()">
+    <div id="sx">
+        <div class="r">
+            <label for="nome">Nome</label><input type="text" id="nome" placeholder="Mario" pattern="^[A-Z][a-z]+$" required>
+        </div>
+        <div class="r">
+            <label for="cognome">Cognome</label><input type="text" id="cognome" placeholder="Rossi" pattern="^[A-Z][a-z]+$" required>
+        </div>
+        <div class="r">
+            <label for="telefono">Telefono</label><input type="text" id="telefono" placeholder="555776688" pattern="^\d{9}$" required>
+        </div>
+        <div class="r">
+            <label for="giorno">Giorno</label>
+            <select name="giorno" id="giorno">
+                <option value="Lun">Lunedì</option>
+                <option value="Mar">Martedì</option>
+                <option value="Mer">Mercoledì</option>
+                <option value="Gio">Giovedì</option>
+                <option value="Ven">Venerdì</option>
+                <option value="Sab">Sabato</option>
+                <option value="Dom">Domenica</option>
+            </select>
+        </div>
+        <div class="r">
+            <button id="inserisci" onclick="inserisci()">Inserisci</button>
+        </div>
+    </div>
+    <div id="center">
+        <input type="radio" id="nomeOrdine" name="criterio" value="nome" onclick="ordina()" checked>Nome<br>
+        <input type="radio" id="cogOrdine" name="criterio" value="cognome" onclick="ordina()">Cognome<br>
+        <table id="tabella">
+        </table>
+    </div>
+    <div id="dx">
+        <table id="isto">
+        </table>
+    </div>
+</body>
+
+</html>

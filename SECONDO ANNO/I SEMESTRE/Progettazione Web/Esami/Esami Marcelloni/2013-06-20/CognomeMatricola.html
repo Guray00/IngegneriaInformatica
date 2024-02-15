@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+	<meta http-equiv = "Content-Type" content = "text/html;  charset=ISO-8859-1">
+	<title>Car Race</title>
+
+	<!-- CSS -->
+	<style type="text/css">
+	
+		body{
+			text-align: center;
+			font-weight: bold;
+		}
+		
+		p{
+			font-size: 56px;
+		}
+	
+		div{
+			width: 60em;
+		}
+		
+		button {
+			padding: 0.4em;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		
+		input{
+			text-align: right;
+			width: 2em;
+			font-weight: bold;
+			font-size: 20px;
+			margin-right: 1em;
+			margin-bottom: 2em;
+		}
+		
+		.divlane{			
+			margin: 0.5em;	
+			height: 3em;
+		}
+		
+		.divsquare {
+		  	float: left;
+				width: 1em;
+		  	height: 1em;
+		  	border-style: solid;
+				border-color: black;
+				background-color: white;
+				border-width: 0.1em; 
+				display:inline
+		}
+			
+	</style>
+
+	<!-- Javascript -->
+	<script type="text/javascript">
+	<!--
+	
+	
+	var _windowResult;				// Window where the results are printed.
+	// Messages to be printed for wrong bet.
+	var errorMessage = "Il valore della puntata deve essere maggiore di 0 e minore di 10. Inserisci un nuovo valore";
+	var posCar = new Array(); 		// The array contains position of the cars
+	var clock;
+	
+	// Initializes variables
+	function begin(){
+		race=document.getElementById("racetrack");
+		var temp;
+		var nome;	 
+		for (var i = 0; i < 3; i++)
+		{
+			posCar[i]=0; //all the cars are in positions 0
+			lane = document.createElement("div"); // create the lane
+			lane.id = "lane" + i;
+			lane.setAttribute("class", "divlane");
+			for (var j=0; j<50; j++)
+			{ 
+			     temp = document.createElement("div");
+					 temp.setAttribute("class", "divsquare");
+					 lane.appendChild(temp);  
+			}			
+			race.appendChild(lane);
+			elemDiv=lane.getElementsByTagName("div");
+			elemDiv[0].style.backgroundColor="red";
+		}		
+	}
+	
+	// start
+	function start(){
+	  var bet=document.getElementById("bet");
+		var inputfield = bet.getElementsByTagName("input");	
+		for (var i=0; i<3;i++)
+		{
+				bet = parseInt(inputfield[i].value);
+				if (!checkBet(bet)){
+					 showError();
+					 return;
+					 }
+		}		
+		updateButtonStatus();
+		clock=setInterval("update()", 1000);
+	}
+	
+	
+	// Checks the amount of the bet (it must be between 0 and 10 euros).
+	// Return true if all ok, false otherwise.
+	function checkBet(bet){
+		if (bet < 0 || bet > 10 || isNaN(bet))
+			return false;
+		return true;
+	}
+	
+	// Changes the button-status
+	function updateButtonStatus(){
+		var button = document.getElementById("start");
+			button.disabled = !button.disabled;	
+	}	
+	
+	// Update the position of the cars
+	function update(){
+		var randomnumber;
+		var winner = new Array();
+		var stop = false;
+		for(var i=0; i<3;i++)
+		{		 				 
+		 		winner[i] = false;
+				randomnumber=Math.floor(Math.random()*5)+1;
+				lane=document.getElementById("lane"+i);
+				elemDiv=lane.getElementsByTagName("div");
+				elemDiv[posCar[i]].style.backgroundColor="white";
+				posCar[i]+=randomnumber;
+				if (posCar[i]>=49) 
+					 {   posCar[i] = 49;
+					 		 winner[i] = true;
+							 stop = true;
+						}
+				elemDiv[posCar[i]].style.backgroundColor="red";
+		}
+		if (stop) 
+		{
+			 //Clear interval
+			 clearInterval(clock);
+			 openWindow();
+		 	 for(var i=0; i<3;i++)
+			 		if (winner[i])
+					{
+					 	 	var w=i+1;
+					    bet = parseInt(document.getElementById("bet"+i).value);
+							showResult("Ha vinto l'auto " + w + ". Hai vinto ", bet*2);
+					}
+			setTimeout("stop()", 5000);
+			}	
+	}	
+	
+	
+	// Shows error in case the bet is wrong. 
+	function showError(){
+		alert(errorMessage);
+	}
+		
+
+	function openWindow() {
+		if ((_windowResult == null) || (_windowResult.closed)) {
+			_windowResult = window.open("", "Alarm", "width=600,height=400,resizable=yes,location=no,menubar=no,toolbar=no,titlebar=no");
+			_windowResult.document.open();                                                          
+			_windowResult.document.writeln('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"');   
+			_windowResult.document.writeln('"http://www.w3.org/TR/html4/strict.dtd">');
+			_windowResult.document.writeln('<html><head><title>Result</title><style type="text/css">' +
+				'#resultTextWindow{' + 
+				'font-size:			24px;' + 
+				'font-weight:		bold;' +
+				'font-family:		"Arial","Serif";' +
+				'color:				black;' +
+				'font-weight: 		bold;' +
+				'background-color: 	white;' +
+				'text-align: center;' +
+				'}</style></head>');
+			_windowResult.document.writeln('<body><p id="resultTextWindow">');
+		}
+	}
+			
+	function showMessage(mess) {		 
+		_windowResult.focus();
+		_windowResult.document.writeln('<p>' + mess);
+	}  
+	
+	function showResult(resultMessage, payoff) {		 
+		showMessage(resultMessage);
+		_windowResult.document.writeln(payoff + ' Euro </p>');	
+	}  
+			
+	function closeWindow() {
+		_windowResult.document.writeln('</p></body></html>');                                      
+		_windowResult.close();                                                             
+	}
+			
+	
+			
+	
+	
+	// Checks if the player has won. 
+	// Return 1 if the player has won, 0 otherwise.
+	function checkWin(){
+		for (var i = 0; i < 2; i++)
+			if (slots[i].value != slots[i+1].value)
+				return 0;	
+		return 1;
+	}
+	
+	// Close the window and reset the service.
+	function stop(){
+		for(var i=0; i<3; i++)
+		{
+					document.getElementById("bet"+i).value = 0;	
+					lane=document.getElementById("lane"+i);
+					elemDiv=lane.getElementsByTagName("div");
+					elemDiv[posCar[i]].style.backgroundColor="white";
+					posCar[i]=0;
+					elemDiv[posCar[i]].style.backgroundColor="red";
+	   }
+		 // Change button status
+			 updateButtonStatus();
+			 closeWindow();
+	}
+	  		
+	//-->
+	</script>
+
+	</head>
+	<body onLoad="begin()">  
+		<div id="Race">
+			<p>Car Race</p>
+			<div id="bet">
+				<span>Lane 1: <input id="bet0" class="bet"	type="text" value="0"></span>
+				<span>Lane 2: <input id="bet1" class="bet" 	type="text" value="0"></span>
+				<span>Lane 3: <input id="bet2" class="bet"	type="text" value="0"></span>
+				<button id="start" onclick="start()">START</button>
+			</div>
+			<div id="racetrack">
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<title>Esame2020-02-06</title>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+			#Number{
+				border: 1px solid black;
+				width: 50px;
+				height: 20px;
+				text-align: center;
+			}
+			.Container{
+				display: flex;
+				justify-content: center;
+			}
+			h2, h4{
+				text-align: center;
+			}
+			table, tr, td{
+				border: 1px solid black;
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+			td{
+				text-align: center;
+				min-width: : 50px;
+			}
+			#tabellone{
+				width: 300px;
+				height: 300px;
+			}
+			#titleCart{
+				margin-right: 250px;
+			}
+			#g1, #g2{
+
+					width: 200px;
+					height: 100px;
+			}
+			.playerContainer{
+				display: flex;
+				flex-direction: column;
+			}
+			#startGame{
+				margin-left: 520px;
+			}
+    </style>
+	</head>
+
+	<body>
+    <h2>Gioco della Tombola</h2>
+    <h4>Numero Estratto</h4>
+    <div class="Container">
+      <div class="Container" id="Number">-</div>
+    </div>
+			<h4 id="titleCart">Cartellone</h4>
+      <div class="Container" id="tablecontainer">
+        <table class="table" id="tabellone">
+        </table>
+				<div class="playerContainer">
+					<h4>Giocatore 1</h4>
+	        <table class="playerTable" id="g1">
+	        </table>
+					<h4>Giocatore 2</h4>
+	        <table class="playerTable" id="g2">
+	        </table>
+				</div>
+      </div>
+			<button type="button" name="startGame" id="startGame">START</button>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+		var tabellone = document.getElementById('tabellone');
+		for (var i = 0; i < 9; i++) {
+			var row = document.createElement('tr');
+			for (var j = 0; j < 10; j++) {
+				var element = document.createElement('td');
+				element.setAttribute('class', 'MainTableTile');
+				element.setAttribute('id', 'MainTableTile'+ ((parseInt(i)*10 + 1) + parseInt(j)) );
+				element.textContent = (parseInt(i)*10 + 1) + parseInt(j);
+				row.appendChild(element);
+			}
+			tabellone.appendChild(row);
+		}
+
+		createTables();
+
+function createTables(){
+	// tabella giocatore 1
+	var g1 = document.getElementById('g1');
+	var generatedNumbers = [];
+	var random;
+	for (var j = 0; j < 10; j++) {
+		for (var i = 0; i < 3; i++) {
+			do {
+				if(j == 9){
+					random =  Math.floor(Math.random() * ((10*(parseInt(j)-1) + 9) - (1 + 10*(parseInt(j)-1)) + 1))+(1 + 10*(parseInt(j)-1));
+				}else{
+					random =  Math.floor(Math.random() * ((10*parseInt(j) + 9) - (1 + 10*parseInt(j)) + 1))+(1 + 10*parseInt(j));
+				}
+			} while (generatedNumbers.indexOf(random) != -1 );
+			generatedNumbers.push(random);
+		}
+	}
+
+	for (var i = 0; i < 3; i++) {
+		var row = document.createElement('tr');
+		row.setAttribute('class', 'row');
+		for (var j = 0; j < 10; j++) {
+			var element = document.createElement('td');
+			element.setAttribute('class', 'g1TableTile');
+			element.setAttribute('id', 'g1TableTile'+ ((parseInt(i)*10 + 1) + parseInt(j)) );
+			row.appendChild(element);
+		}
+		g1.appendChild(row);
+	}
+
+	for (var i = 0; i < 10; i++) {
+		document.getElementById('g1TableTile'+ (parseInt(i)+1)).textContent = generatedNumbers[(parseInt(i)*3)];
+		document.getElementById('g1TableTile'+ (parseInt(i)+11)).textContent = generatedNumbers[(parseInt(i)*3)+1];
+		document.getElementById('g1TableTile'+ (parseInt(i)+21)).textContent = generatedNumbers[(parseInt(i)*3)+2];
+	}
+
+	var eliminatedIndex = [];
+	for (var i = 0; i < 15; i++) {
+		do {
+			var index =  Math.floor(Math.random() * 30) + 1;
+		} while (eliminatedIndex.indexOf(index) != -1);
+		eliminatedIndex.push(index);
+		document.getElementById('g1TableTile'+ index).textContent = '';
+		document.getElementById('g1TableTile'+ index).style.backgroundColor = 'black';
+	}
+
+
+
+	// tabella giocatore 2
+
+	var g2 = document.getElementById('g2');
+	 generatedNumbers = [];
+	var random;
+	for (var j = 0; j < 10; j++) {
+		for (var i = 0; i < 3; i++) {
+			do {
+				if(j == 9){
+					random =  Math.floor(Math.random() * ((10*(parseInt(j)-1) + 9) - (1 + 10*(parseInt(j)-1)) + 1))+(1 + 10*(parseInt(j)-1));
+				}else{
+					random =  Math.floor(Math.random() * ((10*parseInt(j) + 9) - (1 + 10*parseInt(j)) + 1))+(1 + 10*parseInt(j));
+				}
+			} while (generatedNumbers.indexOf(random) != -1);
+			generatedNumbers.push(random);
+		}
+	}
+
+	for (var i = 0; i < 3; i++) {
+		var row = document.createElement('tr');
+		row.setAttribute('class', 'row');
+		for (var j = 0; j < 10; j++) {
+			var element = document.createElement('td');
+			element.setAttribute('class', 'g2TableTile');
+			element.setAttribute('id', 'g2TableTile'+ ((parseInt(i)*10 + 1) + parseInt(j)) );
+			row.appendChild(element);
+		}
+		g2.appendChild(row);
+	}
+
+	for (var i = 0; i < 10; i++) {
+		document.getElementById('g2TableTile'+ (parseInt(i)+1)).textContent = generatedNumbers[(parseInt(i)*3)];
+		document.getElementById('g2TableTile'+ (parseInt(i)+11)).textContent = generatedNumbers[(parseInt(i)*3)+1];
+		document.getElementById('g2TableTile'+ (parseInt(i)+21)).textContent = generatedNumbers[(parseInt(i)*3)+2];
+	}
+	eliminatedIndex = [];
+	for (var i = 0; i < 15; i++) {
+		do {
+			var index =  Math.floor(Math.random() * 30) + 1;
+		} while (eliminatedIndex.indexOf(index) != -1);
+		eliminatedIndex.push(index);
+		document.getElementById('g2TableTile'+ index).textContent = '';
+		document.getElementById('g2TableTile'+ index).style.backgroundColor = 'black';
+	}
+}
+
+
+
+
+		document.getElementById('startGame').addEventListener('click', function(){
+			var extractedNums = [];
+			var random;
+			var g1Points = 0;
+			var g2Points = 0;
+			document.getElementById('startGame').disabled = true;
+			var timerEvent = setInterval(function(){
+				do {
+					random =  Math.floor(Math.random() * 90) + 1;
+				} while (extractedNums.indexOf(random) != -1);
+				extractedNums.push(random);
+				document.getElementById('MainTableTile'+random).style.backgroundColor = 'red';
+				document.getElementById('Number').textContent = random;
+				var g1elements = document.getElementsByClassName('g1TableTile');
+				var g2elements = document.getElementsByClassName('g2TableTile');
+				for (var i = 0; i < g1elements.length; i++) {
+					if(g1elements[i].textContent == random){
+						g1elements[i].style.backgroundColor = 'red';
+						g1Points = parseInt(g1Points) + 1;
+					}
+					if(g2elements[i].textContent == random){
+						g2elements[i].style.backgroundColor = 'red';
+						g2Points = parseInt(g2Points) + 1;
+					}
+				}
+				if(g1Points == 15 || g2Points == 15){
+					clearInterval(timerEvent);
+					winWindow = window.open('','','width=200,height=100');
+					var result = (g1Points == 15) ? 1 : 2
+          winWindow.document.write('Ha vinto ' + result);
+          setTimeout(function () {
+             winWindow.close();
+             document.getElementById('startGame').disabled = false;
+             document.getElementById('Number').textContent = '-';
+						 var mainTiles = document.getElementsByClassName('MainTableTile');
+						 for (var i = 0; i < mainTiles.length; i++) {
+						 	mainTiles[i].style.backgroundColor = 'white';
+						 }
+						 var tds = document.getElementsByClassName('row');
+
+						 for (var i = 0; i < 6; i++) {
+						 	tds[0].remove();
+							console.log(tds);
+						 }
+						 createTables();
+           }, 4000);
+				}
+			},100);
+		});
+
+  </script>
+</html>

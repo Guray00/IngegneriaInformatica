@@ -1,0 +1,86 @@
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+
+    width: 90vw;
+    margin: auto;
+}
+
+
+.lista{
+    background: lightgray;
+    width: 400px;
+    min-width: 200px;
+}
+
+.time{
+    width: 40%;
+    height: 30px;
+    background: white;
+    margin: 2% auto;
+    border: 1px solid grey;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.coda{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 2%;
+
+    text-align: center;
+    border: 1px solid black;
+}
+td{
+    border: 1px solid black;
+}
+
+.time-from-start{
+    width: 20%;
+}
+
+.cognome{
+    width: 70%;
+}
+
+.servizio{
+    width: 400px;
+
+    text-align: center;
+}
+
+.servizio p{
+    border: 1px solid black;
+    width: 70%;
+    margin: 0 auto 10% auto;
+}
+
+.up{
+    margin: 2%;
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5em;
+}
+
+input{
+    width: 70%;
+    margin-top: 10%;
+}
+
+button{
+    width: 30%;
+    height: 20px;
+}
+
+.bottom{
+    display: flex;
+    margin: 2%;
+}
+
+
+

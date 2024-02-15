@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+	<head>
+	<meta http-equiv = "Content-Type" content = "text/html;  charset=ISO-8859-1">
+	<title>Number Ordering</title>
+
+	<!-- CSS -->
+	<style type="text/css">
+	
+		body{
+			text-align: left;
+			font-weight: bold;
+			color: black;
+		}
+		
+		p{
+			font-size: 56px;
+		}
+	
+		div{
+			width: 60em;
+			float: none;
+		}
+		
+		button {
+			padding: 0.4em;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		
+		.inputScore{
+			text-align: right;
+			width: 2em;
+			font-weight: bold;
+			font-size: 20px;
+			margin-right: 1em;
+			margin-bottom: 2em;
+		}
+		
+		.divrow{
+			margin: 0em;	
+			padding: 0em;
+			border: 0em;
+			height: 3em;
+		}
+		
+		.inputSquare {
+		  	float: left;
+				width: 3em;
+		  	height: 3em;
+		  	border-style: solid;
+				border-color: black;
+				background-color: white;
+				border-width: 0.1em; 
+				text-align: center;
+				font-weight: bold;
+				font-size: 0.9em;				
+		}
+			
+	</style>
+
+	<!-- Javascript -->
+	<script type="text/javascript">
+	<!--
+	
+	var _windowResult;		// Window where the results are printed.
+	var idRed; // current identifier of the red square
+		
+	// Initializes matrix
+	function begin(){
+		game=document.getElementById("Game");
+		var row;
+		var square;	 
+		for (var i = 0; i < 16; i++)
+		{
+			if (i%4==0)
+			{
+			 	 row = document.createElement("div"); // create the row
+				 row.setAttribute("class", "divrow");
+				 game.appendChild(row);
+			}
+			square = document.createElement("input"); // create the square
+			square.setAttribute("class", "inputSquare");
+			square.setAttribute("readonly", "readonly");
+			square.setAttribute("onClick","handle(this)");
+			if (i<15) square.value=i;
+			else square.style.backgroundColor="red";
+			idRed=square.id = "square" + i;
+			row.appendChild(square);
+		}		
+	}
+	
+	// start
+	function start(){
+	 	updateButtonStatus();
+		randomNumber=Math.floor(Math.random()*15);
+		var i=randomNumber;
+		var indexElem=0;
+		do
+		{ 
+		 	 document.getElementById("square" + indexElem).value=i;
+			 indexElem++;
+			 i=(i+2)%15;
+			}
+		while (i!=randomNumber);
+	}
+	
+	// Changes the button-status of slot machine
+	function updateButtonStatus(){
+		var button = document.getElementById("start");
+			button.disabled = !button.disabled;	
+	}		
+			
+
+	function handle(elem)
+	{
+		if (elem.style.backgroundColor=="red") return;
+		var redInput = document.getElementById(idRed);	
+		elem.style.backgroundColor="red"; 
+	  redInput.value=elem.value;
+	  redInput.style.backgroundColor="white";
+		elem.value=null;
+		idRed=elem.id;
+		document.getElementById("score").value = parseInt(document.getElementById("score").value) + 1;
+		if (verify())
+		{
+		 	 openWindow();
+		 	 score=parseInt(document.getElementById("score").value);
+			 showResult("Numero di mosse effettuate:", score);
+			 setTimeout("stopWindow()", 5000);
+	 }
+	}
+	
+	function verify()
+	{	 
+	 for (var i = 0; i < 15 && document.getElementById("square"+i).value == i; i++);
+	 if (i==15) return true;
+	 return false;
+	}
+	
+	
+	function openWindow() {
+		if ((_windowResult == null) || (_windowResult.closed)) {
+			_windowResult = window.open("", "Score", "width=600,height=400,resizable=yes,location=no,menubar=no,toolbar=no,titlebar=no");
+			_windowResult.document.open();                                                          
+			_windowResult.document.writeln('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"');   
+			_windowResult.document.writeln('"http://www.w3.org/TR/html4/strict.dtd">');
+			_windowResult.document.writeln('<html><head><title>Result</title><style type="text/css">' +
+				'#resultTextWindow{' + 
+				'font-size:			24px;' + 
+				'font-weight:		bold;' +
+				'font-family:		"Arial","Serif";' +
+				'color:				black;' +
+				'font-weight: 		bold;' +
+				'background-color: 	white;' +
+				'text-align: center;' +
+				'}</style></head>');
+			_windowResult.document.writeln('<body><p id="resultTextWindow">');
+		}
+	}
+			
+	function showMessage(mess) {		 
+		_windowResult.focus();
+		_windowResult.document.writeln('<p>' + mess);
+	}  
+	
+	function showResult(resultMessage, payoff) {		 
+		showMessage(resultMessage);
+		_windowResult.document.writeln(payoff + '</p>');	
+	}  
+			
+	function closeWindow() {
+		_windowResult.document.writeln('</p></body></html>');                                      
+		_windowResult.close();                                                             
+	}
+			
+	
+	// Close the window and reset the service.
+	function stopWindow(){
+			document.getElementById("score").value = 0;	
+			initialize();
+		 // Change button status
+			 updateButtonStatus();
+			 closeWindow();
+	}
+	
+	function initialize()
+	{
+	 for (var i = 0; i < 16; i++)
+	 {
+	 	square=document.getElementById("square"+i);
+	 	if (i<15) square.value=i;
+			else square.style.backgroundColor="red";
+		}
+	}
+	  		
+	//-->
+	</script>
+
+	</head>
+	<body onLoad="begin()">  
+		<div id="Game">
+				<span>Score: <input id="score" class="inputScore"	type="text" readonly value="0"></span>
+				<button id="start" onclick="start()">START</button>
+			</div>
+			<div id="racetrack">
+			</div>
+		</div>
+	</body>
+</html>

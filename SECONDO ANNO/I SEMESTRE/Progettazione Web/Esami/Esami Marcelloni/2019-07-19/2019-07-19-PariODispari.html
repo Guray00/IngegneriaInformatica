@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+		.container{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.columnContainer{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+		}
+		#clock, #playerPoints, #pcPoints{
+			width: 100px;
+			height: 30px;
+			border: 1px solid black;
+			text-align: center;
+		}
+		#playerContainer, #PCContainer{
+			border: 1px solid black;
+			margin-top: 20px;
+			padding: 10px;
+			margin-right: 20px;
+			margin-left: 20px;
+		}
+		#start{
+			margin-top: 20px;
+		}
+		h2{
+			color: red;
+			text-align: center;
+		}
+    </style>
+	</head>
+
+	<body>
+		<div class="columnContainer">
+			<h2>Pari o Dispari</h2>
+			<div id="clock"></div>
+			<div class="container">
+				<div class="columnContainer" id="playerContainer">
+					<h2>Giocatore</h2>
+					<div class="container">
+						<h4>Punteggio:</h4>
+						<div id="playerPoints" class="container">0</div>
+					</div>
+					<div class="container">
+						<h4>Numero(0-5):</h4>
+						<input type="number" name="" value="" id="playerNumber">
+					</div>
+					<div class="container">
+						<input type="radio" name="playerEven" value="0" id="even">
+						<label for="even">Pari</label>
+						<input type="radio" name="playerEven" value="1" id="odd">
+						<label for="odd">Dispari</label>
+					</div>
+				</div>
+				<div class="columnContainer" id="PCContainer">
+					<h2>Computer</h2>
+					<div class="container">
+						<h4>Punteggio:</h4>
+						<div id="pcPoints" class="container">0</div>
+					</div>
+					<div class="container">
+						<h4>Numero(0-5):</h4>
+						<input type="number" name="" value="" disabled id="PcNumber">
+					</div>
+					<div class="container">
+						<input type="radio" name="even" value="0" id="evenPc" disabled>
+						<label for="even">Pari</label>
+						<input type="radio" name="even" value="1" id="oddPc" disabled>
+						<label for="odd">Dispari</label>
+					</div>
+				</div>
+			</div>
+			<div id="errormsg"></div>
+			<button type="button" name="button" id="start">PLAY</button>
+		</div>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+	var clock = document.getElementById('clock');
+	setInterval(function(){
+		var today = new Date();
+		clock.textContent = today.getHours() + ":" + today.getMinutes() + ":" + ((today.getSeconds() < 10) ? '0'+today.getSeconds() : today.getSeconds());
+	},1000)
+
+	document.getElementById('start').addEventListener('click', function(){
+		document.getElementById('errormsg').textContent = '';
+		var number = document.getElementById('playerNumber').value;
+		var even = document.getElementById('even').checked;
+		var odd = document.getElementById('odd').checked;
+		if (number == '' || number < 0 || number > 5) {
+			document.getElementById('errormsg').textContent = 'inserire un valore valido';
+			return;
+		}
+		if (even == odd) {
+			document.getElementById('errormsg').textContent = 'selezionare una delle due opzioni (pari/dispari)';
+			return;
+		}
+		var PcNumber = Math.floor(Math.random() * 5 + 1);
+		document.getElementById('PcNumber').value = PcNumber;
+
+		setTimeout(function(){
+			var playerNumber = document.getElementById('playerNumber').value;
+			var evenResult = ((parseInt(playerNumber) + parseInt(PcNumber))%2 == 0)? true : false;
+			var text = (evenResult == even) ? 'il vincitore è il giocatore' : 'il vincitore è il Computer';
+			text = ((parseInt(playerNumber) + parseInt(PcNumber)) == 0) ? "non c'è vincitore" : text;
+			if(evenResult == even && (parseInt(playerNumber) + parseInt(PcNumber)) != 0){
+				++document.getElementById('playerPoints').textContent;
+			}else if ((parseInt(playerNumber) + parseInt(PcNumber)) != 0) {
+				++document.getElementById('pcPoints').textContent;
+			}
+			alert(text);
+			document.getElementById('playerNumber').value = '';
+			document.getElementById('PcNumber').value = '';
+			document.getElementById('even').checked = false;
+			document.getElementById('odd').checked = false;
+			document.getElementById('evenPc').checked = false;
+			document.getElementById('oddPc').checked = false;
+
+			if (document.getElementById('playerPoints').textContent == 3 || document.getElementById('pcPoints').textContent == 3) {
+				var winWindow = window.open('','','width=200,height=100');
+				var text = (document.getElementById('playerPoints').textContent == 3)? 'Giocatore ' : 'Computer ';
+				text = text + document.getElementById('clock').textContent;
+				winWindow.document.write(text);
+				setTimeout(function () {
+					winWindow.close();
+					document.getElementById('playerNumber').value = '';
+					document.getElementById('PcNumber').textContent = '0';
+					document.getElementById('pcPoints').textContent = '0';
+					document.getElementById('PcNumber').value = '';
+					document.getElementById('even').checked = false;
+					document.getElementById('odd').checked = false;
+					document.getElementById('evenPc').checked = false;
+					document.getElementById('oddPc').checked = false;
+				 }, 5000);
+			}
+		},1000)
+	});
+
+	// even or odd handler
+	document.getElementById('odd').addEventListener('change', function(){
+		document.getElementById('evenPc').checked = true;
+	});
+	document.getElementById('even').addEventListener('change', function(){
+		document.getElementById('oddPc').checked = true;
+	});
+  </script>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Esami</title>
+    <style>
+        body {
+            display: flex;
+        }
+        body>div {
+            margin: 1rem;
+            width: 33%;
+            height: 30rem;
+            padding: 1rem;
+        }
+        input:invalid {
+            background-color: rgba(255, 0, 0, 0.798);
+        }
+        #sx{
+            background-color:rgb(153, 198, 245);
+            display: table;
+        }
+        #dx {
+            background-color: rgb(235, 192, 226);
+        }
+        .r {
+            display: table-row;
+        }
+        .r input, label, button{
+            display: table-cell;
+            padding: 0.25rem;
+            height: 1.5rem;
+            margin: 0.25rem;
+        }
+        .r p{
+            display: table-cell;
+            padding: 0.25rem;
+            height: 1.5rem;
+            margin: 0.25rem;
+            font-weight: bold;
+            font-size: x-large;
+        }
+        tr.evidenzia {
+            background-color: yellow;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 1rem;
+            border: 1px solid black;
+        }
+        th,td{
+            border: 1px solid black;
+            padding: 0.25rem;
+        }
+    </style>
+    <script>
+
+        const vet = [];
+        let tempoRimanente = 100;
+
+        class Elemento {
+            constructor(nome, cognome, telefono, data) {
+                this.nome = nome;
+                this.cognome = cognome;
+                this.telefono = telefono;
+                this.data = data;
+            }
+            getRiga(){
+                const tr = document.createElement('tr');
+                const inputCheck = document.createElement('input');
+                inputCheck.type = 'checkbox';
+                inputCheck.name = 'check' + vet.length;
+                inputCheck.checked = true;
+                const tdCheck = document.createElement('td');
+                const tdNome = document.createElement('td');
+                const tdCognome = document.createElement('td');
+                const tdtelefono = document.createElement('td');
+                const tdData = document.createElement('td');
+                tdCheck.appendChild(inputCheck);
+                tdNome.innerText = this.nome;
+                tdCognome.innerText = this.cognome;
+                tdtelefono.innerText = this.telefono;
+                tdData.innerText = this.data.toLocaleString();
+                tr.appendChild(tdCheck);
+                tr.appendChild(tdNome);
+                tr.appendChild(tdCognome);
+                tr.appendChild(tdtelefono);
+                tr.appendChild(tdData);
+                return tr;
+            }
+        }
+        
+        function inserisci(){
+            const nome = document.getElementById("nome").value;
+            const cognome = document.getElementById("cognome").value;
+            const telefono = Number(document.getElementById("telefono").value);
+            const elemento = new Elemento(nome, cognome, telefono, new Date());
+            vet.push(elemento);
+            const tabella = document.getElementById("tabella");
+            tabella.appendChild(elemento.getRiga());
+            console.log("inserito");
+        }
+        
+        function openWin() {
+            let myWindow = window.open('','','width=600,height=400');
+            let righe = document.getElementsByTagName("tr");
+            for (let i=1; i<righe.length; i++){ 
+                let r = righe[i];
+                vet[i-1].selezionato = r.firstElementChild.firstElementChild.checked;
+            }
+            for(let v of vet){
+                if(v.selezionato){
+                    myWindow.document.write(v.nome + ", " + v.cognome + ", " + v.telefono + ", " + v.data.toLocaleString() + "<br>");
+                }
+            }
+        }
+        function openWinC() {
+            let myWindow = window.open('','','width=600,height=400');
+            let righe = document.getElementsByTagName("tr");
+            for (let i=1; i<righe.length; i++){ 
+                let r = righe[i];
+                vet[i-1].selezionato = r.firstElementChild.firstElementChild.checked;
+            }
+            let vet2 = [...vet];
+            vet2.sort((a, b) => a.cognome.localeCompare(b.cognome));
+            for(let v of vet2){
+                if(v.selezionato){
+                    myWindow.document.write(v.nome + ", " + v.cognome + ", " + v.telefono + ", " + v.data.toLocaleString() + "<br>");
+                }
+            }
+        }
+        function inizializza(){
+            const bInserisci = document.getElementById('inserisci');
+            bInserisci.addEventListener('click', inserisci);
+            const bEsporta = document.getElementById('esporta');
+            bEsporta.addEventListener('click', openWin);
+            const bEsportaCognome = document.getElementById('esportaCognome');
+            bEsportaCognome.addEventListener('click', openWinC);
+
+            let intervalid = setInterval(() => {
+                document.getElementById("tempo").innerText = tempoRimanente;
+                tempoRimanente--;
+                if(tempoRimanente < 0){
+                    document.getElementById("inserisci").disabled = true;
+                    clearInterval(intervalid);
+                }
+            }, 1000);
+        }
+    </script>
+    </head>
+<body onload="inizializza()">
+    <div id="sx">
+        <div class="r">
+            <label for="nome">Nome</label><input type="text" id="nome" placeholder="Mario" pattern="^[A-Z][a-z]+$">
+        </div>
+        <div class="r">
+            <label for="cognome">Cognome</label><input type="text" id="cognome" placeholder="Rossi" pattern="^[A-Z][a-z]+$">
+        </div>
+        <div class="r">
+            <label for="telefono">Telefono</label><input type="text" id="telefono" placeholder="3456789012" pattern="^[0-9]{10}$">
+        </div>
+        <div class="r">
+        <button id="inserisci">Inserisci</button>
+        </div>
+        <div class="r">
+            <p>Tempo rimanente: </p>
+            <p id="tempo"></p>
+        </div>
+    </div>
+    <div id="dx">
+        <button id="esporta">Esporta</button>
+        <button id="esportaCognome">Esporta (ordinando per cognome)</button>
+        <table id="tabella">
+            <tr>
+                <th>Selezionato</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Telefono</th>
+                <th>Data</th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
