@@ -183,6 +183,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 **Maintainer**
 
+[Alessandro Bevilacqua](https://github.com/Kurius)<br>
 [Andrea Covelli](https://github.com/AndreaCovelli)<br>
 [Gabriele Frassi](https://github.com/gabrielefrax)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
