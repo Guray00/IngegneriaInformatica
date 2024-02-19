@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ombrelloni</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #dati {
+            background-color: lightblue;
+            width: 50%;
+            height: fit-content;
+            display: grid;
+            gap: 1em;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        #ombrelloni {
+            width: 50%;
+            background-color: orange;
+        }
+
+        #tabella {
+            width: 100%;
+            background-color: yellow;
+        }
+
+        table {
+            margin: auto;
+            padding: 2em;
+            font-size: xx-large;
+            font-family: monospace;
+        }
+
+        tr {
+            width: 1em;
+            height: 1em;
+        }
+
+        label,
+        input,
+        button {
+            margin: 1em;
+        }
+
+        input:invalid {
+            background-color: rgb(231, 171, 171);
+        }
+
+        #pp {
+            font-weight: bold;
+            margin: 1em;
+        }
+    </style>
+    <script>
+        /* Larghezza di una fila di ombrelloni */
+        const DIMX = 5;
+        /* Numero di file di ombrelloni */
+        const DIMY = 3;
+        /* Numero massimo di prenotazioni per utente */
+        const MAX_PRENOTAZIONI = 3;
+        /* Stato degli ombrelloni nelle varie date */
+        const stato = {};
+        /* Tutte le prenotazioni effettuate */
+        const prenotazioni = {};
+
+        /* Conta il numero di prenotazioni esistenti per l'utente in questione */
+        function contaPrenotazioni(nome, cognome) {
+            const q = prenotazioni[nome + '_' + cognome];
+            if(!q) {
+                prenotazioni[nome + '_' + cognome] = 0;
+                return 0;
+            }
+            return q;
+        }
+
+        /* Inserisce una nuova prenotazione se possibile 
+         * Restituisce true se la prenotazione viene effettuata, false altrimenti 
+         */
+        function inserisci(data, nome, cognome, riga, colonna) {
+            if (contaPrenotazioni(nome, cognome) < MAX_PRENOTAZIONI) {
+                prenotazioni[nome + '_' + cognome]++;
+                const li = document.createElement("li");
+                li.textContent = data + ": " + nome + " " + cognome +
+                    ", ombrellone (" + riga + ", " + colonna + ")";
+                const ol = document.getElementById('lista');
+                ol.appendChild(li);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        /*
+         * Funzione eseguita quando l'utente clicca su un ombrellone
+         * Esegue la prenotazione se possibile, altrimenti mostra messaggio
+         */
+        function seleziona(e) {
+            let id = e.target.id;
+            let [data, riga, colonna] = id.split('|');
+            riga = Number(riga);
+            colonna = Number(colonna);
+            let statoGiorno = stato[data];
+            if (!statoGiorno) {
+                statoGiorno = Array(DIMX * DIMY);
+            }
+            statoGiorno[riga * DIMX + colonna] = true;
+            stato[data] = statoGiorno;
+            const nome = document.getElementById("nome").value;
+            const cognome = document.getElementById("cognome").value;
+            if (inserisci(data, nome, cognome, riga, colonna)) {
+                e.target.textContent = 'X';
+                e.target.removeEventListener('click', seleziona);
+            } else {
+                alert("Ci sono già tre prenotazioni con questo nome");
+            }
+        }
+
+        /*
+         * Mostra lo stato degli ombrelloni per la data specificata 
+         */
+        function visualizzaOmbrelloni(data) {
+            let statoGiorno = stato[data];
+            if (!statoGiorno) {
+                statoGiorno = Array(DIMX * DIMY);
+            }
+            const tab = document.createElement("table");
+            for (let i = 0; i < DIMY; i++) {
+                const r = document.createElement("tr");
+                tab.appendChild(r);
+                for (let j = 0; j < DIMX; j++) {
+                    const t = document.createElement("td");
+                    r.appendChild(t);
+                    t.id = data + "|" + i + "|" + j;
+                    if (statoGiorno[i * DIMX + j])
+                        t.textContent = 'X';
+                    else {
+                        t.addEventListener('click', seleziona);
+                        t.textContent = 'O';
+                    }
+                }
+            }
+            const d = document.getElementById('ombrelloni');
+            d.firstChild.remove();
+            d.appendChild(tab);
+        }
+
+        /*
+         * Funzione eseguita quando l'utente clicca sul bottone Scegli 
+         */
+        function invia() {
+            const cData = document.getElementById('data');
+            const d = cData.value;
+            const cNome = document.getElementById('nome');
+            const n = cNome.value;
+            const cCognome = document.getElementById('cognome');
+            const c = cCognome.value;
+            visualizzaOmbrelloni(d);
+        }
+
+        function inizializza() {
+
+            const inv = document.getElementById('invia');
+            inv.addEventListener('click', invia);
+        }
+    </script>
+</head>
+
+<body onload="inizializza()">
+    <div id="dati">
+        <label>Data</label><input type="date" id="data" required>
+        <label>Nome</label><input type="text" id="nome" required pattern="^[A-Z][a-z]+$">
+        <label>Cognome</label><input type="text" id="cognome" required pattern="^[A-Z][a-z]+$">
+        <button id="invia">Scegli</button>
+    </div>
+    <div id="ombrelloni">
+
+    </div>
+    <div id="tabella">
+        <p id="pp">Prenotazioni</p>
+        <ol id="lista">
+        </ol>
+    </div>
+</body>
+
+</html>

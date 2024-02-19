@@ -183,10 +183,12 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 **Maintainer**
 
-[Gabriele Frassi](https://github.com/gabrielefrax)<br>
-[Giovanni Enrico Loni](https://github.com/genricoloni)<br>
-[Marco Lampis](https://github.com/Guray00)<br>
+[Alessandro Bevilacqua](https://github.com/Kurius)<br>
 [Andrea Covelli](https://github.com/AndreaCovelli)<br>
+[Gabriele Frassi](https://github.com/gabrielefrax)<br>
+[Marco Lampis](https://github.com/Guray00)<br>
+[Giovanni Enrico Loni](https://github.com/genricoloni)<br>
+[Federico Nardi](https://github.com/fedenardii)<br>
 [Lorenzo Valtriani](https://github.com/lorenzovaltriani)<br>
 
 **Collaboratori Materiale**
@@ -280,5 +282,6 @@ Andrea Vagnoli<br>
 Alessandro Versari<br>
 Sandro Wu<br>
 Giulio Zingrillo<br>
-Francesco Zollo<br><br>
+Francesco Zollo<br>
+Giuseppe "Attila" Attadia<br><br>
 Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto..

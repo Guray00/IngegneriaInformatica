@@ -1,10 +1,10 @@
 <html>
     <head>
-        <title>Lettere</title>
+        <title>2023-09-14</title>
         <meta charset="utf-8">
         <style>
         body {
-            background-color: gray;
+            background-color: orange;
 			font-weight: bold;
             padding: 2em;
         }
@@ -32,26 +32,26 @@
            font-size: 2rem;
         }
         .casella.top {
-           background-color: lightblue;
+           background-color: lightgreen;
         }
         </style>
 
         <script>
 
-        // Al prossimo scattare del timer deve essere generata una nuova lettera
-        let nuovaLettera = true;
+        // Al prossimo scattare del timer deve essere generata una nuova cifra
+        let nuovaCifra = true;
         // Numero di colonne della tabella
-        const NUM_COL = 10;
+        const NUM_COL = 5;
         // Numero di righe della tabella
         const NUM_RIG = 5;
         // Intervallo
-        const INTERVALLO = 200;
+        const INTERVALLO = 500;
         // Numero di volte che la lettera si è già spostata sulla riga iniziale
         let numMuoviTop = 0;
         // Posizione corrente della lettera
         let posTop;
-        // La lettera che si sposta
-        const LETTERA = "X";
+        // La cifra che si sposta
+        let cifra;
         // Cella vuota
         const VUOTO = "";
         // Direzione sx o dx
@@ -127,23 +127,25 @@
             }
             // Aggiorna lo stato dei bottoni
 			updateButtonStatus();
-            // Avvia un timer con periodo 1 secondo
+            // Avvia un timer con periodo pari a INTERVALLO
             timerid = setInterval(aggiorna, INTERVALLO);
 		}
 
-        // Chiamata ogni 200 ms
+        // Chiamata ogni INTERVALLO ms
         function aggiorna(){
-            if(nuovaLettera){
+            if(nuovaCifra){
                 // Bisogna generare una nuova lettera X
                 punti++;
-                nuovaLettera = false;
+                nuovaCifra = false;
                 // Sceglie una colonna a caso
                 posTop = colonnaCasuale();
+                // Genera una cifra a caso
+                cifra = Math.floor(Math.random()*10);
                 // Sceglie una direzione a caso
-                direzione = direzioneCasuale();
+                direzione = posTop === 0 ? +1 : -1;
                 // Immette la lettera nella riga top
                 let e = document.getElementById("top-"+posTop);
-                e.value = LETTERA;
+                e.value = cifra;
                 // Contatore del numero di spostamenti
                 numMuoviTop = 0;
             } else {
@@ -153,12 +155,7 @@
 
         // Restituisce l'indice di una colonna a caso
         function colonnaCasuale() {
-            return Math.floor(Math.random() * NUM_COL);
-        }
-
-        // Restituisce una direzione a caso (sx: -1, dx: 1)
-        function direzioneCasuale() {
-            return Math.random() < 0.5 ? -1 : +1;
+            return Math.random() < 0.5 ? 0 : NUM_COL-1;
         }
 
         // Muove la lettera di una posizione a sx o dx
@@ -167,22 +164,15 @@
             // Svuoto la casella top in cui la lettera si trova
             let e = document.getElementById("top-"+posTop);
             e.value = VUOTO;
-            // Calcolo la nuova posizione a seconda della direzione
-            // The remainder operator (%) returns the remainder left over 
-            // when one operand is divided by a second operand. It always takes 
-            // the sign of the dividend.
-            // When both operands are non-zero and finite, the remainder r is 
-            // calculated as r := n - d * q where q is the integer such that r has 
-            // the same sign as the dividend n while being as close to 0 as possible.
-            // To obtain a modulo in JavaScript, in place of n % d, use ((n % d) + d) % d.
-            posTop = (((posTop + direzione) % NUM_COL) + NUM_COL) % NUM_COL;
-            // Metto la lettera X nella casella
+            // Aggiorno la posizione
+            posTop = posTop + direzione;
+            // Metto la cifra nella casella
             let e2 = document.getElementById("top-"+posTop);
-            e2.value = LETTERA;
+            e2.value = cifra;
             // Aggiorno il contatore degli spostamenti
             numMuoviTop++;
             // Se un giro è terminato...
-            if(numMuoviTop == NUM_COL){
+            if(numMuoviTop == NUM_COL-1){
                 // ... mando giù la lettera
                 giu();
             }
@@ -193,14 +183,21 @@
         function giu() {
             // Controllo se una nuova lettera è stata generata
             // In caso negativo non faccio niente
-            if(nuovaLettera)
+            if(nuovaCifra)
                 return;   
-            nuovaLettera = true;
+            nuovaCifra = true;
             // Svuoto la casella top in cui la lettera si trova
             let e = document.getElementById("top-"+posTop);
             e.value = VUOTO;
             // Cerco la prima riga casella nella colonna corrente
             let r = trovaRiga(posTop);
+            if(r !== NUM_RIG-1) {
+                let ee = document.getElementById("casella-"+ (r+1) +"-"+posTop);
+                if (ee.value == cifra){
+                    ee.value = VUOTO;
+                    return;
+                } 
+            }
             // La colonna è piena... 
             if(r === -1) {
                 // ... e il gioco finisce
@@ -209,7 +206,7 @@
             }
             // Metto la lettera più in basso possibile
             let e2 = document.getElementById("casella-"+r+"-"+posTop);
-            e2.value = LETTERA;
+            e2.value = cifra;
         }
 
         // Il gioco è terminato

@@ -17,11 +17,11 @@
             background-color: rgba(255, 0, 0, 0.798);
         }
         #sx{
-            background-color:orange;
+            background-color:rgb(153, 198, 245);
             display: table;
         }
         #dx {
-            background-color: lightgreen;
+            background-color: rgb(235, 192, 226);
         }
         .r {
             display: table-row;
@@ -59,10 +59,10 @@
         let tempoRimanente = 100;
 
         class Elemento {
-            constructor(nome, cognome, matricola, data) {
+            constructor(nome, cognome, telefono, data) {
                 this.nome = nome;
                 this.cognome = cognome;
-                this.matricola = matricola;
+                this.telefono = telefono;
                 this.data = data;
             }
             getRiga(){
@@ -74,17 +74,17 @@
                 const tdCheck = document.createElement('td');
                 const tdNome = document.createElement('td');
                 const tdCognome = document.createElement('td');
-                const tdMatricola = document.createElement('td');
+                const tdtelefono = document.createElement('td');
                 const tdData = document.createElement('td');
                 tdCheck.appendChild(inputCheck);
                 tdNome.innerText = this.nome;
                 tdCognome.innerText = this.cognome;
-                tdMatricola.innerText = this.matricola;
+                tdtelefono.innerText = this.telefono;
                 tdData.innerText = this.data.toLocaleString();
                 tr.appendChild(tdCheck);
                 tr.appendChild(tdNome);
                 tr.appendChild(tdCognome);
-                tr.appendChild(tdMatricola);
+                tr.appendChild(tdtelefono);
                 tr.appendChild(tdData);
                 return tr;
             }
@@ -93,8 +93,8 @@
         function inserisci(){
             const nome = document.getElementById("nome").value;
             const cognome = document.getElementById("cognome").value;
-            const matricola = Number(document.getElementById("matricola").value);
-            const elemento = new Elemento(nome, cognome, matricola, new Date());
+            const telefono = Number(document.getElementById("telefono").value);
+            const elemento = new Elemento(nome, cognome, telefono, new Date());
             vet.push(elemento);
             const tabella = document.getElementById("tabella");
             tabella.appendChild(elemento.getRiga());
@@ -110,7 +110,7 @@
             }
             for(let v of vet){
                 if(v.selezionato){
-                    myWindow.document.write(v.nome + ", " + v.cognome + ", " + v.matricola + ", " + v.data.toLocaleString() + "<br>");
+                    myWindow.document.write(v.nome + ", " + v.cognome + ", " + v.telefono + ", " + v.data.toLocaleString() + "<br>");
                 }
             }
         }
@@ -125,7 +125,7 @@
             vet2.sort((a, b) => a.cognome.localeCompare(b.cognome));
             for(let v of vet2){
                 if(v.selezionato){
-                    myWindow.document.write(v.nome + ", " + v.cognome + ", " + v.matricola + ", " + v.data.toLocaleString() + "<br>");
+                    myWindow.document.write(v.nome + ", " + v.cognome + ", " + v.telefono + ", " + v.data.toLocaleString() + "<br>");
                 }
             }
         }
@@ -157,7 +157,7 @@
             <label for="cognome">Cognome</label><input type="text" id="cognome" placeholder="Rossi" pattern="^[A-Z][a-z]+$">
         </div>
         <div class="r">
-            <label for="matricola">Matricola</label><input type="text" id="matricola" placeholder="123456" pattern="^[1-9][0-9]{5}$">
+            <label for="telefono">Telefono</label><input type="text" id="telefono" placeholder="3456789012" pattern="^[0-9]{10}$">
         </div>
         <div class="r">
         <button id="inserisci">Inserisci</button>
@@ -175,7 +175,7 @@
                 <th>Selezionato</th>
                 <th>Nome</th>
                 <th>Cognome</th>
-                <th>Matricola</th>
+                <th>Telefono</th>
                 <th>Data</th>
             </tr>
         </table>
