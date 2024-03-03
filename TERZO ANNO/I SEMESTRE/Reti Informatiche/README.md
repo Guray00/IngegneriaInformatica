@@ -6,7 +6,7 @@ Note sulla preparazione della macchina virtuale per l'esame di Reti Informatiche
 
 ### VirtualBox
 
-| Versione testato | funziona debian.studenti.ova |
+| Versione testato | funziona debian-studenti.ova |
 | --- | --- |
 | 6.0.24 | no |
 | 6.1.50 | si |
