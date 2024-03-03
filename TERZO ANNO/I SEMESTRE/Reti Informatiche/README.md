@@ -3,6 +3,16 @@ Note sulla preparazione della macchina virtuale per l'esame di Reti Informatiche
 
 
 ## Premessa
+
+### VirtualBox
+
+| Versione testato | funziona debian.studenti.ova |
+| --- | --- |
+| 6.0.24 | no |
+| 6.1.50 | si |
+| 7.0.12 | no |
+
+
 Per far funzionare correttamente la macchina virtuale è necessario prima compiere due operazioni dall impostazioni della macchina (su virtualbox):
 - **video** > abilitare l'accelarazione video
 - **USB** 	> selezionare usb 1.1
