@@ -55,122 +55,6 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
 
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.png?raw=true) <!-- .element height="25%" width="25%" -->
 
-
-<!-- ## Come scaricare le lezioni
-
-A causa del Nuovo Coronavirus 19 le lezioni nel prossimo futuro continueranno ad essere erogate in modalità a distanza. Per questo motivo è stato realizzato un fork che consente di scaricare le registrazioni presenti sulla piattaforma Microsoft Stream. Per ulteriori informazioni sul progetto e sul suo utilizzo trovate [qui](https://github.com//Guray00/destreamer-unipi) tutte le informazioni necessarie.
-
-## Come scaricare una sola cartella
-
-Spesso può fare comodo scaricare una sola cartella, ma ciò non è possibile nativamente. A tal proposito esiste [questo](https://download-directory.github.io/) sito che consente il download una volta specificato l'indirizzo della cartella. 
--->
-
-## Libri di testo
-
-Di seguito trovate una lista dei libri di testo suggeriti per ogni corso (potrebbe non essere sempre aggiornato, verificare).
-I testi, in base all'esperienza degli studenti, si suddividono in:
-
-1) **Non necessario**: Il materiale fornito dal professore è sufficiente per passare l'esame.
-2) **Utile**: Utile per vedere più nel dettaglio alcuni argomenti.
-3) **Consigliato**: Il libro è consigliato per seguire il corso del professore.
-4) **Fondamentale**: Il libro di testo risulta imprescindibile per seguire il corso.
-
-### Libri del Primo anno  
-
-- **Analisi Matematica I** - _Consigliato_<br>
-  **Testo consigliato**: "Analisi 1" di Enrico Giusti- Volume 1 Edizione 3 (ed anche quelle successive).  
-
-- **Fondamenti di Programmazione** - _Utile_    
-  **Testo consigliato**:<br> 
-      1) "Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++" [dalla 5° in poi] di _Andrea Domenici, Graziano Frosini_.<br>
-      2) "Note sull’organizzazione di un calcolatore e Rappresentazione dell’informazione" di _Paolo Corsini, Graziano Frosini_<br>
-  **Note studenti**: Il professore mette delle slide a disposizione sufficenti, il testo approfondisce però in modo più accurato alcuni argomenti.
-
-- **Algebra Lineare e Analisi Matematica II** - _Consigliato_    
-  **Testo consigliato**:<br> 
-      1) "Lipschutz_Schaums" <br>
-      2) "E. Giusti:  Analisi Matematica 2  ed. Boringhieri"<br>
-      3) "Bramanti-Pagani-Salsa, Analisi Matematica 2, Zanichelli"<br>
-      4) "Pagani-Salsa, Analisi Matematica Vol 2, Zanichelli0"<br>
-  **Note studenti**: I professore di Algebra Lineare mette delle slide a disposizione che possono essere integrate con l'uso dei libri Il professore di Analisi 2 usa la lavagna e gli appunti con integrazione del libro possono andar bene.
-
-
-- **Basi di Dati** - _Utile_  
-  **Testo consigliato**:<br> 
-      1) "Basi di Dati" di _Paolo Atzeni, Stefano Ceri & altri_<br>
-  **Note studenti**: I professori mettono delle slide a disposizione molto valide e ricche di contenuti.
-
-- **Fisica Generale I** - _Consigliato_    
-  **Testo consigliato**:<br> 
-      1) "Fisica per scienze e ingegneria volumi 1 & 2" di _Raymond A. Serway & altri_        
-  **Note studenti**: I professori mette delle slide a disposizione che possono essere integrate con l'uso dei libri.
-
-- **Algoritmi e Strutture Dati** - _Non necessario_    
-  **Note studenti**: Il professore mette una dispensa molto completa a disposizione.  
-   <!-- -->
-   
-### Libri del Secondo anno  
-
-- **Calcolo Numerico** - _Non necessario_<br>
-  **Testo consigliato**: Nessuno.<br> 
-  **Note studenti**: Il professore mette a disposizione delle diapositive e una dispensa LaTeX. Le diapositive esprimono le cose essenziali, il testo approfondisce in modo più accurato alcuni argomenti.<br>
-
-- **Elettrotecnica** - _Utile_    
-  **Testo consigliato**:<br> 
-      1) "Lezioni di Elettrotecnica" di _Marco Raugi_.<br>
-      2) "Eserciziario elettrotecnica" di _Francesco Bertoncini_.<br>
-  **Note studenti**: I testi sono consigliati per alcune cose, gli appunti sono comunque sufficienti per il superamento dell'esame.
-
-- **Reti Logiche** <br>
-  **Testo consigliato**:<br> 
-      1) "Dalle porte AND, OR, NOT al Sistema calcolatore" di _Paolo Corsini_, edizioni ETS (_Consigliato_) <br>
-      2) "Circuiti logici per le operazioni sui numeri naturali e sui numeri interi" di _Paolo Corsini_, edizioni ETS (_Consigliato_)<br>
-      3) "Il Calcolatore Didattico C86.32" di _Paolo Corsini_, edizioni ETS (_Fondamentale_)<br>
-  **Note studenti**: I libri sono utili per chiarire gli argomenti affrontati dai docenti. Dall'A.A. in cui il prof. Paolo Corsini ha smesso di insegnare rimane fondamentale l'ultimo libro, quello sull'Assembler. Si raccomanda un uso estremo delle dispense di Stea (_Fondamentale_).
-  
-- **Progettazione web** - _Non necessario_<br>
-  **Testo consigliato**: "Fundamentals of Web Development", R. Connoly and R.Hoar, Pearson<br> 
-  **Note studenti**:  Il professore ha suggerito un libro, ma non è necessario. Sufficiente il materiale offerto dal docente e consultazione di portali online contenenti spiegazioni rivolte ai _beginners_
-  
-- **Calcolatori elettronici** - _Non necessario_<br>
-  **Testo consigliato**:<br>1) "Architettura dei calcolatori, vol I", G. Frosini, Pisa University Press;<br>2) "Architettura dei calcolatori, vol II", G. Frosini e G. Lettieri, Pisa University Press.<br>
-  **Note studenti**:  Il professore ha suggerito i libri indicati, ma al più sono utili per chiarire alcuni concetti (non sono presenti tutti gli argomenti, inoltre ampie parti dei volumi non sono più trattate nel programma del corso). Il docente ha pubblicato sul suo sito dei PDF relativi ad alcuni argomenti del corso (non tutti).
-  
-- **Economia e organizzazione aziendale** - _Non necessario_<br>
-  **Testo consigliato**: _Nessuno_<br> 
-  **Note studenti**:  La prof.ssa non suggerisce libri, fornisce diapositive e dispense sul canale Teams. 
-  
-- **Fondamenti di automatica** - _Non necessario_<br>
-  **Testo consigliato**: TBD<br> 
-  **Note studenti**: I professori mettono a disposizione delle slides in Inglese discrete. Si consiglia l'integrazione degli appunti.
-  
-- **Ricerca operativa** - _Utile_<br>
-  **Testo consigliato**: M.Pappalardo-M.Passacantando, "Ricerca Operativa", Casa Editrice Pisa University Press.<br> 
-  **Note studenti**:  Il libro è molto utile per chiarire dubbi, ma gli appunti delle lezioni sono sufficienti.
-
-### Libri del Terzo anno
-
-- **Reti informatiche**<br>
-  **Testo consigliato**:<br> 
- "James F. Kurose, Keith W. Ross, Computer Networking, A Top-Down Approach - VII Edition, Pearson Education"<br>
-  **Note studenti**: Si suggerisce la versione in inglese per qualità e per esercitarsi con la lingua in previsione della magistrale.
- 
-- **Sistemi operativi** - _Consigliato_    <br>
-  **Testo consigliato**: "P. Ancilotti, M.  Boari, A .Ciampolini, G.Lipari, Sistemi Operativi, 2ed, Mc Graw-Hill.".<br> 
-  **Note studenti**: Il professore segue quasi completamente il filo logico adottato dal libro nelle sue spiegazioni, basando le sue lezioni su diapositive fornite dagli autori del volume. 
-
-- **Ingegneria del software** - _Non necessario_<br>
-  **Testo consigliato**: Nessuno.<br> 
-  **Note studenti**: Il professore mette a disposizione una dispensa LaTeX e delle diapositive sul suo sito.<br>
-
-- **Comunicazioni Numeriche** - _Consigliato_<br>
-  **Testo consigliato**: "Teoria dei segnali" 3° Edizione, M.Luise, Mcgraw-Hill.<br>
-  **Note studenti**: Il professore mette delle slide a disposizione sufficienti al fine di superare l'esame. Per maggior approfondimenti si consiglia l'uso del libro.<br>
-
-- **Elettronica Digitale** - _Non necessario_<br>
-  **Testo consigliato**: Nessuno.<br>
-  **Note studenti**: Il professore mette delle slide a disposizione sufficienti.
-
 ## Credits (in aggiornamento)
 
 <a href="https://github.com/Guray00/IngegneriaInformatica/graphs/contributors">
@@ -224,6 +108,7 @@ Matteo Dondoli<br>
 Nilo Fabiano<br>
 Giulio Federico<br>
 Niccolò Franchi<br>
+Gabriele Frassi<br>
 Jonathan Frattacci<br>
 Giacomo Furia<br>
 Simone Gallo<br>
