@@ -50,7 +50,7 @@ bool is_property_satisfied(Node *n, int k) {
 }
 
 
-void insert_satisfying_into_queue(Node *n, int k, Node * &curr) {
+void get_max_satisfying(Node *n, int k, Node * &curr) {
     if (n == nullptr) {
         return;
     }
@@ -62,14 +62,14 @@ void insert_satisfying_into_queue(Node *n, int k, Node * &curr) {
             curr = n;
         }
     }
-    insert_satisfying_into_queue(n->left, k, curr);
-    insert_satisfying_into_queue(n->right, k, curr);
+    get_max_satisfying(n->left, k, curr);
+    get_max_satisfying(n->right, k, curr);
 }
 
 
 std::optional<int> get_max_property_label(Node *node, int k) {
     Node *n = nullptr;
-    insert_satisfying_into_queue(node, k, n);
+    get_max_satisfying(node, k, n);
     return n == nullptr ? std::nullopt : std::optional(n->label);
 }
 
