@@ -1,7 +1,5 @@
 #include <iostream>
 #include <optional>
-#include <queue>
-#include <vector>
 
 struct Node {
     int label;
@@ -36,13 +34,12 @@ void insert_node_abr(Node *&n, int val, int weight) {
 // }
 
 
-
 bool is_property_satisfied(Node *n, int k) {
     int tmp = 0;
-    for (auto child : {n->left, n->right}) {
+    for (auto child: {n->left, n->right}) {
         if (child != nullptr) {
             tmp += child->weight;
-            for (auto nephew : {child->left, child->right}) {
+            for (auto nephew: {child->left, child->right}) {
                 if (nephew != nullptr) {
                     tmp += nephew->weight;
                 }
@@ -52,32 +49,28 @@ bool is_property_satisfied(Node *n, int k) {
     return n->weight * k < tmp;
 }
 
-template<typename F>
-void insert_satisfying_into_queue(Node *n, int k, std::priority_queue<Node*, std::vector<Node*>, F> &res) {
+
+void insert_satisfying_into_queue(Node *n, int k, Node * &curr) {
     if (n == nullptr) {
         return;
     }
     if (is_property_satisfied(n, k)) {
-        res.push(n);
+        if (curr == nullptr
+            || curr->weight < n->weight
+            || (curr->weight == n->weight && curr->label < n->label)
+        ) {
+            curr = n;
+        }
     }
-    insert_satisfying_into_queue(n->left, k, res);
-    insert_satisfying_into_queue(n->right, k, res);
+    insert_satisfying_into_queue(n->left, k, curr);
+    insert_satisfying_into_queue(n->right, k, curr);
 }
 
 
 std::optional<int> get_max_property_label(Node *node, int k) {
-    auto compare = [](Node *a, Node *b) {
-        if (a->weight == b->weight) {
-            return a->label < b->label;
-        }
-        return a->weight < b->weight;
-    };
-    auto queue = std::priority_queue<Node*, std::vector<Node*>, decltype(compare)>{compare};
-    insert_satisfying_into_queue(node, k, queue);
-    if (!queue.empty()) {
-        return queue.top()->label;
-    }
-    return std::nullopt;
+    Node *n = nullptr;
+    insert_satisfying_into_queue(node, k, n);
+    return n == nullptr ? std::nullopt : std::optional(n->label);
 }
 
 int main() {
