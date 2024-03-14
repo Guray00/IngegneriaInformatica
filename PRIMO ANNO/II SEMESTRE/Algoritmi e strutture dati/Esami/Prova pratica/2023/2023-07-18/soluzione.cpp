@@ -78,7 +78,7 @@ int main() {
     }
 
     auto f = [](Node *n1, Node *n2) {
-        return n1->label > n2->label;
+        return n1->label >= n2->label;
     };
 
     std::priority_queue<Node *, std::vector<Node *>, decltype(f)> p{f};
