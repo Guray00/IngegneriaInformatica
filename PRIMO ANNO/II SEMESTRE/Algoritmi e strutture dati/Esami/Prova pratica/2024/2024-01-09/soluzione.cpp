@@ -37,7 +37,7 @@ void do_get_nodes_distances(Node *node, Node *good_ancestor, std::vector<std::pa
     if (node == nullptr) {
         return;
     }
-    m.emplace_back(node, good_ancestor == nullptr ? -1 : dist);
+    m.emplace_back(node, dist);
     if (node->label % 2 == 0) {
         good_ancestor = node;
         dist = 1;
@@ -91,7 +91,7 @@ int main() {
     }
 
     auto v = get_nodes_distances(node, n);
-
+    
     for (auto [node, _] : v) {
         if (k == 0) {
             break;
