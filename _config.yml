@@ -1,1 +1,8 @@
 theme: jekyll-theme-cayman
+exclude:
+  - '*.html'
+  - '*.css'
+  - '*.js'
+  - 'PRIMO ANNO/'
+  - 'SECONDO ANNO/'
+  - 'TERZO ANNO/'
