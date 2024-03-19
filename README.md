@@ -24,6 +24,7 @@ Per rendere la comunicazione più efficace, sono stati realizzati gruppi apposit
 
 ## Corsi
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.png?raw=true)
+
 <!--
 Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di corso e semestre nel quale esso viene erogato.
  ###  Corsi Anno I  [AA.2019-2020] 
@@ -53,7 +54,8 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
       2. **Fondamenti di Automatica** (9 cfu) - [Mario Innocenti](https://people.unipi.it/mario_innocenti/) - [Lorenzo Pollini](https://people.unipi.it/lorenzo_pollini/)
       3. **Economia e Organizzazione Aziendale** (6 cfu) - Antonella Martini - Paola Belinghieri
       4. **Calcolatori Elettronici** (9 cfu) - [Giuseppe Lettieri](http://www.iet.unipi.it/g.lettieri/)
- -->
+-->
+
 ## Libri di testo
 Di seguito trovate una lista dei libri di testo suggeriti per ogni corso (potrebbe non essere sempre aggiornato, verificare).
 I testi, in base all'esperienza degli studenti, si suddividono in:
