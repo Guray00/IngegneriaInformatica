@@ -30,30 +30,30 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
       
       1. **Algebra Lineare** (12 cfu con Analisi II) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
       2. **Analisi Matematica I** (12 cfu) - [Luigi Carlo Berselli](http://pagine.dm.unipi.it/berselli/dida/maindida.html)
-      3. **Fondamenti di Programmazione** (9 cfu) - [Marco Cococcioni](http://www.iet.unipi.it/m.cococcioni/) -->
+      3. **Fondamenti di Programmazione** (9 cfu) - [Marco Cococcioni](http://www.iet.unipi.it/m.cococcioni/)
    
- <!--2. _Secondo semestre_
+ 2. _Secondo semestre_
       
       1. **Algoritmi e Strutture Dati** (6 cfu) - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
       2. **Analisi Matematica II** (12 cfu con Algebra lineare) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
       3. **Basi di Dati** (9 cfu) - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
-      4. **Fisica Generale I** (12 cfu) - [Guido Emilio Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/) -->
+      4. **Fisica Generale I** (12 cfu) - [Guido Emilio Tonelli](http://www2.ing.unipi.it/~a004898/) - [Maria Agnese Ciocci](https://www.pi.infn.it/~ciocci/)
 
-<!-- ### Corsi Anno II [AA.2020-2021]
-<!--
+### Corsi Anno II [AA.2020-2021]
+
 1. _Primo semestre_
       1. **Calcolo Numerico** (6 cfu) - [Paolo Ghelardoni](http://pagine.dm.unipi.it/ghelardoni/)
       2. **Elettrotecnica** (6 cfu) - [Emanuele Crisostomi](https://people.unipi.it/emanuele_crisostomi/didattica/)
       3. **Progettazione WEB** (6 cfu) - [Francesco Marcelloni](http://www.iet.unipi.it/f.marcelloni/)
-      4. **Reti Logiche** (9 cfu) - [Giovanni Stea](http://docenti.ing.unipi.it/~a080368/Teaching/RetiLogiche/index_RL.html) - Raffaele Zippo -->
-  <!--
+      4. **Reti Logiche** (9 cfu) - [Giovanni Stea](http://docenti.ing.unipi.it/~a080368/Teaching/RetiLogiche/index_RL.html) - Raffaele Zippo
+  
 2. _Secondo semestre_
       1. **Ricerca Operativa** (9 cfu) - [Massimo Pappalardo](http://pages.di.unipi.it/mpappalardo/)
       2. **Fondamenti di Automatica** (9 cfu) - [Mario Innocenti](https://people.unipi.it/mario_innocenti/) - [Lorenzo Pollini](https://people.unipi.it/lorenzo_pollini/)
       3. **Economia e Organizzazione Aziendale** (6 cfu) - Antonella Martini - Paola Belinghieri
-      4. **Calcolatori Elettronici** (9 cfu) - [Giuseppe Lettieri](http://www.iet.unipi.it/g.lettieri/) -->
+      4. **Calcolatori Elettronici** (9 cfu) - [Giuseppe Lettieri](http://www.iet.unipi.it/g.lettieri/)
 
-![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.png?raw=true) <!-- .element height="25%" width="25%" -->
+![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.png?raw=true) .element height="25%" width="25%" -->
 
 ## Credits (in aggiornamento)
 
