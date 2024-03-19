@@ -12,7 +12,7 @@ struct Node {
     }
 };
 
-void insert_node_abr(Node *&n, int label, int color) {
+void insert_node_abr(Node *&n, int label, char color) {
     Node **scan = &n;
     while (*scan != nullptr) {
         if (label <= (*scan)->label) {
@@ -34,16 +34,15 @@ void insert_node_abr(Node *&n, int label, int color) {
 //     delete n;
 // }
 
-bool is_surrounded(Node *n, Node *father) {
+bool is_surrounded(Node *n, Node &father) {
     if (
-        father == nullptr ||
         n == nullptr ||
         n->left == nullptr ||
         n->right == nullptr
     ) {
         return false;
     }
-    return father->color == n->left->color && father->color == n->right->color;
+    return father.color == n->left->color && father.color == n->right->color;
 }
 
 template<typename F>
@@ -52,7 +51,7 @@ void get_fathers_of_surrounded_children(Node *n, std::priority_queue<Node *, std
         return;
     }
     for (Node *child: {n->left, n->right}) {
-        if (child != nullptr && is_surrounded(child, n)) {
+        if (child != nullptr && is_surrounded(child, *n)) {
             p.push(n);
             break;
         }
@@ -78,7 +77,7 @@ int main() {
     }
 
     auto f = [](Node *n1, Node *n2) {
-        return n1->label >= n2->label;
+        return n1->label > n2->label;
     };
 
     std::priority_queue<Node *, std::vector<Node *>, decltype(f)> p{f};
@@ -93,3 +92,4 @@ int main() {
 
     return 0;
 }
+
