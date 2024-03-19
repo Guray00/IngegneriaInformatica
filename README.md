@@ -33,7 +33,7 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
       3. **Fondamenti di Programmazione** (9 cfu) - [Marco Cococcioni](http://www.iet.unipi.it/m.cococcioni/)
    
  2. _Secondo semestre_
-      
+
       1. **Algoritmi e Strutture Dati** (6 cfu) - [Nicoletta De Francesco](http://www.iet.unipi.it/n.defrancesco/) - Antonio Luca Alfeo
       2. **Analisi Matematica II** (12 cfu con Algebra lineare) - [Longo Placido](http://pagine.dm.unipi.it/alan/)
       3. **Basi di Dati** (9 cfu) - Gigliola Vaglini - [Francesco Pistolesi](http://www.iet.unipi.it/f.pistolesi/teaching.html)
