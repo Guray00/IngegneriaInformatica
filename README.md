@@ -155,7 +155,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 ### Libri del Terzo anno 
 
-- **Reti informatiche**- _Utile_<br>
+- **Reti informatiche** - _Utile_<br>
   **Testo consigliato**:<br> 
  "James F. Kurose, Keith W. Ross, Computer Networking, A Top-Down Approach - VII Edition, Pearson Education"<br>
   **Note studenti**: Si suggerisce la versione in inglese per qualità e per esercitarsi con la lingua in previsione della magistrale.
