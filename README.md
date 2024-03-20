@@ -106,6 +106,10 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       _di Claudio Canuto, Anita Tabacco_.<br>
 **Note studenti**: Il libro di solito consigliato è il primo. Il secondo libro è più chiaro nello spiegare negli argomenti trattati nel corso ma non è facilmente reperibile in formato cartaceo.
 
+- **Ricerca operativa** - _Utile_<br>
+  **Testo consigliato**: M.Pappalardo-M.Passacantando, "Ricerca Operativa", Casa Editrice Pisa University Press.<br> 
+  **Note studenti**:  Il libro è molto utile per chiarire dubbi, ma gli appunti delle lezioni sono sufficienti per passare l'esame.
+
 ### Libri del Secondo anno 
 #### <u>1° semestre</u>
 
@@ -149,11 +153,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       - M. Gopal, Control Systems Principles and Design, McGraw-Hill (3rd edition).
       - Richard C. Dorf and Robert H. Bishop IE, Modern Control Systems (13th Edition).<br> 
 
-  **Note studenti**: I professori mettono a disposizione delle slides in Inglese discrete. Si consiglia l'integrazione degli appunti presi a lezione.
-
-- **Ricerca operativa** - _Utile_<br>
-  **Testo consigliato**: M.Pappalardo-M.Passacantando, "Ricerca Operativa", Casa Editrice Pisa University Press.<br> 
-  **Note studenti**:  Il libro è molto utile per chiarire dubbi, ma gli appunti delle lezioni sono sufficienti per passare l'esame.
+  **Note studenti**: Il prof. Munafò mette a disposizione del materiale (sia in lingua inglese che in lingua italiana) da cui studiare al seguente link, https://andreamunafo.github.io/principles-of-automatic-controls/ 
 
 ### Libri del Terzo anno 
 
