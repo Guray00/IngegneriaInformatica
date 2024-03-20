@@ -109,10 +109,6 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 ### Libri del Secondo anno 
 #### <u>1° semestre</u>
 
-- **Calcolo Numerico** - _Non necessario_<br>
-  **Testo consigliato**: Nessuno.<br> 
-  **Note studenti**: Il professore mette a disposizione la dispensa LaTeX del docente precedente (Ghelardoni). Il testo approfondisce in modo più accurato alcuni argomenti trattati a lezione. Si noti che alcuni argomenti non sono presenti all'interno della dispensa perchè introdotti dal nuovo docente (Massei).<br>
-
 - **Elettrotecnica** - _Utile_    
   **Testo consigliato**:<br> 
       1) "Lezioni di Elettrotecnica" di _Marco Raugi_.<br>
@@ -121,7 +117,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 - **Reti Logiche** <br>
   **Testo consigliato**:<br> 
-      1) "Dalle porte AND, OR, NOT al Sistema calcolatore" di _Paolo Corsini_, edizioni ETS (_Consigliato_) <br>
+      1) "Dalle porte AND, OR, NOT al Sistema calcolatore" di _Paolo Corsini_, edizioni ETS (_Utile_) <br>
       2) "Circuiti logici per le operazioni sui numeri naturali e sui numeri interi" di _Paolo Corsini_, edizioni ETS (_Non necessario_)<br>
       3) "Il Calcolatore Didattico C86.32" di _Paolo Corsini_, edizioni ETS (_Fondamentale_)<br>
   **Note studenti**: I libri sono utili per chiarire gli argomenti affrontati dai docenti. Dall'A.A. in cui il prof. Paolo Corsini ha smesso di insegnare, rimane fondamentale l'ultimo libro, quello sull'Assembler. Il 1° libro è consigliato, soprattutto per la presenza di diversi disegni non presenti nelle dispense di Stea e richiesti in sede di orale. Si raccomanda un uso estremo delle dispense di Stea (_Fondamentale_).
@@ -131,6 +127,10 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   **Note studenti**:  Il professore ha suggerito un libro, ma non è necessario. Sufficiente il materiale offerto dal docente e consultazione di portali online contenenti spiegazioni rivolte ai _beginners_. Per prepararsi all'esame pratico è consigliato realizzare il progetto, utile per prendere la mano con Html, CSS, Javascript e PHP.
 
 #### <u>2° semestre</u>
+- **Calcolo Numerico** - _Non necessario_<br>
+  **Testo consigliato**: Nessuno.<br> 
+  **Note studenti**: Il professore mette a disposizione la dispensa LaTeX del docente precedente (Ghelardoni). Il testo approfondisce in modo più accurato alcuni argomenti trattati a lezione. Si noti che alcuni argomenti non sono presenti all'interno della dispensa perchè introdotti dal nuovo docente (Massei).<br>
+  
 - **Calcolatori elettronici** - _Non necessario_<br>
   **Testo consigliato**:<br>1) "Architettura dei calcolatori, vol I", G. Frosini, Pisa University Press;<br>2) "Architettura dei calcolatori, vol II", G. Frosini e G. Lettieri, Pisa University Press.<br>
   **Note studenti**:  Il professore ha suggerito i libri indicati, ma al più sono utili per chiarire alcuni concetti (non sono presenti tutti gli argomenti, inoltre ampie parti dei volumi non sono più trattate nel programma del corso). Il docente ha pubblicato sul suo sito dei PDF relativi ad alcuni argomenti del corso (non tutti).
