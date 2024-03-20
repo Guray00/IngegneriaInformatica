@@ -90,7 +90,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       1) "Basi di Dati" di _Paolo Atzeni, Stefano Ceri & altri_.<br>
   **Note studenti**: I professori mettono delle slide a disposizione molto valide e ricche di contenuti.
 
-- **Fisica Generale I** - _Consigliato_    
+- **Fisica Generale I** - _Utile/Consigliato (dipende da quanto conoscete le nozioni di Fisica dopo le superiori)_    
   **Testo consigliato**:<br> 
       1) "Fisica per scienze e ingegneria volumi 1 & 2" di _Raymond A. Serway & altri_        
   **Note studenti**: I professori mette delle slide a disposizione che possono essere integrate con l'uso dei libri.
