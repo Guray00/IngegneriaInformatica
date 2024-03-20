@@ -157,7 +157,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 ### Libri del Terzo anno 
 
-- **Reti informatiche** - _Utile_<br>
+- **Reti informatiche** - _Non necessario_<br>
   **Testo consigliato**:<br> 
  "James F. Kurose, Keith W. Ross, Computer Networking, A Top-Down Approach - VII Edition, Pearson Education"<br>
   **Note studenti**: Si suggerisce la versione in inglese per qualità e per esercitarsi con la lingua in previsione della magistrale.
@@ -168,9 +168,9 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 
 - **Ingegneria del software** - _Non necessario_<br>
   **Testo consigliato**: Nessuno.<br> 
-  **Note studenti**: Il professore mette a disposizione una dispensa LaTeX e delle diapositive sul suo sito.<br>
+  **Note studenti**: Il professore mette a disposizione materiale sul suo sito.<br>
 
-- **Comunicazioni Numeriche** - _Consigliato_<br>
+- **Comunicazioni Numeriche** - _Utile_<br>
   **Testo consigliato**: "Teoria dei segnali" 3° Edizione, M.Luise, Mcgraw-Hill.<br>
   **Note studenti**: Il professore mette delle slide a disposizione sufficienti al fine di superare l'esame. Per maggior approfondimenti si consiglia l'uso del libro.<br>
 
