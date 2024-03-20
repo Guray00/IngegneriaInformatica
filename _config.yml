@@ -1,1 +1,5 @@
 theme: jekyll-theme-cayman
+exclude:
+  - 'PRIMO ANNO/'
+  - 'SECONDO ANNO/'
+  - 'TERZO ANNO/'

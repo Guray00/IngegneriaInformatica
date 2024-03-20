@@ -36,8 +36,8 @@ std::pair<int, int> fill_vector_with_satisfying(
 
     auto [cl, dl] = fill_vector_with_satisfying(n->left, n, nodes);
     auto [cr, dr] = fill_vector_with_satisfying(n->right, n, nodes);
-    auto concordants = cl + cr;
-    auto discordants = dl + dr;
+    int concordants = cl + cr;
+    int discordants = dl + dr;
     if (concordants > discordants) {
         nodes.push_back(n);
     }
@@ -58,7 +58,7 @@ std::vector<Node *> foo(Node *n) {
     std::vector<Node *> nodes{};
     (void) fill_vector_with_satisfying(n, nullptr, nodes);
     std::sort(nodes.begin(), nodes.end(), [](Node *a, Node *b) {
-        return a->label <= b->label;
+        return a->label < b->label;
     });
     return nodes;
 }

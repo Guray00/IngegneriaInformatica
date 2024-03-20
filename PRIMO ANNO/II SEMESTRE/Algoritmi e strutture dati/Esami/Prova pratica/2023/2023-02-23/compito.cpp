@@ -41,9 +41,9 @@ int calcolalx (Nodo* albero) {
 void calcola(Nodo* albero){
     if (albero == nullptr)
         return;
-    calcola(albero->left);
     if(albero->lx-albero->dx==1 || albero->lx-albero->dx==-1 )
         v.push_back(albero->valore);
+    calcola(albero->left);
     calcola(albero->right);
 }
 int main() {
