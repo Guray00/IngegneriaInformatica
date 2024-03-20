@@ -68,11 +68,11 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 ### Libri del Primo anno 
 #### <u>1° semestre</u>
 
-- **Analisi Matematica I** - _Consigliato_<br>
+- **Analisi Matematica I** - _Utile_<br>
   **Testo consigliato**:  "Analisi Matematica 1", aut. Pagani e Salsa, ed. Zanichelli<br>
   **Note studenti**: il libro è scritto con un grado di complessità maggiore di quello richiesto per il superamento dell'esame. Gli appunti presi a lezione,  insieme a qualche argomento cercato online, sono sufficienti per passare l'esame scritto in modo proficuo. È consigliato il libro se si vuole affrontare l'esame orale.
 
-- **Fondamenti di Programmazione** - _Utile_    
+- **Fondamenti di Programmazione** - _Consigliato_    
   **Testo consigliato**:<br> 
       1) "Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++" [dalla 5° in poi] di _Andrea Domenici, Graziano Frosini_.<br>
       2) "Note sull’organizzazione di un calcolatore e Rappresentazione dell’informazione" di _Paolo Corsini, Graziano Frosini_<br>
