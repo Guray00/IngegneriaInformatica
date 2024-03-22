@@ -60,13 +60,12 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
 Di seguito trovate una lista dei libri di testo suggeriti per ogni corso (potrebbe non essere sempre aggiornato, verificare).
 I testi, in base all'esperienza degli studenti, si suddividono in:
 <br>
-1) **Non necessario**: Il materiale fornito dal professore è sufficiente per passare l'esame.
-<br>
-2) **Utile**: Utile per vedere più nel dettaglio alcuni argomenti.
-<br>
-3) **Consigliato**: Il libro è consigliato per seguire il corso del professore.
-<br>
-4) **Fondamentale**: Il libro di testo risulta imprescindibile per seguire il corso.
+<ol>
+  <li><b>Non necessario</b>: Il materiale fornito dal professore è sufficiente per passare l'esame.</li>
+  <li><b>Utile</b>: Utile per vedere più nel dettaglio alcuni argomenti.</li>
+  <li><b>Consigliato</b>: Il libro è consigliato per seguire il corso del professore.</li>
+  <li><b>Fondamentale</b>: Il libro di testo risulta imprescindibile per seguire il corso.</li>
+</ol>
 
 ### Libri del Primo anno 
 #### <u>1° semestre</u>
