@@ -34,8 +34,16 @@ if [ -z "$COMPILER" ]; then
 fi
 
 # Compile the provided code file with the selected compiler and C++17 standard
-if ! $COMPILER -std=c++17 "$CODE_FILE" -o solution; then
-    echo "Error: Compilation failed."
+# if ! $COMPILER -std=c++17 "$CODE_FILE" -o solution; then
+#     echo "Error: Compilation failed."
+#     exit 1
+# fi
+# compile into a temporary directory
+# create a temporary directory
+TMP_DIR=$(mktemp -d /tmp/evaluate_XXXXXX)
+
+# Compile the provided code file with the selected compiler and C++17 standard
+if ! $COMPILER -std=c++17 "$CODE_FILE" -o "$TMP_DIR/solution"; then
     exit 1
 fi
 
@@ -49,9 +57,11 @@ for i in $(ls TestSet/input*.txt | sort -V); do
     # Extract test number
     NUM=$(echo $i | grep -o '[0-9]\+')
     # Run the solution and check the output
-    if ./solution <$i | diff - $(echo $NUM | xargs -I {} echo "TestSet/output{}.txt"); then
+    PROG="$TMP_DIR/solution"
+    if $PROG <$i | diff - $(echo $NUM | xargs -I {} echo "TestSet/output{}.txt"); then
         echo -e "${GREEN}Test $NUM: OK${NC}"
     else
         echo -e "${RED}Test $NUM: FAIL${NC}"
     fi
 done
+
