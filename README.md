@@ -108,12 +108,12 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       _di Claudio Canuto, Anita Tabacco_.<br>
 **Note studenti**: Il libro di solito consigliato è il primo. Il secondo libro è più chiaro nello spiegare negli argomenti trattati nel corso ma non è facilmente reperibile in formato cartaceo.
 
+### Libri del Secondo anno 
+#### <u>1° semestre</u>
+
 - **Ricerca operativa** - _Utile_<br>
   **Testo consigliato**: M.Pappalardo-M.Passacantando, "Ricerca Operativa", Casa Editrice Pisa University Press.<br> 
   **Note studenti**:  Il libro è molto utile per chiarire dubbi, ma gli appunti delle lezioni sono sufficienti per passare l'esame.
-
-### Libri del Secondo anno 
-#### <u>1° semestre</u>
 
 - **Elettrotecnica** - _Utile_    
   **Testo consigliato**:<br> 
