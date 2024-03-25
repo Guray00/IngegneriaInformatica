@@ -59,11 +59,13 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
 ## Libri di testo
 Di seguito trovate una lista dei libri di testo suggeriti per ogni corso (potrebbe non essere sempre aggiornato, verificare).
 I testi, in base all'esperienza degli studenti, si suddividono in:
-
-1) **Non necessario**: Il materiale fornito dal professore è sufficiente per passare l'esame.
-2) **Utile**: Utile per vedere più nel dettaglio alcuni argomenti.
-3) **Consigliato**: Il libro è consigliato per seguire il corso del professore.
-4) **Fondamentale**: Il libro di testo risulta imprescindibile per seguire il corso.
+<br>
+<ol>
+  <li><b>Non necessario</b>: Il materiale fornito dal professore è sufficiente per passare l'esame.</li>
+  <li><b>Utile</b>: Utile per vedere più nel dettaglio alcuni argomenti.</li>
+  <li><b>Consigliato</b>: Il libro è consigliato per seguire il corso del professore.</li>
+  <li><b>Fondamentale</b>: Il libro di testo risulta imprescindibile per seguire il corso.</li>
+</ol>
 
 ### Libri del Primo anno 
 #### <u>1° semestre</u>
@@ -106,12 +108,12 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       _di Claudio Canuto, Anita Tabacco_.<br>
 **Note studenti**: Il libro di solito consigliato è il primo. Il secondo libro è più chiaro nello spiegare negli argomenti trattati nel corso ma non è facilmente reperibile in formato cartaceo.
 
+### Libri del Secondo anno 
+#### <u>1° semestre</u>
+
 - **Ricerca operativa** - _Utile_<br>
   **Testo consigliato**: M.Pappalardo-M.Passacantando, "Ricerca Operativa", Casa Editrice Pisa University Press.<br> 
   **Note studenti**:  Il libro è molto utile per chiarire dubbi, ma gli appunti delle lezioni sono sufficienti per passare l'esame.
-
-### Libri del Secondo anno 
-#### <u>1° semestre</u>
 
 - **Elettrotecnica** - _Utile_    
   **Testo consigliato**:<br> 
