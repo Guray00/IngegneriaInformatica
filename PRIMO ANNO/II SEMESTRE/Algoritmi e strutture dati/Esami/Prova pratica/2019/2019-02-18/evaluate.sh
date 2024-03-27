@@ -10,7 +10,7 @@ fi
 # Assign the first argument to CODE_FILE
 CODE_FILE=$1
 
-# Try to compile a simple program with clang++ to test if -std=c++17 is supported
+# Try to compile a simple program with clang++ since it is faster to compile
 COMPILER=""
 if command -v clang++ >/dev/null 2>&1; then
     # Create a temporary file to test C++17 support
@@ -33,12 +33,6 @@ if [ -z "$COMPILER" ]; then
     exit 1
 fi
 
-# Compile the provided code file with the selected compiler and C++17 standard
-# if ! $COMPILER -std=c++17 "$CODE_FILE" -o solution; then
-#     echo "Error: Compilation failed."
-#     exit 1
-# fi
-# compile into a temporary directory
 # create a temporary directory
 TMP_DIR=$(mktemp -d /tmp/evaluate_XXXXXX)
 
@@ -64,4 +58,10 @@ for i in $(ls TestSet/input*.txt | sort -V); do
         echo -e "${RED}Test $NUM: FAIL${NC}"
     fi
 done
+
+# Clean up
+rm -rf "$TMP_DIR"
+
+
+
 
