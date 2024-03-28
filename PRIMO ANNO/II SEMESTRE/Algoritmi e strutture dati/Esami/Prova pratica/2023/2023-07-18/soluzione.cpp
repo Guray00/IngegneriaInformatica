@@ -1,6 +1,5 @@
 #include <iostream>
-#include <queue>
-#include <vector>
+#include <unordered_set>
 
 struct Node {
     int label;
@@ -34,7 +33,8 @@ void insert_node_abr(Node *&n, int label, char color) {
 //     delete n;
 // }
 
-bool is_surrounded(Node *n, Node &father) {
+
+bool is_surrounded(const Node *n, const Node &father) {
     if (
         n == nullptr ||
         n->left == nullptr ||
@@ -45,19 +45,32 @@ bool is_surrounded(Node *n, Node &father) {
     return father.color == n->left->color && father.color == n->right->color;
 }
 
-template<typename F>
-void get_fathers_of_surrounded_children(Node *n, std::priority_queue<Node *, std::vector<Node *>, F> &p) {
+void get_fathers_of_surrounded_children(const Node *n, std::unordered_set<const Node*> &p) {
     if (n == nullptr) {
         return;
     }
     for (Node *child: {n->left, n->right}) {
         if (child != nullptr && is_surrounded(child, *n)) {
-            p.push(n);
+            p.insert(n);
             break;
         }
     }
     get_fathers_of_surrounded_children(n->left, p);
     get_fathers_of_surrounded_children(n->right, p);
+}
+
+
+void print_tree(const Node *n, const std::unordered_set<const Node*> &nodes) {
+    if (n == nullptr) {
+        return;
+    }
+    
+    print_tree(n->left, nodes);
+    if (nodes.find(n) != nodes.end()) {
+        std::cout << n->label << std::endl;
+    }
+    print_tree(n->right, nodes);
+  
 }
 
 int main() {
@@ -80,13 +93,9 @@ int main() {
         return n1->label > n2->label;
     };
 
-    std::priority_queue<Node *, std::vector<Node *>, decltype(f)> p{f};
+    std::unordered_set<const Node*> p{};
     get_fathers_of_surrounded_children(node, p);
-    while (!p.empty()) {
-        std::cout << p.top()->label << std::endl;
-        p.pop();
-    }
-
+    print_tree(node, p);
 
     // destroy_tree(node);
 

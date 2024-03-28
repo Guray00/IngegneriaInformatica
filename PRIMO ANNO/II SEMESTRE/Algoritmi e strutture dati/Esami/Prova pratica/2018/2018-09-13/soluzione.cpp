@@ -51,19 +51,19 @@ std::pair<int, int> do_get_nodes_distances(Node* node, std::unordered_set<int>& 
     auto [l_dist_evn, l_dist_odd] = do_get_nodes_distances(node->left, distances);
     auto [r_dist_evn, r_dist_odd] = do_get_nodes_distances(node->right, distances);
 
-    int evn_distance = std::max(l_dist_evn, r_dist_evn);
-    int odd_distance = std::max(l_dist_odd, r_dist_odd);
+    int dist_evn = std::max(l_dist_evn, r_dist_evn);
+    int dist_odd = std::max(l_dist_odd, r_dist_odd);
 
     if (node->label % 2 == 0) {
-        distances.insert(evn_distance);
+        distances.insert(dist_evn);
     } else {
-        distances.insert(odd_distance);
+        distances.insert(dist_odd);
     }
 
-    if (evn_distance > 0) evn_distance++;
-    if (odd_distance > 0) odd_distance++;
+    if (dist_evn > 0) dist_evn++;
+    if (dist_odd > 0) dist_odd++;
 
-    return {evn_distance, odd_distance};
+    return {dist_evn, dist_odd};
 }
 
 

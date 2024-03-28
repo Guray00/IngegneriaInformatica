@@ -26,7 +26,7 @@ void insert_node_abr(Node *&n, int label, std::string name) {
 
 
 
-int do_get_satisfying_nodes(Node *n, int d, std::vector<Node *> &v) {
+int do_get_satisfying_nodes(const Node *n, int d, std::vector<const std::string*> &v) {
     if (n == nullptr) {
         return 0;
     }
@@ -35,7 +35,7 @@ int do_get_satisfying_nodes(Node *n, int d, std::vector<Node *> &v) {
 
     int descendants = l_descendants + r_descendants;
     if (descendants == d) {
-        v.push_back(n);
+        v.push_back(&n->name);
     }
 
     return descendants + 1;
@@ -52,13 +52,14 @@ int do_get_satisfying_nodes(Node *n, int d, std::vector<Node *> &v) {
 //}
 
 
-std::vector<Node*> get_satisfying_nodes(Node *n) {
-    std::vector<Node*> v{};
+std::vector<const std::string*> get_satisfying_nodes(const Node *n) {
+    std::vector<const std::string*> v{};
     do_get_satisfying_nodes(n, 0, v);
-    std::sort(v.begin(), v.end(), [](Node *a, Node *b) { return a->name < b->name; });
+    std::sort(v.begin(), v.end(), [](const std::string *a, const std::string *b) {
+        return *a < *b;
+    });
     return v;
 }
-
 
 int main() {
     int n;
@@ -76,9 +77,12 @@ int main() {
         insert_node_abr(node, label, name);
     }
 
-    std::vector<Node *> v = get_satisfying_nodes(node);
-    for (Node *scan : v) {
-        std::cout << scan->name << std::endl;
+    // since we can assume lifetime of the tree is the same as the program
+    // and we use a constant reference to the tree, we can safely use
+    // a vector of pointers to strings
+    std::vector<const std::string*> v = get_satisfying_nodes(node);
+    for (const std::string *scan : v) {
+        std::cout << *scan << std::endl;
     }
 
     // destroy_tree(node);

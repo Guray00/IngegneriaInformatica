@@ -1,6 +1,5 @@
-#include <algorithm>
 #include <iostream>
-#include <vector>
+#include <unordered_set>
 
 struct Node {
     int label;
@@ -10,6 +9,7 @@ struct Node {
     explicit Node(int label) : label{label}, left{nullptr}, right{nullptr} {
     }
 };
+
 
 void insert_node_bst(Node *&n, int label) {
     Node **scan = &n;
@@ -34,7 +34,7 @@ void insert_node_bst(Node *&n, int label) {
 // }
 
 
-int find_valid_nodes(Node *n, Node *father, int a, int b, std::vector<Node *> &valid_nodes) {
+int find_valid_nodes(const Node *n, const Node *father, int a, int b, std::unordered_set<const Node *> &valid_nodes) {
     if (n == nullptr) {
         return 0;
     }
@@ -47,9 +47,22 @@ int find_valid_nodes(Node *n, Node *father, int a, int b, std::vector<Node *> &v
     int r_tree_unique_leaves = find_valid_nodes(n->right, n, a, b, valid_nodes);
     int unique_leaves = l_tree_unique_leaves + r_tree_unique_leaves;
     if (unique_leaves >= a && unique_leaves <= b) {
-        valid_nodes.push_back(n);
+        valid_nodes.insert(n);
     }
     return unique_leaves;
+}
+
+void print_tree(const Node *n, const std::unordered_set<const Node*> &nodes) {
+    if (n == nullptr) {
+        return;
+    }
+    
+    print_tree(n->left, nodes);
+    if (nodes.find(n) != nodes.end()) {
+        std::cout << n->label << std::endl;
+    }
+    print_tree(n->right, nodes);
+  
 }
 
 
@@ -77,15 +90,9 @@ int main() {
         insert_node_bst(node, label);
     }
 
-    std::vector<Node *> valid_nodes{};
+    std::unordered_set<const Node *> valid_nodes{};
     find_valid_nodes(node, nullptr, a, b, valid_nodes);
-    std::sort(valid_nodes.begin(), valid_nodes.end(), [](Node *a, Node *b) {
-        return a->label < b->label;
-    });
-
-    for (auto n : valid_nodes) {
-        std::cout << n->label << std::endl;
-    }
+    print_tree(node, valid_nodes);
 
     // destroy_tree(node);
 
