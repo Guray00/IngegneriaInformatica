@@ -85,10 +85,6 @@ int main() {
         insert_node_abr(node, label, color);
     }
 
-    auto f = [](Node *n1, Node *n2) {
-        return n1->label > n2->label;
-    };
-
     std::unordered_set<const Node*> p{};
     get_fathers_of_surrounded_children(node, p);
     print_tree(node, p);
