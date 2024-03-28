@@ -13,7 +13,7 @@ struct Node {
     }
 };
 
-void insert_node_abr(Node *&n, int val) {
+void insert_node_bst(Node *&n, int val) {
     Node **scan = &n;
     while (*scan != nullptr) {
         if (val <= (*scan)->label) {
@@ -57,7 +57,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         int label;
         std::cin >> label;
-        insert_node_abr(node, label);
+        insert_node_bst(node, label);
     }
 
     auto [b, _] = check_balance(node);

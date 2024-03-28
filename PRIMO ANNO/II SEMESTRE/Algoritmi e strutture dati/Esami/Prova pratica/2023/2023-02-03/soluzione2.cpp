@@ -34,7 +34,7 @@ struct Node {
 };
 
 
-size_t insert_node_abr(std::vector<Node> &nodes, std::optional<size_t> n, int label, std::string name) {
+size_t insert_node_bst(std::vector<Node> &nodes, std::optional<size_t> n, int label, std::string name) {
     auto p = n;
     std::optional<size_t> q = std::nullopt;
 
@@ -93,7 +93,7 @@ int main() {
         int label;
         std::string name{};
         std::cin >> label >> name;
-        size_t index = insert_node_abr(nodes, first_index, label, name);
+        size_t index = insert_node_bst(nodes, first_index, label, name);
         if (!first_index) {
             first_index = index;
         }

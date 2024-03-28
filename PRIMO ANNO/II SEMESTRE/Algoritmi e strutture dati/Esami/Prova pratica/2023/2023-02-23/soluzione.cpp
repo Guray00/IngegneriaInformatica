@@ -15,7 +15,7 @@ struct Node {
     }
 };
 
-void insert_node_abr(Node *&n, int label) {
+void insert_node_bst(Node *&n, int label) {
     Node **scan = &n;
     while (*scan != nullptr) {
         if (label <= (*scan)->label) {
@@ -92,7 +92,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         int tmp;
         std::cin >> tmp;
-        insert_node_abr(node, tmp);
+        insert_node_bst(node, tmp);
     }
 
     std::unordered_set<const Node *> median_nodes{};

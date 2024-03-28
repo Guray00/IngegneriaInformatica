@@ -11,7 +11,7 @@ struct Node {
     }
 };
 
-void insert_node_abr(Node *&n, int val, int weight) {
+void insert_node_bst(Node *&n, int val, int weight) {
     Node **scan = &n;
     while (*scan != nullptr) {
         if (val <= (*scan)->label) {
@@ -90,7 +90,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         int label, weight;
         std::cin >> label >> weight;
-        insert_node_abr(node, label, weight);
+        insert_node_bst(node, label, weight);
     }
 
     auto v = get_max_property_label(node, k);

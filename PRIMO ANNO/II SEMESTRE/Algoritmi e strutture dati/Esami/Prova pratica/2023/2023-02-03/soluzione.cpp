@@ -12,7 +12,7 @@ struct Node {
     }
 };
 
-void insert_node_abr(Node *&n, int label, std::string name) {
+void insert_node_bst(Node *&n, int label, std::string name) {
     Node **scan = &n;
     while (*scan != nullptr) {
         if (label <= (*scan)->label) {
@@ -74,7 +74,7 @@ int main() {
         int label;
         std::string name{};
         std::cin >> label >> name;
-        insert_node_abr(node, label, name);
+        insert_node_bst(node, label, name);
     }
 
     // since we can assume lifetime of the tree is the same as the program
