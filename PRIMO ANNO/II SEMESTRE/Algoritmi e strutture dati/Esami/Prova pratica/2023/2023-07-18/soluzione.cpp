@@ -11,7 +11,7 @@ struct Node {
     }
 };
 
-void insert_node_abr(Node *&n, int label, char color) {
+void insert_node_bst(Node *&n, int label, char color) {
     Node **scan = &n;
     while (*scan != nullptr) {
         if (label <= (*scan)->label) {
@@ -82,7 +82,7 @@ int main() {
         int label;
         char color;
         std::cin >> label >> color;
-        insert_node_abr(node, label, color);
+        insert_node_bst(node, label, color);
     }
 
     std::unordered_set<const Node*> p{};
