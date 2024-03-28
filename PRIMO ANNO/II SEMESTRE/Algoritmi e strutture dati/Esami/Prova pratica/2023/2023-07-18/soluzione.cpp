@@ -37,8 +37,8 @@ void insert_node_abr(Node *&n, int label, char color) {
 bool is_surrounded(const Node &n, const Node &father) {
     return n.left != nullptr &&
         n.right != nullptr && 
-        father.color == n.left->color && 
-        father.color == n.right->color;
+        n.left->color == father.color && 
+        n.right->color == father.color;
 }
 
 void get_fathers_of_surrounded_children(const Node *n, std::unordered_set<const Node*> &p) {
