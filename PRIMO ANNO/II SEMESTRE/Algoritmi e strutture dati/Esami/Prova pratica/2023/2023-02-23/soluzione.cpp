@@ -1,7 +1,11 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <unordered_set>
 
+
+// I don't use intrusive fields, because I don't want to modify the Node struct adapting
+// it to the specific problem. If you want to use intrusive fields, you can. But I won't do.
 struct Node {
     int label;
     Node *left;
@@ -11,7 +15,7 @@ struct Node {
     }
 };
 
-void insert_node_abr(Node *&n, int label) {
+void insert_node_bst(Node *&n, int label) {
     Node **scan = &n;
     while (*scan != nullptr) {
         if (label <= (*scan)->label) {
@@ -34,29 +38,39 @@ void destroy_tree(Node *n) {
 }
 
 
-int fill_vector_with_satisfying(Node *n, std::vector<Node *> &median_nodes, int d = 0) {
+int fill_set_with_satisfying(const Node *n, std::unordered_set<const Node*> &median_nodes, int d = 0) {
     if (n == nullptr) {
         return 0;
     }
 
-    int ll = fill_vector_with_satisfying(n->left, median_nodes, d + 1);
-    int lr = fill_vector_with_satisfying(n->right, median_nodes, d + 1);
+    int ll = fill_set_with_satisfying(n->left, median_nodes, d + 1);
+    int lr = fill_set_with_satisfying(n->right, median_nodes, d + 1);
 
     int l = std::max(ll, lr);
 
     if (std::abs(l - d) <= 1) {
-        median_nodes.push_back(n);
+        median_nodes.insert(n);
     }
     return l + 1;
 }
 
-std::vector<Node *> get_satisfying(Node *n) {
-    std::vector<Node *> v{};
-    fill_vector_with_satisfying(n, v);
-    std::sort(v.begin(), v.end(), [](auto a, auto b) {
-        return a->label < b->label;
-    });
-    return v;
+
+
+void print_tree(const Node *n, const std::unordered_set<const Node*> &median_nodes, int &k) {
+    if (n == nullptr) {
+        return;
+    }
+    
+    print_tree(n->left, median_nodes, k);
+    if (k == 0) {
+        return;
+    }
+    if (median_nodes.find(n) != median_nodes.end()) {
+        std::cout << n->label << std::endl;
+        k--;
+    }
+    print_tree(n->right, median_nodes, k);
+  
 }
 
 
@@ -78,14 +92,14 @@ int main() {
     for (int i = 0; i < n; i++) {
         int tmp;
         std::cin >> tmp;
-        insert_node_abr(node, tmp);
+        insert_node_bst(node, tmp);
     }
 
-    std::vector<Node *> v = get_satisfying(node);
+    std::unordered_set<const Node *> median_nodes{};
 
-    for (int i = 0; i < k; i++) {
-        std::cout << v[i]->label << std::endl;
-    }
+    fill_set_with_satisfying(node, median_nodes);
+
+    print_tree(node, median_nodes, k);
 
     // destroy_tree(node);
 

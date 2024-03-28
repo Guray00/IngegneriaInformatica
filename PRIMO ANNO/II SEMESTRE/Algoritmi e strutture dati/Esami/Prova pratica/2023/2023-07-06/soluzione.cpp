@@ -1,6 +1,5 @@
-#include <algorithm>
 #include <iostream>
-#include <vector>
+#include <unordered_set>
 
 struct Node {
     int label;
@@ -12,7 +11,7 @@ struct Node {
 };
 
 
-void insert_node_abr(Node *&n, int label) {
+void insert_node_bst(Node *&n, int label) {
     Node **scan = &n;
     while (*scan != nullptr) {
         if (label <= (*scan)->label) {
@@ -25,24 +24,24 @@ void insert_node_abr(Node *&n, int label) {
 }
 
 
-std::pair<int, int> fill_vector_with_satisfying(
-    Node *n,
-    Node *parent,
-    std::vector<Node *> &nodes
+std::pair<int, int> fill_set_with_satisfying(
+    const Node *n,
+    std::unordered_set<const Node *> &nodes,
+    const Node *parent = nullptr
 ) {
     if (n == nullptr) {
         return {0, 0};
     }
 
-    auto [cl, dl] = fill_vector_with_satisfying(n->left, n, nodes);
-    auto [cr, dr] = fill_vector_with_satisfying(n->right, n, nodes);
+    auto [cl, dl] = fill_set_with_satisfying(n->left, nodes, n);
+    auto [cr, dr] = fill_set_with_satisfying(n->right, nodes, n);
     int concordants = cl + cr;
     int discordants = dl + dr;
     if (concordants > discordants) {
-        nodes.push_back(n);
+        nodes.insert(n);
     }
     if (parent != nullptr) {
-        int inc = n->left == nullptr && n->right == nullptr ? 2 : 1;
+        int inc = (n->left == nullptr && n->right == nullptr) + 1;
         if (n->label % 2 == parent->label % 2) {
             concordants += inc;
         } else {
@@ -51,16 +50,6 @@ std::pair<int, int> fill_vector_with_satisfying(
     }
 
     return {concordants, discordants};
-}
-
-
-std::vector<Node *> foo(Node *n) {
-    std::vector<Node *> nodes{};
-    (void) fill_vector_with_satisfying(n, nullptr, nodes);
-    std::sort(nodes.begin(), nodes.end(), [](Node *a, Node *b) {
-        return a->label < b->label;
-    });
-    return nodes;
 }
 
 
@@ -74,6 +63,20 @@ std::vector<Node *> foo(Node *n) {
 // }
 
 
+void print_tree(const Node *n, const std::unordered_set<const Node*> &nodes) {
+    if (n == nullptr) {
+        return;
+    }
+    
+    print_tree(n->left, nodes);
+    if (nodes.find(n) != nodes.end()) {
+        std::cout << n->label << std::endl;
+    }
+    print_tree(n->right, nodes);
+  
+}
+
+
 int main() {
     int n;
     std::cin >> n;
@@ -82,17 +85,16 @@ int main() {
     //     throw std::invalid_argument("n must be greater than 0");
     // }
 
-    Node *node = nullptr;
+    Node *root = nullptr;
     for (int i = 0; i < n; i++) {
         int label;
         std::cin >> label;
-        insert_node_abr(node, label);
+        insert_node_bst(root, label);
     }
 
-    auto rv = foo(node);
-    for (auto n: rv) {
-        std::cout << n->label << std::endl;
-    }
+    std::unordered_set<const Node *> nodes{};
+    fill_set_with_satisfying(root, nodes);
+    print_tree(root, nodes);
 
     // destroy_tree(node);
 
