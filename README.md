@@ -158,6 +158,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   **Note studenti**: Il prof. Munafò mette a disposizione del materiale (sia in lingua inglese che in lingua italiana) da cui studiare al seguente link, https://andreamunafo.github.io/principles-of-automatic-controls/ 
 
 ### Libri del Terzo anno 
+#### <u>1° semestre</u>
 
 - **Reti informatiche** - _Non necessario_<br>
   **Testo consigliato**:<br> 
@@ -172,6 +173,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   **Testo consigliato**: Nessuno.<br> 
   **Note studenti**: Il professore mette a disposizione materiale sul suo sito.<br>
 
+#### <u>2° semestre</u>
 - **Comunicazioni Numeriche** - _Utile_<br>
   **Testo consigliato**: "Teoria dei segnali" 3° Edizione, M.Luise, Mcgraw-Hill.<br>
   **Note studenti**: Il professore mette delle slide a disposizione sufficienti al fine di superare l'esame. Per maggior approfondimenti si consiglia l'uso del libro.<br>
