@@ -15,95 +15,80 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// ATTENZIONE: Su questa prova non sono stati eseguiti i TestSet siccome non li
-//             possiedo
-
 #include <iostream>
-#include <string>
-#include <algorithm>
-#include <vector>
 
 using namespace std;
 
 const int nullptr = 0;
 
 struct Node {
-    int val;
-    int dx;
-    int lx;
+    int label;
+    int conto;
 
     Node *left;
     Node *right;
 
-    explicit Node(int n): val(n), dx(0), lx(0) {
-        left = right = nullptr;
-    }
+    explicit Node(int n):label(n), conto(0), left(nullptr), right(nullptr) {}
 } *root = nullptr;
 
-void Insert(const int n) {
-    Node *NewNode = new Node(n);
+void Insert(Node *tree, int val) {
+    Node *NewNode = new Node(val);
 
     Node *actual, *prec;
     actual = prec = root;
-    while (actual != nullptr) {
+    while (actual) {
         prec = actual;
 
-        // Ogni volta che scendo di livello incremento la distanza dalla radice
-        NewNode->dx++;
-
-        if (n <= actual->val)
+        if (val <= actual->label)
             actual = actual->left;
         else
             actual = actual->right;
     }
 
-    if (root == nullptr)
+    if (!root)
         root = NewNode;
-    else if (n <= prec->val)
+    else if (val <= prec->label)
         prec->left = NewNode;
     else
         prec->right = NewNode;
 }
 
-int CountLX(Node *root) {
-    if (root == nullptr) return 0;
-    int l = CountLX(root->left);
-    int r = CountLX(root->right);
+int Conto(Node *tree) {
+    if (tree == nullptr) return 0;
+    int LConto = Conto(tree->left);
+    int RConto = Conto(tree->right);
 
-    root->lx = ((l > r)?l:r);
-
-    return root->lx + 1;
+    if (!tree->left && !tree->right) {
+        if (tree->label == 0)
+            return 2;
+        else if (tree->label % 2 == 0)
+            return -1;
+        else
+            return 1;
+    } else {
+        tree->conto += LConto + RConto;
+        return tree->conto;
+    }
 }
 
-void Print(Node *root, const int &K) {
-    static int h = 0;
-    if (root == nullptr) return;
-    Print(root->left, K);
-
-    if (h++ >= K) {
-        h = 0;
-        return;
-    }
-
-    if (root->lx - root->dx <= 1 &&
-        root->lx - root->dx >= -1) {
-        cout << root->val << endl;
-    }
-
-    Print(root->right, K);
+void Print(Node *tree, int K) {
+    if (tree == nullptr) return;
+    Print(tree->left, K);
+    if (tree->conto > K)
+        cout << tree->label << endl;
+    Print(tree->right, K);
 }
 
-int main(void) {
+int main()  {
     int N, K;
-    int tmp;
-
     cin >> N >> K;
-    for (int i = 0; i < N; ++i) {
+
+    for (int i = 0, tmp; i < N; ++i) {
         cin >> tmp;
-        Insert(tmp);
+        Insert(root, tmp);
     }
 
-    CountLX(root);
+    Conto(root);
     Print(root, K);
 
     return 0;
