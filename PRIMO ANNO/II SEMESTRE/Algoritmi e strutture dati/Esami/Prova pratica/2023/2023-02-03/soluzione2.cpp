@@ -34,7 +34,7 @@ struct Node {
 };
 
 
-size_t insert_node_abr(std::vector<Node> &nodes, std::optional<size_t> n, int label, std::string name) {
+size_t insert_node_bst(std::vector<Node> &nodes, std::optional<size_t> n, int label, std::string name) {
     auto p = n;
     std::optional<size_t> q = std::nullopt;
 
@@ -62,18 +62,19 @@ size_t insert_node_abr(std::vector<Node> &nodes, std::optional<size_t> n, int la
 }
 
 
-int do_get_satisfying_nodes(const std::vector<Node> &nodes, std::optional<size_t> index, int d) {
+int insert_satisfying_nodes(const std::vector<Node> &nodes, const std::optional<size_t> index, std::vector<const std::string*> &v, const int d = 0) {
     if (index == std::nullopt) {
         return 0;
     }
     const Node &node = nodes.at(*index);
-    int l_descendants = do_get_satisfying_nodes(nodes, node.left, d + 1);
-    int r_descendants = do_get_satisfying_nodes(nodes, node.right, d + 1);
+    int l_descendants = insert_satisfying_nodes(nodes, node.left, v, d + 1);
+    int r_descendants = insert_satisfying_nodes(nodes, node.right, v, d + 1);
 
     int descendants = l_descendants + r_descendants;
-    // node is still valid, because we are using a const reference to nodes
-    node.is_good = descendants == d;
-
+    if (descendants == d) {
+        // node is still valid, because we are using a const reference to nodes
+        v.push_back(&node.name);
+    }
     return descendants + 1;
 }
 
@@ -92,29 +93,20 @@ int main() {
         int label;
         std::string name{};
         std::cin >> label >> name;
-        size_t index = insert_node_abr(nodes, first_index, label, name);
+        size_t index = insert_node_bst(nodes, first_index, label, name);
         if (!first_index) {
             first_index = index;
         }
     }
 
-    do_get_satisfying_nodes(nodes, first_index, 0);
-    // as first criteria, we sort the nodes by the is_good attribute,
-    // and as second criteria, we sort them by the name
-    // note: using sorting, and so altering the order of the nodes, invalidates the indexes
-    std::sort(nodes.begin(), nodes.end(), [](const Node &a, const Node &b) {
-        if (a.is_good != b.is_good) {
-            return a.is_good > b.is_good;
-        }
-        return a.name < b.name;
+    std::vector<const std::string*> v{};
+    insert_satisfying_nodes(nodes, first_index, v);
+    std::sort(v.begin(), v.end(), [](const std::string *a, const std::string *b) {
+        return *a < *b;
     });
 
-    for (const Node &scan: nodes) {
-        if (!scan.is_good) {
-            // we can break the loop here, because the nodes are sorted by the is_good attribute
-            break;
-        }
-        std::cout << scan.name << std::endl;
+    for (const auto s : v) {
+        std::cout << *s << std::endl;
     }
 
     return 0;
