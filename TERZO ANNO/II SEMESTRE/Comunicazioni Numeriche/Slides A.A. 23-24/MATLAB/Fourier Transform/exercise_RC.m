@@ -1,6 +1,6 @@
 clear; close all;
 % range of frequencies
-fRange = logspace(0,6,1000);
+fRange = logspace(0,6,100);
 % frequenza di taglio
 f_T = 10; 
 % Risposta in frequenza
