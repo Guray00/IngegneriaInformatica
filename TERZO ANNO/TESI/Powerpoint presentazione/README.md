@@ -1,1 +1,0 @@
-Modello Powerpoint imposto dal nostro corso di laurea per la presentazione della tesi di laurea
