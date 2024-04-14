@@ -17,6 +17,7 @@ struct Node {
     }
 };
 
+
 void insert_node_bst(Node *&n, int label) {
     Node **scan = &n;
     while (*scan != nullptr) {
@@ -40,44 +41,38 @@ void insert_node_bst(Node *&n, int label) {
 // }
 
 
-
 static constexpr int P = 999149, A = 1000, B = 2000;
 
-template<typename T, std::enable_if_t<std::is_pointer_v<T>, bool> = true>
-struct HashTable {
-    std::vector<T> table;
-    std::function<int(std::remove_pointer_t<T>&)> hash;
 
-    HashTable(std::function<int(std::remove_pointer_t<T>&)> hash, size_t size) : table{size}, hash{std::move(hash)} { }
+struct NodeHashTable {
+    std::vector<Node *> table;
+    std::function<int(const int)> hash;
 
-    // return the first element in the bucket
-    T* get(T value) {
-        auto &bucket = table[hash(*value)];
-        return &bucket;
-    }
+    NodeHashTable(std::function<int(const int)> hash, size_t size) : table(size), hash{std::move(hash)} { }
 
-
-    void insert(T value) {
-        table[hash(*value)] = value;
+    void insert(int value) {
+        size_t id = hash(value);
+        insert_node_bst(table[id], value);
     }
 };
 
 
-
-bool is_leaf(Node &n) {
+bool is_leaf(const Node &n) {
     return n.left == nullptr && n.right == nullptr;
 }
 
-bool is_right_leaf(Node &n, Node &father) {
+
+bool is_right_leaf(const Node &n, const Node &father) {
     return is_leaf(n) && father.right == &n;
 }
 
-bool is_left_leaf(Node &n, Node &father) {
+
+bool is_left_leaf(const Node &n, const Node &father) {
     return is_leaf(n) && father.left == &n;
 }
 
 
-std::pair<int, int> get_num_left_and_right_leaves(Node *n, Node *father) {
+std::pair<int, int> get_num_left_and_right_leaves(const Node *n, const Node *father) {
     if (n == nullptr) {
         return {0, 0};
     }
@@ -93,8 +88,6 @@ std::pair<int, int> get_num_left_and_right_leaves(Node *n, Node *father) {
 }
 
 
-
-
 int main() {
     int n, s;
     std::cin >> n >> s;
@@ -103,57 +96,39 @@ int main() {
     //     throw std::invalid_argument("s must be non-negative");
     // }
     
-    auto hash = [=](Node &node) { return (A * node.label + B) % P % s; };
+    auto hash = [=](const int label) { return (A * label + B) % P % s; };
     std::vector<Node* > v{};
     {
-        HashTable<Node*> table{hash, (size_t) s};
+        NodeHashTable table{hash, (size_t) s};
 
         for (int i = 0; i < n; i++) {
             int label;
             std::cin >> label;
-            auto node = new Node{label};
-            Node **n = table.get(node);
-            if (n != nullptr && *n != nullptr){
-                insert_node_bst(*n, label);
-            } else {
-                table.insert(node);
-            }
+            table.insert(label);
         }
         v = std::move(table.table);
     }
 
     std::optional<std::pair<size_t, int>> max_nsx = std::nullopt;
     std::optional<std::pair<size_t, int>> max_ndx = std::nullopt;
-    for (size_t i = 0; i < s; i++) {
-        if (v[i] == nullptr) {
-            if (!max_nsx.has_value() || max_nsx->second == 0) {
-               max_nsx = {i, 0}; 
-            }
-            if (!max_ndx.has_value() || max_ndx->second == 0) {
-                max_ndx = {i, 0};
-            }
-            continue;
-        }
+    for (size_t i = 0; i < s; i++) { 
         auto [nsx, ndx] = get_num_left_and_right_leaves(v[i], nullptr);
-
-        if (!max_nsx.has_value() || nsx >= max_nsx->second) {
+        if (max_nsx == std::nullopt || nsx >= max_nsx->second) {
             max_nsx = {i, nsx}; 
         }
-        if (!max_ndx.has_value() || ndx >= max_ndx->second) {
+
+        if (max_ndx == std::nullopt || ndx >= max_ndx->second) {
             max_ndx = {i, ndx};
         }
     }
 
-
-    if (max_ndx.has_value()) {
+    if (max_ndx != std::nullopt) {
         std::cout << max_ndx->first << std::endl;
     }
 
-
-    if (max_nsx.has_value()) {
+    if (max_nsx != std::nullopt) {
         std::cout << max_nsx->first << std::endl;
     }
-
 
     // for (size_t i = 0; i < s; i++) {
     //     if (v[i] == nullptr) {

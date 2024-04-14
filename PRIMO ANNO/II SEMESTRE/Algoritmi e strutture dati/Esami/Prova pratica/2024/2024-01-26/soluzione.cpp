@@ -1,13 +1,14 @@
 #include <algorithm>
 #include <iostream>
-#include <vector>
+#include <unordered_set>
+
 
 struct Node {
     int label;
     Node *left;
     Node *right;
 
-    explicit Node(int label) : label(label), left(nullptr), right(nullptr) {
+    explicit Node(int label) : label{label}, left{nullptr}, right{nullptr} {
     }
 };
 
@@ -21,7 +22,7 @@ void insert_node_bst(Node *&n, int label) {
             scan = &(*scan)->right;
         }
     }
-    *scan = new Node(label);
+    *scan = new Node{label};
 }
 
 
@@ -35,17 +36,31 @@ void insert_node_bst(Node *&n, int label) {
 // }
 
 
-int get_satisfying_nodes(Node* n, const int k, std::vector<Node *> &v) {
+int get_satisfying_nodes(Node* n, const int k, std::unordered_set<const Node*> &good_nodes) {
     if (n == nullptr) {
         return 0;
     }
-    int l_h = get_satisfying_nodes(n->left, k, v);
-    int r_h = get_satisfying_nodes(n->right, k, v);
+    int l_h = get_satisfying_nodes(n->left, k, good_nodes);
+    int r_h = get_satisfying_nodes(n->right, k, good_nodes);
     if (std::abs(l_h - r_h) < k) {
-        v.push_back(n);
+        good_nodes.insert(n);
     }
 
     return 1 + std::max(l_h, r_h);
+}
+
+
+void print_tree(const Node *n, const std::unordered_set<const Node*> &nodes) {
+    if (n == nullptr) {
+        return;
+    }
+    
+    print_tree(n->left, nodes);
+    if (nodes.find(n) != nodes.end()) {
+        std::cout << n->label << std::endl;
+    }
+    print_tree(n->right, nodes);
+  
 }
 
 
@@ -72,15 +87,9 @@ int main() {
         insert_node_bst(node, label);
     }
 
-    std::vector<Node *> v{};
-    get_satisfying_nodes(node, k, v);
-    std::sort(v.begin(), v.end(), [](Node *a, Node *b) {
-        return a->label < b->label; 
-    });
-
-    for (auto &i : v) {
-        std::cout << i->label << std::endl;
-    }
+    std::unordered_set<const Node *> good_nodes{};
+    get_satisfying_nodes(node, k, good_nodes);
+    print_tree(node, good_nodes);    
 
     // destroy_tree(node);
 
