@@ -1,4 +1,4 @@
-# Prova pratica di programmazione in C++.
+# Prova pratica di programmazione in C++
 
 ## Struttura delle cartelle corrsipondenti ai vari esercizi
 Le cartelle sono organizzate per corrispondere ai vari esercizi inclusi nella prova pratica.
@@ -23,31 +23,26 @@ Le soluzioni proposte cercano di evitare campi intrusivi, ove non esplicitamente
 
 Per l'implementazione delle hash table con il metodo della concatenazione, gestire i puntatori in C++ può risultare complesso e incline a errori. Di seguito alcuni esempi di come strutturare le hash table:
 ```cpp
-template <typename T>
-struct Elem {
-    T key;
-    Elem* next;
-    Node(T key, Node* next = nullptr) : key(key), next(next) {}
-};
 
-// Uso di puntatori a puntatori
-Elem **table = new Elem*[size];
+struct T { .. }
 
-// Uso di unique_ptr per una gestione automatica della memoria
-std::unique_ptr<Elem<T>*[]> table = std::make_unique<Elem<T>*[]>(size);
+// Uso di puntatori a puntatori, T conterra al suo interno un campo T* next
+T **table = new T*[size];
 
-// Uso di vector per evitare la gestione manuale dei puntatori
-std::vector<Elem<T>*> table(size);
+// Uso di unique_ptr per una gestione automatica della memoria, layout in memoria equivalente al caso precedente.
+// Anche in questo caso T* rappresenta un puntatore a un elemento che a sua volta conterrà il puntatore all'elemento successivo
+std::unique_ptr<T*[]> table = std::make_unique<T*[]>(size);
 
-// Implementazione con vector di liste per gestire le collisioni
+// Si può usare anche vector, sempre con la lista concatenata intrusiva
+std::vector<T*> table(size);
+
+// Implementazione con vector di liste non intrusive, T in questo caso non contiene il puntatore all'elemento successivo, essendo
+// ciò gestito dal container list
 std::vector<std::list<T>> table(size);
 
-```
-Si raccomanda l'uso di `std::vector` per gli elementi della tabella hash poiché raramente una lista concatenata supera in performance un vettore. La struttura finale utilizzata è:
-
-```cpp  
+// Si può rimpiazzare la list ancora una volta con un vector
 std::vector<std::vector<T>> table(size);
-```
 
-Questo formato consente una gestione efficace delle collisioni, dove il numero di collisioni corrisponde alla lunghezza del vettore in posizione i-esima.
+```
+Si raccomanda l'uso di `std::vector` anche per gli elementi della tabella hash poiché, a meno di casi specifici come rimozioni nel mezzo alla collezione, una lista concatenata in pratica non supera mai in performance un vettore. Il numero di collisioni della i-esima entry della tabella hash corrisponde alla lunghezza del vettore in posizione i-esima.
 
