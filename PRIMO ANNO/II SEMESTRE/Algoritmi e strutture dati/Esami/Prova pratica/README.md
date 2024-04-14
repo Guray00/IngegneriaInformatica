@@ -1,8 +1,5 @@
 # Prova pratica di programmazione in C++
 
-## Struttura delle cartelle corrsipondenti ai vari esercizi
-Le cartelle sono organizzate per corrispondere ai vari esercizi inclusi nella prova pratica.
-
 ## Uso dello script evaluate.sh
 Lo script `evaluate.sh` consente di valutare le soluzioni degli esercizi. È necessario disporre di un compilatore come `clang` o `gcc` aggiornato al supporto di C++17, per cui è sufficiente una versione di Ubuntu maggiore o uguale della 18.04 LTS. Lo script verifica la correttezza delle soluzioni e non la loro efficienza. Per eseguirlo, aprire il terminale ed entrare nella cartella dell'esercizio desiderato:
 ```bash
@@ -12,8 +9,10 @@ quindi eseguire lo script con il comando:
 ```bash
 bash evaluate.sh <sorgente.cpp>
 ```
-Lo script compila il file sorgente e lo esegue con diversi input di test, evidenziando le eventuali differenze tra l'output atteso e quello ottenuto in caso di errori. Ogni esercizio include una proposta di soluzione, che non è stata necessariamente fornita dal docente. Si noti che alcune soluzioni più datate, contrassegnate col suffisso `deprecated`, potrebbero non compilare correttamente con versioni recenti dei compilatori.
-
+Lo script compila il file sorgente e lo esegue con diversi input di test, evidenziando le eventuali differenze tra l'output atteso e quello ottenuto in caso di errori. Ogni esercizio include una proposta di soluzione, che non è stata necessariamente fornita dal docente. Si noti che alcune soluzioni più datate, contrassegnate col suffisso `deprecated`, che possono essere ignorate. Nel caso si provi a compilarle ed esse non compilino, inserire il flag `-std=c++98`:
+```bash
+g++ -std=c++98 soluzione_deprecated.cpp -o soluzione_deprecated
+```
 
 ## Metodi di soluzione
 
