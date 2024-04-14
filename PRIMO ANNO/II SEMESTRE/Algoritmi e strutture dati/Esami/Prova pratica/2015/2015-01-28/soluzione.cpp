@@ -1,4 +1,6 @@
 #include <iostream>
+#include <unordered_set>
+
 
 struct Node {
     int label;
@@ -24,21 +26,30 @@ void insert_node_bst(Node *&n, int val) {
 }
 
 
-std::pair<bool, int> check_balance(Node *n) {
+int fill_nodes(const Node *n, const int k, std::unordered_set<const Node *> &good_nodes) {
     if (n == nullptr) {
-        return {true, 0};
+        return 0;
     }
-    auto [b1, lh] = check_balance(n->left);
-    if (!b1) {
-        return {false, 0};
+    int s = fill_nodes(n->left, k, good_nodes);
+    int d = fill_nodes(n->right, k, good_nodes);
+    if (s * k < d) {
+        good_nodes.insert(n);
     }
-    auto [b2, rh] = check_balance(n->right);
-    if (!b2) {
-        return {false, 0};
-    }
-    return {std::abs(lh - rh) <= 1, std::max(lh, rh) + 1};
+    return s + d + n->label;
 }
 
+
+void print_good_nodes(const Node *n, const std::unordered_set<const Node *> &good_nodes) {
+    if (n == nullptr) {
+        return;
+    }
+    print_good_nodes(n->left, good_nodes);
+    if (good_nodes.find(n) != good_nodes.end()) {
+        std::cout << n->label << std::endl;
+    }
+    print_good_nodes(n->right, good_nodes);
+
+}
 
 // void destroy_tree(Node *n) {
 //     if (n == nullptr) {
@@ -51,11 +62,15 @@ std::pair<bool, int> check_balance(Node *n) {
 
 
 int main() {
-    int n;
-    std::cin >> n;
+    int n, k;
+    std::cin >> n >> k;
 
     // if (n <= 0) {
     //     throw std::invalid_argument("n must be greater than 0");
+    // }
+
+    // if (k < 0) {
+    //     throw std::invalid_argument("k must be greater or equal to 0");
     // }
 
     Node *node = nullptr;
@@ -65,8 +80,10 @@ int main() {
         insert_node_bst(node, label);
     }
 
-    auto [b, _] = check_balance(node);
-    std::cout << (b ? "ok" : "no") << std::endl;
+    std::unordered_set<const Node *> good_nodes{};
+    fill_nodes(node, k, good_nodes);   
+    print_good_nodes(node, good_nodes);
+
     // destroy_tree(node);
 
     return 0;

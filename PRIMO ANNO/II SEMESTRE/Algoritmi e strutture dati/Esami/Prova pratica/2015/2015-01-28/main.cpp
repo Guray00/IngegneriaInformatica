@@ -19,7 +19,6 @@
 
 using namespace std;
 
-const int nullptr = 0;
 
 struct Node {
     int label;
@@ -71,7 +70,7 @@ void Print(Node *tree, const int &K) {
     if (tree == nullptr) return;
     Print(tree->left, K);
     if (tree->lsum * K < tree->rsum)
-        cout << tree->label << ' ';
+        cout << tree->label << endl;
     Print(tree->right, K);
 }
 
