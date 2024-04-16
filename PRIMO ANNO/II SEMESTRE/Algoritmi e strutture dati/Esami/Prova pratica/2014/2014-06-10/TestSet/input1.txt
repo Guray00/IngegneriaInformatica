@@ -1,0 +1,21 @@
+10 3
+12
+roma
+14
+torino
+3
+ancona
+4
+ancora
+87
+annessione
+12
+annesso
+43
+aneto
+1
+anafora
+5
+pippo
+9
+prato

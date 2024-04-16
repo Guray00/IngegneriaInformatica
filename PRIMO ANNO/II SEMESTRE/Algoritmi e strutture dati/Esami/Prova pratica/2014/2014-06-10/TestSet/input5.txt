@@ -1,0 +1,13 @@
+6 1
+12
+parola
+54
+parole
+8
+paroloni
+65
+parolacce
+58
+parolette
+10
+parole
