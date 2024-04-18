@@ -59,13 +59,7 @@ auto get_nodes_distances(const Node *node, const size_t n) -> std::vector<std::p
     std::sort(v.begin(), v.end(), [](const auto &a, const auto &b) {
         auto [node_a, dist_a] = a;
         auto [node_b, dist_b] = b;
-        if (dist_a > dist_b) {
-            return true;
-        }
-        if (dist_a == dist_b && node_a->label > node_b->label) {
-            return true;
-        }
-        return false;
+        return dist_a > dist_b || (dist_a == dist_b && node_a->label > node_b->label);
     });
     return v;
 }
