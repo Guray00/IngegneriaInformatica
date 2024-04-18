@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 
+
 struct Node {
     int label;
     Node *left;
@@ -10,6 +11,7 @@ struct Node {
     explicit Node(int label) : label(label), left(nullptr), right(nullptr) {
     }
 };
+
 
 void insert_node_bst(Node *&n, int label) {
     Node **scan = &n;
@@ -33,6 +35,7 @@ void insert_node_bst(Node *&n, int label) {
 //     delete n;
 // }
 
+
 void do_get_nodes_distances(const Node *node, 
                             const Node *good_ancestor, 
                             std::vector<std::pair<const Node *, int> > &m, 
@@ -52,6 +55,7 @@ void do_get_nodes_distances(const Node *node,
     do_get_nodes_distances(node->right, good_ancestor, m, dist);
 }
 
+
 auto get_nodes_distances(const Node *node, const size_t n) -> std::vector<std::pair<const Node *, int> > {
     std::vector<std::pair<const Node *, int> > v{};
     v.reserve(n);
@@ -63,6 +67,7 @@ auto get_nodes_distances(const Node *node, const size_t n) -> std::vector<std::p
     });
     return v;
 }
+
 
 int main() {
     int n, k;
