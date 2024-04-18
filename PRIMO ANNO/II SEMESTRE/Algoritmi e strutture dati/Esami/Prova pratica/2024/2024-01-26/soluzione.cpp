@@ -36,7 +36,7 @@ void insert_node_bst(Node *&n, int label) {
 // }
 
 
-int get_satisfying_nodes(Node* n, const int k, std::unordered_set<const Node*> &good_nodes) {
+int get_satisfying_nodes(const Node* n, const int k, std::unordered_set<const Node*> &good_nodes) {
     if (n == nullptr) {
         return 0;
     }

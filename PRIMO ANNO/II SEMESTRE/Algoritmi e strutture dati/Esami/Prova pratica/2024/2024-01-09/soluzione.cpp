@@ -33,7 +33,10 @@ void insert_node_bst(Node *&n, int label) {
 //     delete n;
 // }
 
-void do_get_nodes_distances(Node *node, Node *good_ancestor, std::vector<std::pair<Node *, int> > &m, int dist = -1) {
+void do_get_nodes_distances(const Node *node, 
+                            const Node *good_ancestor, 
+                            std::vector<std::pair<const Node *, int> > &m, 
+                            int dist = -1) {
     if (node == nullptr) {
         return;
     }
@@ -49,8 +52,8 @@ void do_get_nodes_distances(Node *node, Node *good_ancestor, std::vector<std::pa
     do_get_nodes_distances(node->right, good_ancestor, m, dist);
 }
 
-auto get_nodes_distances(Node *node, size_t n) -> std::vector<std::pair<Node *, int> > {
-    std::vector<std::pair<Node *, int> > v{};
+auto get_nodes_distances(const Node *node, const size_t n) -> std::vector<std::pair<const Node *, int> > {
+    std::vector<std::pair<const Node *, int> > v{};
     v.reserve(n);
     do_get_nodes_distances(node, nullptr, v);
     std::sort(v.begin(), v.end(), [](const auto &a, const auto &b) {
