@@ -27,7 +27,7 @@ quindi eseguire lo script con il comando:
 ```bash
 bash evaluate.sh <sorgente.cpp>
 ```
-Lo script compila il file sorgente e lo esegue con diversi input di test, evidenziando le eventuali differenze tra l'output atteso e quello ottenuto in caso di errori. Ogni esercizio include una proposta di soluzione, che non è stata necessariamente fornita dal docente. Si noti che alcune soluzioni più datate, contrassegnate col suffisso `deprecated`, che possono essere ignorate. Nel caso si provi a compilarle ed esse non compilino, inserire il flag `-std=c++98`:
+Lo script compila il file sorgente e lo esegue con diversi input di test, evidenziando le eventuali differenze tra l'output atteso e quello ottenuto in caso di errori. Ogni esercizio include una proposta di soluzione, che non è stata necessariamente fornita dal docente. Si noti che alcune soluzioni più datate, contrassegnate col suffisso `deprecated`, possono essere ignorate. Nel caso si provi a compilarle ed esse non compilino, inserire il flag `-std=c++98`:
 ```bash
 g++ -std=c++98 soluzione_deprecated.cpp -o soluzione_deprecated
 ```
