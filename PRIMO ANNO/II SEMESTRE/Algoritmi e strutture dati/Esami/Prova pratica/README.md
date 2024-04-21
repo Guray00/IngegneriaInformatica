@@ -1,5 +1,23 @@
 # Prova pratica di programmazione in C++
 
+## Download dei testi di esame
+
+È possibile scaricare i testi di esame ustilizzando il comando `git sparse-checkout` nella seguente maniera
+
+```bash
+git clone --filter=blob:none --no-checkout https://github.com/Guray00/IngegneriaInformatica.git
+cd IngegneriaInformatica
+git sparse-checkout set --no-cone 'PRIMO ANNO/II SEMESTRE/Algoritmi e strutture dati/Esami/Prova pratica'
+git fetch origin
+git checkout master
+```
+
+In alternativa, è sufficiente eseguire lo script `download.sh` presente nella stessa cartella di questo file:
+```bash
+bash download.sh
+```
+Assicurarsi di avere `git` installato sul proprio sistema.
+
 ## Uso dello script evaluate.sh
 Lo script `evaluate.sh` consente di valutare le soluzioni degli esercizi. È necessario disporre di un compilatore come `clang` o `gcc` aggiornato al supporto di C++17, per cui è sufficiente una versione di Ubuntu maggiore o uguale della 18.04 LTS. Lo script verifica la correttezza delle soluzioni e non la loro efficienza. Per eseguirlo, aprire il terminale ed entrare nella cartella dell'esercizio desiderato:
 ```bash
