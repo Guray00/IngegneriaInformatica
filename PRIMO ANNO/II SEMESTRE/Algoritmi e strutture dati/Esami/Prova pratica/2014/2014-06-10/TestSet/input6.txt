@@ -1,0 +1,17 @@
+8 20
+21
+in
+32
+questa
+34
+frase
+1
+non
+78
+dovresti
+12
+trovare
+99
+nulla
+4
+prova

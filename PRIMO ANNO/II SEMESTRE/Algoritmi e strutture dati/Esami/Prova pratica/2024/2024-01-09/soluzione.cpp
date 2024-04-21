@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 
+
 struct Node {
     int label;
     Node *left;
@@ -10,6 +11,7 @@ struct Node {
     explicit Node(int label) : label(label), left(nullptr), right(nullptr) {
     }
 };
+
 
 void insert_node_bst(Node *&n, int label) {
     Node **scan = &n;
@@ -33,7 +35,11 @@ void insert_node_bst(Node *&n, int label) {
 //     delete n;
 // }
 
-void do_get_nodes_distances(Node *node, Node *good_ancestor, std::vector<std::pair<Node *, int> > &m, int dist = -1) {
+
+void do_get_nodes_distances(const Node *node, 
+                            const Node *good_ancestor, 
+                            std::vector<std::pair<const Node *, int> > &m, 
+                            int dist = -1) {
     if (node == nullptr) {
         return;
     }
@@ -49,23 +55,19 @@ void do_get_nodes_distances(Node *node, Node *good_ancestor, std::vector<std::pa
     do_get_nodes_distances(node->right, good_ancestor, m, dist);
 }
 
-auto get_nodes_distances(Node *node, size_t n) -> std::vector<std::pair<Node *, int> > {
-    std::vector<std::pair<Node *, int> > v{};
+
+auto get_nodes_distances(const Node *node, const size_t n) -> std::vector<std::pair<const Node *, int> > {
+    std::vector<std::pair<const Node *, int> > v{};
     v.reserve(n);
     do_get_nodes_distances(node, nullptr, v);
     std::sort(v.begin(), v.end(), [](const auto &a, const auto &b) {
         auto [node_a, dist_a] = a;
         auto [node_b, dist_b] = b;
-        if (dist_a > dist_b) {
-            return true;
-        }
-        if (dist_a == dist_b && node_a->label > node_b->label) {
-            return true;
-        }
-        return false;
+        return dist_a > dist_b || (dist_a == dist_b && node_a->label > node_b->label);
     });
     return v;
 }
+
 
 int main() {
     int n, k;

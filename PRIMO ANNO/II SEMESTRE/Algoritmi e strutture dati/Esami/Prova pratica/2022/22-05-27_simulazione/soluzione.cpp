@@ -1,7 +1,4 @@
-#include <algorithm>
 #include <iostream>
-#include <vector>
-#include <array>
 
 struct Node {
     int label;
@@ -12,6 +9,7 @@ struct Node {
     explicit Node(int label) : label{label}, left{nullptr}, right{nullptr} {
     }
 };
+
 
 void insert_node_bst(Node *&n, int val) {
     Node **scan = &n;
@@ -25,13 +23,20 @@ void insert_node_bst(Node *&n, int val) {
     *scan = new Node{val};
 }
 
+
 std::pair<bool, int> check_balance(Node *n) {
     if (n == nullptr) {
         return {true, 0};
     }
     auto [b1, lh] = check_balance(n->left);
+    if (!b1) {
+        return {false, 0};
+    }
     auto [b2, rh] = check_balance(n->right);
-    return {b1 && b2 && std::abs(lh - rh) <= 1, std::max(lh, rh) + 1};
+    if (!b2) {
+        return {false, 0};
+    }
+    return {std::abs(lh - rh) <= 1, std::max(lh, rh) + 1};
 }
 
 
@@ -61,10 +66,10 @@ int main() {
     }
 
     auto [b, _] = check_balance(node);
-    std::cout << std::array<const char *, 2>{"no", "ok"}[b] << std::endl;
-
+    std::cout << (b ? "ok" : "no") << std::endl;
     // destroy_tree(node);
 
     return 0;
 }
+
 

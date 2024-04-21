@@ -16,6 +16,7 @@ struct Node {
     }
 };
 
+
 void insert_node_bst(Node *&n, int label) {
     Node **scan = &n;
     while (*scan != nullptr) {
@@ -42,21 +43,15 @@ void insert_node_bst(Node *&n, int label) {
 // }
 
 
-template<typename T, std::enable_if_t<std::is_pointer_v<T>, bool> = true>
-struct HashTable {
-    std::vector<T> table;
-    std::function<int(std::remove_pointer_t<T>&)> hash;
+struct NodeHashTable {
+    std::vector<Node *> table;
+    std::function<int(const int)> hash;
 
-    HashTable(std::function<int(std::remove_pointer_t<T>&)> hash, size_t size) : table{size}, hash{std::move(hash)} { }
+    NodeHashTable(std::function<int(const int)> hash, size_t size) : table(size), hash{std::move(hash)} { }
 
-    // return the first element in the bucket
-    T& get(T value) {
-        auto &bucket = table[hash(*value)];
-        return bucket;
-    }
-
-    void insert(T value) {
-        table[hash(*value)] = value;
+    void insert(int value) {
+        size_t id = hash(value);
+        insert_node_bst(table[id], value);
     }
 };
 
@@ -101,25 +96,19 @@ int main() {
     //     throw std::invalid_argument("s must be non-negative");
     // }
     
-    auto hash = [=](Node &node) { return (A * node.label + B) % P % s; };
+    auto hash = [=](const int label) { return (A * label + B) % P % s; };
     std::vector<Node* > v{};
     {
-        HashTable<Node*> table{hash, (size_t) s};
+        NodeHashTable table{hash, (size_t) s};
 
         for (int i = 0; i < n; i++) {
             int label;
             std::cin >> label;
-            auto node = Node{label};
-            Node *&n = table.get(&node);
-            if (n != nullptr){
-                insert_node_bst(n, label);
-            } else {
-                auto node = new Node{label};
-                table.insert(node);
-            }
+            table.insert(label);
         }
         v = std::move(table.table);
     }
+
 
     std::vector<int> res{};
     for (Node *scan : v) {

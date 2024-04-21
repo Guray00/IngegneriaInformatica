@@ -1,0 +1,21 @@
+10 4
+43
+palermo
+76
+trapani
+12
+ancona
+32
+milano
+54
+modena
+1
+viareggio
+4
+roma
+98
+livorno
+1
+pisa
+3
+catania
