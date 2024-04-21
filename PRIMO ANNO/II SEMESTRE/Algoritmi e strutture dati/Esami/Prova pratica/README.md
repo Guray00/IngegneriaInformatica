@@ -2,7 +2,7 @@
 
 ## Download dei testi di esame
 
-È possibile scaricare i testi di esame ustilizzando il comando `git sparse-checkout` nella seguente maniera
+È possibile scaricare i testi di esame utilizzando il comando `git sparse-checkout` nella seguente maniera
 
 ```bash
 git clone --filter=blob:none --no-checkout https://github.com/Guray00/IngegneriaInformatica.git
