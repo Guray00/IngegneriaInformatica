@@ -18,10 +18,6 @@ Per rendere la comunicazione più efficace, sono stati realizzati gruppi apposit
 - **[Gruppo Telegram Anno 2](https://kutt.it/inginf2)**
 - **[Gruppo Telegram Anno 3](https://t.me/inginfunipi3)**
 
-### Off-Topic
-- **[Shitposting](https://t.me/joinchat/ALDXWEt7IxLWwQ1i5x4fvA)**
-- **[Gaming](https://t.me/joinchat/Cb7psFd1nwYjtrMekE51hg)**
-
 ## Corsi
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.png?raw=true)
 
