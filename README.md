@@ -228,6 +228,7 @@ Francesco De Lucchini<br>
 Angelo De Marco<br>
 Matteo Dondoli<br>
 Nilo Fabiano<br>
+Tommaso Falaschi<br>
 Giulio Federico<br>
 Niccolò Franchi<br>
 Gabriele Frassi<br>
@@ -239,13 +240,17 @@ Kevin Giannandrea<br>
 Daniele Giaquinta<br>
 Edoardo Geraci<br>
 Dafne Iennaro<br>
+Marco Lampis<br>
+Luca Landi<br>
 Lorenzo Leoncini<br>
 Giovanni Ligato<br>
 Lorenzo Lozzi<br>
 Giovanni Enrico Loni<br>
 Matteo Lombardi<br>
+Cristina Maria Rita Lombardo<br>
 Giacomo Maldarella<br>
 Lorenzo Mancinelli<br>
+Gregorio Maria Manduzio<br>
 Elia Marabotto<br>
 Gabriele Marcuccetti<br>
 Maria Azzurra Malotti<br>
@@ -283,6 +288,7 @@ Alessandro Simonelli<br>
 Giuseppe Soriano<br>
 Walter Soro<br>
 Giorgio Charles Sorrentini<br>
+Iacopo Stracca<br>
 Carmine Tranfa<br>
 Andrea Trasacco<br>
 Lorenzo Valtriani<br>
