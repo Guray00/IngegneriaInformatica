@@ -18,10 +18,6 @@ Per rendere la comunicazione più efficace, sono stati realizzati gruppi apposit
 - **[Gruppo Telegram Anno 2](https://kutt.it/inginf2)**
 - **[Gruppo Telegram Anno 3](https://t.me/inginfunipi3)**
 
-### Off-Topic
-- **[Shitposting](https://t.me/joinchat/ALDXWEt7IxLWwQ1i5x4fvA)**
-- **[Gaming](https://t.me/joinchat/Cb7psFd1nwYjtrMekE51hg)**
-
 ## Corsi
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.png?raw=true)
 
@@ -232,6 +228,7 @@ Francesco De Lucchini<br>
 Angelo De Marco<br>
 Matteo Dondoli<br>
 Nilo Fabiano<br>
+Tommaso Falaschi<br>
 Giulio Federico<br>
 Niccolò Franchi<br>
 Gabriele Frassi<br>
@@ -243,13 +240,17 @@ Kevin Giannandrea<br>
 Daniele Giaquinta<br>
 Edoardo Geraci<br>
 Dafne Iennaro<br>
+Marco Lampis<br>
+Luca Landi<br>
 Lorenzo Leoncini<br>
 Giovanni Ligato<br>
 Lorenzo Lozzi<br>
 Giovanni Enrico Loni<br>
 Matteo Lombardi<br>
+Cristina Maria Rita Lombardo<br>
 Giacomo Maldarella<br>
 Lorenzo Mancinelli<br>
+Gregorio Maria Manduzio<br>
 Elia Marabotto<br>
 Gabriele Marcuccetti<br>
 Maria Azzurra Malotti<br>
@@ -287,6 +288,7 @@ Alessandro Simonelli<br>
 Giuseppe Soriano<br>
 Walter Soro<br>
 Giorgio Charles Sorrentini<br>
+Iacopo Stracca<br>
 Carmine Tranfa<br>
 Andrea Trasacco<br>
 Lorenzo Valtriani<br>
