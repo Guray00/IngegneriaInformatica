@@ -34,7 +34,7 @@ void insert_node_bst(Node *&n, int val, int weight) {
 // }
 
 
-bool is_property_satisfied(Node *n, int k) {
+bool is_property_satisfied(const Node *n, int k) {
     int tmp = 0;
     for (auto child: {n->left, n->right}) {
         if (child != nullptr) {
@@ -50,7 +50,7 @@ bool is_property_satisfied(Node *n, int k) {
 }
 
 
-void get_max_satisfying(Node *n, int k, Node * &curr) {
+void get_max_satisfying(const Node *n, int k, const Node * &curr) {
     if (n == nullptr) {
         return;
     }
@@ -67,10 +67,10 @@ void get_max_satisfying(Node *n, int k, Node * &curr) {
 }
 
 
-std::optional<int> get_max_property_label(Node *node, int k) {
-    Node *n = nullptr;
+std::optional<int> get_max_property_label(const Node *node, int k) {
+    const Node *n = nullptr;
     get_max_satisfying(node, k, n);
-    return n == nullptr ? std::nullopt : std::optional(n->label);
+    return n == nullptr ? std::nullopt : std::optional{n->label};
 }
 
 int main() {
