@@ -35,7 +35,7 @@ void insert_node_bst(Node *&n, int label) {
 // }
 
 
-std::pair<int, int> do_get_nodes_distances(Node* node, std::unordered_set<int>& distances) {
+std::pair<int, int> do_get_nodes_distances(const Node* node, std::unordered_set<int>& distances) {
     if (node == nullptr) {
         return {-1, -1};
     }
@@ -67,7 +67,7 @@ std::pair<int, int> do_get_nodes_distances(Node* node, std::unordered_set<int>& 
 }
 
 
-std::vector<int> get_nodes_distances(Node *node, size_t n) {
+std::vector<int> get_nodes_distances(const Node *node, size_t n) {
     std::unordered_set<int> m{};
     // O(n)
     do_get_nodes_distances(node, m);

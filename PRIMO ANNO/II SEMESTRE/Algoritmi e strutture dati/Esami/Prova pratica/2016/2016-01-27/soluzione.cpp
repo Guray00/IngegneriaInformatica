@@ -56,7 +56,7 @@ int main() {
         }
     }
 
-    const auto &bucket_target = v[max_idx];
+    const std::vector<Account> &bucket_target = v[max_idx];
     if (bucket_target.empty()) {
         return 0;
     }
