@@ -30,25 +30,25 @@ void insert_node_bst(Node *&n, int label) {
 }
 
 
-bool is_leaf(Node &n) {
+bool is_leaf(const Node &n) {
     return n.left == nullptr && n.right == nullptr;
 }
 
 
-bool is_right_leaf(Node &n, Node &father) {
+bool is_right_leaf(const Node &n, const Node &father) {
     return is_leaf(n) && father.right == &n;
 }
 
 
-bool is_left_leaf(Node &n, Node &father) {
+bool is_left_leaf(const Node &n, const Node &father) {
     return is_leaf(n) && father.left == &n;
 }
 
 
 std::pair<int, int> get_num_left_and_right_leaves(
-    Node *n, 
-    Node *father, 
-    const int K, 
+    const Node *n, 
+    const Node *father, 
+    int K, 
     std::vector<int> &vs,
     int d = 0) 
 {

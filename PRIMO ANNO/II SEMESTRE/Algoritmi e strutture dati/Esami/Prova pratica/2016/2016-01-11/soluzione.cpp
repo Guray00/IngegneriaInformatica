@@ -34,7 +34,7 @@ void insert_node_bst(Node *&n, int label) {
 // }
 
 
-int height(Node *n) {
+int height(const Node *n) {
     if (n == nullptr) {
         return 0;
     }
@@ -80,7 +80,7 @@ void in_order_visit(const Node *n, const F &f) {
 }
 
 
-int main(void) {
+int main() {
     int N, D;
     std::cin >> N >> D;
     std::vector<Node*> trees(D);
