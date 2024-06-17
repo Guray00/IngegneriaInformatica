@@ -14,8 +14,3 @@ Si segnalano ulteriori tesi di nostri colleghi:
   **Titolo**: _Debugging di una libreria per spiegazioni controfattuali e suo utilizzo nell’eXplainable Affective Computing_ <br>
   **Relatori**: ing. Antonio Luca Alfeo, prof. MGCA Cimino <br>
   **Link**: https://github.com/EmanueleRsp/Affective-Computing-XAI-CF-Analisys
-
-- dott. [Luca Ostinelli](https://lucaosti.github.io)
-  **Titolo**: _Rilevamento di curve ad S in immagini satellitari_ <br>
-  **Relatori**: prof. Marco Cococcioni <br>
-  **Link**: https://github.com/lucaosti/bachelors-thesis
