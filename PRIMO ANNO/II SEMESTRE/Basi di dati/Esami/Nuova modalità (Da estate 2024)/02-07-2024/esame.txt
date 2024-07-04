@@ -1,0 +1,6 @@
+query: scrivere una query che restituisca nome, cognome, città degli otorini che hanno visitato solo pazienti di pisa e roma, ciascuno dei quali visitato precedentemente al massimo da un solo medico di quella specializzazione, e qual è la sua matricola
+tonellotto (a grande linea):
+1. dato lo schedule S: r2(x), r1(x), w1(x), r2(x), determinare se è conflict-serializzabile. in caso positivo trovare tutti(o alcuni) gli schedule seriali conflict-equivalenti a S
+2. determinare se lo schedule S è view-serializzabile. in caso positivo trovare tutti(o alcuni) gli schedule view-equivalenti a S
+3. data la relazione R(ABCDEF) e gli insiemi di dipendenze funzionali G={AB→C, B→A, AD→E, BD→F} E H={AB→C, B→A, AD→EF}
+trovare le coperture minimali di G e H e determinare se i due insiemi di DF sono equivalenti
