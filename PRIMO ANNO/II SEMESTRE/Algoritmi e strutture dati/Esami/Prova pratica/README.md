@@ -61,4 +61,4 @@ std::vector<std::vector<T>> table(size);
 
 ```
 
-Si raccomanda l'uso di `std::vector` anche per gli elementi della tabella hash poiché, a meno di casi specifici come rimozioni nel mezzo alla collezione, una lista concatenata in pratica non supera mai in performance un vettore. Il numero di collisioni della i-esima entry della tabella hash corrisponde alla lunghezza del vettore in posizione i-esima.
+Si raccomanda l'uso di `std::vector` anche per gli elementi della tabella hash poiché, a meno di casi specifici come rimozioni nel mezzo alla collezione, una lista concatenata in pratica non supera mai in performance un vettore, che risulta anche molto più semplice da utilizzare. Il numero di collisioni della i-esima entry della tabella hash corrisponde alla lunghezza del vettore in posizione i-esima.
