@@ -1,7 +1,9 @@
+#!/bin/bash
 if [ -d "prove_pratiche_algoritmi" ]; then
     echo "fatal: prove_pratiche_algoritmi already exists"
     exit 1
 fi
+
 TARGET_DIR="$(pwd)"
 TEMP_DIR="$(mktemp -d)"
 cd "$TEMP_DIR"

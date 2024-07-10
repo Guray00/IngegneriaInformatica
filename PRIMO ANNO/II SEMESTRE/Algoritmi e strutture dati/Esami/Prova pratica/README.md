@@ -2,17 +2,7 @@
 
 ## Download dei testi di esame
 
-È possibile scaricare i testi di esame utilizzando il comando `git sparse-checkout` nella seguente maniera
-
-```bash
-git clone --filter=blob:none --no-checkout https://github.com/Guray00/IngegneriaInformatica.git
-cd IngegneriaInformatica
-git sparse-checkout set --no-cone 'PRIMO ANNO/II SEMESTRE/Algoritmi e strutture dati/Esami/Prova pratica'
-git fetch origin
-git checkout master
-```
-
-In alternativa, è sufficiente eseguire il seguente comando:
+È possibile scaricare la cartella utilizzando il seguente comando:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/Guray00/IngegneriaInformatica/master/PRIMO%20ANNO/II%20SEMESTRE/Algoritmi%20e%20strutture%20dati/Esami/Prova%20pratica/download.sh | sh
