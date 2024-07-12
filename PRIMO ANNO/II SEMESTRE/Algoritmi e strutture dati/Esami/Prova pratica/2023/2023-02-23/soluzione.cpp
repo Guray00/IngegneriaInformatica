@@ -2,9 +2,6 @@
 #include <iostream>
 #include <unordered_set>
 
-
-// I don't use intrusive fields, because I don't want to modify the Node struct adapting
-// it to the specific problem. If you want to use intrusive fields, you can. But I won't do.
 struct Node {
     int label;
     Node *left;

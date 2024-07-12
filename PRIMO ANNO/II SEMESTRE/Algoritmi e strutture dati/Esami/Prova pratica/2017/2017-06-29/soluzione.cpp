@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <functional>
 #include <iostream>
-#include <type_traits>
 #include <vector>
 
 static constexpr int P = 999149, A = 1000, B = 2000;
@@ -72,7 +71,7 @@ std::pair<int, int> get_d(const Node* n) {
     if (n == nullptr) {
         return {-1, -1};
     }
-    
+
     auto l = get_d(n->left);
     auto r = get_d(n->right);
 
@@ -87,7 +86,7 @@ std::pair<int, int> get_d(const Node* n) {
 int main() {
     int n, k, s;
     std::cin >> n >> k >> s;
-    
+
     // if (n < 0) {
     //     throw std::invalid_argument("n must be non-negative");
     // }
@@ -95,7 +94,7 @@ int main() {
     // if (s < 0) {
     //     throw std::invalid_argument("s must be non-negative");
     // }
-    
+
     auto hash = [=](const int label) { return (A * label + B) % P % s; };
     std::vector<Node* > v{};
     {
@@ -135,4 +134,3 @@ int main() {
 
     return 0;
 }
-

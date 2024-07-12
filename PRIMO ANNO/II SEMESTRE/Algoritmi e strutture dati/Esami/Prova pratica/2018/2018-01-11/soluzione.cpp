@@ -2,11 +2,6 @@
 #include <vector>
 #include <functional>
 #include <optional>
-#include <algorithm>
-#include <iostream>
-#include <vector>
-#include <type_traits>
-#include <optional>
 
 struct Node {
     int label;
@@ -95,7 +90,7 @@ int main() {
     // if (s < 0) {
     //     throw std::invalid_argument("s must be non-negative");
     // }
-    
+
     auto hash = [=](const int label) { return (A * label + B) % P % s; };
     std::vector<Node* > v{};
     {
@@ -111,10 +106,10 @@ int main() {
 
     std::optional<std::pair<size_t, int>> max_nsx = std::nullopt;
     std::optional<std::pair<size_t, int>> max_ndx = std::nullopt;
-    for (size_t i = 0; i < s; i++) { 
+    for (size_t i = 0; i < s; i++) {
         auto [nsx, ndx] = get_num_left_and_right_leaves(v[i], nullptr);
         if (max_nsx == std::nullopt || nsx >= max_nsx->second) {
-            max_nsx = {i, nsx}; 
+            max_nsx = {i, nsx};
         }
 
         if (max_ndx == std::nullopt || ndx >= max_ndx->second) {
@@ -139,4 +134,3 @@ int main() {
 
     return 0;
 }
-

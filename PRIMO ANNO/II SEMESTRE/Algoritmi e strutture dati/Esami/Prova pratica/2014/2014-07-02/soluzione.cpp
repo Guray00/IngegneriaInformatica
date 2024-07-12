@@ -1,6 +1,4 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
 #include <unordered_set>
 
 struct Node {
@@ -64,7 +62,7 @@ void print(const Node *n, const std::unordered_set<const Node *> &good_nodes) {
     }
     print(n->left, good_nodes);
     if (good_nodes.find(n) != good_nodes.end()) {
-        std::cout << n->label << ' '; 
+        std::cout << n->label << ' ';
     }
     print(n->right, good_nodes);
 }
@@ -88,9 +86,8 @@ int main() {
     std::unordered_set<const Node*> good_nodes{};
     find_satisfying(node, good_nodes);
     print(node, good_nodes);
-    
+
     // destroy_tree(node);
 
     return 0;
 }
-
