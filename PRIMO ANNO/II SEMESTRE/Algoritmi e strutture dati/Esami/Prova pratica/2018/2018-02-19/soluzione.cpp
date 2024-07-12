@@ -8,7 +8,7 @@ struct Node {
     Node *left;
     Node *right;
 
-    explicit Node(int label) : label(label), left(nullptr), right(nullptr) {
+    explicit Node(int label) : label{label}, left{nullptr}, right{nullptr} {
     }
 };
 
@@ -88,7 +88,7 @@ int main() {
     //  }
 
     k = std::min(n, k);
-    
+
     Node *node = nullptr;
     for (int i = 0; i < n; i++) {
         int label;
@@ -97,12 +97,12 @@ int main() {
     }
 
     std::vector<std::pair<const Node *, int>> v = get_nodes_distances(node, n);
-    
+
     for (auto [node, _] : v) {
         if (k == 0) {
             break;
         }
-        
+
         std::cout << node->label << std::endl;
         k--;
     }
@@ -111,4 +111,3 @@ int main() {
 
     return 0;
 }
-
