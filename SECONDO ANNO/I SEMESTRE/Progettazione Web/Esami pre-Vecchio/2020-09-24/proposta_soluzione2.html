@@ -1,0 +1,300 @@
+<html>
+    <!-- soluzione di Matteo Bernini --->
+    <head>
+        <title>Anagrafe</title>
+        <style>
+            .container{
+                align-content: center;
+                text-align: center;
+                align-items: center;
+            }
+            table, td, tr {
+                border: 1px solid black;
+            }
+            table{
+                background-color: lightgrey;
+                text-align: center;
+            }
+            td{
+                background-color: white;
+            }
+            .stato{
+                background-color: green;
+                color: white;
+            }
+            #bottoni button{
+                margin-right: 30px;
+                width: 130px;
+                height: 80px;
+                font-weight: bold;
+                border-radius: 5px;
+            }
+            #PrenotazCorrente td{
+                width: 100px;
+                height: 40px;
+            }
+            .button_semaforo{
+                background-color: green;
+                width: 25px;
+                height: 25px;
+                font-weight: bold;
+                float: left;
+                border: 1px solid black;
+                text-align: center;
+                margin-right: 5px;
+            }
+            #tabellone{
+                position: absolute;
+            }
+            #bottoni{
+                position: absolute;
+                left: 300px;
+            }
+            #semaforo{
+                position: absolute;
+                top: 200px;
+            }
+            #ErogazioneServizio{
+                position: absolute;
+                top: 300px;
+            }
+            #PrenotazCorrente{
+                position: absolute;
+                top: 250px;
+                left: 300px;
+            }
+        </style>
+    </head>
+    <body onload="draw()">
+        <div id="tabellone" class="container">
+
+        </div>
+        <div id="bottoni" class="container">
+            <h4>Premi il bottone del Servizio a cui sei interessato</h4>
+            <button onclick="prendi_prenotazione('A')">Carta di identità <br><br> Lettera A</button>
+            <button onclick="prendi_prenotazione('B')">Cambio Residenza <br><br> Lettera B</button>
+            <button onclick="prendi_prenotazione('C')">Certificati <br><br> Lettera C</button>
+        </div>
+        <div id="semaforo" class="container">
+            <h4>Apertura\Chiusura Sportelli</h4>
+            <button class="button_semaforo" onclick="apri_chiudi_sportello(1)">1</button>
+            <button class="button_semaforo" onclick="apri_chiudi_sportello(2)">2</button>
+            <button class="button_semaforo" onclick="apri_chiudi_sportello(3)">3</button>
+            <button class="button_semaforo" onclick="apri_chiudi_sportello(4)">4</button>
+            <button class="button_semaforo" onclick="apri_chiudi_sportello(5)">5</button>
+            <button class="button_semaforo" onclick="apri_chiudi_sportello(6)">6</button>
+        </div>
+        <div id="ErogazioneServizio" class="container">
+            <h4>Erogazione Servizio</h4>
+        </div>
+        <div id="PrenotazCorrente" class="container">
+            <h4>Numero di Prenotazione Corrente</h4>
+            <table>
+                <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                </tr>
+                <tr>
+                    <td class="nCorrente">0</td>
+                    <td class="nCorrente">0</td>
+                    <td class="nCorrente">0</td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            //***   VARIABILI
+            var prenotazione = {A:"", B:"", C:""};
+            prenotazione.A = new Array();
+            prenotazione.B = new Array();
+            prenotazione.C = new Array();
+            var sportello_aperto = new Array();
+            for(var i = 0; i < 6; ++i)
+                sportello_aperto[i] = true;
+            var servito = new Array();
+            servito[0] = 0; servito[1] = 0; servito[2] = 0;
+            //***    FUNZ. PRINCIPALI
+            function draw()
+            {
+                draw_tabellone();
+                draw_ErogazioneServizio();
+                alert("Non fidatevi troppo, \n soluzione elaborata in fase di preparazione dell'esame,\n per dubbi/correzioni contattate Matteo Bernini");
+            }
+            function apri_chiudi_sportello(n)
+            {   
+                var semafori = document.getElementsByClassName("button_semaforo");
+                var stati = document.getElementsByClassName("stato");
+                var codici = document.getElementsByClassName("codice");
+                var codA = document.getElementsByClassName("codiceA"); 
+                var codB = document.getElementsByClassName("codiceB"); 
+                var codC = document.getElementsByClassName("codiceC"); 
+                if(sportello_aperto[n-1])
+                {
+                    semafori[n-1].style.backgroundColor = "red";
+                    stati[n-1].style.backgroundColor = "red";
+                    stati[n-1].textContent = "Chiuso";
+                    codici[n-1].textContent = "0";
+                    codA[n-1].disabled = true;
+                    codB[n-1].disabled = true;
+                    codC[n-1].disabled = true;
+                    sportello_aperto[n-1] = false;
+                }
+                else
+                {
+                    semafori[n-1].style.backgroundColor = "green";
+                    stati[n-1].style.backgroundColor = "green";
+                    stati[n-1].textContent = "Aperto";
+                    codici[n-1].textContent = "0";
+                    if(prenotazione.A.length != 0)
+                        codA[n-1].disabled = false;
+                    if(prenotazione.B.length != 0)
+                        codB[n-1].disabled = false;
+                    if(prenotazione.C.length != 0)
+                        codC[n-1].disabled = false;
+                    sportello_aperto[n-1] = true;
+                }
+            }
+            function prendi_prenotazione(lettera)
+            {
+                var n = document.getElementsByClassName("nCorrente");
+                var codA = document.getElementsByClassName("codiceA"); 
+                var codB = document.getElementsByClassName("codiceB"); 
+                var codC = document.getElementsByClassName("codiceC"); 
+
+                if(lettera == "A")
+                {
+                    prenotazione.A[prenotazione.A.length] = "A"+Number(prenotazione.A.length+1);
+                    n[0].textContent = prenotazione.A.length;
+                    for(var i = 0; i < 6; ++i)
+                    {
+                        if(sportello_aperto[i])
+                            codA[i].disabled = false;
+                    }
+                }
+                if(lettera == "B")
+                {
+                    prenotazione.B[prenotazione.B.length] = "B"+Number(prenotazione.B.length+1);
+                    n[1].textContent = prenotazione.B.length;
+                    for(var i = 0; i < 6; ++i)
+                    {
+                        if(sportello_aperto[i])
+                            codB[i].disabled = false;
+                    }
+                }
+                if(lettera == "C")
+                {
+                    prenotazione.C[prenotazione.C.length] = "C"+Number(prenotazione.C.length+1);
+                    n[2].textContent = prenotazione.C.length;
+                    for(var i = 0; i < 6; ++i)
+                    {
+                        if(sportello_aperto[i])
+                            codC[i].disabled = false;
+                    }
+                }
+            }
+            function servizio(sportello, codice)
+            {
+                var codici = document.getElementsByClassName("codice");
+                sportello = Number(sportello);
+                if(codice == "A")
+                {
+                    if(prenotazione.A[servito[0]] == undefined)
+                        return;
+                    codici[sportello-1].textContent = prenotazione.A[servito[0]];
+                    servito[0]++;
+                }
+                if(codice == "B")
+                {
+                    if(prenotazione.B[servito[1]] == undefined)
+                        return;
+                    codici[sportello-1].textContent = prenotazione.B[servito[1]];
+                    servito[1]++;
+                }
+                if(codice == "C")
+                {
+                    if(prenotazione.C[servito[2]] == undefined)
+                        return;
+                    codici[sportello-1].textContent = prenotazione.C[servito[2]];
+                    servito[2]++;
+                }
+            }
+            //***   FUNZ. UTILITA'
+            function draw_tabellone()
+            {
+                var tabellone = document.getElementById("tabellone");
+                var tabella = document.createElement("table");
+                var header = document.createElement("tr");
+                var h1 = document.createElement("th");
+                h1.textContent = "Sportello";
+                header.appendChild(h1);
+                var h2 = document.createElement("th");
+                h2.textContent = "Codice";
+                header.appendChild(h2);
+                var h3 = document.createElement("th");
+                h3.textContent = "Stato";
+                header.appendChild(h3);
+                tabella.appendChild(header);
+                for(var i = 0; i < 6; ++i)
+                {
+                    var riga = document.createElement("tr");
+                    var d1 = document.createElement("td");
+                    d1.textContent = i+1;
+                    d1.setAttribute("class", "sportello");
+                    riga.appendChild(d1);
+                    var d2 = document.createElement("td");
+                    d2.textContent = 0;
+                    d2.setAttribute("class", "codice");
+                    riga.appendChild(d2);
+                    var d3 = document.createElement("td");
+                    d3.textContent = "Aperto";
+                    d3.setAttribute("class", "stato");
+                    riga.appendChild(d3); 
+                    tabella.appendChild(riga);
+                }
+                tabellone.appendChild(tabella);
+            }
+            function draw_ErogazioneServizio()
+            {
+                var tabellone = document.getElementById("ErogazioneServizio");
+                var tabella = document.createElement("table");
+                var header = document.createElement("tr");
+                var h1 = document.createElement("th");
+                h1.textContent = "Sportello";
+                header.appendChild(h1);
+                var h2 = document.createElement("th");
+                h2.textContent = "Codice";
+                h2.setAttribute("colspan", "3");
+                header.appendChild(h2);
+                tabella.appendChild(header);
+                for(var i = 0; i < 6; ++i)
+                {
+                    var riga = document.createElement("tr");
+                    var d1 = document.createElement("td");
+                    d1.textContent = i+1;
+                    d1.setAttribute("class", "sportelloE");
+                    riga.appendChild(d1);
+                    var d2 = document.createElement("button");
+                    d2.textContent = "A";
+                    d2.disabled = true;
+                    d2.setAttribute("class", "codiceA");
+                    d2.setAttribute("onclick", "servizio('"+(i+1)+"', 'A')");
+                    riga.appendChild(d2);
+                    var d3 = document.createElement("button");
+                    d3.textContent = "B";
+                    d3.disabled = true;
+                    d3.setAttribute("class", "codiceB");
+                    d3.setAttribute("onclick", "servizio('"+(i+1)+"', 'B')");
+                    riga.appendChild(d3); 
+                    var d4 = document.createElement("button");
+                    d4.textContent = "C";
+                    d4.disabled = true;
+                    d4.setAttribute("class", "codiceC");
+                    d4.setAttribute("onclick", "servizio('"+(i+1)+"', 'C')");
+                    riga.appendChild(d4); 
+                    tabella.appendChild(riga);
+                }
+                tabellone.appendChild(tabella);
+            }
+        </script>
+    </body>
+</html>

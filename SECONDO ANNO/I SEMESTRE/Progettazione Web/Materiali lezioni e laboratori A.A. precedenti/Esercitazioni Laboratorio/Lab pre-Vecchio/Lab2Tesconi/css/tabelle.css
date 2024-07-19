@@ -1,0 +1,55 @@
+table#classifica {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  line-height: 40px;
+  font-family: Verdana;
+  background-color: orange;
+  color: white;
+}
+
+tbody {
+  font-family: Arial;
+}
+
+
+th, tr, td {
+  border: 1px solid grey;
+}
+
+th {
+   font-weight: normal;
+}
+
+tr {
+  height: 30px;
+}
+
+
+td {
+  text-align: center;
+  line-height: 30px;
+}
+
+tr:nth-of-type(2n) {
+  background-color: lightgray;
+}
+
+th:nth-of-type(2) , td:nth-of-type(2) {
+  text-align: left;
+  padding-left: 40px;
+}
+
+
+tfoot {
+  background-color: orange;
+  color: white;
+
+}
+
+tfoot a {
+  color: white;
+
+}

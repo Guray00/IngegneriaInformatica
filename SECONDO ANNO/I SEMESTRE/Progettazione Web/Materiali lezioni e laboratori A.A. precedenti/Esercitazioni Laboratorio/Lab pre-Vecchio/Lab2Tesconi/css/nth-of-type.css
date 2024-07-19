@@ -1,0 +1,26 @@
+span {
+  border: 1px solid green;
+}
+
+div {
+  border: 1px solid red;
+}
+
+.box {
+  display: block;
+  width: 100px;
+  height: 50px;
+}
+
+/*
+span:nth-of-type(2n) {
+  background-color: grey;
+  
+}
+*/
+
+
+div:nth-child(2n) {
+  background-color: grey;
+  
+}

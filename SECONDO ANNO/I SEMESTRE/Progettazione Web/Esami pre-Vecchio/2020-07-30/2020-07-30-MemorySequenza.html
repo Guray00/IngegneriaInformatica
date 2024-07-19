@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<title>Esame2020-02-06</title>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+
+		.container{
+			display: flex;
+			align-items: center;
+			flex-direction:column;
+		}
+		#timeDiv{
+				width: 80px;
+				height: 20px;
+				border: 1px solid black;
+				text-align: center;
+		}
+		#start{
+			width: 100px;
+			height: 30px;
+		}
+		table,tr,td{
+			border: 1px solid black;
+		}
+		table{
+			width: 500px;
+			height: 300px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+    </style>
+	</head>
+
+	<body>
+		<div class="container">
+			<h2>Indovina la sequenza</h2>
+			<h3>Tempo</h3>
+			<div id="timeDiv"></div>
+			<table id="field"></table>
+			<button type="button" name="button" id="start">START</button>
+		</div>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+	startGame();
+
+		var lastClicked = 0;
+		var sequence = 0;
+		var wrongSeq =0;
+		function startGame(){
+			document.getElementById('timeDiv').textContent = '-';
+			var tileCounter = 0;
+			var field = document.getElementById('field');
+			for (var i = 0; i < 6; i++) {
+				var row = document.createElement('tr');
+				row.setAttribute('id', 'row'+i);
+				for (var j = 0; j < 10; j++) {
+						var tile = document.createElement('td');
+						tile.setAttribute('id', tileCounter++);
+						row.appendChild(tile);
+						// check if correct element
+						tile.addEventListener('click', function(e){
+							if(e.target.className != '' && e.target.className == (lastClicked++)){
+								e.target.style.backgroundColor = 'green';
+								if(lastClicked == 4){
+									if(sequence == 2){
+										// handle endgame
+										window.clearInterval(clockInterval);
+										var finalT = parseInt(min)*60 + parseInt(sec) + 15 * parseInt(wrongSeq);
+
+										var winWindow = window.open('','','width=200,height=100');
+										winWindow.document.write('il giocatore ha impiegato:' + finalT + 'secondi');
+										setTimeout(function () {
+											winWindow.close();
+											document.getElementById('timeDiv').textContent = '-';
+											lastClicked = 0;
+											sequence = 0;
+											wrongSeq = 0;
+											var tiles = document.getElementsByTagName('td');
+											for (var i = 0; i < tiles.length; i++) {
+												tiles[i].className = '';
+												tiles[i].style.backgroundColor = 'white';
+											}
+											document.getElementById('start').disabled = false;
+											min = 0;
+											sec = 0;
+										 }, 5000);
+									}else{
+										setTimeout(function(){
+											var tiles = document.getElementsByTagName('td');
+											for (var i = 0; i < tiles.length; i++) {
+												tiles[i].style.backgroundColor = 'white';
+											}
+										},1000);
+										setTimeout(function(){
+											sequence++;
+											lastClicked = 0;
+											sequenceGen();
+										},3000);
+									}
+								}
+							}else{
+								//handle error
+								wrongSeq++;
+								lastClicked =0;
+								displaySequence(seq);
+							}
+						});
+				}
+				field.appendChild(row);
+			}
+		}
+
+		var seq = [];
+		function sequenceGen(){
+			seq = [];
+			document.getElementById('start').disabled = true;
+				for (var j = 0; j < 4; j++) {
+					do {
+						var generated = Math.floor(Math.random()*60 );
+					} while (seq.indexOf(generated) != -1);
+					seq.push(generated);
+					var selectedTile = document.getElementById(generated);
+					selectedTile.setAttribute('class', j);
+				}
+				displaySequence(seq);
+		};
+
+	function displaySequence(array){
+		var i = 0;
+		setTimeout(function(){
+			document.getElementById(array[i]).style.backgroundColor = 'red';
+			i++
+		},500);
+		setTimeout(function(){
+			document.getElementById(array[i]).style.backgroundColor = 'red';
+			document.getElementById(array[i-1]).style.backgroundColor = 'white';
+			i++
+		},1000);
+		setTimeout(function(){
+			document.getElementById(array[i]).style.backgroundColor = 'red';
+			document.getElementById(array[i-1]).style.backgroundColor = 'white';
+			i++
+		},1500);
+		setTimeout(function(){
+			document.getElementById(array[i]).style.backgroundColor = 'red';
+			document.getElementById(array[i-1]).style.backgroundColor = 'white';
+			i++
+		},2000);
+		setTimeout(function(){
+			document.getElementById(array[i-1]).style.backgroundColor = 'white';
+		},2500);
+	};
+
+	var sec = 0;
+	var min = 0;
+	var clockInterval;
+
+	document.getElementById('start').addEventListener('click', function(){
+		// clock
+		clockInterval = setInterval(function(){
+			if(++sec == 60){
+				++min;
+				sec = 0;
+			}
+			document.getElementById('timeDiv').textContent = ((min < 10)?'0' + min : min) + ':' + ((sec < 10)?'0' + sec : sec);
+		}, 1000)
+		sequenceGen();
+	});
+
+
+  </script>
+</html>

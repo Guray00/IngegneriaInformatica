@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Alarm</title>
+		<meta http-equiv = "Content-Type" content = "text/html; charset=ISO-8859-1">
+   		
+   		<!-- CSS -->
+   		<style type="text/css">
+			body{
+				font-family:	"Arial","Serif";
+				font-size:		small;
+			}
+	
+			fieldset,legend{
+				color:				black;
+				background-color:	Gainsboro;
+			}
+			
+			label, div{
+				padding: 0.5em;
+				float: left;
+			} 
+			
+			div.wrapper{
+				float: none;
+			}
+			
+			#alarm{
+				color:				black;
+				background-color: 	GhostWhite;
+				padding: 0.5em;
+			}
+			
+			legend.greyLabel{
+				color:	grey;
+			}
+			
+			#set{
+				text-align:	center;
+			}
+			
+			#duration{
+				text-align: center;
+			}
+			
+			#alarmOn{
+				padding-left:	2.5em;
+				padding-top:	1em;
+			}
+   		</style>
+		
+		<!-- Javascript -->
+		<script type="text/javascript">
+			var _alarmWindow;	// Alarm window where the text is printed
+			var alarmOn;    	// Alarm is activated 
+			var alarmTime;    	// Alarm Clock (HH:MM:SS format)
+			var alarmDuration;	// Period of alarm window must be opened (in second)
+			
+			// Generate option element dynamically, initializes variables and set the timer
+			function begin(){
+				
+				// Generate option elements
+				generateOptionElement(15, document.getElementById("alarmDuration"));
+				generateOptionElement(23, document.getElementById("alarmTime").getElementsByTagName("select")[0]);
+				generateOptionElement(59, document.getElementById("alarmTime").getElementsByTagName("select")[1]);
+				
+				// Initializes variables
+				_alarmWindow = null;
+				alarmOn = false;  
+				alarmTime = ""; 
+				alarmDuration = 0;
+				document.getElementById("alarmOn").getElementsByTagName("input")[1].checked = true;
+				
+				// Sets timer
+				setInterval("clock()", 1000);
+			}
+			
+			function openWindow() {
+			
+			  if ((_alarmWindow == null) || (_alarmWindow.closed)) {
+				_alarmWindow = window.open("", "Alarm", "width=300,height=200,resizable=yes,location=no");
+				_alarmWindow.document.open();                                                          
+				_alarmWindow.document.writeln('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"');   
+				_alarmWindow.document.writeln('"http://www.w3.org/TR/html4/strict.dtd">');
+				_alarmWindow.document.writeln('<html><head><title>Alarm</title><style type="text/css">' +
+				'#alarmTextWindow{' + 
+					'font-size:			large;' + 
+					'font-weight:		bold;' +
+					'font-family:		"Arial","Serif";' +
+					'color:				red;' +
+					'background-color: 	white;' +
+				'}</style></head>');
+				_alarmWindow.document.writeln('<body><p id="alarmTextWindow">');
+			  }
+			}
+			
+			function printMessage(mess) {
+			 
+				_alarmWindow.focus();
+				_alarmWindow.document.writeln(mess + "<br>");
+			}  
+			
+			function closeWindow() {
+			  
+				_alarmWindow.document.writeln("</p></body></html>");                                      
+				_alarmWindow.close();                                                             
+			}
+			
+			// Create option dynamically using DOM
+			function generateOptionElement(numOption, select){
+				
+				var option;
+				var value;
+				for(var i = 0; i <= numOption; i++){
+					(i < 10)? value = "0"+i : value= i;
+					option = document.createElement("option");								
+					option.setAttribute("value", value);
+					option.appendChild(document.createTextNode(value));
+					select.appendChild(option);
+				}
+				
+			}
+			
+			// Checks if the current time is the same as the alarm clock
+			function checkAlarmTime(currentTime){
+				if (alarmTime == currentTime)
+					return true;	
+				return false;
+			}
+			
+			function activateAlarm(){			
+				
+				// Set the alarm clock
+				var alarmTimeArray = document.getElementById("alarmTime").getElementsByTagName("select");
+				var element = null;	
+				for(var z = 0; z < alarmTimeArray.length; z++){
+					element = alarmTimeArray[z];
+					for(var i = 0; i < element.options.length; i++)
+						if (element.options[i].selected) 
+							alarmTime += element.options[i].value + ":";
+				}
+				alarmTime += "00"; // add second to the format (HH:MM:00)
+				// Set the alarm duration
+				var element = document.getElementById("alarmDuration");
+				for(var i = 0; i < element.options.length; i++)
+					if (element.options[i].selected) 
+						alarmDuration = element.options[i].value;
+				
+				// Activates the alarm
+				alarmOn = true;
+			}
+			
+			// Resets the alarm
+			function stopAlarm(){
+			
+				alarmOn = false;
+				alarmTime = "";
+				alarmDuration = 0;
+				document.getElementById("alarmOn").getElementsByTagName("input")[1].checked = true;
+				if(_alarmWindow != null) 
+					closeWindow();
+			}
+			
+			// Returns current Time in HH:MM:SS format
+			function getCurrentTime(){
+				
+				var currentTime = new Date();
+				return currentTime.toString().match(/\d{2}:\d{2}:\d{2}/);	  
+			}
+			
+			function clock() {
+				
+				// Get current time and set the value in the input element
+				var currentTime = getCurrentTime();            	  
+				document.getElementById("currentTimeText").value =  currentTime;
+			
+				// Check if the alarm must be activated
+				if (alarmOn && checkAlarmTime(currentTime)){
+					openWindow();
+					printMessage(document.getElementById("alarmText").value);
+					alarmOn = false;
+				}
+				
+				// Only if alarm window is opened
+				if ( !((_alarmWindow == null) || (_alarmWindow.closed)) ){  
+					alarmDuration--;
+					if (alarmDuration < 0)
+						stopAlarm();
+				}
+			}		
+		</script>
+	</head>
+	<body onload="begin()">
+		<div id="alarm">
+			<div class="wrapper">
+  			<fieldset id="CT">
+  				<legend class="greyLabel">Current Time</legend>
+  				<input id="currentTimeText" type="text">
+  			</fieldset>
+			</div>
+			<div class="wrapper">
+  			<fieldset>
+  				<legend>Alarm Set</legend>
+  				<div class="wrapper">
+    				<label>Alarm Text :<br>
+    					<input id="alarmText" type="text" value="Wake Up">
+    				</label>
+    				<label id="duration">Alarm Duration (ss)<br>
+    					<select id="alarmDuration">															
+    						<!-- Option element create dynamically -->
+    					</select>
+    				</label>
+  				</div>
+  				<div class="wrapper">
+    				<div>
+    					<fieldset id="alarmTime">
+    						<legend class="greyLabel">Alarm Time (hh mm)</legend>
+    						<select>
+    							<!-- Option element create dynamically -->
+    						</select>
+    						<select>
+    							<!-- Option element create dynamically -->
+    						</select>
+    					</fieldset>
+    				</div>
+    				<div id="alarmOn">
+    					<input type="radio" name="avvia" value="ON" onchange="activateAlarm();">ON<br>
+    					<input type="radio" name="avvia" value="OFF" checked="checked" onchange="stopAlarm();">OFF<br>
+    				</div>
+  				</div>
+  			</fieldset>
+			</div>
+		</div>
+	</body>
+</html>

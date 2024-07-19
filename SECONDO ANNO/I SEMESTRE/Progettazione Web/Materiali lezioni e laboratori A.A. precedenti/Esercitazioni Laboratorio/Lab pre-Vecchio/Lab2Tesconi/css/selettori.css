@@ -1,0 +1,54 @@
+/* IMPOSTARE la lunghezza di ogni immagine al 100px */
+
+img {
+  width: 100px;
+}
+
+
+/* Mettere un bordo tratteggiato di 1px a tutte le sezioni */
+
+section {
+  display:block;
+  border: dotted 1px;
+}
+
+/* colorare lo sfondo di rosso del titolo di Youtube */
+
+#Youtube h1 {
+  background-color: red;
+}
+
+/* colorare lo sfondo di giallo di tutti i link "Torna su" */
+
+.top {
+   background-color: yellow;
+}
+
+/* colora di rosso la scritta "100 lingue" */
+
+div strong {
+  color: red;
+}
+
+
+/* colora di sfondo verde la scritta "primo servizio" */
+/* evidenziare la differenza tra parent e ancestor    */
+div > em {
+  background-color: green;
+  color: white;
+}
+
+
+/* metti un bordo spesso 5px intorno all'immagine di Youtube */
+/* provare la differenza tra attribute *= value e attribute ~= value */
+img[alt*='youtube'] {
+  border: solid 5px red;
+  
+}
+
+/* quando si passa sopra i link "Torrna su" cambiare il background in rosso e mettere il font a 50px */
+section > a:hover {
+  background-color: red;
+  font-size: 50px;
+  
+}

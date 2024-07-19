@@ -1,0 +1,46 @@
+body {
+    background-color: beige;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 3fr 0.5fr;
+    grid-template-areas: ". h ."
+                         "n m l"
+                         "b f l";
+    font-size: 2em;
+    font-family: sans-serif;                     
+}
+
+#titolo {
+    grid-area: h;
+    background-color: darkgoldenrod;
+    align-self: center;
+    justify-self: center;
+    padding: 0.75em 1.5em;
+    border-radius: 2em;
+    text-shadow: 0.1em 0.1em 0.3em black;
+}
+nav {grid-area: n;
+    background-color: darkolivegreen;
+    color: ghostwhite;
+    padding-left: 1em;
+}
+.m {
+    grid-area: m;
+    padding: 2em;
+}
+.l {
+    grid-area: l;
+    padding: 2em;
+    background-color: burlywood;
+}
+.b {grid-area: b;
+    padding: 2em;
+    background-color: darkorange;
+}
+footer {
+    grid-area: f;
+    padding: 2em;
+    background-color: lightgreen;
+}
+
+

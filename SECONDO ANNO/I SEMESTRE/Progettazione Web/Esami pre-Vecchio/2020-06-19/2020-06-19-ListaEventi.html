@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<title>Esame2020-02-06</title>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+      .leftContainer{
+        width: 33%;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      h3{
+        text-align: center;
+      }
+      #aggiungi{
+        display: block;
+      }
+      #clock{
+        margin-top: 10px;
+        background-color: white;
+        border: 1px solid black;
+        margin-left:auto;
+        margin-right: auto;
+        height: 30px;
+        width:150px;
+				text-align: center;
+      }
+      .dateDiv{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      select{
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #aggiungi{
+        width: 33%^;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #toDelRow, #cancella{
+        margin-bottom: 10px;
+      }
+      .leftLastContainer{
+        width: 33%;
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right:auto;
+      }
+      .leftContainer, .leftLastContainer{
+        background-color: grey;
+      }
+      .TableContainer{
+        display: inline-flex;
+      }
+			tr, th, td, table{
+				border: 1px solid black;
+			}
+
+    </style>
+	</head>
+
+	<body>
+    <div class="leftContainer">
+      <div id="clock"></div>
+
+      <h3>Data Evento</h3>
+      <div class="dateDiv">
+        <select id="day" name="day" disabled>
+          <option value="" disabled selected hidden>Giorno</option>
+        </select>
+        <select id="month" name="month" disabled>
+          <option value="" disabled selected hidden>Mese</option>
+        </select>
+        <select id="year" name="year">
+          <option value="" disabled selected hidden>Anno</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+        </select>
+      </div>
+      <h3>Descrizione</h3>
+      <select id="descrizione" name="descrizione">
+        <option value="" disabled selected hidden>-</option>
+        <option value="1">desc1</option>
+        <option value="2">desc2</option>
+        <option value="3">desc3</option>
+        <option value="4">desc4</option>
+      </select>
+      <h3>Città</h3>
+      <select id="citta" name="citta">
+        <option value="" disabled selected hidden>-</option>
+        <option value="1">Lucca</option>
+        <option value="2">Pisa</option>
+        <option value="3">Livorno</option>
+      </select>
+      <h3>Tipo</h3>
+      <select id="tipo" name="tipo">
+        <option value="" disabled selected hidden>Tipo</option>
+        <option value="1">Musica</option>
+        <option value="2">Cinema</option>
+        <option value="3">Teatro</option>
+        <option value="4">Mostra</option>
+      </select>
+			<div id="errormsg"></div>
+      <button type="button" name="aggiungi" id="aggiungi">AGGIUNGI</button>
+      <h3>Inserisci riga da rimuovere</h3>
+
+      <div class="leftLastContainer">
+        <input type="number" name="riga" id="toDelRow">
+        <button type="button" name="cancella" id="cancella">CANCELLA</button>
+				<div id="errormsgDel"></div>
+      </div>
+    </div>
+    <div class="TableContainer">
+      <table id="EventTable">
+      <th>Evento</th>
+      <th>Data</th>
+      <th>Descrizione</th>
+      <th>Città</th>
+      <th>Tipo</th>
+      <th>Giorni</th>
+      <th>Like</th>
+      <th>do not Like</th>
+      </table>
+    </div>
+
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+		// clock implementation
+		var clock = document.getElementById('clock');
+		setInterval(function(){
+			var today = new Date();
+			clock.textContent = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+		},1000)
+
+		document.getElementById('year').addEventListener('change', function(){
+			var month = document.getElementById('month');
+			while (month.lastChild && month.lastChild.textContent != 'Mese') {
+		    month.removeChild(month.lastChild);
+		  }
+			month.disabled = false;
+			if (document.getElementById('year').value == 2020) {
+				for (var i = 7; i < 13; i++) {
+					var opt = document.createElement('option');
+					opt.value = i;
+					opt.textContent = i;
+					month.appendChild(opt);
+				}
+			}else{
+				for (var i = 1; i < 13; i++) {
+					var opt = document.createElement('option');
+					opt.value = i;
+					opt.textContent = i;
+					month.appendChild(opt);
+				}
+			}
+		});
+
+		document.getElementById('month').addEventListener('change', function(){
+			var day = document.getElementById('day');
+			while (day.lastChild && day.lastChild.textContent != 'Giorno') {
+		    day.removeChild(day.lastChild);
+		  }
+			day.disabled = false;
+			var month = document.getElementById('month').value;
+			if (month == 2) {
+				for (var i = 1; i < 29; i++) {
+					var opt = document.createElement('option');
+					opt.value = i;
+					opt.textContent = i;
+					day.appendChild(opt);
+				}
+			}else if(month == 11 || month == 4 || month == 6 || month == 9){
+				for (var i = 1; i < 31; i++) {
+					var opt = document.createElement('option');
+					opt.value = i;
+					opt.textContent = i;
+					day.appendChild(opt);
+				}
+			}else{
+				for (var i = 1; i < 32; i++) {
+					var opt = document.createElement('option');
+					opt.value = i;
+					opt.textContent = i;
+					day.appendChild(opt);
+				}
+			}
+		});
+
+		var lastRow = 0;
+
+		document.getElementById('aggiungi').addEventListener('click', function(){
+			document.getElementById('errormsg').textContent = '';
+			if (document.getElementById('year').value == '' || document.getElementById('month').value == '' || document.getElementById('day').value == '') {
+				document.getElementById('errormsg').textContent = 'inserire data';
+			}else if (document.getElementById('descrizione').value == '') {
+				document.getElementById('errormsg').textContent = 'inserire descrizione';
+			}else if (document.getElementById('tipo').value == '') {
+				document.getElementById('errormsg').textContent = 'inserire tipo';
+			}else if (document.getElementById('citta').value == '') {
+				document.getElementById('errormsg').textContent = 'inserire città';
+			}else{
+				var row = document.createElement('tr');
+				var evento = document.createElement('td');
+				row.setAttribute('class', 'eventNumber');
+				row.setAttribute('id', (parseInt(lastRow)+1));
+				var data = document.createElement('td');
+				var descrizione = document.createElement('td');
+				var citta = document.createElement('td');
+				var tipo = document.createElement('td');
+				var giorni = document.createElement('td');
+				var like = document.createElement('td');
+				var dislike = document.createElement('td');
+
+				evento.textContent = ++lastRow;
+				data.textContent = document.getElementById('day').value + '/' + document.getElementById('month').value + '/' + document.getElementById('year').value;
+				descrizione.textContent = document.getElementById('descrizione').value;
+				citta.textContent = document.getElementById('citta').value;
+				tipo.textContent = document.getElementById('tipo').value;
+				var today = new Date();
+				var todiff2 = new Date(data.textContent.toString());
+				giorni.textContent = Math.ceil(Math.abs(todiff2 - today)/(1000 * 60 * 60 * 24));
+
+				var likeBtn = document.createElement('button');
+				likeBtn.setAttribute('class', 'likeBtn');
+				likeBtn.textContent = 'Vote';
+				var likepoints = document.createElement('div');
+				likepoints.textContent = '0';
+				likeBtn.after(likepoints);
+				likeBtn.addEventListener('click', function(){
+					var c = likeBtn.parentNode.children;
+					c[1].textContent = parseInt(c[1].textContent) + 1;
+				});
+
+				var dislikeBtn = document.createElement('button');
+				dislikeBtn.textContent = 'Vote';
+				var dislikepoints = document.createElement('div');
+				dislikepoints.textContent = '0';
+				dislikeBtn.after(dislikepoints);
+				dislikeBtn.addEventListener('click', function(){
+					var c = dislikeBtn.parentNode.children;
+					c[1].textContent = parseInt(c[1].textContent) + 1;
+				});
+
+				like.appendChild(likeBtn);
+				like.appendChild(likepoints);
+				dislike.appendChild(dislikeBtn);
+				dislike.appendChild(dislikepoints);
+
+				row.appendChild(evento);
+				row.appendChild(data);
+				row.appendChild(descrizione);
+				row.appendChild(citta);
+				row.appendChild(tipo);
+				row.appendChild(giorni);
+				row.appendChild(like);
+				row.appendChild(dislike);
+
+				document.getElementById('EventTable').appendChild(row);
+
+			}
+		});
+
+		document.getElementById('cancella').addEventListener('click', function(){
+			var numberToDel = document.getElementById('toDelRow').value;
+			document.getElementById('errormsgDel').textContent = '';
+			if(numberToDel == ''){
+				document.getElementById('errormsgDel').textContent = 'inserire un Numero';
+			}else{
+				var elements = document.getElementsByClassName('eventNumber');
+				var toscale = false;
+				for (var i = 0; i < elements.length; i++) {
+					if(elements[i].id == numberToDel){
+						elements[i].remove();
+					}
+				}
+				for (var i = 0; i < elements.length; i++) {
+					if(elements[i].id > numberToDel){
+						--elements[i].id;
+						elements[i].firstChild.textContent = elements[i].id;
+					}
+				}
+			}
+		});
+
+
+  </script>
+</html>

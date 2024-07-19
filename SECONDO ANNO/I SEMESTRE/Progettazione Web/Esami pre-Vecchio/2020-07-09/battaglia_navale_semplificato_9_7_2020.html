@@ -1,0 +1,160 @@
+<html>
+    <!-- soluzione di Matteo Bernini --->
+    <head>
+        <title>Battaglia Navale Semplificato</title>
+        <style>
+            body{
+                font-weight: bold;
+            }
+            .cella{
+                width: 40px;
+                height: 40px;
+                border: 1px solid balck;
+            }
+            #score_input{
+                width: 60px;
+                margin-right: 40px;
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body onload="draw()">
+        Score: <input type="text" readonly="true" id="score_input">
+        <button id="start_btn" onclick="start()">START</button>
+        <br><br>
+        <div id="mare"></div>
+
+        <script>
+            //***   VARIABILI
+            var mare = document.getElementById("mare");
+            var start_btn = document.getElementById("start_btn");
+            var score_in = document.getElementById("score_input");
+            var _windowResult;
+
+            var celle = new Array();
+            var navi = new Array();
+
+            var gioco_iniziato = false;
+            var score = 0;
+            var navi_affondate = 0;
+            //***   FUNZIONI 
+            function draw()
+            {
+                score_in.value = 0;
+
+                for(var i = 0; i<6; ++i){
+                   celle[i] = new Array();
+                   for(var j = 0; j<6; ++j){
+                       celle[i][j] = document.createElement("input");
+                       celle[i][j].style.backgroundColor = "green";
+                       celle[i][j].setAttribute("class", "cella");
+                       celle[i][j].setAttribute("readonly", "true");
+                       celle[i][j].id = i + ',' + j; 
+                       celle[i][j].setAttribute("onclick", "gestore_click('"+ i + ',' + j +"')");
+                       mare.appendChild(celle[i][j]);
+                   }
+                   mare.appendChild(document.createElement("br"));
+               }
+               alert("Non fidatevi troppo, \n soluzione elaborata in fase di preparazione dell'esame,\n per dubbi/correzioni contattate Matteo Bernini");
+            }
+            function start()
+            {
+                start_btn.disabled = true;
+                gioco_iniziato = true;
+
+                for(var i = 0; i<10;i += 2)
+                {
+                    var col =  Math.floor(Math.random() * 5);   // 0 < n < 4
+                    var riga = Math.floor(Math.random() * 6);   // 0 < n < 5
+
+                    navi[i] = riga + ',' + col;
+                    navi[i+1] = riga + ',' + (1+col);
+                    console.log(navi[i] + '  ' + navi[i+1]);
+                }
+
+                if(doppioni(navi))
+                {
+                    navi = [];
+                    console.log("doppione!");
+                    start();
+                }
+            }
+            function gestore_click(cella)
+            {
+                if(gioco_iniziato)
+                {
+                    var riga = cella[0];
+                    var col = cella[2];
+                    console.log(riga + ',' + col);
+                    
+                    for(var i = 0; i < navi.length; ++i)
+                    {
+                        if(cella == navi[i])
+                        {
+                            celle[riga][col].style.backgroundColor = "red";
+                            navi[i] = "affondata";
+                            navi_affondate++;
+                            score++;
+                            score_in.value = score;
+                            if(navi_affondate == 10)
+                                setTimeout(finito, 2000);
+                            return;
+                        }
+                    }
+                    score--;
+                    celle[riga][col].style.backgroundColor = "white";
+                    score_in.value = score;
+                }
+            }
+            function finito()
+            {
+                apri_finestra();
+                for(var i = 0; i<6; ++i){
+                   for(var j = 0; j<6; ++j){
+                       celle[i][j].style.backgroundColor = "green";
+                   }
+               }
+               start_btn.disabled = false;
+                navi = [];
+                gioco_iniziato = false;
+                score = 0;
+                score_in.value = score;
+                navi_affondate = 0;
+            }
+            
+            //***   FUNZIONI DI UTILITA'
+            function doppioni(vettore)
+            {
+                for(var i = 0; i<10; ++i)
+                {
+                    for(var j = 0; j<10; ++j)
+                    {
+                        if(vettore[i] == vettore[j] & i != j)
+                            return true;
+                    }
+                }
+                return false;
+            }
+            function apri_finestra()
+            {
+                _windowResult = window.open("", "Game", "width=300,height=200,resizable=yes,location=no,menubar=no,toolbar=no,titlebar=no");
+                _windowResult.document.open();
+                _windowResult.document.write('<!DOCTYPE html>');
+                _windowResult.document.write('<html><head><title>Result</title> <style type="text/css">' +
+                    '#resultTextWindow{' +
+					'font-size:			24px;' +
+					'font-weight:		bold;' +
+					'font-family:		"Arial","Serif";' +
+					'color:				black;' +
+					'font-weight: 		bold;' +
+					'background-color: 	white;' +
+					'text-align: center;' +
+                    '}</style></head>');
+                _windowResult.document.write('<h1>' + score + '</h1>');
+                setTimeout(() => {
+                    _windowResult.close();
+                }, 5000);
+            }
+        </script>
+    </body>
+</html>

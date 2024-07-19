@@ -1,0 +1,37 @@
+/* mettere bordo tratteggiato di 1 px alla section*/
+/* prima altezza 100px, poi altezza 2000px per mostrare differenza tra absolute e fixed*/
+section {
+  border: 1px dotted black;
+  height: 100px
+}
+
+/* mettere bordo solid di 1 px agli span */
+span {
+  border: 1px solid black;
+}
+
+
+#static {
+  position: static;
+  
+  
+}
+#relative {  
+  position: relative;
+  top:20px;
+
+}
+
+#fixed {  
+  position: fixed;
+  top: 50px;
+  left: 200px;
+  
+  
+  
+}
+#absolute {  
+  position: absolute;
+  top: 50px;
+  left: 100px;
+}

@@ -1,0 +1,50 @@
+body{
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+}
+
+.form-container{
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+}
+.selezione-servizio{
+    margin-top: 30px;
+}
+
+.table-container{
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    height: 350px;
+}
+
+table{
+    border-collapse: collapse;
+    text-align: center;
+    width: 350px;
+}
+
+td,
+th{
+    border: 1px solid black;
+    width: 30%;
+}
+
+td:first-child,
+th:first-child{
+    width: 10%;
+}
+
+.nome-servizio{
+    background-color: white;
+    width: 120px;
+    text-align: center;
+    border: 2px solid black;
+    margin: 10px;
+}

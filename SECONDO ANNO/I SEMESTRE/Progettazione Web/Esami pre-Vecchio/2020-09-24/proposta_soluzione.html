@@ -1,0 +1,273 @@
+<!-- SOLUZIONE ELABORATA DAL MAINTAINER GABRIELE FRASSI, NON FIDATEVI TROPPO -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Ufficio anagrafe</title>
+        <style>
+            html {
+                font-family: Arial;
+            }
+
+            table {
+                background-color: lightgrey;
+                border: 1px solid black;
+                margin: auto;
+            }
+
+            td {
+                border:1px solid black;
+                background-color:white;
+            }
+
+            td, th {
+                padding: 4px;
+                text-align: center;
+            }
+
+            .cella_chiusa {
+                background-color: red;
+                color: white;
+            }
+
+            .cella_aperta {
+                background-color: green;
+                color: white;
+            }
+
+            label {
+                text-align: center;
+                display:block;
+                font-weight: bolder;
+            }
+
+            .colonna {
+                float:left;
+                margin-right: 50px;
+            }
+
+            .bottone_servizio {
+                border: 1px solid black;
+                border-radius: 6px;
+                box-shadow: 0px 1px 1px 0px;
+                text-align:center;
+                width:130px;
+                display:inline-block;
+                margin:6px;
+            }
+
+            .bottone_servizio:hover {
+                cursor:pointer;
+            }
+
+            button {
+                margin: 2px;
+            }
+        </style>
+    </head>
+    <body onload="begin()">
+        <div class="colonna">
+            <table id="sportelli">
+                <tr>
+                    <th>Sportello</th>
+                    <th>Codice</th>
+                    <th>Stato</th>
+                </tr>
+            </table>
+            <br>
+            <label>Apertura/Chiusura Sportelli</label>
+            <div id="apertura">
+    
+            </div>
+            <br>
+            <label>Erogazione Servizio</label>
+            <table id="erogazione">
+                <tr>
+                    <th>Sportello</th>
+                    <th>Codice</th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="colonna">
+            <label>Premi il bottone del Servizio a cui sei interessato</label>
+            <div id="bottoni_servizi">
+
+            </div>
+            <br>
+            <label>Numero di Prenotazione Corrente</label>
+            <table id="prenotazioni_correnti">
+                <tr></tr>
+                <tr></tr>
+            </table>
+        </div>
+
+        <script type="text/javascript">
+        var GESTIONE_TABELLONE = null;
+
+        function Gestione_Tabellone(element1, element2, element3, element4, element5) {
+            this.tabellone = document.getElementById(element1);
+            this.bottoni_apertura = document.getElementById(element2);
+            this.bottoni_servizi = document.getElementById(element3);
+            this.bottoni_erogazione = document.getElementById(element4);
+            this.prenotazioni_correnti = document.getElementById(element5);
+
+            this.num = 1;
+            this.SPORTELLI = {}; // Dato il numero dello sportello si ottiene il tr relativo del tabellone
+            this.CONTATORI_SERVIZI = {};
+            this.SERVIZI = {}; // Data la lettera relativa si ottiene il bottone div relativo
+            this.SERVIZI_SPORTELLI = {}; // Dato lo sportello e la lettera si ottiene il bottone relativo per la gestione delle chiamate
+            this.NUMERI_PRENOTAZIONI = {}; // Data la lettera relativa si ottiene l'elemento relativo col numero di persone in attesa
+        }
+
+        Gestione_Tabellone.prototype.nuovo_sportello = function() {
+            this.nuova_riga();
+            this.nuovo_bottone();
+            this.nuova_riga_servizi();
+            this.num++;
+        }
+
+        Gestione_Tabellone.prototype.nuova_riga = function() {            
+            var nuova_riga = this.tabellone.insertRow();
+
+            var prima_cella = nuova_riga.insertCell();
+            prima_cella.textContent = this.num;
+
+            var seconda_cella = nuova_riga.insertCell();
+            seconda_cella.textContent = 0;
+
+            var terza_cella = nuova_riga.insertCell();
+            terza_cella.textContent = 'Aperto';
+            terza_cella.setAttribute('class', 'cella_aperta');
+
+            this.SPORTELLI[this.num] = nuova_riga;
+        }      
+
+        Gestione_Tabellone.prototype.nuovo_bottone = function() {
+            var nuovo_bottone = document.createElement('button');
+            nuovo_bottone.textContent = this.num;
+            nuovo_bottone.setAttribute('class', 'cella_aperta');
+            nuovo_bottone.addEventListener('click', function(e) {
+                this.switch_sportello(e.target);
+            }.bind(this));
+
+            this.bottoni_apertura.appendChild(nuovo_bottone);
+        }
+
+        Gestione_Tabellone.prototype.switch_sportello = function(button) {
+            var sportello = button.textContent;
+
+            if(typeof this.SPORTELLI[sportello] == 'undefined') {
+                alert('Lo sportello non esiste');
+                return;
+            }
+
+            if(this.SPORTELLI[sportello].cells[2].textContent == 'Chiuso') {
+                this.SPORTELLI[sportello].cells[2].textContent = 'Aperto';
+                this.SPORTELLI[sportello].cells[2].style.backgroundColor = 'green';
+                button.style.backgroundColor = 'green';
+            }
+            else if(this.SPORTELLI[sportello].cells[2].textContent == 'Aperto') {
+                this.SPORTELLI[sportello].cells[2].textContent = 'Chiuso';
+                this.SPORTELLI[sportello].cells[2].style.backgroundColor = 'red';
+                button.style.backgroundColor = 'red';
+
+                this.SPORTELLI[sportello].cells[1].textContent = '0';
+            }
+
+            this.aggiorna_bottoni_servizi_sportello();
+        }
+
+        Gestione_Tabellone.prototype.aggiorna_bottoni_servizi_sportello = function() {
+            for(sportello in this.SERVIZI_SPORTELLI) {
+                for(lettera in this.SERVIZI_SPORTELLI[sportello]) {
+                    if(this.SPORTELLI[sportello].cells[2].textContent == 'Aperto' && this.NUMERI_PRENOTAZIONI[lettera].textContent > 0)
+                        this.SERVIZI_SPORTELLI[sportello][lettera].disabled = false;
+                    else
+                        this.SERVIZI_SPORTELLI[sportello][lettera].disabled = true;
+                }
+            }
+        }
+
+        Gestione_Tabellone.prototype.nuova_riga_servizi = function() {    
+            this.SERVIZI_SPORTELLI[this.num] = {};  
+
+            var nuova_riga = this.bottoni_erogazione.insertRow();
+
+            var prima_cella = nuova_riga.insertCell();
+            prima_cella.textContent = this.num;
+
+            var seconda_cella = nuova_riga.insertCell();
+            for(lettera in this.SERVIZI) {
+                var nuovo_bottone = document.createElement('button');
+                nuovo_bottone.textContent = lettera;
+                nuovo_bottone.disabled = true;
+                nuovo_bottone.addEventListener('click', function(e) {
+                    this.servi(e.target);
+                }.bind(this));
+
+                seconda_cella.appendChild(nuovo_bottone);
+
+                this.SERVIZI_SPORTELLI[this.num][lettera] = nuovo_bottone;
+            }
+        }
+        
+        Gestione_Tabellone.prototype.servi = function(bottone) {
+            var sportello = bottone.parentElement.parentElement.cells[0].textContent;
+
+            var lettera = bottone.textContent;
+            this.NUMERI_PRENOTAZIONI[lettera].textContent = parseInt(this.NUMERI_PRENOTAZIONI[lettera].textContent) - 1;
+            this.aggiorna_bottoni_servizi_sportello();
+
+            this.SPORTELLI[sportello].cells[1].textContent = lettera + (this.CONTATORI_SERVIZI[lettera]++);
+        }
+
+        Gestione_Tabellone.prototype.nuovo_servizio = function(lettera, titolo) {
+            var nuovo_bottone = document.createElement('div');
+            nuovo_bottone.append(titolo);
+            nuovo_bottone.appendChild(document.createElement('hr'));
+            nuovo_bottone.append('Lettera ' + lettera);
+            nuovo_bottone.setAttribute('class', 'bottone_servizio');
+
+            nuovo_bottone.addEventListener('click', function(e) {
+                this.prenota(lettera);
+            }.bind(this));
+
+            this.bottoni_servizi.appendChild(nuovo_bottone);
+
+            this.SERVIZI[lettera] = nuovo_bottone;
+            this.nuovo_servizio_prenotazioni_correnti(lettera);
+            
+            this.CONTATORI_SERVIZI[lettera] = 1;
+        }
+
+        Gestione_Tabellone.prototype.prenota = function(lettera) {
+            this.NUMERI_PRENOTAZIONI[lettera].textContent = parseInt(this.NUMERI_PRENOTAZIONI[lettera].textContent) + 1;
+            this.aggiorna_bottoni_servizi_sportello();
+        }
+
+        Gestione_Tabellone.prototype.nuovo_servizio_prenotazioni_correnti = function(lettera) {
+            var nuova_cella_th = document.createElement('th');
+            nuova_cella_th.textContent = lettera;
+            this.prenotazioni_correnti.rows[0].appendChild(nuova_cella_th);
+
+            var nuova_cella_td = this.prenotazioni_correnti.rows[1].insertCell();
+            nuova_cella_td.textContent = 0;
+            this.NUMERI_PRENOTAZIONI[lettera] = nuova_cella_td;
+        }
+
+        function begin() {
+            GESTIONE_TABELLONE = new Gestione_Tabellone('sportelli', 'apertura', 'bottoni_servizi', 'erogazione', 'prenotazioni_correnti');
+
+            // Prima cosa da fare, farlo dopo genera problemi
+            GESTIONE_TABELLONE.nuovo_servizio('A', 'Carta di identita\'');
+            GESTIONE_TABELLONE.nuovo_servizio('B', 'Cambio Residenza');
+            GESTIONE_TABELLONE.nuovo_servizio('C', 'Certificati');
+
+            for(var i = 1; i <= 6; i++) {
+                GESTIONE_TABELLONE.nuovo_sportello();
+            }
+
+        }
+        </script>
+    </body>
+</html>

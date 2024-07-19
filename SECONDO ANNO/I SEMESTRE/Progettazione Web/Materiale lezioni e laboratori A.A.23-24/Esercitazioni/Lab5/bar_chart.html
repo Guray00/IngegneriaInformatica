@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="Esercitazioni con Javascript + CSS">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>Esercitazioni con Javascript + CSS</title>
+    <style>
+      .bar {
+        margin: 2px;
+        border: 1px solid black;
+        height: 30px;
+        background-color: lightblue;
+      }
+    </style>
+    <script>
+      "use strict";
+      // Registra l'event handler per il bottone
+      function inizializza() {
+        const button = document.getElementById("button");
+        button.addEventListener("click", genera);
+      }
+      
+      // Richiamata quando l'utente preme il bottone
+      function genera(e) {
+        // Impedisco il comportamento di default
+        e.preventDefault();
+        // Ottengo riferimenti a campo di input e div dove viene prodotto l'output
+        const input = document.getElementById("input");
+        const output = document.getElementById("output");
+
+        // Recupero la stringa inserita dall'utente
+        let numbers = input.value
+        // se vuota non faccio niente
+        if (numbers === ""){
+          console.log("Error: empty input");
+          return;
+        }
+        // Svuoto il campo di input
+        input.value="";
+        // Divido la stringa usando ',' come separatore
+        numbers = numbers.split(",");        
+        // Per ogni elemento del vettore numbers viene eseguita la funzione anonima
+        numbers.forEach(function(x) {
+          // Conversione a intero
+          const v = parseInt(x);
+          if (isNaN(v)){
+            console.log ("Error: " + x + " is not a number.");
+            return;
+          }
+
+          // Creazione di una nuova barra
+          const div = document.createElement("div");
+          //div.setAttribute("class", "bar");
+          div.classList.add("bar");
+          div.style.width = v * 10 + "px";
+          // La barra viene appesa in fondo
+          output.appendChild(div);
+        });
+      }
+      document.addEventListener("DOMContentLoaded", inizializza);
+    </script>
+  </head>
+  <body>
+    <form>
+      <label>Input:</label> 
+      <input id="input" type="text">
+      <button id="button">RUN</button>
+    </form>
+    <div id="output"></div>  
+  </body>
+</html>

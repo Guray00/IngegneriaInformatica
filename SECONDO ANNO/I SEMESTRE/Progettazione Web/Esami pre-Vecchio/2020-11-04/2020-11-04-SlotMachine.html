@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<title>Esame2020-02-06</title>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+		h2{
+			text-align: center;
+		}
+		.container{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.columnContainer{
+				display: flex;
+				flex-direction: column;
+		}
+		.tile{
+			width: 40px;
+			height: 40px;
+			border: 1px solid black;
+			margin-left: 40px;
+			margin-right: 40px;
+		}
+		#betDiv{
+			margin-top: 20px;
+		}
+		#bet{
+			height: 20px;
+		}
+		#errormsg{
+			text-align: center;
+		}
+		button{
+			margin-left: 10px;
+		}
+    </style>
+	</head>
+
+	<body>
+		<h2>Slot Machine</h2>
+		<div class="columnContainer">
+			<div class="container">
+				<div class="columnContainer" id="C1"></div>
+				<div class="columnContainer" id="C2"></div>
+				<div class="columnContainer" id="C3"></div>
+			</div>
+			<div id="errormsg"></div>
+			<div class="container" id="betDiv">
+				<h4>Puntata:</h4>
+				<input type="number" name="" value="" id="bet">
+				<button type="button" name="button" id="start">Avvia</button>
+				<button type="button" name="button" id="end" disabled>Ferma</button>
+			</div>
+		</div>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+
+	// field generator
+	var cols = [];
+	for (var i = 0; i < 3; i++) {
+		cols.push(document.getElementById('C' + (parseInt(i) + 1)));
+	}
+	for (var i = 0; i < 3; i++) {
+		var column = cols[i];
+		for (var j = 0; j < 10; j++) {
+			var tile = document.createElement('div');
+			tile.setAttribute('id', (parseInt(j) + 1));
+			tile.setAttribute('class', 'tile');
+			tile.textContent = (parseInt(j) + 1);
+			column.appendChild(tile);
+		}
+	}
+
+	var c1loop;
+	var c2loop;
+	var c3loop;
+	var bet = 0;
+	var start = document.getElementById('start');
+	start.addEventListener('click', function(){
+		document.getElementById('errormsg').textContent = '';
+		bet = document.getElementById('bet').value;
+		if (bet == '' || parseInt(bet) < 0 || parseInt(bet) > 100) {
+			document.getElementById('errormsg').textContent = 'inserire una puntata valida';
+			return;
+		}
+		start.disabled = true;document.getElementById('end').disabled = false;
+
+		var vel1 = Math.floor(Math.random() * (100 - 50 + 1) + 50);
+		var vel2 = Math.floor(Math.random() * (100 - 50 + 1) + 50);
+		var vel3 = Math.floor(Math.random() * (100 - 50 + 1) + 50);
+		var startTile1 = Math.floor(Math.random() * 10 + 1);
+		var startTile2 = Math.floor(Math.random() * 10 + 1);
+		var startTile3 = Math.floor(Math.random() * 10 + 1);
+		// test purposes
+		// var vel1 = 100;
+		// var vel2 = 100;
+		// var vel3 = 100;
+		// var startTile1 = 1;
+		// var startTile2 = 1;
+		// var startTile3 = 1;
+
+		c1loop = setInterval(function(){
+			var container = document.getElementById('C1');
+			var tiles = container.children;
+			tiles[(parseInt(startTile1) - 1)].style.backgroundColor = 'white';
+			if (startTile1 > 9) {
+				startTile1 = 0;
+			}
+			tiles[startTile1++].style.backgroundColor = 'red';
+		},vel1);
+
+		c2loop = setInterval(function(){
+			var container = document.getElementById('C2');
+			var tiles = container.children;
+			tiles[(parseInt(startTile2) - 1)].style.backgroundColor = 'white';
+			if (startTile2 > 9) {
+				startTile2 = 0;
+			}
+			tiles[startTile2++].style.backgroundColor = 'red';
+		},vel2);
+
+		c3loop = setInterval(function(){
+			var container = document.getElementById('C3');
+			var tiles = container.children;
+			tiles[(parseInt(startTile3) - 1)].style.backgroundColor = 'white';
+			if (startTile3 > 9) {
+				startTile3 = 0;
+			}
+			tiles[startTile3++].style.backgroundColor = 'red';
+		},vel3);
+	});
+
+
+
+	var end = document.getElementById('end');
+	end.addEventListener('click', function(){
+		end.disabled = true;
+		window.clearInterval(c1loop);
+
+		setTimeout(function(){
+			window.clearInterval(c2loop);
+		},1000);
+
+		setTimeout(function(){
+			var isItOkay = false;
+			window.clearInterval(c3loop);
+			var cols = [];
+			for (var i = 0; i < 3; i++) {
+				cols.push(document.getElementById('C' + (parseInt(i) + 1)));
+			}
+			var win = [];
+			for (var j = 0; j < cols.length; j++) {
+				for (var i = 0; i < cols[j].children.length; i++) {
+					if (cols[j].children[i].style.backgroundColor == 'red') {
+						win.push(i);
+					}
+				}
+			}
+			if (win[0] == win[1] && win[1] == win[2]) {
+				isItOkay = true;
+			}
+
+			var winWindow = window.open('','','width=200,height=100');
+			var text = ((isItOkay) ? 'Hai Vinto ' + (parseInt(bet)*10) : 'Hai Perso');
+			winWindow.document.write(text);
+			setTimeout(function () {
+				winWindow.close();
+				bet = 0;
+				var tiles = document.getElementsByClassName('tile');
+				for (var i = 0; i < tiles.length; i++) {
+					tiles[i].style.backgroundColor = 'white';
+				}
+				document.getElementById('start').disabled = false;
+			 }, 5000);
+		},2000);
+
+	});
+  </script>
+</html>
