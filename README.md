@@ -259,6 +259,7 @@ Federico Matteoni<br>
 Alessio Meini<br>
 Luca Minuti<br>
 Tommaso Molesti<br>
+Lorenzo Monaci<br>
 Alex Moriconi<br>
 Saverio Mosti<br>
 Federico Nardi<br>
