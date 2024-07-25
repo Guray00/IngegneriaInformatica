@@ -5,6 +5,11 @@ Si segnalano ulteriori tesi di nostri colleghi:
   **Relatori**: prof. Giuseppe Lettieri, ing. Luigi Leonardi<br>
   **Link**: https://github.com/genricoloni/Spectre-v4-Proof-of-Concept-on-educational-Kernel
 
+ - dott. [Luca Ostinelli](http://lucaosti.github.io)<br>
+  **Titolo**: Rilevamento di curve ad S in immagini satellitari <br>
+  **Relatori**: prof. Marco Cococcioni <br>
+  **Link**: https://github.com/lucaosti/bachelors-thesis
+
 - dott. Alex Parri<br>
   **Titolo**: _Analisi su vulnerabilità del generatore di numeri pseudo-casuali su curve ellittiche Dual EC-DRBG_ <br>
   **Relatori**: prof. Giuseppe Lettieri, dott. Gaspare Ferraro<br>
