@@ -201,6 +201,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 Sara Aliani<br>
 Taulant Arapi<br>
+Giuseppe "Attila" Attadia<br>
 Luca Arduini<br>
 Giulio Bello<br>
 Giacomo Bertelli<br>
@@ -211,6 +212,7 @@ Francesco Bonistalli<br>
 Filippo Brogi<br>
 Leonardo Brugnano<br>
 Davide Bruni<br>
+Valerio Cannalire<br>
 Federico Calzolari<br>
 Federico Casu<br>
 Federico Cavedoni<br>
@@ -297,6 +299,5 @@ Andrea Vagnoli<br>
 Alessandro Versari<br>
 Sandro Wu<br>
 Giulio Zingrillo<br>
-Francesco Zollo<br>
-Giuseppe "Attila" Attadia<br><br>
+Francesco Zollo<br><br>
 Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto..
