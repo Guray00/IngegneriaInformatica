@@ -13,7 +13,7 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 Per rendere la comunicazione più efficace, sono stati realizzati gruppi appositi:
 
 ### Principali
-- **[Community WhatsApp Ingegneria Informatica](https://chat.whatsapp.com/JJsJBSWCb0kCsUq9HkqbOo)**
+- **[Community WhatsApp Ingegneria Informatica](https://chat.whatsapp.com/JJsJBSWCb0kCsUq9HkqbOo)** (con gruppo matricole A.A.24-25)
 - **[Gruppo Telegram Anno 1](https://kutt.it/inginf1)**
 - **[Gruppo Telegram Anno 2](https://kutt.it/inginf2)**
 - **[Gruppo Telegram Anno 3](https://t.me/inginfunipi3)**
