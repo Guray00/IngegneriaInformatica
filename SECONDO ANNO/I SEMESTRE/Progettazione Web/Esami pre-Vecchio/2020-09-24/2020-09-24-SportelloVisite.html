@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<title>Esame2020-02-06</title>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+
+		.container{
+			display: inline-flex;
+			align-items: flex-start;
+			flex-direction:column;
+		}
+		.mainContainer{
+			display: flex;
+			justify-content: space-between;
+		}
+		.btnContainer{
+				display: flex;
+				align-items: center;
+		}
+		.sportellibtn{
+			width: 30px;
+			height: 30px;
+		}
+		.buttonTile{
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+		}
+		.tile{
+			text-align: center;
+		}
+		.usrBtn{
+			width: 100px;
+			height: 100px;
+			background-color: lightgrey;
+			box-shadow: 2px 2px 5px;
+		}
+		#RightBox{
+			width: 800px;
+			align-items: center;
+		}
+		#btnContainerUsr{
+			justify-content: space-around;
+			width: 500px;
+		}
+		#prenotazione{
+			margin-top: 20px;
+		}
+		table, tr, td{
+			border: 2px solid black;
+		}
+		table{
+			width: 250px;
+			background-color: lightgrey;
+		}
+		td{
+			background-color: white;
+		}
+    </style>
+	</head>
+
+	<body>
+		<div class="mainContainer">
+			<div class="container">
+				<div class="container" id="leftBox">
+		      <table id="info">
+		        <th>Sportello</th>
+		        <th>Codice</th>
+		        <th>Stato</th>
+		      </table>
+				</div>
+
+				<h4>Apertura/Chiusura sportelli</h4>
+				<div class="btnContainer" id="btnContainer"></div>
+
+				<h4>Erogazione Servizio</h4>
+		    <table id="serviceSelect">
+		      <th>Sportello</th>
+		      <th>Codice</th>
+		    </table>
+			</div>
+
+			<div class="container">
+		    <div class="container" id="RightBox">
+					<h3>Premi il bottone del Servizio a cui sei interessato</h3>
+					<div class="btnContainer" id="btnContainerUsr">
+						<button type="button" name="button" class="usrBtn" id="usrbtn1">Carta di identità<br>lettera A</button>
+						<button type="button" name="button" class="usrBtn" id="usrbtn2">Cambio di residenza<br>lettera B</button>
+						<button type="button" name="button" class="usrBtn" id="usrbtn3">Certificati<br>lettera C</button>
+					</div>
+					<table id="prenotazione">
+		        <th>A</th>
+		        <th>B</th>
+		        <th>C</th>
+						<tr>
+							<td id="Apren" class="tile">0</td>
+							<td id="Bpren" class="tile">0</td>
+							<td id="Cpren" class="tile">0</td>
+						</tr>
+		      </table>
+				</div>
+			</div>
+		</div>
+
+
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+	var infoTable = document.getElementById('info');
+	var serviceTable = document.getElementById('serviceSelect');
+	var btnContainer = document.getElementById('btnContainer');
+
+	var Aserved = 0;
+	var Bserved = 0;
+	var Cserved = 0;
+
+	for (var i = 0; i < 6; i++) {
+		// first table
+		var row = document.createElement('tr');
+		row.setAttribute('id', 'row'+ (parseInt(i) + 1));
+		var sportello = document.createElement('td');
+		sportello.setAttribute('class', 'tile');
+		sportello.textContent = (parseInt(i) + 1);
+		var codice = document.createElement('td');
+		codice.setAttribute('class', 'tile');
+		codice.textContent = '0';
+		var stato = document.createElement('td');
+		stato.setAttribute('class', 'tile');
+		stato.textContent = 'Aperto';
+		stato.style.backgroundColor = 'green';
+		row.appendChild(sportello);
+		row.appendChild(codice);
+		row.appendChild(stato);
+		infoTable.appendChild(row);
+
+		//button table
+		var button = document.createElement('button');
+		button.setAttribute('id', (parseInt(i) + 1));
+		button.setAttribute('class', 'sportellibtn');
+		button.textContent = (parseInt(i) + 1);
+		button.style.backgroundColor = 'green';
+		// attivazione/disattivazione sportelli
+		button.addEventListener('click', function(e){
+			var rowTarget = document.getElementById('row'+e.target.id);
+			var rowTargetBtns = document.getElementById('rowService'+e.target.id);
+			if(rowTarget.lastChild.textContent == 'Aperto'){
+				rowTarget.lastChild.textContent = 'Chiuso';
+				rowTarget.lastChild.style.backgroundColor = 'red';
+				e.target.style.backgroundColor = 'red';
+				// disable buttons
+				var buttons = rowTargetBtns.lastChild.children;
+				for (var i = 0; i < buttons.length; i++) {
+					buttons[i].disabled = true;
+				}
+			}else{
+				rowTarget.lastChild.textContent = 'Aperto';
+				rowTarget.lastChild.style.backgroundColor = 'green';
+				e.target.style.backgroundColor = 'green';
+				var buttons = rowTargetBtns.lastChild.children;
+				var validA = document.getElementById('Apren').textContent;
+				var validB = document.getElementById('Bpren').textContent;
+				var validC = document.getElementById('Cpren').textContent;
+				if (validA != 0) {
+					buttons[0].disabled = false;
+				}
+				if (validB != 0) {
+					buttons[1].disabled = false;
+				}
+				if (validC != 0) {
+					buttons[2].disabled = false;
+				}
+			}
+		});
+
+		btnContainer.appendChild(button);
+
+		//service table
+		var rowService = document.createElement('tr');
+		rowService.setAttribute('id', 'rowService'+ (parseInt(i) + 1));
+
+		var serviceSportello = document.createElement('td');
+		serviceSportello.textContent = (parseInt(i) + 1);
+		serviceSportello.setAttribute('class', 'tile');
+
+		codice = document.createElement('td');
+		codice.setAttribute('class', 'buttonTile');
+		var btn1 = document.createElement('button');
+		btn1.setAttribute('id', 'btnCodeA' + (parseInt(i) + 1));
+		btn1.textContent = ('A');
+		var btn2 = document.createElement('button');
+		btn2.setAttribute('id', 'btnCodeB' + (parseInt(i) + 1));
+		btn2.textContent = ('B');
+		var btn3 = document.createElement('button');
+		btn3.setAttribute('id', 'btnCodeC' + (parseInt(i) + 1));
+		btn3.textContent = ('C');
+
+		btn1.addEventListener('click', function(e){
+			var index =  e.target.parentNode.children[0].textContent;
+			var rowIndex = e.target.id.split('A');
+			var targetRow = document.getElementById('row' + rowIndex[1]);
+			targetRow.children[1].textContent = 'A'+ (++Aserved);
+			if (Aserved == document.getElementById('Apren').textContent) {
+				for (var i = 0; i < 6; i++) {
+					document.getElementById('btnCodeA'+(parseInt(i) + 1)).disabled = true;
+				}
+			}
+		});
+		btn2.addEventListener('click', function(e){
+			var index =  e.target.parentNode.children[0].textContent;
+			var rowIndex = e.target.id.split('B');
+			var targetRow = document.getElementById('row' + rowIndex[1]);
+			targetRow.children[1].textContent = 'B'+ (++Bserved);
+			if (Bserved == document.getElementById('Bpren').textContent) {
+				for (var i = 0; i < 6; i++) {
+					document.getElementById('btnCodeB'+(parseInt(i) + 1)).disabled = true;
+				}
+			}
+		});
+		btn3.addEventListener('click', function(e){
+			var index =  e.target.parentNode.children[0].textContent;
+			var rowIndex = e.target.id.split('C');
+			var targetRow = document.getElementById('row' + rowIndex[2]);
+			targetRow.children[1].textContent = 'C'+ (++Cserved);
+			if (Cserved == document.getElementById('Cpren').textContent) {
+				for (var i = 0; i < 6; i++) {
+					document.getElementById('btnCodeC'+(parseInt(i) + 1)).disabled = true;
+				}
+			}
+		});
+
+		btn1.disabled = true;
+		btn2.disabled = true;
+		btn3.disabled = true;
+		codice.appendChild(btn1);
+		codice.appendChild(btn2);
+		codice.appendChild(btn3);
+		rowService.appendChild(serviceSportello);
+		rowService.appendChild(codice);
+		serviceTable.appendChild(rowService);
+	}
+
+	// queue
+	document.getElementById('usrbtn1').addEventListener('click', function(){
+		++document.getElementById('Apren').textContent;
+		for (var i = 0; i < 6; i++) {
+			if(document.getElementById((parseInt(i) + 1)).style.backgroundColor == 'green'){
+				document.getElementById('btnCodeA'+ (parseInt(i) + 1) ).disabled = false;
+			}
+		}
+	});
+	document.getElementById('usrbtn2').addEventListener('click', function(){
+		++document.getElementById('Bpren').textContent;
+		for (var i = 0; i < 6; i++) {
+			if(document.getElementById((parseInt(i) + 1)).style.backgroundColor == 'green'){
+				document.getElementById('btnCodeB'+ (parseInt(i) + 1) ).disabled = false;
+			}
+		}
+	});
+	document.getElementById('usrbtn3').addEventListener('click', function(){
+		++document.getElementById('Cpren').textContent;
+		for (var i = 0; i < 6; i++) {
+			if(document.getElementById((parseInt(i) + 1)).style.backgroundColor == 'green'){
+				document.getElementById('btnCodeC'+ (parseInt(i) + 1) ).disabled = false;
+			}
+		}
+	});
+
+  </script>
+</html>

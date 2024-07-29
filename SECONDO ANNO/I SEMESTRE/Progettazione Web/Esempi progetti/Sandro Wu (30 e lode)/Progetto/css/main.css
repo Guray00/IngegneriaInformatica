@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  min-width: 900px;
+
+  background-color: #fafdf3;
+}
+input{
+  background-color: #fafdf300;
+}
+main {
+  padding: 0px 0px 0px 100px;
+}
+html {
+  font-family: sans-serif;
+}

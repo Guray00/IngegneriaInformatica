@@ -13,7 +13,7 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 Per rendere la comunicazione più efficace, sono stati realizzati gruppi appositi:
 
 ### Principali
-- **[Community WhatsApp Ingegneria Informatica](https://chat.whatsapp.com/JJsJBSWCb0kCsUq9HkqbOo)**
+- **[Community WhatsApp Ingegneria Informatica](https://chat.whatsapp.com/JJsJBSWCb0kCsUq9HkqbOo)** (con gruppo matricole A.A.24-25)
 - **[Gruppo Telegram Anno 1](https://kutt.it/inginf1)**
 - **[Gruppo Telegram Anno 2](https://kutt.it/inginf2)**
 - **[Gruppo Telegram Anno 3](https://t.me/inginfunipi3)**
@@ -201,6 +201,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 Sara Aliani<br>
 Taulant Arapi<br>
+Giuseppe "Attila" Attadia<br>
 Luca Arduini<br>
 Giulio Bello<br>
 Giacomo Bertelli<br>
@@ -211,6 +212,7 @@ Francesco Bonistalli<br>
 Filippo Brogi<br>
 Leonardo Brugnano<br>
 Davide Bruni<br>
+Valerio Cannalire<br>
 Federico Calzolari<br>
 Federico Casu<br>
 Federico Cavedoni<br>
@@ -259,6 +261,7 @@ Federico Matteoni<br>
 Alessio Meini<br>
 Luca Minuti<br>
 Tommaso Molesti<br>
+Lorenzo Monaci<br>
 Alex Moriconi<br>
 Saverio Mosti<br>
 Federico Nardi<br>
@@ -296,6 +299,5 @@ Andrea Vagnoli<br>
 Alessandro Versari<br>
 Sandro Wu<br>
 Giulio Zingrillo<br>
-Francesco Zollo<br>
-Giuseppe "Attila" Attadia<br><br>
+Francesco Zollo<br><br>
 Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto..

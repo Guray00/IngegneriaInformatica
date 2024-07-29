@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Calculator</title>
+		<meta http-equiv = "Content-Type" content = "text/html; charset=ISO-8859-1">
+
+		<!--  CSS  -->
+		<style type="text/css">			
+			#calculator{
+				width:	240px;
+				height: 300px;
+				padding: 10px;
+				border: thin solid;
+				background-color: lightGrey; 
+			}
+			
+			#keypad{
+				padding-top: 10px;
+			}
+			
+			.buttonWrapper{
+				float:	left;
+				padding: 5px;
+			}
+			
+			button {
+				 width: 50px;
+				 height: 50px;
+				 font-size: 24px;
+				 font-weight: bold;
+				  
+			 }
+				
+			input {
+				width: 235px;
+				height: 50px;
+				text-align: right;
+				font-size: 36px;
+				background: white;
+			}
+		</style>
+		
+		<!--  Javascript  -->
+		<script type="text/javascript">
+		<!--
+
+		var timerId;		// Timer
+		var display = null;	// Node that represent the display (input tag)		
+		var result = false;	// Is the result shown in the display?	
+		
+		// Reset display, generates all buttons, set the timer
+		function begin() {
+			
+			// Reset display (print 0)
+			display = document.getElementById("display");
+			display.value = "0";
+						
+			var keypad = document.getElementById("keypad");
+			var row = null;
+			
+			// Create first row
+			row = document.createElement("div");
+			for (var i=7; i<10; i++) 
+				row.appendChild(createPrintButton(i));  // Button from 7 to 9
+			row.appendChild(createPrintButton("+"));    // Button +
+			keypad.appendChild(row);
+			
+			// Create second row
+			row = document.createElement("div");
+			for (var i=4; i<7; i++) 
+				row.appendChild(createPrintButton(i));  // Button from 4 to 6
+			row.appendChild(createPrintButton("-"));	// Button -
+			keypad.appendChild(row);
+
+			// Create third row
+			row = document.createElement("div");
+			for (var i=1; i<4; i++)
+				 row.appendChild(createPrintButton(i));	// Button from 1 to 3
+			row.appendChild(createPrintButton("*"));	// Button *
+			keypad.appendChild(row);
+
+			//Create fourth row	
+			row = document.createElement("div");
+			row.appendChild(createPrintButton("0"));	// Button 0	
+			row.appendChild(createResetButton("C"));	// Button C
+			row.appendChild(createCalculateButton("="));// Button =
+			row.appendChild(createPrintButton(":"));	// Button :
+			keypad.appendChild(row);
+
+			// Set Timer	 
+			timer = setInterval("setDisplay('black')", 10000);
+		}
+					
+		// Creates buttons which print own value in the display 
+		function createPrintButton(symbol){
+				
+			var buttonElement = createDefaultButton(symbol);
+			buttonElement.setAttribute("onClick", "print(this.firstChild.nodeValue);");
+			var divElement = document.createElement("div");
+			divElement.setAttribute("class", "buttonWrapper");
+			divElement.appendChild(buttonElement);
+			return divElement;
+		}
+		
+		// Creates C button
+		function createResetButton(symbol){
+				
+			var buttonElement = createDefaultButton(symbol);
+			buttonElement.setAttribute("onClick", "reset();");
+			var divElement = document.createElement("div");
+			divElement.setAttribute("class", "buttonWrapper");
+			divElement.appendChild(buttonElement);
+			return divElement;
+		}
+		
+		// Creates = button	
+		function createCalculateButton(symbol){
+			
+			var buttonElement = createDefaultButton(symbol);
+			buttonElement.setAttribute("onClick", "calculate();");
+			var divElement = document.createElement("div");
+			divElement.setAttribute("class", "buttonWrapper");
+			divElement.appendChild(buttonElement);
+			return divElement;
+		}
+		
+		// Sets only attributes shared by all buttons
+		function createDefaultButton(symbol){
+				
+			var element = document.createElement("button");
+			element.setAttribute("type", "button");
+			var text = document.createTextNode(symbol);
+			element.appendChild(text);
+			return element;
+		}
+			
+		// Prints the specific symbol in the display
+		function print(symbol) {
+			
+			if (display.value == "0" || display.value == "*" || display.value == ":")
+				display.value = symbol;
+			else
+				if (!result || isOperation(symbol))
+					display.value += symbol;	
+				else 
+					display.value = symbol;	
+			
+			result = false;	
+			restartTimer();
+		}
+		
+		// Checks if the symbol is an operation
+		function isOperation(symbol){
+			
+			if ((symbol=="+") || (symbol=="-") || (symbol=="*") || (symbol==":"))
+				return true;
+			return false;
+		}		
+		// Reset the default values				 
+		function reset() {
+		
+			display.value = "0";
+			result = false;
+			restartTimer();
+		}
+		
+		// Calculates the result and shows it in the display
+		function calculate() {
+		
+			var c = display.value;
+			var b = c.replace(/[:]/g, "/"); // Changes ":" with "/" for division operations
+			display.value = eval(b);
+			restartTimer();
+			result = true;			
+		}
+			
+		// Changes background color of the display
+		function setDisplay(color) {
+			
+			display.style.background = color;
+		}
+		
+		// Restarts timer and set to white the background color of display			 
+		function restartTimer(){
+			
+			clearInterval(timer);
+			timer = setInterval("setDisplay('black')", 10000);
+			setDisplay("white");
+		}
+							 
+		//-->
+		</script>
+
+	</head>
+	<body onLoad="begin()">
+		<div id="calculator">
+			<input id="display" type="text" readonly="readonly">
+			<div id="keypad">
+				<!-- Keypad generated dynamically with DOM (see begin() function) -->
+			</div>
+		</div>
+	</body>
+</html>

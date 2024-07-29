@@ -1,0 +1,111 @@
+#blocco-vetrina {
+    width: auto;
+    height: 700px;
+    margin-top: 10px;
+    padding: 5px;
+    /*border: 1px solid green;*/
+}
+
+#blocco-vetrina > div {
+    width: 250px;
+    height: 300px;
+    margin: 0 5px 5px 0;
+    padding: 1px;
+    float: left;
+    border: 2px solid black;
+}
+
+.fotografia,
+.casella-testo-doppia,
+.casella-testo-semplice,
+.casella-descrizione,
+.prezzo-annuncio {
+    color: black;
+}
+
+.fotografia {
+    border: 1px solid black;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
+    /*
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    */
+}
+
+.casella-testo-doppia {
+    overflow: hidden;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.casella-testo-semplice {
+    overflow: hidden;
+    text-align: center;
+    font-size: 12px;
+}
+
+.prezzo-annuncio{
+    text-align: center;
+}
+
+#img-prev,
+#img-next {
+    border: 2px solid white;
+    border-radius: 50%;
+
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-size: 36px;
+    color: white;
+}
+
+#img-prev {
+    background-color: red;
+}
+
+#img-next {
+    background-color: blue;
+}
+
+#mostra-altro {
+    border: 0 !important;
+    height: 50px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+    /* sfondo semi-traparente */
+    background: rgba(0, 0, 0, 0.50);
+}
+
+#loading > img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    z-index: 9999999;
+}
+
+/* serve */
+@media (max-width: 1150px){
+    #mostra-altro {
+        margin-bottom: 50px !important;
+        font-size: 28px;
+    }
+}

@@ -1,0 +1,27 @@
+footer {
+    position: absolute;
+    bottom: 0px;
+    margin: 20px;
+    height: min-content;
+    padding: 5px;
+    background-color: rgba(128, 0, 128, 0.9);
+    border: purple solid 5px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+footer img#manual:hover {
+    content: url(../images/footer/checkedManual.png);
+}
+
+footer img#newGame:hover {
+    content: url(../images/footer/checkedPlayGame.png);
+}
+
+footer img#exitGame:hover {
+    content: url(../images/footer/checkedExitGame.png);
+}
+
+footer img#logOutAll:hover {
+    content: url(../images/footer/checkedLogOutAll.png);
+}

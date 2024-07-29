@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+		.container{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.columnContainer{
+				display: flex;
+				flex-direction: column;
+		}
+		#tries{
+			width: 60px;
+			height: 20px;
+			border: 1px solid black;
+			margin-left: 10px;
+			margin-right: 10px;
+			text-align: right;
+			padding-right: 5px;
+		}
+		table, tr,td{
+			border: 1px solid black;
+		}
+		table{
+			width: 300px;
+			height: 300px;
+			background-color: black;
+		}
+		#field{
+			table-layout: fixed;
+		}
+		td{
+			background-color: blue;
+			text-align: center;
+		}
+    </style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="columnContainer">
+				<div class="container">
+						<h4>Tentativi:</h4>
+						<div id="tries">0</div>
+						<button type="button" name="button" id="start">START</button>
+				</div>
+				<table id="field"></table>
+			</div>
+		</div>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+	var field = document.getElementById('field');
+	for (var i = 0; i < 6; i++) {
+		var row = document.createElement('tr');
+		row.setAttribute('id', 'row' + i);
+		for (var j = 0; j < 6; j++) {
+			var tile = document.createElement('td');
+			tile.setAttribute('id', (parseInt(i)*6 + parseInt(j)))
+			tile.textContent = '‎ ‎';// walkaround for resizing problems
+			tile.addEventListener('click', function(e){
+				if(e.target.id == generated[lastCorrect]){
+					lastCorrect++;
+					e.target.style.backgroundColor = 'red';
+					e.target.textContent = lastCorrect;
+				}else {
+					--document.getElementById('tries').textContent;
+				}
+				if(lastCorrect == 4 || document.getElementById('tries').textContent == 0){
+					var winWindow = window.open('','','width=200,height=100');
+					var text = ((lastCorrect == 4) ? 'Bravo hai commesso solo ' + ( 4 - parseInt(document.getElementById('tries').textContent)) + ((( 4 - parseInt(document.getElementById('tries').textContent)) == 1) ? ' errore' : ' errori') : 'Riprova');
+					winWindow.document.write(text);
+					setTimeout(function () {
+						winWindow.close();
+						lastCorrect = 0;
+						generated = [];
+						for (var i = 0; i < 36; i++) {
+							document.getElementById(i).style.backgroundColor = 'blue';
+							document.getElementById(i).textContent = '‎ ‎';
+							document.getElementById(i).setAttribute('class', '');
+						}
+						document.getElementById('start').disabled = false;
+					 }, 5000);
+				}
+			})
+			row.appendChild(tile);
+		}
+		field.appendChild(row);
+	}
+
+	var start = document.getElementById('start');
+	var generated = [];
+	var lastCorrect = 0;
+	start.addEventListener('click', function(){
+		start.disabled = true;
+		document.getElementById('tries').textContent = '4';
+		for (var i = 0; i < 4; i++) {
+			do {
+				var number = Math.floor(Math.random() * 36);
+			} while (generated.indexOf(number) != -1);
+			generated.push(number);
+		}
+
+		for (var i = 0; i < generated.length; i++) {
+			document.getElementById(generated[i]).style.backgroundColor = 'red';
+			document.getElementById(generated[i]).textContent = (parseInt(i) + 1);
+		}
+		for (var i = 0; i < 36; i++) {
+			if (generated.indexOf(i) == -1) {
+				document.getElementById(i).style.backgroundColor = 'white';
+			}
+
+		setTimeout(function(){
+			for (var i = 0; i < 36; i++) {
+				document.getElementById(i).style.backgroundColor = 'blue';
+				document.getElementById(i).textContent = '‎ ‎';}
+		},3000);
+
+		}
+
+	});
+  </script>
+</html>

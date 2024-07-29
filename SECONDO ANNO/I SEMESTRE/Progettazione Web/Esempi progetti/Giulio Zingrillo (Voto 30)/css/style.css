@@ -1,0 +1,747 @@
+header h1, header h2{
+    text-align: center;
+    font-family: TrainOne;
+    margin: 0px;
+    
+
+}
+
+.giocata a, .dagiocare a{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+
+
+#notorneidisponibili{
+    margin-top: 30px
+}
+
+.scadenzacertificato{
+    color: green;
+}
+
+#infoarbitraggio{
+    color: white;
+}
+
+#filtrasquadra{
+    margin-top: 30px; 
+    color: white;
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    border: 3px solid white;
+}
+
+#classifica a{
+    color: black;
+    width: 100%;
+    display: block;
+}
+
+#esci{
+    width: fit-content;
+    color: black;
+    font-family: Inter;
+}
+
+#guida{
+    border: 5px solid orange;
+    margin: 5% 10%;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    font-family: Inter;
+}
+
+#guida h1, #guida h2{
+    text-align: center;
+   
+}
+
+
+input[type="file"]{
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+}
+
+#notorneidisponibili{
+    margin-top: 30px;
+}
+
+
+
+#arbitratorneo{
+    position: absolute;
+    background-color: black;
+    width: fit-content;
+    font-family: Inter;
+    top: 120px;
+    right: 400px;
+   font-weight: bold;
+    border: 0px;
+    padding: 20px;
+    float: right;
+    font-size: 25px;
+    color:white;
+    border: 1px solid orange;
+    cursor: pointer;
+    
+    
+}
+
+.nometorneo{
+    font-family: Inter;
+    font-size: 60px;
+    width: 100%;
+    
+}
+#nometorneo a{
+    color: white;
+}
+
+
+@font-face {
+    font-family: TrainOne;
+    src: url("../fonts/TrainOne-Regular.ttf") format("truetype");
+}
+
+
+@font-face {
+    font-family: Inter;
+    src: url("../fonts/Inter-VariableFont_slnt,wght.ttf") format("truetype");
+}
+
+
+header h1{
+    font-size: 50px;
+    color: white;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+}
+
+header h2{
+    font-size: 25px;
+    color: orange;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 100%;
+  
+}
+
+header h2 a {
+    color: orange;
+}
+
+header {
+    margin: auto;
+}
+
+body {
+    background-color: black;
+}
+
+footer  {
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 30px;
+    
+}
+
+#notornei{
+
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 450px;
+    width: 30%;
+    position: relative;
+    font-family: Inter;
+    font-size: 20px;
+    
+    border: 5px solid orange;
+    padding: 80px;
+    background-color: white;
+    
+}
+
+
+.torneo{
+
+    text-align: center;
+    
+    width:  100%;
+    
+    text-decoration:none;
+
+    font-weight: bold;
+    padding: 60px 0px;
+   
+    background-color: orange;
+    color: white;
+    
+}
+
+.grigliatorneo>a{
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.nometorneo:hover{
+    font-size: 38px;
+    transition: 1s;
+}
+
+.nometorneo, .numerosquadre{
+    display: block;
+}
+
+.numerosquadre{
+    margin-top:10px;
+}
+
+.nometorneo{
+    font-size: 35px;
+}
+
+#barradicontrollo{
+    background-color: white;
+    margin-top: -8px;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    height: 30px;
+}
+
+#linkguida{
+    
+    background-color: white;
+    position: absolute;
+    top: 30px;
+    left: 100px;
+   font-weight: bold;
+   width: fit-content;
+    border: 0px;
+    padding: 15px;
+    float: right;
+    cursor:pointer;
+    color: black;
+    font-family: Inter;
+
+}
+
+#accesso{
+    background-color: white;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+   font-weight: bold;
+   width: fit-content;
+    border: 0px;
+    padding: 15px;
+    float: right;
+    cursor:pointer;
+    color: black;
+    font-family: Inter;
+}
+
+a{ 
+    text-decoration: none;
+}
+
+nav a {
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    padding-top: 10px;
+    font-family: Inter;
+    
+}
+
+
+
+#pannellostandard{ 
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    height: 120px;
+    
+}
+
+#pannelloadmin{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(9, 12%);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    height: 120px;
+}
+
+#pannellogiocatore a{
+    padding:10px;
+}
+
+.current-position{
+    border: 4px solid orange;
+}
+
+#pannellogiocatore{
+   
+    margin-top: 60px;
+    margin-bottom: -80px;
+    height: 120px;
+}
+
+
+ol {
+    color: white;
+    margin: 200px auto 100px 40%;
+    font-size: 20px;
+}
+
+#calendario{
+    border: 2px solid orange;
+    margin: 30px auto;
+    border-collapse: collapse;
+    text-align: center;
+    color: white;
+    
+    
+}
+
+#calendario td{
+    width: 180px;
+    height: 100px;
+    border: 1px solid gray;
+}
+
+.squadracalendario{
+    width: 40%;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.giocata{
+    background-color: #044805;
+    cursor: pointer;
+}
+
+.nopartite .datacalendario{
+   
+    display: table;
+    margin-top:-4px;
+    margin-left: 43%;
+}
+
+.dagiocare{
+    background-color: blue;
+    cursor: pointer;
+}
+
+#calendario a {
+    color: white;
+}
+.dagiocare:hover, .giocata:hover{
+    opacity: 0.7;
+    transition: 1s;
+}
+.nopartite:hover{
+    background-color: gray;
+    transition: 1s;
+}
+
+#loginform{
+    margin: 20px 25%;
+    border: 5px solid orange;
+    border-radius: 10px;
+    width: 45%;
+    padding:30px;
+}
+#loginform h2{
+    color: white;
+    font-size: 35px;
+    
+}
+
+.field {
+   
+    border: 0px;
+}
+
+#inputlogin{
+    width: 60%;
+    display: inline-block;
+}
+
+#inputcrea{
+    width: 50%;
+    display: inline-block;
+}
+
+.field label{
+    display: block;
+    margin: 30px 0px;
+    font-size: 22px
+}
+
+.field input{
+     display: block;
+    margin: 26px 0px;
+    font-size: 22px
+}
+
+.field select{
+    font-size: 22px;
+    border: 0px;
+    
+}
+
+
+
+.field input{
+    width: 100%;
+}
+
+#etichettelogin{
+    color: white;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+}
+
+#loginform a{
+    color: white;
+    text-decoration: underline;
+   
+}
+
+#loginform input[type="submit"]{
+    background-color: black;
+    border: 3px solid white;
+    font-size: 22px;
+    padding: 10px;
+    position: relative;
+    color: white;
+    cursor: pointer;
+    left: 500px;
+    margin-bottom: 30px;
+}
+
+#loginform input:invalid{
+    border: 5px solid red;
+
+}
+    .iconapalla{
+        height: 50px;
+        display: inline;
+    }
+
+#inputlogin span{
+    color: white;
+    display: block;
+    font-size: 22px;
+    
+    
+}
+
+.spanpartita{
+    margin-top:31px
+}
+
+
+
+
+.set{
+    height: fit-content;
+    color: white;
+}
+
+#loginform span:nth-child(4){
+    margin-bottom: 10px;
+}
+
+.set input{
+    display: inline;
+    width: 45%;
+    margin: 15px 0px;
+}
+
+
+
+header h1{
+    display: inline;
+}
+
+header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+header div{
+   
+    text-align: center;
+}
+
+#selezionatorneo {
+    color: white;
+    font-family: Inter;
+    font-size: 22px;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#grigliaseltorneo{
+    width:100%;
+    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 40px);
+    
+}
+
+#selezionatorneo{
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row: 2;
+}
+
+.grigliatorneo{
+    width: 100%;
+    display:grid;
+    gap: 0px;
+    grid-template-columns: repeat(4, 25%);
+}
+
+#linkclassifica{
+    grid-column: 4;
+    
+}
+#linkcalendario{
+    grid-column:5;
+}
+
+#linkstatistiche{
+    grid-column: 6;
+}
+
+#linkcalendario, #linkclassifica, #linkstatistiche {
+    grid-row:2;
+}
+
+#classifica{
+    background-color: white;
+    margin: 80px auto;
+    width: 60%;
+    border: 5px solid orange;
+    font-family: Inter;
+    border-collapse: collapse;
+}
+
+#classifica td{
+    font-size: 22px;
+}
+
+#classifica tr{
+    height: 40px;
+}
+
+#classifica th{
+    font-size: 25px;
+}
+
+#classifica th:nth-child(2){
+    text-align: left;
+}
+
+
+
+#classifica td:first-child{
+    text-align: center;
+}
+
+#classifica td:nth-child(2){
+    padding-left: 10px;
+}
+
+#classifica td:nth-child(3){
+    text-align: center;
+}
+
+#classifica tr:nth-child(2){
+    background-color: gold;
+}
+
+#classifica tr:nth-child(3){
+    background-color: silver;
+}
+
+#classifica tr:nth-child(4){
+    background-color: #b0654b;
+}
+
+#classifica tr:hover{
+    font-weight: bold;
+    transition: 1s;
+}
+
+#loginform{
+    font-family: Inter;
+}
+
+#loginform input:invalid{
+    border: 3px solid red;
+}
+
+
+#errorelogin{
+    background-color: #800;
+    width: 82%;
+    padding: 10px;
+    color: white;
+}
+
+#loginform input[value="Registrati"]{
+    left: 450px;
+}
+
+#nomeutente {
+    color: white;
+    font-family: TrainOne;
+    width: fit-content;
+    position: absolute;
+    top: 40px;
+    right:  200px;
+}
+
+#esci{
+    background-color: white;
+    position: absolute;
+    top: 30px;
+    right: 100px;
+   font-weight: bold;
+    border: 0px;
+    padding: 15px;
+    cursor:pointer;
+   
+}
+
+#creatorneo{
+    grid-row: 2;
+    grid-column: 5;
+}
+
+#tuttitornei{
+    grid-row: 2;
+    grid-column: 4
+}
+
+#legenda{
+  
+    top: 80px;
+    left: 130px;
+    font-size: 18px;
+    font-family: Inter;
+    height: fit-content;
+    text-align: center;
+    position: absolute;
+    
+}
+#blu{
+    background-color: blue;
+    color: white;
+    
+}
+
+#verde{
+    background-color: #044805;
+    margin-top: 15px;
+    color: white;
+    
+}
+
+#nero{
+    border: 1px solid white;
+    color: white;
+    margin-top: 15px;
+}
+
+#legenda div{
+    padding: 5px;
+   
+}
+
+#torneocreato{
+    border: 5px solid orange;
+    padding: 20px;
+    margin: 20px 500px;
+    color: white;
+    font-family: Inter;
+}
+
+#codice{
+    font-size: 40px;
+    color: black;
+    background-color: white;
+    width: fit-content;
+    padding: 10px;
+    margin: 20px 0px 40px 42%;
+    
+  }
+
+#partitanongiocata{
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+
+#backhome{
+    border: 3px solid white;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    margin-left: 35%;
+    margin-top: 10px;
+}
+
+#torneoarbitraggio{
+    margin-top:30px;
+    width: 100%;
+    text-align: center
+}
+
+input[name="codice"]{
+    width:45%
+}
+
+#vincitore{
+    font-size: 23px;
+    font-family: Inter;
+    margin-bottom: 30px
+}
+
+canvas{
+   
+    border: 3px solid orange;
+    margin: auto;
+    color: white;
+}
+
+textarea{
+    font-family: Inter;
+    width: 370px;
+    overflow :scroll;
+}

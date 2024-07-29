@@ -1,0 +1,9 @@
+.square {
+    width: 100px;
+    height: 100px;
+    float: left;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #555;
+}

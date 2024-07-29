@@ -1,0 +1,31 @@
+body {
+    background-color: lightblue;
+    padding: 2em;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 8em 12em;
+    gap: 1em;
+}
+
+label, input[type="submit"] {
+    font-weight: bold;
+}
+
+table {
+    border: 1px black solid;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+td {
+    border: 1px black solid;
+    padding: 0.5em;
+}
+th {
+    border: 1px black solid;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0.5em;
+}

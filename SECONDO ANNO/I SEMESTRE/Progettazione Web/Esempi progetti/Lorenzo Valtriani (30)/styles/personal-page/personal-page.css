@@ -1,0 +1,256 @@
+#container {
+    margin: 15px;
+}
+
+#dati-impo-sito {
+    display: block;
+}
+
+#blocco-destra {
+ display: flex;
+}
+
+titolo {
+  margin-bottom: 1px;
+}
+h3 {
+  margin-bottom: 1px;
+}
+
+.specifica  {
+  margin: 5px 0 5px 0;
+}
+
+.bi-box-arrow-right {
+  color: black;
+  font-size: 50px !important;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intestazione {
+    width: auto;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 26px;
+    margin-top: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.intestazione-annuncio {
+  width: 99%;
+  border: 1px solid black;
+  padding: 5px;
+  font-size: 18px;
+  float: left;
+  margin: 10px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  font-size: 20px;
+  font-weight: 700;
+  background-color: white;
+  cursor: pointer;
+}
+
+textarea {
+  border: 2px solid black;
+  padding: 5px;
+  font-size: 18px;
+  max-height: 300px;
+  max-width: 100%;
+  height: 300px;
+}
+
+.dato-impo-sito {
+    margin-bottom: 10px;
+}
+
+#ricerca {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+  width: 50%;
+  float: right;
+}
+
+#ricerca > button {
+  font-size: 26px;
+  height: 40px;
+  width: 120px;
+  border: 2px solid black;
+}
+
+.campo-input,
+.campo-input > option {
+  height: 40px;
+  width: 270px;
+  font-size: 18px;
+  border: 2px solid black;
+  margin-right: 10px;
+  padding: 0 8px 0 8px;
+}
+
+#dati-annunci > button {
+  font-size: 26px;
+  height: 40px;
+  margin-top: 10px;
+  border: 2px solid black;
+}
+
+#error-rif {
+  visibility: hidden;
+  margin-right: 210px;
+  font-size: 18px;
+  text-align: right;
+  color: red;
+}
+
+#sopra-annuncio {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+#annuncio {
+    margin-top: 30px;
+    border-top: 3px solid black;
+    display: none;
+}
+
+.cat-modifica {
+  display: none;
+}
+
+.cat-modifica > div {
+  width: 450px;
+  float: left;
+  min-height: 100px;
+}
+
+#blocco-descrizione {
+  width: 100%;
+}
+
+#blocco-descrizione > textarea {
+  width: 90%;
+}
+
+.specifica {
+  font-size: 14px;
+  color: grey;
+}
+
+#annuncio h2 {
+  margin: 10px 0 0 0;
+}
+
+#salva-foto-nuova,
+#salva-logo-nuovo {
+  width: 200px;
+  height: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: white;
+}
+
+.foto-new,
+.logo-new {
+  font-size: 17px;
+}
+
+#foto-tutte {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left;
+}
+
+.foto-singola {
+  width: 100px;
+  height: 130px;
+  border: 1px solid black;
+  margin-right: 5px;
+}
+
+.foto-singola img {
+  width: 100px;
+  height: 100px;
+  margin-top: 6px;
+}
+
+#insert-foto{
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.bi-star {
+
+}
+
+.bi-x-square {
+  color: red !important;
+}
+
+.pulsanti {
+  margin: 3px 2px 0 2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#errori {
+  visibility: hidden;
+  color: red;
+}
+/* quando lo schermo è piccolo */
+@media (max-width: 1150px) {
+    .intestazione {
+        font-size: 50px;
+    }
+    .intestazione-annuncio {
+      width: 98%;
+      font-size: 40px;
+    }
+    #annuncio > h2 {
+      font-size: 45px;
+    }
+    h3 {
+        font-size: 36px;
+    }
+    input[type="color"]{
+        width: 100px;
+        height: 75px;
+    }
+    button {
+        font-size: 36px;
+    }
+    .cat-modifica > div {
+      min-height: 150px;
+    }
+    .campo-input {
+      width: 330px;
+      height: 60px;
+      font-size: 24px;
+    }
+
+    #ricerca > button,
+    #dati-annunci > button {
+      height: 60px;
+    }
+    #error-rif {
+      margin-right: 205px;
+      font-size: 24px;
+    }
+}

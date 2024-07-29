@@ -1,0 +1,160 @@
+body {
+    height: 100%;
+    width: 100%;
+    background-image: url('../images/backgrounds/Home.png');
+    background-size: 100%;
+    background-position-x: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#interaction {
+    width: min-content;
+    margin: 30px 0px 0px 0px;
+    padding: 10px 25px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: rgb(65, 105, 225) solid 10px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 225, 0.4) 10px 10px;
+}
+
+#interaction button {
+    width: 250px;
+    padding: 10px;
+    color: white;
+    background-color: rgb(65, 105, 225);
+    font-size: 20px;
+    font-weight: 900;
+    margin: 10px;
+    border: white solid 5px;
+    border-radius: 10px;
+    box-shadow: rgb(16, 30, 228, 0.4) 10px 10px;
+    text-decoration: none;
+}
+
+#interaction button#playGame {
+    background-color: rgb(255, 43, 43);
+    box-shadow: rgba(255, 43, 43, 0.4) 10px 10px;
+}
+
+#manual,
+#ranking {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5%;
+    border: blue solid 10px;
+    box-shadow: rgba(65, 105, 225, 0.4) 10px 10px;
+    border-radius: 25px;
+}
+
+#manual {
+    background-color: cornsilk;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#manual h2 {
+    color: rgba(255, 0, 0, 0.9);
+    font-weight: 900;
+    margin-bottom: 0px;
+}
+
+#manual p {
+    width: 70%;
+    color: white;
+    font-size: 21px;
+    font-weight: 800;
+    padding: 20px;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 255, 0.9);
+    border: blue solid 5px;
+    box-shadow: rgba(65, 105, 225, 0.4) 10px 10px;
+}
+
+#manual p:first-of-type {
+    background-color: cornsilk;
+    border: none;
+    box-shadow: none;
+}
+
+#ranking {
+    background-color: cornsilk;
+    padding: 20px 100px;
+    box-shadow: rgba(65, 105, 225, 0.4) 10px 10px;
+}
+
+#rank {
+    border-spacing: 0px 10px;
+}
+
+#rank th {
+    font-size: 24px;
+    font-weight: 900;
+    color: black;
+}
+
+#rank tbody tr {
+    border-spacing: 10px;
+    background-color: rgba(0, 0, 255, 0.9);
+}
+
+#rank td {
+    width: 50px;
+    height: 50px;
+    color: white;
+    font-size: 21px;
+    font-weight: 800;
+    background-size: contain;
+    padding: 10px 50px;
+    border: none;
+}
+
+#rank tr td:first-of-type {
+    border-radius: 10px 0px 0px 10px;
+}
+
+#rank tr td:last-of-type {
+    border-radius: 0px 10px 10px 0px;
+}
+
+#rank tr.firstPlayer td {
+    color: #FFD700;
+}
+
+#rank tr.secondPlayer td {
+    color: #C0C0C0;
+}
+
+#rank tr.thirdPlayer td {
+    color: #CC6633;
+}
+
+#rank tr.normalPlayer td {
+    color: #FFFFFF;
+}
+
+#rank td.firstPlayer {
+    background-image: url('../images/profiles/firstPlayer.png');
+    padding: 10px;
+}
+
+#rank td.secondPlayer {
+    background-image: url('../images/profiles/secondPlayer.png');
+    padding: 10px;
+}
+
+#rank td.thirdPlayer {
+    background-image: url('../images/profiles/thirdPlayer.png');
+    padding: 10px;
+}
+
+#rank td.normalPlayer {
+    background-image: url('../images/profiles/normalPlayer.png');
+    padding: 10px;
+}

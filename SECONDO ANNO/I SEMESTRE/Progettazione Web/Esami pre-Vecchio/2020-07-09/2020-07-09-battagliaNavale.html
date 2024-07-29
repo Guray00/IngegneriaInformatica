@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="it">
+
+	<head>
+		<title>Esame2020-02-06</title>
+		<meta charset="utf-8">
+    <!-- CSS -->
+    <style>
+			#scoreDiv{
+					width: 100px;
+					height: 30px;
+					border: 1px solid black;
+					margin-left: 10px;
+					margin-right: 10px;
+			}
+			.container{
+				display: flex;
+				align-items: center;
+			}
+			#start{
+				width: 100px;
+				height: 30px;
+			}
+			table,tr,td{
+				border-collapse: separate;
+		    border-spacing:3px;
+		    border-style: solid;
+		    border-width:thin
+			}
+			table{
+				width: 400px;
+				height: 400px;
+				background-color: black;
+			}
+			.tile{
+				background-color: green;
+				pointer-events: click;
+			}
+    </style>
+	</head>
+
+	<body>
+		<div class="container">
+			<h2>Score</h2>
+			<div id="scoreDiv"></div>
+			<button type="button" name="button" id="start">START</button>
+		</div>
+		<table id="field">
+		</table>
+	</body>
+  <!-- JS -->
+  <script>
+	alert('questa non è una soluzione ufficiale, bensì una soluzione proposta da uno studente');
+	// field creation
+	createField();
+	var shipsFound = 0;
+	var clickable = false;
+
+	function createField(){
+		var field = document.getElementById('field');
+		for (var i = 0; i < 6; i++) {
+			var row = document.createElement('tr');
+			row.setAttribute('id', 'row' + i);
+			for (var j = 0; j < 6; j++) {
+				var tile = document.createElement('td');
+				tile.setAttribute('class', 'tile');
+				tile.setAttribute('id', '0');
+				tile.addEventListener('click', function(e){
+					if(!clickable){
+						return;
+					}
+					var point = document.getElementById('scoreDiv');
+					if(e.target.id == '1'){
+						if (point.textContent == '') {
+							point.textContent = '0';
+						}else{
+							point.textContent++;
+						}
+						e.target.style.backgroundColor = 'red';
+						shipsFound++;
+
+						//end handler
+						if(shipsFound == 10){
+							var winWindow = window.open('','','width=200,height=100');
+							winWindow.document.write('Punteggio:' + document.getElementById('scoreDiv').textContent);
+							setTimeout(function () {
+								winWindow.close();
+								document.getElementById('scoreDiv').textContent = '';
+								clickable = false;
+								shipsFound = 0;
+								document.getElementById('start').disabled =false;
+								while (document.getElementById('field').lastChild ) {
+									document.getElementById('field').removeChild(document.getElementById('field').lastChild);
+								}
+								createField();
+							 }, 5000);
+						}
+
+					}else{
+						if (point.textContent == '') {
+							point.textContent = '-1';
+						}else{
+							point.textContent--;
+						}
+						e.target.style.backgroundColor = 'white';
+					}
+				})
+				row.appendChild(tile);
+			}
+			field.appendChild(row);
+		}
+	}
+
+	function howManyTimes(array, value){
+		var count = 0;
+		array.forEach((item, i) => {
+			(item == value) ? count++ : count = count;
+		});
+		return count;
+	}
+
+	// generating rows
+	document.getElementById('start').addEventListener('click', function(){
+		clickable = true;
+		document.getElementById('start').disabled = true;
+		document.getElementById('scoreDiv').textContent = 0;
+		var randomRows = [];
+		for (var i = 0; i < 5; i++) {
+			do {
+				var generated = Math.floor(Math.random()*5);
+			} while (howManyTimes(randomRows, generated) == 3);
+			randomRows.push(generated);
+		}
+
+		randomRows.sort();
+		for (var i = 0; i < randomRows.length; i++) {
+			var row = document.getElementById('row'+randomRows[i]);
+			var ships = howManyTimes(randomRows, randomRows[i]);
+			if(ships == 3){
+				var children = row.children
+				for (var j = 0; j < children.length; j++) {
+					children[j].setAttribute('id', '1');
+				}
+			}else{
+				var generated = Math.floor(Math.random()*3);
+				row.children[generated++].setAttribute('id', '1');
+				row.children[generated].setAttribute('id', '1');
+
+				if(ships == 2){
+					row.children[++generated].setAttribute('id', '1');
+					row.children[++generated].setAttribute('id', '1');
+				}
+			}
+			i = parseInt(i) + parseInt(ships) - 1;
+		}
+
+
+
+	});
+
+  </script>
+</html>

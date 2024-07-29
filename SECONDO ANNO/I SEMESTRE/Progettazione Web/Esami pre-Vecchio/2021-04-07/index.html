@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form class="game-container">
+        <h1 class="game">GAME</h1>
+        <div class="time"></div>
+        <div class="flex-container">
+            <div class="player-container">
+                <h2>Player</h2>
+                <div class="player-score score">Score: <div class="value"></div></div>
+                <div class="sel-1">
+                    <input type="radio" disabled class="player-selection" name="player-selection" id="player-paper">
+                    <img src="paper.png" alt="paper-img">
+                </div>
+                <div class="sel-2">
+                    <input type="radio" disabled class="player-selection" name="player-selection" id="player-rock">
+                    <img src="rock.png" alt="rock-img">
+                </div>
+                <div class="sel-3">
+                    <input type="radio" disabled class="player-selection" name="player-selection" id="player-scissors">
+                    <img src="scissors.png" alt="scissors-img">
+                </div>
+            </div>
+            
+            <div class="computer-container">
+                <h2>Computer</h2>
+                <div class="computer-score score">Score: <div class="value"></div></div>
+                <div class="sel-1">
+                    <input type="radio" disabled class="computer-selection" name="computer-selection" id="computer-paper">
+                    <img src="paper.png" alt="paper-img">
+                </div>
+                <div class="sel-2">
+                    <input type="radio" disabled class="computer-selection" name="computer-selection" id="computer-rock">
+                    <img src="rock.png" alt="rock-img">
+                </div>
+                <div class="sel-3">
+                    <input type="radio" disabled class="computer-selection" name="computer-selection" id="computer-scissors">
+                    <img src="scissors.png" alt="scissors-img">
+                </div>
+            </div>
+        </div>
+        
+
+        <button type="button" class="play" onclick="start_game()">PLAY
+        </button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>

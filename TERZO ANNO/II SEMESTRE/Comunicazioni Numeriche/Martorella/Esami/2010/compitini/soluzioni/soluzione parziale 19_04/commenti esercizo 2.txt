@@ -1,0 +1,9 @@
+﻿y1(t) è una replica di w(t) ; w(f)= rect(f/(2B))+(A-1)*tri(B), non c'è aliasing.
+
+x_(t) è una costante pari ad A, l'interpolatore cardinale taglia un semplice rect. 
+e y2(t) è 4AB^2*Sinc(2Bt)
+by Alec
+
+
+a me viene y1(t)=4B^2sinc(2Bt)+2B^2(A-1)sinc^2(Bt)
+ e y2(t)=4AB^2sinc(2Bt)
