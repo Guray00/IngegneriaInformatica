@@ -18,6 +18,8 @@ Per rendere la comunicazione più efficace, sono stati realizzati gruppi apposit
 - **[Gruppo Telegram Anno 2](https://kutt.it/inginf2)**
 - **[Gruppo Telegram Anno 3](https://t.me/inginfunipi3)**
 
+Se non sei uno studente di Ingegneria Informatica e sei alla ricerca del tuo gruppo ti invitiamo a consultare questo linktree: https://dalz.github.io/gruppi-matricole.html 
+
 ## Corsi
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.png?raw=true)
 
