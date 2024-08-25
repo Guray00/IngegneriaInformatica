@@ -1,1 +1,0 @@
-All'indirizzo http://fda.mattebernini.online/ è possibile trovare una raccolta di appunti redatti da Matteo Bernini. nel sito è possibile trovare anche risorse video e tool interattivi per disegnare e visualizzare funzioni di trasferimento
