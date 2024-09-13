@@ -235,6 +235,7 @@ Nilo Fabiano<br>
 Tommaso Falaschi<br>
 Giulio Federico<br>
 Niccolò Franchi<br>
+Alessandro Fossari<br>
 Gabriele Frassi<br>
 Jonathan Frattacci<br>
 Giacomo Furia<br>
