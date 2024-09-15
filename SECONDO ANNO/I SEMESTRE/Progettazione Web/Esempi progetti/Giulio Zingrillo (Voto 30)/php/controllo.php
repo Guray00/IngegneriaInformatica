@@ -1,6 +1,0 @@
-<?php
-
-
-session_start();
-
-?>
