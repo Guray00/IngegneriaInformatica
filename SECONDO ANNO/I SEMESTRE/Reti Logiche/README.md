@@ -12,6 +12,10 @@
 - 👾 [**Windows - Linux**](./VSCode%20Setup) (a cura di Lorenzo Chesi)
 - 🍎 [**Mac OS**](https://github.com/giusreds/assembler) (a cura di Giuseppe Rossi)
 
+#### Mazzo Anki
+
+Lo studente Erik Ricku ha creato un mazzo per Anki, un'applicazione sia per dispositivi mobili che per desktop, che permette di ripassare la materia tramite flashcards. Essendo materiale fornito da uno studente si segnala che potrebbero esserci delle imprecisioni e/o errori. 
+
 <!-- ----- DEPRECATO -----
 È disponibile un pacchetto contenente l'ambiente di sviluppo amb_GAS, migliorato per assemblare i progetti in
 qualsiasi directory, tutto già pronto e funzionante. Basta scaricare lo zip da
