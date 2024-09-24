@@ -1,4 +1,4 @@
-# Struttura dellì'esame
+# Struttura dell'esame
 
 La prova si divide in due: un piccolo scritto e un orale.
 
