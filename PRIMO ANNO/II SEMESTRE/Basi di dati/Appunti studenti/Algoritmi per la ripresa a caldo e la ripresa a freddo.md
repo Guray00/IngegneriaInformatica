@@ -1,3 +1,8 @@
+
+# Algoritmi per la ripresa a caldo e la ripresa a freddo
+
+**Nota**: si consiglia di <u>scaricare il file</u> perchè GitHub non renderizza correttamente le formule Latex
+
 ## Ripresa a Caldo
 
 1. Trovare l'ultimo checkpoint e inserire tutte le transazioni attive nell'ultimo $CK$ in UNDO lasciando REDO vuoto.

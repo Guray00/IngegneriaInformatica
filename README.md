@@ -282,6 +282,7 @@ Rambod Rahmani<br>
 Nicola Ramacciotti<br>
 Giampiero Ribechini<br>
 Samuele Ricotta<br>
+Erik Ricku<br>
 Alessio Ristori<br>
 Gianmaria Saggini<br>
 Alessandro Sale<br>
