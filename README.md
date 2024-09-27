@@ -72,10 +72,10 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   **Testo consigliato**:  "Analisi Matematica 1", aut. Pagani e Salsa, ed. Zanichelli<br>
   **Note studenti**: il libro è scritto con un grado di complessità maggiore di quello richiesto per il superamento dell'esame. Gli appunti presi a lezione,  insieme a qualche argomento cercato online, sono sufficienti per passare l'esame scritto in modo proficuo. È consigliato il libro se si vuole affrontare l'esame orale.
 
-- **Fondamenti di Programmazione** - _Consigliato_    
+- **Fondamenti di Programmazione**     
   **Testo consigliato**:<br> 
-      1) "Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++" [dalla 5° in poi] di _Andrea Domenici, Graziano Frosini_.<br>
-      2) "Note sull’organizzazione di un calcolatore e Rappresentazione dell’informazione" di _Paolo Corsini, Graziano Frosini_<br>
+      1) "Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++" [dalla 5° in poi] di _Andrea Domenici, Graziano Frosini_ (Consigliato).<br>
+      2) "Note sull’organizzazione di un calcolatore e Rappresentazione dell’informazione" di _Paolo Corsini, Graziano Frosini_ (Non necessario)<br>
   **Note studenti**: Il professore mette delle slide a disposizione sufficenti, il testo n°1 approfondisce però in modo più accurato alcuni argomenti.
 
 - **Algebra Lineare** - _Utile_<br>
