@@ -1,0 +1,82 @@
+DSL: Digital Subscriber Line
+ADSL: Asimmetric DSL
+ISP: Internet Service Provider
+IXP: Internet eXchange Point
+DOS: Denial Of Service
+SMTP: Simple Mail Transfer Protocol
+POP: Post Office Protocol
+IMAP: Internet Mail Access Protocol
+DNS: Domain Name System
+DASH: Dynamic Advanced Streaming over HTTP
+CDN: Content Distribution Network
+NIC: Network Interface Card
+BER: Bit Error Rate
+CRC: Cycling Redundancy Check
+EDC: Error Detection & Correction
+PPP: Point to Point Protocol
+MAC: Multiple Access Channel
+TDMA: Time Division Multiple Access
+FDMA: Frequency Division Multiple Access
+CSMA/CD: Carrier Sense Multiple Access / Collision Detection
+MAC: Medium Access Control
+LAN: Local Access Network
+DMZ: DeMilitarized Zone
+TOR: Top Of Rack
+VLAN: Virtual LAN
+VC: Virtual Circuit
+SDN: Software Defined Networking
+WFQ: Weighted Fair Queuing
+TTL: Time To Live
+MTU: Maximum Transfer Unit
+CIDR: Classless Inter Domani Routing
+DHCP: Dynamic Host Configuration Protocol
+ICANN: Internet Corporation for Assigned Name and Numbers
+NAT: Network Address Translation
+ARP: Address Resolution Protocol
+TCP: Transmission Control Protocol
+UDP: User Datagram Protocol
+CWR: Congestion Window Reduced
+ECN: Explicit Congestion Notification
+RST: ReSeT
+SYN: SYncronize sequence Numbers
+FIN: FINish
+PSH: PuSH
+URG: URGent
+ARQ: Automatic Repeat reQuest
+RWND: Receive WiNDow
+CWND: Congestion WiNDow
+AIMD: Addictive Increase Multiplicative Decrease
+MSS: Maximum Segment Size
+DES: Data Encription Standard
+AES: Advanced Encription Standard
+RSA: Rivest Shamir Andelson
+MAC: Message Authentication Code
+CA: Certification Authorities
+TLS: Transport Layer Security
+MS: Master Secret
+KDF: Key Derivation Function
+AH: Authentication Header
+ESP: Encapsulation Security Protocol
+SA: Security Association
+SPI: Security Parameter Index
+SPD: Security Policy Database
+SAD: Security Association Database
+ACL: Access Control List
+IDS: Intrusion Detection Systems
+AP: Access Point
+SNR: Signal Noise Ratio
+CSMA/CA: Carrier Sense Multiple Access / Collision Avoidance
+DIFS: Distributed Inter Frame Space
+SIFS: Short Inter Frame Space
+VCS: Virtual Carrir Sensing
+RTS: Request To Send
+CTS: Clear To Send
+NAV: Network Access Vector
+PAN: Personal Area Network
+TDM: Time Division Multiplexing
+LTE: Long Term Evolution
+EPC: all-IP Enhanced Packet Core
+SIM: Subscriber Identity Module
+IMSI: International Mobile Subscriber Identity
+HSS: Home Subscriber Service
+MME: Mobility Management Entity

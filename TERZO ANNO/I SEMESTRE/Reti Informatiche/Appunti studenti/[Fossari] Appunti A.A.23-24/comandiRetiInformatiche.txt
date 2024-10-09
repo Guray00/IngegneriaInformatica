@@ -1,0 +1,72 @@
+	ip addr show {dev eth0} : mostra le proprietà delle interfacce di rete. Se una viene specificata mostra solo quelle del target.
+# 	ip addr add IP/n {broadcast IP_b} dev eth0 : aggiunge un indirizzo IP su "n" byte di rete, con eventuale IP broadcast, per una certa interfaccia "eth0".
+#	ip addr del IP/n dev eth0 : rimuove l'IP su "n" byte di rete per l'interfaccia eth0.
+#	ip addr flush dev eth0 : rimuove l'interfaccia di rete eth0.
+# 	ip link set eth0 {up | down} : abilita/disabilita l'interfaccia eth0.
+
+/etc/network/interfaces : contiene la configurazione delle interfacce di rete.
+#	ifup eth0 : abilita eth0 come descritto in /etc/network/interfaces.
+#	ifup -a : abilita tutte le interfacce in /etc/network/interfaces specificate da "auto".
+#	ifdown eth0 : disabilita eth0.
+	ip route show : mostra le tabelle di routing.
+#	ip route add IP/n dev eth0 : fa in modo che il traffico diretto alla rete IP/n passi per l'interfaccia eth0.
+#	ip route add default via IP : rende "IP" il default gateway.
+	ip route get IP : mostra la rotta verso "IP".
+
+/etc/hosts : contiene l'assegnazione statica della risoluzione del nome dns.
+/etc/resolv.conf : contiene gli indirizzi dei DNS consultabili.
+	nslookup hostname : svolge la richiesta DNS per "hostname" manualmente.
+/etc/nsswitch.conf : contiene le fonti per la ricerca dei nomi (nel nostro caso cerchiamo la voce hosts:).
+
+	ping [hostname | IP] : test di connettività verso l'host remoto.
+	traceroute [hostaname | IP] : mette a video tutta la rotta verso l'host remoto.
+
+#	iptables -t tabella -L CHAIN : visualizza il contenuto della chain "CHAIN" della "tabella". Se "CHAIN" non viene specificata e mostra tutte, se non lo è "tabella" considera quella di filter (firewall).
+#	iptables -t tabella CHAIN regola : aggiunge la rule "regola" in fondo alla CHAIN in "tabella".
+#	iptables -t tabella -I CHAIN num regola : aggiunge la rule "regola" nella "num"-esima posizione di CHAIN in "tabella", in testa se "num" non è specificato.
+#	iptables -t tabella -D CHAIN regola : rimuove "regola".
+#	iptables -t tabella -D CHAIN num: rimuove la regola "num".
+#	iptables -t tabella -F CHAIN : flush della CHAIN, o di tutta "tabella" se la chain è omessa.
+#	iptables -t tabella -P CHAIN [DROP | ACCEPT] : cambia la regola di default di CHAIN.
+	opzioni iptables:
+		-p : protocollo (tcp | udp | icmp)
+		-s : sorgente (IP/n)
+		-d : destinatario (IP/n)
+		-sport : porta sorgente
+		-dport : porta destinatario
+		-i : interfaccia di ingresso
+		-o : interfaccia di uscita
+		-j : regola (DROP | ACCEPT | SNAT --to-source IP:x-y | DNAT --to IP), con "x-y" intervallo di porte (1024+).
+#	[iptables-save > | iptables-restore <] path : salva/carica le regole sul file al percorso path.
+
+#	apache2ctl [start | stop | restart | status | configtest] : per inviare comandi al server apache.
+#	service apache2 [start | stop |restart | reload ] : per inviare comandi al server apache.
+/var/www/html/index.html : file html mostrato dal localhost apache2
+/etc/apache2 : root dei file di configurazione apache.
+	/apache2.conf : contiene i file di configurazione di base.
+	/ports.conf : contiene le direttive riferite alle porte.
+	/sites-available : directory dove vengono inseriti i siti disponibili sul server.
+	/conf-available : contiene i file di configurazione disponibili (oltre a quelli di base).
+	/conf-enabled : contiene i soft link ai file di configurazione in /conf-available abilitati.
+#	a2enconf nomefile : abilita un file di configurazione .
+#	a2disconf nomefile : disabilita un file di configurazione.
+/etc/apache2/mods-enabled : il corrispettivo di conf-enabled ma per i moduli.
+	/mods-available : il corrispettivo di conf-available ma per i moduli.
+#	a2enmod : abilita un modulo.
+#	a2dismod : disabilita un modulo.
+#	a2ensite nomefile : abilita un sito.
+#	a2dissite nomefile : disabilita un sito.
+
+Direttive  globali:
+	ServerRoot path : indica la root dei file di configurazione del server.
+	KeepAlive [on |off] : connessioni persistenti HTTP 1.1+.
+	KeepAliveTimeout tm : una connessione persistente senza scambio di messaggi da "tm" secondi viene rimossa.
+	Listen port : il server si mette in ascolto su "port". Se ne possono scegliere diverse, ma almeno una deve esserci o il server non parte.
+	ErrorLog path : percorso dove vengono riportati gli errori del server. /var/log/apache2/error.log di default.
+/etc/apache2/sites-available/000-default.conf : sito di default su apache2.
+
+Direttive per i siti:
+	<VirtualHost IP:port>		direttiva per definire un virtual host su un IP e una porta.
+	ServerName www.nome.com		direttiva per indicare il nome.
+	DocumentRoot /var/www/html	direttiva per indicare la root del sito.
+	</VirtualHost>
