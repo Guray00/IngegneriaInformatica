@@ -1,0 +1,28 @@
+@import url('constants.css');
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: var(--primary-font);
+}
+
+table, tr, td {
+    border-collapse: collapse;
+    min-width: 150px;
+}
+
+tr {
+    border: 1px var(--white-hover) solid;
+}
+
+td, th {
+    padding: 10px 15px;
+    text-align: start;
+}
+
+thead {
+    font-weight: bold;
+    background-color: var(--white-hover);
+}
+

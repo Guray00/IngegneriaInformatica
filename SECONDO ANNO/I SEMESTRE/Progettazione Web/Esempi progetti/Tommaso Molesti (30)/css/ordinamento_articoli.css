@@ -1,0 +1,75 @@
+@import url('constants.css');
+
+body {
+    font-family: var(--primary-font);
+    margin: 0;
+    padding: 20px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: fit-content;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid var(--white-hover);
+    padding: 10px 30px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--input-background);
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+button:hover {
+    background-color: var(--white-hover);
+}
+
+#save-btn {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: background-color .3s ease;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+#save-btn:disabled {
+    background-color: var(--white-hover);
+}
+
+#save-btn:hover {
+    background-color: var(--primary-color-hover);
+    cursor: pointer;
+}
+
+#save-btn:disabled:hover {
+    background-color: var(--white-hover);
+    cursor: default;
+}

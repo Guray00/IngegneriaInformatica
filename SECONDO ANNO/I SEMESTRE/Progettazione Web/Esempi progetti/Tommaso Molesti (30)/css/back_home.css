@@ -1,0 +1,23 @@
+@import url('constants.css');
+
+#back-home-button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px black solid;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    text-decoration: none;
+    transition: background-color .3s ease;
+}
+
+#back-home-text {
+    color: black;
+    margin: 0;
+    font-family: var(--primary-font);
+}
+
+#back-home-button:hover {
+    cursor: pointer;
+    background-color: var(--white-hover);
+}

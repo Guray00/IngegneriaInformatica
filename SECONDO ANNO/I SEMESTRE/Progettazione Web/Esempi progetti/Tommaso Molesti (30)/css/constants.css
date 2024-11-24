@@ -1,0 +1,12 @@
+:root {
+    /* Colori */
+    --primary-color: #2196f3;
+    --primary-color-hover: #1d76be;
+    --secondary-color: #e67e22;
+    --secondary-color-hover: #d35400;
+    --white-hover: #e0e0e0;
+    --input-background: #f1f0f5;
+
+    /* Fonts */
+    --primary-font: 'Segoe UI';
+}

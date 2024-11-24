@@ -1,0 +1,87 @@
+@import url('constants.css');
+
+body {
+    font-family: var(--primary-font);
+}
+
+#header-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+#change-name {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#change-name-btn {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+}
+
+#change-name-btn:disabled {
+    background-color: var(--white-hover);
+}
+
+#change-name-btn:hover {
+    background-color: var(--primary-color-hover);
+}
+
+#change-name-btn:disabled:hover {
+    background-color: var(--white-hover);
+    cursor: default;
+}
+
+#change-name-input {
+    background-color: var(--input-background);
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    height: 50px;
+    outline: none;
+    padding: 3px 16px;
+    width: 375px;
+    margin-bottom: 8px;
+}
+
+
+#pulsanti-container {
+    padding: 0px 100px;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px
+}
+
+#pulsanti-container > a {
+    padding: 18px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    box-sizing: border-box;
+    font-weight: 700;
+    transition: background-color .3s ease;
+}

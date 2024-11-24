@@ -1,0 +1,62 @@
+@import url('constants.css');
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: var(--primary-font);
+}
+
+.input-field {
+    background-color: var(--input-background);
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    height: 50px;
+    outline: none;
+    padding: 3px 16px;
+    width: 375px;
+    margin-bottom: 8px;
+}
+
+form {
+    margin-top: 25px;
+}
+
+label {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#create-btn {
+    margin-top: 20px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 50px;
+    padding: 3px 16px;
+    transition: background-color .3s ease;
+    width: 375px;
+    margin-bottom: 16px;
+}
+
+#confirmation-message {
+    color: green;
+}
