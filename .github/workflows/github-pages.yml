@@ -1,10 +1,12 @@
-name: Build and Deploy GitHub Pages
+name: GitHub Pages Custom Build and Deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
+    paths-ignore:
+      - '.github/workflows/**'  # Questo evita loop infiniti
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -14,7 +16,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true      # Modifichiamo questo a true per evitare build simultanee
 
 jobs:
   build:
@@ -34,9 +36,9 @@ jobs:
         with:
           path: |
             ./*
-            !./PRIMO ANNO
-            !./SECONDO ANNO
-            !./TERZO ANNO
+            !PRIMO\ ANNO
+            !SECONDO\ ANNO
+            !TERZO\ ANNO
           key: ${{ runner.os }}-repo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-repo-
@@ -47,17 +49,9 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
 
-      - name: Cache Ruby Gems
-        uses: actions/cache@v3
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
-
+        
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
