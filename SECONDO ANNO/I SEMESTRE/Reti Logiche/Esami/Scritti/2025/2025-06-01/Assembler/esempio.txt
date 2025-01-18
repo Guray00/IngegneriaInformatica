@@ -1,0 +1,46 @@
+s 1A
+Trovata occorrenza di 
+1A
+Conteggio attuale: 
+1
+
+n
+Scansione array terminata.
+Totale:
+1
+occorrenze di
+1A
+
+s 1A
+Trovata occorrenza di 
+1A
+Conteggio attuale: 
+1
+
+s 47
+Trovata occorrenza di 
+47
+Conteggio attuale: 
+1
+
+n
+Trovata occorrenza di 
+47
+Conteggio attuale: 
+2
+
+n
+Scansione array terminata.
+Totale:
+2
+occorrenze di
+47
+
+s FF
+Scansione array terminata.
+Totale:
+0
+occorrenze di
+FF
+
+f
