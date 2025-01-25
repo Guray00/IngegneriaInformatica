@@ -1,0 +1,215 @@
+<html>
+
+<head>
+    <title>Memory</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            background-color: lightcoral;
+            font-weight: bold;
+            padding: 2em;
+        }
+
+        #tabella {
+            width: fit-content;
+            height: fit-content;
+            border: 3px solid black;
+        }
+
+        button {
+            padding: 0.5em;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 2rem 1rem 0 0;
+        }
+
+        p {
+            color: white;
+            font-size: 1.5em;
+        }
+
+        .casella {
+            background-color: white;
+            width: 3rem;
+            height: 3rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        .casella.corretta {
+            background-color: aquamarine;
+        }
+
+        .casella.sbagliata {
+            background-color: red;
+        }
+    </style>
+
+    <script>
+        "use strict";
+        // Numero di colonne della tabella
+        const NUM_COL = 3;
+        // Numero di righe della tabella
+        const NUM_RIG = 3;
+        // Tempo 3 secondi
+        const TEMPO = 3000;
+        // Cella vuota
+        const VUOTO = "";
+        // Punti fatti
+        let punti = 0;
+        // Il gioco è partito
+        let avviato = false;
+        // Ordine dei numeri
+        let v = [];
+        // Numero di caselle selezionate dall'utente
+        let tentativi = 0;
+        // Timer usato per far sparire i numeri
+        let timerid;
+
+        // Funzione eseguita al caricamento
+        function costruisci() {
+            generaTabella();
+            inizializza();
+        }
+
+        // Crea una tabella vuota
+        function generaTabella() {
+            const tabella = document.getElementById("tabella");
+            let contatore = 0;
+            for (let i = 0; i < NUM_RIG; i++) {
+                const row = document.createElement("div"); // una riga
+                tabella.appendChild(row);
+                for (let j = 0; j < NUM_COL; j++) {
+                    const casella = document.createElement("input");
+                    casella.setAttribute("class", "casella");
+                    casella.setAttribute("readonly", "readonly");
+                    casella.id = contatore++;
+                    row.appendChild(casella);
+                    casella.addEventListener("click", casellaCliccata);
+                }
+            }
+        }
+
+        // Imposta il listener per il bottone di avvio
+        function inizializza() {
+            const startButton = document.getElementById("start");
+            startButton.addEventListener("click", start);
+        }
+
+        // Una casella è stata cliccata
+        function casellaCliccata(event) {
+            const target = event.target;
+            const id = target.id;
+            // Se la casella è già stata selezionata o se il gioco non è ancora partito ignoro il click
+            if (!avviato ||
+                target.classList.contains("corretta") || 
+                target.classList.contains("sbagliata"))
+                return;
+            
+            tentativi++;
+            // Guardo se la casella corrisponde all'ordine
+            const index = v[Number(id)];
+            if (index === tentativi) {
+                console.log("Hai fatto un punto");
+                punti++;
+                target.classList.add("corretta");
+            } else {
+                target.classList.add("sbagliata");
+                fine();
+            }
+            target.value = index;
+            if (tentativi === NUM_COL * NUM_RIG) {
+                fine();
+            }
+
+        }
+
+        // Il gioco ha inizio
+        function start() {
+            // Resetto per partite successive alla prima
+            punti = 0;
+            const e = document.getElementById("messaggio");
+            e.innerText = "";
+            for (let i = 0; i < NUM_RIG * NUM_COL; i++) {
+                const c = document.getElementById(i);
+                c.value = VUOTO;
+                c.classList.remove("corretta");
+                c.classList.remove("sbagliata");
+            }
+            // Aggiorna lo stato dei bottoni
+            updateButtonStatus();
+            // Inserisce i numeri nelle caselle
+            riempi();
+            // Avvia un timer in modo da far sparire i numeri dopo un certo tempo
+            timerid = setTimeout(svuota, TEMPO);
+            tentativi = 0;
+            console.log("Ordine: " + v);
+        }
+
+        // Rimuove i numeri dopo che sono stati visualizzati per il tempo previsto
+        function svuota() {
+            for (let i = 0; i < NUM_RIG * NUM_COL; i++) {
+                document.getElementById(i).value = VUOTO;
+            }
+            avviato = true;
+        }
+
+        // Riempie la tabella con i valori mescolati
+        function riempi() {
+            v = [];
+            for (let i = 1; i <= NUM_RIG * NUM_COL; i++)
+                v.push(i);
+            mescolaArray(v);
+            for (let x = 0; x < NUM_RIG * NUM_COL; x++) {
+                document.getElementById(x).value = v[x];
+            }
+        }
+
+        // Mescola gli elementi dell'array passato come argomento
+        function mescolaArray(ar) {
+            // Comincia dal fondo
+            let corrente = ar.length;
+            let indice;
+            while (corrente > 0) {
+                // Prende un elemento a caso prima di quello corrente
+                indice = Math.floor(Math.random() * corrente);
+                corrente--;
+                // e lo scambia con quello corrente (può anche essere se stesso)
+                [ar[corrente], ar[indice]] = [ar[indice], ar[corrente]];
+            }
+        }
+
+        // Il gioco è terminato
+        function fine() {
+            avviato = false;
+            // Mostra un messaggio con i punti fatti
+            mostraPunti();
+        }
+
+        // Mostra i punti fatti
+        function mostraPunti() {
+            const e = document.getElementById("messaggio");
+            e.innerText = "Hai fatto " + punti + " punti";
+            updateButtonStatus();
+        }
+
+        // Aggiorna lo stato del bottone di avvio
+        function updateButtonStatus() {
+            const startButton = document.getElementById("start");
+            startButton.disabled = !startButton.disabled;
+        }
+        document.addEventListener("DOMContentLoaded", costruisci);
+    </script>
+</head>
+
+<body>
+    <div id="tabella">
+    </div>
+    <div id="keypad">
+        <button id="start" type="button">Avvia</button>
+    </div>
+    <p id="messaggio"></p>
+</body>
+
+</html>

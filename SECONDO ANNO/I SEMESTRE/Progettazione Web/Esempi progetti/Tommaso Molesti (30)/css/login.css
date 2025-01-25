@@ -1,0 +1,138 @@
+@import url('constants.css');
+
+body {
+    display: flex;
+    margin: 0;
+    height: 100vh;
+    font-family: var(--primary-font);
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    font-size: 36px;
+}
+
+h2 {
+    color: black;
+    text-align: center;
+}
+
+#left {
+    height: 100%;
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#right {
+    display: none;
+}
+
+#image {
+    width: 300px;
+    height: 300px;
+}
+
+.login-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+input {
+    background-color: var(--input-background);
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    height: 50px;
+    outline: none;
+    padding: 3px 16px;
+    min-width: 300px;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+#login-btn {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 50px;
+    padding: 3px 16px;
+    transition: background-color .3s ease;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+#login-btn:disabled {
+    background-color: var(--white-hover);
+}
+
+#login-btn:hover {
+    background-color: var(--primary-color-hover);
+}
+
+#login-btn:disabled:hover {
+    background-color: var(--white-hover);
+    cursor: default;
+}
+
+#not-account {
+    text-align: center;
+}
+
+#create-account {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+#error-msg {
+    color: red;
+    font-size: 0.9em;
+}
+
+form {
+    min-width: 300px;
+}
+
+@media (min-width: 1025px) {
+    #left {
+        width: 40vw;
+    }
+
+    #right {
+        display: flex;
+        width: 60vw;
+        background-color: var(--input-background);
+        justify-content: center;
+        align-items: center;
+    }
+
+    #image {
+        width: 550px;
+        height: 550px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+}
+
+input:invalid {
+    border: 1px solid red;
+}
+
+@media (min-width: 768px) {
+    input {
+        min-width: 375px;
+    }
+}

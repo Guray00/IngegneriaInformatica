@@ -97,7 +97,7 @@ int main() {
     }
 
     std::vector<std::pair<const Node *, int>> v = get_nodes_distances(node, n);
-
+    
     for (auto [node, _] : v) {
         if (k == 0) {
             break;

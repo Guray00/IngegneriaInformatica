@@ -1,0 +1,53 @@
+th, td {
+  border: 1px solid grey;
+}
+
+
+#classifica {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  height: 3em;
+  font-family: Verdana;
+  background-color: orange;
+  color: white;
+}
+
+tbody {
+  font-family: Arial;
+}
+
+tr {
+  height: 2.5em;
+}
+
+td {
+  text-align: center;
+}
+
+th:nth-of-type(2),
+td:nth-of-type(2) {
+  text-align: left;
+  padding-left: 3em;
+}
+
+tfoot {
+  background-color: orange;
+  color: white;
+
+}
+
+tr:nth-of-type(2n) {
+  background-color: lightgray;
+
+}
+
+th:nth-of-type(1) {
+  width: 10%;
+}
+
+th:nth-of-type(2) {
+  width: 70%;
+}

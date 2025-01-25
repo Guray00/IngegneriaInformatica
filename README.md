@@ -13,14 +13,12 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 Per rendere la comunicazione più efficace, sono stati realizzati gruppi appositi:
 
 ### Principali
-- **[Community WhatsApp Ingegneria Informatica](https://chat.whatsapp.com/JJsJBSWCb0kCsUq9HkqbOo)**
+- **[Community WhatsApp Ingegneria Informatica](https://chat.whatsapp.com/JJsJBSWCb0kCsUq9HkqbOo)** (con gruppo matricole A.A.24-25)
 - **[Gruppo Telegram Anno 1](https://kutt.it/inginf1)**
 - **[Gruppo Telegram Anno 2](https://kutt.it/inginf2)**
 - **[Gruppo Telegram Anno 3](https://t.me/inginfunipi3)**
 
-### Off-Topic
-- **[Shitposting](https://t.me/joinchat/ALDXWEt7IxLWwQ1i5x4fvA)**
-- **[Gaming](https://t.me/joinchat/Cb7psFd1nwYjtrMekE51hg)**
+Se non sei uno studente di Ingegneria Informatica e sei alla ricerca del tuo gruppo ti invitiamo a consultare questo linktree: https://dalz.github.io/gruppi-matricole.html 
 
 ## Corsi
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.png?raw=true)
@@ -74,10 +72,10 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
   **Testo consigliato**:  "Analisi Matematica 1", aut. Pagani e Salsa, ed. Zanichelli<br>
   **Note studenti**: il libro è scritto con un grado di complessità maggiore di quello richiesto per il superamento dell'esame. Gli appunti presi a lezione,  insieme a qualche argomento cercato online, sono sufficienti per passare l'esame scritto in modo proficuo. È consigliato il libro se si vuole affrontare l'esame orale.
 
-- **Fondamenti di Programmazione** - _Consigliato_    
+- **Fondamenti di Programmazione**     
   **Testo consigliato**:<br> 
-      1) "Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++" [dalla 5° in poi] di _Andrea Domenici, Graziano Frosini_.<br>
-      2) "Note sull’organizzazione di un calcolatore e Rappresentazione dell’informazione" di _Paolo Corsini, Graziano Frosini_<br>
+      1) "Introduzione alla programmazione ed elementi di strutture dati con il linguaggio C++" [dalla 5° in poi] di _Andrea Domenici, Graziano Frosini_ (Consigliato).<br>
+      2) "Note sull’organizzazione di un calcolatore e Rappresentazione dell’informazione" di _Paolo Corsini, Graziano Frosini_ (Non necessario)<br>
   **Note studenti**: Il professore mette delle slide a disposizione sufficenti, il testo n°1 approfondisce però in modo più accurato alcuni argomenti.
 
 - **Algebra Lineare** - _Utile_<br>
@@ -92,7 +90,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
       1) "Basi di Dati" di _Paolo Atzeni, Stefano Ceri & altri_.<br>
   **Note studenti**: I professori mettono delle slide a disposizione molto valide e ricche di contenuti.
 
-- **Fisica Generale I** - _Utile/Consigliato (dipende da quanto conoscete le nozioni di Fisica dopo le superiori)_    
+- (aspettate ad acquistare) **Fisica Generale I** - _Utile/Consigliato (dipende da quanto conoscete le nozioni di Fisica dopo le superiori)_    
   **Testo consigliato**:<br> 
       1) "Fisica per scienze e ingegneria volumi 1 & 2" di _Raymond A. Serway & altri_        
   **Note studenti**: I professori mette delle slide a disposizione che possono essere integrate con l'uso dei libri.
@@ -100,7 +98,7 @@ I testi, in base all'esperienza degli studenti, si suddividono in:
 - **Algoritmi e Strutture Dati** - _Non necessario_    
   **Note studenti**: Il professore mette una dispensa molto completa a disposizione.
 
-- **Analisi matematica II** - _Utile_<br>
+- (aspettate ad acquistare) **Analisi matematica II** - _Utile_<br>
   **Testo consigliato**:<br> 
       1)  Analisi matematica II,
       Marco Bramanti di _Carlo D. Pagani, Sandro Salsa_.<br>
@@ -205,6 +203,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 Sara Aliani<br>
 Taulant Arapi<br>
+Giuseppe "Attila" Attadia<br>
 Luca Arduini<br>
 Giulio Bello<br>
 Giacomo Bertelli<br>
@@ -215,6 +214,7 @@ Francesco Bonistalli<br>
 Filippo Brogi<br>
 Leonardo Brugnano<br>
 Davide Bruni<br>
+Valerio Cannalire<br>
 Federico Calzolari<br>
 Federico Casu<br>
 Federico Cavedoni<br>
@@ -232,8 +232,10 @@ Francesco De Lucchini<br>
 Angelo De Marco<br>
 Matteo Dondoli<br>
 Nilo Fabiano<br>
+Tommaso Falaschi<br>
 Giulio Federico<br>
 Niccolò Franchi<br>
+Alessandro Fossari<br>
 Gabriele Frassi<br>
 Jonathan Frattacci<br>
 Giacomo Furia<br>
@@ -243,13 +245,17 @@ Kevin Giannandrea<br>
 Daniele Giaquinta<br>
 Edoardo Geraci<br>
 Dafne Iennaro<br>
+Marco Lampis<br>
+Luca Landi<br>
 Lorenzo Leoncini<br>
 Giovanni Ligato<br>
 Lorenzo Lozzi<br>
 Giovanni Enrico Loni<br>
 Matteo Lombardi<br>
+Cristina Maria Rita Lombardo<br>
 Giacomo Maldarella<br>
 Lorenzo Mancinelli<br>
+Gregorio Maria Manduzio<br>
 Elia Marabotto<br>
 Gabriele Marcuccetti<br>
 Maria Azzurra Malotti<br>
@@ -258,6 +264,7 @@ Federico Matteoni<br>
 Alessio Meini<br>
 Luca Minuti<br>
 Tommaso Molesti<br>
+Lorenzo Monaci<br>
 Alex Moriconi<br>
 Saverio Mosti<br>
 Federico Nardi<br>
@@ -275,6 +282,7 @@ Rambod Rahmani<br>
 Nicola Ramacciotti<br>
 Giampiero Ribechini<br>
 Samuele Ricotta<br>
+Erik Ricku<br>
 Alessio Ristori<br>
 Gianmaria Saggini<br>
 Alessandro Sale<br>
@@ -287,6 +295,7 @@ Alessandro Simonelli<br>
 Giuseppe Soriano<br>
 Walter Soro<br>
 Giorgio Charles Sorrentini<br>
+Iacopo Stracca<br>
 Carmine Tranfa<br>
 Andrea Trasacco<br>
 Lorenzo Valtriani<br>
@@ -294,6 +303,5 @@ Andrea Vagnoli<br>
 Alessandro Versari<br>
 Sandro Wu<br>
 Giulio Zingrillo<br>
-Francesco Zollo<br>
-Giuseppe "Attila" Attadia<br><br>
+Francesco Zollo<br><br>
 Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto..

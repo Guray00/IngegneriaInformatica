@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+    <title>Pokemon information</title>
+    <meta charset="utf-8">
+    <style>
+    * {
+        margin: 1em;
+    }
+    label {
+        display: block;
+        margin-top: 1em;
+    }
+    input:valid {
+        background-color: palegreen;
+    }
+    input:invalid {
+        background-color: lightpink;
+    }
+    </style>
+    <script>
+        function addrow(s) {
+            const t1 = document.getElementById("t1");
+            const li = document.createElement("p");
+            const text = document.createTextNode(s);
+            li.appendChild(text);
+            t1.appendChild(li);
+        }
+        function removeRows(){
+            const t1 = document.getElementById("t1");
+            while(t1.lastElementChild != null)
+                t1.removeChild(t1.lastElementChild);
+        }
+        async function loadfromservice(){
+            const btn = document.getElementById("btn");
+            btn.disabled = true;
+            const nomeelem = document.getElementById("pn");
+            if(!nomeelem.checkValidity()) {
+                return;
+            }
+            const nome = nomeelem.value;
+            removeRows();
+            console.log("Cerco " + nome);
+            try { 
+                const res = await fetch("https://pokeapi.co/api/v2/pokemon/" + nome)
+                const txt = await res.text();
+                if(txt === "Not Found") {
+                    addrow("Questo pokemon non esiste");
+                    return;
+                }
+                const obj = JSON.parse(txt);
+                addrow("Peso (kg): " + obj["weight"]/10);
+                addrow("Altezza (m): " + obj["height"]/10);
+            } catch (e) {
+                console.log(e.message);
+            } finally {
+                btn.disabled = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>Peso e altezza di un Pokemon usando una API pubblica (https://pokeapi.co/api/v2/pokemon/nome_del_pokemon).</p>
+      <label for="pn">Inserisci il nome di un Pokemon</label>
+      <input type="text" id="pn" pattern="[a-z]{3,}" placeholder="pikachu" required>
+      <button id="btn" onclick="loadfromservice()">Download</button>
+    <div id="t1">
+    </div>
+</body>

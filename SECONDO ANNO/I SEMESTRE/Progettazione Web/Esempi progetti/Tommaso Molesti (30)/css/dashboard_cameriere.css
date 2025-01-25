@@ -1,0 +1,86 @@
+@import url('constants.css');
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: var(--primary-font);
+    margin-top: 32px;
+}
+
+table, tr, td {
+    border-collapse: collapse;
+    min-width: 75px;
+    margin-bottom: 16px;
+}
+
+tr {
+    border: 1px var(--white-hover) solid;
+}
+
+td, th {
+    padding: 10px 15px;
+    text-align: start;
+}
+
+thead {
+    font-weight: bold;
+    background-color: var(--white-hover);
+}
+
+#new-order-button {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px black solid;
+    text-decoration: none;
+    width: max-content;
+}
+
+#new-order-text {
+    color: black;
+    margin: 0;
+}
+
+.classic-btn {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: background-color .3s ease;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.classic-btn:disabled {
+    background-color: var(--white-hover);
+}
+
+.classic-btn:hover {
+    background-color: var(--primary-color-hover);
+    cursor: pointer;
+}
+
+.classic-btn:disabled:hover {
+    background-color: var(--white-hover);
+    cursor: default;
+}
+
+#no-order-text {
+    padding: 16px 0px;
+}
+
+@media (min-width: 768px) {
+    table, tr, td {
+        min-width: 150px;
+    }
+    body {
+        margin-top: 0px;
+    }
+}

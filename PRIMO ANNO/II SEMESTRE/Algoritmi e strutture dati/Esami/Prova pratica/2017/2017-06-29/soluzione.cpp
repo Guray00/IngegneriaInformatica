@@ -94,7 +94,7 @@ int main() {
     // if (s < 0) {
     //     throw std::invalid_argument("s must be non-negative");
     // }
-
+    
     auto hash = [=](const int label) { return (A * label + B) % P % s; };
     std::vector<Node* > v{};
     {

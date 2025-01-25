@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/guida.css">
+    <title>Guida</title>
+</head>
+<body>
+<a id="login-link" href="login.php">Area riservata</a>
+
+<div class="container">
+
+<h2>Introduzione</h2>
+
+<p>Il software “Cassa Sagra” permette la gestione a di una sagra a 360°.</p>
+<p>Si suppone che un utente possa creare pi&ugrave; feste e che ogni festa sia a s&eacute; stante.</p>
+<p>Nella pagina principale si pu&ograve; selezionare una festa gi&agrave; creata o crearne una nuova.</p>
+<p>Di ogni festa &egrave; possibile specificare il nome ed eventualmente importare il magazzino di una festa gi&agrave; esistente.</p>
+
+<p>Il software prevede due tipologie di utenti: <strong>admin</strong> e <strong>camerieri</strong>.</p>
+<p>Alla registrazione si pu&ograve; scegliere se registrarsi come utente admin o come cameriere.</p>
+
+<p><strong>L’admin</strong> &egrave; colui che crea la festa, gestisce il magazzino e inserisce gli ordini.</p>
+<p><strong>I camerieri</strong> sono coloro che prendono in carico ordini gi&agrave; inseriti, li servono e li evadono.</p>
+
+<p>Per ogni festa &egrave; possibile consultare una pagina di resoconto dove sono presenti alcune statistiche.</p>
+
+<h2>Admin</h2>
+<p>Colui che gestisce una festa.</p>
+
+<h3>Creazione di una festa</h3>
+<p>L’admin pu&ograve; creare una nuova festa specificando il nome.</p>
+<p>Durante la creazione &egrave; possibile scegliere se importare il magazzino da una festa gi&agrave; esistente associata all’admin (si pensi ad una sagra che si ripete una volta l’anno dove gli articoli sono quasi sempre gli stessi).</p>
+
+<h3>Gestione del magazzino</h3>
+<p>All’inizio di una festa, l’admin pu&ograve; aggiungere nuovi articoli che potranno essere ordinati dai clienti.</p>
+<ul>
+    <li>Per ogni articolo si pu&ograve; scegliere: nome, prezzo, se tracciare la quantit&agrave;, quantit&agrave; (0 se si sceglie di non tracciare la quantit&agrave;).</li>
+    <li>Ogni articolo sar&agrave; modificabile dall’admin anche durante lo svolgimento della festa (pu&ograve; essere utile se ci si accorge che una quantit&agrave; era stata stimata e magari ci sono meno o pi&ugrave; pezzi di quell’articolo).</li>
+    <li>Quando la festa &egrave; terminata il magazzino non sar&agrave; pi&ugrave; modificabile.</li>
+</ul>
+
+<h3>Ordinamento articoli</h3>
+<p>Un admin pu&ograve; inserire gli articoli nell'ordine che vuole e poi in un secondo momento potr&agrave; cambiare l'ordine di visualizzazione degli articoli. Ci&ograve;
+    pu&ograve; essere utile per visualizzare prima le bevande, poi i primi, poi i secondi ecc (indifferentemente dall'ordine di inserimento degli articoli).
+</p>
+
+<h3>Gestione dei camerieri</h3>
+<p>Nella pagina di gestione dei camerieri verr&agrave; visualizzato il codice per far accedere i camerieri alla festa. Inoltre sar&agrave; possibile vedere la lista di camerieri associati.</p>
+<ul>
+    <li>Se un cameriere non ha ordini in gestione, sar&agrave; possibile eliminarlo dalla festa.</li>
+    <li>Quando la festa &egrave; terminata i camerieri vengono deassociati da essa.</li>
+</ul>
+
+<h3>Inserimento degli ordini</h3>
+<p>L’admin pu&ograve; accedere ad una dashboard dove potr&agrave; inserire gli ordini che arrivano dai clienti.</p>
+<ul>
+    <li>Per ogni ordine deve obbligatoriamente specificare un nome, solo per facilit&agrave; di lettura da parte dei camerieri.</li>
+    <li>Un ordine una volta inserito non potr&agrave; pi&ugrave; essere modificato, al massimo cancellato e ri-inserito da capo.</li>
+    <li>L’admin verr&agrave; informato visivamente quando ci sono degli articoli che stanno per finire (i pulsanti della dashboard cambieranno colore).</li>
+    <li>Se un articolo &egrave; terminato non sar&agrave; pi&ugrave; selezionabile.</li>
+    <li>Quando la festa &egrave; terminata non sar&agrave; pi&ugrave; possibile inserire ordini.</li>
+</ul>
+
+<h3>Resoconto</h3>
+<p>Pagina di statistiche utile per vedere l’andamento della festa.</p>
+<ul>
+    <li>Visualizzabile anche a festa in corso (dar&agrave; le statistiche fino a quel momento).</li>
+    <li>Le metriche presenti sono: totale ordini, totale incasso, numero di articoli ordinati per tipo, tempo medio di attesa per servizio, tempo medio di inserimento di un ordine, media di ordini evasi per cameriere.</li>
+</ul>
+<p>Quando la festa &egrave; terminata questa sar&agrave; la pagina principale dell’admin, dove potr&agrave; accedere anche al magazzino (in sola lettura) e alla lista completa degli ordini (in sola lettura).</p>
+
+<h3>Inizio e termine di una festa</h3>
+<ul>
+    <li>Il momento di inizio di una festa coincide col momento di inserimento del primo ordine.</li>
+    <li>Per terminare la festa, l’admin pu&ograve; premere il pulsante dentro al menu Impostazioni.</li>
+    <li>Una festa terminata non potr&agrave; pi&ugrave; essere “ri-accesa”.</li>
+</ul>
+
+<h3>Esaurimento scorte</h3>
+<p>Pagina dov’&egrave; possibile vedere la lista di articoli che hanno quantit&agrave; minore di 20.</p>
+<p>Ogni minuto la pagina viene aggiornata.</p>
+<p>Questa pagina &egrave; pensata per essere messa in uno schermo visibile ai clienti in coda alla cassa.</p>
+
+<h2>Camerieri</h2>
+<p>Quando un cameriere si registra deve essere l’admin a comunicargli il codice univoco con la quale potr&agrave; unirsi alla festa.</p>
+<p>Quando un cameriere si unisce alla festa vedr&agrave; una lista di ordini da evadere (mostrati dal pi&ugrave; vecchio al pi&ugrave; recente).</p>
+<ul>
+    <li>Pu&ograve; vedere i dettagli e pu&ograve; scegliere se prenderne in carico uno o alcuni.</li>
+    <li>Prendendoli in carico si prende la responsabilit&agrave; di gestire questi ordini, una volta finito il servizio li pu&ograve; contrassegnare come “evasi” e pu&ograve; passare a prenderne in gestione altri.</li>
+    <li>Un cameriere che non ha ordini in gestione pu&ograve; uscire dalla festa.</li>
+    <li>L’admin pu&ograve; sempre buttare fuori dalla festa un cameriere che non ha ordini in gestione.</li>
+</ul>
+</div>
+
+</body>
+</html>

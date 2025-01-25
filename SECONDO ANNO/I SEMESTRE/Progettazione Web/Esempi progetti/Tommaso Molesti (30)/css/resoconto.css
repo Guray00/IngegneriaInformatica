@@ -1,0 +1,61 @@
+@import url('constants.css');
+
+body {
+    font-family: var(--primary-font);
+    padding: 0px 25px;
+    padding-bottom: 25px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+table, tr, td {
+    border-collapse: collapse;
+    min-width: 150px;
+}
+
+tr {
+    border: 1px var(--white-hover) solid;
+}
+
+td, th {
+    padding: 10px 15px;
+    text-align: start;
+}
+
+thead {
+    font-weight: bold;
+    background-color: var(--white-hover);
+}
+
+#pulsanti-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 25px;
+}
+
+#pulsanti-container > a {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-weight: 700;
+    transition: background-color .3s ease;
+    width: 150px;
+}
+
+#pulsanti-container > a:hover {
+    background-color: var(--primary-color-hover);
+}

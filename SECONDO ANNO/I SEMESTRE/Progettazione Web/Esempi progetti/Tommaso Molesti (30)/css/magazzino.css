@@ -1,0 +1,75 @@
+@import url('constants.css');
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: var(--primary-font);
+}
+
+table, tr, td {
+    border-collapse: collapse;
+    min-width: 150px;
+}
+
+tr {
+    border: 1px var(--white-hover) solid;
+}
+
+td, th {
+    padding: 10px 15px;
+    text-align: start;
+}
+
+thead {
+    font-weight: bold;
+    background-color: var(--white-hover);
+}
+
+#link-button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px black solid;
+    margin-top: 25px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    transition: background-color .3s ease;
+}
+
+#link-text {
+    color: black;
+    margin: 0;
+}
+
+#link-button:hover {
+    cursor: pointer;
+    background-color: var(--white-hover);
+}
+
+a {
+    text-decoration: none;
+}
+
+form {
+    display: inline;
+}
+
+.delete-button {
+    margin-left: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: filter .3s ease;
+}
+
+.delete-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.delete-button:hover .delete-icon {
+    filter: brightness(0.8);
+}

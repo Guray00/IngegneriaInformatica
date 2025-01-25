@@ -55,8 +55,7 @@ void print_no_good_nodes(const Node *n, const std::unordered_set<const Node *> &
         std::cout << n->label << std::endl;
     }
     print_no_good_nodes(n->right, no_good_nodes);
-
-}
+}       
 
 
 // void destroy_tree(Node *n) {

@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [ -d "prove_pratiche_algoritmi" ]; then
     echo "fatal: prove_pratiche_algoritmi already exists"
     exit 1

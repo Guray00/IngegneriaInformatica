@@ -1,0 +1,80 @@
+@import url('constants.css');
+
+body {
+    font-family: var(--primary-font);
+    line-height: 1.6;
+    color: black;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+h2, h3 {
+    color: var(--primary-color);
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+p, ul {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+strong {
+    color: black;
+    font-weight: bold;
+}
+
+#login-link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+#login-link:hover {
+    background-color: var(--secondary-color-hover);
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container p, .container ul {
+    margin: 10px 0;
+}
+
+.container p:first-of-type {
+    margin-top: 0;
+}

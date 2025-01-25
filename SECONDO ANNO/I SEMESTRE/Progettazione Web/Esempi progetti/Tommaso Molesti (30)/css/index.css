@@ -1,0 +1,257 @@
+@import url('constants.css');
+
+body {
+    font-family: var(--primary-font);
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: black;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+#hero-section {
+    background-color: var(--primary-color);
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
+
+#hero-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+#hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+#cta-button {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#cta-button:hover {
+    background-color: var(--secondary-color-hover);
+}
+
+#features-section {
+    padding: 40px;
+    text-align: center;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 40px;
+}
+
+#features-title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.feature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin: 15px;
+    text-align: center;
+}
+
+.feature img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: black;
+}
+
+.feature p {
+    font-size: 1em;
+    color: black;
+}
+
+#link-button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    text-decoration: none;
+    margin-top: 25px;
+    display: flex;
+    max-width: fit-content;
+    background-color: white;
+    transition: background-color .3s ease;
+}
+
+#link-text {
+    color: var(--primary-color);
+    margin: 0;
+}
+
+#link-button:hover {
+    cursor: pointer;
+    background-color: var(--white-hover);
+}
+
+#lista-feste-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0 25px;
+}
+
+.festa-wrapper {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: background-color .3s ease;
+}
+
+.festa-wrapper:hover {
+    background-color: var(--primary-color-hover);
+}
+
+.festa-line {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.delete-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: filter .3s ease;
+}
+
+.delete-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.delete-button:hover .delete-icon {
+    filter: brightness(0.8);
+}
+
+#join-btn {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    transition: background-color .3s ease;
+    font-size: 18px;
+    width: 300px;
+    cursor: pointer;
+}
+
+#join-btn:hover {
+    background-color: var(--primary-color-hover);
+}
+
+#input-field {
+    background-color: var(--input-background);
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    height: 50px;
+    outline: none;
+    padding: 3px 16px;
+    width: 300px;
+    margin-bottom: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#login-btn:hover {
+    background-color: var(--secondary-color-hover);
+    cursor: pointer;
+}
+
+#guide-button {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#guide-button:hover {
+    background-color: var(--secondary-color-hover);
+}
+
+#main-footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 60px 0;
+    margin-top: 40px;
+    font-size: 0.9em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+#main-footer p {
+    margin: 0;
+    font-size: medium;
+}
+
+@media (min-width: 768px) {
+    #features-section {
+        flex-direction: row;
+    }
+}

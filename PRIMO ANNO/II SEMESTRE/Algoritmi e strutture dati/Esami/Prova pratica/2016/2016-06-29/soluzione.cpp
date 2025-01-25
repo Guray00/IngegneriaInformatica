@@ -39,7 +39,11 @@ bool is_right_leaf(const Node &n, const Node &father) {
 }
 
 
+<<<<<<< HEAD
 bool is_left_leaf(const Node &n, const Node &father) {
+=======
+bool is_left_leaf(Node &n, Node &father) {
+>>>>>>> upstream/master
     return is_leaf(n) && father.left == &n;
 }
 

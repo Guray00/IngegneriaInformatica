@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "cstdlib": "c",
+        "*.tcc": "c",
+        "memory": "c",
+        "new": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c"
+    }
+}
