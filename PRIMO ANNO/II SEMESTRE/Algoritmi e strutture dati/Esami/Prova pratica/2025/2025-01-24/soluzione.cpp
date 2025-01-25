@@ -182,7 +182,6 @@ int main() {
         std::cin >> id >> name;
         table.insert(id, Teacher{name});
     }
-
     
     for (int i = 0; i < m; i++) {
         int id;
@@ -198,7 +197,6 @@ int main() {
             teacher->courses.insert(code, 1);
         }
     }
-
 
     std::optional<std::pair<const Teacher*, int>> max_pair = std::nullopt;
     table.for_each([&](auto _, const Teacher &teacher) {
