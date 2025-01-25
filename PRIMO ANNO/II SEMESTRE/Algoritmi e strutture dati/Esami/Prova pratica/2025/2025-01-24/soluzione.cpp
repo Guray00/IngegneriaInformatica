@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <functional>
-#include <unordered_map>
 #include <optional>
 #include <iostream>
 #include <vector>
@@ -200,25 +199,25 @@ int main() {
         }
     }
 
-    std::unordered_map<const Teacher*, int> max_courses;
 
-    // O(n * m)
+    std::optional<std::pair<const Teacher*, int>> max_pair = std::nullopt;
     table.for_each([&](auto _, const Teacher &teacher) {
-        int max = 0;
+        int cur = 0;
         teacher.courses.for_each([&](auto _, int members) {
-            max = std::max(max, members);
+            cur = std::max(cur, members);
         });
-        max_courses[&teacher] = max;
+        
+        if (max_pair == std::nullopt) {
+            max_pair = {&teacher, cur};
+        } else {
+            auto [max_teacher, max_members] = *max_pair;
+            if (cur > max_members || (cur == max_members && teacher.name < max_teacher->name)) {
+                max_pair = {&teacher, cur};
+            }
+        }
     });
 
-    // O(n)
-    auto max = std::max_element(max_courses.begin(), max_courses.end(), [](const auto &a, const auto &b) {
-        auto [name_a, members_a] = a;
-        auto [name_b, members_b] = b;
-        return members_a < members_b || (members_a == members_b && name_a->name > name_b->name);
-    });
-    
-    auto [teacher, members] = *max;
+    auto [teacher, members] = *max_pair;
     std::cout << teacher->name << std::endl;
 
     return 0;
