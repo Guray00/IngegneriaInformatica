@@ -24,7 +24,7 @@ void insert_node_bst(Node *&n, int val) {
 }
 
 
-std::pair<bool, int> check_balance(Node *n) {
+std::pair<bool, int> check_balance(const Node *n) {
     if (n == nullptr) {
         return {true, 0};
     }

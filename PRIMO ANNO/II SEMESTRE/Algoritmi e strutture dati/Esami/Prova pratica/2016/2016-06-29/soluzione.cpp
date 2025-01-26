@@ -1,7 +1,6 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <array>
 
 
 struct Node {
@@ -9,9 +8,9 @@ struct Node {
     Node *left;
     Node *right;
 
-    explicit Node(int label) : 
+    explicit Node(int label) :
         label{label},
-        left{nullptr}, 
+        left{nullptr},
         right{nullptr} {
     }
 };
@@ -30,27 +29,27 @@ void insert_node_bst(Node *&n, int label) {
 }
 
 
-bool is_leaf(Node &n) {
+bool is_leaf(const Node &n) {
     return n.left == nullptr && n.right == nullptr;
 }
 
 
-bool is_right_leaf(Node &n, Node &father) {
+bool is_right_leaf(const Node &n, const Node &father) {
     return is_leaf(n) && father.right == &n;
 }
 
 
-bool is_left_leaf(Node &n, Node &father) {
+bool is_left_leaf(const Node &n, const Node &father) {
     return is_leaf(n) && father.left == &n;
 }
 
 
 std::pair<int, int> get_num_left_and_right_leaves(
-    Node *n, 
-    Node *father, 
-    const int K, 
+    const Node *n,
+    const Node *father,
+    int K,
     std::vector<int> &vs,
-    int d = 0) 
+    int d = 0)
 {
     if (n == nullptr) {
         return {0, 0};
@@ -88,7 +87,7 @@ int main() {
 
     Node *node = nullptr;
     for (int i = 0; i < n; i++) {
-        int label; 
+        int label;
         std::cin >> label;
         insert_node_bst(node, label);
     }

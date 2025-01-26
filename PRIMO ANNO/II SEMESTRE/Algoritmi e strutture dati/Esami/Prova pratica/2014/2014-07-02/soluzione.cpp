@@ -1,6 +1,4 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
 #include <unordered_set>
 
 struct Node {
@@ -88,9 +86,7 @@ int main() {
     std::unordered_set<const Node*> good_nodes{};
     find_satisfying(node, good_nodes);
     print(node, good_nodes);
-    
     // destroy_tree(node);
 
     return 0;
 }
-

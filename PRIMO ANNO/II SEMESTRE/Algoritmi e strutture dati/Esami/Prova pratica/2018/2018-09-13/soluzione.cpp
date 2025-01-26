@@ -8,7 +8,7 @@ struct Node {
     Node *left;
     Node *right;
 
-    explicit Node(int label) : label(label), left(nullptr), right(nullptr) {
+    explicit Node(int label) : label{label}, left{nullptr}, right{nullptr} {
     }
 };
 
@@ -35,7 +35,7 @@ void insert_node_bst(Node *&n, int label) {
 // }
 
 
-std::pair<int, int> do_get_nodes_distances(Node* node, std::unordered_set<int>& distances) {
+std::pair<int, int> do_get_nodes_distances(const Node* node, std::unordered_set<int>& distances) {
     if (node == nullptr) {
         return {-1, -1};
     }
@@ -67,7 +67,7 @@ std::pair<int, int> do_get_nodes_distances(Node* node, std::unordered_set<int>& 
 }
 
 
-std::vector<int> get_nodes_distances(Node *node, size_t n) {
+std::vector<int> get_nodes_distances(const Node *node, size_t n) {
     std::unordered_set<int> m{};
     // O(n)
     do_get_nodes_distances(node, m);
@@ -84,7 +84,7 @@ int main() {
     //  if (n <= 0) {
     //      throw std::invalid_argument("n must be greater than 0");
     //  }
-    
+
     Node *node = nullptr;
     for (int i = 0; i < n; i++) {
         int label;
@@ -93,7 +93,7 @@ int main() {
     }
 
     std::vector<int> v = get_nodes_distances(node, n);
-    
+
     for (int d : v) {
         std::cout << d << std::endl;
     }
@@ -102,4 +102,3 @@ int main() {
 
     return 0;
 }
-

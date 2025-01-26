@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <functional>
-#include <optional>
 
 static constexpr int P = 999149, A = 1000, B = 2000;
 
@@ -48,7 +47,6 @@ int main() {
 
     size_t max_idx = 0;
     size_t max_size = 0;
-    
     for (size_t i = 0; i < v.size(); i++) {
         if (v[i].size() > max_size) {
             max_size = v[i].size();
@@ -56,7 +54,7 @@ int main() {
         }
     }
 
-    const auto &bucket_target = v[max_idx];
+    const std::vector<Account> &bucket_target = v[max_idx];
     if (bucket_target.empty()) {
         return 0;
     }
@@ -75,4 +73,3 @@ int main() {
 
     return 0;
 }
-

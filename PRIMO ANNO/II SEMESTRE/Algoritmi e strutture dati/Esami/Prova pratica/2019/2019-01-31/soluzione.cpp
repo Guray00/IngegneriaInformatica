@@ -1,6 +1,5 @@
 #include <iostream>
 #include <optional>
-#include <vector>
 
 struct Node {
     int label;
@@ -112,4 +111,3 @@ int main() {
 
     return 0;
 }
-

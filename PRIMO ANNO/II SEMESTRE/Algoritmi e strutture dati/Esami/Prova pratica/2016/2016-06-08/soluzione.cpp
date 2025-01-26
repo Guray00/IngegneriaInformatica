@@ -1,6 +1,5 @@
 #include <iostream>
 #include <unordered_set>
-#include <array>
 
 
 struct Node {
@@ -10,11 +9,11 @@ struct Node {
     Node *left;
     Node *right;
 
-    explicit Node(int label, int weight, int max_load) : 
+    explicit Node(int label, int weight, int max_load) :
         label{label},
-        weight{weight}, 
+        weight{weight},
         max_load{max_load},
-        left{nullptr}, 
+        left{nullptr},
         right{nullptr} {
     }
 };
@@ -51,12 +50,11 @@ void print_no_good_nodes(const Node *n, const std::unordered_set<const Node *> &
     if (n == nullptr) {
         return;
     }
-    print_no_good_nodes(n->left, no_good_nodes);  
+    print_no_good_nodes(n->left, no_good_nodes);
     if (no_good_nodes.find(n) != no_good_nodes.end()) {
         std::cout << n->label << std::endl;
     }
     print_no_good_nodes(n->right, no_good_nodes);
-
 }       
 
 

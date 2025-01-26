@@ -1,17 +1,13 @@
 #include <algorithm>
 #include <iostream>
-#include <vector>
 #include <unordered_set>
 
-
-// I don't use intrusive fields, because I don't want to modify the Node struct adapting
-// it to the specific problem. If you want to use intrusive fields, you can. But I won't do.
 struct Node {
     int label;
     Node *left;
     Node *right;
 
-    explicit Node(int label) : label(label), left(nullptr), right(nullptr) {
+    explicit Node(int label) : label{label}, left{nullptr}, right{nullptr} {
     }
 };
 
@@ -60,7 +56,7 @@ void print_tree(const Node *n, const std::unordered_set<const Node*> &median_nod
     if (n == nullptr) {
         return;
     }
-    
+
     print_tree(n->left, median_nodes, k);
     if (k == 0) {
         return;
@@ -70,7 +66,7 @@ void print_tree(const Node *n, const std::unordered_set<const Node*> &median_nod
         k--;
     }
     print_tree(n->right, median_nodes, k);
-  
+
 }
 
 
@@ -105,4 +101,3 @@ int main() {
 
     return 0;
 }
-
