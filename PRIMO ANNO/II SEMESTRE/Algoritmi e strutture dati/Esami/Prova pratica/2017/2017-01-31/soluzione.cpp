@@ -1,5 +1,4 @@
 #include <iostream>
-#include <unordered_set>
 #include <array>
 
 struct Node {
@@ -36,10 +35,10 @@ void insert_node_bst(Node *&n, int label) {
 // }
 
 
-bool is_zig_zag(const Node &n, const Node &m) {    
+bool is_zig_zag(const Node &n, const Node &m) {
     for (int index : {0, 1}) {
         bool can_return = false;
-        for (auto children: {std::array{n.left, n.right}, 
+        for (auto children: {std::array{n.left, n.right},
                              std::array{m.left, m.right}}) {
             int other_index = 1 - index;
             if (children[index] == nullptr && children[other_index] != nullptr) {
@@ -61,7 +60,7 @@ int get_zig_zag_num(const Node *n, const Node *parent = nullptr) {
     if (n == nullptr) {
         return 0;
     }
-    return 
+    return
         (parent != nullptr && is_zig_zag(*n, *parent)) +
         get_zig_zag_num(n->left, n) +
         get_zig_zag_num(n->right, n);
@@ -76,14 +75,14 @@ int main() {
     //     throw std::invalid_argument("n must be greater than 0");
     // }
 
-    
+
     Node *node = nullptr;
     for (int i = 0; i < n; i++) {
         int label;
         std::cin >> label;
         insert_node_bst(node, label);
     }
-    
+
     int result = get_zig_zag_num(node);
     std::cout << result << std::endl;
 
@@ -91,4 +90,3 @@ int main() {
 
     return 0;
 }
-

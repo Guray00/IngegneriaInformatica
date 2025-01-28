@@ -1,7 +1,7 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
 #include <functional>
-#include <algorithm>
 
 struct Node {
     int label;

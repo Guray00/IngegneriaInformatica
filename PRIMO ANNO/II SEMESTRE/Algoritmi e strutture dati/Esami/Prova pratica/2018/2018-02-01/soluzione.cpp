@@ -1,7 +1,4 @@
-// TOOD: complexity O(n)
-#include <algorithm>
 #include <iostream>
-#include <vector>
 #include <unordered_set>
 
 struct Node {
@@ -54,7 +51,7 @@ std::pair<int, int> fill_set_with_satisfying(
             discordants += 1;
         }
     }
-        
+
     return {concordants, discordants};
 }
 

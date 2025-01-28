@@ -8,7 +8,7 @@ struct Node {
     Node *left;
     Node *right;
 
-    explicit Node(int label) : label(label), left(nullptr), right(nullptr) {
+    explicit Node(int label) : label{label}, left{nullptr}, right{nullptr} {
     }
 };
 
@@ -36,9 +36,9 @@ void insert_node_bst(Node *&n, int label) {
 // }
 
 
-void do_get_nodes_distances(const Node *node, 
-                            const Node *good_ancestor, 
-                            std::vector<std::pair<const Node *, int> > &m, 
+void do_get_nodes_distances(const Node *node,
+                            const Node *good_ancestor,
+                            std::vector<std::pair<const Node *, int> > &m,
                             int dist = -1) {
     if (node == nullptr) {
         return;
@@ -50,7 +50,7 @@ void do_get_nodes_distances(const Node *node,
     } else if (good_ancestor != nullptr) {
         dist += 1;
     }
-    
+
     do_get_nodes_distances(node->left, good_ancestor, m, dist);
     do_get_nodes_distances(node->right, good_ancestor, m, dist);
 }
@@ -93,7 +93,7 @@ int main() {
     }
 
     auto v = get_nodes_distances(node, n);
-    
+
     for (auto [node, _] : v) {
         if (k == 0) {
             break;
@@ -106,4 +106,3 @@ int main() {
 
     return 0;
 }
-

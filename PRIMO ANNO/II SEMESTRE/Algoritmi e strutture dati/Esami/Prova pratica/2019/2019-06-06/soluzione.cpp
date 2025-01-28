@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <unordered_map>
+
 struct Node {
     int label;
     Node *left;
@@ -89,4 +90,3 @@ int main() {
 
     return 0;
 }
-

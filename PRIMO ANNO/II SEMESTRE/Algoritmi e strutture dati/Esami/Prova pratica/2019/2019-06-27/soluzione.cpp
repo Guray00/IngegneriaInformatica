@@ -10,10 +10,10 @@ template <typename... Ts>
 overloaded(Ts...) -> overloaded<Ts...>;
 
 
-struct Server{};
-struct Client{};
-struct Filter{};
-struct Router{};
+struct Server {};
+struct Client {};
+struct Filter {};
+struct Router {};
 
 struct NodeType : public std::variant<Server, Client, Filter, Router> {
     explicit NodeType(char c) {
@@ -96,7 +96,7 @@ void insert_g(Node *n, Node *server, int n_filters) {
 
     insert_g(n->left, server, n_filters);
     insert_g(n->right, server, n_filters);
-    
+
 }
 
 
@@ -107,7 +107,7 @@ void print_servers(Node *n) {
     print_servers(n->left);
     if (std::get_if<Server>(&n->type)) {
         std::cout << n->id << " " << n->g << std::endl;
-    } 
+    }
     print_servers(n->right);
 }
 
@@ -138,4 +138,3 @@ int main() {
 
     return 0;
 }
-
