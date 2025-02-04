@@ -1,4 +1,4 @@
-<deck name="Ricerca Operativa Squeri" tags='Ingegneria Informatica'><fields><text name='Front' sides='11'></text><tex name='Equation' sides='01'></tex><text name='answear' sides='01'></text><img name='Image' sides='01'></img></fields><cards><card><text name='Front'>Sistema LKKT</text><tex name='Equation'>LKKT:\begin{cases}
+<deck name="Ricerca Operativa Squeri"><fields><text name='Front' sides='11'></text><tex name='Equation' sides='01'></tex><text name='answear' sides='01'></text><img name='Image' sides='01'></img></fields><cards><card><text name='Front'>Sistema LKKT</text><tex name='Equation'>LKKT:\begin{cases}
 \nabla f(x) +\sum_{i=1}^m \lambda_i\cdot\nabla g_i(x) +\sum_{j=1}^p
 \mu_j\cdot\nabla h_j(x)=0\\
 \lambda_k\cdot g_k(x)=0 \quad \forall k \in m \\
