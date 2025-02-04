@@ -1,0 +1,208 @@
+<deck name="Ricerca Operativa Squeri" tags='Ingegneria Informatica'><fields><text name='Front' sides='11'></text><tex name='Equation' sides='01'></tex><text name='answear' sides='01'></text><img name='Image' sides='01'></img></fields><cards><card><text name='Front'>Sistema LKKT</text><tex name='Equation'>LKKT:\begin{cases}
+\nabla f(x) +\sum_{i=1}^m \lambda_i\cdot\nabla g_i(x) +\sum_{j=1}^p
+\mu_j\cdot\nabla h_j(x)=0\\
+\lambda_k\cdot g_k(x)=0 \quad \forall k \in m \\
+	h_l(x)=0 \quad \forall l \in p
+\end{cases}</tex></card><card><text name='Front'>Teorema Max Flow/Min Cut</text><tex name='Equation'></tex><text name='answear'>La portata massima di una rete è pari alla portata del taglio di portata minima della rete</text></card><card><text name='Front'>Modello del problema di massima copertura</text><tex name='Equation'>\begin{cases}
+\max \sum_j h_j \cdot z_j \\
+\sum_i a_{ij} \cdot x_i ≥ z_j \quad \forall j \quad a_{ij}=(d_{ij}≤D)\ ? \ 1:0\\
+\sum_i x_i =p \\
+x_{ij} \in \{0,1\} \\
+z_j \in \{0,1\}
+\end{cases}</tex></card><card><text name='Front'>Enunciare le Regole di Taglio del Branch and Bound (per problemi di massimo)</text><tex name='Equation'></tex><text name='answear'>Con Vs(P) e Vi(P) s'intende le valutazioni del problema
+Con (Pij) s'intende il sottoalbero di stadio i e ramo j
+Con Vs(Pij) s'intende la valutazione superiore del sottoproblema (Pij)
+Regole di taglio:
+
+1- se la regione ammissibile di (Pij) è vuota, taglio (effettuo una visita implicita, non esiste una soluzione ammissibile di valore superiore alla corrente Vi(P) )
+
+2- se Vs(Pij) è inferiore a Vi(P), taglio
+
+3- se Vs(Pij) ≥ Vi(P) ed è ammissibile, aggiorno Vi(P) e taglio</text></card><card><text name='Front'>Modello dei potenziali su reti</text><tex name='Equation'>\begin{cases}
+\max \quad (b  \quad u)^T\begin{pmatrix} \pi \\ \mu\end{pmatrix}  \\
+\begin{pmatrix} E^T \quad I \\0 \quad \  \ I\end{pmatrix}\begin{pmatrix} \pi \\ \mu\end{pmatrix}≤\begin{pmatrix} c \\ 0\end{pmatrix}
+\end{cases}</tex><text name='answear'></text></card><card><text name='Front'>Teorema astratto di equivalenza tra PL e PLI</text><tex name='Equation'>\begin{matrix}
+dati \ A,b \in Z, \ e \ S \ insieme \ dei \ punti \ a \ componenti \ intere \ \in Ax≤b \\
+max_{x \in S} \ c^Tx = max_{x\in convS} \ c^Tx
+\end{matrix}</tex><text name='answear'>questo perché i vertici di questi due insiemi sono gli stessi! E sappiamo che l'ottimo sta sui vertici.
+(convS è il convesso costruito a partire dai vertici di S)</text></card><card><text name='Front'>Problema Linearizzato del metodo di Frank-Wolfe</text><tex name='Equation'>PL(x^k) \quad \begin{cases} \min \nabla f(x^k)x \\ Ax ≤ b \end{cases}</tex></card><card><text name='Front'>Regole di riduzione di una matrice a priori</text><tex name='Equation'></tex><text name='answear'>1. una riga di tutti 0 vuol dire Regione Ammissibile vuota, quindi non si può presentare
+2. una colonna di tutti 0 possiamo toglierla (postazione inutile)
+3. una riga di tutti 1 possiamo toglierla (sempre coperto)
+4. una riga con un solo 1 vuol dire che devo porre a 1 la variabile della postazione che lo serve, posso poi quindi cancellare tutti i quartieri serviti dalla postazione
+5. regola di dominanza: si applica alle colonne (postazioni), se una postazione copre tutti i quartieri (o più) che copre un'altra postazione, posso eliminare la colonna di quest'ultima.
+   A^k ≥ A^r , ATTENZIONE: regola applicabile solo in mancanza di costi.</text></card><card><text name='Front'>Teorema di Bellman</text><tex name='Equation'>\begin{matrix}
+\quad  Condizioni \ di \  Bellman \\
+1- \quad C^π_{ij} \geq 0 : (i,j)\in L \\
+2- \quad C^π_{ij} \leq 0 : (i,j)\in U
+\end{matrix}</tex><text name='answear'>Dato un albero di copertura T, che genera un flusso di base x_T ammissibile, se sono rispettate le Condizioni di Bellman allora siamo all'ottimo.
+Domanda extra:
+Da dove viene questa condizione di ottimalità?</text></card><card><text name='Front'>Modello del problema del flusso di costo minimo</text><tex name='Equation'>\begin{cases} min \quad c^T\cdot x\\ E\cdot x=b \\ 0\leq x_{ij} \leq u_{ij} \\ \end{cases} \quad oppure \quad \begin{cases} \min \quad
+\begin{pmatrix} c \\ 0\end{pmatrix}^T\begin{pmatrix} x \\ w\end{pmatrix} \\
+\begin{pmatrix} E^T \quad I \\0 \quad \ \ I\end{pmatrix}^T\begin{pmatrix} x \\ w\end{pmatrix}=\begin{pmatrix} b \\ u \end{pmatrix} \\x,w ≥0
+\end{cases}</tex></card><card><text name='Front'>Utilizzo del Duale Ausiliario</text><tex name='Equation'>\begin{matrix}
+(D)
+\begin{cases}
+\min \quad b^Ty \\
+A^Ty=c \\
+y≥0
+\end{cases}
+
+\quad \to \quad
+(D_{aux})
+\begin{cases}
+\min \sum_i \epsilon_i \\
+A^T y + \epsilon = c \\
+y ≥ 0 \\
+\epsilon ≥ 0 \\
+ \end{cases}
+\\
+soluzione \ di \ base \ con \ B=\{ 0 \ 1 \ ... \ 2n \}: \\
+ \quad \begin{pmatrix} y \\ \epsilon \end{pmatrix} =
+\begin{matrix}
+\begin{cases}     y_1 \\ y_2 \\ ... \\ y_n    \end{cases} \\
+\begin{cases}   \epsilon_1 \\ \epsilon_2 \\ ... \\ \epsilon_n  \end{cases}
+\end{matrix}
+\begin{pmatrix} 0\\0\\...\\0\\c_1\\c_2\\...\\c_n \end{pmatrix}
+\end{matrix}</tex><text name='answear'>Il duale ausiliario (D_aux) viene utilizzato per trovare una base ammissibile in un problema in forma duale std (D).
+Una volta costruito il duale ausiliario, la base costituita dai primi 2n vincoli (con n dimensione del vettore y) è una base la cui soluzione di base è ammissibile (soluzione: tutte le y a 0 e tutte le epsilon uguali alle relative c). Da questa soluzione di base possiamo applicare il simplesso Duale fino all'ottimo.
+
+- Se il valore ottimo di (D_aux) è maggiore di zero allora (D) non ha soluzioni ammissibili.
+- Se il valore ottimo di (D_aux) è uguale a zero, allora (D) ha almeno una soluzione di base ammissibile, che si può costruire a partire da una base ottima per (D_aux).
+
+ATTENZIONE: prima di costruire (D_aux) è necessario fare in modo che tutte le c in (D) siano ≥ 0, semplicemente cambiando semmai di segno alle equazioni.
+Altrimenti la soluzione di base di (D_aux) indicata dai primi 2n indici non sarebbe ammissibile.</text><img name='Image'></img></card><card><text name='Front'>Cosa è un k-albero?</text><tex name='Equation'></tex><text name='answear'>Dicesi k-albero qualsiasi struttura connessa con almeno un nodo di grado 2 (ovvero collegato con due archi).</text></card><card><text name='Front'>Definizione di Vertice</text><tex name='Equation'></tex><text name='answear'>Un vertice è un punto nel Poliedro che non si può esprimere come combinazione convessa propria di altri due punti (diversi dallo stesso) nel Poliedro.</text><img name='Image'></img></card><card><text name='Front'>Definizione di funzione convessa e coerciva, illustrarne inoltre il ruolo nell'ottimizzazione</text><tex name='Equation'>\begin{matrix}
+convessa \to f(\lambda x+(1-\lambda) y)\leq \lambda f(x) + (1- \lambda)f(y) \forall \lambda \in [0,1], \forall x \in R^n
+\\ ovvero \ ha \ gradiente \ monotono \ crescente
+\\ \\
+coerciva \to \lim_{||x|| \to \infty} f(x)=+\infty
+\\ ovvero \ tende \ +\infty \ per \ tutte \ le \ direzioni
+\end{matrix}</tex><text name='answear'>
+Se una funzione è convessa, allora sappiamo che il suo unico punto stazionario è il mG minimo globale, inoltre se è un problema di PNL vincolato, sappiamo che il suo massimo su P è su uno dei vertici, basta quindi sostituire.
+
+Se una funzione è coerciva, allora sappiamo che il MG non esiste (o è su un vertice se è vincolato), ma esiste il mG.</text><img name='Image'></img></card><card><text name='Front'>Descrivere il metodo del gradiente libero e discutere possibili criteri di stop</text><tex name='Equation'>\begin{matrix}
+f:R^n\to R, \quad f \in C^1 \\
+x^{k+1}=x^k+t_kd^k \\ \quad calcolo \ d^k=\pm\nabla f(x^k) \\ e \ calcolo \quad
+t_k=argmin_{t≥0} \Phi (t) \quad
+con\quad \Phi(t)=f(x^k+t_kd^k) \\
+\end{matrix}</tex><text name='answear'>
+Criteri di stop:
+
+Purtroppo in un problema non lineare non vincolato i passi possono essere illimitati, ci servono quindi delle regole di Stop, qua abbiamo alcuni esempi:
+1. dopo un certo numero di step/tempo
+2. quando il miglioramento diventa trascurabile
+3. quando il gradiente diventa quasi zero</text><img name='Image'></img></card><card><text name='Front'>Modello dell'Assegnamento (non cooperativo)</text><tex name='Equation'>\begin{cases} \min \sum_i\sum_j c_{ij}\cdot x_{ij} \\
+\sum_ix_{ij}=1 \quad \forall j\in N \\
+\sum_jx_{ij} = 1 \quad \forall i \in N \\
+x_{ij}\in\{0,1\}\end{cases}</tex></card><card><text name='Front'>Modello del problema di Copertura</text><tex name='Equation'>\begin{cases}
+\min \sum_i c_i \cdot x_i \\
+\sum_i a_{ij} \cdot x_i ≥ 1 \quad \forall j \quad a_{ij}=(d_{ij} ≤D)\ ?\  1:0 \\
+x_i \in \{0,1\}
+\end{cases}</tex></card><card><text name='Front'>Modello del bin-packing</text><tex name='Equation'>\begin{cases} \min \sum_{i=1}^my_i
+\\ \sum_{i=1}^mx_{ij}=1 \ \quad\forall j
+\\ \sum_{j=1}^np_jx_{ij}\leq Cy_i \quad \forall i
+\\ x_{ij}\in \{ 0,1\}
+\\ y_i\in \{ 0,1\}
+\end{cases}</tex></card><card><text name='Front'>Descrizione e utilizzo dell'Algoritmo di Chvatal</text><tex name='Equation'></tex><text name='answear'>Serve per generare una Valutazione superiore nel Problema di Copertura.
+
+Algoritmo:
+1. Ordino le postazioni per il loro costo unitario, ovvero il costo di apertura diviso per la somma degli utenti coperti.
+2. Apro la postazione con costo unitario minimo, ne cancello la colonna e ne cancello le righe che serve e depenno la postazione.
+   Inoltre cancello le righe di tutti $1$ se si presenta.
+3. Se ho ancora righe:
+   Ricalcolo i costi unitari, ovvero il costo di apertura diviso per la somma degli utenti, non depennati, coperti.
+   Torno al punto `2`.</text></card><card><text name='Front'>Modello del flusso massimo</text><tex name='Equation'>\begin{cases} \max \quad v \\ Ex = b \quad con\quad b=\begin{cases}-v \quad i =s \\0 \quad i\neq s,t\\v \quad i =t \end{cases} \\ 0 \leq x_{(i,j)} \leq u_{(i,j)} \end{cases}</tex></card><card><text name='Front'>Algoritmi per Vs del bin-packing</text><tex name='Equation'></tex><text name='answear'>1. ___next-fit-decreasing___:
+   Il primo contenitore é il contenitore corrente.
+   Se possibile, assegna un oggetto al contenitore corrente;
+   altrimenti assegnalo ad un nuovo contenitore, che diventa quello corrente.
+2. ___first-fit-decreasing___:
+   Assegna ogni oggetto al primo contenitore usato che puó contenerlo.
+   Se nessuno di essi puó contenerlo, assegna l’oggetto ad un nuovo contenitore.
+3. ___best-fit-decreasing___:
+   ordino i bin per capienza rimanente decrescente
+   prendo un oggetto, lo metto nel bin con minore capienza rimanente, se non entra, in quello dopo
+   ripeto: riordino i bin, metto un oggetto, riordino ecc</text></card><card><tex name='Equation'>LKKT:\begin{cases}
+\nabla f(x) +\sum_{i=1}^m \lambda_i\cdot\nabla g_i(x) +\sum_{j=1}^p
+\mu_j\cdot\nabla h_j(x)=0\\
+\lambda_k\cdot g_k(x)=0 \quad \forall k \in m \\
+	h_l(x)=0 \quad \forall l \in p
+\end{cases}</tex><text name='Front'>Enunciato del Teorema LKKT</text><img name='Image'></img><text name='answear'>Sia x in D minimo locale, allora esistono le relative lambda ≥ 0 e le relative mu in R, tali che risolvano il sistema LKKT.</text></card><card><text name='Front'>Teorema Fondamentale della PL</text><tex name='Equation'></tex><text name='answear'>Se un il polidro di un problema PL è limitato e non vuoto, allora almeno un vertice è ottimo.</text></card><card><text name='Front'>Calcolo del potenziale di base</text><tex name='Equation'>\begin{matrix}
+\begin{cases}
+\max \quad \pi^Tb+\mu^Tu \\
+\pi^TE+\mu^T≤c^T \\
+\mu ≤0
+\end{cases}
+\\ \\
+B=T\cup U\cup T'\cup L' \\
+scriviamo \ i\ vincoli \ relativi: \\
+π^TE_T+\mu_T^T=c_T^T \\
+π^TE_U+\mu_U^T=c_U^T \\
+\mu_T=0 \\
+\mu_L=0
+\end{matrix}</tex><text name='answear'></text><img name='Image'></img></card><card><text name='Front'>A cosa serve un piano di taglio?</text><tex name='Equation'></tex><text name='answear'>Nella PLI per arrivare ad una soluzione ammissibile a partire dalla soluzione del rilassato continuo, possiamo impiegare i piani di taglio,
+sono vincoli calcolati che quando aggiunti al rilassato continuo, limitano la soluzione ottima del problema, cercando ad ogni aggiunta di piano di ottenere come soluzione ottima del rilassato continuo una soluzione a componenti intere, l'ottimo quindi del nostro problema iniziale</text><img name='Image'></img></card><card><text name='Front'>Definizione di Cammino Aumentante</text><tex name='Equation'></tex><text name='answear'>Un cammino aumentante è un cammino orientanto sul grafo residuo, da s a t, formato da archi con portata residua non nulla, a cui è associata una portata δ, pari alla portata dell'arco nel cammino di portata residua minore.
+Può non essere orientato nel grafo di partenza.</text><img name='Image'></img></card><card><text name='Front'>Modello del duale ausiliario</text><tex name='Equation'>\begin{cases}min \sum^n_{i = 0} \epsilon_i \\y^TA+\epsilon^T=c^T \\ y\geq 0 \\ \epsilon \geq0 \\ \end{cases}</tex></card><card><text name='Front'>Condizioni di Regolarità di un dominio PNL</text><tex name='Equation'>\begin{matrix}
+1- \quad g_i,h_j \ lineari \\
+2- \quad g_i \ convesse, \ h_j \ lineari \ + \ condizione \ di \ Slater :\ esiste \ un \ punto \ interno:  \\ \quad \exists \overline x : g(\overline x) \lt 0 \\
+3- \quad condizione \ di \ Magasarian: \nabla g_i(\overline x), \nabla h_j(\overline x) \ linearmente \ indipendenti \\ \quad \quad \forall \overline x \ \ ammissibile \quad \forall i,j \ attivi \ in \ \overline x
+\end{matrix}</tex></card><card><text name='Front'>Quando un potenziale di base è ammissibile e quando è degenere</text><tex name='Equation'></tex><text name='answear'>Un potenziale di base è ammissibile se i costi ridotti relativi agli archi non di base:
+- per gli archi in L devono essere positivi
+- per gli archi in U devono essere negativi
+
+Un potenziale di base è degenere se almeno un costo ridotto di arco non di base è nullo.</text><img name='Image'></img></card><card><text name='Front'>Cosa è la matrice di Proiezione?</text><tex name='Equation'>\begin{matrix}
+H=Id-M^T(MM^T)^1M
+\\
+d^k=H\cdot \nabla (\pm f(x^k)) \quad (+ \to \max , \ - \to \min)
+\end{matrix}</tex><text name='answear'>La matrice di proiezione, nell'algoritmo del gradiente proiettato, è una matrice ottenuta attraverso calcoli effettuati sulla matrice M composta dai vincoli attivi in un punto xk, che serve per proietttare  il gradiente lungo i vincoli attivi, in modo da trovare la direzione dk da prendere.</text><img name='Image'></img></card><card><text name='Front'>Teorema di Interezza</text><tex name='Equation'>\begin{matrix}
+I \ vertici \ di \ un \ poliedro \ \begin{cases} Ex=b \\ x\geq 0\end{cases} \ sono \ componenti \ intere, \\ \ con \ E \ matrice \ di \ incidenza \ su \ reti
+\end{matrix}</tex><text name='answear'>Spiegazione:
+Una matrice di incidenza su reti è una matrice (di dimensioni |nodi| x |archi|) che presenta su ogni colonna degli 0, UN +1 ed UN -1.
+Un albero di copertura sulla rete è descritto da una sottomatrice di E quadrata di dimensioni (n-1)x(n-1).
+Questa sottomatrice è quindi a sua volta composta da 0,1 e -1, e con opportune permutazioni di riga e/o colonna, può essere portata in forma triangolare inferiore con sulla diagonale +1 e -1.
+Una matrice triangolare inferiore con 1 e -1 sulla diagonale ha determinante +-1.
+L'indeterminatezza del segno deriva dal fatto che le permutazioni di riga e di colonna cambiano il segno del determinante.
+Questo tipo di matrice è unimodulare, e le soluzioni di sistemi lineari su queste matrici producono risultati a componenti intere, per il teorema di Cramer
+Ne otteniamo che le soluzioni di sistemi Ex=b con E matrice di incidenza e b a componenti intere (NOTA BENE!) sono a loro volta a componenti intere. </text></card><card><text name='Front'>Modello del TSP (simmetrico)</text><tex name='Equation'>\begin{cases} min \  \sum_i \sum_{j\gt i} c_{ij} \cdot x_{ij} \\
+\sum_{i\lt j}x_{ij}+\sum_{j\lt i}x_{ji} =2 \space \forall j \\
+ \sum_{ \begin{matrix} i \in S \\j \notin S \\ i\lt j\end{matrix} } x_{ij} + \sum_{ \begin{matrix} i \notin S \\j \in S \\ j\lt i\end{matrix} } x_{ji} \geq1 \space \quad \forall S \subset N,\quad S≠\emptyset , S≠N\\
+x_{ij}\in \{0,1\}\end{cases}</tex></card><card><text name='Front'>Teorema di Rappresentazione dei Poliedri (di Weyl)</text><tex name='Equation'>Dato \ un \ Poliedro \ Ax \geq b \quad \exists V = \{v^1,...,v^n\} \in P
+\quad ed \quad \exists E = \{e^1,...,e^n\} \subset R^n
+\quad tale \  che\quad  P=convesso V+conoE</tex><text name='answear'>Le rappresentazioni di Weyl di uno stesso poliedro non sono uniche, per ogni poliedro ci sono infinite rappresentazioni di Weyl. (per es invece del vettore (1,0) posso prendere (2,0) ).
+Essenzialmente prendi il convesso di alcuni punti e lo trasli lungo il cono individuato da alcuni vettori.</text></card><card><text name='Front'>Modello del TSP (asimmetrico) e differenze rispetto al Modello dell'Assegnamento</text><tex name='Equation'>\begin{cases} \min \sum_i \sum_j c_{ij} \cdot x_{ij} \\
+\sum_jx_{ij} = 1 \quad \forall i \\
+\sum_ix_{ij} = 1 \quad \forall j \\
+\sum_{\begin{matrix}i\in S \\ j\notin S \end{matrix}} x_{ij} ≥ 1 \quad \forall S\in N, \quad S≠\emptyset,S≠N  \\
+x_{ij} \in \{0,1\}\end{cases}</tex><text name='answear'>Rispetto al modello dell'assegnamento, il TSP presenta in più i vincoli di connessione (terzo gruppo di vincoli nel modello soprastante)</text></card><card><text name='Front'>Descrizione ed utilizzo dell'algoritmo di Kruskal</text><tex name='Equation'></tex><text name='answear'>Questo algoritmo serve a costruire un k-albero (cosa è un k-albero?)
+Su n nodi
+1. Isolo il nodo k
+2. tra i nodi n-k  disegno il collegamento di costo minimo
+3. tra i nodi n-k disegno il prossimo collegamento di costo minimo
+4. continuo fino ad ottenere n-1 collegamenti
+5. Unisco k al resto con il suo collegamento di costo minimo
+6. Unisco k al resto con il suo prossimo collegamento di costo minimo
+
+Utilizzo:
+viene utilizzato nella creazione di una valutazione inferiore per il TSP</text></card><card><text name='Front'>Teorema della Dualità Forte</text><tex name='Equation'>\begin{matrix}
+se \ P≠\emptyset \ e \ D≠ \emptyset
+\\
+-\infty \lt v_{(D)}=v_{(P)} \lt +\infty
+\end{matrix}</tex><text name='answear'>Se i poliedri P e D non sono vuoti allora il primale e il suo duale hanno un valore ottimo, che coincide</text><img name='Image'></img></card><card><text name='Front'>Modello del cammino di costo minimo</text><tex name='Equation'>\begin{cases}
+\min \sum_{(i,j)\in A}c_{ij} \cdot x_{ij} \\
+\sum_i x_{ij} - \sum_i x_{ji} = b_j \quad \forall j \quad  b=\begin{cases} 1 \quad se \ i≠ r \\ -n+1 \quad se \ i=r\end{cases}\\
+x_{ij}\in N \quad \forall(i,j)\in A
+\end{cases}</tex></card><card><text name='Front'>Rapporti dei Simplessi Primale e Duale</text><tex name='Equation'>\begin{matrix} primale: \ r_i=\frac{b_i-A_i\cdot x}{A_i W^h} \\ \\
+duale: \ r_i=\frac{-y_i}{A_kW^i}
+\end{matrix}</tex><text name='answear'></text></card><card><text name='Front'>Definizione di un dominio PNL</text><tex name='Equation'>D=\{x\in R^n : g_1(x)≤0, \ ... \ , g_m(x) ≤ 0, \quad h_1(x)=0, \ ... \ ,h_p(x)=0\}</tex></card><card><text name='Front'>Test di Ottimalità PL</text><tex name='Equation'></tex><text name='answear'>1. Dato un vertice del problema primale, se nel suo duale la soluzione generata dalla stessa base è ammissibile, Allora la soluzione di base di quella stessa base è Ottimo in entrambi i problemi.
+2. Se uno degli elementi di y_B è 0, la soluzione di base è degenere.
+3. Se tutti gli elementi di y_B sono ≥ 0 allora la soluzione di base è ammissibile (vertice).</text></card><card><text name='Front'>Definizione di Taglio della Rete</text><tex name='Equation'></tex><text name='answear'>Un taglio di un rete è una suddivisione degli N nodi in due insiemi: Ns che contiene almeno il nodo sorgente ed Nt, che contiene almeno il nodo coda, tali che l'intersezione tra i due insieme sia vuota.</text></card><card><text name='Front'>Problema dello zaino (binario)</text><tex name='Equation'>\begin{cases} \max v^T\cdot x \\
+\sum_i p_i\cdot x_i ≤ C \\
+x_i \in \{0,1\} \end{cases}</tex></card><card><text name='Front'>Illustrare le Regole anticiclo di Blend</text><tex name='Equation'></tex><text name='answear'>Simplesso Primale:
+1- scelgo l'indice minore tale per cui yi è negativo
+2- scelgo l'indice minore tale per cui ho il minor rapporto primale
+
+Simplesso Duale:
+1- scelgo l'indice minore tale per cui ho un vincolo violato nel primale
+2- scelgo l'indice minore tale per cui ho il minor rapporto duale</text><img name='Image'></img></card><card><text name='Front'>Definizione di Ciclo Hamiltoniano</text><tex name='Equation'></tex><text name='answear'>Un ciclo orientato che passa per tutti i nodi di un grafo una ed una sola volta</text></card><card><text name='Front'>Modello del Trasporto</text><tex name='Equation'>\begin{cases} \min \sum_i\sum_j c_{ij}\cdot x_{ij} \\
+\sum_jx_{ij}=o_i \quad \forall i \\
+\sum_ix_{ij}=d_j \quad \forall j \\
+x_{ij}≥0
+\end{cases}</tex></card></cards></deck>
