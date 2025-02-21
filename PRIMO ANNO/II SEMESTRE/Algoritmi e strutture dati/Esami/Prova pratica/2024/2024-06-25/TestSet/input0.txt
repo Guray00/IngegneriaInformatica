@@ -1,0 +1,11 @@
+10 2 3
+1 marad
+9 varl
+5 dervahl
+4 aratak
+12 aloy
+13 vanash
+20 erend
+11 sylens
+7 asera
+6 itamen
