@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>2024-09-11</title>
+    <style>
+        body {
+            display: flex;
+        }
+        body>div {
+            margin: 1rem;
+            height: 30rem;
+            padding: 1rem;
+        }
+        input:invalid {
+            border: 2px solid red ;
+        }
+        #sx {
+            width: 15%;
+            background-color: yellow;
+            display: table;
+        }
+        #cx {
+            background-color: lightblue;
+        }
+        #dx {
+            width: 15%;
+            background-color: orange;
+        }
+        .r {
+            display: table-row;
+        }
+        .r>input,
+        .r>label,
+        .r>button {
+            display: table-cell;
+            padding: 0.25rem;
+            height: 1.5rem;
+            margin: 0.25rem;
+        }
+        .casella {
+            background-color: white;
+            width: 1rem;
+            height: 1rem;
+            text-align: center;
+            font-weight: bold;
+            border: 1px black solid;
+        }
+        .hsin {
+            font-family: monospace;
+            font-weight: bold;
+            margin: 0.2rem;
+        }
+        .casella.nonvuoto {
+            background-color: lightpink;
+        }
+        .casella.nonvuoto.pieno {
+            background-color: red;
+        }
+        #dx>table{
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin: 1rem;
+        }
+        #cx tr:first-child th:not(:first-child){
+            width: 1rem;
+        }
+        #dx td,th {
+            padding: 0.2rem;
+            text-align: right;
+        }
+        #dx tr:nth-child(even) {
+            background-color: white;
+        }
+        #dx tr:nth-child(2n+3) {
+            background-color: lightcyan;
+        }
+    </style>
+    <script>
+        'use strict';
+        const NUM_RIGHE = 7;
+        const NUM_COLONNE = 12;
+        const ORA_INIZIO = 8;
+        const GIORNO = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"];
+        const calendario = {};
+        const MAX_VIS = 3;
+        const TIMEOUT = 5000;
+        let attesa;
+        let insBut;
+
+        class Slot {
+             // Costruisce un giorno, inizialmente privo di visite
+            constructor(gsett, ora) {
+                this.gsett = gsett;
+                this.ora = ora;
+                this.visite = [];
+            }
+            // Aggiunge una prenotazione e restituisce true se l'inserimento ha successo, false altrimenti
+            aggiungi(nome, cognome) {
+                if (this.visite.length == MAX_VIS) return false;
+                // Le prenotazioni sono rappresentate come oggetti con proprietà
+                // - numero d'ordine
+                // - nome
+                // - cognome
+                this.visite.push({numero: this.visite.length+1, 
+                                  nome: nome, 
+                                  cognome: cognome});
+                return true;
+            }
+            // Restituisce un array che contiene tutte le prenotazioni (ordine per inserimento)
+            getVisite() {
+                return this.visite;
+            }
+            // Restituisce un array che contiene tutte le prenotazioni (ordine alfabetico per cognome)
+            getVisiteAlfa(){
+                let copia = [...this.visite];
+                copia.sort((a, b) => a.cognome.localeCompare(b.cognome));
+                return copia;
+            }
+            // Indica se il giorno è pieno
+            pieno() {
+                return this.visite.length === MAX_VIS;
+            }
+        }
+
+
+        // Crea la tabella nella parte centrale
+        function creaTabella() {
+            const tabella = document.getElementById("tabella");
+
+            // Prima riga
+            const row = document.createElement("tr"); // una riga
+            tabella.appendChild(row);
+            const casella = document.createElement("th");
+            casella.innerText = "\\";
+            row.appendChild(casella);
+            for (let j = 0; j < NUM_COLONNE; j++) {
+                const casella = document.createElement("th");
+                casella.innerText = j + ORA_INIZIO;
+                row.appendChild(casella);
+            } 
+                
+            // Le altre righe
+            for (let i = 0; i < NUM_RIGHE; i++) {
+                const row = document.createElement("tr"); // una riga
+                tabella.appendChild(row);
+
+                // prima colonna
+                const m = document.createElement("th");
+                m.classList.add("hsin");
+                m.innerText = GIORNO[i];
+                row.appendChild(m);
+
+                // altre colonne
+                for (let j = 0; j < NUM_COLONNE; j++) {
+                    const casella = document.createElement("td");
+                    casella.classList.add("casella");
+                    casella.id = GIORNO[i] + "-" + (j + ORA_INIZIO);
+                    calendario[GIORNO[i] + "-" + (j + ORA_INIZIO)] = new Slot(i, j+ORA_INIZIO);
+                    row.appendChild(casella);
+                    casella.addEventListener("click", casellaCliccata);
+                    casella.addEventListener("contextmenu", casellaCliccata);
+                }
+            }
+        }
+
+        // Quando una casella viene cliccata, viene eseguito questo handler
+        function casellaCliccata(event) {
+            event.preventDefault()
+            // L'evento viene ignorato se non è ancora terminata la gestione dell'evento precedente
+            if (attesa)
+                return;
+            // Recupera l'oggetto Slot associato alla casella
+            const g = calendario[event.target.id];
+            // Riferimento alla parte destra dell'interfaccia
+            const d = document.getElementById("dx");
+
+            // Recupera le visite ordinate per inserimento o per cognome
+            let ap;
+            let alfa = event.type === "contextmenu";
+            if(alfa)
+                ap = g.getVisiteAlfa();
+            else    
+                ap = g.getVisite();
+
+            // Visualizza le visite nella parte dx
+            if (ap.length === 0) {
+                const p = document.createElement("p");
+                p.innerText = "Non ci sono visite";
+                d.appendChild(p);
+            } else {
+                const t = document.createElement("table");
+                d.appendChild(t);
+                // Crea l'intestazione della tabella
+                const rh = document.createElement("tr");
+                const h1 = document.createElement("th");
+                const h2 = document.createElement("th");
+                const h3 = document.createElement("th");
+                h1.innerText = "N.";
+                h2.innerText = "Nome";
+                h3.innerText = "Cognome";
+                rh.appendChild(h1);
+                rh.appendChild(h2);
+                rh.appendChild(h3);
+                t.appendChild(rh);
+
+                // Crea una riga per ogni appuntamento
+                for (let x of ap) {
+                    const r = document.createElement("tr");
+                    t.appendChild(r);
+                    const o = document.createElement("td");
+                    o.innerText = x.numero;
+                    const n = document.createElement("td");
+                    n.innerText = x.nome;
+                    const c = document.createElement("td");
+                    c.innerText = x.cognome;
+                    r.appendChild(o);
+                    r.appendChild(n);
+                    r.appendChild(c);
+                }
+            }
+            // L'evento di visualizzazione è in corso
+            attesa = true;
+            // Tra 5 secondi la parte dx verrà svuotata e sarà possibile 
+            // gestire altri eventi
+            setTimeout(()=> {
+                while(d.hasChildNodes())
+                    d.removeChild(d.firstChild);
+                attesa = false;
+            }, TIMEOUT);
+        }
+
+        // Inserisce una nuova visita
+        function inserisciVisita() {
+            // Recupera i valori dal form
+            const nome = document.getElementById("nome").value;
+            const cognome = document.getElementById("cognome").value;
+            const giorno = document.getElementById("giorno").value;
+            const ora = document.getElementById("ora").value;
+
+            // Recupera l'oggetto giorno
+            const g = calendario[giorno + "-" + ora];
+
+            // Se pieno mostra messaggio
+            if(g.pieno()) {
+                alert("Giorno pieno");
+                return;
+            }
+            // Altrimenti aggiunge il nuovo appuntamento e cambia la classe
+            // in modo da visualizzare la casella con un colore diverso
+            const cas = document.getElementById(giorno + "-" + ora);
+            if (g.aggiungi(nome, cognome)) {
+                cas.classList.add("nonvuoto");
+            }
+            if(g.pieno()){
+                cas.classList.add("pieno");
+            }
+        }
+
+        // Controlla la validità dei campi di input
+        function controlla() {
+            const oo = document.getElementById("ora");
+            const gg = document.getElementById("giorno");
+            const nn = document.getElementById("nome");
+            const cc = document.getElementById("cognome");
+            const ov = oo.value;
+            const gv = gg.value;
+
+            let index = GIORNO.findIndex((e) => e==gv);
+            if(index >= 0 && oo.validity.valid
+               && nn.validity.valid && cc.validity.valid) {
+                insBut.disabled = false;
+            } else {
+                insBut.disabled = true;
+            }
+        }
+
+        // Crea la tabella e registra i gestori di eventi
+        function inizializza() {
+            creaTabella();
+            
+            // Handler del bottone inserisci
+            insBut = document.getElementById("inserisci");
+            insBut.addEventListener("click", inserisciVisita);
+            insBut.disabled = true;
+
+            // Handler per validità
+            const sx = document.getElementById("sx");
+            sx.addEventListener("input", controlla);
+        }
+        document.addEventListener('DOMContentLoaded', inizializza);
+    </script>
+</head>
+
+<body>
+    <div id="sx">
+        <div class="r">
+            <label for="nome">Nome</label><input type="text" id="nome" placeholder="Mario" pattern="^[A-Z][a-z]+$" required>
+        </div>
+        <div class="r">
+            <label for="cognome">Cognome</label><input type="text" id="cognome" placeholder="Rossi"
+                pattern="^[A-Z][a-z]+$" required>
+        </div>
+        <div class="r">
+            <label for="giorno">Giorno</label><input type="text" id="giorno" placeholder="Gio"
+                pattern="^(Lun|Mar|Mer|Gio|Ven|Sab|Dom)$" required>
+        </div>
+        <div class="r">
+            <label for="ora">Ora</label><input type="number" min="8" max="19" id="ora" placeholder="12" required>
+        </div>
+        <div class="r">
+            <button id="inserisci">Inserisci</button>
+        </div>
+    </div>
+    <div id="cx">
+        <table id="tabella">
+        </table>
+    </div>
+    <div id="dx">
+    </div>
+</body>
+</html>

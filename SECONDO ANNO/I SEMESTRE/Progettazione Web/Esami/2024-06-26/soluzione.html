@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>2024-06-26</title>
+        <style>
+        body {
+            background-color:cornsilk;
+			font-weight: bold;
+            padding: 2em;
+        }
+        #tabella {
+            width: fit-content;
+            height: fit-content;
+            border: 3px solid black;
+        }
+        .casella {
+           background-color: white;
+           width: 3rem;
+           height: 3rem;
+           text-align: center;				
+           font-weight: bold;
+           font-size: 2rem;
+        }
+        button,p {
+				padding: 0.5em;
+				font-weight: bold;
+                font-size: 1.2rem;
+                margin: 2rem 1rem 0 0;
+		}
+        .casella.posecol {
+           background-color: lightpink;
+        }
+        .casella.solocol {
+            background-color: aquamarine;
+        }
+        </style>
+        <script>
+        'use strict';
+        const NUM_CASELLE = 4;
+        const NUM_COLONNE = NUM_CASELLE + 2;
+        const COLONNA_POS_E_COL = 4;
+        const COLONNA_SOLO_COL = 5;
+        const NUM_RIG = 10;
+        const VUOTO = '';
+        const LETTERE = ['R', 'Y', 'G', 'B', 'P'];
+        const COLORE = ['red', 'yellow', 'green', 'blue', 'purple'];
+        const INTERVALLO = 1000;
+        const TEMPO_INIZIALE = 60;
+
+        let tempo_rimanente;
+        let riga, colonna;
+        let timerid;
+        let rigaNascosta = [];
+        let inGioco = false;
+        let rigaCorrente = [];
+
+        // Aggiorna lo stato del bottone di avvio
+        function updateButtonStatus(){
+            const startButton = document.getElementById("start");
+            startButton.disabled = !startButton.disabled;
+        }
+
+        // Crea una tabella vuota
+        function generaTabella() {
+            const tabella = document.getElementById("tabella");
+            for (let i = 0; i < NUM_RIG; i++) {
+				const row = document.createElement("div"); 
+                tabella.appendChild(row);
+                for(let j=0; j<NUM_COLONNE; j++) {
+                    const casella = document.createElement("input");
+				    casella.classList.add("casella");
+                    if(j===COLONNA_POS_E_COL)
+                        casella.classList.add("posecol");
+                    if(j===COLONNA_SOLO_COL)
+                        casella.classList.add("solocol");                    
+				    casella.setAttribute("readonly", "readonly");
+					casella.id = "casella-" + i + "-" + j;
+					row.appendChild(casella);
+                }
+            }
+        }
+
+        // Il gioco ha inizio
+        function start(){
+            inGioco = true;
+            tempo_rimanente = TEMPO_INIZIALE;
+            riga = 0;
+            colonna = 0;
+
+            // Sceglie colori
+            for(let i=0; i<NUM_CASELLE; i++) {
+                let coloreCasuale = LETTERE[Math.floor(Math.random()*LETTERE.length)];
+                console.log(coloreCasuale);
+                rigaNascosta[i] = coloreCasuale;
+            }
+
+            // Svuota la tabella
+            const e = document.getElementById("messaggio");
+            e.innerText = "";
+            for (let i = 0; i < NUM_RIG; i++) {
+                for(let j=0; j<NUM_COLONNE; j++) {
+				    let id = "casella-" + i + "-" + j;
+                    const e = document.getElementById(id);
+                    e.value = VUOTO;
+                    if(j<NUM_COLONNE-2)
+                        e.style.backgroundColor = 'white';
+                }
+            }
+            // Aggiorna lo stato dei bottoni
+			updateButtonStatus();
+            // Avvia un timer con periodo pari a INTERVALLO
+            timerid = setInterval(aggiornaTimer, INTERVALLO);
+		}
+
+        // Aggiorna il messaggio con il tempo rimanente e controlla se tempo finito
+        function aggiornaTimer(){
+            const e = document.getElementById("messaggio");
+            e.innerText = "Tempo rimanente: " + tempo_rimanente;
+            tempo_rimanente--;
+            if(tempo_rimanente === 0) 
+                fine();    
+        }
+
+        function fine(vittoria){
+            inGioco = false;
+            clearInterval(timerid);
+            const e = document.getElementById("messaggio");
+            if(vittoria) {
+                e.innerText = "Hai vinto in " + (riga + 1) + " tentativi";
+            } else {
+                e.innerText = "Hai perso";
+            }
+            updateButtonStatus();
+        }
+
+        // Imposta i listener
+        function inizializza() {            
+            // Setta listener per bottone di avvio
+            const startButton = document.getElementById("start");
+            startButton.addEventListener("click", start);
+            // Setta listener per tastiera
+            document.addEventListener('keydown', (event) => {
+                console.log(event.code);
+                const index = LETTERE.indexOf(event.code.charAt(3));
+                if (index === -1) return;
+                selezionato(index);
+                });
+        }
+        
+        // E' stato selezionato il colore di una casella
+        function selezionato(indiceColore) {
+            if(!inGioco)
+                return;
+            const e = document.getElementById('casella-'+riga+'-'+colonna);
+            e.style.backgroundColor = COLORE[indiceColore];
+            rigaCorrente.push(LETTERE[indiceColore]);
+            colonna++;
+            if(colonna === NUM_CASELLE) 
+                controlla();
+        }
+
+        // Calcola il numero di colori indovinati
+        function controlla() {
+            let posecol = 0;
+            let altri1 = [];
+            let altri2 = [];
+            for(let i=0; i<NUM_CASELLE; i++) {
+                if(rigaCorrente[i] === rigaNascosta[i]) 
+                    posecol++;
+                else {
+                    altri1.push(rigaCorrente[i]);
+                    altri2.push(rigaNascosta[i]);
+                }
+            }
+            if(posecol === NUM_CASELLE) 
+                fine(true);
+            let solocol = 0;
+            for(let c of altri1){
+                let ind = altri2.indexOf(c);
+                if(ind >= 0) {
+                    solocol++;
+                    altri2.splice(ind,1)
+                }
+            }
+            console.log(posecol);
+            console.log(solocol);
+
+            const e = document.getElementById('casella-'+riga+'-'+COLONNA_POS_E_COL);
+            e.value = posecol;
+            const f = document.getElementById('casella-'+riga+'-'+COLONNA_SOLO_COL);
+            f.value = solocol;
+            // Resetto per nuovo tentativo
+            rigaCorrente = [];
+            colonna = 0;
+            riga ++;
+            if(riga === NUM_RIG) 
+                fine(false);
+        }
+
+        // Funzione eseguita al caricamento
+        function costruisci() {
+            // Crea la tabella
+            generaTabella();
+            // Inizializzazione
+            inizializza();
+        }
+
+        document.addEventListener('DOMContentLoaded', costruisci);
+        </script>
+    </head>
+
+    <body>
+        <div id="tabella"></div>
+        <div id="keypad">
+            <button id="start" type="button">Avvia</button>
+        </div>
+        <p id="messaggio"></p>
+    </body>
+</html> 

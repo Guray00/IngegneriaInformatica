@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2025-01-09</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        #dati {
+            background-color: lightblue;
+            width: fit-content;
+            height: fit-content;
+            display: grid;
+            gap: 1em;
+            grid-template-columns: 1fr 1fr;
+            padding: 1em;
+        }
+        label {
+            font-weight: bold;
+        }
+        input:invalid {
+            background-color: rgb(231, 171, 171);
+        }
+        #sala {
+            width: 50%;
+            height: fit-content;
+            background-color: lightgray;
+        }
+        p {
+            text-align: center;
+            font-weight: bold;
+        }
+        #fine {
+            margin: 2em;
+            font-weight: bold;
+        }
+        table {
+            margin: auto;
+            padding: 1em;
+            font-size: xx-large;
+            font-family: monospace;
+        }
+        td {
+            width: 1em;
+            height: 1em;
+            border: 1px solid black;
+        }
+        td.libero {
+            background-color: aquamarine;
+        }
+        td.occupato {
+            background-color: red;
+        }
+
+        #lista {
+            width: 50%;
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        'use strict';
+        const DIMX = 10;
+        const DIMY = 5;
+        let stato = {};
+        let nome;
+        let cognome;
+
+        function stampaPrenotazioni(prenotazioni) {
+            const ol = document.getElementById('lista');
+            while(ol.firstChild)
+                ol.removeChild(ol.firstChild);
+
+            for (let x of prenotazioni) {
+                const li = document.createElement("li");
+                li.textContent = x.nome + " " + x.cognome +
+                    ", posto (" + x.riga + ", " + x.colonna + ")";
+                ol.appendChild(li);
+            }
+        }
+
+        function seleziona(e) {
+            let id = e.target.id;
+            let [spettacolo, riga, colonna] = id.split('|');
+            riga = Number(riga);
+            colonna = Number(colonna);
+            let statoSpettacolo = stato[spettacolo];
+            statoSpettacolo.posti[riga * DIMX + colonna] = true;
+            statoSpettacolo.prenotazioni.push({nome: nome,
+                     cognome: cognome, 
+                     riga: riga,
+                     colonna: colonna
+                    });
+
+            e.target.classList = 'occupato';
+            e.target.removeEventListener('click', seleziona);
+            stampaPrenotazioni(statoSpettacolo.prenotazioni);
+        }
+
+        function visualizzaSpettacolo(spettacolo) {
+            let statoSpettacolo = stato[spettacolo];
+            if (!statoSpettacolo) {
+                stato[spettacolo] = {
+                    posti: Array(DIMX*DIMY),
+                    prenotazioni: []
+                };
+                statoSpettacolo = stato[spettacolo];
+            }
+            const tab = document.createElement("table");
+            for (let i = 0; i < DIMY; i++) {
+                const r = document.createElement("tr");
+                tab.appendChild(r);
+                for (let j = 0; j < DIMX; j++) {
+                    const t = document.createElement("td");
+                    r.appendChild(t);
+                    t.id = spettacolo + "|" + i + "|" + j;
+                    if (statoSpettacolo.posti[i * DIMX + j])
+                        t.classList = 'occupato';
+                    else {
+                        t.addEventListener('click', seleziona);
+                        t.classList = 'libero';
+                    }
+                }
+            }
+
+            const newdiv = document.createElement('div');
+            newdiv.id = 'sala';
+            const schermo = document.createElement('p');
+            schermo.textContent = "schermo";
+            newdiv.appendChild(schermo);
+            newdiv.appendChild(tab);
+            const bb = document.createElement('button');
+            bb.id = 'fine';
+            bb.textContent = 'Fine';
+            bb.addEventListener('click', fine);
+            newdiv.appendChild(bb);
+            document.body.appendChild(newdiv);
+
+            const z = document.createElement('div');
+            z.id = 'lista';
+            document.body.appendChild(z);
+            stampaPrenotazioni(statoSpettacolo.prenotazioni);
+        }
+
+        function fine(e) {
+            const dd = document.getElementById('sala');
+            dd.remove();
+            const ll = document.getElementById('lista');
+            ll.remove();
+            const ff = document.getElementById('dati');
+            ff.style.display = 'grid';
+        }
+
+        function scegli() {
+            const cSpet = document.getElementById('spettacolo');
+            const s = cSpet.value;
+            const cNome = document.getElementById('nome');
+            nome = cNome.value;
+            const cCognome = document.getElementById('cognome');
+            cognome = cCognome.value;
+            const dd = document.getElementById('dati');
+            dd.style.display = 'none';
+            visualizzaSpettacolo(s);
+        }
+
+        function inizializza() {
+            const inv = document.getElementById('scegli');
+            inv.addEventListener('click', scegli);
+        }
+
+        document.addEventListener("DOMContentLoaded", inizializza);
+    </script>
+</head>
+
+<body>
+    <div id="dati">
+        <label>Nome</label><input type="text" id="nome" required pattern="^[A-Z][a-z]{2,9}$">
+        <label>Cognome</label><input type="text" id="cognome" required pattern="^[A-Z][a-z]{2,9}$">
+        <label>Spettacolo</label><select id="spettacolo">
+            <option value="15">15:00</option>
+            <option value="18">18:00</option>
+            <option value="21">21:00</option>
+        </select>
+        <button id="scegli">Scegli</button>
+    </div>
+</body>
+
+</html>

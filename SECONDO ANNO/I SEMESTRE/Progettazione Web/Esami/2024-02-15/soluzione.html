@@ -1,0 +1,234 @@
+<html>
+    <head>
+        <title>2023-02-15</title>
+        <meta charset="utf-8">
+        <style>
+        body {
+            background-color: lightgray;
+			font-weight: bold;
+            padding: 2em;
+        }
+        #contenitore {
+            display: flex;
+            flex-direction: row;
+        }
+        #tabella {
+            width: fit-content;
+            height: fit-content;
+            border: 3px solid black;
+        }
+        button {
+				padding: 0.5em;
+				font-weight: bold;
+                font-size: 1.2rem;
+                margin: 2rem 1rem 0 0;
+		}
+        p { 
+            margin: 1em;
+            color: blue;
+            font-size: 1.5em;
+        }
+        .casella {
+           background-color: white;
+           width: 3rem;
+           height: 3rem;
+           text-align: center;				
+           font-weight: bold;
+           font-size: 2rem;
+        }
+        .casella.top {
+           background-color: lightpink;
+        }
+        </style>
+
+        <script>
+        'use strict';
+        // Al prossimo scattare del timer deve essere generata una nuova cifra
+        let cifraPosizionata = true;
+        // Intervallo
+        const INTERVALLO = 3000;
+        // La cifra generata
+        let cifra;
+        // Cella vuota
+        const VUOTO = "";
+        // ID del timer
+        let timerid;
+        // Punti fatti
+        let punti = 0;
+        // Lettere che indicano le colonne
+        const LETTERE = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K'];
+        // Numero di righe della tabella
+        const NUM_RIG = 4;
+        // Numero di colonne della tabella
+        const NUM_COL = LETTERE.length;
+
+        // Funzione eseguita al caricamento
+        function costruisci() {
+            // Crea la tabella
+            generaTabella();
+            // Inizializzazione
+            inizializza();
+        }
+
+        // Crea una tabella vuota
+        function generaTabella() {
+            const tabella = document.getElementById("tabella");
+
+            // Prima riga
+            const row = document.createElement("div"); 
+            tabella.appendChild(row);
+            for(let j=0; j<NUM_COL; j++) {
+                const casella = document.createElement("input");
+                casella.value = LETTERE[j];
+			    casella.setAttribute("class", "casella top");
+			    casella.setAttribute("readonly", "readonly");
+				casella.id = "top-" + j;
+				row.appendChild(casella);
+            }
+
+            // Le altre righe
+            for (let i = 0; i < NUM_RIG; i++) {
+				const row = document.createElement("div"); // una riga
+                tabella.appendChild(row);
+                for(let j=0; j<NUM_COL; j++) {
+                    const casella = document.createElement("input");
+				    casella.setAttribute("class", "casella");
+				    casella.setAttribute("readonly", "readonly");
+					casella.id = "casella-" + i + "-" + j;
+					row.appendChild(casella);
+                }
+            }
+        }
+
+        // Imposta i listener
+        function inizializza() {
+            // Setta listener per bottone di avvio
+            const startButton = document.getElementById("start");
+            startButton.addEventListener("click", start);
+            // Setta listener per tastiera
+            document.addEventListener('keydown', (event) => {
+                            console.log(event.code);
+                            const index = LETTERE.indexOf(event.code.charAt(3));
+                            if(index === -1) return;
+                            giu(index);
+                        }
+                    );
+        }
+
+        // Il gioco ha inizio
+        function start(){
+            // Per partite successive alla prima...
+            if(punti > 0) {
+                // ... esegue alcune operazioni di inizializzazione
+                punti = 0;
+                const e = document.getElementById("messaggio");
+                e.innerText = "";
+                for (let i = 0; i < NUM_RIG; i++) {
+                    for(let j=0; j<NUM_COL; j++) {
+					    let id = "casella-" + i + "-" + j;
+                        document.getElementById(id).value = VUOTO
+                    }
+                }
+            }
+            // Aggiorna lo stato dei bottoni
+			updateButtonStatus();
+            // Avvia un timer con periodo pari a INTERVALLO
+            timerid = setInterval(generaCifra, INTERVALLO);
+		}
+        
+        // Genera una nuova cifra
+        function generaCifra(){
+            if(!cifraPosizionata) {
+                // La cifra precedente non è stata posizionata, la metto in una colonna casuale
+                const col = colonnaCasuale();
+                giu(col);
+            }
+            // Genera una cifra a caso
+            cifra = Math.floor(Math.random()*10);
+            // La mostra all'utente
+            const p = document.getElementById("prossima");
+            p.innerText = "Prossima cifra: " + cifra;
+            cifraPosizionata = false;
+        }
+
+        // Restituisce l'indice di una colonna a caso
+        function colonnaCasuale() {
+            return Math.floor(Math.random() * NUM_COL);
+        }
+
+        // Fa cadere la cifra lungo la colonna col
+        function giu(col) {
+            if(cifraPosizionata)
+                return;
+            cifraPosizionata = true;
+            let r = trovaRiga(col);
+            if(r !== NUM_RIG-1) {
+                let ee = document.getElementById("casella-"+ (r+1) +"-"+col);
+                if (ee.value == cifra){
+                    ee.value = VUOTO;
+                    punti++;
+                    return;
+                } 
+            }
+            // La colonna è piena... 
+            if(r === -1) {
+                // ... e il gioco finisce
+                fine();
+                return;
+            }
+            // Metto la lettera più in basso possibile
+            let e2 = document.getElementById("casella-"+r+"-"+col);
+            e2.value = cifra;
+            // Cancello il messaggio
+            const p = document.getElementById("prossima");
+            p.innerText = "";
+        }
+
+        // Il gioco è terminato
+        function fine() {
+            // Arresto il timer
+            clearInterval(timerid);
+            // Mostro un messaggio con i punti fatti
+            mostraPunti();
+        }
+
+        // Mostra i punti fatti
+        function mostraPunti(){
+            const e = document.getElementById("messaggio");
+            e.innerText = "Hai fatto " + punti + " punti";
+            updateButtonStatus();
+        }
+
+        // Cerca la prima casella libera partendo dal fondo
+        // relativamente alla colonna col
+        // Se la colonna è tutta piena restituisce -1
+        function trovaRiga(col) {
+            for(let i=NUM_RIG-1; i>=0; i--) {
+                let c = document.getElementById("casella-" + i + "-" + col).value;
+                if(c == VUOTO)
+                    return i;
+            }        
+            return -1;
+        }
+
+        // Aggiorna lo stato del bottone di avvio
+        function updateButtonStatus(){
+            const startButton = document.getElementById("start");
+            startButton.disabled = !startButton.disabled;
+        }
+        document.addEventListener('DOMContentLoaded', costruisci);
+        </script>
+    </head>
+
+    <body>
+        <div id="contenitore">
+        <div id="tabella">
+        </div>
+        <p id="prossima"></p>
+        </div>
+        <div id="keypad">
+              <button id="start" type="button">Avvia</button>
+        </div>
+        <p id="messaggio"></p> 
+    </body>
+</html>

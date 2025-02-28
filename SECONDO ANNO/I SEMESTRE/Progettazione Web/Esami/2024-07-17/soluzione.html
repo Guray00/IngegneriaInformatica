@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Esame 2024-07-17</title>
+    <style>
+        #inizio {
+            background-color: lightgray;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: fit-content;
+            margin: 1em;
+        }
+        #inizio>label {
+            width: fit-content;
+            margin: 1em;
+        }
+        #inizio>input {
+            width: 4em;
+            margin: 1em;
+        }
+        #inizio>input:invalid {
+            background-color: orange;
+        }
+        #inizio>button {
+            width: fit-content;
+            margin: 1em;
+        }
+        #ingresso {
+            background-color: aqua;
+            padding: 1em;
+            width: fit-content;
+        }
+        table {
+            background-color: pink;
+            padding: 2em;
+        }
+        table input {
+            background-color: lightpink;
+            text-align: right;
+        }
+        table input.selected {
+            background-color: white;
+        }
+        table input.numero {
+            background-color: yellow;
+        }
+        table input.formula {
+            background-color: lightblue;
+        }
+    </style>
+    <script>
+        'use strict';
+        const MIN_RIGHE = 1;
+        const MIN_COLONNE = 1;
+        const MAX_RIGHE = 26;
+        const MAX_COLONNE = 9;
+        let premuto = false;
+        let casella;
+        let statoTabella;
+        let numRighe;
+        let numColonne;
+
+        function inserisci(e) {
+            if (premuto) {
+                casella = e.target;
+                insericiFormula(e);
+            } else {
+                inserisciNumero(e);
+            }
+        }
+        // Inserimento di un numero
+        function inserisciNumero(e) {
+            const i = e.target;
+            i.readOnly = false;
+            i.classList.remove("numero");
+            i.classList.remove("formula");
+            i.classList.add("selected");
+        }
+        // Inserimento di una formula
+        function insericiFormula(e) {
+            const ii = document.getElementById("ing");
+            ii.disabled = false;
+        }
+
+        // Crea una matrice r x c e la mostra mediante una tabella
+        function creaTabella(r, c) {
+            numRighe = Number(r);
+            numColonne = Number(c);
+            statoTabella = Array(numRighe);
+            for (let i = 0; i < r; i++)
+                statoTabella[i] = Array(numColonne);
+            // Crea la tabella
+            let t = document.createElement("table");
+            const b = document.getElementsByTagName("body")[0];
+            b.appendChild(t);
+            for (let i = 0; i <= numRighe; i++) {
+                const row = document.createElement("tr");
+                t.appendChild(row);
+                if (i == 0) {
+                    const el = document.createElement("th");
+                    row.appendChild(el);
+                    el.textContent = '\\';
+                    for (let h = 1; h <= numColonne; h++) {
+                        const el = document.createElement("th");
+                        row.appendChild(el);
+                        el.textContent = h;
+                    }
+                    continue;
+                }
+                for (let j = 0; j <= numColonne; j++) {
+                    if (j == 0) {
+                        const el = document.createElement("th");
+                        row.appendChild(el);
+                        el.textContent = String.fromCharCode((i - 1) + 'A'.charCodeAt(0));
+                        continue;
+                    }
+                    const el = document.createElement("td");
+                    row.appendChild(el);
+                    const inp = document.createElement("input");
+                    inp.readOnly = true;
+                    inp.setAttribute("type", "number");
+                    inp.addEventListener("click", inserisci);
+                    inp.id = i + "-" + j;
+                    inp.onchange = (x) => {
+                        statoTabella[i-1][j-1] = Number(inp.value);
+                        aggiornaTabella();
+                    };
+                    el.appendChild(inp);
+                }
+            }
+        }
+
+        // Visualizza lo stato della matrice attraverso una tabella
+        function aggiornaTabella() {
+            for (let i = 1; i <= numRighe; i++) {
+                for (let j = 1; j <= numColonne; j++) {
+                    const v = statoTabella[i - 1][j - 1];
+                    const e = document.getElementById(i + "-" + j);
+                    if (v === undefined)
+                        continue;
+                    if (typeof v === 'number') {
+                        // In posizione i, j c'e' un numero
+                        e.value = v;
+                        e.classList.add('numero');
+                    } else {
+                        // In posizione i, j c'e' una formula
+                        const rc = v[2]; // Indice della riga o della colonna da cui prendere i valori
+                        let ins = [];
+                        let res;
+                        if (Number(rc)) {
+                            // e' una colonna
+                            for (let x = 0; x < numRighe; x++) {
+                                ins.push(statoTabella[x][Number(rc)-1]);
+                            }
+                        } else {
+                            // e' una riga
+                            const ii = rc.charCodeAt(0) - 'A'.charCodeAt(0);
+                            for (let x = 0; x < numColonne; x++) {
+                                ins.push(statoTabella[ii][x]);
+                            }
+                        }
+                        if (v[0] == 'S') {
+                            res = ins.reduce((a, b) => a + b, 0)
+                        } else if (v[0] == 'M') {
+                            res = Math.max(...ins);
+                        }
+                        e.classList.add('formula');
+                        e.value = res;
+                    }
+                }
+            }
+        }
+
+        function leggiFormula(e) {
+            const ii = e.target;
+            const f = ii.value;
+            // Controlla che la formula abbia il formato corretto
+            if (!f.match(/S\((\d|[A-Z])\)/) && !f.match(/M\((\d|[A-Z])\)/)) {
+                ii.disabled = true;
+                ii.value = "";
+                return;
+            }
+            ii.value = "";
+            ii.disabled = true;
+            const iid = casella.id;
+            const r = iid.split("-")[0];
+            const c = iid.split("-")[1];
+            statoTabella[r - 1][c - 1] = String(f);
+            aggiornaTabella();
+        }
+
+        function crea() {
+            const r = document.getElementById("righe").value;
+            const c = document.getElementById("colonne").value;
+
+            // Se i valori sono fuori range il bottone non fa niente
+            if (r < MIN_RIGHE || r > MAX_RIGHE || 
+                c < MIN_COLONNE || c > MAX_COLONNE)
+                return;
+            // Rimuove il form iniziale
+            const divIniziale = document.getElementById("inizio");
+            divIniziale.remove();
+            // Crea la tabella
+            creaTabella(r, c);
+            // Crea il campo per l'inserimento delle formule
+            const ii = document.createElement("input");
+            ii.setAttribute("type", "text");
+            ii.id = "ing";
+            ii.addEventListener("change", leggiFormula);
+            ii.disabled = true;
+            const dd = document.createElement("div");
+            dd.id = "ingresso";
+            dd.appendChild(ii);
+            const b = document.getElementsByTagName("body")[0];
+            b.appendChild(dd);
+        }
+
+        // Setta i listener
+        function init() {
+            const cb = document.getElementById("creabtn");
+            cb.addEventListener("click", crea);
+            document.addEventListener("keydown", () => {premuto = true;});
+            document.addEventListener("keyup", () => {premuto = false;});
+        }
+
+        document.addEventListener("DOMContentLoaded", init);
+    </script>
+</head>
+
+<body>
+    <div id="inizio">
+        <label>Quante righe?</label><input id="righe" type="number" min="1" max="26" required>
+        <label>Quante colonne?</label><input id="colonne" type="number" min="1" max="9" required>
+        <button type="button" id="creabtn">Crea</button>
+    </div>
+</body>
+
+</html>
