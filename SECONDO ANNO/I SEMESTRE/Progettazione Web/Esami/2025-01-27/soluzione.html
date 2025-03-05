@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2025-01-27</title>
+    <style>
+        #contenitore {
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+        }
+        #dati {
+            background-color: lightblue;
+            padding: 1em;
+        }
+        label {
+            margin: 1rem;
+        }
+        input:invalid {
+            background-color: rgb(231, 171, 171);
+        }
+        #griglia {
+            width: fit-content;
+            height: fit-content;
+            padding: 3rem;
+            background-color: lightgray;
+        }
+        table {
+            margin: auto;
+            padding: 1em;
+            font-size: xx-large;
+            font-family: monospace;
+            border-collapse: collapse;
+        }
+        td {
+            width: 2em;
+            height: 2em;
+            border: 1px solid black;
+            text-align: center;
+        }
+        td.libero {
+            background-color: aquamarine;
+        }
+        td.occupato {
+            background-color: grey;
+        }
+        td.colpito {
+            background-color: red;
+        }
+        #lista {
+            padding: 2em;
+            background-color: yellow;
+            min-height: 3rem;
+        }
+    </style>
+    <script>
+        'use strict';
+        const DIM = 6;
+        const NUM_NAVI = 5;
+        const punteggi = [];
+        let navi = [];
+        let nome;
+        let naviAffondate;
+        let numColpi;
+
+        function mescolaArray(ar, quanti) {
+            for(let i=0; i<quanti; i++){
+                let j = i + Math.floor(Math.random() * (ar.length-i));
+                [ar[i], ar[j]] = [ar[j], ar[i]];
+            }
+        }
+
+        function posizionaNavi(){
+            for(let n=0; n<DIM*DIM; n++) navi.push(n);
+            mescolaArray(navi, NUM_NAVI);
+            navi = navi.slice(0, NUM_NAVI);
+        }
+
+        function controlla(r, c) {
+            for(let n of navi)
+                if (r*DIM + c ===  n) {
+                    return -1;
+                }
+            let conta = 0;    
+            let rstart = r-1 >= 0 ? r-1 : 0;
+            let rend = r+1 < DIM ? r + 1 : DIM-1; 
+            let cstart = c-1 >= 0 ? c-1 : 0;
+            let cend = c+1 < DIM ? c + 1 : DIM-1; 
+            for(let x=rstart; x<=rend; x++){
+                for(let y=cstart; y<=cend; y++) {
+                    if(x===r && y===c) continue;
+                    for(let n of navi)
+                        if (x*DIM + y ===  n) {
+                            conta++;
+                    } 
+                }
+            }
+            return conta;
+        }
+
+        function stampaPunteggi() {
+            const ol = document.getElementById('lista');
+            while(ol.firstChild)
+                ol.removeChild(ol.firstChild);
+            for (let x of punteggi) {
+                const li = document.createElement("li");
+                li.textContent = x.punti + ": " + x.nome;
+                ol.appendChild(li);
+            }
+        }
+        
+        function spara(e) {
+            numColpi++;
+            let id = e.target.id;
+            let [riga, colonna] = id.split('|');
+            riga = Number(riga);
+            colonna = Number(colonna);
+            let r = controlla(riga, colonna);
+            if(r === -1) {
+                e.target.classList = 'colpito';
+                naviAffondate++;
+            } else {
+                e.target.classList = 'occupato';
+                if(r>0)
+                    e.target.textContent = r;
+            }
+            e.target.removeEventListener('click', spara);
+            if(naviAffondate === NUM_NAVI)
+                fine();
+        }
+
+        function visualizzaGriglia() {
+            const tab = document.createElement("table");
+            for (let i = 0; i < DIM; i++) {
+                const r = document.createElement("tr");
+                tab.appendChild(r);
+                for (let j = 0; j < DIM; j++) {
+                    const t = document.createElement("td");
+                    r.appendChild(t);
+                    t.id = i + "|" + j;
+                    t.addEventListener('click', spara);
+                    t.classList = 'libero';
+                }
+            }
+            const newdiv = document.createElement('div');
+            newdiv.id = 'griglia';
+            newdiv.appendChild(tab);
+            document.body.appendChild(newdiv);
+            posizionaNavi();
+        }
+
+        function fine() {
+            punteggi.push({nome: nome,
+                           punti: numColpi
+            });
+            punteggi.sort((a, b) => {return a.punti-b.punti});
+            const g = document.getElementById('griglia');
+            g.remove();
+            const d = document.getElementById('contenitore');
+            d.style.display = 'flex';
+            const l = document.getElementById('lista');
+            while(l.firstChild)
+                l.removeChild(l.firstChild);
+            for(let x of punteggi){
+                const li = document.createElement('li');
+                li.textContent = x.punti + ": " + x.nome;
+                l.appendChild(li);
+            }
+            naviAffondate = 0;
+            numColpi = 0;
+        }
+
+        function gioca() {
+            nome = document.getElementById('nome').value;
+            const dd = document.getElementById('contenitore');
+            dd.style.display = 'none';
+            visualizzaGriglia();
+        }
+
+        function valido(e){
+            const g = document.getElementById('gioca');
+            if(e.target.checkValidity()) {
+                g.addEventListener('click', gioca);
+                g.disabled = false;
+            } else {
+                g.removeEventListener('click', gioca);
+                g.disabled = true;
+            }
+        }
+
+        function inizializza() {
+            naviAffondate = 0;
+            numColpi = 0;
+            const n = document.getElementById('nome');
+            n.addEventListener('input', valido);
+        }
+        document.addEventListener("DOMContentLoaded", inizializza);
+    </script>
+</head>
+<body>
+    <div id="contenitore">
+        <div id="dati">
+            <label>Nome</label><input type="text" id="nome" required pattern="^[A-Z][a-z]{2,7}$">
+            <button id="gioca" disabled>Gioca</button>
+        </div>
+        <ul id="lista">
+        </ul>
+    </div>
+</body>
+</html>

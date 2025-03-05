@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2025-02-12</title>
+    <style>
+        body {
+            display: flex;
+        }
+        #griglia {
+            background-color: lightblue;
+            width: fit-content;
+            height: fit-content;
+        }
+        #tt {
+            font-weight: bold;
+        }
+        #classifica {
+            background-color: lightgoldenrodyellow;
+            width: fit-content;
+            text-align: left;
+            padding: 3rem;
+            font-size: 2rem;
+        }
+        #dati {
+            width: fit-content;
+            height: fit-content;
+            background-color: lightgreen;
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+        label {
+            font-weight: bold;
+        }
+        label,button,input {
+            margin: 10px;
+        }
+        input:invalid {
+            background-color: orange;
+        }
+        .cella {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+        }
+        .cella.rosso {
+            background-color: red;
+        }
+        .cella.giallo {
+            background-color: yellow;
+        }
+        #fine {
+            font-size: 90pt;
+            color: rgb(50, 0, 200, 0.7);
+            position: absolute;
+        }
+    </style>
+    <script>
+        'use strict';
+        const NUM_RIGHE = 6;
+        const NUM_COLONNE = 7;
+        const punteggi = {};
+        let contaPedine = 0;
+        let turno = 'rosso';
+        let nomeRosso, nomeGiallo;
+
+        function visualizzaGriglia() {
+            const tab = document.createElement("table");
+            for (let i = 0; i < NUM_RIGHE; i++) {
+                const r = document.createElement("tr");
+                tab.appendChild(r);
+                for (let j = 0; j < NUM_COLONNE; j++) {
+                    const t = document.createElement("td");
+                    r.appendChild(t);
+                    t.dataset.i = i 
+                    t.dataset.j = j;
+                    t.classList = 'cella';
+                }
+            }
+            const gr = document.getElementById('griglia');
+            gr.appendChild(tab);
+        }
+
+        function controllaVittoria(colore, riga, colonna) {
+            if (controllaDirezione(riga, colonna, 1, 0, colore) || 
+                controllaDirezione(riga, colonna, 0, 1, colore) || 
+                controllaDirezione(riga, colonna, 1, 1, colore) || 
+                controllaDirezione(riga, colonna, 1, -1, colore)) { 
+                    const nome = colore === 'rosso' ? nomeRosso : nomeGiallo;
+                    mostraMessaggio(`${nome} vince`);
+                    if (punteggi[nome]) punteggi[nome]++;
+                    else punteggi[nome] = 1;
+                    return true;
+                }
+            return false;
+        }
+
+        function controllaDirezione(row, col, rowDir, colDir, color) {
+            let conta = 0;
+            for (let i = -3; i <= 3; i++) {
+                const r = row + i * rowDir;
+                const c = col + i * colDir;
+                const cella = document.querySelector(`.cella[data-i='${r}'][data-j='${c}']`);
+                if (cella && cella.classList.contains(color)) {
+                    conta++;
+                    if (conta === 4) return true;
+                } else {
+                    conta = 0;
+                }
+            }
+            return false;
+        }
+
+        function mostraMessaggio(m){
+            const p = document.createElement('p');
+            p.textContent = m;
+            p.id = 'fine';
+            document.body.appendChild(p);
+            setTimeout(() => {
+                document.body.removeChild(p);
+                document.getElementById('griglia').innerHTML = '';
+                visualizzaPunti();
+                gioca();
+            }, 2000);
+        }
+
+        function premuto(e){
+            if (e.key >= 1 && e.key <= 7) {
+                const colonna = e.key - 1;
+                const celle = document.querySelectorAll('.cella');
+                for (let i = NUM_RIGHE - 1; i >= 0; i--) {
+                    const cella = celle[colonna + i * NUM_COLONNE];
+                    if (!cella.classList.contains('rosso') && !cella.classList.contains('giallo')) {
+                        contaPedine++;
+                        cella.classList.add(turno);
+                        if(controllaVittoria(turno, i, colonna))
+                            document.removeEventListener('keydown', premuto);
+                        else if (contaPedine === NUM_RIGHE * NUM_COLONNE) {
+                            mostraMessaggio("Pareggio");
+                            document.removeEventListener('keydown', premuto);
+                            return;
+                        }
+                        if(turno === 'rosso') turno = 'giallo';
+                        else turno = 'rosso';
+                        break;
+                    }
+                }
+            }
+        }
+        function visualizzaPunti() {
+            document.getElementById("rosso").textContent = `${nomeRosso}: ${punteggi[nomeRosso] || 0}`;
+            document.getElementById("giallo").textContent = `${nomeGiallo}: ${punteggi[nomeGiallo] || 0}`;
+        }
+
+        function gioca(){
+            turno = 'rosso';
+            contaPedine = 0;
+            nomeRosso = document.getElementById("giocatore1").value;
+            nomeGiallo = document.getElementById("giocatore2").value;
+            visualizzaGriglia();
+            visualizzaPunti();
+            document.getElementById("classifica").style.display = "block";
+            document.getElementById("dati").style.display = "none";
+            document.addEventListener('keydown', premuto);
+        }
+
+        function controlla() {
+            let ok1 = true, ok2 = true, ok3 = true;
+            const giocatore1 = document.getElementById("giocatore1");
+            const giocatore2 = document.getElementById("giocatore2");
+            if (!giocatore1.value.match(/^[a-zA-Z]{3,5}$/)) {
+                giocatore1.setCustomValidity("Nome invalido");
+                ok1 = false;
+            } else giocatore1.setCustomValidity("");
+            if (!giocatore2.value.match(/^[a-zA-Z]{3,5}$/)) {
+                giocatore2.setCustomValidity("Nome invalido");
+                ok2 = false;
+            } else giocatore2.setCustomValidity("");
+            if (giocatore1.value == giocatore2.value) {
+                giocatore1.setCustomValidity("I nomi non possono essere uguali");
+                giocatore2.setCustomValidity("I nomi non possono essere uguali");
+                ok3 = false;
+            } 
+            if (ok1 && ok2 && ok3) {
+                document.getElementById("gioca").disabled = false;
+                giocatore1.setCustomValidity("");
+                giocatore2.setCustomValidity("");
+            } else document.getElementById("gioca").disabled = true;
+        }
+
+        function inizializza() {
+            document.getElementById("gioca").addEventListener("click", gioca);
+            document.getElementById("gioca").disabled = true;
+            document.getElementById("giocatore1").addEventListener("input", controlla);
+            document.getElementById("giocatore2").addEventListener("input", controlla);
+            document.getElementById("classifica").style.display = "none";
+        }
+        document.addEventListener("DOMContentLoaded", inizializza);
+    </script>
+</head>
+<body>
+    <div id="dati">
+        <label>Rosso</label><input type="text" id="giocatore1" required>
+        <label>Giallo</label><input type="text" id="giocatore2" required>
+        <button id="gioca">Giochiamo</button>
+    </div>
+    <div id="griglia"></div>
+    <div id="classifica">
+        <p id="tt">Punti</p>
+        <p id="rosso"></p>
+        <p id="giallo"></p>
+    </div>
+</body>
+</html>
