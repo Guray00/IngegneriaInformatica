@@ -6,5 +6,5 @@ La numerazione corrisponde all'ordine in cui erano mostrate le pagine sul sito d
 La numerazione dei pdf in inglese corrisponde a quella dei pdf in italiano. Il pdf n°30 non era presente in italiano sul sito.\
 Nel caso i siti siano ancora attivi questi sono i link:\
 \
-https://andreamunafo.github.io/principles-of-automatic-controls/\
+https://andreamunafo.github.io/principles-of-automatic-controls/ \
 https://github.com/andreamunafo/principles-of-automatic-controls
