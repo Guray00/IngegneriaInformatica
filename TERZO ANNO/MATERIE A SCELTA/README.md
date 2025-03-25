@@ -12,4 +12,4 @@ Il Consiglio di CdS verificherà la coerenza delle attività scelte con il proge
 - **Tirocinio** (6CFU)
 
 ## Approfondimento
-Per maggiori informazioni si invita alla lettura di <a href="http://www.ifrax.it/faq-inginf/?id=21">questa pagina</a>.
+### <STRONG>Nota bene:</STRONG> gli esami a scelta non sono solo quelli proposti nella cartella. Esistono altre proposte per gli esami a scelta, per maggiori informazioni si invita alla lettura di <a href="http://www.ifrax.it/faq-inginf/?id=21">questa pagina</a>.
