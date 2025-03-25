@@ -195,6 +195,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 [Marco Lampis](https://github.com/Guray00)<br>
 [Giovanni Enrico Loni](https://github.com/genricoloni)<br>
 [Federico Nardi](https://github.com/fedenardii)<br>
+[Giuseppe Vaglica](https://github.com/giuse27)<br>
 [Lorenzo Valtriani](https://github.com/lorenzovaltriani)<br>
 
 **Collaboratori Materiale**
@@ -296,8 +297,9 @@ Giorgio Charles Sorrentini<br>
 Iacopo Stracca<br>
 Carmine Tranfa<br>
 Andrea Trasacco<br>
-Lorenzo Valtriani<br>
+Giuseppe Vaglica<br>
 Andrea Vagnoli<br>
+Lorenzo Valtriani<br>
 Alessandro Versari<br>
 Sandro Wu<br>
 Giulio Zingrillo<br>
