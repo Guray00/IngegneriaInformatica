@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game of Life</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="../js/lib/compressor.js" defer></script>
+        <script src="../js/lib/quadtree.js" defer></script>
+        <script src="../js/lib/canvas.js" defer></script>
+        <script src="../js/context/userDashboard.js" defer></script>
+        <script src="../js/context/authContext.js" defer></script>
+        <script src="../js/context/apiContext.js" defer></script>
+        <script src="../js/handlers.js" defer></script>
+        <script src="../js/globals.js" defer></script>
+    </head>
+    <body>
+        <h1>Conway's Game of Life</h1>
+        <canvas id="gameCanvas" width="800" height="800"></canvas>
+        <br>
+
+        <div class="user-dashboard">
+            <div id="signup-form" class="registration-form">
+                <h3>Register</h3>
+                <form
+                    onsubmit="authContext.handleSignup(event)"
+                >
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input
+                            type="text"
+                            id="signup-username"
+                            name="username"
+                            required
+                            pattern="^[A-Za-z0-9!#$%&*^_-~]{3,30}$"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input
+                            type="email"
+                            id="signup-email"
+                            name="email"
+                            required
+                            pattern="^[^@]+@[^@]+\.[^@]+$"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            id="signup-password"
+                            name="password"
+                            pattern="^[A-Za-z0-9!#$%&*^_-~]{6,30}$"
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="button secondary-button">
+                        Sign Up
+                    </button>
+                    <p>
+                        Already registered?
+                        <a href="#" onclick="userDashboard.showLoginForm()"
+                            >Log In</a
+                        >
+                    </p>
+                </form>
+            </div>
+
+            <div id="login-form" class="registration-form hidden">
+                <h3>Login</h3>
+                <form onsubmit="authContext.handleLogin(event)">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input
+                            type="text"
+                            id="login-username"
+                            name="username"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            id="login-password"
+                            name="password"
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="button secondary-button">
+                        Log In
+                    </button>
+                    <p>
+                        Not registered?
+                        <a href="#" onclick="userDashboard.showSignupForm()"
+                            >Sign up</a
+                        >
+                    </p>
+                </form>
+            </div>
+
+            <div id="user-profile" class="hidden">
+                <h3>Hello, <span id="user-name"></span>!</h3>
+                <p>Here are your saved boards:</p>
+                <div id="user-boards"></div>
+            </div>
+        </div>
+
+        <div class="controls-sidebar">
+            <div>
+                <h3>Navigate</h3>
+                <div class="buttons-container">
+                    <button
+                        class="icon-button"
+                        onclick="gameCanvas.moveBoard('left')"
+                    >
+                        <span class="material-icons">arrow_back</span>
+                    </button>
+                    <button
+                        class="icon-button"
+                        onclick="gameCanvas.moveBoard('right')"
+                    >
+                        <span class="material-icons">arrow_forward</span>
+                    </button>
+                    <button
+                        class="icon-button"
+                        onclick="gameCanvas.moveBoard('up')"
+                    >
+                        <span class="material-icons">arrow_upward</span>
+                    </button>
+                    <button
+                        class="icon-button"
+                        onclick="gameCanvas.moveBoard('down')"
+                    >
+                        <span class="material-icons">arrow_downward</span>
+                    </button>
+                </div>
+                <div class="buttons-container">
+                    <button class="icon-button" onclick="gameCanvas.zoomOut()">
+                        <span class="material-icons">zoom_out</span>
+                    </button>
+                    <button class="icon-button" onclick="gameCanvas.zoomIn()">
+                        <span class="material-icons">zoom_in</span>
+                    </button>
+                </div>
+            </div>
+            <div class="speed-control">
+                <label for="speedSlider">Simulation Speed</label>
+                <input
+                    type="range"
+                    id="speedSlider"
+                    min="1"
+                    max="25"
+                    value="10"
+                    onchange="gameCanvas.updateSpeed()"
+                >
+                <span id="speedValue">10</span>
+            </div>
+            <div class="to-bottom">
+                <button onclick="window.location.href='guide.html'" class="button accent-button">
+                    Go to Guide
+                </button>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <div>
+                <form id="saveForm" onsubmit="handleSaveBoard(event)">
+                    <label for="boardNameInput">Save board as:</label>
+                    <input
+                        type="text"
+                        id="boardNameInput"
+                        name="boardName"
+                        required
+                    >
+                    <button type="submit" class="icon-button secondary">
+                        <span class="material-icons">save</span>
+                    </button>
+                </form>
+            </div>
+            <div>
+                <button
+                    id="startStopButton"
+                    class="icon-button"
+                    onclick="gameCanvas.startStopGame(startStopButton)"
+                >
+                    <span id="startStopButtonIcon" class="material-icons"
+                        >play_arrow</span
+                    >
+                </button>
+                <button
+                    id="clearButton"
+                    class="icon-button"
+                    onclick="gameCanvas.clearBoard(startStopButton)"
+                >
+                    <span class="material-icons">delete</span>
+                </button>
+            </div>
+        </div>
+    </body>
+</html>

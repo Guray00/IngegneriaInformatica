@@ -1,0 +1,13 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.card-content * {
+    flex-wrap: wrap;
+}
+
+.card-date {
+    font-size: 0.8em;
+}
