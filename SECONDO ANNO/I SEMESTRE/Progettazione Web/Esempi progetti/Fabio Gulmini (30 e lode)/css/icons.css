@@ -1,0 +1,25 @@
+.icon-button .material-icons {
+    vertical-align: middle;
+}
+
+.icon-button {
+    background: transparent;
+    border: none;
+    margin: 10px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.5);
+    color: #00b38c;
+}
+
+.icon-button:hover {
+    color: #007bff;
+}
+
+.icon-button:focus {
+    outline: none;
+}

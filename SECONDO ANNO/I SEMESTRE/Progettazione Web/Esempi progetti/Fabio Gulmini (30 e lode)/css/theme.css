@@ -1,0 +1,59 @@
+body * {
+    font-family: "Space Mono", monospace;
+}
+
+canvas {
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+a {
+    color: #00b38c;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.button {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.secondary-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.secondary-button:hover {
+    background-color: #0056b3;
+}
+
+.accent-button {
+    background-color: #f12e5e;
+    color: white;
+}
+
+.accent-button:hover {
+    background-color: #b10031;
+}
+
+.secondary {
+    color: #007bff;
+}
+
+body {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #46455c;
+    color: #f0edff;
+    justify-content: center;
+    height: 90vh;
+}
+
+.to-bottom {
+    margin-top: 40px;
+}

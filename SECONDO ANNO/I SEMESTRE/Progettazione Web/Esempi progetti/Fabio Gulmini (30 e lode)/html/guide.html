@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Guide to Game of Life</title>
+    <link rel="stylesheet" href="../css/guide.css">
+</head>
+<body>
+    <h1>Guide to Conway's Game of Life</h1>
+    <p>
+        Conway's Game of Life is a cellular automaton devised by the British
+        mathematician John Horton Conway in 1970. It is a zero-player game, meaning
+        that its evolution is determined by its initial state, requiring no further
+        input. One interacts with the Game of Life by creating an initial
+        configuration and observing how it evolves.
+    </p>
+
+    <h2>Rules</h2>
+    <p>
+        The universe of the Game of Life is an infinite, two-dimensional orthogonal
+        grid of square cells, each of which is in one of two possible states, live
+        or dead. Every cell interacts with its eight neighbors, which are the cells
+        that are horizontally, vertically, or diagonally adjacent. At each step in
+        time, the following transitions occur:
+    </p>
+    <ul>
+        <li>
+            Any live cell with fewer than two live neighbors dies, as if by
+            underpopulation.
+        </li>
+        <li>
+            Any live cell with two or three live neighbors lives on to the next
+            generation.
+        </li>
+        <li>
+            Any live cell with more than three live neighbors dies, as if by
+            overpopulation.
+        </li>
+        <li>
+            Any dead cell with exactly three live neighbors becomes a live cell, as
+            if by reproduction.
+        </li>
+    </ul>
+
+    <h2>Getting Started</h2>
+    <p>
+        To start playing the Game of Life, you need to set up an initial
+        configuration of live and dead cells. This can be done manually or by using
+        a random configuration. Once the initial state is set, the game progresses
+        in steps, with each step applying the rules to every cell simultaneously.
+    </p>
+
+    <h2>Patterns</h2>
+    <p>
+        Over time, certain patterns may emerge in the Game of Life. Some of the most
+        well-known patterns include:
+    </p>
+    <ul>
+        <li>
+            <strong>Still lifes:</strong> These are patterns that do not change from
+            one generation to the next. Examples include the block, the beehive, and
+            the loaf.
+        </li>
+        <li>
+            <strong>Oscillators:</strong> These are patterns that return to their
+            initial state after a fixed number of generations. Examples include the
+            blinker, the toad, and the beacon.
+        </li>
+        <li>
+            <strong>Spaceships:</strong> These are patterns that translate
+            themselves across the grid. The most famous example is the glider.
+        </li>
+    </ul>
+
+    <h2>Features</h2>
+    <p>
+        In this website you can
+    </p>
+    <ul>
+        <li>
+            Create and simulate your Game of Life
+        </li>
+        <li>
+            Explore the infinite grid, and adjust for the simulation speed
+        </li>
+        <li>
+            Save your boards
+        </li>
+    </ul>
+    <button class="button accent-button" onclick="window.location.href='index.html'">
+        Back to the Game
+    </button>
+</body>
+</html>

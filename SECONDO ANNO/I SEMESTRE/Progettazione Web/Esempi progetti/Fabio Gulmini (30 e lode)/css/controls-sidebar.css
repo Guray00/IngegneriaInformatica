@@ -1,0 +1,33 @@
+.controls-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 20%;
+    background-color: #1a1a2e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.right-sidebar > * {
+    margin-bottom: 40px;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.buttons-container > * {
+    margin: 10px;
+    color: #f0edff;
+}
+
+.speed-control {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,12 @@
+.bottom-bar {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.bottom-bar > div {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 1em;
+    padding-right: 1em;
+}
