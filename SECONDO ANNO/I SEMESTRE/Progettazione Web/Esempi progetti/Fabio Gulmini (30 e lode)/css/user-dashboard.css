@@ -1,0 +1,52 @@
+.user-dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 20%;
+    background-color: #1a1a2e;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-group label {
+    font-size: 14px;
+}
+
+.form-group input {
+    display: block;
+    font-size: 16px;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 2px solid #77758e;
+    border-radius: 5px;
+    background-color: #f0edff;
+}
+
+.form-group input:invalid {
+    border: 2px solid #9e5067;
+}
+
+#welcome-message {
+    text-align: center;
+}
