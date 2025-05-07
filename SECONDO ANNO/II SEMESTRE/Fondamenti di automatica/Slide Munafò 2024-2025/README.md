@@ -8,6 +8,7 @@ Secondo l'esperienza dell'utente che sta caricando le slide (cioè io) sono pres
 * La lezione 1 non è stata caricata per mancanza di materiale, ma si tratta di una lezione introduttiva al corso.
 * La lezione 10 non è presente in quanto si tratta di un'esercitazione fatta alla lavagna.
 * La lezione 16.2 è stata scannerizzata a partire da slide a fondo blu, quindi include dettagli non troppo visibili, si prega di fare attenzione alle notazioni del prof.
+* La lezione 26 non è presente in quanto si tratta di un'esercitazione fatta alla lavagna.
 ## File aggiuntivi
 Il file "bicchi-fda1-text-selez" è un approfondimento dei concetti spiegati nelle prime lezioni, nonché fonte di alcuni concetti presentati nella prima parte di slide.<br><br>
 Il file "fda-lemma-pbh" è materiale aggiuntivo, non presente sul libro, ma fondamentale per lo studio di osservabilità e raggiungibilità.
