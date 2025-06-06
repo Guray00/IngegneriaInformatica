@@ -1,0 +1,30 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="64"
+    height="64"
+    viewBox="0 0 64 64"
+    preserveAspectRatio="meet"
+    fill="none">
+    
+    <ellipse cx="25" cy="42" rx="15" ry="8" fill="#FFD700" stroke="#B8860B" stroke-width="2"/>
+    <ellipse cx="25" cy="42" rx="15" ry="8" fill="#DAA520" opacity="0.5"/>
+    
+    <ellipse cx="22" cy="38" rx="15" ry="7" fill="#FFD700" stroke="#B8860B" stroke-width="2"/>
+    <ellipse cx="22" cy="38" rx="15" ry="7" fill="#DAA520" opacity="0.5"/>
+    
+    <ellipse cx="25" cy="34" rx="15" ry="6" fill="#FFD700" stroke="#B8860B" stroke-width="2"/>
+    <ellipse cx="25" cy="34" rx="15" ry="6" fill="#DAA520" opacity="0.5"/>
+    
+    <ellipse cx="27" cy="30" rx="15" ry="5" fill="#FFD700" stroke="#B8860B" stroke-width="2"/>
+    <ellipse cx="27" cy="30" rx="15" ry="5" fill="#DAA520" opacity="0.5"/>
+    
+    <ellipse cx="25" cy="26" rx="15" ry="5" fill="#FFD700" stroke="#B8860B" stroke-width="2"/>
+    <ellipse cx="25" cy="26" rx="15" ry="5" fill="#DAA520" opacity="0.5"/>
+
+    <ellipse cx="27" cy="22" rx="15" ry="5" fill="#FFD700" stroke="#B8860B" stroke-width="2"/>
+    <ellipse cx="27" cy="22" rx="15" ry="5" fill="#DAA520" opacity="0.5"/>
+
+
+    <ellipse cx="55" cy="-20" rx="15" ry="7" fill="#FFD700" stroke="#B8860B" stroke-width="2" transform="rotate(60)"/>
+    <ellipse cx="55" cy="-20" rx="15" ry="7" fill="#DAA520" opacity="0.5" transform="rotate(60)"/>
+</svg>

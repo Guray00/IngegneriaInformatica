@@ -1,0 +1,206 @@
+.menu-page, .image-page, .username-page, .password-page, .delete-page{
+    aspect-ratio: 1/1;
+    height: 60%;
+
+    display: grid;
+    grid-template-columns: 1fr;
+
+    align-items: center;
+    justify-items: center;
+
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.menu-page *, .image-page *, .username-page *, .password-page *, .delete-page *{
+    margin: 0;
+}
+
+.menu-page p, .image-page p, .username-page p, .password-page p, .delete-page p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-space{
+    margin: 0px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    position: relative;
+    width: 80%;
+    height: 100%;
+    border-bottom: 1px solid rgb(80, 80, 80);
+}
+
+.menu-space:last-child{
+    border-bottom: none;
+}
+
+.menu-page :not(#deleteAccount){
+    color: #e0e0e0;
+    transition: transform ease-in-out;
+}
+.menu-page #deleteAccount{
+    color: red;
+    transition: transform ease-in-out;
+}
+.menu-page p:hover{
+    transform: scale(1.25);
+    cursor: pointer;
+}
+
+.username-page, .image-page, .password-page{
+    grid-template-rows: 1fr 3fr;
+}
+
+.image-page .header, .username-page .header, .password-page .header, .delete-page .header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #e0e0e0;
+}
+
+.image-page *, .username-page .header *, .delete-page p{
+    color: #e0e0e0;
+    margin: 0;
+    text-align: center;
+}
+
+.delete-page .header h2{
+    color: red;
+}
+
+.header h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.menu-space form{
+    display: grid;
+    width: 100%;
+    margin: 0;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.password-page form{
+    grid-template-rows: 2fr 2fr 1fr !important;
+}
+
+.delete-page form{
+    display: flex !important;
+    align-content: space-around !important;
+    justify-content: space-between !important;
+
+}
+
+.menu-space form .choose-box{
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    row-gap: 10px;
+    width: 100%;
+    height: 100%;
+    justify-items: center;
+    align-items: center;
+}
+
+.image-option {
+    display: inline-block;
+    cursor: pointer;
+    width: 75%;
+}
+.image-option img {
+    height: auto;
+    width: 80%;
+    border: none !important;
+    margin: 0 auto;
+}
+
+.image-page input[type="radio"]{
+    display: none;
+}
+
+.image-page label img {
+    cursor: pointer;
+}
+
+.image-page input[type="radio"]:checked + label img {
+    border-radius: 100%;
+    border: solid 1px rgba(46, 204, 113, 1);
+    box-shadow: 0 0 15px rgba(46, 204, 113, 1);
+}
+
+
+.menu-space form>*{
+    flex: 0 0 45%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-space form input[type="text"],
+.menu-space form input[type="password"],
+.menu-space form .password-container{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.menu-space .password-container .toggle-password{
+    opacity: 0.25;
+    transition: all ease-in-out;
+}
+
+.menu-space .password-container .toggle-password:hover{
+    opacity: 1;
+    text-shadow:
+    -1px -1px 0 #1e1e1e,
+     1px -1px 0 #1e1e1e,
+    -1px  1px 0 #1e1e1e,
+     1px  1px 0 #1e1e1e;
+}
+
+.menu-space form label{
+    text-align: center;
+}
+
+.menu-space form .button-holder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.delete-page b{
+    display: contents;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.delete-page #submit:not(:disabled){
+    background-color: red;
+    transition: all ease-in-out;
+}
+
+.delete-page #submit:hover:not(:disabled), .delete-page #submit:focus:not(:disabled){
+    background-color: rgb(140, 0, 0);
+    animation: delete-shake 1.5s ease-in-out infinite;
+}
+
+@keyframes delete-shake {
+    0%   { transform: translateX( 0px); }
+    25%  { transform: translateX(-5px); }
+    50%  { transform: translateX( 5px); }
+    75%  { transform: translateX(-5px); }
+    100% { transform: translateX( 0px); }
+}

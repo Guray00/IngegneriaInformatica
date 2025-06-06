@@ -1,0 +1,155 @@
+body{
+    padding-bottom: 0px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.intro {
+    display: flex;
+    align-items: stretch;
+    background-image: url("./../../images/png/battaglia.png");
+    background-size: cover;
+    padding: 10vh;
+}
+
+.context {
+    background-color: rgba(30, 30, 30, 0.8);
+    border-radius: 15pt 15pt 150pt 15pt;
+    padding: 1.5vw;
+    width: 50%;
+}
+
+.infos {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5vw;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.slider-btn {
+    background: #1f1f1f;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vw;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.slider-btn:hover {
+    background: rgb(60, 60, 60);
+}
+
+#slider-img {
+    width: 70%;
+    height: 90%;
+    border-radius: 15pt;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    background: #222;
+}
+
+
+.info {
+    background-color: rgba(30, 30, 30, 0.8);
+    border-radius: 15pt;
+    padding: 1.5vw;
+    width: 50%;
+    height: 40vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr;
+    align-items: center;
+    justify-items: center;
+}
+.info p{
+    text-align: center;
+    margin: 1vh;
+}
+
+h2{
+    margin: 0px;
+}
+h2 i{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+h3{
+    text-align: center;
+}
+
+.module-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    padding: 20px;
+    min-width: min-content;
+    width: 25%;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.module-container *{
+    margin: 0px;
+}
+.module-container form{
+    display: grid;
+    align-items: center; 
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    row-gap: 20px;
+}
+
+.module p{
+    color: white;
+}
+#errorMessages{
+    opacity: 0;
+    visibility: hidden;
+}
+
+p.error-message {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
+
+footer.footer{
+    position: relative;
+    box-sizing: border-box;
+    bottom: 0px;
+    align-self: baseline;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 20px;
+    width: 100%;
+}
+
+/* @media (max-width: 900px) {
+    .infos {
+        flex-direction: column;
+        align-items: center;
+    }
+    .slider, .info {
+        width: 100% !important;
+    }
+    .slider-wrapper {
+        flex-direction: row;
+    }
+} */

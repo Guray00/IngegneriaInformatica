@@ -1,0 +1,19 @@
+<svg 
+    xmlns="http://www.w3.org/2000/svg"
+    class="css/user-pic"
+    width="64"
+    height="64"
+    viewBox="0 0 64 64"
+    stroke="currentColor"
+    stroke-width="2"
+    color="#b8860b"
+    fill="rgba(30, 30, 30, 0.8)"
+>
+    <circle cx="32" cy="32" r="30" stroke-width="2" fill="rgba(202, 70, 9, 1)"/>
+
+    <text x="14" y="52" font-family="Comic Sans MS" stroke="#B8860B" fill="#edbe10" font-size="48"
+    >
+        T
+    </text>
+    
+</svg>

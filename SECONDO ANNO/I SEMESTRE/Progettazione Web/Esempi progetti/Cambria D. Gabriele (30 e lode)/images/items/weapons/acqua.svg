@@ -1,0 +1,27 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="64"
+    height="64"
+    viewBox="0 0 64 64"
+    fill="none"
+    stroke="#1f1f1f"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    >
+    
+    <polygon points="28,10 32,5 36,10 36,36 28,36" fill="#44A1A0"/>
+    <polygon points="28,10 32,5 32,10" x="29" y="10" stroke="none" fill="#78CDD7" />
+    <rect width="3" height="26" stroke="none" fill="#78CDD7" x="29" y="10" />
+
+    <polygon points="28,10 32,5 36,10 36,36 28,36" fill="#none"/>
+
+    <path d="M40 36 C24 36 25 32 24 36" fill="#78CDD7" stroke-width="1"/>
+    <path d="M24 37 C40 36 25 32 40 37" fill="#44A1A0" stroke-width="1"/>
+    <path d="M24 37 C44 36 38 32 40 37" fill="#78CDD7" stroke-width="1"/>
+    <rect x="24" y="37" width="16" height="1" fill="#0D5C63"/>
+    
+    <rect x="29" y="38" width="6" height="12" fill="#8b4513"/>
+    
+    <circle cx="32" cy="53" r="4" fill="#0D5C63"/>
+</svg>

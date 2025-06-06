@@ -1,0 +1,234 @@
+.shop-page{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+    align-items: stretch;
+	width: 66%;
+	aspect-ratio: 2 / 1;
+    background-color: rgb(100, 149, 237);
+    border: double 10pt rgb(11, 85, 158);
+    border-radius: 15pt;
+}
+
+.shop-container{
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+	justify-content: flex-start;
+    gap: 15%;
+    width: 72.5%;
+	height: 100%;
+    margin: 20px;
+}
+
+.shop-slots{
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 10px;
+
+	width: 80%;
+	height: fit-content(100%);
+	align-self: center;
+	margin: 20px;
+}
+
+.timer-container {
+    display: flex;
+    justify-content: center; 
+    width: 100%;
+}
+
+.timer{
+	grid-column: span 5;
+	margin: 0px;
+	height: max-content;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: xx-large;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.shop-slot{
+	margin: 0px;
+    aspect-ratio: 3 / 4;
+    position: relative;
+    display: flex;
+	flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+	width: 100%;
+    background-color: rgb(173, 216, 230);
+
+    border-radius: 15pt;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.shop-slot img{
+    display: block;
+    aspect-ratio: 1 / 1;
+    width: 80%;
+    transition: transform 0.15s ease-in-out;
+}
+
+.shop-slot img:hover{
+    transform: scale(1.1);
+}
+
+.shop-slot div{
+	background-color: rgba(202, 70, 9, 0.9);
+    color: #edbe10; 
+    border: none; 
+	width: 75%;
+    margin: 0px;
+	padding: 4%;
+	text-align: center;
+    border-radius: 5px; 
+    font-size: large;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+	font-weight: bold;
+}
+
+#shop-info{
+    width: 27.5%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr 0.5fr 1fr min-content;
+    justify-content: space-between;
+    align-items: stretch;
+    row-gap: 5px;
+    margin: 10px 20px 10px 10px;
+    padding: 5pt;
+    border-radius: 15pt;
+    border: groove 2pt rgb(66, 139, 213);
+    background-color: rgb(173, 216, 230);
+
+    text-align: center;
+    vertical-align: middle;
+    color: black;
+}
+
+#shop-info>*{
+    width: 100%;
+}
+
+#shop-info header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#shop-info p{
+    text-align: center;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#shop-info header p:first-child{
+    font-size: large;
+    font-weight: bold;
+}
+
+#shop-info header p:last-child{
+    font-size: 12px;
+    font-style: italic;
+}
+
+#shop-info figure{
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+#shop-info img{
+    aspect-ratio: 3 / 4;
+    width: 50%;
+    border: solid 1pt black;
+    box-shadow: inset 0px 0px 5px black;
+    border-radius: 100%;
+}
+
+#shop-info figcaption{
+    font-size: 12px;
+    font-style: italic;
+    height: 12px;
+}
+
+#shop-info .description{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-self: center;
+    overflow-wrap: break-word;
+    white-space: normal;
+    font-size: small;
+}
+
+#shop-info main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+}
+
+#shop-info table{
+    width: 100%;
+    margin: 2px 0px;
+    align-items: stretch;
+    background-color: rgb(173, 216, 176);
+    border-radius: 15pt;
+    border: none;
+    border-collapse: collapse;
+    box-shadow: inset 0px 0px 5px black;
+}
+
+#shop-info td:first-child{
+    width: 75%;
+    text-align: left;
+    border-right:  solid 1pt black;
+    padding-left: 10pt;
+}
+
+#shop-info td{
+    text-align: center;
+    padding: 2pt;
+    font-size: 14px;
+}
+
+
+#shop-info tr:nth-child(2){
+    border-top: 1pt solid black;
+    border-bottom: 1pt solid black;
+}
+
+#shop-info footer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+#shop-info button{
+    padding: 5%;
+    margin: 0pt;
+    width: 100%;
+    height: 100%;
+
+}
+
+#buy-btn{
+    background-color: #2ecc71;
+    transition: background-color 0.3s;
+}
+
+#buy-btn:hover, #buy-btn:focus{
+    background-color: #27ae60;
+}

@@ -1,0 +1,218 @@
+.inventory-page{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 66%;
+    aspect-ratio: 2 / 1;
+    background-color: rgb(222, 184, 135);
+    border: double 10pt rgb(131, 103, 67);
+    border-radius: 15pt;
+}
+
+.inventory-container{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+
+    width: 72.5%;
+    height: fit-content(100%);
+    align-self: center;
+    margin: 20px;
+}
+
+.item-slot{
+    aspect-ratio: 1 / 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+    background-color: rgb(255, 255, 224);
+    cursor: pointer;
+    border-radius: 15pt;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.item-slot.newItem{
+    outline: solid 3pt rgba(46, 204, 112, 1);
+    outline-offset: -3pt;
+}
+
+.item-slot img:not(svg *){
+    display: block;
+    aspect-ratio: 1 / 1;
+    width: 80%;
+    transition: transform 0.15s ease-in-out;
+}
+
+.item-slot img:hover{
+    transform: scale(1.1);
+}
+
+.item-count{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    height: 1em;
+    top: 1%;
+    right: 7%;
+    background-color: rgba(128, 128, 128);
+    padding: 2%;
+    border-radius: 25%;
+    text-align: center;
+    text-shadow:
+        -1px -1px 0 #1e1e1e,
+         1px -1px 0 #1e1e1e,
+        -1px  1px 0 #1e1e1e,
+         1px  1px 0 #1e1e1e;
+}
+
+#inventory-info{
+    width: 27.5%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr 0.5fr 1fr min-content;
+    justify-content: space-between;
+    align-items: stretch;
+    row-gap: 5px;
+    margin: 10px 20px 10px 10px;
+    padding: 5pt;
+    border-radius: 15pt;
+    border: groove 2pt rgb(196, 196, 145);
+    background-color: rgb(255, 255, 224);
+
+    text-align: center;
+    vertical-align: middle;
+    color: black;
+}
+
+#inventory-info>*{
+    width: 100%;
+}
+
+#inventory-info header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#inventory-info p{
+    text-align: center;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#inventory-info header p:first-child{
+    font-size: large;
+    font-weight: bold;
+}
+
+#inventory-info header p:last-child{
+    font-size: 12px;
+    font-style: italic;
+}
+
+#inventory-info figure{
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+#inventory-info img{
+    aspect-ratio: 3 / 4;
+    width: 50%;
+    border: solid 1pt black;
+    box-shadow: inset 0px 0px 5px black;
+    border-radius: 100%;
+}
+
+#inventory-info figcaption{
+    font-size: 12px;
+    font-style: italic;
+    height: 12px;
+}
+
+#inventory-info .description{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-self: center;
+    overflow-wrap: break-word;
+    white-space: normal;
+    font-size: small;
+}
+
+#inventory-info .main-info-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+}
+
+#inventory-info table{
+    width: 100%;
+    margin: 2px 0px;
+    align-items: stretch;
+    background-color: rgb(255, 255, 200);
+    border-radius: 15pt;
+    border: none;
+    border-collapse: collapse;
+    box-shadow: inset 0px 0px 5px black;
+}
+
+#inventory-info td:first-child{
+    width: 75%;
+    text-align: left;
+    border-right:  solid 1pt black;
+    padding-left: 10pt;
+}
+
+#inventory-info td{
+    text-align: center;
+    padding: 2pt;
+    font-size: 14px;
+}
+
+
+#inventory-info tr:nth-child(2){
+    border-top: 1pt solid black;
+    border-bottom: 1pt solid black;
+}
+
+#open{
+    width: 100%;
+    height: 80%;
+    background-color: rgba(46, 204, 112, 1);
+}
+
+#inventory-info footer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+#inventory-info button{
+    padding: 5%;
+    margin: 0pt;
+    width: 100%;
+    height: 100%;
+
+}
+
+#sell-btn{
+    background-color: #e74c3c;
+    transition: background-color 0.3s;
+}
+
+#sell-btn:hover, #sell-btn:focus{
+    background-color: #a93226;
+}

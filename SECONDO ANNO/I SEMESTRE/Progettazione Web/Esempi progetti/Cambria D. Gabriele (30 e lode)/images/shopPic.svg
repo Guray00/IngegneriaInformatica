@@ -1,0 +1,15 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="64"
+    height="64"
+    viewBox="0 0 64 64"
+    fill="none"
+    stroke="#1f1f1f"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+    <!-- Bag body (trapezoid) -->
+    <path d="M16 24 L48 24 L56 60 H8 L16 24 Z" fill="#5dade2"/>
+    <!-- Bag handles -->
+    <path d="M24 24V16a8 8 0 0 1 16 0v8" fill="none"/>
+</svg>

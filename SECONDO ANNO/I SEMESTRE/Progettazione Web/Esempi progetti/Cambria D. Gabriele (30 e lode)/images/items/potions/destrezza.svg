@@ -1,0 +1,41 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="64"
+    height="64"
+    viewBox="0 0 64 64"
+    fill="none"
+    stroke="#1f1f1f"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+    
+    <rect width="14" height="2" x="25" y="9"/>
+    <path d="M25 25
+             L21 32 L23 46
+			 L28 51 L36 51
+			 L41 46 L43 32
+			 L37 25"
+             stroke-width="0"
+             fill="#ff008c"/>
+
+    <path d="M27 11
+             L27 23
+             L21 32 L23 46
+			 L28 51 L36 51
+			 L41 46 L43 32
+			 L37 23
+             L37 11 Z"
+             fill="rgba(133,182,192,0.6)"/>
+
+	<line x1="27.5" x2="36.5" y1="18" y2="18" stroke="#E0CA3C" />
+
+    <path d="M27 11
+             L27 23
+             L21 32 L23 46
+			 L28 51 L36 51
+			 L41 46 L43 32
+			 L37 23
+             L37 11 Z"
+             fill=""/>
+	
+</svg>

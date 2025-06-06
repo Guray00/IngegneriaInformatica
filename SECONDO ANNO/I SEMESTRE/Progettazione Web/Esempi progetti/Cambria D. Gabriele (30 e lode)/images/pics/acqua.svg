@@ -1,0 +1,23 @@
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 64 64"
+   fill="none"
+   stroke="#1f1f1f"
+   stroke-width="2"
+   stroke-linecap="round"
+   stroke-linejoin="round"
+   version="1.1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+
+  	<circle cx="32" cy="32" r="30" stroke-width="2" fill="#44a1a0"/>
+
+  	<path fill="#78cdd7" stroke-width="0.5"
+	d="m 21.965752,15.267434 c 0,0 6.920948,1.633235 12.304496,4.428775 3.158785,1.640277 7.026277,6.110468 8.862097,9.18764 3.168265,5.310593 5.106433,11.57463 0.542579,16.767223 -4.622678,4.375518 -17.393862,3.674078 -20.964989,-0.945085 -0.443709,-0.573926 -0.89237,-1.687983 -1.015069,-2.404174 -0.374088,-2.183546 0.703019,-3.808431 2.133131,-5.431839 2.132021,-2.420189 5.369535,-6.721037 5.877651,-9.891505 0.591447,-3.690428 -0.640169,-8.154031 -7.739896,-11.711035 z" transform="translate(-1.6558862,-1.3247089)" />
+
+  	<ellipse fill="#b6cdd7" stroke-width="0" ry="5.3945246" rx="3.9042273" cy="14.938911" cx="54.410194" transform="rotate(30.606226)"/>
+</svg>

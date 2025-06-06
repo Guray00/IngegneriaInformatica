@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/global/style.css">
+	<link rel="stylesheet" href="css/pages/documentazione.css">
+	<title>Titles</title>
+</head>
+<body>
+	<header>
+        <h1><i>Titles</i></h1>
+        <aside>
+            <button id="indexBtn" onclick="window.location.href='index.php'">Torna all'indice</button>
+        </aside>
+    </header>
+	<main>
+        <p>Il gioco si basa su combattimenti nel classico stile <i>Pokémon&reg;</i>, ma con mosse, strumenti, statistiche e stile dei personaggi più vicino a giochi di ruolo, come ad esempio <i>Dungeons & Dragons&reg;</i>.</p>
+
+        <p>Creando un account è possibile creare fino ad un massimo di 5 personaggi con i quali giocare contro i personaggi (di livello al massimo di 1 più alto) degli altri utenti comandati da una <i>CPU</i>.</p>
+
+        <p>Ogni personaggio possiede le seguenti statistiche:</p>
+        <dl>
+        <dt>Nome</dt>
+        <dd>Il nome del personaggio</dd>
+        
+        <dt>Livello</dt>
+        <dd>Il livello del personaggio, che aumenta ogni volta che l'esperienza arriva a <b>100 punti</b>.<br>
+        Aumentare il livello del personaggio fornisce:
+        <ul>
+            <li><b>+40 monete</b></li>
+            <li><b>+3 PU</b>: sono i <i>Punti Upgrade</i>, utilizzabili per aumentare di un punto le statistiche del personaggio</li>
+            <li><b>1 box comune</b></li>
+        </ul>
+        </dd>
+        
+        <dt>Esperienza</dt>
+        <dd>L'esperienza accumulata dal personaggio tramite le partite giocate:
+        <ul>
+        <li>+5 per le sconfitte</li>
+        <li>+15 per le vittorie</li>
+        </ul>
+        </dd>
+        
+        <dt>Punti Ferita (PF)</dt>
+        <dd>I punti ferita del personaggio, che determinano la sua salute.<br>
+        Alla creazione il personaggio ha <b>50 PF</b>.</dd>
+
+        <dt>Forza (FOR)</dt>
+        <dd>La forza del personaggio, che determina il danno inflitto secondo la <a href="#tabellaDanniSchivata">tabella dei danni</a>.</dd>
+        
+        <dt>Destrezza (DES)</dt>
+        <dd>La destrezza del personaggio, che determina la probabilità del personaggio di schivare un attacco. È calcolata secondo la <a href="#tabellaDanniSchivata">tabella della schivata</a>.</dd>
+        
+        <dt>Elemento</dt>
+        <dd>L'elemento del personaggio, a scelta tra 5 (<i>acqua</i>, <i>fuoco</i>, <i>terra</i>, <i>aria</i>, <i>elettro</i>) ognuno che fornisce bonus e malus fissi al personaggio secondo la <a href="#tabellaElementi">tabella degli elementi</a>.<br>
+        Tra gli elementi esiste il concetto di <b>prevalenza</b>. Quando un'elemento prevale su un altro, il danno inflitto dal personaggio aumenta di <b>1 punto</b>, mentre la probabilità di schivare del personaggio <b>prevalso</b> viene <u>dimezzata</u>.<br>
+        In relazione agli strumenti esistono i concetti di:
+        <ul>
+            <li><b>Allineato</b>: l'elemento dello strumento è uguale a quello del personaggio</li>
+            <li><b>Opposto</b>: l'elemento dello strumento è quello che prevale su quello del personaggio</li>
+        </ul>
+        </dd>
+
+        <dt>Arma e Armatura</dt>
+        <dd>Determininano rispettivamente il danno inflitto e la diminuzione del danno subito, come descritto dalla <a href="#tabellaArmi">tabella delle armi</a> e dalla <a href="#tabellaArmature">tabella delle armature</a>.<br>
+        È possibile ottenerle comprandole dallo <i>shop</i> o aprendo delle <i>box</i>.<br>
+        Hanno i seguenti effetti di <i>allineamento</i>:
+       <ul>
+           <li>Se l'elemento dell'arma è <i>allineato</i> a quello del personaggio, il danno inflitto aumenta di <b>1 punto</b>, mentre se opposto fornisce <i>prevalenza</i> anche sull'elemento stesso del personaggio.</li>
+           <li>Se l'elemento dell'armatura è <i>allineato</i> a quello del personaggio, la diminuzione del danno subito aumenta di <b>1 punto</b>, mentre se è <i>opposto</i> rimuove gli effetti della <i>prevalenza</i> dell'avversario.</li>
+       </ul> 
+       </dd>
+
+        <dt>Zaino</dt>
+        <dd>Lo zaino del personaggio che può contenere fino a 3 oggetti assegnati dall'inventario dell'account, che possono essere utilizzati in battaglia al posto dell'attacco per fornire dei <i>buff</i> alle statistiche.<br>
+        È possibile ottenere questi oggetti comprandoli dallo <i>shop</i> o aprendo delle <i>box</i>.<br>
+        Le statistiche degli oggetti attualmente presenti sono consultabili dalla <a href="#tabellaPozioni">tabella degli delle pozioni</a>.</dd>
+        </dl>
+
+        <p>Ogni account ha un suo <i>inventario</i> nel quale può conservare fino a 40 oggetti diversi prima di assegnarli ai vari personaggi o venderli in cambio di monete per metà del loro valore.</p>
+        <p>Ogni account ha a disposizione un suo personale <i>Negozio</i>, dove può acquistare oggetti e strumenti per i suoi personaggi. Il negozio si aggiorna <b>ogni 3 minuti</b>.</p>
+
+        <p>Le box si differenziano in <i>box comuni</i> e <i>box rare</i> e contengono quanto scritto nella <a href="#tabellaBox">tabella delle box</a>.</p>
+	</main>
+	<hr>
+    <footer>
+        <div class="grid">
+        <table id="tabellaDanniSchivata">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>FOR - Danni</th>
+                    <th>DES - % schivata</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>-10/-9</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td>-8/-7</td>
+                    <td>1</td>
+                    <td>10%</td>
+                </tr>
+                <tr>
+                    <td>-6/-5</td>
+                    <td>2</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>-4/-3</td>
+                    <td>3</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>-2/-1</td>
+                    <td>4</td>
+                    <td>25%</td>
+                </tr>
+                <tr>
+                    <td>+0/+1</td>
+                    <td>5</td>
+                    <td>30%</td>
+                </tr>
+                <tr>
+                    <td>+2/+3</td>
+                    <td>6</td>
+                    <td>35%</td>
+                </tr>
+                <tr>
+                    <td>+4/+5</td>
+                    <td>7</td>
+                    <td>40%</td>
+                </tr>
+                <tr>
+                    <td>+6/+7</td>
+                    <td>8</td>
+                    <td>45%</td>
+                </tr>
+                <tr>
+                    <td>+8/+9</td>
+                    <td>9</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>+10</td>
+                    <td>10</td>
+                    <td>60%</td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="tabellaElementi">
+        <thead>
+            <tr>
+                <th>Elementale</th>
+                <th>FOR</th>
+                <th>DES</th>
+                <th>PF</th>
+                <th>Totale</th>
+                <th>Prevale</th>
+                <th>Prevalsa da</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Acqua</th>
+                <td>-3</td>
+                <td>+2</td>
+                <td>+5</td>
+                <td>+4</td>
+                <td>Fuoco</td>
+                <td>Elettro</td>
+            </tr>
+            <tr>
+                <th>Fuoco</th>
+                <td>+4</td>
+                <td>+3</td>
+                <td>-3</td>
+                <td>+4</td>
+                <td>Aria</td>
+                <td>Acqua</td>
+            </tr>
+            <tr>
+                <th>Terra</th>
+                <td>+0</td>
+                <td>-2</td>
+                <td>+6</td>
+                <td>+4</td>
+                <td>Elettro</td>
+                <td>Aria</td>
+            </tr>
+            <tr>
+                <th>Elettro</th>
+                <td>+6</td>
+                <td>+0</td>
+                <td>-2</td>
+                <td>+4</td>
+                <td>Acqua</td>
+                <td>Terra</td>
+            </tr>
+            <tr>
+                <th>Aria</th>
+                <td>-1</td>
+                <td>+6</td>
+                <td>-1</td>
+                <td>+4</td>
+                <td>Terra</td>
+                <td>Fuoco</td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+        <table id="tabellaArmi">
+        <thead>
+            <tr>
+                <th colspan="8">Informazioni sulle armi</th>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Elemento</th>
+                <th>Tipologia</th>
+                <th>Costo</th>
+                <th>Danno</th>
+                <th>ModificatoreFor</th>
+                <th>ModificatoreDes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Spada d'Acqua</th>
+                <td>Una spada affilata e leggera.</td>
+                <td>Acqua</td>
+                <td>arma</td>
+                <td>20</td>
+                <td>6</td>
+                <td>2</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>Spada di Fuoco</th>
+                <td>Una spada infuocata.</td>
+                <td>Fuoco</td>
+                <td>arma</td>
+                <td>30</td>
+                <td>8</td>
+                <td>0</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>Mazza di Terra</th>
+                <td>Una mazza pesante e robusta.</td>
+                <td>Terra</td>
+                <td>arma</td>
+                <td>30</td>
+                <td>8</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th>Bastone Elettrico</th>
+                <td>Un bastone che emette elettricità.</td>
+                <td>Elettro</td>
+                <td>arma</td>
+                <td>25</td>
+                <td>7</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>Pugnale d'Aria</th>
+                <td>Un pugnale leggero e veloce.</td>
+                <td>Aria</td>
+                <td>arma</td>
+                <td>20</td>
+                <td>6</td>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+        </tbody>
+        </table>
+        <table id="tabellaArmature">
+        <thead>
+            <tr>
+                <th colspan="8">Informazioni sulle armature</th>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Elemento</th>
+                <th>Tipologia</th>
+                <th>Costo</th>
+                <th>Armatura</th>
+                <th>ModificatoreFor</th>
+                <th>ModificatoreDes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Armatura d'Acqua</th>
+                <td>Leggera e impermeabile.</td>
+                <td>Acqua</td>
+                <td>armatura</td>
+                <td>40</td>
+                <td>4</td>
+                <td>-1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th>Armatura di Fuoco</th>
+                <td>Resistente al calore.</td>
+                <td>Fuoco</td>
+                <td>armatura</td>
+                <td>40</td>
+                <td>4</td>
+                <td>0</td>
+                <td>-1</td>
+            </tr>
+            <tr>
+                <th>Armatura di Terra</th>
+                <td>Robusta e pesante.</td>
+                <td>Terra</td>
+                <td>armatura</td>
+                <td>45</td>
+                <td>5</td>
+                <td>-1</td>
+                <td>-2</td>
+            </tr>
+            <tr>
+                <th>Armatura Elettrica</th>
+                <td>Robusta e conduttiva.</td>
+                <td>Elettro</td>
+                <td>armatura</td>
+                <td>45</td>
+                <td>5</td>
+                <td>-2</td>
+                <td>-1</td>
+            </tr>
+            <tr>
+                <th>Armatura d'Aria</th>
+                <td>Leggera e flessibile.</td>
+                <td>Aria</td>
+                <td>armatura</td>
+                <td>35</td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+        </table>
+        <table id="tabellaPozioni">
+        <thead>
+            <tr>
+                <th colspan="7">Informazioni sulle pozioni</th>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Tipologia</th>
+                <th>Costo</th>
+                <th>RecuperoVita</th>
+                <th>ModificatoreFor</th>
+                <th>ModificatoreDes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Pozione di Vita</th>
+                <td>Ripristina 20 PF.</td>
+                <td>pozione</td>
+                <td>15</td>
+                <td>20</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th>Pozione di Energia</th>
+                <td>Ripristina 10 PF.</td>
+                <td>pozione</td>
+                <td>10</td>
+                <td>10</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th>Pozione di Forza</th>
+                <td>Aumenta la forza temporaneamente di 3 punti.</td>
+                <td>pozione</td>
+                <td>8</td>
+                <td>0</td>
+                <td>3</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th>Pozione di Destrezza</th>
+                <td>Aumenta la destrezza temporaneamente di 3 punti.</td>
+                <td>pozione</td>
+                <td>8</td>
+                <td>0</td>
+                <td>0</td>
+                <td>3</td>
+            </tr>
+        </tbody>
+        </table>
+        <table id="tabellaBox">
+        <thead>
+            <tr>
+                <th colspan="4">Informazioni sulle box</th>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Tipologia</th>
+                <th>Costo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Box Comune</th>
+                <td>Contiene monete, pozione, 2 oggetti (armi e/o armature).</td>
+                <td>box</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <th>Box Rara</th>
+                <td>Contiene monete, 2 pozioni, 2 armi e 2 armature.</td>
+                <td>box</td>
+                <td>100</td>
+            </tr>
+        </tbody>
+        </table>
+    </footer>    
+
+
+</body>
+</html>

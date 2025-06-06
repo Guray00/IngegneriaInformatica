@@ -1,0 +1,87 @@
+body{
+	overflow-y: scroll;
+	font-family: sans-serif;
+}
+
+main, footer{
+	padding: 0px 2vw;
+	font-size: 2.5vh;
+}
+dl{
+	list-style-type: none;
+	padding: 0px;
+}
+dt{
+	font-weight: bold;
+	font-size: larger;
+	position: relative;
+	margin: 1vh 0vw;
+	padding-left: 1vw;
+}
+
+dt::before{
+	content: "•";
+	position: absolute;
+	left: 0px;
+	padding-left: 0.20vw;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+dl ul{
+	margin: 0px;
+}
+
+.grid{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0.5vw;
+	margin: 2vh 0vw;
+}
+
+table{
+	padding: 1vh 2vw;
+	box-sizing: border-box;
+	position: relative;
+	width: 100%;
+	border-collapse: collapse;
+	border: 1pt solid #f1f1f1;
+	border-radius: 50%;
+}
+
+table th{
+	padding: 0.5vw;
+	text-align: center;
+}
+
+table thead th{
+	border: solid 2px #1e1e1e;
+	background-color: #f1f1f1;
+	color: #000000;
+}
+
+table tbody th{
+	text-decoration: underline;
+}
+
+table th[colspan]{
+	border-top: double 5pt #1e1e1e;
+	font-size: larger;
+}
+
+table tr:nth-child(2n){
+	background-color: #f9f9f9f0 !important;
+	color: #1e1e1e;
+}
+
+td{
+	text-align: center;
+}
+
+tr:nth-child(2n) td, tbody tr:nth-child(2n) th{
+	border: 1pt solid black;
+}
+
+tr:nth-child(2n+1) td, tbody tr:nth-child(2n+1) th{
+	border: 1pt solid white;
+}

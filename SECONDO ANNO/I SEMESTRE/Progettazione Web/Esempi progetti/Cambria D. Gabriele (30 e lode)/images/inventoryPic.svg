@@ -1,0 +1,26 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="64"
+    height="64"
+    viewBox="0 0 64 64"
+    fill="none"
+    stroke="#1f1f1f"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    >
+
+    <polygon points="8,24 24,8 56,8 40,24" fill="#c19a6b" />
+
+    <line x1="8" x2="56" y1="24" y2="8"/>
+    <line x1="24" x2="40" y1="8" y2="24"/>
+
+    <polygon points="8,24 40,24 40,56 8,56" fill="#b58a5b" />
+    <line x1="8" x2="40" y1="24" y2="56"/>
+    <line x1="8" x2="40" y1="56" y2="24"/>
+
+    <polygon points="40,24 56,8 56,40 40,56" fill="#8f673c" />
+
+    <line x1="40" x2="56" y1="56" y2="8"/>
+    <line x1="56" x2="40" y1="40" y2="24"/>
+</svg>

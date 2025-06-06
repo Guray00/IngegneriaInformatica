@@ -1,0 +1,31 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="64"
+    height="64"
+    viewBox="0 0 64 64"
+    fill="none"
+    stroke="#1f1f1f"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    >
+    <path d="M32 5 L39 7 L45 14 L44 25 L40 32 
+             L35 38 L29 38 
+             L24 32 L20 25 L19 14 L25 7 Z" fill="#644f2c"/>
+
+    <path d="M32 5 L34 7 L41 14 L40 25 L38 32 
+             L35 38 L29 38 
+             L26 32 L24 25 L23 14 L30 7 Z" fill="rgba(132,113,79,0.544)" stroke="none"/>
+
+    <path d="M32 5 L32 7 L35 14 L36 25 L35 32 
+             L33 38 L31 38 
+             L29 32 L28 25 L29 14 L32 7 Z" fill="rgba(132,113,79,0.544)" stroke="none"/>
+
+    <rect x="29" y="38" width="6" height="12" fill="#8b4513"/>
+    <path d="M32 5 L39 7 L45 14 L44 25 L40 32 
+             L35 38 L29 38 
+             L24 32 L20 25 L19 14 L25 7 Z" fill="none" />
+    <rect x="30" y="38" width="4" height="1" fill="#31231e" stroke="#31231e"/>
+    
+    <circle cx="32" cy="53" r="4" fill="#5a3a31"/>
+</svg>

@@ -1,0 +1,27 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="64"
+    height="64"
+    viewBox="0 0 64 64"
+    fill="none"
+    stroke="#1f1f1f"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+
+    <rect x="29" y="10" width="6" height="48" fill="#f0fb3e" />
+    
+    <path 
+     fill="#ffcc00" stroke-width="0"
+     d="M29 20 C32 25 32 52 35 48 V58 H29 Z"/>
+
+    <path d="M35 17 L32 10
+             M29 15 L33 19 L31 23 L35 29
+             M35 31 L29 35
+             M35 37 L30 42 L33 44 L29 50
+             M35 54 L31 58"
+        stroke-width="0.75"
+        stroke="#5ADBFF"/>
+
+    <rect x="29" y="10" width="6" height="48"/>
+</svg>

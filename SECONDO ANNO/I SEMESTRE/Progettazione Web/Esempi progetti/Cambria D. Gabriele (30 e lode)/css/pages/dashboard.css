@@ -1,0 +1,242 @@
+.content{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    height: 86vh;
+}
+
+.top-section {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    padding: 10px 20px;
+    height: fit-content(100%);
+    position: static;
+}
+
+img.clickable {
+    cursor: pointer;
+    height: fit-content(100%);
+}
+
+.coin-display {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(202, 70, 9, 0.9);
+    border-radius: 10px;
+    height: min-content;
+    margin: 5px;
+    padding: 0px 10px;
+    color: #edbe10;
+    border: solid 2pt #b8860b;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#coin-count{
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: "Comic Sans MS", sans-serif;
+
+}
+
+.user-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 20px 0;
+}
+.user-pic{
+    /* background-color: white; */
+    border: solid 2pt rgba(30, 30, 30);
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    transform: translateY(25%);
+}
+.user-pic img{
+    width: 100%;
+
+}
+.username-box {
+    background-color: rgba(30, 30, 30, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    color: #e0e0e0;
+    width: 50%;
+    text-align: center;
+}
+
+.username-box p{
+    font-size: xx-large;
+    font-weight: bolder;
+    margin: 10px;
+}
+
+.character-inventory {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.action-buttons button {
+    margin: 10px 0; /* Spazio tra i pulsanti */
+}
+
+.main-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+    row-gap: 1em;
+}
+
+.button{
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    min-width: fit-content(100%);
+    width: 75%;
+    height: 2em;
+    padding: 10px;
+    border-radius: 15px;
+    border-width: 2pt;
+    border-style: solid;
+    font-size: xx-large;
+}
+
+.button img{
+    max-width: 100%;
+    height: auto;
+
+}
+.button p{
+    width: 70%;
+    margin: 10px;
+    text-align: center;
+}
+.inventory-button{
+    background-color: rgb(210, 180, 140);
+    border-color: #d7a057;
+    color: #121212;
+}
+.inventory-button:hover{
+    background-color: rgb(185, 160, 125);
+    transform: scale(1.05);
+}
+
+.shop-button{
+    background-color: rgb(52, 152, 219);
+    border-color: #2475ab;
+}
+.shop-button:hover{
+    background-color: rgb(38, 127, 186);
+    transform: scale(1.05);
+}
+
+/**** Personaggi ****/
+
+.character-list{
+    min-width: fit-content(100%);
+    width: 40%;
+    height: 15em;
+    background-color: rgba(243, 218, 116, 0.75);
+    border: solid 2pt #845913;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    overflow-y: auto;
+}
+
+.character-item{
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #845913;
+    padding: 0px 10px;
+}
+
+.character-item p{
+    margin: 0px;
+}
+
+.character-item:last-child{
+    border-bottom: none;
+}
+
+.pg-info-block{
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15%;
+}
+
+.pg-info-block img{
+    height: 2.8em;
+}
+
+.pg-name-box{
+    font-size: x-large;
+}
+
+.pg-lvl-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: fit-content(100%);
+    padding: 0px 10px;
+    row-gap: 3px;
+}
+
+.pg-exp-bar{
+    height: 2px;
+    width: 100%;
+    background-color: white;
+    padding: 0px;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+.pg-exp-points{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(100, 149, 237);
+}
+
+#add-character {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(216, 177, 86, 0.5);
+    cursor: pointer;
+    border-top: 1px solid #845913;
+}
+

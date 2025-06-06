@@ -1,0 +1,17 @@
+<svg 
+    xmlns="http://www.w3.org/2000/svg"
+    class="css/user-pic"
+    width="64"
+    height="64"
+    viewBox="0 0 64 64"
+    stroke="currentColor"
+    stroke-width="2"
+    color="rgba(30, 30, 30)"
+    fill="rgba(30, 30, 30, 0.8)"
+>
+    <circle cx="32" cy="32" r="30" stroke-width="2" fill="white"/>
+    
+    <circle cx="32" cy="20" r="12" fill="rgba(30, 30, 30, 0.8)" />
+
+    <path d="M10 52 Q32 20 54 52 Q32 72 10 52" fill="rgba(30, 30, 30, 0.8)" stroke="currentColor" stroke-width="2" />
+</svg>

@@ -1,0 +1,213 @@
+*{
+	user-select: none;
+}
+
+body {
+    font-family: "Comic Sans MS", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+    position: relative;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+body>header {
+    font-family: "Comic Sans MS", sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e;
+    color: white;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    height: 14vh;
+}
+
+button{
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    margin: 0px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+    font-size: 16px;
+    transition: background-color 0.3s !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+button:hover, button:focus{
+    background-color: #3498db;
+}
+
+button:disabled {
+    background-color: #444;
+    color: #888;
+    cursor: default;
+    opacity: 0.6;
+    box-shadow: none;
+}
+
+button:disabled:hover, button:disabled:focus{
+    background-color: #444;
+    color: #888;
+}
+
+a{
+    color: #2980b9;
+    cursor: pointer;
+}
+
+a:hover{
+    color: #3498db;
+}
+
+*.caricamento{
+    cursor: progress !important;
+}
+
+.module {
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.show{
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.module p, .module figure *, .module table *{
+    color: black;
+}
+.module form label {
+    display: block;
+    color: #e0e0e0;
+}
+
+.module form input[type="text"],
+.module form input[type="password"] {
+    width: fit-content(100%);
+    padding: 10px;
+    border-radius: 5px;
+    color: #e0e0e0;
+}
+
+.module form input#username:invalid,
+.module form input#password:invalid,
+.module form input.invalid {
+    border: 1px solid #e74c3c;
+    background-color: rgba(231, 76, 60, 0.1);
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
+
+.module form input#username:valid,
+.module form input#password:valid,
+.module form input.valid{
+    border: 1px solid #2ecc71;
+    background-color: rgba(46, 204, 113, 0.1);
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
+}
+
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"]{
+    flex: 1;
+    margin: 0;
+    line-height: 1;
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    right: 10px;
+    padding: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #2980b9;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    box-shadow: none;
+}
+
+.password-container .toggle-password:hover {
+    color: #3498db;
+    text-shadow:
+        -1px -1px 0 #1e1e1e,
+         1px -1px 0 #1e1e1e,
+        -1px  1px 0 #1e1e1e,
+         1px  1px 0 #1e1e1e;
+}
+
+
+.messaggio {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1e1e1e;
+    box-shadow: 0px 0px 5px 5px whitesmoke;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    text-align: center;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.messaggio.errore{
+    background-color: rgb(214, 49, 31);
+    text-align: center;
+    font-weight: bold;
+}
+
+.messaggio.gioco{
+    color: #121212;
+    background-color: #f1c40f;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*
+Elementi Arancioni
+background-color: #e67e22;
+:hover #d35400;
+
+Elementi marrone chiaro
+color: #121212; // testo scuro per contrasto //
+background-color: #d2b48c;
+:hover #c19a6b;
+
+Elementi azzurri
+background-color: #2980b9;
+:hover #3498db;
+
+Elementi verde chiaro
+background-color: #2ecc71;
+:hover #27ae60;
+
+Elementi giallo chiaro 
+color: #121212; // testo scuro per contrasto //
+background-color: #f1c40f;
+:hover  #f39c12;
+*/
