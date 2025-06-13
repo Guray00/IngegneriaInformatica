@@ -12,7 +12,7 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 
 Gli studenti di Ingegneria Informatica dell'Università di Pisa utilizzano una Community WhatsApp: sono presenti circa trenta gruppi (gruppi generali e gruppi degli insegnamenti specifici), più una bacheca che viene utilizzata per comunicare le notizie più importanti. 
 - **[Community WhatsApp Ingegneria Informatica (principale e più utilizzato)](https://chat.whatsapp.com/JJsJBSWCb0kCsUq9HkqbOo)**
-- **[Gruppo matricole A.A.2025-2026](https://chat.whatsapp.com/Lx7DISLdAZpLrEB1w1L1ez)** (gruppo già creato, verrà inserito prossimamente all'interno della Community)
+- **[Gruppo matricole A.A.2025-2026](https://chat.whatsapp.com/Lx7DISLdAZpLrEB1w1L1ez)** (gruppo inserito all'interno della Community)
 
 Vi invitiamo a diffidare in generale verso gruppi non creati da studenti del corso di laurea, o addirittura da persone non iscritte all'Università di Pisa. L'accesso ai gruppi indicati è libero e non richiede il rilascio di informazioni o l'obbligo di seguire profili social!
 
