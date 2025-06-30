@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TileTide - User Guide</title>
+    <link rel="stylesheet" href="./css/guide.css">
+</head>
+<body>
+    <h1>TileTide User Guide</h1>
+
+    <div class="section">
+
+        <strong>NOTA PER L'ESAMINATORE:</strong> Nel database è presente un account demo con le credenziali:
+        <ul>
+            <li><strong>username:</strong> test</li>
+            <li><strong>password:</strong> testtest</li>
+        </ul>
+
+        <h2>What is TileTide?</h2>
+        <p>TileTide is a web-based implementation of the <strong>Wave Function Collapse (WFC)</strong> algorithm, a powerful procedural generation technique used in game development, art, and design. It generates infinite, coherent patterns based on a small input sample you provide.</p>
+
+        <div class="feature-list">
+            <h3>Key Features:</h3>
+            <ul>
+                <li>Visual tile-based pattern editor</li>
+                <li>Real-time Wave Function Collapse simulation</li>
+                <li>Adjustable generation speed and step-by-step control</li>
+                <li>Save and load your custom tilesets</li>
+                <li>Wrapping options for seamless patterns</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>How Wave Function Collapse Works</h2>
+        <p>Wave Function Collapse is inspired by quantum mechanics. TileTide uses the <strong>overlapping model</strong>, which creates seamless patterns by analyzing overlapping regions. Here's how it works:</p>
+
+        <div class="step">
+            <strong>1. Pattern Extraction:</strong> The algorithm extracts all possible NxN patterns from your input (where N is your "Tile Length"). These patterns can overlap, sharing pixels between adjacent patterns.
+        </div>
+
+        <div class="step">
+            <strong>2. Adjacency Analysis:</strong> It determines which patterns can be placed next to each other by checking if their overlapping regions match perfectly. This creates strict compatibility rules.
+        </div>
+
+        <div class="step">
+            <strong>3. Superposition & Collapse:</strong> The output starts with every cell containing all possible patterns (superposition). The algorithm picks the most constrained cell and randomly selects one pattern, "collapsing" it.
+        </div>
+
+        <div class="step">
+            <strong>4. Constraint Propagation:</strong> Each collapse removes incompatible patterns from neighboring cells, creating a cascade effect that maintains consistency across overlapping regions. Note the constraint propagation can only act on local patterns, so the algorithm may get stuck if there are contradictions. <strong>Solving Wave Function Collapse deterministically would be NP-complete.</strong>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Getting Started</h2>
+
+        <h3>1. Creating Your First Pattern</h3>
+        <p>When you first load TileTide, you'll see a default 4x4 pattern. To create your own:</p>
+
+        <ol>
+            <li>Use the color palette in the left panel to paint your desired pattern on the main canvas</li>
+            <li>Adjust the input grid size using the "Rows" and "Columns" controls (default: 10x10)</li>
+            <li>Set the "Tile size" - how many pixels make up one tile for analysis (default: 3, range: 1-10)</li>
+            <li>Configure wrapping options if you want seamless patterns:
+                <ul>
+                    <li>Check "Wrap Rows" for vertical seamless tiling</li>
+                    <li>Check "Wrap Columns" for horizontal seamless tiling</li>
+                </ul>
+            </li>
+            <li>Click <strong>"TRY"</strong> to switch to Wave Mode and start the generation</li>
+        </ol>
+
+        <div class="tip">
+            <strong>Pattern Design Tips:</strong>
+            <ul>
+                <li>Ensure your pattern has clear, consistent adjacency rules</li>
+                <li>Avoid isolated single pixels - they can cause generation failures</li>
+                <li>Test with wrapping enabled for seamless textures</li>
+                <li>Smaller tile lengths (2-3) work better for detailed patterns</li>
+                <li>Larger tile lengths (4-5) work better for broader, simpler patterns</li>
+                <li>The entropy bar shows generation progress - lower entropy means more determined</li>
+                <li>You can adjust the output size (up to 300x300) independently of your input pattern size</li>
+            </ul>
+        </div>
+
+        <h3>2. Running the Wave Function Collapse</h3>
+        <p>In Wave Mode, you can control the generation process:</p>
+
+        <ul>
+            <li><strong>PLAY Button:</strong> Start automatic generation</li>
+            <li><strong>PAUSE Button:</strong> Pause the generation</li>
+            <li><strong>STEP Button:</strong> Advance one step manually</li>
+            <li><strong>STOP Button:</strong> Reset and start over</li>
+            <li><strong>Speed Slider:</strong> Adjust the speed of the generation process</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Understanding the Interface</h2>
+
+        <p>TileTide has a three-panel layout with controls on the left, the main canvas in the center, and user account features on the right.</p>
+
+        <h3>Left Panel - Controls</h3>
+        <ul>
+            <li><strong>Save Section:</strong> Always visible at the top - enter a name and click SAVE to store your pattern</li>
+            <li><strong>Grid Mode Controls:</strong> Appear when editing your input pattern
+                <ul>
+                    <li>Color Grid: 16-color palette for painting</li>
+                    <li>Rows/Columns: Set input pattern dimensions</li>
+                    <li>Tile Length: Size of tiles for WFC analysis (1-10 pixels)</li>
+                    <li>Wrap Options: Enable wrapping for seamless patterns</li>
+                </ul>
+            </li>
+            <li><strong>Wave Mode Controls:</strong> Appear during generation
+                <ul>
+                    <li>Preview Grid: Small representation of your input pattern</li>
+                    <li>Rows/Columns: Set output generation size (1-300)</li>
+                    <li>Generation Controls: Play, pause, step, stop buttons</li>
+                    <li>Speed Slider: Control generation speed</li>
+                    <li>Entropy Progress: Shows generation progress</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Center Panel - Main Canvas</h3>
+        <ul>
+            <li><strong>Grid Mode:</strong> Shows your editable input pattern</li>
+            <li><strong>Wave Mode:</strong> Shows the Wave Function Collapse generation in progress</li>
+        </ul>
+
+        <h3>Right Panel - User Account</h3>
+        <ul>
+            <li><strong>Sign Up Form:</strong> Create a new account</li>
+            <li><strong>Login Form:</strong> Access existing account</li>
+            <li><strong>User Profile:</strong> Access saved patterns (when logged in)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>User Accounts & Saving</h2>
+
+        <p>TileTide includes a user system for saving and managing your patterns:</p>
+
+        <ol>
+            <li><strong>Sign Up:</strong> Create an account with a username and password</li>
+            <li><strong>Save Patterns:</strong> In Grid Mode, enter a name and click SAVE</li>
+            <li><strong>Load Patterns:</strong> Access your saved patterns from your user profile</li>
+            <li><strong>Share:</strong> Your patterns are saved on the server and can be accessed from any device</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>Troubleshooting Generation Failures</h2>
+        <p>If the wave function collapse fails (gets stuck), try:</p>
+        <ul>
+            <li>Simplifying your input pattern</li>
+            <li>Reducing the tile length</li>
+            <li>Ensuring your pattern has consistent adjacency rules</li>
+            <li>Adding more variety to avoid contradictions</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Example Use Cases</h2>
+
+        <ul>
+            <li><strong>Game Development:</strong> Generate terrain, building interiors, or dungeon layouts</li>
+            <li><strong>Art & Design:</strong> Create seamless textures and patterns</li>
+            <li><strong>Experimentation:</strong> Explore emergent patterns from simple rules</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>TileTide - Wave Function Collapse Pattern Generator</p>
+        <p><a href="./index.html">Back to TileTide</a></p>
+    </footer>
+</body>
+</html>

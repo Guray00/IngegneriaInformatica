@@ -1,0 +1,196 @@
+:root {
+    /* Base colors */
+    --bg-primary: #11111b;
+    --bg-secondary: #181825;
+    --bg-tertiary: #313244;
+    --text-primary: #cdd6f4;
+    --text-secondary: #585b70;
+    --border-primary: #585b70;
+    --border-secondary: #6c7086;
+
+    /* Accent colors */
+    --accent-blue: #89b4fa;
+    --accent-green: #a6e3a1;
+    --accent-yellow: #f9e2af;
+
+    /* Interactive states */
+    --hover-bg: var(--accent-blue);
+    --hover-text: var(--bg-primary);
+    --active-bg: var(--accent-green);
+    --active-text: var(--bg-primary);
+    --focus-color: var(--accent-blue);
+    --focus-shadow: rgba(137, 180, 250, 0.15);
+    --selected-border: var(--accent-yellow);
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.sidebar {
+    width: 25%;
+    background-color: var(--bg-secondary);
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#slate {
+    width: 50%;
+    background-color: var(--bg-primary);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.sidebar-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+progress {
+    width: 100%;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    background-color: var(--bg-secondary);
+}
+
+#wave-canvas{
+    background-color: var(--bg-primary);
+}
+
+#save-form {
+    margin-bottom: 15px;
+}
+
+#color-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto;
+    width: fit-content;
+}
+
+.color-cell {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border: 1px solid var(--border-secondary);
+}
+
+.color-selected {
+    border: 1px solid var(--selected-border);
+}
+
+.saves-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.save-card {
+    width: 150px;
+    word-wrap: break-word;
+}
+
+.save-name {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* Button styles */
+button {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-primary);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--hover-bg);
+    color: var(--hover-text);
+    border-color: var(--hover-bg);
+}
+
+button:active {
+    background-color: var(--active-bg);
+    color: var(--active-text);
+}
+
+button:disabled {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+}
+
+/* Link styles */
+a {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Input styles */
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-primary);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--focus-color);
+    box-shadow: 0 0 0 2px var(--focus-shadow);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Helper text styles */
+small {
+    color: var(--text-secondary);
+}
+
+/* Guide link positioning */
+.sidebar-footer {
+    margin-top: auto;
+    margin-bottom: 0;
+}
