@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TileTide</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="module" src="./js/index.js"></script>
+</head>
+<body>
+    <div id="controls" class="sidebar">
+        <h2>TileTide</h2>
+        <div id="save-form">
+            <input type="text" id="save-name-input" placeholder="Nome" required pattern="^[A-Za-z0-9\s!#$%&*^_\-~]{1,50}$">
+            <button id="save-button">SAVE</button>
+        </div>
+
+        <div id="wave-controls" class="sidebar-column" hidden>
+            <canvas id="grid-canvas" width="200" height="200"></canvas>
+
+            <div>
+                <label for="num-rows">Rows</label>
+                <input type="number" id="num-rows" min="1" max="300" value="20">
+                <label for="num-cols">Columns</label>
+                <input type="number" id="num-cols" min="1" max="300" value="20">
+            </div>
+
+            <div>
+                <button id="play-button">PLAY</button>
+                <button id="pause-button" disabled>PAUSE</button>
+                <button id="step-button" disabled>STEP</button>
+                <button id="stop-button" disabled>STOP</button>
+            </div>
+
+            <div>
+                <label for="speed-slider">Speed</label>
+                <input type="range" id="speed-slider" class="slider" min="0" max="1000" value="500">
+            </div>
+
+            <div>
+                <progress id="entropy-progress" class="slider" value="0" max="1"></progress>
+                <div id="entropy-display"></div>
+            </div>
+
+            <div id="wave-state-message"></div>
+        </div>
+
+        <div id="grid-controls" class="sidebar-column" hidden>
+            <div id="color-grid"></div>
+            <div>
+                <label for="grid-num-rows">Rows</label>
+                <input type="number" id="grid-num-rows" min="1" max="300" value="10">
+                <label for="grid-num-cols">Columns</label>
+                <input type="number" id="grid-num-cols" min="1" max="300" value="10">
+            </div>
+            <div>
+                <label for="tile-length">Tile size</label>
+                <input type="number" id="tile-length" min="1" max="10" value="3">
+            </div>
+            <div>
+                <label for="wrap-rows">Wrap Rows</label>
+                <input type="checkbox" id="wrap-rows">
+                <label for="wrap-cols">Wrap Columns</label>
+                <input type="checkbox" id="wrap-cols">
+            </div>
+            <button id="to-wave-button">TRY</button>
+        </div>
+        <p class="sidebar-footer">Don't know where to start? <a href="./guide.html">Read the guide</a></p>
+    </div>
+    <div id="slate">
+        <canvas id="wave-canvas" width="600" height="600"></canvas>
+    </div>
+    <div id="user-panel" class="sidebar">
+        <form id="signup-form" class="sidebar-column" hidden>
+            <h3>Signup</h3>
+            <label for="new-username">Username</label>
+            <small>3-30 characters: letters, numbers, and !#$%&*^_-~ only</small>
+            <input type="text" id="new-username" name="username" required pattern="^[A-Za-z0-9!#$%&*^_-~]{3,30}$" placeholder="New username">
+            <label for="new-password">Password</label>
+            <small>5-30 characters: letters, numbers, and !#$%&*^_-~ only</small>
+            <input type="password" id="new-password" name="password" required pattern="^[A-Za-z0-9!#$%&*^_-~]{5,30}$" placeholder="New password">
+            <button type="submit">Sign Up</button>
+            <p>Already have an account? <a href="#" id="show-login-button">Login</a></p>
+        </form>
+
+        <form id="login-form" class="sidebar-column" hidden>
+            <h3>Login</h3>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required pattern="^[A-Za-z0-9!#$%&*^_-~]{3,30}$" placeholder="Username">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Password">
+            <button type="submit">Login</button>
+            <p>Don't have an account? <a href="#" id="show-signup-button">Sign Up</a></p>
+        </form>
+
+        <div id="user-profile" hidden></div>
+    </div>
+</body>
+</html>
