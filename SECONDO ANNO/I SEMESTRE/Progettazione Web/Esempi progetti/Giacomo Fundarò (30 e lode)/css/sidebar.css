@@ -1,0 +1,37 @@
+#sidebar label {
+    font-size: 1em;
+    color: var(--text-color);
+}
+
+#sidebar input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent-color);
+    margin-bottom: 1em;
+}
+
+.slider-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-bottom: 1em;
+}
+
+.slider-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+#sidebar .slider-label-row label {
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+.slider-label-row .slider-value {
+  min-width: 2.5em;
+  text-align: right;
+  font-weight: bold;
+  color: var(--accent-color);
+  border-radius: 4px;
+}

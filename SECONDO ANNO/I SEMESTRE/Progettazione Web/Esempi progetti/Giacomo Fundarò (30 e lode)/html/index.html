@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Visualizer</title>
+    <link rel="stylesheet" href="../css/style.css" >
+    <script type="module" src="../js/main.js"></script>
+  </head>
+  
+  <body>
+    <!-- Form di registrazione -->
+    <div id="signup-form" class="registration-form hidden">
+      <h3>Register</h3>
+      <form onsubmit="authContext.handleSignup(event)">
+        <div class="form-group">
+          <label for="signup-username">Username</label>
+          <input
+            type="text"
+            id="signup-username"
+            name="username"
+            required
+            pattern="^[A-Za-z0-9!#$%&*^_-~]{3,30}$"
+          >
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input
+            type="email"
+            id="signup-email"
+            name="email"
+            required
+            pattern="^[^@]+@[^@]+\.[^@]+$"
+          >
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input
+            type="password"
+            id="signup-password"
+            name="password"
+            pattern="^[A-Za-z0-9!#$%&*^_-~]{6,30}$"
+            required
+          >
+        </div>
+        <button type="submit" class="button secondary-button">
+          Sign Up
+        </button>
+        <p>
+          Already registered?
+          <a href="#" id="showLoginLink">Log In</a>
+        </p>
+      </form>
+    </div>
+  
+    <!-- Form di login -->
+    <div id="login-form" class="registration-form hidden">
+      <h3>Login</h3>
+      <form onsubmit="authContext.handleLogin(event)">
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <input
+            type="text"
+            id="login-username"
+            name="username"
+            required
+          >
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input
+            type="password"
+            id="login-password"
+            name="password"
+            required
+          >
+        </div>
+        <button type="submit" class="button secondary-button">
+          Log In
+        </button>
+        <p>
+          Not registered?
+          <a href="#" id="showSignupLink">Sign up</a>
+        </p>
+      </form>
+    </div>
+    <header id="topbar">
+      <div class="topbar-left">
+        <div id="user-info" class="hidden">
+          <span id="user-username"></span>
+          <button id="browse-graphs-btn">Sfoglia Grafi</button>
+          <button id="logout-btn">Esci</button>
+        </div>
+        <div id="auth-buttons">
+          <button id="showLoginBtn" class="button secondary-button">Login</button>
+          <button id="showSignupBtn" class="button secondary-button">Register</button>
+        </div>
+      </div>
+      <div class="topbar-center">
+        <h1 id="main-title">Graph Visualizer</h1>
+      </div>
+      <div class="topbar-right">
+        <a href="guide.html" class="guide-link">Guida all'utilizzo</a>
+        <button id="themeToggle">🌙 Modalità Scura</button>
+      </div>
+    </header>
+  
+    <div id="main-container">
+      <aside id="sidebar">
+      
+        <div class="slider-label">
+          <div class="slider-label-row">
+            <label for="repulsionRange">Repulsione tra nodi:</label>
+            <span id="repulsionValue" class="slider-value"></span>
+          </div>
+          <input type="range" id="repulsionRange" min="0" max="100" value="50">
+        </div>
+      
+        <div class="slider-label">
+          <div class="slider-label-row">
+            <label for="attractionRange">Attrazione degli archi:</label>
+            <span id="attractionValue" class="slider-value"></span>
+          </div>
+          <input type="range" id="attractionRange" min="0" max="100" value="50">
+        </div>
+      
+        <div class="slider-label">
+          <div class="slider-label-row">
+            <label for="dampingRange">Smorzamento:</label>
+            <span id="dampingValue" class="slider-value"></span>
+          </div>
+          <input type="range" id="dampingRange" min="0" max="1000" value="0">
+        </div>
+        
+        <div id="sidebar-actions">
+          <button id="deleteBtn">❌ Elimina Nodi/Archi</button>
+          <button id="resetBtn">💣 Reset</button>
+        </div>
+        <div id="sidebar-bottom">
+          <button id="randomizeBtn">🔀 Randomizza</button>
+          <button id="optimizeBtn">⚡ Layout Ottimale</button>
+        </div>
+      </aside>
+    
+      <div id="canvas-container">
+        <canvas id="canvas"></canvas>
+      </div>
+    </div>
+  
+    <div class="promptBox" id="edgePrompt">
+      <label id="edgePromptLabel">
+        Lunghezza a riposo:
+        <input id="edgeWeightInput" type="number" min="1" step="1">
+      </label>
+      <button id="edgePromptOkBtn">OK</button>
+    </div>
+  
+    <div class="promptBox" id="nodePrompt">
+      <label id="nodePromptLabel">
+        Massa nodo:
+        <input id="nodeMassInput" type="number" min="1" step="1">
+      </label>
+      <button id="nodePromptOkBtn">OK</button>
+    </div>
+    
+    <div id="import-graphs-modal" class="modal hidden">
+      <div class="modal-content">
+        <span id="close-import-graphs" class="close">&times;</span>
+        <h3>Importa un grafo</h3>
+        <div class="graphs-container" id="import-graphs-container">
+          <!-- Card di salvataggio e altre card verranno inserite qui via JS -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

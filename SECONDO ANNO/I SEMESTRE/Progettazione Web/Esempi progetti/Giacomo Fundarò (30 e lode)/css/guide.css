@@ -1,0 +1,19 @@
+.guide-container {
+  max-width: 700px;
+  margin: 2em auto;
+  font-size: 1.1em;
+  text-align: justify;
+}
+.guide-container h1,
+.guide-container h2 {
+  color: #007acc;
+}
+.guide-container ul {
+  margin-bottom: 1.5em;
+}
+.guide-tip {
+  background: #e0f7fa;
+  border-left: 4px solid #007acc;
+  padding: 0.7em 1em;
+  margin: 1em 0;
+}

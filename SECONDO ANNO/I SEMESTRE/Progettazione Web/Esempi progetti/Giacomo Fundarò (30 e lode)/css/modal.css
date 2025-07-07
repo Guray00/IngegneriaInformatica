@@ -1,0 +1,90 @@
+.promptBox {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    left: auto;
+    transform: none;
+    background: #222;
+    color: #fff;
+    padding: 1.5em 2em;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px #0008;
+    display: none;
+    min-width: 260px;
+    font-size: 1.1em;
+    z-index: 1000;
+}
+
+.promptBox label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.promptBox input[type="number"] {
+    width: 90px;
+    padding: 0.3em 0.5em;
+    border-radius: 6px;
+    border: 1px solid #888;
+    font-size: 1em;
+    box-sizing: border-box;
+    text-align: right;
+    margin-left: 1em;
+}
+
+.promptBox button {
+    margin-top: 1em;
+    width: 100%;
+    font-size: 1.1em;
+    background: var(--accent-color);
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    padding: 0.6em 0;
+    cursor: pointer;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.4);
+}
+
+.modal.hidden { display: none; }
+
+.modal-content {
+  background: #fff;
+  padding: 2em 2.5em;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px #0003;
+  min-width: 350px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+body.dark-mode .modal-content {
+  background: #232323;
+  color: #eee;
+}
+
+.close {
+  position: absolute;
+  top: 0.7em;
+  right: 1em;
+  font-size: 2em;
+  color: #888;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.close:hover { color: #d33; }

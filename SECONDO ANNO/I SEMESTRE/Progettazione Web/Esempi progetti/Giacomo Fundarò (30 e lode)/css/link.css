@@ -1,0 +1,17 @@
+.guide-link {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: underline;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  background: none;
+  border: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.guide-link:hover,
+.guide-link:focus {
+  color: #e0f7fa;
+  background: rgba(255,255,255,0.10);
+  text-decoration: none;
+}

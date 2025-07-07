@@ -1,0 +1,73 @@
+button {
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--accent-color);
+    color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+    transform: scale(1.04);
+    outline: none;
+}
+
+#optimizeBtn {
+    background-color: #e67e22;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1em;
+    border: 2px solid #d35400;
+    box-shadow: 0 4px 16px #e67e2240;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+#optimizeBtn:hover, #optimizeBtn:focus {
+    background-color: #d35400;
+    transform: scale(1.06);
+    outline: 2px solid #e67e22;
+}
+
+button.delete-active {
+    background-color: #d32f2f !important;
+    color: #fff !important;
+}
+
+.button.secondary-button {
+  width: 100%;
+  padding: 0.7em 1em;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 0.5em;
+  transition: background 0.2s;
+}
+
+.button.secondary-button:hover {
+  background: var(--accent-hover);
+}
+
+.import-graph-btn {
+  align-self: flex-end;
+  padding: 0.3em 1em;
+  border-radius: 6px;
+  border: none;
+  background: var(--accent-color, #2a6);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.import-graph-btn:hover {
+  background: var(--accent-hover);
+}

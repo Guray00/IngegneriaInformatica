@@ -1,0 +1,97 @@
+.graphs-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2em;
+  margin-top: 1em;
+}
+
+.graph-card {
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px #0001;
+  min-width: 0; /* Per evitare overflow */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.graph-card:hover {
+  box-shadow: 0 4px 16px #0002;
+}
+
+.graph-preview {
+  background: #f0f0f0;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.dark-mode .graph-preview {
+  background: #1a222b;
+}
+
+.graph-info {
+  padding: 0.7em 1em 1em 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.graph-name {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 0.2em;
+}
+
+.graph-author {
+  font-size: 0.95em;
+  color: #666;
+  margin-bottom: 0.5em;
+}
+
+.save-graph-card {
+  background: #e0f7fa;
+  border: 2px dashed #007acc;
+  color: #007acc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+  height: 100%;
+}
+
+.save-graph-card:hover {
+  background: #b2ebf2;
+  border-color: #005f7f;
+}
+
+body.dark-mode .save-graph-card:hover {
+  background: #204060;
+  border-color: #00bfff;
+}
+
+.save-graph-card .save-icon {
+  font-size: 2.5em;
+  margin: 1em 0 0.5em 0;
+}
+.save-graph-card .save-label {
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+body.dark-mode .graph-card,
+body.dark-mode .save-graph-card {
+  color: #e0e0e0;
+  background: #1a2733;
+  border-color: #00bfff;
+}
+
+body.dark-mode .save-graph-card {
+  background: #163040;
+  border-color: #00bfff;
+}

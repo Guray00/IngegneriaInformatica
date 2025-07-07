@@ -1,0 +1,9 @@
+/* Temi aggiuntivi (es. dark mode) */
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f5f5f5;
+    --canvas-bg: #1e1e1e;
+    --sidebar-bg: #222;
+    --accent-color: #00bfff;
+    --accent-hover: #0099cc;
+}

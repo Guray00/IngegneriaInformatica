@@ -200,6 +200,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 
 **Collaboratori Materiale**
 
+Giacomo Fundarò<br>
 Sara Aliani<br>
 Taulant Arapi<br>
 Giuseppe "Attila" Attadia<br>

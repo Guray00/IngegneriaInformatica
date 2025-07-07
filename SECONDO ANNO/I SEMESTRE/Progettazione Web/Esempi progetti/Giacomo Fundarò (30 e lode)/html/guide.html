@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Guida all'utilizzo</title>
+  <link rel="stylesheet" href="../css/guide.css">
+</head>
+<body>
+  <div class="guide-container">
+    <a href="index.html" style="display:inline-block;margin-top:2em;color:#007acc;font-weight:bold;">← Torna alla Home</a>
+    <h1>Guida all'utilizzo del sito</h1>
+    <p>
+      Benvenuto nella piattaforma di creazione, simulazione e gestione di grafi più avanzata e intuitiva!  
+      Qui puoi esplorare, salvare e condividere strutture complesse con pochi click.  
+      Ecco tutte le funzionalità che rendono il sito unico:
+    </p>
+
+    <h2>🎨 Creazione e modifica grafi</h2>
+    <ul>
+      <li><b>Aggiungi nodi</b> cliccando sul canvas: ogni nodo può avere una massa personalizzata.</li>
+      <li><b>Collega nodi</b> trascinando tra due nodi per creare un arco, impostando la lunghezza desiderata.</li>
+      <li><b>Elimina nodi o archi</b> selezionando la modalità "Elimina" e cliccando sull’elemento da rimuovere.</li>
+      <li><b>Resetta</b> il grafo in un click per ricominciare da zero.</li>
+    </ul>
+
+    <h2>⚡ Simulazione fisica e layout intelligente</h2>
+    <ul>
+      <li><b>Layout ottimale</b>: organizza automaticamente il grafo con algoritmi di simulazione fisica per una visualizzazione chiara e ordinata.</li>
+      <li><b>Randomizza</b>: genera una disposizione casuale dei nodi per esplorare nuove configurazioni.</li>
+      <li><b>Animazioni fluide</b> e interattive per vedere il grafo prendere forma in tempo reale.</li>
+    </ul>
+    <p>
+      Per integrare le equazioni del moto e animare il grafo in modo realistico, viene utilizzato l’algoritmo <b>Velocity Verlet</b>:  
+      un metodo simplettico che permette di simulare il movimento dei nodi in modo stabile e credibile, garantendo animazioni fluide anche per grafi complessi.
+    </p>
+
+    <h2>🧠 Algoritmo di Ottimizzazione del Grafo</h2>
+    <p>
+      Il sito utilizza l’<b>algoritmo force-directed di Fruchterman-Reingold</b> per ottimizzare automaticamente la disposizione dei nodi.
+      Questo algoritmo simula forze fisiche: i nodi si respingono tra loro come particelle cariche, mentre gli archi agiscono come molle che tengono uniti i nodi collegati.
+      Il risultato è un grafo chiaro e bilanciato, dove i nodi correlati sono vicini e la struttura è facilmente leggibile.<br>
+      <a href="https://faculty.washington.edu/joelross/courses/archive/f14/cs261/lab/j/fruchterman91graph.pdf" target="_blank" rel="noopener">
+        Link al paper orginale sull'algoritmo di Fruchterman-Reingold 
+      </a>
+    </p>
+
+    <h2>💾 Salvataggio e gestione dei grafi</h2>
+    <ul>
+      <li><b>Salva i tuoi grafi</b> con un nome personalizzato: potrai recuperarli in qualsiasi momento.</li>
+      <li><b>Importa grafi</b> già salvati o scegli tra i preset disponibili per iniziare subito a lavorare.</li>
+      <li><b>Preview istantanea</b> di ogni grafo salvato, con visualizzazione compatta e dettagliata.</li>
+    </ul>
+
+    <h2>👤 Account e sicurezza</h2>
+    <ul>
+      <li><b>Accesso sicuro</b> tramite autenticazione: i tuoi grafi sono protetti e accessibili solo a te.</li>
+      <li><b>Ogni grafo è associato al tuo username</b>, così puoi sempre riconoscere le tue creazioni.</li>
+    </ul>
+
+    <h2>🌙 Tema chiaro/scuro</h2>
+    <ul>
+      <li><b>Modalità dark</b> per lavorare comodamente anche di notte, con colori ottimizzati e leggibilità garantita.</li>
+    </ul>
+
+    <h2>🖥️ Qualità grafica e supporto Retina</h2>
+    <p>
+      Il sito è ottimizzato per schermi ad alta densità di pixel (Retina/HiDPI):  
+      i canvas e tutte le anteprime vengono renderizzati in alta qualità, così puoi godere di grafi nitidi e dettagliati su qualsiasi dispositivo, anche su monitor 4K e display Retina.
+    </p>
+
+    <div class="tip">
+      <b>Tip:</b> Puoi combinare tutte le funzionalità per creare, esplorare e condividere grafi in modo semplice e potente.  
+      Il sito è ottimizzato per desktop e tablet!
+    </div>
+
+    <a href="index.html" style="display:inline-block;margin-top:2em;color:#007acc;font-weight:bold;">← Torna alla Home</a>
+  </div>
+</body>
+</html>

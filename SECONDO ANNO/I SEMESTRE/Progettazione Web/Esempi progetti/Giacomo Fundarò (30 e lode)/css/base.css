@@ -1,0 +1,17 @@
+/* Variabili, reset, tipografia */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --canvas-bg: #f0f0f0;
+    --sidebar-bg: #e0e0e0;
+    --accent-color: #007acc;
+    --accent-hover: #005fa3;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+}

@@ -1,0 +1,25 @@
+#user-info {
+    align-items: center;
+    gap: 0.5em;
+}
+
+#user-username {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--accent-color);
+    background: var(--bg-color);
+    padding: 0.4em 0.8em;
+    border-radius: 16px;
+    margin-right: 0.7em;
+    margin-left: 1em;
+    box-shadow: 0 2px 8px #0001;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+body.dark-mode #user-username {
+    background: #232323;
+    color: var(--accent-color);
+    box-shadow: 0 2px 8px #0006;
+}
