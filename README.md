@@ -244,6 +244,7 @@ Giulia Gastaldin<br>
 Kevin Giannandrea<br>
 Daniele Giaquinta<br>
 Edoardo Geraci<br>
+Fabio Gulmini<br>
 Dafne Iennaro<br>
 Marco Lampis<br>
 Luca Landi<br>
