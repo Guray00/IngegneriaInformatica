@@ -147,7 +147,12 @@ Un impianto ha f.d.t. :
 $$G(s)=\cfrac{s+9}{s(s^2+s+25)}
 $$
 
-progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo chiuso, che  soddisfi le seguenti specifiche:
+progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo chiuso
+
+<img width="813" height="272" alt="image" src="https://github.com/user-attachments/assets/6d8e2411-acd5-46dd-ac58-97312c3540c9" />
+
+
+soddisfi le seguenti specifiche:
 - Errore in risposta al gradino $<10\%$
 -  Reiezione dei disturbi di carico di almeno 20 dB per $\omega\le0.2$ rad/s
 - Reiezione dei disturbi di misura di almeno 20 dB per $\omega\ge20$ rad/s
@@ -159,7 +164,12 @@ Un impianto ha f.d.t. :
 $$G(s)=\cfrac{s+3}{(s+5)^2}
 $$
 
-progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo chiuso, che  soddisfi le seguenti specifiche:
+progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo chiuso
+
+<img width="813" height="272" alt="image" src="https://github.com/user-attachments/assets/a901d84e-d52b-4bdb-9df6-64920d921189" />
+
+
+soddisfi le seguenti specifiche:
 - Errore alla rampa nullo
 - Reiezione dei disturbi di carico di almeno 20 dB per $\omega\le0.1$ rad/s
 - Reiezione dei disturbi di misura di almeno 20 dB per $\omega\ge40$ rad/s
@@ -210,9 +220,11 @@ y = \begin{bmatrix}
 
 ## Spunti di soluzione Esercizio 1.1
 
-1.  $$\frac{Y(s)}{U(s)} = \frac{s+4}{(s+2)^2} \implies Y(s) \cdot (s(s+2)^2) = U(s) \cdot (s+4)$$
+1. Partiamo con
+ 
+ $$\frac{Y(s)}{U(s)} = \frac{s+4}{(s+2)^2} \implies Y(s) \cdot (s(s+2)^2) = U(s) \cdot (s+4)$$
 
-con \(U(s) = 0\) in risposta libera
+  con *U(s) = 0* in risposta libera
 
 $$Y(s) \cdot (s^3 + 4s^2 + 4s) = 0$$
 
@@ -231,11 +243,11 @@ $$
  Riscriviamo:
 $$s^3 Y(s) - s^2 y(0) - s \dot{y}(0) - \ddot{y}(0) + 4s^2 Y(s) - 4s y(0) - 4 \dot{y}(0) + 4s Y(s) - 4y(0) = 0$$
 
-Successivamente scrivo la nuova \(Y(s)\) , scompongo in fratti semplici, calcolo i coefficienti e procedo con l'antitrasformata.
+Successivamente scrivo la nuova *Y(s)* , scompongo in fratti semplici, calcolo i coefficienti e procedo con l'antitrasformata.
 
-2. **BIBO stabile** se e solo se tutti i poli della funzione di trasferimento hanno parte reale negativa (in questo caso ho un polo nell'origine che esclude la stabilità).
+2. **BIBO stabile** se e solo se tutti i poli della funzione di trasferimento hanno parte reale negativa _(in questo caso ho un polo nell'origine che esclude la stabilità)._
 
 3. **Progettazione del regolatore**
-   1. Per avere errore nullo a regime con ingresso un gradino, basta che ci sia un termine integratore in catena diretta (in questo caso c'è già).
+   1. Per avere errore nullo a regime con ingresso un gradino, basta che ci sia un termine integratore in catena diretta _(in questo caso c'è già)._
    2. Una volta soddisfatte le altre specifiche, posso sistemare il margine di fase traslando verticalmente il diagramma di modulo con un controllore proporzionale.
    3. Usiamo un filtro passa basso, con uno zero poco prima della frequenza di interesse per la reiezione dei disturbi ed un polo ad alta frequenza. Verificare queste specifiche tramite le barriere sul diagramma di Bode.
