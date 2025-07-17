@@ -17,8 +17,7 @@
 
 Si consideri un sistema descritto dalla equazione differenziale ingresso uscita:
 
-$$
-G(s) = \frac{s + 4}{s(s + 2)^2}
+$$G(s) = \frac{s + 4}{s(s + 2)^2}
 $$
 con condizioni iniziali:
 
