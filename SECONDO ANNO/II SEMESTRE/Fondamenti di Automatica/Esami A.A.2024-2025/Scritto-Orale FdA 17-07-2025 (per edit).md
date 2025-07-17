@@ -19,6 +19,7 @@ Si consideri un sistema descritto dalla equazione differenziale ingresso uscita:
 
 $$G(s) = \frac{s + 4}{s(s + 2)^2}
 $$
+
 con condizioni iniziali:
 
 $$
@@ -83,12 +84,13 @@ $$
 
 ### Esercizio 1.3
 Si consideri un sistema descritto dalla equazione differenziale ingresso uscita:
+
+$$G(s) = \frac{s + 9}{s(s + 5)^2}
 $$
-G(s) = \frac{s + 9}{s(s + 5)^2}
-$$
+
 con condizioni iniziali:
-$$
-y(0) = 0,\quad  \dot y(0) = -2,\quad  \ddot y(0) = -1
+
+$$y(0) = 0,\quad  \dot y(0) = -2,\quad  \ddot y(0) = -1
 $$
 
 1. Calcola la risposta libera della funzione di trasferimento.
@@ -105,12 +107,13 @@ Infine esercizio sulla matrice e dovevo studiare osservabilità, raggiungibilit�
 
 ### Esercizio 1.4
 Si consideri un sistema descritto dalla equazione differenziale ingresso uscita:
+
+$$G(s) = \frac{s + 3}{s(s + 5)^2}
 $$
-G(s) = \frac{s + 3}{s(s + 5)^2}
-$$
+
 con condizioni iniziali:
-$$
-y(0) = 0,\quad  \dot y(0) = -1,\quad  \ddot y(0) = -1
+
+$$y(0) = 0,\quad  \dot y(0) = -1,\quad  \ddot y(0) = -1
 $$
 
 1. Calcola la risposta libera della funzione di trasferimento.
@@ -124,9 +127,9 @@ $$
 
 Un impianto ha f.d.t.:
 
+$$G(s)=\cfrac{s+9}{s(s+5)^2}
 $$
-G(s)=\cfrac{s+9}{s(s+5)^2}
-$$
+
 progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo chiuso, che
 soddisfi le seguenti specifiche:
 
@@ -140,8 +143,8 @@ Mi ha dato un esercizio sulla matrice e dovevo studiare osservabilità, raggiung
 
 ### Esercizio 2.2
 Un impianto ha f.d.t. :
-$$
-G(s)=\cfrac{s+9}{s(s^2+s+25)}
+
+$$G(s)=\cfrac{s+9}{s(s^2+s+25)}
 $$
 
 progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo chiuso, che  soddisfi le seguenti specifiche:
@@ -152,8 +155,8 @@ progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo 
 
 ### Esercizio 2.3
 Un impianto ha f.d.t. :
-$$
-G(s)=\cfrac{s+3}{(s+5)^2}
+
+$$G(s)=\cfrac{s+3}{(s+5)^2}
 $$
 
 progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo chiuso, che  soddisfi le seguenti specifiche:
@@ -165,23 +168,25 @@ progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo 
 ## 3 - Bode e Nyquist
 ### Esercizio 3.1
 Sia la funzione di trasferimento
+
+$$G(s)=\cfrac{10}{s(1+s)}
 $$
-G(s)=\cfrac{10}{s(1+s)}
-$$
+
 Disegnare spiegando ogni passaggio il diagramma di Bode e di Nyquist.
 
 ### Esercizio 3.2
 Sia la funzione di trasferimento
+
+$$G(s)=\cfrac{s+8}{s(1+s)}
 $$
-G(s)=\cfrac{s+8}{s(1+s)}
-$$
+
 Disegnare spiegando ogni passaggio il diagramma di Bode e di Nyquist.
 
 ## 4 - Modello in variabili di stato
 ### Esercizio 4.1
 Si consideri il sistema descritto dalle equazioni di stato:
-$$
-\dot x = \begin{bmatrix}
+
+$$\dot x = \begin{bmatrix}
 3 & 0 & 1 \\
 0 & 1 & -2\\
 0 & 0 & 3 
@@ -196,8 +201,8 @@ x + \begin{bmatrix}
 $$
 y = \begin{bmatrix}
 0 & 1 &0 
-\end{bmatrix} x
-$$
+\end{bmatrix} x$$
+
 1. Il sistema è completamente stabile?
 2. Il sistema è completamente raggiungibile?
 3. Il sistema è completamente osservabile?
@@ -205,26 +210,28 @@ $$
 
 ## Spunti di soluzione Esercizio 1.1
 
-1.  $$
-\frac{Y(s)}{U(s)} = \frac{s+4}{(s+2)^2} \implies Y(s) \cdot (s(s+2)^2) = U(s) \cdot (s+4)
-$$
-con \( U(s) = 0 \) in risposta libera
+1.  $$\frac{Y(s)}{U(s)} = \frac{s+4}{(s+2)^2} \implies Y(s) \cdot (s(s+2)^2) = U(s) \cdot (s+4)$$
+
+con \(U(s) = 0\) in risposta libera
+
+$$Y(s) \cdot (s^3 + 4s^2 + 4s) = 0$$
+
+
+Ricordando che:
 
 $$
-Y(s) \cdot (s^3 + 4s^2 + 4s) = 0
+\mathcal{L} \left( \frac{d^3y(t)}{dt^3} \right) = s^3 Y(s) - s^3 y(0) - s \dot{y}(0) - \ddot{y}(0)
 $$
-Ricordando che:
+
 $$
-\mathcal{L}\left\{ \frac{d^3y(t)}{dt^3} \right\} = s^3 Y(s) - s^3 y(0) - s \dot{y}(0) - \ddot{y}(0)
+\mathcal{L} \left( \frac{d^2y(t)}{dt^2} \right) = s^2 Y(s) - s y(0) - \dot{y}(0)
 $$
-$$
-\mathcal{L}\left\{ \frac{d^2y(t)}{dt^2} \right\} = s^2 Y(s) - s y(0) - \dot{y}(0)
-$$
+
+
  Riscriviamo:
-$$
-s^3 Y(s) - s^2 y(0) - s \dot{y}(0) - \ddot{y}(0) + 4s^2 Y(s) - 4s y(0) - 4 \dot{y}(0) + 4s Y(s) - 4y(0) = 0
-$$
-Successivamente scrivo la nuova \( Y(s) \), scompongo in fratti semplici, calcolo i coefficienti e procedo con l'antitrasformata.
+$$s^3 Y(s) - s^2 y(0) - s \dot{y}(0) - \ddot{y}(0) + 4s^2 Y(s) - 4s y(0) - 4 \dot{y}(0) + 4s Y(s) - 4y(0) = 0$$
+
+Successivamente scrivo la nuova \(Y(s)\) , scompongo in fratti semplici, calcolo i coefficienti e procedo con l'antitrasformata.
 
 2. **BIBO stabile** se e solo se tutti i poli della funzione di trasferimento hanno parte reale negativa (in questo caso ho un polo nell'origine che esclude la stabilità).
 
