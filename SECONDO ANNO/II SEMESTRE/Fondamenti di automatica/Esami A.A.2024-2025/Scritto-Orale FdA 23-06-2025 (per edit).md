@@ -9,54 +9,48 @@
 ## 1 - Risposta libera e forzata
 
 ### Esercizio 1.1
-1. Calcola la **risposta libera** della funzione di trasferimento  
-   $$
-   G(s) = \frac{s + 3}{s(s + 5)^2}
-   $$
+Calcola la **risposta libera** della funzione di trasferimento
+ 
+
+   $$G(s) = \frac{s + 3}{s(s + 5)^2}$$
+
    con condizioni iniziali:
-   $$
-   y(0) = 0,\quad \dot y(0) = -1,\quad \ddot y(0) = -1
-   $$
-2. Il sistema è **BIBO-stabile**? Perché?
+   
+   $$y(0) = 0,\quad \dot y(0) = -1,\quad \ddot y(0) = -1$$
+   
+ - Il sistema è **BIBO-stabile**? Perché?
 > #### Domande Orale
 > * Tracciare il diagramma di Bode della precedente f.d.t.
 
 #### Variante 1.1.1
 
 Stesso esercizio ma con funzione di trasferimento:
-$$
-G(s) = \frac{s + 9}{s(s + 5)^2}
-$$
+
+   $$G(s) = \frac{s + 9}{s(s + 5)^2}$$
+
 e con condizioni iniziali:
-$$
-y(0) = 0,\quad \dot y(0) = -2,\quad \ddot y(0) = -1
-$$
+
+   $$y(0) = 0,\quad \dot y(0) = -2,\quad \ddot y(0) = -1$$
 > #### Domande Orale
 > * Progettare un controllore con margine di fase $\ge50°$ e tempo di assestamento $<3$ secondi.
 
 ### Esercizio 1.2
 Calcola la risposta forzata al gradino di:
-$$
-G(s)=\cfrac{(s+1)(s+5)}{s(s+2)^2}
-$$
+
+$$G(s)=\cfrac{(s+1)(s+5)}{s(s+2)^2}$$
 
 ## 2 - Progettazione del controllore
 
 ### Esercizio 2.1
 Un impianto ha f.d.t.:
-$$
-G(s)=50\cfrac{s-20}{(s+10)(s+5)^2}
-$$
+
+$$G(s)=50\cfrac{s-20}{(s+10)(s+5)^2}$$
+
 progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo chiuso
-> $$\,$$
->$$
-\begin{CD}
-r(s) @>{+}>> \textcircled\ @>>> \boxed{R(s)} @>>> \boxed{G(s)} @>>> y(s) \\
-@. @A{-}AA @. @. @VVV \\
-@. \textcircled\ @<<< \cdots @<<< \cdots @<<< \textcircled\
-\end{CD}
->$$
-> $$\,$$
+
+<img width="868" height="240" alt="image" src="https://github.com/user-attachments/assets/11e4e871-914a-445c-ac4c-5bdebd5d254b" />
+
+
 soddisfi le seguenti specifiche:
 * Errore nullo a regime in risposta al gradino
 * Reiezione dei disturbi di carico di almeno 20 dB per $\omega\le0.1$ rad/s
@@ -66,19 +60,14 @@ soddisfi le seguenti specifiche:
 ### Esercizio 2.2
 
 Un impianto ha f.d.t.:
-$$
-G(s)=\cfrac{s+1}{s(s+2)(s^2+s+25)}
-$$
+
+  $$G(s)=\cfrac{s+1}{s(s+2)(s^2+s+25)}$$
+
 progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo chiuso
-> $$\,$$
->$$
-\begin{CD}
-r(s) @>{+}>> \textcircled\ @>>> \boxed{R(s)} @>>> \boxed{G(s)} @>>> y(s) \\
-@. @A{-}AA @. @. @VVV \\
-@. \textcircled\ @<<< \cdots @<<< \cdots @<<< \textcircled\
-\end{CD}
->$$
-> $$\,$$
+
+<img width="868" height="240" alt="image" src="https://github.com/user-attachments/assets/f700dd79-a53a-4ef2-a974-9b634af169ea" />
+
+
 soddisfi le seguenti specifiche:
 * Errore in risposta al gradino $<10\%$
 * Reiezione dei disturbi di carico di almeno 20 dB per $\omega\le0.2$ rad/s
@@ -97,8 +86,8 @@ soddisfi le seguenti specifiche:
 ### Esercizio 4.1
 
 Si consideri il sistema descritto dalle equazioni di stato:
-$$
-\begin{cases}
+
+$$\begin{cases}
 \dot x =
 \begin{bmatrix}
     3&1&0\\
@@ -118,8 +107,8 @@ y =
     1&0&0
 \end{bmatrix}
 x
-\end{cases}
-$$  
+\end{cases}$$  
+
 
 1. Si discuta la raggiungibilità, l'osservabilità e la stabilità interna del sistema
 2. Sulla base della discussione precedente, si determini la funzione di trasferimento del sistema
@@ -128,8 +117,8 @@ $$
 ### Esercizio 4.2
 
 Si consideri il sistema descritto dalle equazioni di stato:
-$$
-\begin{cases}
+
+$$\begin{cases}
 \dot x =
 \begin{bmatrix}
     0&-1&0&0\\
@@ -151,8 +140,7 @@ y =
     1&0&1&0
 \end{bmatrix}
 x
-\end{cases}
-$$  
+\end{cases}$$  
 
 1. Si discuta la raggiungibilità, l'osservabilità e la stabilità interna del sistema
 2. Sulla base della discussione precedente, si determini la funzione di trasferimento del sistema
@@ -160,15 +148,15 @@ $$
 
 # Esame svolto
 
-1. Calcola la **risposta libera** della funzione di trasferimento  
-   $$
-   G(s) = \frac{s + 7}{s(s + 3)^2}
-   $$
+Calcola la **risposta libera** della funzione di trasferimento  
+
+   $$G(s) = \frac{s + 7}{s(s + 3)^2}$$
+   
    con condizioni iniziali:
-   $$
-   y(0) = 0,\quad \dot y(0) = -1,\quad \ddot y(0) = 1
-   $$
-2. Il sistema è **BIBO-stabile**? Perché?
+
+   $$y(0) = 0,\quad \dot y(0) = -1,\quad \ddot y(0) = 1$$
+   
+-  Il sistema è **BIBO-stabile**? Perché?
 
 L'esame riportato di seguito (*visualizzabile solo nella versione pdf di questo file*) è stato fatto da me e comprendeva tre tracce più un'orale di 15 minuti. Ecco una breve spiegazione per poter replicare:
 * La prima traccia (foto 1) è il classico esercizio sulla risposta libera
