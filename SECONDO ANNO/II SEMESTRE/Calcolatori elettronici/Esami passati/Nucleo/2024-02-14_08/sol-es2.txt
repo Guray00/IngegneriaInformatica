@@ -1,0 +1,79 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2024-02-14
+	mq_des *mq = &message_queue;
+
+	if (!esecuzione->mq_reader) {
+		flog(LOG_WARN, "processo non registrato come lettore");
+		c_abort_p();
+		return;
+	}
+
+	if (esecuzione->mq_ntr == mq->tail) {
+		inserimento_lista(mq->w_readers, esecuzione);
+		schedulatore();
+		return;
+	}
+
+	mq_msg *m = &mq->mq[esecuzione->mq_ntr];
+	esecuzione->contesto[I_RAX] = m->msg;
+	esecuzione->mq_ntr = mq_next(esecuzione->mq_ntr);
+	m->toread--;
+	if (!m->toread) {
+		inspronti();
+		mq->head = mq_next(mq->head);
+		if (mq->w_senders) {
+			des_proc *p = rimozione_lista(mq->w_senders);
+			m = &mq->mq[mq->tail];
+			m->msg = p->mq_msg;
+			m->toread = mq->nreaders;
+			if (p->mq_reader)
+				m->toread--;
+			mq->tail = mq_next(mq->tail);
+			inserimento_lista(pronti, p);
+			while (mq->w_readers) {
+				p = rimozione_lista(mq->w_readers);
+				p->contesto[I_RAX] = m->msg;
+				p->mq_ntr = mq_next(p->mq_ntr);
+				m->toread--;
+				inserimento_lista(pronti, p);
+			}
+		}
+		schedulatore();
+	}
+//   SOLUZIONE 2024-02-14 )
+// ( SOLUZIONE 2024-02-14
+	if (p->mq_reader) {
+		mq_des *mq = &message_queue;
+		while (p->mq_ntr != mq->tail) {
+			mq_msg *m = &mq->mq[p->mq_ntr];
+			m->toread--;
+			if (!m->toread)
+				mq->head = mq_next(mq->head);
+			p->mq_ntr = mq_next(p->mq_ntr);
+		}
+		mq->nreaders--;
+		while (!mq_full() && mq->w_senders) {
+			des_proc *s = rimozione_lista(mq->w_senders);
+			mq_msg *m = &mq->mq[mq->tail];
+			m->msg = s->mq_msg;
+			m->toread = mq->nreaders;
+			if (s->mq_reader)
+				m->toread--;
+			inserimento_lista(pronti, s);
+			while (mq->w_readers) {
+				s = rimozione_lista(mq->w_readers);
+				s->contesto[I_RAX] = m->msg;
+				m->toread--;
+				s->mq_ntr = mq_next(s->mq_ntr);
+				inserimento_lista(pronti, s);
+			}
+			if (!m->toread)
+				mq->head = mq_next(mq->head);
+		}
+	}
+//   SOLUZIONE 2024-02-14 )
+
+

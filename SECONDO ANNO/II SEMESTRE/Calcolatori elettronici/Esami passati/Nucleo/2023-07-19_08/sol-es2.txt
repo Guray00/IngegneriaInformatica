@@ -1,0 +1,80 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2023-07-19
+void vce_buf_read(vce_buf *vb, char *vetti)
+{
+	sem_wait(vb->mutex);
+	if (vb->n > 0) {
+		*vetti = vb->buf[vb->head];
+		vb->head = (vb->head + 1) % VCE_BUFSIZE;
+		vb->n--;
+	}
+	sem_signal(vb->mutex);
+}
+//   SOLUZIONE 2023-07-19 )
+// ( SOLUZIONE 2023-07-19
+extern "C" void c_vceread_n(natl vn, char *vetti, natq quanti)
+{
+	if (vn >= VCE_NUM) {
+		flog(LOG_WARN, "vce %d non valido", vn);
+		abort_p();
+	}
+
+	if (!access(vetti, quanti, true, false)) {
+		flog(LOG_WARN, "parametri non validi: %p, %lu", vetti, quanti);
+		abort_p();
+	}
+
+	vce_des *v = &ce.vces[vn];
+	sem_wait(v->mutex);
+	for (natl i = 0; i < quanti; i++) {
+		sem_wait(v->sync);
+		vce_buf_read(&v->buf, vetti);
+		vetti++;
+	}
+	sem_signal(v->mutex);
+}
+
+extern "C" void estern_ce(natq)
+{
+	for (;;) {
+		char c = inputb(ce.iRBR);
+		sem_wait(ce.mutex);
+		vce_des *v = &ce.vces[ce.active];
+		sem_signal(ce.mutex);
+		if (vce_buf_write(&v->buf, c))
+			sem_signal(v->sync);
+		wfi();
+	}
+}
+//   SOLUZIONE 2023-07-19 )
+// ( SOLUZIONE 2023-07-19
+		for (natq i = 0; i < VCE_NUM; i++) {
+			vce_des *v = &ce.vces[i];
+			v->mutex = sem_ini(1);
+			if (v->mutex == 0xFFFFFFFF) {
+				flog(LOG_ERR, "semafori insufficienti");
+				return false;
+			}
+			v->sync = sem_ini(0);
+			if (v->sync == 0xFFFFFFFF) {
+				flog(LOG_ERR, "semafori insufficienti");
+				return false;
+			}
+			v->buf.mutex = sem_ini(1);
+			if (v->buf.mutex == 0xFFFFFFFF) {
+				flog(LOG_ERR, "semafori insufficienti");
+				return false;
+			}
+			v->buf.head = v->buf.tail = v->buf.n = 0;
+		}
+		if (activate_pe(estern_ce, 0, MIN_EXT_PRIO + INTR_TIPO_CE, LIV_SISTEMA, irq) == 0xFFFFFFFF) {
+			flog(LOG_ERR, "impossibile attivare processo esterno");
+			return false;
+		}
+		outputb(1, ce.iCTL);
+//   SOLUZIONE 2023-07-19 )
+
+
