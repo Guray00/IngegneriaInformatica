@@ -1,0 +1,108 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2024-09-11
+void rw_wakeup_writer(des_rw *r)
+{
+	des_proc *p = rimozione_lista(r->w_writers);
+	if (!p)
+		return;
+	des_proc_rw *rp = rw_proc_find(r, p);
+	rp->state = (rp->state == RW_READER ? RW_UPGRADED : RW_WRITER);
+	r->writer = p->id;
+	inserimento_lista(pronti, p);
+}
+
+bool rw_wakeup_readers(des_rw *r)
+{
+	natl n = r->nreaders;
+
+	while (des_proc *p = rimozione_lista(r->w_readers)) {
+		des_proc_rw *rp = rw_proc_find(r, p);
+		rp->state = RW_READER;
+		r->nreaders++;
+		inserimento_lista(pronti, p);
+	}
+	return r->nreaders > n;
+}
+
+/// Parte C++ della primitiva rw_upgrade()
+extern "C" void c_rw_upgrade(natl rw)
+{
+	if (!rw_valido(rw)) {
+		flog(LOG_WARN, "rw_writelock(%d): rwlock non valido", rw);
+		c_abort_p();
+		return;
+	}
+
+	des_rw *r = &array_desrw[rw];
+	des_proc_rw *rp;
+
+	rp = rw_proc_find(r);
+	if (!rp || rp->state != RW_READER) {
+		flog(LOG_WARN, "rw_upgrade(%d): stato non valido", rw);
+		c_abort_p();
+		return;
+	}
+
+	r->nreaders--;
+	if (r->nreaders > 0) {
+		inserimento_lista(r->w_writers, esecuzione);
+		schedulatore();
+	} else if (r->w_writers && r->w_writers->precedenza > esecuzione->precedenza) {
+		inserimento_lista(r->w_writers, esecuzione);
+		rw_wakeup_writer(r);
+		schedulatore();
+	} else {
+		rp->state = RW_UPGRADED;
+		r->writer = esecuzione->id;
+	}
+}
+
+extern "C" void c_rw_downgrade(natl rw)
+{
+	if (!rw_valido(rw)) {
+		flog(LOG_WARN, "rw_downgrade(%d): rwlock non valido", rw);
+		c_abort_p();
+		return;
+	}
+
+	des_rw *r = &array_desrw[rw];
+	des_proc_rw *rp = rw_proc_find(r);
+	if (!rp) {
+		flog(LOG_WARN, "rw_downgrade(%d): rwlock non attivo", rw);
+		c_abort_p();
+		return;
+	}
+	inspronti();
+	switch (rp->state) {
+	case RW_READER:
+		rp->r = nullptr;
+		rp->state = RW_NONE;
+		r->nreaders--;
+		if (!r->nreaders)
+			rw_wakeup_writer(r);
+		break;
+	case RW_UPGRADED:
+		rp->state = RW_READER;
+		r->nreaders = 1;
+		r->writer = 0;
+		rw_wakeup_readers(r);
+		break;
+	case RW_WRITER:
+		rp->r = nullptr;
+		rp->state = RW_NONE;
+		r->writer = 0;
+		if (!rw_wakeup_readers(r))
+			rw_wakeup_writer(r);
+		break;
+	default:
+		fpanic("stato %d non attesso in rwlock %d", rp->state, rw);
+		break;
+	}
+	schedulatore();
+}
+//   SOLUZIONE 2024-09-11 )
+
+
