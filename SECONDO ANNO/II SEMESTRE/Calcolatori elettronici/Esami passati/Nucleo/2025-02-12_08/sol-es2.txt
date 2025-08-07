@@ -1,0 +1,151 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2025-02-12
+void do_closepipe(natl s);
+//   SOLUZIONE 2025-02-12 )
+// ( SOLUZIONE 2025-02-12
+	for (natl s = 0; s < MAX_OPEN_PIPES; s++) {
+		natl pi = p->mypipes[s];
+		if (pi != 0xFFFFFFFF)
+			do_closepipe(pi);
+	}
+//   SOLUZIONE 2025-02-12 )
+// ( SOLUZIONE 2025-02-12
+natl find_free_slot()
+{
+	for (natl i = 0; i < MAX_OPEN_PIPES; i++)
+		if (esecuzione->mypipes[i] == 0xFFFFFFFF)
+			return i;
+	return 0xFFFFFFFF;
+}
+//   SOLUZIONE 2025-02-12 )
+// ( SOLUZIONE 2025-02-12
+	if (p >= MAX_PIPES) {
+		flog(LOG_WARN, "openpipe: id '%u' non valido", p);
+		c_abort_p();
+		return;
+	}
+
+	natl slot = find_free_slot();
+	if (slot == 0xFFFFFFFF) {
+		flog(LOG_WARN, "openpipe: troppe pipe aperte");
+		c_abort_p();
+		return;
+	}
+//   SOLUZIONE 2025-02-12 )
+// ( SOLUZIONE 2025-02-12
+	if (s >= MAX_OPEN_PIPES) {
+		flog(LOG_WARN, "writepipe: slot '%u' non valido", s);
+		c_abort_p();
+		return;
+	}
+	if (!c_access(int_cast<vaddr>(buf), n, false)) {
+		flog(LOG_WARN, "writepipe: buf non valido");
+		c_abort_p();
+		return;
+	}
+	natl p = esecuzione->mypipes[s];
+	if (p == 0xFFFFFFFF) {
+		flog(LOG_WARN, "writepipe: slot '%u' non aperto", s);
+		c_abort_p();
+		return;
+	}
+	struct des_pipe *dp = &array_despipe[p];
+
+	if (dp->writer != esecuzione->id) {
+		flog(LOG_WARN, "writepipe: pipe non aperta in scrittura");
+		c_abort_p();
+		return;
+	}
+
+	if (dp->reader == 0xFFFFFFFF) {
+		esecuzione->contesto[I_RAX] = false;
+		return;
+	}
+//   SOLUZIONE 2025-02-12 )
+// ( SOLUZIONE 2025-02-12
+	if (s >= MAX_OPEN_PIPES) {
+		flog(LOG_WARN, "readpipe: slot '%u' non valido", s);
+		c_abort_p();
+		return;
+	}
+
+	if (!c_access(int_cast<vaddr>(buf), n, true)) {
+		flog(LOG_WARN, "readpipe: buf non valido");
+		c_abort_p();
+		return;
+	}
+	
+	natl p = esecuzione->mypipes[s];
+	if (p == 0xFFFFFFFF) {
+		flog(LOG_WARN, "readpipe: slot '%u' non aperto", s);
+		c_abort_p();
+		return;
+	}
+	struct des_pipe *dp = &array_despipe[p];
+
+	if (dp->reader != esecuzione->id) {
+		flog(LOG_WARN, "readpipe: pipe non aperta in lettura");
+		c_abort_p();
+		return;
+	}
+
+	if (dp->writer == 0xFFFFFFFF) {
+		esecuzione->contesto[I_RAX] = false;
+		return;
+	}
+//   SOLUZIONE 2025-02-12 )
+// ( SOLUZIONE 2025-02-12
+void do_closepipe(natl p)
+{
+	struct des_pipe *dp = &array_despipe[p];
+	natl otherproc, *myrole;
+	const char* otherbuf;
+	if (esecuzione->id == dp->writer) {
+		myrole = &dp->writer;
+		otherproc = dp->reader;
+		otherbuf = dp->r_buf;
+	} else {
+		myrole = &dp->reader;
+		otherproc = dp->writer;
+		otherbuf = dp->w_buf;
+	}
+	if (otherproc == 0xFFFFFFFF) {
+		dp->writer = dp->reader = 0;
+		dp->w_pending = dp->r_pending = 0;
+		dp->w_buf = dp->r_buf = nullptr;
+		return;
+	}
+	*myrole = 0xFFFFFFFF;
+	if (otherbuf) {
+		des_proc *op = proc_table[otherproc];
+		if (otherproc == dp->reader)
+			dp->r_buf = nullptr;
+		else
+			dp->w_buf = nullptr;
+		op->contesto[I_RAX] = false;
+		inserimento_lista(pronti, op);
+	}
+}
+//   SOLUZIONE 2025-02-12 )
+// ( SOLUZIONE 2025-02-12
+	if (s >= MAX_OPEN_PIPES) {
+		flog(LOG_WARN, "closepipe: slot '%u' non valido", s);
+		c_abort_p();
+		return;
+	}
+	natl p = esecuzione->mypipes[s];
+	if (p == 0xFFFFFFFF) {
+		flog(LOG_WARN, "closepipe: pipe non aperta");
+		c_abort_p();
+		return;
+	}
+	inspronti();
+	do_closepipe(p);
+	esecuzione->mypipes[s] = 0xFFFFFFFF;
+	schedulatore();
+//   SOLUZIONE 2025-02-12 )
+
+
