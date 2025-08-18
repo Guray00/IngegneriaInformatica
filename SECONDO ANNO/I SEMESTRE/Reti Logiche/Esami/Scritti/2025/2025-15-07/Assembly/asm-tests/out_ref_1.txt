@@ -1,0 +1,8 @@
+Inserire n: 
+2
+Inserire vettore v1: 
+3	4	
+Inserire vettore v2: 
+4	3	
+Il prodotto scalare è: 
+24
