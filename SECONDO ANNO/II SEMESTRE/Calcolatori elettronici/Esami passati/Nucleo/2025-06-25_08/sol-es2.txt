@@ -1,0 +1,51 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2025-06-25
+	for (;;) {
+		esecuzione = rimozione_lista(pronti);
+		if (esecuzione->memstate == M_OK)
+			break;
+		esecuzione->scheduled = true;
+		inserimento_lista(swapper_info.tonotify, esecuzione);
+		if (swapper_info.waiting) {
+			des_proc *s = proc_table[swapper_info.id];
+			s->contesto[I_RAX] = esecuzione->id;
+			inserimento_lista(pronti, s);
+			swapper_info.waiting = false;
+		}
+	}
+//   SOLUZIONE 2025-06-25 )
+// ( SOLUZIONE 2025-06-25
+	switch (p->memstate) {
+	case M_OK:
+		esecuzione->contesto[I_RAX] = true;
+		break;
+	case M_INCOMPLETE:
+		if (!crea_pila(p->cr3, fin_utn_p, DIM_USR_STACK, LIV_UTENTE))
+			return;
+		break;
+	case M_SWAPPED_OUT:
+		if (!c_access(int_cast<vaddr>(buf), DIM_USR_STACK, false, false)) {
+			flog(LOG_WARN, "swap_in: buffer %p non valido", buf);
+			c_abort_p();
+			return;
+		}
+		if (!ripristina_pila(p, buf))
+			return;
+		break;
+	}
+
+	p->memstate = M_OK;
+	esecuzione->contesto[I_RAX] = true;
+	if (p->scheduled) {
+		p->scheduled = false;
+		estrazione_lista(swapper_info.tonotify, p->id);
+		inspronti();
+		inserimento_lista(pronti, p);
+		schedulatore();
+	}
+//   SOLUZIONE 2025-06-25 )
+
+
