@@ -1,0 +1,54 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2023-09-13
+	for (tab_iter it(src, ini_utn_w, DIM_USR_COW); it; it.next()) {
+		tab_entry& e = it.get_e();
+		if (!(e & BIT_P))
+			fpanic("indirizzo cow %lx non mappato", it.get_v());
+		if (e & BIT_RW) {
+			e &= ~BIT_RW;
+			if (it.get_l() == 1)
+				invalida_entrata_TLB(it.get_v());
+		}
+		paddr f = extr_IND_FISICO(e);
+		vdf[f/DIM_PAGINA].nshared++;
+	}
+	copy_des(src, dest, I_UTN_W, N_UTN_W);
+//   SOLUZIONE 2023-09-13 )
+// ( SOLUZIONE 2023-09-13
+bool rilascia_frame_condiviso(paddr f, int liv)
+{
+	natl other_refs = --vdf[f/DIM_PAGINA].nshared;
+	if (!other_refs) {
+		if (liv > 1) {
+			set_des(f, 0, 512, 0);
+			rilascia_tab(f);
+		} else {
+			rilascia_frame(f);
+		}
+	}
+	return liv == MAX_LIV || !other_refs;
+}
+//   SOLUZIONE 2023-09-13 )
+// ( SOLUZIONE 2023-09-13
+		vdf[new_frame/DIM_PAGINA].nshared = 1;
+		rilascia_frame_condiviso(old_frame, it.get_l());
+//   SOLUZIONE 2023-09-13 )
+// ( SOLUZIONE 2023-09-13
+	tab_iter it(esecuzione->cr3, ini_utn_w, DIM_USR_COW);
+	for (it.post(); it; it.next_post()) {
+		tab_entry& e = it.get_e();
+		if (!(e & BIT_P))
+			continue;
+		int liv = it.get_l();
+		paddr f = extr_IND_FISICO(e);
+		if (rilascia_frame_condiviso(f, liv)) {
+			e = 0;
+			dec_ref(it.get_tab());
+		}
+	}
+//   SOLUZIONE 2023-09-13 )
+
+

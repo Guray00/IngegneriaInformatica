@@ -1,0 +1,62 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2025-01-27
+	sem_wait(ce.mutex);
+	natl pid = getpid();
+	if (ce.vces[pid] != nullptr) {
+		flog(LOG_ERR, "vcenew: il processo possiede già una VCE");
+		sem_signal(ce.mutex);
+		abort_p();
+	}
+	vce_des *v = new vce_des;
+	if (v == nullptr) {
+		flog(LOG_WARN, "vcenew: memoria esaurita");
+		sem_signal(ce.mutex);
+		return false;
+	}
+	if (!vce_des_init(v))  {
+		delete v;
+		sem_signal(ce.mutex);
+		return false;
+	}
+	ce.vces[pid] = v;
+	sem_signal(ce.mutex);
+	return true;
+//   SOLUZIONE 2025-01-27 )
+// ( SOLUZIONE 2025-01-27
+	natl current = 0;
+	for (;;) {
+		natl pid = evget();
+		sem_wait(ce.mutex);
+		if (pid) {
+			vce_des *v = ce.vces[pid];
+			if (v) {
+				v->terminated = true;
+				if (!v->n) {
+					delete v;
+					ce.vces[pid] = nullptr;
+				}
+			}
+		} else {
+			ce.busy = false;
+			if (vce_des *v = vce_des_next(current)) {
+				char c = vce_des_read(v);
+				outputb(c, ce.iTBR);
+				ce.busy = true;
+				if (v->waiting) {
+					v->waiting = false;
+					sem_signal(v->sync);
+				} else if (!v->n && v->terminated) {
+					delete v;
+					ce.vces[current] = nullptr;
+				}
+			}
+		}
+		sem_signal(ce.mutex);
+		wfi();
+	}
+//   SOLUZIONE 2025-01-27 )
+
+

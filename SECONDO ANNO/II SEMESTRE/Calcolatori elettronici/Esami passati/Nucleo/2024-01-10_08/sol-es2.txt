@@ -1,0 +1,103 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2024-01-10
+	carica_gate	TIPO_CEREADTO	a_ceread_n_to	LIV_UTENTE
+//   SOLUZIONE 2024-01-10 )
+// ( SOLUZIONE 2024-01-10
+	.extern	c_ceread_n_to
+a_ceread_n_to:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_ceread_n_to
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2024-01-10 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2024-01-10
+extern "C" bool c_ceread_n_to(natl id, char *buf, natl& quanti, natl to)
+{
+	natl rem;
+
+	if (id >= next_ce) {
+		flog(LOG_WARN, "ce non riconosciuto: %d", id);
+		abort_p();
+	}
+
+	if (!c_access(reinterpret_cast<vaddr>(&quanti), sizeof(quanti), true, false)) {
+		flog(LOG_WARN, "quanti non valido");
+		abort_p();
+	}
+
+	if (!c_access(reinterpret_cast<vaddr>(buf), quanti, true)) {
+		flog(LOG_WARN, "buf non valido");
+		abort_p();
+	}
+
+	if (!quanti)
+		return true;
+
+	des_ce *ce = &array_ce[id];
+	to = sem_wait_to(ce->mutex, to);
+	if (!to) {
+		quanti = 0;
+		return false;
+	}
+	ce->buf = buf;
+	ce->quanti = quanti;
+	ce->enabled = true;
+	outputb(1, ce->iCTL);
+	to = sem_wait_to(ce->sync, to);
+	if (ce->enabled) {
+		outputb(0, ce->iCTL);
+		ce->enabled = false;
+	}
+	rem = ce->quanti;
+	sem_signal(ce->mutex);
+	if (!to) {
+		quanti -= rem;
+		return false;
+	}
+	return true;
+}
+
+extern "C" void c_driver_ce(int id)
+{
+	des_ce *ce = &array_ce[id];
+
+	if (!ce->enabled)
+		return;
+
+	ce->quanti--;
+	if (ce->quanti == 0) {
+		outputb(0, ce->iCTL);
+		ce->enabled = false;
+		des_sem *s = &array_dess[ce->sync];
+		s->counter++;
+
+		if (s->counter <= 0) {
+			des_proc* lavoro = rimozione_lista(s->pointer);
+			if (lavoro->waiting_on != 0xFFFFFFFF) {
+				lavoro->contesto[I_RAX] = rimozione_lista_attesa(lavoro);
+				lavoro->waiting_on = 0xFFFFFFFF;
+			}
+			inspronti();	// preemption
+			inserimento_lista(pronti, lavoro);
+			schedulatore();	// preemption
+		}
+	}
+	char b = inputb(ce->iRBR);
+	*ce->buf = b;
+	ce->buf++;
+}
+//   SOLUZIONE 2024-01-10 )
+
+

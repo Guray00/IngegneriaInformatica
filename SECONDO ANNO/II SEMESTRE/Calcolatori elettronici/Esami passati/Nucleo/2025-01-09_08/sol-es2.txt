@@ -1,0 +1,89 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2025-01-09
+void mq_msgpull(des_proc *sender)
+{
+	if (sender->mq_buflen > esecuzione->mq_buflen)
+		return;
+	char *src = sender->mq_buf,
+	     *dst = esecuzione->mq_buf;
+	natq  rem = sender->mq_buflen;
+	while (rem) {
+		vaddr vsrc = int_cast<vaddr>(src);
+		natq tocopy = DIM_PAGINA - (vsrc % DIM_PAGINA);
+		if (rem < tocopy)
+			tocopy = rem;
+		char *psrc = ptr_cast<char>(trasforma(sender->cr3, vsrc));
+		memcpy(dst, psrc, tocopy);
+		dst += tocopy;
+		src += tocopy;
+		rem -= tocopy;
+	}
+}
+//   SOLUZIONE 2025-01-09 )
+// ( SOLUZIONE 2025-01-09
+/// @todo Controllare i parametri
+	if (esecuzione->mq_reader) {
+		flog(LOG_WARN, "mq_send: il processo e' un reader");
+		c_abort_p();
+		return;
+	}
+
+	if (!c_access(int_cast<vaddr>(msg), len, false, false)) {
+		flog(LOG_WARN, "mq_send: parametri non validi");
+		c_abort_p();
+		return;
+	}
+
+	// fallimento se la coda è piena
+	if (mq_full()) {
+		esecuzione->contesto[I_RAX] = false;
+		return;
+	}
+//   SOLUZIONE 2025-01-09 )
+// ( SOLUZIONE 2025-01-09
+/// @todo scrivere il corpo di c_mq_recv
+	mq_des *mq = &message_queue;
+
+	if (!esecuzione->mq_reader) {
+		flog(LOG_WARN, "processo non registrato come lettore");
+		c_abort_p();
+		return;
+	}
+
+	if (!c_access(int_cast<vaddr>(buf), size, true, false)) {
+		flog(LOG_WARN, "mq_recv: parametro buf non valido");
+		c_abort_p();
+		return;
+	}
+
+	esecuzione->mq_buf = buf;
+	esecuzione->mq_buflen = size;
+
+	if (esecuzione->mq_ntr == mq->tail) {
+		mq->nwaiting++;
+		inserimento_lista(mq->w_readers, esecuzione);
+		schedulatore();
+		return;
+	}
+
+	mq_msg *m = &mq->mq[esecuzione->mq_ntr];
+	des_proc *sender = m->sender;
+	esecuzione->contesto[I_RAX] = sender->mq_buflen;
+	mq_msgpull(sender);
+	esecuzione->mq_ntr = mq_next(esecuzione->mq_ntr);
+	m->toread--;
+	if (!m->toread) {
+		sender->mq_buf = nullptr;
+		sender->mq_buflen = 0;
+		m->sender = nullptr;
+		mq->head = mq_next(mq->head);
+		inspronti();
+		inserimento_lista(pronti, sender);
+		schedulatore();
+	}
+//   SOLUZIONE 2025-01-09 )
+
+

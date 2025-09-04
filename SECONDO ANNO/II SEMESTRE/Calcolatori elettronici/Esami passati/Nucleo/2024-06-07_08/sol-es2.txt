@@ -1,0 +1,73 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2024-06-07
+	// se being_watched non è settato si tratta di un processo che ha
+	// causato questa eccezione per altri motivi, e deve essere abortito
+	if (!esecuzione->being_watched)
+		return false;
+
+	esecuzione->being_watched = false;
+
+	// resettiamo il single step, riabilitiamo le interruzioni esterne e
+	// disabilitiamo nuovamente le scritture sulla pagina che contiene
+	// la zona da osservare
+	natq *pila =  ptr_cast<natq>(esecuzione->contesto[I_RSP]);
+	pila[2] &= ~BIT_TF;
+	pila[2] |= BIT_IF;
+	watch_des *w = &watch_state;
+	tab_iter it(esecuzione->cr3, w->v, w->size);
+	while (it.down())
+		;
+	it.get_e() &= ~BIT_RW;
+	// questa volta dobbiamo invalidare l'entrata, perché il TLB potrebbe
+	// aver memorizzato il vecchio stato di RW
+	invalida_entrata_TLB(w->v);
+
+	// vediamo se il valore del watch è cambiato
+	natq cur_value = 0;
+	memcpy(&cur_value, voidptr_cast(w->v), w->size);
+	if (cur_value == w->old_value) {
+		// non è cambiato: non notifichiamo il watcher e lasciamo che
+		// il processo prosegua indisturbato
+		return true;
+	}
+	w->old_value = cur_value;
+	// gli accessi da parte del watcher stesso vanno ignorati
+	if (w->watcher_id == esecuzione->id)
+		return true;
+	// altrimenti notifichiamo il watcher (gestiamo i casi in cui il watcher
+	// è già in attesa oppure no)
+	if (w->watcher_waiting) {
+		w->watcher_waiting->contesto[I_RAX] = cur_value;
+		inspronti();
+		inserimento_lista(pronti, w->watcher_waiting);
+		w->watcher_waiting = nullptr;
+	} else {
+		esecuzione->new_watch_value = cur_value;
+		inserimento_in_fondo(w->watched_waiting, esecuzione);
+	}
+	schedulatore();
+
+	return true;
+//   SOLUZIONE 2024-06-07 )
+// ( SOLUZIONE 2024-06-07
+	watch_des *w = &watch_state;
+	if (!w->v || w->watcher_id != esecuzione->id) {
+		flog(LOG_WARN, "watch: chiamata non valida");
+		c_abort_p();
+		return;
+	}
+	if (w->watched_waiting) {
+		des_proc *p = rimozione_lista(w->watched_waiting);
+		esecuzione->contesto[I_RAX] = p->new_watch_value;
+		inspronti();
+		inserimento_lista(pronti, p);
+	} else {
+		inserimento_lista(w->watcher_waiting, esecuzione);
+	}
+	schedulatore();
+//   SOLUZIONE 2024-06-07 )
+
+

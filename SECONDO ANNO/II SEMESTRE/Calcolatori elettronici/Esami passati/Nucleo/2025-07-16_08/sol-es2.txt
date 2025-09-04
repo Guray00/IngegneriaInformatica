@@ -1,0 +1,64 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2025-07-16
+	carica_gate	TIPO_RES	a_resident	LIV_SISTEMA
+//   SOLUZIONE 2025-07-16 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2025-07-16
+	if (!p->resident) {
+		rimuovi_pila(p, buf);
+		p->memstate = M_SWAPPED_OUT;
+	} else {
+		p->swap_out_buf = buf;
+		schedulatore();
+	}
+//   SOLUZIONE 2025-07-16 )
+// ( SOLUZIONE 2025-07-16
+	if (res == esecuzione->resident)
+		return;
+
+	if (res) {
+		esecuzione->resident = true;
+		return;
+	}
+
+	esecuzione->resident = false;
+
+	if (!esecuzione->swap_out_buf)
+		return;
+
+	des_proc *swp = proc_table[swapper_info.id];
+	vaddr src = fin_utn_p - DIM_USR_STACK;
+	vaddr dst = int_cast<vaddr>(esecuzione->swap_out_buf);
+	natq rem = DIM_USR_STACK;
+	for (tab_iter it(swp->cr3, dst, DIM_USR_STACK); it; it.next())
+	{
+		if (it.get_l() > 1)
+			continue;
+		natq tocopy = DIM_PAGINA - dst % DIM_PAGINA;
+		if (tocopy > rem)
+			tocopy = rem;
+		tab_entry e = it.get_e();
+		paddr pa = extr_IND_FISICO(e) + (dst % DIM_PAGINA);
+		//flog(LOG_DEBUG, "memcpy(%lx, %lx, %lu)", pa, src, tocopy);
+		memcpy(voidptr_cast(pa), voidptr_cast(src), tocopy);
+		src += tocopy;
+		dst += tocopy;
+		rem -= tocopy;
+	}
+	distruggi_pila(esecuzione->cr3, fin_utn_p, DIM_USR_STACK);
+	esecuzione->memstate = M_SWAPPED_OUT;
+	esecuzione->swap_out_buf = nullptr;
+	inspronti();
+	inserimento_lista(pronti, swp);
+	schedulatore();
+//   SOLUZIONE 2025-07-16 )
+
+

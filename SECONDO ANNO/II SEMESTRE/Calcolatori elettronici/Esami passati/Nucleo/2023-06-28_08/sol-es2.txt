@@ -1,0 +1,53 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2023-06-28
+void rimozione_lista_attesa(des_proc* lavoro);
+//   SOLUZIONE 2023-06-28 )
+// ( SOLUZIONE 2023-06-28
+		if (lavoro->waiting_on != 0xFFFFFFFF) {
+			rimozione_lista_attesa(lavoro);
+			lavoro->contesto[I_RAX] = true;
+			lavoro->waiting_on = 0xFFFFFFFF;
+		}
+//   SOLUZIONE 2023-06-28 )
+// ( SOLUZIONE 2023-06-28
+		if (sospesi->pp->waiting_on != 0xFFFFFFFF) {
+			des_sem *s = &array_dess[sospesi->pp->waiting_on];
+			s->counter++;
+			des_proc **p = &s->pointer;
+			while (*p != sospesi->pp)
+				p = &(*p)->puntatore;
+			*p = (*p)->puntatore;
+			sospesi->pp->contesto[I_RAX] = false;
+			sospesi->pp->waiting_on = 0xFFFFFFFF;
+		}
+//   SOLUZIONE 2023-06-28 )
+// ( SOLUZIONE 2023-06-28
+extern "C" void c_sem_wait_to(natl sem, natl to)
+{
+	// una primitiva non deve mai fidarsi dei parametri
+	if (!sem_valido(sem)) {
+		flog(LOG_WARN, "semaforo errato: %u", sem);
+		c_abort_p();
+		return;
+	}
+
+	des_sem *s = &array_dess[sem];
+	if (to == 0 && s->counter <= 0) {
+		esecuzione->contesto[I_RAX] = false;
+		return;
+	}
+	s->counter--;
+	if (s->counter < 0) {
+		inserimento_lista(s->pointer, esecuzione);
+		esecuzione->waiting_on = sem;
+		c_delay(to);
+	} else {
+		esecuzione->contesto[I_RAX] = true;
+	}
+}
+//   SOLUZIONE 2023-06-28 )
+
+

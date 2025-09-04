@@ -1,0 +1,55 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2024-07-17
+	if (!esecuzione->registrato)
+		return false;
+	esecuzione->contesto[I_RAX] = 0;
+	if (esecuzione->notificato)
+		esecuzione->contesto[I_RAX] = 2;
+	if (esecuzione->ricevuto_intr) {
+		esecuzione->ricevuto_intr = false;
+		esecuzione->contesto[I_RAX]++;
+	}
+	if (esecuzione->contesto[I_RAX])
+		return true;
+	esecuzione->bloccato = true;
+	return false;
+//   SOLUZIONE 2024-07-17 )
+// ( SOLUZIONE 2024-07-17
+
+	esecuzione->contesto[I_RAX] = 0;
+	if (!esecuzione->registrato) {
+		flog(LOG_WARN, "evget: processo non registrato");
+		return;
+	}
+	if (!esecuzione->notificato)
+		return;
+	esecuzione->contesto[I_RAX] = in_notifica->id;
+	esecuzione->notificato = false;
+	risposte_mancanti--;
+	if (!risposte_mancanti) {
+		distruggi_processo(in_notifica);
+		processi--;
+		in_notifica = nullptr;
+		if (terminati) {
+			des_proc *p = rimozione_lista(terminati);
+			inspronti();
+			notify_event(p);
+			schedulatore();
+		}
+	}
+//   SOLUZIONE 2024-07-17 )
+// ( SOLUZIONE 2024-07-17
+	if (!p->registrato || p->bloccato) {
+		p->bloccato = false;
+		p->contesto[I_RAX] = 1;
+		inspronti();
+		esecuzione = p;
+	} else {
+		p->ricevuto_intr = true;
+	}
+//   SOLUZIONE 2024-07-17 )
+
+
