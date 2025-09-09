@@ -1,4 +1,4 @@
-# Scritto / Orale FdA - $23/06/2025$
+# Scritto / Orale FdA - $08/09/2025$
 
 > Ogni esercizio rappresenta la traccia dello scritto (ognuno ha una traccia diversa allo scritto con un esercizio che può presentare più richieste).
  
@@ -12,39 +12,77 @@
 Calcola la **risposta libera** della funzione di trasferimento
  
 
-   $$G(s) = \frac{s + 3}{s(s + 5)^2}$$
+   $$G(s) = \frac{s + 3}{s(s + 1)^2}$$
 
    con condizioni iniziali:
    
-   $$y(0) = 0,\quad \dot y(0) = -1,\quad \ddot y(0) = -1$$
+   $$y(0) = 0,\quad \dot y(0) = -1,\quad \ddot y(0) = -2$$
    
- - Il sistema è **BIBO-stabile**? Perché?
+ 1. Il sistema è **BIBO-stabile**? Perché?
+ 2. Si tracci il Diagramma di Bode e si progetti un regolatore che soddisfi le seguenti specifiche:
+
+ - Errore a regime in risposta al gradino  $<3\$%
+ - Reiezione dei disturbi di carico di almeno 20 dB per $\omega\le0.1$ rad/s
+ - Reiezione dei disturbi di misura di almeno 20 dB per $\omega\ge100$ rad/s
+ - Margine di fase > 45°
 > #### Domande Orale
-> * Tracciare il diagramma di Bode della precedente f.d.t.
-
-#### Variante 1.1.1
-
-Stesso esercizio ma con funzione di trasferimento:
-
-   $$G(s) = \frac{s + 9}{s(s + 5)^2}$$
-
-e con condizioni iniziali:
-
-   $$y(0) = 0,\quad \dot y(0) = -2,\quad \ddot y(0) = -1$$
-> #### Domande Orale
-> * Progettare un controllore con margine di fase $\ge50°$ e tempo di assestamento $<3$ secondi.
+> A me all’orale ha chiesto cosa intendevo con alcune specifiche (come le avrei fatte perché non le avevo finite) e di fargli a voce il controllore all’incirca, perché non avevo fatto tutti i calcoli
 
 ### Esercizio 1.2
 Calcola la risposta forzata al gradino di:
 
-$$G(s)=\cfrac{(s+1)(s+5)}{s(s+2)^2}$$
+  $$y''' + 20y'' = u' + 12u$$
+ 
+1. Il sistema è **BIBO-stabile**? Perché?
+2. Calcolare la fdt
+3. Sulla stessa funzione progettare un regolatore per avere:
+  - Errore a gradino nullo
+  - Reiezione dei disturbi di carico di almeno 20 dB per $\omega \leq10$ rad/s
+  - Reiezione dei disturbi di misura di almeno 20 dB per $\omega \geq1000$ rad/s
+  - Margine di fase > 45°
+
+### Esercizio 1.3
+Sia data
+
+  $$y'''+8y''+16y'=u'+10u$$
+1. Calcolare la risposta forzata
+2. Calcolare la funzione di trasferimento
+3. Controllare se bibo stabile
+4. Usando la stessa funzione, tracciare bode e fare un controllore che rispetti:
+ 
+ - Errore nullo a regime in risposta al gradino
+ - Reiezione dei disturbi di carico di almeno 20 dB per $\omega \leq0.1$ rad/s
+ - Reiezione dei disturbi di misura di almeno 20 dB per $\omega \geq1000$ rad/s
+ - Margine di fase di almeno 45°
+
+> #### Domande Orale
+>(le prime due domande l'assistente, la terza Munafo):
+> - teorema del valor finale e iniziale (mi ha chiesto la definizione e se riuscivo anche la dimostrazione..)
+> - bode per controllare se il controllore rispettava le specifiche
+> - trovare una matrice A B e C e far si che il sistema sia marginalmente stabile, osservabile e raggiungibile
+> 
+### Esercizio 1.4
+Sia data
+
+  $$y'''+4y''+4y'= u''+ 4u' + 5u$$
+1. Calcolare la risposta forzata
+2. Calcolare la funzione di trasferimento
+3. Controllare se bibo stabile
+4. Usando la stessa funzione, tracciare bode e fare un controllore che rispetti:
+- Errore minore del 3% a regime in risposta al gradino
+- Reiezione dei disturbi di carico di almeno 40 dB per $\omega \leq0.1$ rad/s
+- Reiezione dei disturbi di misura di almeno 20 dB per $\omega \geq1000$ rad/s
+- Margine di fase di almeno 45°
+
+> #### Domande Orale
+> All'orale mi ha chiesto alcune precisazioni sul compito e poi stabilità, osservabilità e di creargli una matrice A e una B che dovevano risultare asintoticamente stabili e raggiungibili
 
 ## 2 - Progettazione del controllore
 
 ### Esercizio 2.1
 Un impianto ha f.d.t.:
 
-$$G(s)=50\cfrac{s-20}{(s+10)(s+5)^2}$$
+$$G(s)=400\cfrac{s+1}{s(s+2)(s^2+s+5)}$$
 
 progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo chiuso
 
@@ -52,10 +90,10 @@ progettare per tale impianto un regolatore R(s) tale per cui il sistema a ciclo 
 
 
 soddisfi le seguenti specifiche:
-* Errore nullo a regime in risposta al gradino
-* Reiezione dei disturbi di carico di almeno 20 dB per $\omega\le0.1$ rad/s
-* Reiezione dei disturbi di misura di almeno 20 dB per $\omega\ge50$ rad/s
-* Margine di fase di almeno 45°
+* Errore a regime $<10\$% per ingresso a gradino
+* Reiezione dei disturbi di carico di almeno 20 dB per $\omega\le0.2$ rad/s
+* Reiezione dei disturbi di misura di almeno 20 dB per $\omega\ge30$ rad/s
+* Margine di fase di almeno 60°
 
 ### Esercizio 2.2
 
@@ -75,44 +113,59 @@ soddisfi le seguenti specifiche:
 * Margine di fase di almeno 60°
 
 > #### Domande Orale
-> Ho avuto l'assistente all'orale e mi ha fatto commentare il ragionamento delle scelte di progetto (fortunatamente erano fatte bene), mi ha chiesto la definizione di BIBO stabilità e come si trova con i poli e poi mi ha fatto fare un esercizio con una matrice da studiarne osservabilità e raggiungibilità.
+> Disegnare Diagramma di Nyquist
 
 ## 3 - Bode e Nyquist
 
-> Nessuna traccia condivisa per questa tipologia
+Sia data la fdt  
+
+  $$G(s) = 2000 \cdot \frac{10}{s \ (s+10) \ (s+2)^3}$$
+
+1. Il sistema è Bibo stabile?
+2. Disegnare il diagramma di Bode
+3. Progettare un controllore per rispettare le seguenti specifiche:
+- Errore a regime nullo allo scalino
+- Reiezione disturbi di carico di almeno 20 db per $\omega < 0.1 \,\text{rad/s}$
+- Reiezione disturbi di misura di almeno 20 db per $\omega > 69 \,\text{rad/s}$
+- Margine di fase: $\ge 45^\circ$
+
+4. Discutere il criterio di Nyquist e tracciare il diagramma di Nyquist
+> #### Domande Orale
+> Differenze tra stabilità bibo e stabilità interna
 
 ## 4 - Modello in variabili di stato
 
 ### Esercizio 4.1
 
-Si consideri il sistema descritto dalle equazioni di stato:
-
 $$\begin{cases}
 \dot x =
 \begin{bmatrix}
-    3&1&0\\
-    -2&0&0\\
-    0&0&3
+-1 & 0 & -2 \\
+0 & 4 & 0 \\
+2 & 0 & -3
 \end{bmatrix}
 x +
 \begin{bmatrix}
-    0\\
-    1\\
-    0
+    1 \\ 0 \\ 0
 \end{bmatrix}
 u
 \\\,\\
 y =
 \begin{bmatrix}
-    1&0&0
+   2 & 0 & 0
 \end{bmatrix}
 x
 \end{cases}$$  
 
+1. Stabilità interna, raggiungibilità, osservabilità, modi
+2. Scrivere la funzione di trasferimento del sistema
+3. BIBO stabile?
+4. Diagramma di Bode della seguente fdt: 
 
-1. Si discuta la raggiungibilità, l'osservabilità e la stabilità interna del sistema
-2. Sulla base della discussione precedente, si determini la funzione di trasferimento del sistema
-3. Il sistema è BIBO stabile?
+$$G(s) = \frac{s+7}{s(s+3)^2}$$
+
+> #### Domande Orale
+> Tracciare Nyquist della fdt di prima[ $G(s) = \frac{s+7}{s(s+3)^2}$],  criterio di stabilità di Nyquist
 
 ### Esercizio 4.2
 
@@ -121,10 +174,10 @@ Si consideri il sistema descritto dalle equazioni di stato:
 $$\begin{cases}
 \dot x =
 \begin{bmatrix}
-    0&-1&0&0\\
-    1&0&0&0\\
-    0&0&-2&0\\
-    0&0&0&3
+    -7&0&0&0\\
+    0&-2&0&0\\
+    0&0&0&-3\\
+    0&0&3&0
 \end{bmatrix}
 x +
 \begin{bmatrix}
@@ -145,23 +198,17 @@ x
 1. Si discuta la raggiungibilità, l'osservabilità e la stabilità interna del sistema
 2. Sulla base della discussione precedente, si determini la funzione di trasferimento del sistema
 3. Il sistema è BIBO stabile?
+4. Diagramma di Bode della seguente fdt: 
 
-# Esame svolto
+$$G(s) = \frac{s+3}{s(s+1)^2}$$
+> #### Domande Orale
+> - Che tipo di stabilità interna è  
+  (avevo scritto solo che era stabile, quindi ha voluto che specificassi se era assoluta o marginale)
 
-Calcola la **risposta libera** della funzione di trasferimento  
+>- Differenza tra la **BIBO-stabilità** e la stabilità interna
 
-   $$G(s) = \frac{s + 7}{s(s + 3)^2}$$
-   
-   con condizioni iniziali:
+>- Sulla fdt del punto 4 fare un controllore che rispetti le seguenti richieste:
+ > - Margine di fase $\ge 45^\circ$
+ > - Reiezione dei disturbi di carico di 40 dB per $\omega \le 0.1 \,\text{rad/s}$
 
-   $$y(0) = 0,\quad \dot y(0) = -1,\quad \ddot y(0) = 1$$
-   
--  Il sistema è **BIBO-stabile**? Perché?
 
-L'esame riportato di seguito (*visualizzabile solo nella versione pdf di questo file*) è stato fatto da me e comprendeva tre tracce più un'orale di 15 minuti. Ecco una breve spiegazione per poter replicare:
-* La prima traccia (foto 1) è il classico esercizio sulla risposta libera
-* La seconda traccia chiedeva di tracciare luogo delle radici e diagramma di Nyquist della f.d.t. Ho svolto questa traccia, disegnando prima il luogo delle radici e poi ricavando Nyquist dal diagramma di Bode
-* La terza traccia chiedeva di progettare un controllore che portasse la banda passante sopra i 3 rad/s, mantenendo un margine di fase di almeno 45°. Questa richiesta non è molto chiara nello scritto in quanto il tempo era poco e il prof chiedeva un'idea di soluzione. Ho proposto un controllore della forma $C(s)=K\cfrac{(\frac s3+1)^2}{(\frac s{10}+1)^2}$ (avevo invertito per sbaglio n e d) e insieme al prof (Munafò) abbiamo visto all'orale che tracciando Bode funzionava perfettamente.
-* All'orale oltre a una discussione sullo svolgimento dello scritto e della progettazione fatta, mi sono state fatte alcune domande sul luogo delle radici e su Nyquist, e mi è stata chiesta quale era la relazione tra le regioni delineate da Nyquist e le soluzioni del luogo delle radici.  
-
-L'unico errore fatto allo scritto (che mi potevo facilmente evitare) era un'errore sul luogo delle radici per K positivo, sul tracciamento dei rami che vanno a infinito. Per questo errore il prof mi ha tolto 3 punti.
