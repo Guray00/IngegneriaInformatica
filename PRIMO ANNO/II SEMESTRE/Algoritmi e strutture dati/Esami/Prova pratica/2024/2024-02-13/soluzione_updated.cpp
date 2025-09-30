@@ -1,72 +1,56 @@
-#include<iostream> 
-#include<vector> 
-#include<algorithm> 
-using namespace std; 
-
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
 
 struct Node {
-	int label; 
-	Node* left; 
-	Node* right; 
-	explicit Node(int l): label(l), left(nullptr), right(nullptr) {}
+    int label;
+    Node* left;
+    Node* right;
+    Node(int l) : label(l), left(NULL), right(NULL) {}
+};
 
-} 
-
-
-void insert(const Node* node, int label) {
-	Node** it = &node; 
-	while(*it != nullptr) {
-		if(label <= (*it)->label) {
-			it = &(*it)->left; 
-		} else {
-			it = &(*it)->right; 
-		}
-	} 
-	*it = new Node(label);
-} 
-
-
-
-void solve(const Node* node, int sum, vector<pair<int, const Node*>> &v) {
-	if(node == nullptr) return 0; 
-
-	// sum = somma totale labels antenati 
-	// l = somma labels sottoalbero sx, r = somma labels sottoalbero dx
-
-	// recursive call to left and right 
-	int l = solve(node->left, sum + node->label, v);
-	int r = solve(node->right, sum + node->label, v); 
-	int res = sum - l - r; // calc res f
-	v.push_back({res, node});
-	return r + l + n->label; // update total sum
+void insert(Node*& node, int label) {
+    Node** it = &node;
+    while (*it != NULL) {
+        if (label <= (*it)->label) {
+            it = &(*it)->left;
+        } else {
+            it = &(*it)->right;
+        }
+    }
+    *it = new Node(label);
 }
 
+int solve(const Node* node, int sum, vector<pair<int, const Node*> >& v) {
+    if (node == NULL) return 0;
+    int l = solve(node->left, sum + node->label, v);
+    int r = solve(node->right, sum + node->label, v);
+    int res = sum - l - r;
+    v.push_back(make_pair(res, node));
+    return l + r + node->label;
+}
 
-
+bool cmp(const pair<int, const Node*>& a, const pair<int, const Node*>& b) {
+    if (a.first == b.first) return a.second->label < b.second->label;
+    return a.first < b.first;
+}
 
 int main() {
-	int n, k; cin >> n >> k; 
-	Node* node = nullptr;
-	for(int i = 0; i < n; i++)  {
-		int label; cin >> label; 
-		insert(node, label);
-	} 
-
-	vector<pair<int, const Node*>> v; 
-	solve(node, 0, v); 
-	sort(v.begin(), v.end(), [](const auto &a, const auto& b) {
-		auto [a_res, a_n] = a;
-		auto [b_res, b_n] = b; 
-		if(a_res == b_res) return a_n->label < b_n->label; // ordine non decrescente
-		else return a_res < b_res;
-	}); 
-
-	for(auto [_,n] : v) {
-		if(k == 0) break; 
-		cout << n->label << endl;
-		k--;
-
-	}
-
-
+    int n, k;
+    cin >> n >> k;
+    Node* node = NULL;
+    for (int i = 0; i < n; i++) {
+        int label;
+        cin >> label;
+        insert(node, label);
+    }
+    vector<pair<int, const Node*> > v;
+    solve(node, 0, v);
+    sort(v.begin(), v.end(), cmp);
+    for (size_t i = 0; i < v.size() && k > 0; i++, k--) {
+        cout << v[i].second->label << endl;
+    }
+    return 0;
 }
+

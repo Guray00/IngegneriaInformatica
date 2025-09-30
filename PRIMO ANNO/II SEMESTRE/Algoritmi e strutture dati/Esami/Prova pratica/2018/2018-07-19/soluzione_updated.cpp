@@ -1,65 +1,93 @@
-#include<iostream>
-#include<fstream>
-#include<vector>
-#include<algorithm>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
 using namespace std;
-#include<functional>
-#include<optional>
-constexpr int p=999149 , a=1000, b=2000;
 
-struct Worker {
-	int id;
-	string surname;
+const int p = 999149;
+const int a = 1000;
+const int b = 2000;
+
+struct Worker
+{
+    int id;
+    string surname;
+    Worker() {}
+    Worker(int _id, const string &_s) : id(_id), surname(_s) {}
 };
 
-template<typename T>
-struct HashTable {
-	vector<vector<T>> table;
-	function<int(T)> hash;
+struct HashTable
+{
+    vector<vector<Worker>> table;
 
-	HashTable(function<int(T)> hash, size_t s) : table{s}, hash{move(hash)}  { }
-	void insert(T value) {
-		table[hash(value)].push_back(value);
-	}
+    HashTable(int size)
+    {
+        table = vector<vector<Worker>>(size);
+    }
 
+    int hash(int m)
+    {
+        return ((a * m + b) % p) % table.size();
+    }
+
+    void insert(const Worker &w)
+    {
+        int idx = hash(w.id);
+        table[idx].push_back(w);
+    }
 };
 
-// trova minimo nel vector di elementi con egual numero di collisioni
-optional<int> find_min(const vector<Worker> &v) {
-	if(v.empty()) return nullopt; 
+int main()
+{
+    int N, K;
+    cin >> N >> K;
+    int size = 2 * N;
+    if (size == 0)
+        return 0;
 
-	const Worker *minw = &v[0]; 
-	for(const auto &w : v) {
-		if(w.surname < minw->surname || (w.surname == minw->surname && w.id < minw->id))
-			minw = &w;
-	}
+    HashTable ht(size);
 
-	return minw->id;
-}
+    for (int i = 0; i < N; i++)
+    {
+        int id;
+        string s;
+        cin >> id >> s;
+        ht.insert(Worker(id, s));
+    }
 
-int main() {
-	ifstream cin("TestSet/input0.txt");
-	int n, k; cin >> n >> k; int i = n;
-	auto hash = [=](Worker w) { return (((a * w.id) + b) % p) % (2 * n); };
-	vector<vector<Worker>> res{}; 
-	{
-		HashTable<Worker> ht{hash, (size_t) 2 * n}; // concatenazione, dim * 2
-		while(i--) {
-			int id; string s; cin >> id >> s; 
-			ht.insert(Worker{id, s});
-		}
-	} 
+    vector<pair<int, int>> counts;
+    counts.reserve(size);
+    for (int i = 0; i < size; i++)
+    {
+        counts.push_back(make_pair(-(int)ht.table[i].size(), i));
+    }
 
-	// sort in ordine di numero di collisioni
-	stable_sort(res.begin(), res.end(), [] (const auto a, const auto b) -> bool {
-		return a.size() > b.size();
-	});
+    sort(counts.begin(), counts.end());
 
-	for(int i = 0; i < k; i++) {
-		auto minw = find_min(res[i]); 
-		if(minw.has_value()) cout << *minw << endl; 
-		else cout << -1 << endl;
-	}
+    int limit = K;
+    if (limit > (int)counts.size())
+        limit = counts.size();
 
+    for (int i = 0; i < limit; i++)
+    {
+        int idx = counts[i].second;
+        vector<Worker> &v = ht.table[idx];
+        if (v.empty())
+        {
+            cout << -1 << endl;
+            continue;
+        }
+        int min_idx = 0;
+        for (int j = 1; j < (int)v.size(); j++)
+        {
+            if (v[j].surname < v[min_idx].surname ||
+                (v[j].surname == v[min_idx].surname && v[j].id < v[min_idx].id))
+            {
+                min_idx = j;
+            }
+        }
+        cout << v[min_idx].id << endl;
+    }
 
+    return 0;
 }
