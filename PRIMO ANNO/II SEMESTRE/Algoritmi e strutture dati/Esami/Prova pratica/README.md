@@ -62,3 +62,8 @@ std::vector<std::vector<T>> table(size);
 ```
 
 Si raccomanda l'uso di `std::vector` anche per gli elementi della tabella hash poiché, a meno di casi specifici come rimozioni nel mezzo alla collezione, una lista concatenata in pratica non supera mai in performance un vettore, che risulta anche più semplice da utilizzare. Il numero di collisioni della i-esima entry della tabella hash corrisponde alla lunghezza del vettore in posizione i-esima.
+
+
+## Nota sul contenuto della cartella
+
+Le soluzioni della prova pratica devono essere compatibili in sede d'esame con C++03; i costrutti di c++11 o versioni successive non saranno accettati e genereranno errori di compilazione nella VM utilizzata all'esame. Per le soluzioni compatibili con il standard c++03 (vecchissimo, considerando che lo standard di default di g++-15 è c++17), fare riferimento ai file con nome soluzione_updated.cpp.
