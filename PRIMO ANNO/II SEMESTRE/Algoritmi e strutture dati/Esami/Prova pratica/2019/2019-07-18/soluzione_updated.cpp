@@ -1,67 +1,89 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <map>
 using namespace std;
-#include<algorithm>
-#include<vector>
-#include<unordered_map>
-constexpr int p = 999149, a = 1000, b = 2000;
 
-struct Veicolo {
+const int p = 999149;
+const int a = 1000;
+const int b = 2000;
+
+struct Veicolo
+{
 	int targa;
 	int categoria;
 };
 
-
-struct HashTable {
+struct HashTable
+{
 	int size;
 	vector<vector<Veicolo>> table;
-	HashTable(int _size): table{(size_t) _size}, size{_size} {}
+	HashTable(int _size) : size(_size)
+	{
+		table.resize(size);
+	}
 
-	int hash(Veicolo v) {
+	int hash(Veicolo v)
+	{
 		return ((a * v.targa + b) % p) % size;
 	}
 
-	void insert(Veicolo v) {
+	void insert(Veicolo v)
+	{
 		table[hash(v)].push_back(v);
 	}
 };
 
+bool cmp(pair<int, int> x, pair<int, int> y)
+{
+	return x.second > y.second || ((x.second == y.second) && x.first < y.first);
+}
 
-int main() {
-	int n, k, c; 
+int main()
+{
+	int n, k, c;
 	cin >> n >> k >> c;
 	HashTable ht(c);
-	
-	for(int i = 0; i < n; i++) {
-		int t, cat; 
+
+	for (int i = 0; i < n; i++)
+	{
+		int t, cat;
 		cin >> t >> cat;
-		ht.insert({t, cat});
+		Veicolo v;
+		v.targa = t;
+		v.categoria = cat;
+		ht.insert(v);
 	}
 
-	// calcola v per ogni indice di ht 
-	unordered_map<int,int> v_map{};
-	vector<pair<int,int>> result;
-	for(int i = 0; i < c; i++) {
+	// calcola v per ogni indice di ht
+	map<int, int> v_map;
+	vector<pair<int, int>> result;
+	for (int i = 0; i < c; i++)
+	{
 		v_map.clear();
 
 		// trova v
-		for(Veicolo v : ht.table[i])	v_map[v.categoria]++;
-		
+		for (size_t j = 0; j < ht.table[i].size(); j++)
+		{
+			Veicolo v = ht.table[i][j];
+			v_map[v.categoria]++;
+		}
+
 		// trova m(i)
 		int m = 0;
-		for(pair<int,int> p : v_map) {
-			if(p.second > m)	m =	p.second; 
+		for (map<int, int>::iterator it = v_map.begin(); it != v_map.end(); ++it)
+		{
+			if (it->second > m)
+				m = it->second;
 		}
-		result.push_back({i, m});
+		result.push_back(make_pair(i, m));
 	}
 
 	// sorting result
-	sort(result.begin(), result.end(), [] (pair<int,int> a, pair<int,int> b) {
-		return a.second > b.second || ((a.second == b.second) && a.first < b.first);
-	});
+	sort(result.begin(), result.end(), cmp);
 
-	for(int i = 0; i < result.size() && k--; i++)	cout << result[i].first << endl; 
-	
+	for (size_t i = 0; i < result.size() && k > 0; i++, k--)
+		cout << result[i].first << endl;
 
-
+	return 0;
 }
-
