@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <div class="logo">🎓</div>
+            <div class="title">Ripetizioni • Login</div>
+        </div>
+        <div class="header-actions">
+            <a href="html/register.html">Registrati</a>
+        </div>
+    </header>
+    
+    <main>
+        <h2>Login</h2>
+        <div id="error" class="error"></div>
+        <form id="loginForm">
+            <span>
+                <label for="role">Ruolo:</label>
+                <select id="role">
+                    <option value="" disabled selected>Seleziona un ruolo...</option>
+                    <option value="tutor">Tutor</option>
+                    <option value="student">Studente</option>
+                </select>
+            </span>
+            <span>
+                <label for="usr">Username:</label>
+                <input type="text" id="usr" placeholder="mario123">
+            </span>
+            <span>
+                <label for="pwd">Password:</label>
+                <input type="password" id="pwd" placeholder="******">
+            </span>
+            <button type="submit">Accedi</button>
+        </form>
+    </main>
+    <footer>
+        <small>
+            Progetto finale di Progettazione Web | Professore: Alessio Vecchio - Studente: Giorgio Baldacci | Novembre 2025
+        </small>
+        <small>
+            <a href="./html/manuale.html">Manuale utente</a>
+        </small>
+    </footer>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(e){
+            e.preventDefault();
+
+            const role = document.getElementById("role").value;
+            const usr = document.getElementById("usr").value.trim();
+            const pwd = document.getElementById("pwd").value;
+
+            login(role, usr, pwd).then(res => {
+                if (res.success) {
+                    let next;
+                    (role == 'tutor') ? next = "html/tutor.html" : next = "html/student.html";
+                    window.location.href = next;
+                }
+                else
+                    document.getElementById("error").textContent = "Errore: " + res.message;
+            });
+        });
+    </script>
+
+</body>
+</html>

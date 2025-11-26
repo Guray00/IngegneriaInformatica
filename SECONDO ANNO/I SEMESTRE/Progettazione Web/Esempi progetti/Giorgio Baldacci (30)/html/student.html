@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studente</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="brand">
+            <div class="logo">🎓</div>
+            <div class="title">Ripetizioni • Area Studente</div>
+        </div>
+        <div class="header-actions">
+            <div id="studentName" class="student-name"></div>
+            <button id="logoutBtn" class="btn ghost">Logout</button>
+        </div>
+    </header>
+
+    <!--LAYOUT = sidebar + main-->
+    <div class="layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#" data-tab="book" class="active">Prenota</a></li>
+                    <li><a href="#" data-tab="upcoming">Le mie prenotazioni</a></li>
+                    <li><a href="#" data-tab="history">Storico prenotazioni</a></li>
+                    <li><a href="#" data-tab="payments">Pagamenti</a></li>
+                </ul>
+            </nav>
+            
+            <div class="side-cards">
+                <div class="card small">
+                    <div class="label">Ore totali</div>
+                    <div id="statHours" class="stat">0</div>
+                </div>
+                <div class="card small">
+                    <div class="label">Lezioni future</div>
+                    <div id="statUpcoming" class="stat">0</div>
+                </div>
+                <div class="card small">
+                    <div class="label">Da pagare</div>
+                    <div id="statDue" class="stat"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main>
+            <!-- Azioni principali -->
+            <div class="top-row">
+                <h2 id="pageTitle">Prenota una lezione filtrando fra quelle disponibili</h2>
+            </div>
+
+            <!-- Content area con varie tab -->
+            <section id="contentArea" class="content-area">
+                <!-- Tab prenota -->
+                <div id="tab-book" class="tabpage with-filters">
+                    <aside class="panel side">
+                        <h3>Filtra</h3>
+                        <label for="filterMode">Modalità</label>
+                        <select id="filterMode">
+                            <option value="">Nessun filtro</option>
+                            <option value="online">Online</option>
+                            <option value="presenza">Presenza</option>
+                        </select>
+                        <label for="filterTutor">Tutor</label>
+                        <input id="filterTutor" type="text" placeholder="Nome tutor">
+                        <button id="applyFilters" class="btn">Applica</button>
+                    </aside>
+                    <div class="panel">
+                        <h3>Slot disponibili</h3>
+                        <div id="slotsList" class="slots-grid">Caricamento slot...</div>
+                    </div>
+                </div>
+
+                <!-- Tab prenotazioni future -->
+                <div id="tab-upcoming" class="tabpage hidden">
+                    <div class="panel">
+                        <h3>Prossime lezioni</h3>
+                        <div id="upcomingList" class="slots-grid">Caricamento prenotazioni...</div>
+                    </div>
+                </div>
+
+                <!-- Tab prenotazioni passate -->
+                <div id="tab-history" class="tabpage hidden">
+                    <div class="panel">
+                        <h3>Storico lezioni</h3>
+                        <div id="historyList" class="slots-grid">Caricamento lezioni passate...</div>
+                    </div>
+                </div>
+                
+                <!-- Tab pagamenti -->
+                <div id="tab-payments" class="tabpage hidden">
+                    <div class="panel">
+                        <h3>Pagamenti</h3>
+                        <div id="paymentsList">Caricamento pagamenti...</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL (nascosto di default) -->
+    <div id="modal" class="modal hidden" role="dialog">
+        <div class="modalPanel">
+            <h3 id="modalTitle">Conferma prenotazione</h3>
+            <div id="modalBody"></div>
+            <div class="modalActions">
+                <button id="modalCancel" class="btn ghost">Annulla</button>
+                <button id="modalConfirm" class="btn primary" disabled>Conferma</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="../js/common.js"></script>
+    <script src="../js/student.js"></script>
+</body>
+</html>
