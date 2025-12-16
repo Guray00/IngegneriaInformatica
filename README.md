@@ -83,6 +83,7 @@ Sara Aliani<br>
 Taulant Arapi<br>
 Giuseppe "Attila" Attadia<br>
 Luca Arduini<br>
+Pietro Balestri<br>
 Giulio Bello<br>
 Giacomo Bertelli<br>
 Francesco Berti<br>
@@ -174,6 +175,7 @@ Alessandro Simonelli<br>
 Giuseppe Soriano<br>
 Walter Soro<br>
 Giorgio Charles Sorrentini<br>
+Matteo Spallazzi<br>
 Iacopo Stracca<br>
 Carmine Tranfa<br>
 Andrea Trasacco<br>
