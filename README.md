@@ -15,8 +15,6 @@ Gli studenti di Ingegneria Informatica dell'Università di Pisa utilizzano una C
 
 Vi invitiamo a diffidare in generale verso gruppi non creati da studenti del corso di laurea, o addirittura da persone non iscritte all'Università di Pisa. L'accesso ai gruppi indicati è libero e non richiede il rilascio di informazioni o l'obbligo di seguire profili social!
 
-**LINKTREE CON GRUPPI MATRICOLE DI ALTRI CORSI DI LAUREA DI INGEGNERIA**: https://linktr.ee/matricoleingunipi
-
 ## Corsi
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.png?raw=true)
 
@@ -187,6 +185,7 @@ Giulio Zingrillo<br>
 Francesco Zollo<br>
 Alex Ressa<br><br>
 Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto..
+
 
 
 
