@@ -1,0 +1,11 @@
+/* TESTO */
+h1, h2 {
+    font-family: 'Baloo 2', cursive;
+    margin-bottom: 1vh;
+    font-size: 5vmin;
+}
+
+p {
+    font-size: 4vmin;
+    line-height: 1.4;
+}

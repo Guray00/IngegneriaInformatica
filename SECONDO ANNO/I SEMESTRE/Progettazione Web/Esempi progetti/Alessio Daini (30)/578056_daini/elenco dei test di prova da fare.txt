@@ -1,0 +1,36 @@
+Player:
+username: dains98, password: password1!, domanda: In che città sei nato?, risposta: Livorno, record: 692
+username: alessio, password: password2!, domanda: Qual è la persona più importante per te?, risposta: me stesso, record: 839
+username: Alexandra01, password: Tanjiro1!, domanda: Nome di un parente importante, risposta: Papa, record: 1934
+username: master, password: password3!, domanda: Qual è la tua attività preferita?, risposta: vincere, record: 1520
+username: veroMaster, password:SonoIlNumero1!, domanda: Qual è la tua attività preferita? risposta: stravincere, record 2852
+
+
+scorePlayer:
+Tabella che contiene i tentativi fatti, di default:
+id, points, playerDate,            won, playerId
+'1', '368', '2025-12-07 21:43:18', '0', '1'
+'2', '692', '2025-12-07 21:45:00', '0', '1'
+'3', '839', '2025-12-07 21:46:39', '1', '3'
+'4', '1157', '2025-12-07 21:48:11', '0', '5'
+'5', '1934', '2025-12-07 21:48:57', '1', '5'
+'6', '1520', '2025-12-07 21:50:52', '0', '7'
+'7', '304', '2025-12-07 21:51:39', '0', '7'
+'8', '336', '2025-12-07 21:52:35', '0', '9'
+'9', '2852', '2025-12-07 21:53:08', '0', '9'
+
+security:
+playerId passwordId
+    1	    1
+    3	    2
+    5	    3
+    7	    4
+    9	    5
+
+password:
+                        password                                passwordId
+$2y$10$gYoevfPu4P2Gg5F3vdqt2eXrqUSG0M2QzBXSyXSgAOO44ER84CBEG	    1
+$2y$10$PCRGQLYCUeADdli7UwphCORdU9Lm02Vel1TWqH3z65mCDCSUlTgqe	    2
+$2y$10$GE2KYX05QqYU0nOcwRZ.peu3zpw.VIhEORLvhUmR/E2N4luNUVayO	    3
+$2y$10$VMSo0PyPMmZDergLk0AaCOCEPlC6FEhtL09UgYpIgSUVSzNQg8V4C	    4
+$2y$10$oQJ3tHwRVTAz7tg7gNnGQ.M4B8XL37/GEiC0nl0K8/U3OT8AG3LjS	    5

@@ -1,0 +1,11 @@
+@import url("../common/common.css");
+/*css tipico di login*/
+
+/*modificare AllineamentoOrizzontale*/
+
+.HorizontalAlignment {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}

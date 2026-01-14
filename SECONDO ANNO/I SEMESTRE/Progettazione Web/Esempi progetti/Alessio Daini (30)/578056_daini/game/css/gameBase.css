@@ -1,0 +1,22 @@
+/* ===== BASE STYLES ===== */
+
+body, html {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  h1 {
+    color: #00ffcc;
+    text-shadow: 0 0 4px #0a9b7e, 0 -3px 0 #0a9b7e, -3px 0 0 #0a9b7e,0 0 5px #81d876, 0 0 10px #81d876, 0 0 20px #3fafaa, 0 0 40px #3fafaa;
+    font-size: 4vw;
+    margin: 0;
+  }
+  

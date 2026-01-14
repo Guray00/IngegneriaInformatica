@@ -1,0 +1,62 @@
+/* BOTTONI */
+
+/*modificare AllineamentoOrizzontale*/
+
+button {
+    background-color: lavender;
+    border-radius: 2em;
+    border: 0.3vw solid purple;
+    min-height:1.5em;
+    color: green;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 2em;
+    width: 90%;
+    height: 12%;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 8px #0a9b7e;
+    margin-bottom: 1vh;
+}
+
+/* SHINE Arcobaleno INFINITO */
+button:hover::after,
+.HorizontalAlignment:hover::after,
+p:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        red, orange, yellow, green, blue, indigo, violet, red
+    );
+    background-size: 400% 100%;
+    mix-blend-mode: screen;
+    transform: skewX(-25deg);
+    animation: rainbowShine 2s linear infinite;
+}
+
+@keyframes rainbowShine {
+    0% { left: -100%; background-position: 0 0; }
+    100% { left: 100%; background-position: 400% 0; }
+}
+
+/* EFFETTI HOVER */
+button:hover,
+.HorizontalAlignment:hover,
+p:hover {
+    transform: scale(1.08);
+    transition: transform 0.5s ease;
+    cursor: pointer;
+    box-shadow: 0 0.8vh 3vw springgreen;
+}
+
+.HorizontalAlignment:hover label,
+button:hover {
+    text-decoration: underline;
+}

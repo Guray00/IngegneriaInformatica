@@ -1,0 +1,8 @@
+/* CONTENITORI CON BORDI, RAGGI, OMBRE */
+.Panel, 
+.borderDiv, 
+#redBorder {
+  position: relative;
+  border-radius: 2vh;
+  transition: all 0.4s ease;
+}

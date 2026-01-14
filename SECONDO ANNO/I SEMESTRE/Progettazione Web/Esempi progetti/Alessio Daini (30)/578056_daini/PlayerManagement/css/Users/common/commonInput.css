@@ -1,0 +1,57 @@
+/* LABEL */
+label {
+    font-size: 2em;
+    text-align: center;
+    min-width: 30%;
+    font-weight: bold;
+    color: green;
+    font-style: italic;
+    text-shadow: 0 0 8px #0a9b7e;
+}
+
+/*gestione di design per chrome, nello specifico per lo spaceholder*/
+::-webkit-input-placeholder {
+    color: #00fff0;
+    opacity: 0.50;    /* meno brillante */
+}
+
+/* INPUT */
+input {
+    margin-top:1vh;
+    font-size: 1.2em;
+    border-radius: 0.8em;
+    border: 0.3vw solid purple;
+    padding: 0.8em;
+    width: 70%;
+    background-color: #0a0026;
+    color: #00fff0; /*su firefox funziona*/
+    /* per eliminiare il warning definisco boxshadow*/
+    box-shadow: 0 0 1000px black;/*dimensione grande per garantire che l'ombra copra completamente lo sfondo, colorandolo di nero*/
+    /*da https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix
+    vendor prefix: 
+    Browser vendors used to add prefixes to experimental or nonstandard CSS properties and JavaScript APIs, 
+    so developers could experiment with new ideas. 
+    This, in theory, helped to prevent their experiments from being relied upon and then breaking web developers' code 
+    during the standardization process.
+    Web developers included prefixed features on production websites, 
+    despite their experimental nature. 
+    This made it more difficult for browser vendors to ensure compatibility while working on new features. 
+    Including prefixed features also harmed smaller browser vendors who ended up having to add other browsers' 
+    prefixes in order to render popular websites.*/
+    -webkit-box-shadow: 0 0 0px 1000px black inset !important; /* forza lo sfondo */
+    /* important mi serve, perché altrimenti il colore dello sfondo viene cambiato*/
+}
+
+/*-webkit è un motore di rendering, in particolare autofill si attiva quando si accetta un suggerimento dalla pagina*/
+input:-webkit-autofill {
+    -webkit-text-fill-color: #00fff0; /* forza il colore del testo */
+    /*important mi serve, perché altrimenti il colore dello sfondo viene cambiato*/
+    caret-color: #00fff0;/*colore per il cursore*/  
+  }
+
+/* FOCUS INPUT */
+input:focus {
+    outline: none;
+    border: 0.3vw solid dodgerblue;
+    box-shadow: 0 0 2vw rgba(30, 144, 255, 0.5);
+}

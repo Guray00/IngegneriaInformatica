@@ -1,0 +1,51 @@
+/* ===== BUTTONS ===== */
+
+.buttonContainer {
+    bottom: 5vh;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 2vw;
+    flex-shrink: 0;
+  }
+  
+  button {
+    font-size: 1.8vw;
+    padding: 1vw 2vw;
+    border-radius: 1vw;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #0ff, #00f, #ff0, #0f0);
+    background-size: 300% 300%;
+    border: 0.2vw solid #0ff;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1vw;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0.8vw #0ff, 0 0 1.6vw #0ff inset;
+    animation: gradientMove 3s ease infinite;
+    margin-bottom: 5vh;
+  }
+  
+  /* Animazione gradient */
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Hover */
+  button:hover {
+    transform: scale(1.15) rotate(-3deg);
+    box-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff inset;
+    animation: gradientMove 1s linear infinite;
+  }
+  
+  /* Disabilitato */
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    background: #333;
+  }
+  

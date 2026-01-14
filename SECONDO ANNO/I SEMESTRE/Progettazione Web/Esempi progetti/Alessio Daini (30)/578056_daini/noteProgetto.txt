@@ -1,0 +1,36 @@
+Voto di partenza dal pratico: 24
+Voto finale dopo il progetto: 27 => 30 al progetto
+
+Durante l'orale c'erano il prof Vecchio e un ragazzo, probabilmente suo esistente, che non conosco, in quanto ho studiato in autonomo, senza seguire il corso.
+Mi sono fatto interrogare dal ragazzo, che era molto gentile e comprensivo.
+Errore: ho chiamato in C:\pweb\tools\XAMPP\htdocs\578056_daini\PlayerManagement\php\Login\login.php  setcookie("username", $username, 0, "./578056_daini/game"), avente un percorso assoluto, invece che relativo.
+Ho corretto immediatamente il codice con:
+"
+    $scriptPath = $_SERVER['PHP_SELF']; // ".\578056_daini\PlayerManagement\php\Login\login.php
+    
+    $projectRoot = strstr($scriptPath, '/PlayerManagement', true); // ".\578056_daini"
+    
+    $path = $projectRoot . '/game'; // ".\578056_daini\game"
+    
+    setcookie("username", $username, 0, $path);// settare il cookie nella cartella .\578056_daini\game, che scade all'uscita dal percorso
+    
+"
+
+Mi sono accorto dell'errore nell'immediato e ho rimediato, per poi scusarmi con il ragazzo, che ha avuto molto pazienza e voleva darmi una mano a far funzionare il tutto.
+Il progetto, essendo stato molto lungo, non è stato possibile vederlo tutto, ma ne ha testato la corretta funzionalità, rimanendo soddisfatto nella cura del design, nel fatto che la pagina fosse completamente responsive, e della logica con cui ho implementato la parte client.
+è stato, inoltre, apprezzato, come ho usato le hash per le password e come ho implementato la parte dedicato al recupero della passworde dell'iscrizione: nella tabella Security vengono contenuti gli id del giocatore e della password, mentre nella tabella Password ci sono password uniche sempre hashate, con un loro identificatore ciascuno, seppur potenzialmente con stringa diversa rispetto alla password salvata nella tabella Player.
+Ecco, la tabella security serve per assicurarsi che l'utente possa solo inserire password uniche hashate, mentre le password contengono solo password uniche, pensate come se fossero in chiaro.
+Bisogna ricordare che le hash producono diverse stringhe a partire dalla password in chiaro, ecco perché la sua implementazione dal lato server non risulta essere banale.
+La parte client è stata molto lunga, in quanto è stato utilizzato canvas per programmare l'intero gioco di space invaders, molto fedele all'originale, ad eccezione delle immagini che sono state usate come frame per l'animazione del movimento dell'alieno, che sono le solite(mentre nel gioco originale ci sono diverse tipologie di alieni).
+Quindi, come nel gioco originale, è possibile sparare mentre il tank si muove, c'è un sistema delle collisioni correttamente gestito, nonché la gestione dello scroll e l'accelerazione del movimento dell'alieno che dipende da quanti alieni si uccidono volta per volta, e, ovviamente, non mancano le pareti che fanno da scudo protettivo.
+La cosa apprezzabile del gioco è stato l'utilizzo di moltiplicatori per premiare la precisione, piuttosto che il fatto di vincere o no la partita(non che la vittoria non offra dei punti bonus, ma è inutile vincere a caso, se si mancano troppo gli alieni).
+
+L'interrogazione è andata talmente per le lunghe, che il prof Vecchio, nonostante avesse iniziato dopo ad interrogare lo studente, aveva già finito ed è venuto ad osservare il mio orale e mi ha criticato una mia scelta di progettazione: non ha apprezzato che avessi usato l'ereditarietà delle classi nel DBMS, in quanto a detta sua, le classi figlie possono esistere in maniera molteplice anche se il DBMS è uno solo, mentre ho reso il DBMS stesso tutto static.
+Ho difeso la mia argomentazione giustificando che il DBMS è pesante al livello di performance ed essendo che ci serve un solo DBMS è assolutamente sensato utilizzarla globalmente e che non si vuole avere più istanze, così come la connessione al DBMS è concettualmente una sola e per tanto anche le altre classi figlie ne ereditano le caratteristiche, rimanendo sempre anche esse DBMS.
+ 
+Un'altra ulteriore nota: il ragazzo era curioso riguardo la scelta progettuale che avevo fatto riguardo alla classe Config: tutto quanto al suo interno era static. Ho sostenuto che tutte quelle variabili dovevano essere usate globalmente e che erano tutte quante o variabili di stato o elementi in memoria che, se non messe in static, avrebbero appesantito la performance stessa del gioco e che era una cosa che avevo constato mentre stavo programmando questa parte del progetto(questo, in realtà non era vero per i bottoni, ma non mi ha detto niente al riguardo).
+
+Riguardo al css e all'html, il ragazzo ha preso giusto qualche campione, perché avevo 6 pagine html e molti file css, quindi non aveva voglia e, quindi, non ha dato molta attenzione a quella parte.
+
+Dopo un'attesa infinita, conclusa l'interrogazione(veramente sono usciti tutti e 2 e ci sono stati diversi minuti prima che tornassero), vengo a sapere del voto e lo accetto.
+
