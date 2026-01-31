@@ -1,0 +1,26 @@
+@media (max-width: 800px), (max-height: 300px) {
+    form {
+        width: 80vw;      /* ⬅️ lascia più spazio orizzontale */
+        height: auto;     /* ⬅️ evita overflow verticale fisso */
+        padding: 4%;
+    }
+
+    /*modificare AllineamentoOrizzontale*/
+
+    .HorizontalAlignment {
+        flex-direction: column;
+        align-items: stretch; /* ⬅️ così label e input si allargano */
+        text-align: center;
+        justify-content: center;
+        padding: 4%;
+        width: 100%;         /* ⬅️ riempie tutto lo spazio del form */
+        gap: 1em;
+        box-sizing: border-box;
+    }
+
+    label, 
+    input {
+        width: 100%;         /* ⬅️ ciascun elemento si adatta alla larghezza */
+        text-align: left;
+    }
+}

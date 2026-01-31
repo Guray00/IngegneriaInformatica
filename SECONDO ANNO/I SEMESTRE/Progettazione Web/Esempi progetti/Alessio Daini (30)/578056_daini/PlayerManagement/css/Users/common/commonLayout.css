@@ -1,0 +1,38 @@
+/* CONTENITORI ORIZZONTALI */
+
+/*modificare allineamento orizzontale*/
+
+.HorizontalAlignment {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 0.3vw solid purple;
+    padding: 1%;
+    background-color: lavender;
+    width: 90%;
+    gap: 20%;
+    position: relative;
+    overflow: hidden;
+    min-height: 10vh;
+    margin-bottom:1vh;
+}
+
+/* PARAGRAFI */
+p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.3vw solid purple;
+    padding: 0.8em;
+    background-color: lavender;
+    width: 90%;
+    font-size: 1.5em;
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 0 8px #0a9b7e;
+    color: green;
+    font-weight: bolder;
+    margin-bottom:1vh;
+}

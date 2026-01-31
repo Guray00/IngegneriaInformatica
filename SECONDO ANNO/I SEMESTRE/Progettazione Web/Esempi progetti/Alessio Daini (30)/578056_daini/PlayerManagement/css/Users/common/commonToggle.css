@@ -1,0 +1,31 @@
+/* stile per l’occhio */
+.TogglePassword {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-40%);
+    cursor: pointer;
+    width: 2em;
+    height: 2em;
+    background: url("../../../../images/notVisible.png") no-repeat center;
+    background-size: contain;
+    display: inline-block; /* importante! */
+    z-index: 6000;
+  }
+  
+  /* quando la password è visibile (occhio sbarrato) */
+  .TogglePassword.visible {
+    background: url("../../../../images/visible.png") no-repeat center;
+    background-size: contain;
+  }
+
+  .input-with-icon {
+    position: relative;
+    width: 100%;
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding-right: 2.5em; /* spazio per l’occhio */
+    box-sizing: border-box;
+}

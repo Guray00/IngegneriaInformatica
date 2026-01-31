@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="brand">
+            <div class="logo">🎓</div>
+            <div class="title">Ripetizioni • Area Tutor</div>
+        </div>
+        <div class="header-actions">
+            <div id="tutorName" class="tutor-name"></div>
+            <button id="logoutBtn" class="btn ghost">Logout</button>
+        </div>
+    </header>
+
+    <!--LAYOUT = sidebar + main-->
+    <div class="layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#" data-tab="slots" class="active">Gestione slot</a></li>
+                    <li><a href="#" data-tab="history">Storico lezioni</a></li>
+                    <li><a href="#" data-tab="upcoming">Prossime lezioni</a></li>
+                    <li><a href="#" data-tab="payments">Pagamenti</a></li>
+                    <li><a href="#" data-tab="config">Configurazione</a></li>
+                </ul>
+            </nav>
+
+            <div class="side-cards">
+                <div class="card small">
+                    <div class="label">Ore totali</div>
+                    <div id="statHours" class="stat">0</div>
+                </div>
+                <div class="card small">
+                    <div class="label">Lezioni future</div>
+                    <div id="statUpcoming" class="stat">0</div>
+                </div>
+                <div class="card small">
+                    <div class="label">Da ricevere</div>
+                    <div id="statDue" class="stat">0</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main>
+            <!-- Azioni principali -->
+            <div class="top-row">
+                <h2 id="pageTitle">Crea una lezione o visualizza quelle disponibili</h2>
+            </div>
+
+            <!-- Content area con varie tab -->
+            <section id="contentArea" class="content-area">
+                <!-- Tab slots -->
+                <div id="tab-slots" class="tabpage">
+                    <div class="panel">
+                        <button id="createSlotBtn" class="btn primary">Crea nuovo slot</button>
+                        <h3>Slot creati</h3>
+                        <div id="slotsList" class="slots-grid">Caricamento slot...</div>
+                    </div>
+                </div>
+
+                <!-- Tab storico lezioni -->
+                <div id="tab-history" class="tabpage hidden">
+                    <div class="panel">
+                        <h3>Lezioni passate</h3>
+                        <div id="historyList" class="slots-grid">Caricamento lezioni...</div>
+                    </div>
+                </div>
+
+                <!-- Tab lezioni future -->
+                <div id="tab-upcoming" class="tabpage hidden">
+                    <div class="panel">
+                        <h3>Lezioni future</h3>
+                        <div id="upcomingList" class="slots-grid">Caricamento lezioni...</div>
+                    </div>
+                </div>
+
+                <!-- Tab pagamenti -->
+                <div id="tab-payments" class="tabpage hidden">
+                    <div class="panel">
+                        <h3>Pagamenti</h3>
+                        <div id="paymentsList" class="slots-grid">Caricamento pagamenti...</div>
+                    </div>
+                </div>
+
+                <!-- Tab configurazione account -->
+                <div id="tab-config" class="tabpage hidden">
+                    <div class="panel">
+                        <h3>Account</h3>
+                        <div id="configList" class="slots-grid">Caricamento dati...</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal creazione slot (nascosto di default) -->
+    <div id="modal" class="modal hidden" role="dialog">
+        <div class="modalPanel">
+            <h3 id="modalTitle">Conferma prenotazione</h3>
+            <div id="modalBody">
+                <form id="createSlotForm" class="slot-form hidden">
+                    <div class="field">
+                        <label for="slotDate">Data</label>
+                        <input id="slotDate" name="date" type="date" required>
+                    </div>
+                    <div class="field">
+                        <label for="slotTime">Ora</label>
+                        <input id="slotTime" type="time" required>
+                    </div>
+                    <div class="field">
+                        <label for="slotMode">Modalità</label>
+                        <select id="slotMode">
+                            <option value="presenza">Presenza</option>
+                            <option value="online">Online</option>
+                            <option value="both">Entrambe</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modalActions">
+                <button id="modalCancel" class="btn ghost">Annulla</button>
+                <button id="modalConfirm" class="btn primary">Conferma</button>
+            </div>
+        </div>
+    </div>
+
+   <!-- JS --> 
+    <script src="../js/common.js"></script>
+    <script src="../js/tutor.js"></script>
+</body>
+</html>

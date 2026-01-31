@@ -1,0 +1,24 @@
+/* Podio */
+.gold {
+    background: linear-gradient(135deg, gold 0%, orange 60%);
+    color: black;
+    text-shadow: 0 0 10px white;
+    font-weight: bold;
+  }
+  
+  .silver {
+    background: linear-gradient(135deg, rgb(151, 151, 163) 0%, rgb(129, 128, 128) 60%);
+    color: black;
+    text-shadow: 0 0 10px white;
+    font-weight: bold;
+  }
+  
+  .bronze {
+    background: linear-gradient(135deg, peru 0%, sienna 60%);
+    color: black;
+    font-weight: bold;
+  }
+  
+  table tr:hover,.gold,.silver,.bronze{
+    filter:brightness(0.7);
+  }

@@ -1,0 +1,8 @@
+#gameCanvas {
+  width: 80vw;   /* occupa l’80% della larghezza della finestra */
+  max-width: 1000px;  /* opzionale: dimensione massima */
+  height: 60vh;  /* mantiene il rapporto originale */
+  max-height: 80vh; /* massimo 50% dell’altezza della finestra */
+  image-rendering: pixelated;
+  display: block;
+}

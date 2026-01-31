@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <title>Space Invaders</title>
+    <link rel="stylesheet" href="../css/game.css">
+
+
+</head>
+
+<body>
+    
+    <div class="gameContainer" id="gameContainer">
+        
+        <div class = "alignHorizontally">
+            <h1 id= "name"> &nbsp;</h1> <h1 id = "points"> &nbsp;</h1>
+        </div>
+
+        
+        <canvas id="gameCanvas" width="1000" height="600"></canvas>
+        
+        <div id="tableWrapper">
+            <table></table>
+          </div>
+        
+        <div class ="buttonContainer">
+            <div class = "alignHorizontally">
+                <button id = "start">Inizia a giocare!</button>
+                <button id = "save" disabled>Salva il punteggio</button>
+                <button id = "showRecord">Guarda il sistema di ranking</button>
+                <button id = "showHistory">Guarda i tuoi migliori progressi</button>
+                <button id = "goBack">Torna indietro</button>
+            </div>
+        </div>
+        
+        
+      </div>
+
+      <script src="../js/Configuration/game.js" type = "module"></script>
+
+</body>
+</html>

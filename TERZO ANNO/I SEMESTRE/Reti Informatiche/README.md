@@ -111,5 +111,5 @@ Per risolvere è sufficiente digitare nel prompt initramfs:
 fsck -f /dev/sda1 
 ```
 
-per riparare il filysistem file system. [Source](https://askubuntu.com/questions/955467/dev-sda1-contains-a-file-system-with-errors-check-forced)
+per riparare il filysistem file system. [Source](https://askubuntu.com/questions/955467/dev-sda1-contains-a-file-system-with-errors-check-forced).
 

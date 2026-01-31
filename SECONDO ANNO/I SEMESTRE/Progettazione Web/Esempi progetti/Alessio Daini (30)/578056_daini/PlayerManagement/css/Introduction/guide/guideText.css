@@ -1,0 +1,37 @@
+p, li {
+    color: palegoldenrod;
+    font-family: "Orbitron", sans-serif;
+    font-size: 1.5vw; /* si adatta automaticamente */
+    line-height: 1;
+    margin-bottom: 2vh;
+    text-shadow: 0 0 6px rgb(190, 13, 13);
+}
+
+ul {
+    padding-left: 4vw;
+    text-shadow: 0 0 6px rgb(190, 13, 13);
+}
+
+#Title {
+    text-align: center;
+    margin-top: 2vh;
+}
+
+h1{
+    font-family: 'Orbitron', sans-serif;
+    font-style: italic;
+    color: #00ffcc;
+    text-shadow: 0 0 4px #0a9b7e, 0 -3px 0 #0a9b7e, -3px 0 0 #0a9b7e,0 0 5px #81d876, 0 0 10px #81d876, 0 0 20px #3fafaa, 0 0 40px #3fafaa;
+    /*text-shadow:0 0 5px #81d876, 0 0 10px #81d876, 0 0 20px #3fafaa, 0 0 40px #3fafaa;*/
+    letter-spacing: 2px;
+    font-size:8vh;
+  }
+
+h2 {
+    color: rgba(112, 220, 228, 0.781);
+    text-shadow: 0 0 8px #0a9b7e;
+    font-size: 2vw;
+    text-align: center;
+    margin-bottom: 0.5vh;
+    font-family: "Orbitron", sans-serif;
+}

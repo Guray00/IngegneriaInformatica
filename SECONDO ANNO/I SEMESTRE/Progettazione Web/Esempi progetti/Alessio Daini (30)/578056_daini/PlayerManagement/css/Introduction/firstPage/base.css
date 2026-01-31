@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-size: 20vw;
+  gap: 2vh;
+  font-family: 'Poppins', sans-serif;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        
+        <meta charset = "utf-8">
+        <meta name="Description" content="sistema di signUp">
+        <meta name="Author" content="Alessio Daini">
+        <title>signUp</title>
+        <link rel="stylesheet" href="../../css/Users/differences/signUp.css">
+
+    </head>
+
+    <body>
+
+        <h1>SignUp</h1>
+
+        <form>
+
+            <div class = "HorizontalAlignment">
+                <label for = "usernameInput">Username:</label>
+                <input type = "text" id = "usernameInput" name = "username" placeholder="username" title = "Lo username deve essere unico" required>
+            </div>
+
+            <div class = "HorizontalAlignment">
+                <label for = "passwordInput1">Password:</label>
+                <div class="input-with-icon">
+                    <input type = "password" id = "passwordInput1" name = "password" placeholder="password" 
+                    title="La password deve avere almeno 8 caratteri,con almeno un numero, una lettera dell'alfabeto inglese e un carattere speciale" 
+                    pattern = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$" required >
+                    <!--spiegazione (?=.*[]) significa almeno un carattere con quella sequenza e .{8,} che deve esserci anche almeno 8 caratteri-->
+                    <i class="TogglePassword" id="togglePassword1"></i>
+                </div>
+            </div>
+
+            <div class = "HorizontalAlignment">
+                <label for = "passwordInput2">Conferma Password:</label>
+                <div class="input-with-icon">
+                    <input type = "password" id = "passwordInput2" name = "password" placeholder="password" 
+                    title="La password deve avere almeno 8 caratteri,con almeno un numero, una lettera dell'alfabeto inglese e un carattere speciale" 
+                    pattern = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$" required >
+                    <i class="TogglePassword" id="togglePassword2"></i>
+                </div>
+            </div>
+
+            <div class = "HorizontalAlignment">
+                <label>Recupero Password:</label>
+                <div class = "VerticalAlignment">
+                    <select name = "question" id = "question" required>
+                        <option value="" disabled selected>-- Seleziona una domanda --</option> <!--verrebbe considerato come un placeholder se non ci fosse questa riga-->
+                        <option value = "In che città sei nato?">In che città sei nato?</option>
+                        <option value = "Qual è la persona più importante per te?">Qual è la persona più importante per te?</option>     
+                        <option value = "Nome di un parente importante">Nome di un parente importante</option>
+                        <option value = "Qual è la tua attività preferita">Qual è la tua attività preferita?</option>               
+                    </select>
+                    <input type = "text" id = "reactionInput" name = "answer" placeholder="risposta" title = "Questa risposta servirà a creare una nuova password" required>
+                </div>
+                
+            </div>
+            
+            <button type = "button" id = "subscribe">Iscriviti!</button>
+            <button type = "button" id = "goBack">Torna Indietro</button>
+
+
+        </form>
+
+        <script type = "module" src="../../js/signUp/signUp.js" ></script>
+
+    </body>
+
+</html>

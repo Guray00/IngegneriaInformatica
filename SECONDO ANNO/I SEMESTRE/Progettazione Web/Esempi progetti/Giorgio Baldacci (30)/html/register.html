@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/auth.js"></script>
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <div class="logo">🎓</div>
+            <div class="title">Ripetizioni • Area Studente</div>
+        </div>
+        <div class="header-actions">
+            <a href="../index.html">Login</a>
+        </div>
+    </header>
+    
+    <main>
+        <h2>Registrati</h2>
+        <div id="error" class="error"></div>
+        <form id="regForm">
+            <span>
+                <label for="role">Ruolo:</label>
+                <select id="role">
+                    <option value="" disabled selected>Seleziona un ruolo...</option>
+                    <option value="tutor">Tutor</option>
+                    <option value="student">Studente</option>
+                </select>
+            </span>
+            <span>
+                <label for="usr">Username:</label>
+                <input type="text" id="usr" placeholder="mario123">
+            </span>
+            <span>
+                <label for="pwd">Password:</label>
+                <input type="password" id="pwd" placeholder="******">
+            </span>
+            <button type="submit">Registrati</button>
+        </form>
+    </main>
+
+    <script>
+        // gestione della registrazione
+        document.getElementById("regForm").addEventListener("submit", function(e){
+            e.preventDefault();
+
+            const role = document.getElementById("role").value;
+            const usr = document.getElementById("usr").value.trim();
+            const pwd = document.getElementById("pwd").value;
+
+            register(role, usr, pwd).then(res => {
+                if (res.success) {
+                    alert("Registrazione avvenuta. Adesso puoi accedere con queste credenziali");
+                    window.location.href = "../index.html";
+                }
+                else
+                    document.getElementById("error").textContent = "Errore: " + res.message;
+            });
+        });
+    </script>
+
+</body>
+</html>

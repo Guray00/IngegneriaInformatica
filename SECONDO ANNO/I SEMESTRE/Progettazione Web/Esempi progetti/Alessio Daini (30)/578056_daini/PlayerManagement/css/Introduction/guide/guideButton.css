@@ -1,0 +1,12 @@
+button {
+    max-width: 1200px; /* stesso limite */
+    font-size: 3vw;
+    padding: 1vw 0;
+    margin:1vh 1vh;
+    box-shadow: 0 0 1vw #0ff, 0 0 2vw #0ff inset;
+}
+
+button:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 0 2vw #0ff, 0 0 4vw rgb(101, 105, 105), 0 0 6vw #0ff inset;
+}

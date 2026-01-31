@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Alessio Daini">
+    <meta name="description" content="manuale di uso per il gioco">
+    <link rel="stylesheet" href="../../css/Introduction/guide/guide.css">
+    <title>Guida per il gioco</title>
+</head>
+<body>  
+    <script src="../../js/guide.js"></script>
+
+    <div id="Title">
+        <h1>Manuale utente</h1>
+    </div>
+    
+    <div class="Panel" id="Servizio">
+        <div class="Paragraph">
+            <h2>Quali sono i servizi di questa piattaforma online?</h2>
+        </div>
+
+        <p>Questa piattaforma online mette a disposizione una serie di servizi pensati per offrire un’esperienza completa: dalla gestione del profilo fino al gioco vero e proprio. I servizi si dividono in due grandi categorie:</p>
+
+        <ul>
+            <li><em><u>Servizi amministrativi</u></em>
+                <ul>
+                    <li><em><u>Il servizio di login</u></em>, per accedere alla piattaforma in modo rapido e sicuro.</li>
+                    <li><em><u>Il servizio di iscrizione</u></em>, che permette di creare un nuovo account scegliendo:
+                        <ul>
+                            <li><em><u>uno username univoco</u></em></li>
+                            <li><em><u>una password</u></em> di almeno 8 caratteri, che contenga almeno una lettera, un numero e un carattere speciale</li>
+                            <li><em><u>una domanda di sicurezza</u></em>, selezionata tra quelle proposte dal sistema</li>
+                            <li><em><u>una risposta personale</u></em> utile per il recupero della password</li>
+                        </ul>
+                    </li>
+                    <li><em><u>Il servizio di recupero password</u></em>, che consente di impostare una nuova password in caso di smarrimento, verificando l’identità dell’utente tramite la domanda di sicurezza scelta in fase di registrazione.</li>
+                </ul>
+            </li>
+
+            <li><em><u>Servizi di gioco</u></em>, che permettono di <em>avviare</em>, <em>salvare</em> e <em>visualizzare</em> i propri risultati. Dopo aver effettuato l’accesso, potrai:
+                <ul>
+                    <li><em><u>iniziare una partita</u></em> cliccando su “Inizia a giocare”</li>
+                    <li><em><u>salvare il tuo punteggio</u></em>, potendo anche verificare se hai superato il tuo record personale</li>
+                    <li><em><u>consultare la classifica personale</u></em> dei tuoi migliori 20 punteggi</li>
+                    <li><em><u>scoprire la classifica generale</u></em> con i record di tutti gli utenti della piattaforma</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="Panel" id="Access">
+        <div class="Paragraph">
+            <h2>Come si accede al gioco?</h2>
+        </div>
+
+        <p>Per entrare nel gioco è necessario accedere tramite il servizio di login.</p>
+        <p>All’interno della cartella ./dains_578056 è disponibile un file di esempio che contiene alcuni utenti di test: puoi usarli per effettuare prove senza dover creare subito un nuovo account.</p>
+        <p>Una volta effettuato il login, nella schermata principale troverai tre pulsanti principali:</p>
+
+        <ul>
+            <li><em><u>“Inizia a giocare”</u></em> → avvia una nuova partita</li>
+            <li><em><u>“Salva il punteggio”</u></em> → aggiorna automaticamente il tuo record, se hai totalizzato un punteggio più alto</li>
+            <li><em><u>“Guarda il sistema di ranking”</u></em> → mostra la classifica generale degli utenti registrati, con i migliori risultati globali</li>
+            <li><em><u>"Guarda I tuoi migliori risultati"</u></em> → mostra la tabella dei 20 punteggi migliori personali </li>
+        </ul>
+
+        <p>Inoltre è possibile, <em>conclusa la partita</em>, digitando <em><u>r</u></em> o <em><u>R</u></em> per svolgere un'altra sessione di gioco.</p>
+    </div>
+
+    <div class="Panel" id="Game">
+        <h2>Come si gioca?</h2>
+        <p>Il gioco è pensato per essere semplice da controllare e immediato da capire, ma difficile da padroneggiare.</p>
+        <ul>
+            <li>Usa i <em><u>tasti direzionali</u></em> per <em>spostare il tuo carro armato</em> (tank) a destra e a sinistra</li>
+            <li>Premi il tasto <em><u>F</u></em> o <em><u>f</u></em> per <em>sparare</em></li>
+            <li>Puoi muoverti e sparare <em><u>contemporaneamente</u></em>, aumentando così la tua agilità in battaglia</li>
+            <li><em><u>Elimina tutti gli alieni</u></em> per completare il livello e ottenere il massimo punteggio possibile</li>
+            <li><em><u>Consiglio:</u></em> mantieni il ritmo e la precisione. Più alieni colpisci senza sbagliare, più alto sarà il moltiplicatore di punteggio</li>
+        </ul>
+    </div>
+
+    <div class="Panel" id="Points">
+        <h2>Come si calcola il punteggio?</h2>
+        <p>Il sistema di punteggio si basa sulla <em><u>precisione</u></em> e sulla <em><u>costanza</u></em> nel colpire i bersagli:</p>
+        <ul>
+            <li>All’inizio della partita, il moltiplicatore mul parte da 1</li>
+            <li>Ogni 6 alieni colpiti consecutivamente, mul aumenta di 1</li>
+            <li>Se manchi un colpo, il contatore killedAliens viene azzerato e mul torna a 1</li>
+            <li>Ogni colpo andato a segno aumenta il punteggio di mul × killedAliens</li>
+            <li>Se killedAliens è 0, il punteggio cresce semplicemente di 1 punto per ogni colpo riuscito</li>
+            <li>In caso di vittoria, riceverai un bonus di 500 punti aggiuntivi</li>
+        </ul>
+        <p>In sintesi, più sei <em><u>preciso</u></em> e <em><u>costante</u></em>, più <em><u>velocemente</u></em> crescerà il tuo punteggio!</p>
+    </div>
+
+    <div class="ButtonContainer">
+        <button onclick="goToHomepage()">Torna Alla Homepage!</button>
+    </div>
+    
+</body>
+</html>

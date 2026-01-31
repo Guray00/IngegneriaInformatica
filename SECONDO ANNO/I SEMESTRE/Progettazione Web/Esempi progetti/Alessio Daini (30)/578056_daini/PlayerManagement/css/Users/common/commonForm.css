@@ -1,0 +1,40 @@
+/* FORM PRINCIPALE */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    border: 0.4vw solid black;
+    width: 80vw;
+    height: 85vh;
+    background-color: gold;
+    border-radius: 4vh;
+    box-shadow: 0 2vh 8vh purple;
+    padding: 2%;
+    font-size: 2vmin;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Riflesso statico sul form */
+form::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05), rgba(255,255,255,0.2));
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    border-radius: inherit; /*proprietà del genitore*/
+}
+
+/* TITOLO DENTRO FORM */
+h1 {
+    margin-bottom: 2%;
+    /*text-shadow:0 0 5px #81d876, 0 0 10px #81d876, 0 0 20px #3fafaa, 0 0 40px #3fafaa;*/
+    text-shadow: 0 0 4px #0a9b7e, 0 -3px 0 #0a9b7e, -3px 0 0 #0a9b7e,0 0 5px #81d876, 0 0 10px #81d876, 0 0 20px #3fafaa, 0 0 40px #3fafaa;
+    color: #00ffcc;
+    font-size: 3em;
+    text-align: center;
+    font-weight: bolder;
+}

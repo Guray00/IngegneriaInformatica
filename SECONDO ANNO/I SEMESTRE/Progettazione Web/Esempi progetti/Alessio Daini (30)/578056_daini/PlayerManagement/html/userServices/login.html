@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        
+        <meta charset = "utf-8">
+        <meta name="Description" content="sistema di logIn e singUp">
+        <meta name="Author" content="Alessio Daini">
+        <title>Login</title>
+        <link rel="stylesheet" href="../../css/Users/differences/login.css">
+        
+
+    </head>
+
+    <body>
+
+        <h1>Login</h1>
+
+        <form>
+
+            <div class = "HorizontalAlignment">
+                <label for = "usernameInput">Username:</label>
+                <input type = "text" id = "usernameInput" name = "username" placeholder="username" 
+                title = "Lo username deve essere unico" required>
+            </div>
+
+            <div class = "HorizontalAlignment">
+                <label for = "passwordInput">Password:</label>
+                <div class="input-with-icon">
+                    <input type = "password" id = "passwordInput" name = "password" placeholder="password" 
+                    title="La password deve avere almeno 8 caratteri,con almeno un numero, una lettera dell'alfabeto inglese e un carattere speciale" 
+                    pattern = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$" required>
+                    <i class="TogglePassword" id="togglePassword"></i>
+                </div>
+            </div>
+
+            <button type = "button" id = "loginBtn">LogIn</button>
+            <button type = "button" id = "backBtn">Torna Indietro</button>
+
+            <!--javascript:void(0) serve per rimanere nello stesso url-->
+            <!--https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/void ci mostra come void restituisce undefined-->
+            <!--https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a ci mostra che si può mettere codice javascript in a href-->
+            <!--in questo modo a href non aggiorna l'url e il browser non salva nella cronologia il link-->
+            <p>Non ti sei mai iscritto prima? 
+                <a href="javascript:void(0)" id = "signupLink">SignUp</a>
+              </p> 
+              
+              <p>Non ti ricordi la password? 
+                <a href="javascript:void(0)" id = "recoverLink">Recupera Password</a>
+              </p>
+        
+        </form>
+
+        <script src="../../js/login/login.js" type = "module"></script>
+
+
+    </body>
+
+</html>

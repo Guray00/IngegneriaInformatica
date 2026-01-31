@@ -1,0 +1,22 @@
+/* BOTTONE BASE CON GRADIENTE E ANIMAZIONE */
+button {
+    border-radius: 1vw;
+    color: white;
+    background: linear-gradient(45deg, #0ff, #00f, #ff0, #0f0);
+    background-size: 300% 300%;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1vw;
+    font-weight: bold;
+    animation: gradientMove 3s ease infinite;
+    transition: all 0.3s ease;
+    width: 80%; /* stessa larghezza del pannello */
+    margin-bottom: 3vh;
+  }
+  
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  

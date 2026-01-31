@@ -11,12 +11,9 @@ Materiale didattico per gli studenti del corso di [Ingegneria Informatica](https
 ## Gruppi per comunicazione tra studenti 
 
 Gli studenti di Ingegneria Informatica dell'Università di Pisa utilizzano una Community WhatsApp: sono presenti circa trenta gruppi (gruppi generali e gruppi degli insegnamenti specifici), più una bacheca che viene utilizzata per comunicare le notizie più importanti. 
-- **[Community WhatsApp Ingegneria Informatica (principale e più utilizzato)](https://chat.whatsapp.com/IkbnKZcTJc4ArmDIePAYFf)**
-- **[Gruppo matricole A.A.2025-2026](https://chat.whatsapp.com/Lx7DISLdAZpLrEB1w1L1ez)** (gruppo inserito all'interno della Community)
+- **[Community WhatsApp Ingegneria Informatica (principale e più utilizzato)](https://chat.whatsapp.com/KoxjocaCdt9JdBnjoWElzH)**
 
 Vi invitiamo a diffidare in generale verso gruppi non creati da studenti del corso di laurea, o addirittura da persone non iscritte all'Università di Pisa. L'accesso ai gruppi indicati è libero e non richiede il rilascio di informazioni o l'obbligo di seguire profili social!
-
-**LINKTREE CON GRUPPI MATRICOLE DI ALTRI CORSI DI LAUREA DI INGEGNERIA**: https://linktr.ee/matricoleingunipi
 
 ## Corsi
 ![An image](https://github.com/Guray00/IngegneriaInformatica/blob/master/propedeuticita_schema.png?raw=true)
@@ -83,6 +80,7 @@ Sara Aliani<br>
 Taulant Arapi<br>
 Giuseppe "Attila" Attadia<br>
 Luca Arduini<br>
+Pietro Balestri<br>
 Giulio Bello<br>
 Giacomo Bertelli<br>
 Francesco Berti<br>
@@ -174,6 +172,7 @@ Alessandro Simonelli<br>
 Giuseppe Soriano<br>
 Walter Soro<br>
 Giorgio Charles Sorrentini<br>
+Matteo Spallazzi<br>
 Iacopo Stracca<br>
 Carmine Tranfa<br>
 Andrea Trasacco<br>
@@ -186,6 +185,8 @@ Giulio Zingrillo<br>
 Francesco Zollo<br>
 Alex Ressa<br><br>
 Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto..
+
+
 
 
 

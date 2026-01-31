@@ -1,0 +1,39 @@
+#tableWrapper {
+    display: none; 
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 2px solid cyan;
+    border-radius: 8px;
+    background: rgba(0, 0, 30, 0.95);
+    box-shadow: 0 0 15px cyan;
+    padding: 1vh 1vw;
+    z-index: 1500;
+    margin-bottom: 3em;
+    /*parte tipica di firefox*/
+    /*firefox non consente di mettere una dimensione specifica*/
+    scrollbar-width: thin; /* corrisponde più o meno a width: 8px di WebKit */
+    scrollbar-color: cyan rgba(216, 192, 192, 0.3); /* thumb / track */
+  }
+  
+/* parti dedicate a edge e chrome*/
+
+  #tableWrapper::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  #tableWrapper::-webkit-scrollbar-track {
+    background: rgba(216, 192, 192, 0.3);
+    border-radius: 4px;
+  }
+  
+  #tableWrapper::-webkit-scrollbar-thumb {
+    background: cyan;
+    border-radius: 4px;
+    box-shadow: 0 0 5px cyan;
+  }

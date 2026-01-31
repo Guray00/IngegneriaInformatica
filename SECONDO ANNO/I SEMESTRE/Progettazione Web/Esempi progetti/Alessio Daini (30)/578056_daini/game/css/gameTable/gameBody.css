@@ -1,0 +1,46 @@
+  /*parte generica*/
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid cyan;
+    background: rgba(0,0,30,0.95);
+    color: rgb(235, 8, 159);
+    font-family: 'Consolas', 'Courier New', monospace;
+    text-align: center;
+    border-radius: 12px;
+    animation: glowTable 2s ease-in-out infinite alternate;
+  }
+  
+  /*serve per fare l'animazione sulla tabella*/
+  @keyframes glowTable {
+    from { box-shadow: 0 0 10px cyan, 0 0 30px blue; }
+    to   { box-shadow: 0 0 30px cyan, 0 0 60px magenta; }
+  }
+
+  /*td e tr in statico*/
+  table th, table td {
+    padding: 0.5vh 1vw;
+    border: 1px solid rgb(101, 10, 129);
+    font-size: 1vw;
+    transition: all 0.3s ease;
+    font-weight: bolder;
+  }
+  /*tr e td passato con il mouse nei casi in cui non siano nella class gold,silver,bronze*/
+  table tr:hover td:not(.gold):not(.silver):not(.bronze) {
+    background: rgba(68, 136, 136, 0.397);
+    filter:brightness(2);
+  }
+
+  /*statico, nel caso in cui non siamo in gold,silver,bronze*/
+  table tr td:not(.gold):not(.silver):not(.bronze){
+    filter:brightness(1.2);
+  }
+
+  table tr:first-child{
+    background-color: purple;
+    color:black;
+    font-size: larger;
+  }
+  
+  

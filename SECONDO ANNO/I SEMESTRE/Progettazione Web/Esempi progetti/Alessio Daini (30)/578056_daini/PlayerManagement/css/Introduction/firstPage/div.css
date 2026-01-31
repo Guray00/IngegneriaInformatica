@@ -1,0 +1,6 @@
+/* --- EFFETTI AL PASSAGGIO --- */
+div:hover{
+    filter: brightness(1.3);
+    transform: scale(1.08);
+    cursor: pointer;
+}

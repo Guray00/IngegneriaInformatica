@@ -11,6 +11,7 @@
 
 - 👾 [**Windows - Linux**](./VSCode%20Setup) (a cura di Lorenzo Chesi)
 - 🍎 [**Mac OS**](https://github.com/giusreds/assembler) (a cura di Giuseppe Rossi)
+- 🖥️ [**Mac OS - Windows - Linux**](https://github.com/MartyMcFly2905/devcontainer_reti) (a cura di Christian Cantavenera) 
 
 #### Mazzo Anki
 
