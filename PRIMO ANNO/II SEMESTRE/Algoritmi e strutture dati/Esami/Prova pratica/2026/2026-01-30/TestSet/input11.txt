@@ -1,0 +1,11 @@
+10 5 7
+EV0 centro 4
+EV1 sud 4
+EV2 nord 2
+EV3 centro 3
+EV4 est 3
+EV5 nord 1
+EV6 sud 3
+EV7 centro 3
+EV8 sud 3
+EV9 nord 2
