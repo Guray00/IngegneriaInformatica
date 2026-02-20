@@ -1,0 +1,11 @@
+10 3 tjjo
+1 vi C 1
+4 tjjo A 2
+23 p A 25
+3 fao D 11
+22 kxs A 29
+0 w A 23
+7 lni B 20
+17 vizr A 27
+9 mhy B 17
+16 nfc B 22
