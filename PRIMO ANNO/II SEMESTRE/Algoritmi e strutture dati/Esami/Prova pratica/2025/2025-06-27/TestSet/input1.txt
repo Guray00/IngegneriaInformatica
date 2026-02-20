@@ -1,0 +1,10 @@
+10 3
+Cisanello sanita 5
+Vallisneri istruzione 4
+Trenitalia trasporti 1
+Amazon commercio 2
+FedericoII istruzione 2
+Gemelli sanita 5
+Cnr ricerca 4
+Rimini turismo 1
+Santachiara sanita 2
