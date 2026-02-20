@@ -143,7 +143,24 @@ $$y(0) = 0 \qquad \dot{y}(0) = -2 \qquad \ddot{y}(0) = -1$$
 
 Si consideri il sistema descritto dalle equazioni di stato:
 
-$$\dot{x} = \begin{bmatrix} -1 & 0 & 0 & 0 \\ 0 & 0 & -3 & 0 \\ 0 & 3 & 0 & 0 \\ 0 & 0 & 0 & -4 \end{bmatrix} x + \begin{bmatrix} 1 \\ 0 \\ 0 \\ 1 \end{bmatrix} u \qquad y = \begin{bmatrix} 1 & 1 & 0 & 0 \end{bmatrix} x$$
+$$A = \begin{bmatrix}
+    -1 &  0 &  0 &  0 \\
+     0 &  0 & -3 &  0 \\
+     0 &  3 &  0 &  0 \\
+     0 &  0 &  0 & -4
+\end{bmatrix}
+\qquad
+B = \begin{bmatrix}
+    1 \\
+    0 \\
+    0 \\
+    1
+\end{bmatrix}
+\qquad
+C = \begin{bmatrix}
+    1 & 1 & 0 & 0
+\end{bmatrix}
+$$
 
 1. Si discuta la raggiungibilità, l'osservabilità e la stabilità interna del sistema
 2. Si determini la funzione di trasferimento del sistema
@@ -155,7 +172,24 @@ $$\dot{x} = \begin{bmatrix} -1 & 0 & 0 & 0 \\ 0 & 0 & -3 & 0 \\ 0 & 3 & 0 & 0 \\
 
 Si consideri il sistema descritto dalle equazioni di stato:
 
-$$\dot{x} = \begin{bmatrix} -7 & 0 & 0 & 0 \\ 0 & 0 & -2 & 0 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 0 & -8 \end{bmatrix} x + \begin{bmatrix} 0 \\ 1 \\ 0 \\ 1 \end{bmatrix} u \qquad y = \begin{bmatrix} 1 & 0 & 1 & 0 \end{bmatrix} x$$
+$$A = \begin{bmatrix}
+    -7 &  0 &  0 &  0 \\
+     0 &  0 & -2 &  0 \\
+     0 &  2 &  0 &  0 \\
+     0 &  0 &  0 & -8
+\end{bmatrix}
+\qquad
+B = \begin{bmatrix}
+    0 \\
+    1 \\
+    0 \\
+    1
+\end{bmatrix}
+\qquad
+C = \begin{bmatrix}
+    1 & 0 & 1 & 0
+\end{bmatrix}
+$$
 
 1. Si discuta la raggiungibilità, l'osservabilità e la stabilità interna del sistema
 2. Sulla base della discussione precedente, si determini la funzione di trasferimento del sistema
