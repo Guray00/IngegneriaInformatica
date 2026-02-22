@@ -1,0 +1,68 @@
+******************************************
+* io/io.cpp
+******************************************
+
+// ( SOLUZIONE 2025-09-10
+/// Parte C++ della primitiva ceread_n()
+extern "C" natl c_ceasyncread_n(natl id, char *buf, natl quanti)
+{
+	if (id >= next_ce) {
+		flog(LOG_WARN, "ceasyncread_n: ce non riconosciuto: %u", id);
+		abort_p();
+	}
+
+	if (!quanti || !access(buf, quanti, true)) {
+		flog(LOG_WARN, "ceasyncread_n: trasferimento non valido\n");
+		abort_p();
+	}
+
+	natl trid;
+	des_ce *ce = &array_ce[id];
+	sem_wait(ce->mutex);
+	for (trid = 0; trid < MAX_CE_ASYNC; trid++)
+		if (!ce->tr[trid].buf)
+			break;
+	if (trid >= MAX_CE_ASYNC) {
+		sem_signal(ce->mutex);
+		return 0xFFFFFFFF;
+	}
+	ce->tr[trid].buf = buf;
+	ce->tr[trid].quanti = quanti;
+	ce->tr[trid].next = 0xFFFFFFFF;
+	if (ce->cur == 0xFFFFFFFF) {
+		ce->last = ce->cur = trid;
+		outputb(1, ce->iCTL);
+	} else {
+		ce->tr[ce->last].next = trid;
+		ce->last = trid;
+	}
+	sem_signal(ce->mutex);
+	return trid;
+}
+//   SOLUZIONE 2025-09-10 )
+// ( SOLUZIONE 2025-09-10
+	des_ce *ce = &array_ce[id];
+
+	for (;;) {
+		des_ce_tr *t = &ce->tr[ce->cur];
+		t->quanti--;
+		sem_wait(ce->mutex);
+		if (t->quanti == 0 && t->next == 0xFFFFFFFF) {
+			outputb(0, ce->iCTL);
+		}
+		*t->buf++ = inputb(ce->iRBR);
+		if (!t->quanti) {
+			ce->cur = t->next;
+			if (ce->cur == 0xFFFFFFFF)
+				ce->last = 0xFFFFFFFF;
+			while (ce->waiting) {
+				ce->waiting--;
+				sem_signal(ce->sync);
+			}
+		}
+		sem_signal(ce->mutex);
+		wfi();
+	}
+//   SOLUZIONE 2025-09-10 )
+
+

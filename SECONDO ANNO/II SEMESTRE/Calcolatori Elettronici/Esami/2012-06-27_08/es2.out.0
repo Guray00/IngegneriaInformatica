@@ -1,0 +1,21 @@
+0: invio 1234 a 6
+0: invio 1235 a 6
+0: invio 1236 a 6
+0: invio 1237 a 6
+0: invio 1238 a 6
+0: invio fallito (causa: 2)
+3: invio 333 a 100
+3: invio fallito (causa: 1)
+6: ricevuto 1234
+6: ricevuto 1235
+6: ricevuto 1236
+6: ricevuto 1237
+1: invio 4321 a 6
+6: ricevuto 4321
+1: invio 4322 a 6
+6: ricevuto 4322
+2: invio 555 a 6
+6: ricevuto 555
+2: invio 556 a 6
+6: ricevuto 556
+Premere un tasto per continuare

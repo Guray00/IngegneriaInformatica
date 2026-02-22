@@ -1,0 +1,13 @@
+inizio processo 15
+a=15 b=16
+inizio processo 26
+a=26 b=27
+fine processo 15
+fine processo 26
+inizio processo 300
+a=300 b=301
+fine processo 300
+inizio processo 18
+a=18 b=19
+fine processo 18
+Premere un tasto per continuare

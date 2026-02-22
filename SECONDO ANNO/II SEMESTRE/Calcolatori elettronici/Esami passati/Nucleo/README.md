@@ -1,1 +1,0 @@
-Prove aggiornate al nucleo v6
