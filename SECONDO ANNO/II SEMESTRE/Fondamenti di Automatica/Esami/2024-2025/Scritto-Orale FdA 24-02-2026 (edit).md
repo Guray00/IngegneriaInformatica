@@ -20,9 +20,12 @@ $$\begin{cases}
 0&0&-1&-2\\
 0&0&2&-1
 \end{bmatrix}
-x +
+ x +
 \begin{bmatrix}
-    0\\0\\0\\1
+0\\
+0\\
+0\\
+1
 \end{bmatrix}
 u
 \\\,\\
@@ -72,7 +75,9 @@ $$\begin{cases}
 \end{bmatrix}
 x +
 \begin{bmatrix}
-    0\\1\\0
+    0\\
+    1\\
+    0
 \end{bmatrix}
 u
 \\\,\\
