@@ -1,0 +1,37 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2013-09-12
+	des_sem *s1, *s2;
+
+	if (!sem_valido(sem1)) {
+		flog(LOG_WARN, "semaforo errato: %d", sem1);
+		c_abort_p();
+		return;
+	}
+	s1 = &array_dess[sem1];
+
+	if (!sem_valido(sem2)) {
+		flog(LOG_WARN, "semaforo errato: %d", sem2);
+		c_abort_p();
+		return;
+	}
+	s2 = &array_dess[sem2];
+
+	if (s1->counter > 0 && s2->counter > 0) {
+		s1->counter--;
+		s2->counter--;
+		return;
+	}
+	if (s1->counter <= 0) {
+		inserimento_lista(s1->pointer, esecuzione);
+		esecuzione->other_sem = s2;
+	} else {
+		inserimento_lista(s2->pointer, esecuzione);
+		esecuzione->other_sem = s1;
+	}
+	schedulatore();
+//   SOLUZIONE 2013-09-12 )
+
+

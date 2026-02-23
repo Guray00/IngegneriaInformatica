@@ -1,0 +1,81 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2024-06-28
+	des_cp *cp = esecuzione->cp;
+
+	if (cp == nullptr || cp->master != esecuzione->id) {
+		flog(LOG_WARN, "cp_get: processo non master");
+		c_abort_p();
+		return;
+	}
+
+	if (!c_access(int_cast<vaddr>(regs), (N_REG + 1) * sizeof(natq), true, true)) {
+		flog(LOG_WARN, "cp_get: regs non valido");
+		c_abort_p();
+		return;
+	}
+
+	des_proc *slave = proc_table[cp->slave];
+	if (slave == nullptr) {
+		esecuzione->contesto[I_RAX] = false;
+		return;
+	}
+
+	if (cp->slave_waiting) {
+		esecuzione->contesto[I_RAX] = true;
+		memcpy(regs, slave->contesto, sizeof(slave->contesto));
+		natq *pila = ptr_cast<natq>(trasforma(slave->cr3, slave->contesto[I_RSP]));
+		regs[I_RSP] = pila[3];
+		regs[N_REG] = pila[0];
+		for (vaddr src =  fin_utn_p - DIM_USR_STACK, dst = ini_utn_p;
+			   src != fin_utn_p;
+			   src += DIM_PAGINA, dst += DIM_PAGINA)
+		{
+			paddr psrc = trasforma(slave->cr3, src);
+			memcpy(voidptr_cast(dst), voidptr_cast(psrc), DIM_PAGINA);
+		}
+		cp->slave_waiting = false;
+		inspronti();
+		inserimento_lista(pronti, slave);
+	} else {
+		cp->cp_regs_master = regs;
+		cp->master_waiting = true;
+	}
+	schedulatore();
+//   SOLUZIONE 2024-06-28 )
+// ( SOLUZIONE 2024-06-28
+	des_cp *cp = esecuzione->cp;
+
+	if (cp == nullptr || esecuzione->id != cp->slave)
+		return;
+
+	natq *pila = ptr_cast<natq>(trasforma(esecuzione->cr3, esecuzione->contesto[I_RSP]));
+	if (pila[1] != SEL_CODICE_UTENTE)
+		return;
+
+	if (cp->master_waiting) {
+		des_proc *master = proc_table[cp->master];
+		master->contesto[I_RAX] = true;
+		memcpy(cp->cp_regs_master, esecuzione->contesto, sizeof(esecuzione->contesto));
+		cp->cp_regs_master[I_RSP] = pila[3];
+		cp->cp_regs_master[N_REG] = pila[0];
+		for (vaddr src =  fin_utn_p - DIM_USR_STACK, dst = ini_utn_p;
+			   src != fin_utn_p;
+			   src += DIM_PAGINA, dst += DIM_PAGINA)
+		{
+			paddr psrc = trasforma(esecuzione->cr3, src);
+			paddr pdst = trasforma(master->cr3, dst);
+			memcpy(voidptr_cast(pdst), voidptr_cast(psrc), DIM_PAGINA);
+		}
+		cp->master_waiting = false;
+		inspronti();
+		inserimento_lista(pronti, master);
+	} else {
+		cp->slave_waiting = true;
+	}
+	schedulatore();
+//   SOLUZIONE 2024-06-28 )
+
+
