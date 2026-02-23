@@ -1,0 +1,101 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2025-06-05
+
+
+extern "C" void c_swap_out(natl pid, char *buf)
+{
+	if (pid >= MAX_PROC_ID || pid == esecuzione->id) {
+		flog(LOG_WARN, "swap_out: pid %u non valido", pid);
+		c_abort_p();
+		return;
+	}
+
+	if (!c_access(int_cast<vaddr>(buf), DIM_USR_STACK, true, false)) {
+		flog(LOG_WARN, "swap_out: buffer %p non valido", buf);
+		c_abort_p();
+		return;
+	}
+
+	esecuzione->contesto[I_RAX] = false;
+	des_proc *p = proc_table[pid];
+
+	if (!p)
+		return;
+
+	if (p->livello != LIV_UTENTE) {
+		flog(LOG_WARN, "swap_in: pid %u appartiene ad un processo di sistema", pid);
+		c_abort_p();
+		return;
+	}
+
+	if (p->swapped_out)
+		return;
+
+	unmap(p->cr3, fin_utn_p - DIM_USR_STACK, fin_utn_p,
+		[&] (vaddr, paddr p, int) {
+			memcpy(buf, voidptr_cast(p), DIM_PAGINA);
+			buf += DIM_PAGINA;
+		});
+	p->swapped_out = true;
+}
+
+extern "C" void c_swap_in(natl pid, const char *buf)
+{
+	if (pid >= MAX_PROC_ID) {
+		flog(LOG_WARN, "swap_in: pid %u non valido", pid);
+		c_abort_p();
+		return;
+	}
+
+	if (!c_access(int_cast<vaddr>(buf), DIM_USR_STACK, false, false)) {
+		flog(LOG_WARN, "swap_in: buffer %p non valido", buf);
+		c_abort_p();
+		return;
+	}
+
+	esecuzione->contesto[I_RAX] = false;
+	des_proc *p = proc_table[pid];
+
+	if (!p)
+		return;
+
+	if (p->livello != LIV_UTENTE) {
+		flog(LOG_WARN, "swap_in: pid %u appartiene ad un processo di sistema", pid);
+		c_abort_p();
+		return;
+	}
+
+	if (!p->swapped_out)
+		return;
+
+	vaddr v = map(p->cr3, fin_utn_p - DIM_USR_STACK, fin_utn_p, BIT_US | BIT_RW,
+			[&] (vaddr) {
+				paddr p = alloca_frame();
+				if (p) {
+					memcpy(voidptr_cast(p), buf, DIM_PAGINA);
+					buf += DIM_PAGINA;
+				}
+				return p;
+			});
+	if (v != fin_utn_p) {
+		unmap(p->cr3, fin_utn_p - DIM_USR_STACK, v,
+			[] (vaddr, paddr p, int) {
+				rilascia_frame(p);
+			});
+		return;
+	}
+	p->swapped_out = false;
+	esecuzione->contesto[I_RAX] = true;
+	if (p->scheduled) {
+		p->scheduled = false;
+		inspronti();
+		inserimento_lista(pronti, p);
+		schedulatore();
+	}
+}
+//   SOLUZIONE 2025-06-05 )
+
+

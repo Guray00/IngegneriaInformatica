@@ -1,0 +1,13 @@
+attendo terminazione figlio
+figlio 2: termino
+figlio terminato con valore 1
+figlio 1: termino
+attendo terminazione figlio
+figlio terminato con valore 1
+attendo terminazione padre
+padre 1: termino
+padre terminato con valore 1
+attendo terminazione processo errato
+processo errato terminato con valore -1
+figlio 3: termino
+Premere un tasto per continuare

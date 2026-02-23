@@ -1,0 +1,84 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2012-02-01 #1
+	carica_gate	TIPO_A_RR	a_abilita_rr	LIV_UTENTE
+	carica_gate	TIPO_D_RR	a_disabilita_rr	LIV_UTENTE
+//   SOLUZIONE 2012-02-01 )
+// ( SOLUZIONE 2012-02-01 #2
+	.extern c_abilita_rr
+a_abilita_rr:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_abilita_rr
+	iretq
+	.cfi_endproc
+
+	.extern c_disabilita_rr
+a_disabilita_rr:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_disabilita_rr
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2012-02-01 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2012-02-01 #1
+bool rr_abilitato = false;
+
+extern "C" void c_abilita_rr() 
+{
+	rr_abilitato = true;
+}
+
+extern "C" void c_disabilita_rr()
+{
+	if (!rr_abilitato)
+		return;
+
+	rr_abilitato = false;
+	des_proc* tmp = nullptr;
+	while (pronti) {
+		des_proc *lavoro = rimozione_lista(pronti);
+		inserimento_lista(tmp, lavoro);
+	}
+	inserimento_lista(tmp, esecuzione);
+	pronti = tmp;
+	schedulatore();
+}
+
+void inserimento_fondo_lista(des_proc* &testa, des_proc* elem)
+{
+	des_proc** pscorri = &testa;
+	while (*pscorri) 
+		pscorri = &((*pscorri)->puntatore);
+	*pscorri = elem;
+	elem->puntatore = nullptr;
+}
+
+//   SOLUZIONE 2012-02-01 )
+// ( SOLUZIONE 2012-02-01 #2
+	if (rr_abilitato) {
+		if (--esecuzione->quanto <= 0) {
+			esecuzione->quanto = MAX_QUANTO;
+			inserimento_fondo_lista(pronti, esecuzione);
+			schedulatore();
+		}
+	}
+
+//   SOLUZIONE 2012-02-01 )
+// ( SOLUZIONE 2012-02-01 #3
+	p->quanto = MAX_QUANTO;
+//   SOLUZIONE 2012-02-01 )
+
+

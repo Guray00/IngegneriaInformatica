@@ -1,0 +1,18 @@
+proc 11: debugger di 9: chiamo bpadd
+proc 10: debugger di 7: chiamo bpadd
+proc 8: prima di catch_me()
+proc 8: eseguo catch_me(0)
+proc 8: dopo catch_me()
+proc 7: prima di catch_me()
+proc 10: debugger di 7: breapoint intercettato
+proc 7: eseguo catch_me(0)
+proc 7: dopo catch_me()
+proc 9: prima di catch_me()
+proc 11: debugger di 9: breapoint intercettato
+proc 9: eseguo catch_me(0)
+proc 9: dopo catch_me()
+proc 9: prima di catch_me()
+proc 9: eseguo catch_me(1)
+proc 9: dopo catch_me()
+frame liberi: 7082
+Premere un tasto per continuare

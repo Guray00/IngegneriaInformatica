@@ -1,0 +1,79 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2010-06-26
+	carica_gate	TIPO_MW		a_monitor_wait	LIV_UTENTE
+	carica_gate	TIPO_MS		a_monitor_notify	LIV_UTENTE
+// SOLUZIONE 2010-06-26 )
+// ( SOLUZIONE 2010-06-26
+
+a_monitor_wait:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_monitor_wait
+	iretq
+	.cfi_endproc
+
+a_monitor_notify:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call c_monitor_notify
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2010-06-26 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2010-06-26
+extern "C" void c_monitor_wait(natl mon)
+{
+	if (!monitor_valido(mon)) {
+		flog(LOG_WARN, "monitor non valido: %d", mon);
+		abort_p();
+	}
+
+	des_monitor *p_des = &array_desm[mon];
+
+	if (p_des->owner != esecuzione->id) {
+		flog(LOG_WARN, "wait errata sul monitor: %d", mon);
+		abort_p();
+	}
+
+	p_des->num_waiting++;
+	p_des->owner = 0;
+	sem_signal(p_des->mutex);
+	sem_wait(p_des->cond);
+	sem_wait(p_des->mutex);
+	p_des->owner = esecuzione->id;
+}
+
+extern "C" void c_monitor_notify(natl mon)
+{
+	if (!monitor_valido(mon)) {
+		flog(LOG_WARN, "monitor non valido: %d", mon);
+		abort_p();
+	}
+
+	des_monitor *p_des = &array_desm[mon];
+
+	if (p_des->owner != esecuzione->id) {
+		flog(LOG_WARN, "notify errata sul monitor: %d", mon);
+		abort_p();
+	}
+
+	if (p_des->num_waiting > 0) {
+		p_des->num_waiting--;
+		sem_signal(p_des->cond);
+	}
+}
+// SOLUZIONE 2010-06-26 )
+
+

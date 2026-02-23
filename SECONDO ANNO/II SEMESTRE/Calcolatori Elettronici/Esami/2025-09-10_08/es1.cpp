@@ -1,0 +1,7 @@
+#include "cc.h"
+cl::cl(char c, st2& s2) {
+	for (int i = 0; i < 4; i++) {
+		c1.vc[i] = c; c2.vc[i] = c++;
+		v[i] = s2.vd[i] + c2.vc[i];
+	}
+}

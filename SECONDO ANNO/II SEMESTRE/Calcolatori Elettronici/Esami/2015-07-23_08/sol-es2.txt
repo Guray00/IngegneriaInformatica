@@ -1,0 +1,55 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2015-07-23
+	carica_gate	TIPO_SD		a_shmem_detach	LIV_UTENTE
+//   SOLUZIONE 2015-07-23 )
+// ( SOLUZIONE 2015-07-23
+
+a_shmem_detach:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_shmem_detach
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2015-07-23 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2015-07-23
+extern "C" void c_shmem_detach(natl id)
+{
+	des_attached **patt = nullptr;
+	
+	for (patt = &esecuzione->att; *patt; patt = &(*patt)->next)
+		if ((*patt)->id == id)
+			break;
+	if (!*patt) {
+		flog(LOG_WARN, "shmem id non valido: %d", id);
+		c_abort_p();
+		return;
+	}
+	des_shmem *sh = &array_desshmem[id];
+	natq npag = sh->npag;
+
+	vaddr indv = (*patt)->start;
+	des_attached* old = *patt;
+	*patt = (*patt)->next;
+	delete old;
+
+	unmap(esecuzione->cr3, indv, indv + npag * DIM_PAGINA,
+			[](vaddr v, paddr, int) {
+				invalida_entrata_TLB(v);
+			});
+}
+//   SOLUZIONE 2015-07-23 )
+
+

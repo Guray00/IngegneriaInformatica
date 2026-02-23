@@ -1,0 +1,82 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2021-06-30
+struct my_addrs {
+	paddr pa[MSG_AREA_PAGES];
+	int i;
+
+	my_addrs(): i(0) {}
+
+	void operator()(vaddr, paddr p, int) {
+		pa[i++] = p;
+	}
+
+	paddr operator()(vaddr v) {
+		return pa[i++];
+	}
+};
+
+extern "C" void c_masend(natl pid)
+{
+	// controllo parametri
+	if (!esecuzione->maowner) {
+		flog(LOG_WARN, "masend: il processo non ha una msg area");
+		c_abort_p();
+		return;
+	}
+
+	if (pid >= MAX_PROC_ID) {
+		flog(LOG_WARN, "masend: pid %u non valido", pid);
+		c_abort_p();
+		return;
+	}
+
+	des_proc *dst = proc_table[pid];
+	esecuzione->contesto[I_RAX] = false;
+
+	if (!dst) {
+		return;
+	}
+
+	if (dst == esecuzione) {
+		flog(LOG_WARN, "masend a se stesso non valida");
+		c_abort_p();
+		return;
+	}
+
+	if (dst->livello != LIV_UTENTE) {
+		flog(LOG_WARN, "masend a processo sistema non valida");
+		c_abort_p();
+		return;
+	}
+
+	if (dst->maowner) {
+		return;
+	}
+	
+	my_addrs m;
+	// primo passo: unmap e collezione degli indirizzi fisici
+	unmap(esecuzione->cr3, ini_ma_p, fin_ma_p, m);
+	// secondo passo map nel processo destinatario
+	m.i = 0;
+	vaddr v = map(dst->cr3, ini_ma_p, fin_ma_p, BIT_RW | BIT_US, m);
+	if (v != fin_ma_p) {
+		unmap(dst->cr3, ini_ma_p, v, [](vaddr, paddr, int) {});
+		m.i = 0;
+		map(esecuzione->cr3, ini_ma_p, fin_ma_p, BIT_US | BIT_RW, m);
+		return;
+	}
+
+	esecuzione->contesto[I_RAX] = true;
+	for (vaddr w = ini_ma_p; w != fin_ma_p; w += DIM_PAGINA)
+		invalida_entrata_TLB(w);
+	esecuzione->maowner = false;
+	dst->maowner = true;
+}
+
+
+//   SOLUZIONE 2021-06-30 )
+
+
