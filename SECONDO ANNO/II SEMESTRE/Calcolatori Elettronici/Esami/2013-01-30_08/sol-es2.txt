@@ -1,0 +1,35 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2013-01-30 #1
+	p->me = new child;
+	p->me->status = RUNNING;
+	p->me->father = esecuzione;
+	p->me->result = 0;
+	p->me->next = esecuzione->children;
+	esecuzione->children = p->me;
+	p->children = nullptr;
+//   SOLUZIONE 2013-01-30 )
+// ( SOLUZIONE 2013-01-30
+extern "C" void c_join() {
+	if (!esecuzione->children) {
+		flog(LOG_WARN, "join senza figli");
+		c_abort_p();
+		return;
+	}
+	for (child** c = &esecuzione->children; *c; c = &(*c)->next) {
+		child* w = *c;
+		if (w->status == TERMINATED) {
+			esecuzione->contesto[I_RAX] = w->result;
+			*c = w->next;
+			delete w;
+			return;
+		}
+	}
+	esecuzione->waiting = true;
+	schedulatore();
+}
+//   SOLUZIONE 2013-01-30 )
+
+

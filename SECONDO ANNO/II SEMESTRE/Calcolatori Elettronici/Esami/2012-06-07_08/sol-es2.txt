@@ -1,0 +1,56 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2012-06-07
+
+extern "C" void c_send(natl id, natl msg)
+{
+	if (id >= MAX_PROC_ID) {
+		flog(LOG_WARN, "id non valido: %d", id);
+		c_abort_p();
+		return;
+	}
+
+	des_proc *dest = proc_table[id];
+
+	if (!dest) {
+		esecuzione->contesto[I_RAX] = false;
+		return;
+	}
+
+	if (!dest->waiting) {
+		inserimento_lista(dest->senders, esecuzione);
+		esecuzione->msg = msg;
+		schedulatore();
+		return;
+	}
+
+	inspronti();
+	inserimento_lista(pronti, dest);
+	dest->waiting = false;
+	dest->contesto[I_RAX] = msg;
+	esecuzione->contesto[I_RAX] = true;
+	schedulatore();
+}
+
+extern "C" void c_receive()
+{
+	des_proc *sender;
+
+	if (!esecuzione->senders) {
+		esecuzione->waiting = true;
+		schedulatore();
+		return;
+	}
+
+	sender = rimozione_lista(esecuzione->senders);
+	sender->contesto[I_RAX] = true;
+	esecuzione->contesto[I_RAX] = sender->msg;
+	inspronti();
+	inserimento_lista(pronti, sender);
+	schedulatore();
+}
+//   SOLUZIONE 2012-06-07 )
+
+
