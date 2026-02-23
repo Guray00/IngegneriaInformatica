@@ -1,4 +1,4 @@
-# Scritto / Orale FdA - 08/09/2025 (Tracce 6-7)
+# Scritto / Orale FdA - 24/01/2026 (Tracce 6-7)
 
 > Ogni esercizio rappresenta la traccia dello scritto (ognuno ha una traccia diversa allo scritto con un esercizio che può presentare più richieste).
 
