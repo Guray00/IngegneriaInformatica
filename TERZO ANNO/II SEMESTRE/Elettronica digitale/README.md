@@ -1,6 +1,6 @@
 # Sito
-[corso da 12 cfu](http://brahms.iet.unipi.it/es)
-[elearning](https://elearn.ing.unipi.it/course/view.php?id=2958)
+[corso da 12 cfu](https://brahms.iet.unipi.it/esd/)  
+[elearning](https://elearn.ing.unipi.it/course/view.php?id=3529)
 
 
 
