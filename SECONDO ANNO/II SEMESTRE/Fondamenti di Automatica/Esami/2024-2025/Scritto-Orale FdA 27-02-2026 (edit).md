@@ -47,7 +47,7 @@ $$G(s) = 100 \cdot \frac{s -5}{(s^2+20s+125)}$$
 1. Disegnare il diagramma di Bode.
 2. Progettare un regolatore $C(s)$ in moodo tale che rispetti le seguenti specifiche:
    - Errore nullo a regime con un ingresso di tipo gradino
-   - Attenuazione dei disturbi di carico di almeno $45dB$ per $\omega \leq 0.1\ \text{rad/s}$
+   - Attenuazione dei disturbi di carico di almeno $40dB$ per $\omega \leq 0.1\ \text{rad/s}$
    -  Reiezione dei rumori di misura di almeno $40dB$ per $\omega \geq 1000\ \text{rad/s}$
 3. Margine di fase > $45°$
 4. Disegnare il diagramma di Bode di $C(s)G(s)$
