@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Note</title>
+  <style>
+    body {
+      display: flex;
+      gap: 1rem;
+      font-family: sans-serif;
+    }
+    .panel {
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 1rem;
+      width: 30%;
+      height: 35rem;
+    }
+    #sinistra { background-color: azure; }
+    #destra { background-color: beige; }
+    #destra > div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
+    textarea, input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.5rem;
+    }
+    textarea { height: 6rem; }
+    .lista-note {
+      margin: 0.75rem 0 0;
+      height: 27rem;
+      overflow: auto;
+    }
+    .nota-item {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background-color: aliceblue;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      width: 95%;
+    }
+    #modaleElimina {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 10%;
+      width: 10rem;
+      height: 10rem;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      background-color: lightpink;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 8px;
+      border: 2px solid black;
+    }
+    #modaleElimina.active { display: flex; }
+    #contoRovescia { font-size: 2rem; font-weight: bold; color: #d9534f; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <section id="sinistra" class="panel">
+    <form id="formNota">
+      <p>Usa il form per creare una nuova nota o modificarne una esistente.</p>
+      <label for="titolo">Titolo</label>
+      <input id="titolo" name="titolo" type="text" required />
+      <label for="contenuto">Contenuto</label>
+      <textarea id="contenuto" name="contenuto" required></textarea>
+      <div>
+        <button type="button" id="salvaBtn">Salva nota</button>
+        <button type="button" id="pulisciBtn">Pulisci</button>
+      </div>
+      <input type="hidden" id="idModifica" value="" />
+    </form>
+    <hr />
+    <label for="cerca">Cerca</label>
+    <input id="cerca" type="text" placeholder="Filtra per titolo o testo" />
+    <p>La lista si aggiorna mentre scrivi.</p>
+  </section>
+  <section id="destra" class="panel">
+    <div>
+      <h2>Note</h2>
+      <button type="button" id="eliminaTutteBtn">Elimina tutte</button>
+    </div>
+    <div id="listaNote" class="lista-note"></div>
+  </section>
+  <div id="modaleElimina">
+    <p>Tutte le note verranno eliminate.</p>
+    <div id="contoRovescia">10</div>
+    <button type="button" id="annullaEliminaBtn">Annulla</button>
+  </div>
+<script>
+  class ArchivioNote {
+    constructor(chiave = "archivio_note") {
+      this.chiave = chiave;
+    }
+    carica() {
+      const g = localStorage.getItem(this.chiave);
+      const elementi = g ? JSON.parse(g) : [];
+      return elementi.map((nota) => new Nota(nota.title, nota.content, Number(nota.createdAt)));
+    }
+    salva(note) {
+      localStorage.setItem(this.chiave, JSON.stringify(note));
+    }
+  }
+  class Nota {
+    constructor(title, content, createdAt) {
+      this.title = title;
+      this.content = content;
+      this.createdAt = createdAt;
+    }
+    aggiorna(title, content) {
+      this.title = title;
+      this.content = content;
+    }
+  }
+  class FinestraConfermaElimina {
+    constructor(modaleEl, annullaBtn, contoRovesciaEl, secondi = 10) {
+      this.modaleEl = modaleEl;
+      this.annullaBtn = annullaBtn;
+      this.contoRovesciaEl = contoRovesciaEl;
+      this.secondi = secondi;
+      this.timerConto = null;
+    }
+    mostra(suConferma) {
+      this.chiudi();
+      let conto = this.secondi;
+      this.modaleEl.classList.add("active");
+      this.contoRovesciaEl.textContent = conto;
+      this.timerConto = setInterval(() => {
+        conto -= 1;
+        this.contoRovesciaEl.textContent = conto;
+        if (conto <= 0) {
+          this.chiudi();
+          suConferma();
+        }
+      }, 1000);
+    }
+    chiudi() {
+      this.modaleEl.classList.remove("active");
+      if (this.timerConto) {
+        clearInterval(this.timerConto);
+        this.timerConto = null;
+      }
+    }
+  }
+
+  class AppNote {
+    constructor() {
+      this.archivio = new ArchivioNote();
+      this.note = this.archivio.carica();
+      this.formaEl = document.getElementById("formNota");
+      this.titoloEl = document.getElementById("titolo");
+      this.contenutoEl = document.getElementById("contenuto");
+      this.idModificaEl = document.getElementById("idModifica");
+      this.salvaBtn = document.getElementById("salvaBtn");
+      this.pulisciBtn = document.getElementById("pulisciBtn");
+      this.cercaEl = document.getElementById("cerca");
+      this.listaNoteEl = document.getElementById("listaNote");
+      this.eliminaTutteBtn = document.getElementById("eliminaTutteBtn");
+      this.finestraElimina = new FinestraConfermaElimina(
+        document.getElementById("modaleElimina"),
+        document.getElementById("annullaEliminaBtn"),
+        document.getElementById("contoRovescia")
+      );
+      this.collegaEventi();
+      this.renderizza();
+    }
+    collegaEventi() {
+      this.salvaBtn.addEventListener("click", () => this.gestisciInvioForm());
+      this.pulisciBtn.addEventListener("click", () => this.resettaForm());
+      this.cercaEl.addEventListener("input", () => this.renderizza());
+      this.eliminaTutteBtn.addEventListener("click", () => {
+        this.finestraElimina.mostra(() => this.eliminaTutteLeNote());
+      });
+      this.finestraElimina.annullaBtn.addEventListener("click", () => this.finestraElimina.chiudi());
+      this.listaNoteEl.addEventListener("click", (e) => {
+        const button = e.target;
+        if (button.nodeName !== "BUTTON") return;
+        const azione = button.dataset.action;
+        const id = Number(button.dataset.id);
+        if (!id) return;
+        if (azione === "modifica") this.modificaNota(id);
+        if (azione === "elimina") this.eliminaNota(id);
+      });
+    }
+    gestisciInvioForm() {
+      const titolo = this.titoloEl.value.trim();
+      const contenuto = this.contenutoEl.value.trim();
+      const idModifica = Number(this.idModificaEl.value);
+      if (!titolo || !contenuto) return;
+      if (idModifica) {
+        const nota = this.note.find((n) => n.createdAt === idModifica);
+        if (nota) {
+          nota.aggiorna(titolo, contenuto);
+          this.persistiERenderizza();
+          this.resettaForm();
+          return;
+        }
+      }
+      const id = Date.now();
+      this.note.unshift(new Nota(titolo, contenuto, id));
+      this.persistiERenderizza();
+      this.resettaForm();
+    }
+    modificaNota(id) {
+      const nota = this.note.find((n) => n.createdAt === id);
+      if (!nota) return;
+      this.idModificaEl.value = nota.createdAt;
+      this.titoloEl.value = nota.title;
+      this.contenutoEl.value = nota.content;
+      this.titoloEl.focus();
+    }
+    eliminaNota(id) {
+      this.note = this.note.filter((n) => n.createdAt !== id);
+      this.persistiERenderizza();
+    }
+    eliminaTutteLeNote() {
+      this.note = [];
+      this.persistiERenderizza();
+      this.resettaForm();
+    }
+    resettaForm() {
+      this.idModificaEl.value = "";
+      this.titoloEl.value = "";
+      this.contenutoEl.value = "";
+    }
+    ottieniNoteFiltrateOrdinate() {
+      const query = this.cercaEl.value.trim().toLowerCase();
+      const filtrate = query
+        ? this.note.filter((n) => {
+            const testo = `${n.title} ${n.content}`.toLowerCase();
+            return testo.includes(query);
+          })
+        : this.note;
+      return filtrate.slice().sort((a, b) => b.createdAt - a.createdAt);
+    }
+    renderizza() {
+      const noteDaMostrare = this.ottieniNoteFiltrateOrdinate();
+      const haQuery = this.cercaEl.value.trim().length > 0;
+      if (noteDaMostrare.length === 0) {
+        this.listaNoteEl.innerHTML = haQuery
+          ? "<div>Nessun risultato per la ricerca.</div>"
+          : "<div>Nessuna nota salvata.</div>";
+        return;
+      }
+      this.listaNoteEl.innerHTML = "";
+      const frammento = document.createDocumentFragment();
+      noteDaMostrare.forEach((nota) => {
+        const dataTesto = new Date(nota.createdAt).toLocaleString("it");
+        const notaItem = document.createElement("div");
+        notaItem.className = "nota-item";
+        const titolo = document.createElement("h3");
+        titolo.textContent = nota.title;
+        const contenuto = document.createElement("p");
+        contenuto.textContent = nota.content;
+        const azioni = document.createElement("div");
+        azioni.className = "actions";
+        azioni.append(`Creata: ${dataTesto} `);
+        const btnModifica = document.createElement("button");
+        btnModifica.type = "button";
+        btnModifica.dataset.action = "modifica";
+        btnModifica.dataset.id = String(nota.createdAt);
+        btnModifica.textContent = "Modifica";
+        const btnElimina = document.createElement("button");
+        btnElimina.type = "button";
+        btnElimina.dataset.action = "elimina";
+        btnElimina.dataset.id = String(nota.createdAt);
+        btnElimina.textContent = "Elimina";
+        azioni.append(btnModifica, btnElimina);
+        notaItem.append(titolo, contenuto, azioni);
+        frammento.appendChild(notaItem);
+      });
+      this.listaNoteEl.appendChild(frammento);
+    }
+    persistiERenderizza() {
+      this.archivio.salva(this.note);
+      this.renderizza();
+    }
+  }
+  new AppNote();
+</script>
+</body>
+</html>

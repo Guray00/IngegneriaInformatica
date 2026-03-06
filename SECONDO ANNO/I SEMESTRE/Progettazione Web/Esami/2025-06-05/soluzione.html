@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025-06-05</title>
+    <style>
+        body {
+            background-color: lightgoldenrodyellow;
+            padding: 50px;
+            font-family: Arial, sans-serif;
+            font-size: larger;
+        }
+        table {
+            border-collapse: collapse;
+            width: 90%;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+            width: 10%;
+            background-color: #90EE90;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .prenotato {
+            background-color: #FFB6C1;
+        }
+        dialog {
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+        }
+        dialog form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        dialog input {
+            display: table-cell;
+            margin-top: 5px;
+            padding: 5px;
+        }
+        #dialogButtons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        dialog button {
+            display: table-cell;
+            padding: 8px 16px;
+        }
+        #scambiaBtn,#cercaBtn,#searchInput {
+            padding: 10px 20px;
+            margin: 20px 0;
+            font-size: larger;
+        }
+        .selected-for-swap {
+            background-color: lightblue;
+        }
+        .highlighted {
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        'use strict';
+        const giorni = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì"];
+        const orari = ["8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
+        let scambioInCorso = false;
+        let selectedForSwap = null;
+        let selectedCell = null;
+
+        function creaTabella() {
+            const tabella = document.getElementById("tab");
+            // Creazione dell'intestazione della tabella
+            let headerRow = document.createElement("tr");
+            let firstTh = document.createElement("th");
+            firstTh.textContent = "Orario";
+            headerRow.appendChild(firstTh);
+            giorni.forEach(giorno => {
+                let th = document.createElement("th");
+                th.textContent = giorno;
+                headerRow.appendChild(th);
+            });
+            tabella.appendChild(headerRow);
+            // Creazione delle righe per ogni orario
+            orari.forEach(orario => {
+                let row = document.createElement("tr");
+                let tdOrario = document.createElement("th");
+                tdOrario.textContent = orario;
+                row.appendChild(tdOrario);
+                giorni.forEach(() => {
+                    let td = document.createElement("td");
+                    row.appendChild(td);
+                });
+                tabella.appendChild(row);
+            });
+        }
+
+        // Funzione per gestire il pulsante di scambio
+        function settaListenerScambia() {
+            const scambiaBtn = document.getElementById("scambiaBtn");
+            scambiaBtn.addEventListener("click", function () {
+                if (scambioInCorso) {
+                    this.textContent = "Scambia prenotazioni";
+                    scambioInCorso = false;
+                    if (selectedForSwap) {
+                        selectedForSwap.classList.remove("selected-for-swap");
+                        selectedForSwap = null;
+                    }
+                } else {
+                    this.textContent = "Annulla scambio";
+                    scambioInCorso = true;
+                }
+            });
+        }
+
+        function settaListenerCerca() {
+            const cercaBtn = document.getElementById("cercaBtn");
+            cercaBtn.addEventListener("click", function () {
+                document.querySelectorAll('.highlighted').forEach(cell => {
+                    cell.classList.remove('highlighted');
+                });
+                const searchText = document.getElementById("searchInput").value.toLowerCase().trim();
+                console.log("Cerca:", searchText);
+                if (searchText === '') return;
+                document.querySelectorAll('td').forEach(cell => {
+                    const cellContent = cell.textContent.toLowerCase();
+                    if (cellContent.includes(searchText)) {
+                        cell.classList.add('highlighted');
+                    }
+                });
+            });
+        }
+
+        function clickCella(e) {
+            let c = e.target;
+            if (scambioInCorso) {
+                if (selectedForSwap === null) {
+                    selectedForSwap = c;
+                    c.classList.add("selected-for-swap");
+                    return;
+                }
+                if (selectedForSwap === c) {
+                    selectedForSwap.classList.remove("selected-for-swap");
+                    selectedForSwap = null;
+                    return;
+                }
+                const tempContent = selectedForSwap.textContent;
+                selectedForSwap.textContent = c.textContent;
+                c.textContent = tempContent;
+                selectedForSwap.classList.remove("selected-for-swap");
+                let tmpPrenC = c.classList.contains("prenotato");
+                let tmpPrenS = selectedForSwap.classList.contains("prenotato");
+                if (tmpPrenC) selectedForSwap.classList.add("prenotato");
+                else selectedForSwap.classList.remove("prenotato");
+                if (tmpPrenS) c.classList.add("prenotato");
+                else c.classList.remove("prenotato");
+                selectedForSwap = null;
+                scambioInCorso = false;
+                document.getElementById("scambiaBtn").textContent = "Scambia prenotazioni";
+                return;
+            }
+            if (c.classList.contains("prenotato")) {
+                alert("Questa casella è già prenotata. Selezionare una casella libera.");
+                return;
+            }
+            selectedCell = c;
+            const dialog = document.getElementById("prenotaDialog");
+            dialog.showModal();
+        }
+
+        function settaListener() {
+            settaListenerScambia();
+            settaListenerCerca();
+            const celle = document.querySelectorAll("td");
+            celle.forEach(cella => {
+                cella.addEventListener("click", clickCella);
+            });
+            const cancelBtn = document.getElementById("cancelBtn");
+            const dialog = document.getElementById("prenotaDialog");
+            cancelBtn.addEventListener("click", () => {
+                dialog.close();
+            });
+            dialog.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const nome = document.getElementById("nome").value;
+                const telefono = document.getElementById("telefono").value;
+
+                if (selectedCell) {
+                    selectedCell.textContent = `${nome}\n${telefono}`;
+                    selectedCell.classList.add("prenotato");
+                }
+
+                dialog.close();
+                document.getElementById("nome").value = "";
+                document.getElementById("telefono").value = "";
+            });
+        }
+
+        function inizializza() {
+            creaTabella();
+            settaListener();
+        }
+        document.addEventListener("DOMContentLoaded", inizializza);
+    </script>
+</head>
+
+<body>
+    <main>
+        <h1>Prenotazioni</h1>
+        <p>Per prenotare clicca su una casella verde</p>
+        <table id="tab">
+        </table>
+        <button id="scambiaBtn">Scambia slot</button>
+        <div>
+        <input type="text" id="searchInput" placeholder="Cerca per nome o tel">
+        <button id="cercaBtn">Cerca</button>
+        </div>
+    </main>
+    <dialog id="prenotaDialog">
+        <form method="dialog">
+            <h2>Inserisci i tuoi dati</h2>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+            <label for="telefono">Telefono:</label>
+            <input type="tel" id="telefono" pattern="\d{10}" required>
+            <div id="dialogButtons">
+                <button type="submit" id="submitBtn">Conferma</button>
+                <button type="button" id="cancelBtn">Annulla</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+</html>

@@ -1,0 +1,235 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+    <meta charset='utf-8'>
+    <title>Compito 2025-09-10</title>
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            background-color: aliceblue;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 3rem;
+        }
+        th {
+            background-color: lightgoldenrodyellow;
+            width: 10rem;
+            border: 1px solid black;
+            text-align: center;
+        }
+        td {
+            border: 1px solid black;
+            background-color: lightcyan;
+            padding-top: 0.2rem;
+            padding-bottom: 0.2rem;
+            text-align: center;
+        }   
+        #iniziale {
+            background-color: lightskyblue;
+            width: 30rem;
+            height: 10rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2rem;
+            border-radius: 10px;
+            padding: 1rem;
+        }
+        #gioco {
+            background-color: lightgoldenrodyellow;
+            width: 30rem;
+            height: 30rem;
+            border-radius: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1rem;
+            display: none;
+        }
+        #ff {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+        }
+        input{
+            width: 12rem;
+            margin: 1rem;
+        }
+        input[type='button']{
+            width: fit-content;
+            font-weight: bold;
+        }
+        label{
+            margin: 1rem;
+            font-weight: bold;
+        }
+        #classifica {
+            background-color: greenyellow;
+            width: 30rem;
+            height: 30rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2rem;
+            border-radius: 10px;
+            padding: 1rem;
+            display: none;
+        }
+        #nome:invalid{
+            background-color: orange;
+        }
+        #bersaglio {
+            width: 2rem;
+            height: 2rem;
+            background-color: red;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+    'use strict';
+    const DIM = 30;    
+    let tim;
+    let indice = -1;
+    let contatore = 0;
+    let punti = 0;
+    let myt;
+    let username;
+
+    class Tabella {
+        constructor(){
+            this.nomPunt = [];
+        }
+        aggiungi(nome, punti){
+            this.nomPunt.push({n: nome,
+                                 p: punti});
+            this.nomPunt.sort((a, b) => b.p-a.p);
+            if(this.nomPunt.length > 10){
+                this.nomPunt.pop(); 
+            }
+        }
+        presente(nome) {
+            return Boolean(this.nomPunt.map(e => e.n).includes(nome));
+        }
+        getTabellaBody(){
+            const t = document.createElement('tbody');
+            const rh = document.createElement('tr');
+            t.appendChild(rh);
+            const h1 = document.createElement('th');
+            const h2 = document.createElement('th');
+            t.appendChild(h1);
+            t.appendChild(h2);
+            h1.textContent = 'Nome';
+            h2.textContent = 'Punteggio'; 
+            for(let np of this.nomPunt){
+                const r = document.createElement('tr');
+                const tdn = document.createElement('td');
+                const tdp = document.createElement('td');
+                tdn.textContent = np.n;
+                tdp.textContent = np.p;
+                r.appendChild(tdn);
+                r.appendChild(tdp);
+                t.appendChild(r);
+            }
+            return t;
+        }
+    }
+
+    function mostraPunteggio(){
+        document.getElementById('gioco').style.display = 'none';
+        myt.aggiungi(username, punti);
+        const tb = document.getElementsByTagName('tbody')[0];
+        tb.replaceWith(myt.getTabellaBody());
+        document.getElementById('classifica').style.display = 'block';
+        setTimeout(reset, 10000);
+    }
+
+    function nuovoBersaglio(){
+        contatore++;
+        if(contatore == 10){
+            clearTimeout(tim);
+            mostraPunteggio();
+            return;
+        }
+        let i = Math.floor(DIM*Math.random());
+        const d = document.getElementById('bersaglio');
+        d.style.top = i+'rem';
+        i = Math.floor(DIM*Math.random());
+        d.style.left = i+'rem';
+    }
+
+    function sparo(e) {
+        let tt = e.target;
+        if(tt.id === 'bersaglio'){
+            punti++;
+        }
+    }
+
+    function creaGame(){
+        const c = document.getElementById('gioco');
+        c.style.display = 'block';
+        const f = document.createElement('div');
+        f.id = 'bersaglio';
+        f.style.position = 'relative';
+        f.addEventListener('click', sparo);
+        c.appendChild(f);
+        tim = setInterval(nuovoBersaglio, 1000);
+    } 
+
+    function avvio(e) {
+        contatore = 0;
+        punti = 0;
+        const f = document.getElementById('iniziale');
+        username = document.getElementById('nome').value;
+        f.style.display = 'none';
+        creaGame();
+    } 
+
+    function controlla(){
+        console.log(document.getElementById('nome').checkValidity());
+        if(document.getElementById('nome').checkValidity() && !myt.presente(document.getElementById('nome').value)){
+            document.getElementById('avvio').disabled = false;
+        } else {
+            document.getElementById('avvio').disabled = true;
+        }
+    }
+    function reset(){
+        const f = document.getElementById('iniziale');
+        f.style.display = 'block';
+        const c = document.getElementById('gioco');
+        c.style.display = 'none';
+        c.innerHTML = '';
+        const cl = document.getElementById('classifica');
+        cl.style.display = 'none';
+        const ba = document.getElementById('avvio');
+        ba.disabled = true;
+        const nm = document.getElementById('nome');
+        nm.value = '';
+    }
+    function inizializza(){
+        const ba = document.getElementById('avvio');
+        ba.addEventListener('click', avvio);
+        myt = new Tabella();
+        const nm = document.getElementById('nome');
+        nm.addEventListener('input', controlla);
+        reset();
+    }   
+
+    document.addEventListener('DOMContentLoaded', inizializza);
+    </script>
+</head>
+ <body>
+    <div id="iniziale">
+        <form id="ff">
+            <label>Inserisci il tuo nome e gioca:</label>
+            <input type="text" id="nome" pattern="[A-Z][a-z]{2,9}" required>
+            <input type="button" value="Gioca" id="avvio" name="Gioca">
+        </form>
+    </div>
+    <div id="gioco">        
+    </div>
+    <div id="classifica">
+        <table>
+            <tbody></tbody>
+        </table>
+    </div>
+ </body>
+</html>
