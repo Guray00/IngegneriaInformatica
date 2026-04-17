@@ -142,8 +142,8 @@ Data la seguente funzione di trasferimento *(valori da confermare)*:
 
 $$G(s) = \frac{100(s+3)}{(s+1)^2}$$
 
-1. Disegnare il diagramma di Bode di $G(s)$.
-2. Progettare un regolatore $C(s)$ **utilizzando il diagramma di Bode** tale per cui il sistema a circuito chiuso rispetti le seguenti specifiche:
+1. Disegnare il luogo delle radici di $G(s)$.
+2. Progettare un regolatore $C(s)$ **utilizzando il luogo delle radici** tale per cui il sistema a circuito chiuso rispetti le seguenti specifiche:
    - Errore a regime nullo in seguito alla risposta al gradino
    - Margine di fase $> 45°$
 3. Disegnare il diagramma di Bode del sistema in anello aperto $C(s)G(s)$.
