@@ -4,7 +4,11 @@
 
 > Laddove siano state condivise dagli studenti sono presenti anche le domande dell'orale (anche in questo caso si tratta di esercizi scritti o domande orali)
 
-> Avviso importante per chi dovrà fare l'esame nei prossimi appelli: ci sta che Munafò da adesso diventi un po' più attento ai formulari che portiamo, perché qualcuno oggi molto ingenuamente ha chiesto se andasse bene il suo e il prof si è messo a controllare, trovando molti formulari che secondo lui contenevano appunti che non potevano essere portati all'esame
+> Avvisi e consigli importanti per l'esame:
+> - Munafò in questo appello ha ritirato formulari ritenuti non conformi (troppo lunghi o con esercizi svolti). 
+> - Utile portare una calcolatrice in grado di trovare radici di polinomi di terzo grado o calcolare potenze di matrici $3\times3$.
+> - Il tempo è **molto limitato** (1 ora): tipicamente 2 esercizi, uno sulle variabili di stato e uno sulla progettazione del controllore (Bode o Luogo delle radici).
+> - All'orale sono state chieste: definizione di stabilità BIBO, stabilità interna, motivazione delle scelte del controllore, e tracciamento del diagramma di Nyquist.
 ---
 
 ## Traccia 4
