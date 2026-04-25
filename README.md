@@ -72,6 +72,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 [Federico Nardi](https://github.com/fedenardii)<br>
 [Giuseppe Vaglica](https://github.com/giuse27)<br>
 [Lorenzo Valtriani](https://github.com/lorenzovaltriani)<br>
+[Stefano Brogi](https://github.com/Ste517)
 
 **Collaboratori Materiale**
 
