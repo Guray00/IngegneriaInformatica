@@ -74,7 +74,7 @@ In un diagramma E-R, se $F\_{1}$ ed $F\_{2}$ sono due entità figlie di una gene
 
 Dato il diagramma E-R in figura, quanti vincoli di integrità referenziale si generano durante la sua traduzione nel modello logico relazionale?
 
-!\[\[./immagini/schema1.png]]
+![schema](./immagini/schema1.png)
 
 * a. Nessuna delle altre alternative è corretta
 
@@ -328,7 +328,7 @@ Nel modello relazionale, quale tra le seguenti affermazioni sugli attributi è c
 
 Uno studente ha un cognome e un nome, ed è identificato da una matricola. Un esame è identificato da un codice, e ha un nome. Uno studente può sostenere un esame in uno o più appelli, ciascuno dei quali si tiene in una specifica data. Se lo studente supera un esame in un appello, consegue un voto che viene registrato; l'assenza del voto indica che l'esame non è stato superato in quell'appello. Il seguente diagramma E-R è una possibile rappresentazione concettuale della realtà descritta?
 
-!\[\[./immagini/schema2.png]]
+![schema](./immagini/schema2.png)
 
 * a. Sì.
 
@@ -380,7 +380,7 @@ Una transazione, in un DBMS, è:
 
 Dato il diagramma E-R in figura, qual è la sua traduzione nel modello logico relazionale?
 
-!\[\[./immagini/schema3.png]]
+![schema](./immagini/schema3.png)
 
 * a. AUTOBUS(<u>Targa</u>, Modello, Capienza, Linea, OraFermata); LINEA(<u>Autobus, Nome</u>, Lunghezza)
 
