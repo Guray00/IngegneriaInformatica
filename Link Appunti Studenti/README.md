@@ -15,7 +15,7 @@ Questo file contiene una raccolta di repository esterne, gentilmente concesse da
 
 >[https://uni.alessioavara.it](https://uni.alessioavara.it) - Autore: <STRONG><font color="green">Alessio Avarappattu</font></STRONG>
 
->[https://github.com/tizz25/AppuntiSecondoSemestre/tree/main]](https://github.com/tizz25/AppuntiSecondoSemestre) - Autore: <STRONG><font color="green">Tiziano Cazzato</font></STRONG>
+>[https://github.com/tizz25/AppuntiSecondoSemestre](https://github.com/tizz25/AppuntiSecondoSemestre) - Autore: <STRONG><font color="green">Tiziano Cazzato</font></STRONG>
 
 ## <font color="red">Ringraziamenti</font>
 Si ringraziano gli studenti per il loro contributo. Per essere aggiunti alla pagina e poter contribuire potete contattare i maintainer di questo GitHub.
