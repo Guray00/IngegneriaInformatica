@@ -14,6 +14,7 @@ Questo file contiene una raccolta di repository esterne, gentilmente concesse da
 >Lo studente <STRONG><font color="green">Gabriele Cambria</font></STRONG> mette a disposizione alcune repository contenenti gli [appunti](https://github.com/stars/Gabriele-D-Cambria/lists/appunti-triennale-unipi) di alcuni corsi della triennale, oltre che una raccolta di [progetti](https://github.com/stars/Gabriele-D-Cambria/lists/progetti-triennale-unipi) per i corsi seguiti. Si segnala che gli appunti di Reti Informatiche sono ancora in lavorazione (alla data attuale).
 
 >[https://uni.alessioavara.it](https://uni.alessioavara.it) - Autore: <STRONG><font color="green">Alessio Avarappattu</font></STRONG>
+
 >[https://github.com/tizz25/AppuntiSecondoSemestre/tree/main]([https://uni.alessioavara.it](https://github.com/tizz25/AppuntiSecondoSemestre/tree/main)) - Autore: <STRONG><font color="green">Tiziano Cazzato</font></STRONG>
 
 ## <font color="red">Ringraziamenti</font>
