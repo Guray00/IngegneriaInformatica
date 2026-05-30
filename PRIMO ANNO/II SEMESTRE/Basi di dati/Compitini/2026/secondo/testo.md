@@ -45,6 +45,7 @@ FROM T T1
 4. Restituisce un result set la cui cardinalità è superiore a quella di T
 
 <details><summary>Risposta corretta</summary>2</details>
+
 # Domanda 4
 
 > Sia dato lo schema di relazione R(ABCD, F) con insieme di dipendenze funzionali F = {A $\to$ B, C $\to$ D, B $\to$ C}. Quale delle seguenti dipendenze funzionali è logicamente implicata da F?
@@ -99,7 +100,7 @@ Tabella S
    FROM T LEFT OUTER JOIN S ON T.D = S.G
    WHERE T.B <> 'b2' AND S.F IS NOT NULL;
    ```
-   2. Nessuna delle altre alternative contiene una versione join-equivalente della query *q*
+2. Nessuna delle altre alternative contiene una versione join-equivalente della query *q*
 3. ```MYSQL
 	SELECT DISTINCT T.A
     FROM T INNER JOIN S ON T.D <> S.G
@@ -109,7 +110,7 @@ Tabella S
 	SELECT T.A
 	FROM T LEFT OUTER JOIN S ON T.D = S.G
 	WHERE T.B <> 'b2' AND S.G IS NULL;
-```
+	```
 
 <details><summary>Risposta corretta</summary>4</details>
 
