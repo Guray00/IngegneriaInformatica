@@ -218,3 +218,127 @@ DELIMITER ;
 ```
 
 <details><summary>Risposta corretta</summary>Numero pazienti visitati da almeno un medico di Pisa<br><i>Altre risposte non disponibili</i></details>
+
+# Domanda 13
+
+> Nel pattern di utilizzo di un cursore MySQL visto a lezione per scorrere i record del result set a esso associato, qual è il ruolo dell'handler `NOT FOUND`?
+
+1. Settare una variabile di controllo a 1 quando, dopo l'esecuzione dell'istruzione `FETCH`, non c'è alcun record da processare, e interrompere il ciclo di lettura
+2. Settare una variabile di controllo a 1 quando, dopo l'esecuzione dell'istruzione `FETCH`, non c'è alcun record da processare
+3. Monitorare una variabile di controllo ad ogni iterazione, e uscire dal ciclo quando il suo valore è 1
+4. Nessuna delle altre alternative è corretta
+
+<details><summary>Risposta corretta</summary>2</details>
+
+# Domanda 14
+
+> Quale delle seguenti affermazioni è corretta?
+
+1. Uno schedule prodotto da uno scheduler 2PL può non essere conflict-serializzabile
+2. Ogni schedule view-serializzabile è generabile da uno scheduler 2PL
+3. Nessuna delle altre alternative è corretta
+4. Ogni schedule conflict-serializzabile non è view-serializzabile
+
+<details><summary>Risposta corretta</summary>3</details>
+
+# Domanda 15
+
+> Data la query sotto a sinistra, eseguita sulla tabella R(<u>A</u>,B,C,D) sotto a destra, quale delle seguenti affermazioni è vera circa il result set generato dalla query?
+
+Query:
+```MYSQL
+SELECT R.A, R.B,
+	RANK() OVER(PARTITION BY R.B
+				ORDER BY R.C) AS r1,
+	RANK() OVER(ORDER BY R.C) AS r2
+FROM R;
+```
+Tabella R:
+
+| **A** | **B** | **C** | **D**      |
+| ----- | ----- | ----- | ---------- |
+| 1     | b1    | 1     | 2026-05-15 |
+| 2     | b2    | 2     | 2026-05-01 |
+| 3     | b1    | 2     | 2026-05-19 |
+| 4     | b3    | 1     | 2026-05-19 |
+| 5     | b1    | 1     | 2026-05-20 |
+| 6     | b2    | 2     | 2026-05-23 |
+1. Il valore di *r1* è diverso da quello di *r2*, per tutti i record del result set
+2. Il valore di *r1* è uguale a quello di *r2*, per tutti i record del result set
+3. Nessuna delle altre alternative è vera
+4. I valori di *r1* dei record che assumono un dato valore di B sono tutti diversi fra loro, qualsiasi sia il valore di B
+
+<details><summary>Risposta corretta</summary>3</details>
+
+# Domanda 16
+
+> Considerare la tabella T(<u>A</u>,D), in cui il dominio di D è `DATE`, tutti i record hanno T.d anteriore al 1° Giugno 2026 prima della creazione dell'event *report_update*, e solo tale event modifica T. Quale delle seguenti affermazioni relative all'event *report_update* è vera, dopo ogni sua esecuzione?
+
+```MYSQL
+CREATE EVENT report_update
+ON SCHEDULE EVERY 1 WEEK
+STARTS '2026-06-01'
+DO
+	DELETE FROM T
+	WHERE T.D < CURRENT_DATE - INTERVAL 1 WEEK;
+	
+SET @@GLOBAL.event_scheduler = ON;
+```
+
+1. La tabella T resta invariata perché l'istruzione `CREATE` è sintatticamente errata: l'event non viene creato
+2. Nessuna delle altre alternative è corretta
+3. L'event mantiene in T i soli record il cui valore di T.d è una data appartenente alla settimana che precede il giorno di esecuzione
+4. L'event mantiene in T i soli record il cui valore di T.d è una data appartenente alla settimana antecedente a quella che precede il giorno di esecuzione
+
+<details><summary>Risposta corretta</summary>2,3</details>
+
+# Domanda 17
+
+\[DOMANDA MANCANTE\]
+
+# Domanda 18
+
+> Sia dato lo schema di relazione R(ABCDEF, G) con insieme di dipendenze funzionali G = {AB $\to$ C, A $\to$ C, C $\to$ D, D $\to$ E, C $\to$ E, E $\to$ F, AD $\to$ F, BF $\to$ A, B $\to$ A}. Quale delle seguenti affermazioni è corretta?
+
+1. R non è in 3NF
+2. R è in 3NF, ma non è in BCNF
+3. R è in BCNF
+4. Nessuna delle altre alternative è corretta
+
+<details><summary>Risposta corretta</summary>1</details>
+
+# Domanda 19
+
+> In una query con `GROUP BY`, quale delle seguenti affermazioni è vera?
+
+1. `WHERE` filtra le righe prima del raggruppamento e non può usare funzioni aggregate; `HAVING` filtra i gruppi dopo l'aggregazioni e può usare funzioni aggregate
+2. `WHERE` filtra le righe prima del raggruppamento; `HAVING` filtra i gruppi dopo l'aggregazione. Entrambe possono usare funzioni aggregate
+3. `WHERE` e `HAVING` sono intercambiabili quando non si usano funzioni aggregate; `HAVING` è obbligatorio in presenza di `GROUP BY`
+4. Nessuna delle altre alternative è corretta
+
+<details><summary>Risposta corretta</summary>1</details>
+
+# Domanda 20
+
+> Considerata la tabella T(<u>A</u>, B, C, D), quale delle seguenti query è sintatticamente corretta?
+
+1. Nessuna delle altre alternative è corretta
+2. ```MYSQL
+   SELECT A, C, COUNT(*)
+   FROM T
+   GROUP BY C
+   HAVING COUNT(*) > 5;
+   ```
+3. ```MYSQL
+   SELECT COUNT(*)
+   FROM T
+   GROUP BY C
+   HAVING COUNT(DISTINCT B) = 1;
+   ```
+4. ```MYSQL
+   SELECT C, B, COUNT(*)
+   FROM T
+   GROUP BY C;
+   ```
+
+<details><summary>Risposta corretta</summary>3</details>
