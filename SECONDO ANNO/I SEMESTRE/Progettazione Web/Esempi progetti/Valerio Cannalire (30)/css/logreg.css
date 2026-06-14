@@ -1,0 +1,80 @@
+/* ==========================================================================
+   1. Box Autenticazione
+   ========================================================================== */
+main {
+    display: flex;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* occupa tutto lo spazio verticale centrale */
+    width: 100%;
+}
+
+.box-autenticazione {
+    background-color: #1a1a1a;
+    border: 2px solid #c8c8c8;
+    border-radius: 6px;
+    padding: 25px;
+    width: 30%;
+}
+
+.box-autenticazione h2 {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   2. iput e validazione
+   ========================================================================== */
+.campo {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+input {
+    width: 100%;
+}
+
+input.modificato:invalid {
+    background-color: #3d1a1a;
+    border-color: #ff4d4d;
+}
+
+#btn-login-invia, #btn-reg-invia {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#err-reg, #err-login {
+    min-height: 80px;
+}
+
+.switch-autenticazione {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 20px;
+}
+
+.switch-autenticazione > button {
+    display: inline;
+    background: transparent;
+    border: none;
+    color: #c8c8c8;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.switch-autenticazione > button:hover {
+    color: #ffffff;
+    background: transparent;
+}

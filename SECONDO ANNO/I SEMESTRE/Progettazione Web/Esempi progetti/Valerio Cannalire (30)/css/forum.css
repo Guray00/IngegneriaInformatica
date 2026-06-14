@@ -1,0 +1,371 @@
+/* ==========================================================================
+   1. layout principale
+   ========================================================================== */
+main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+    overflow: hidden; 
+    height: 100%;
+}
+
+.colonna-sinistra, .colonna-centrale, .colonna-destra {
+    border: 2px solid #c8c8c8;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.colonna-sinistra {
+    width: 280px; 
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.colonna-centrale {
+    flex-grow: 1; 
+    flex-shrink: 1;
+    flex-basis: 0; 
+    padding: 10px 10%;
+    overflow-y: auto; 
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.colonna-centrale.menu-aperto {
+    padding: 10px 10px !important;
+}
+
+.colonna-destra {
+    width: 35%; 
+    flex-shrink: 0; 
+    overflow: hidden;
+    opacity: 1;
+    margin-right: 0;
+    visibility: visible;
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                margin-right 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                opacity 0.3s ease;
+}
+
+.colonna-destra.chiuso {
+    width: 0% !important;     
+    padding: 0 !important;    
+    border: none !important;  
+    margin-right: -15px;      
+    opacity: 0;               
+    visibility: hidden;       
+}
+
+/* ==========================================================================
+   2. menu sinistro
+   ========================================================================== */
+#area-pulsanti {
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.colonna-sinistra button {
+    width: 100%;
+}
+
+.sezione-menu-laterale {
+    margin-bottom: 18px;
+    flex-shrink: 0;
+}
+
+.colonna-sinistra h2, .colonna-destra h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    border-top: 1px solid #333333;
+    padding-top: 10px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+#opzioni-filtri, .lista-topic-scroll {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;              
+}
+
+.lista-topic-scroll {
+    max-height: 150px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+#opzioni-filtri label, .lista-topic-scroll label {
+    display: flex;
+    align-items: center;    
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #c8c8c8;
+}
+
+#opzioni-filtri input, .lista-topic-scroll input {
+    margin: 0 8px 0 0;      
+    flex-shrink: 0;         
+}
+
+/* ==========================================================================
+   3. sezione statistiche forum
+   ========================================================================== */
+.sezione-statistiche {
+    margin-top: auto;       
+    margin-bottom: 0;
+    padding-bottom: 0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column; 
+    gap: 6px;
+    font-size: 0.9rem;
+}
+
+.sezione-statistiche p {
+    margin: 0;
+}
+
+.sezione-statistiche span {
+    font-weight: bold;
+}
+
+.link-profilo {
+    text-decoration: none;
+    font-weight: bold;
+    color: #c8c8c8;
+}
+
+.link-profilo:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   4. menu destro
+   ========================================================================== */
+.header-creazione {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+#btn-chiudi-scrittura {
+    background: transparent;
+    border: none;
+    color: #c8c8c8;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+#form-nuovo-post {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+}
+
+#form-nuovo-post label {
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+#form-nuovo-post input {
+    width: 100%;
+}
+
+#form-nuovo-post textarea {
+    width: 100%;
+    height: 120px;
+    font-family: inherit;
+    resize: none; 
+}
+
+.counter-caratteri {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-top: 4px;
+    text-align: right;
+}
+
+#form-nuovo-post .lista-topic-scroll {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; 
+    gap: 10px;
+    max-height: 130px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+#form-nuovo-post .lista-topic-scroll label {
+    display: inline-flex !important; 
+    width: auto !important;          
+    align-items: center !important;
+    font-weight: normal;
+    justify-content: flex-start !important;
+    margin-bottom: 0 !important;     
+    font-size: 0.95rem;
+    color: #c8c8c8;
+    cursor: pointer;
+    white-space: nowrap;             
+}
+
+#form-nuovo-post .lista-topic-scroll input {
+    margin: 0 8px 0 0 !important;    
+    flex-shrink: 0 !important;
+    width: auto !important;          
+}
+
+#btn-invia-post {
+    width: 100%;
+    margin-top: auto;
+}
+
+/* ==========================================================================
+   5. scheda post
+   ========================================================================== */
+.scheda-post {
+    border: 2px solid #c8c8c8;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #2a2a2a;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+    width: 100%;
+}
+
+.scheda-post.segnalato {
+    border-color: red !important;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    font-size: 0.75rem;
+    border-bottom: 1px solid #444444;
+    padding-bottom: 6px;
+    width: 100%;
+}
+
+.post-header .link-profilo {
+    flex: 1; 
+    text-align: left;
+}
+
+.post-titolo-testo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0; 
+    text-align: center;
+    flex: 2; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.post-data {
+    flex: 1; 
+    text-align: right;
+}
+
+.post-contenuto {
+    font-size: 0.9rem;
+}
+
+.post-topic-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.post-topic-tags .tag {
+    border: 1px solid #444444;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #444444;
+    padding-top: 10px;
+}
+
+.post-valutazione {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.punteggio-totale {
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.post-azioni-destra {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-voto, .btn-segnala, .btn-admin {
+    background-color: transparent;
+    border: 1px solid #444444;
+    color: #c8c8c8;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-voto:hover, .btn-segnala:hover, .btn-admin:hover {
+    background-color: #333333;
+}
+
+.btn-like.voto-attivo, .btn-like.voto-attivo:hover {
+    border-color: #4df14d;
+    background-color: rgba(77, 241, 77, 0.1);
+}
+
+.btn-dislike.voto-attivo, .btn-dislike.voto-attivo:hover {
+    border-color: #ff4d4d;
+    background-color: rgba(255, 77, 77, 0.1);
+}
+
+.btn-segnala.segnala-attivo, .btn-segnala.segnala-attivo:hover {
+    border-color: #ffaa00;
+    background-color: rgba(255, 170, 0, 0.15);
+}
+
+.admin-segnalazioni-count {
+    color: #ff4d4d;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.btn-elimina { color: #ff4d4d; border-color: rgba(255, 77, 77, 0.4); }
+.btn-modifica { color: #00aaff; border-color: rgba(0, 170, 255, 0.4); }
+.btn-ripristina { color: #ffaa00; border-color: rgba(255, 170, 0, 0.4); }
+
+.etichetta-modificato {
+    font-style: italic;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin-left: 5px;
+}

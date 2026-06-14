@@ -1,0 +1,58 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 10% 30%;
+    gap: 200px;
+}
+
+/* Griglia 2x3: 3 colonne affiancate, ognuna divisa in due righe (numero e testo) */
+.griglia-statistiche {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    width: 100%;
+}
+
+.cella-statistica {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #2a2a2a;
+    border: 1px solid #444444;
+    border-radius: 4px;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.numero-stat {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.etichetta-stat {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-logout {
+    background-color: transparent;
+    border: 2px solid #ff4d4d;
+    color: #ff4d4d;
+    padding: 10px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-logout:hover:not(:disabled) {
+    background-color: #ff4d4d;
+    color: #1a1a1a;
+}

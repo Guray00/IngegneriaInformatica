@@ -1,0 +1,143 @@
+/* ==========================================================================
+   1. Layout
+   ========================================================================== */
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: 100%;
+    flex-grow: 1; /* spinge la griglia a occupare tutto lo spazio verticale*/
+    min-height: 0;
+}
+
+main > section {
+    border: 2px solid #c8c8c8;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+main h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   2. Ricerca e creazione
+   ========================================================================== */
+
+#barra-ricerca{
+    width: 80%;
+    align-self: center;
+    height: 2.5rem;
+}
+
+#btn-apri-dialog {
+    width: 50%;
+    align-self: center;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#btn-apri-dialog > span {
+    font-size: 2rem
+}
+
+/* ==========================================================================
+   4. Colonne
+   ========================================================================== */
+.forum-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+/* ==========================================================================
+   5. Schede Forum
+   ========================================================================== */
+
+.scheda-forum {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #2a2a2a;
+    border: 2px solid #c8c8c8;
+    border-radius: 6px;
+    padding: 10px;
+    text-decoration: none;
+    color: inherit;           
+    cursor: pointer;
+    flex: 0 0 calc(50% - 5px);
+    max-width: calc(50% - 5px);
+}
+
+.scheda-forum:hover {
+    background-color: #333333;
+}
+
+.scheda-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.scheda-top > span {
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.icone-top {
+    display: flex;
+    gap: 6px;
+}
+
+.icona-status {
+    font-size: 1.1rem;
+}
+
+.admin-forum {
+    font-size: 0.85rem;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.link-autore-admin {
+    text-decoration: none;
+    color: #c8c8c8;
+}
+
+.link-autore-admin:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.icone-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    border-top: 1px solid #c8c8c8;
+    padding-top: 8px;
+}
+
+.icona-statistica {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
