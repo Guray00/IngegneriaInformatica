@@ -198,7 +198,7 @@
 
 # Domanda 15
 
-|![schema](./immagini/schema4.png)
+|![schema](./immagini/schema3.png)
 
 > La traduzione del diagramma E-R in figura verso il modello logico relazionale:
 
