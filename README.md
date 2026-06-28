@@ -66,6 +66,7 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 **Maintainer**
 
 [Alessandro Bevilacqua](https://github.com/Kurius)<br>
+[Stefano Brogi](https://github.com/Ste517)<br>
 [Andrea Covelli](https://github.com/AndreaCovelli)<br>
 [Gabriele Frassi](https://github.com/gabrielefrax)<br>
 [Marco Lampis](https://github.com/Guray00)<br>
@@ -73,27 +74,25 @@ I ringraziamenti sono in ordine alfabetico, molto materiale è di anni precedent
 [Federico Nardi](https://github.com/fedenardii)<br>
 [Giuseppe Vaglica](https://github.com/giuse27)<br>
 [Lorenzo Valtriani](https://github.com/lorenzovaltriani)<br>
-[Stefano Brogi](https://github.com/Ste517)
 
 **Collaboratori Materiale**
 
-Giacomo Fundarò<br>
 Sara Aliani<br>
 Taulant Arapi<br>
-Giuseppe "Attila" Attadia<br>
 Luca Arduini<br>
+Giuseppe "Attila" Attadia<br>
 Pietro Balestri<br>
 Giulio Bello<br>
+Matteo Bernini<br>
 Giacomo Bertelli<br>
 Francesco Berti<br>
 Francesco Boldrini<br>
-Matteo Bernini<br>
 Francesco Bonistalli<br>
 Filippo Brogi<br>
 Leonardo Brugnano<br>
 Davide Bruni<br>
-Valerio Cannalire<br>
 Federico Calzolari<br>
+Valerio Cannalire<br>
 Federico Casu<br>
 Federico Cavedoni<br>
 Leonardo Ceccarelli<br>
@@ -112,32 +111,33 @@ Matteo Dondoli<br>
 Nilo Fabiano<br>
 Tommaso Falaschi<br>
 Giulio Federico<br>
-Niccolò Franchi<br>
 Alessandro Fossari<br>
+Niccolò Franchi<br>
 Gabriele Frassi<br>
 Jonathan Frattacci<br>
+Giacomo Fundarò<br>
 Giacomo Furia<br>
 Simone Gallo<br>
 Giulia Gastaldin<br>
+Edoardo Geraci<br>
 Kevin Giannandrea<br>
 Daniele Giaquinta<br>
-Edoardo Geraci<br>
 Fabio Gulmini<br>
 Dafne Iennaro<br>
 Marco Lampis<br>
 Luca Landi<br>
 Lorenzo Leoncini<br>
 Giovanni Ligato<br>
-Lorenzo Lozzi<br>
-Giovanni Enrico Loni<br>
 Matteo Lombardi<br>
 Cristina Maria Rita Lombardo<br>
+Giovanni Enrico Loni<br>
+Lorenzo Lozzi<br>
 Giacomo Maldarella<br>
+Maria Azzurra Malotti<br>
 Lorenzo Mancinelli<br>
 Gregorio Maria Manduzio<br>
 Elia Marabotto<br>
 Gabriele Marcuccetti<br>
-Maria Azzurra Malotti<br>
 Alessandro Marzini<br>
 Federico Matteoni<br>
 Alessio Meini<br>
@@ -155,13 +155,15 @@ Alex Parri<br>
 Enea Passardi<br>
 Tommaso Pellegrini<br>
 Alessandro Placanica<br>
+Caterina Porri<br>
 Aleandro Prudenzano<br>
 Antonio Querci<br>
 Rambod Rahmani<br>
 Nicola Ramacciotti<br>
+Alex Ressa<br>
 Giampiero Ribechini<br>
-Samuele Ricotta<br>
 Erik Ricku<br>
+Samuele Ricotta<br>
 Alessio Ristori<br>
 Gianmaria Saggini<br>
 Alessandro Sale<br>
@@ -184,8 +186,8 @@ Lorenzo Valtriani<br>
 Alessandro Versari<br>
 Sandro Wu<br>
 Giulio Zingrillo<br>
-Francesco Zollo<br>
-Alex Ressa<br><br>
+Francesco Zollo<br><br>
+
 Per richiedere l'autorizzazione per aggiungere file _(o mandare semplicemente a noi un file per caricarlo)_ è consigliato scrivere agli studenti che si occupano della gestione o aprire una issue su questo progetto..
 
 
