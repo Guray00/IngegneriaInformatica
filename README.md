@@ -53,6 +53,8 @@ Di seguito sono elencati tutti i corsi tenuti dai docenti, separati per anno di 
 ## Libri di testo
 Trovate l'elenco dei libri suggeriti dai docenti in <a href="https://www.ifrax.it/faq-inginf/?page=article&id=102" target="blank">questa pagina</a>
 
+- [The Concise TypeScript Book (edizione italiana)](https://gibbok.github.io/typescript-book/it-it/) - guida gratuita e open source per approfondire TypeScript.
+
 ## Credits (in aggiornamento)
 
 <a href="https://github.com/Guray00/IngegneriaInformatica/graphs/contributors">
