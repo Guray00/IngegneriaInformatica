@@ -1,0 +1,82 @@
+@url = http://127.0.0.1:8080/api/v1
+
+
+###
+GET {{url}}/user/costs?startTime=1668639600000&endTime=1673910000000
+Authorization: Bearer pass
+
+###
+GET {{url}}/user/activity
+Authorization: Bearer pass
+
+###
+POST {{url}}/subscription/activate?id=1
+Authorization: Bearer pass
+
+###
+POST {{url}}/subscription/stop?id=1
+Authorization: Bearer pass
+
+###
+DELETE {{url}}/subscription?id=1
+Authorization: Bearer pass
+
+###
+GET {{url}}/subscription/user
+Authorization: Bearer pass
+
+###
+GET {{url}}/service/plans?id=1
+
+###
+GET {{url}}/service/all
+
+###
+POST {{url}}/resource/activate?id=4
+Authorization: Bearer pass
+
+###
+POST {{url}}/resource/stop?id=4
+Authorization: Bearer pass
+
+###
+DELETE {{url}}/resource?id=4
+Authorization: Bearer pass
+
+###
+GET {{url}}/resource/user
+Authorization: Bearer pass
+
+###
+POST {{url}}/resource/create
+Accept: application/json
+Content-type: application/json
+Authorization: Bearer pass
+
+{
+    "name" : "bbb",
+    "service_id" : 1,
+    "subscription_id" : 1,
+    "plan" : "super"
+}
+
+###
+post {{url}}/user/ping
+
+###
+POST {{url}}/user/login
+Accept: application/json
+Content-type: application/json
+Authorization: Bearer aaaaaaaaaaaaaaa
+
+{
+    "user":"test",
+    "pass":"test"
+}
+
+###
+POST {{url}}/user/temp
+###
+get {{url}}/user/session
+###
+get {{url}}/user/all

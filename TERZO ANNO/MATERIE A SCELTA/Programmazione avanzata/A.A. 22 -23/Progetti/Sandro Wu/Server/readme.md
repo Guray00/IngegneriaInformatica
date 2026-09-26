@@ -1,2 +1,0 @@
-- used the context-path: /api/v1
-- used ?createDatabaseIfNotExist=true in connection string

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass"
+   xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+   fx:controller="progetto.applicazione.manager.ManagerController">
+   <stylesheets>
+      <URL value="@/styles/manager.css" />
+   </stylesheets>
+   <children>
+      <BorderPane fx:id="windowBody" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+         prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <BorderPane fx:id="mainBody" prefHeight="200.0" prefWidth="200.0" styleClass="mainBody"
+               BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <fx:include source="component/topbar.fxml" />
+         </top>
+         <left>
+            <fx:include source="component/leftbar.fxml" />
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>
