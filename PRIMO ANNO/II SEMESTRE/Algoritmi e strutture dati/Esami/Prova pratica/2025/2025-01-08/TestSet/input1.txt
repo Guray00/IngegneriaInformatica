@@ -1,0 +1,7 @@
+6 10 Firenze
+5 Pisa Italia 10
+4 Firenze Italia 5
+10 Milano Italia 15
+12 Berna Svizzera 15
+7 Parigi Francia 25
+6 Londra Inghilterra 20

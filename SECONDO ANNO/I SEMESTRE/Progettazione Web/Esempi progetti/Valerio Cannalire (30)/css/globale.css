@@ -1,0 +1,267 @@
+/* ==========================================================================
+   1. Reset di stili predefiniti dei browser potrebbero applicare e Impostazioni Generali
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #1a1a1a;
+    color: #c8c8c8; /* ereditato da tutti i testi */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    /*il progetto è stato sviluppato col ridimensionamento dello schermo di windows del 125%
+    quindi è stato necessario introdurre questa trasformazione per renderlo consono al normale 100%*/
+    transform: scale(1.25);
+    transform-origin: top left;
+    width: 80vw;  
+    height: 80vh; 
+}
+
+/* ==========================================================================
+   2. Header
+   ========================================================================== */
+body > header {
+    display: grid;
+    grid-template-columns: 250px 1fr 250px;
+    align-items: center; 
+    border: 2px solid #c8c8c8;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.icona-guida {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    color: #c8c8c8;
+    text-decoration: none;
+    border: 2px solid #c8c8c8;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    justify-self: start; 
+}
+
+.titolo-sito {
+    text-align: center;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.titolo-sito h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.titolo-sito div h1 span {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.titolo-sito a {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.profilo {
+    justify-self: end;
+    text-align: right;
+}
+
+.profilo > a {
+    display: inline-block;
+    color: #c8c8c8;
+    text-decoration: none;
+    border: 2px solid #c8c8c8;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-style: italic;
+}
+
+.icona-guida:hover, .profilo > a:hover {
+    background-color: #333333;
+}
+
+/* ==========================================================================
+   3. Input e button
+   ========================================================================== */
+
+input[type="text"], 
+input[type="password"],
+input[type="search"],
+textarea {
+    padding: 10px;
+    background-color: #2a2a2a;
+    border: 2px solid #c8c8c8;
+    color: #c8c8c8;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+}
+
+button {
+    padding: 10px;
+    background-color: #2a2a2a;
+    border: 2px solid #c8c8c8;
+    color: #c8c8c8;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+input[type="text"]:hover, input[type="text"]:focus,
+input[type="password"]:hover, input[type="password"]:focus,
+input[type="search"]:hover, input[type="search"]:focus,
+textarea:hover, textarea:focus,
+button:hover:not(:disabled) {
+    background-color: #333333;
+}
+
+/* ==========================================================================
+   4. Dialog
+   ========================================================================== */
+#dialog-crea[open] {
+    background-color: #1a1a1a;
+    color: #c8c8c8;
+    border: 2px solid #c8c8c8;
+    border-radius: 6px;
+    padding: 15px;
+    width: 30%;
+    height: 35%;
+    margin: auto;
+    z-index: 9999;
+}
+
+#dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);    
+    backdrop-filter: blur(5px);    
+    z-index: 9998;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#btn-chiudi-dialog {
+    background: transparent;
+    border: none;
+    color: #c8c8c8;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#form-crea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    min-height: 140px;
+}
+
+#btn-conferma-creazione {
+    width: 100%;
+}
+
+/* ==========================================================================
+   5. Scrollbar
+   ========================================================================== */
+/*chrome*/
+::-webkit-scrollbar {
+    width: 6px; 
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444444; 
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #666666; 
+    cursor: pointer;
+}
+
+/*firefox*/
+html, body {
+    scrollbar-color: #444444 #1a1a1a;
+    scrollbar-width: thin;  
+}
+
+/* ==========================================================================
+   6. Altre proprietà comuni
+   ========================================================================== */
+.nascosto {
+    display: none !important;
+}
+
+body > footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin-top: auto; /* spinge il footer sempre sul fondo dello schermo */
+    flex-shrink: 0;
+}
+
+.errore {
+    color: #ff4d4d;
+    font-size: 0.8rem;
+    min-height: 20px; /* Evita che il box si allarghi o sussulti alla comparsa dell'errore */
+    display: block;
+    margin-bottom: 10px;
+    white-space: pre-line; /* Gestisce correttamente gli andata a capo '\n' inseriti in JS */
+}
+
+.overlay-successo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #c8c8c8;
+    text-align: center;
+    width: 100%;
+}
+
+.messaggio-vuoto {
+    font-style: italic;
+    opacity: 0.6;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0; 
+}

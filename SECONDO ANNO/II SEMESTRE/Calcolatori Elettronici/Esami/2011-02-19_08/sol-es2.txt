@@ -1,0 +1,66 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2011-02-19
+
+extern "C" void c_sem_signal_all(natl sem)
+{
+	des_sem *s;
+
+	if (!sem_valido(sem)) {
+		flog(LOG_WARN, "semaforo errato: %d", sem);
+		c_abort_p();
+		return;
+	}
+
+	s = &array_dess[sem];
+
+	inspronti();
+	while (s->counter < 0) {
+		des_proc *lavoro = rimozione_lista(s->pointer);
+		inserimento_lista(pronti, lavoro);
+		s->counter++;
+	}
+	schedulatore();
+}
+
+extern "C" void c_rw_acq_write(natl rw)
+{
+	if (!rw_valido(rw)) {
+		flog(LOG_WARN, "rw non valido: %d", rw);
+		c_abort_p();
+		return;
+	}
+
+	des_rw *p_des = &array_desrw[rw];
+
+	while (p_des->status != 0) {
+		p_des->n_writers++;
+		sem_wait(p_des->sem_writers);
+	}
+
+	p_des->status = -1;
+}
+
+extern "C" void c_rw_acq_read(natl rw)
+{
+	if (!rw_valido(rw)) {
+		flog(LOG_WARN, "rw non valido: %d", rw);
+		c_abort_p();
+		return;
+	}
+
+	des_rw *p_des = &array_desrw[rw];
+
+	while (p_des->status < 0) {
+		p_des->n_readers++;
+		sem_wait(p_des->sem_readers);
+	}
+
+	p_des->status++;
+}
+
+// SOLUZIONE 2011-02-19 )
+
+

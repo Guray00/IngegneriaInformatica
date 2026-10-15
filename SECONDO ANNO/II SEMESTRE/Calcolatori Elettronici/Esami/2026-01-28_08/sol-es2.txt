@@ -1,0 +1,67 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2026-01-28
+	if (p->nreaders || p->writer) {
+		inserimento_lista(p->w_writers, esecuzione);
+		schedulatore();
+	} else {
+		p->writer = esecuzione->id;
+	}
+//   SOLUZIONE 2026-01-28 )
+// ( SOLUZIONE 2026-01-28
+	if (p->writer || p->nreaders == MAX_RW_READERS || p->w_writers) {
+		inserimento_lista(p->w_readers, esecuzione);
+		schedulatore();
+	} else {
+		natl pos = rw_find_reader(p, 0);
+		p->readers[pos] = esecuzione->id;
+		p->nreaders++;
+	}
+//   SOLUZIONE 2026-01-28 )
+// ( SOLUZIONE 2026-01-28
+bool rw_wake_readers(des_rw *p)
+{
+	if (!p->w_readers)
+		return false;
+	while (p->w_readers && p->nreaders < MAX_RW_READERS) {
+		des_proc* work = rimozione_lista(p->w_readers);
+		natl pos = rw_find_reader(p, 0);
+		p->readers[pos] = work->id;
+		p->nreaders++;
+		inserimento_lista(pronti, work);
+	}
+	return true;
+}
+
+bool rw_wake_writer(des_rw *p)
+{
+	if (des_proc *work = rimozione_lista(p->w_writers)) {
+		p->writer = work->id;
+		inserimento_lista(pronti, work);
+		return true;
+	}
+	return false;
+}
+//   SOLUZIONE 2026-01-28 )
+// ( SOLUZIONE 2026-01-28
+	p->writer = 0;
+	inspronti();
+	if (!rw_wake_readers(p))
+		rw_wake_writer(p);
+	schedulatore();
+//   SOLUZIONE 2026-01-28 )
+// ( SOLUZIONE 2026-01-28
+	p->readers[pos] = 0;
+	p->nreaders--;
+
+	inspronti();
+	if (!p->nreaders)
+		rw_wake_writer(p);
+	if (!p->writer)
+		rw_wake_readers(p);
+	schedulatore();
+//   SOLUZIONE 2026-01-28 )
+
+

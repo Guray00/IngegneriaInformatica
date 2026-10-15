@@ -1,0 +1,127 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2026-02-18
+	carica_gate	TIPO_R		a_reg		LIV_UTENTE
+	carica_gate	TIPO_LS		a_listen	LIV_UTENTE
+	carica_gate	TIPO_MC		a_mcast		LIV_UTENTE
+//   SOLUZIONE 2026-02-18 )
+// ( SOLUZIONE 2026-02-18
+
+a_reg:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_reg
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+a_listen:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_listen
+	call carica_stato
+	iretq
+	.cfi_endproc
+
+a_mcast:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_mcast
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2026-02-18 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2026-02-18
+/// Parte C++ della primitiva reg()
+extern "C" void c_reg(natw mcg)
+{
+	if (mcg >= MAX_MCGROUPS) {
+		flog(LOG_WARN, "reg: invalid group: %u", mcg);
+		c_abort_p();
+		return;
+	}
+	if (esecuzione->mcgroup) {
+		flog(LOG_WARN, "reg: already registered");
+		c_abort_p();
+		return;
+	}
+	mcgroup_elem *e = new mcgroup_elem;
+	if (!e) {
+		flog(LOG_WARN, "reg: out of memory");
+		esecuzione->contesto[I_RAX] = false;
+		return;
+	}
+	e->id = esecuzione->id;
+	e->mcg = mcg;
+	e->head = e->tail = e->nmsg = 0;
+	e->next = mcgroups[mcg];
+	mcgroups[mcg] = e;
+	esecuzione->mcgroup = e;
+	esecuzione->contesto[I_RAX] = true;
+}
+
+/// Parte C++ della primitiva listen()
+extern "C" void c_listen()
+{
+	if (!esecuzione->mcgroup) {
+		flog(LOG_WARN, "listen: not registered");
+		c_abort_p();
+		return;
+	}
+
+	mcgroup_elem *e = esecuzione->mcgroup;
+	if (e->nmsg) {
+		esecuzione->contesto[I_RAX] = e->msg[e->head];
+		e->head = (e->head + 1) % MCAST_SIZE;
+		e->nmsg--;
+		return;
+	}
+	e->waiting = true;
+	schedulatore();
+}
+
+/// Parte C++ della primitiva mcast()
+extern "C" void c_mcast(natw mcg, natq msg)
+{
+	if (mcg > MAX_MCGROUPS) {
+		flog(LOG_WARN, "mcast: invalid group: %u", mcg);
+		c_abort_p();
+		return;
+	}
+	inspronti();
+	for (mcgroup_elem* e = mcgroups[mcg]; e; e = e->next) {
+		if (e->nmsg == MCAST_SIZE)
+			continue;
+		if (e->waiting) {
+			des_proc *p = proc_table[e->id];
+			p->contesto[I_RAX] = msg;
+			e->waiting = false;
+			inserimento_lista(pronti, p);
+		} else {
+			e->msg[e->tail] = msg;
+			e->tail = (e->tail + 1) % MCAST_SIZE;
+			e->nmsg++;
+		}
+	}
+	schedulatore();
+}
+//   SOLUZIONE 2026-02-18 )
+
+

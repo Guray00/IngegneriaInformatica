@@ -1,0 +1,105 @@
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2023-06-07
+	cow_root = alloca_tab();
+	if (!cow_root)
+		return false;
+	vaddr v = map(cow_root, ini_utn_w, ini_utn_w + DIM_USR_COW, BIT_US,
+			[](vaddr v) {
+				paddr f = alloca_frame();
+				memset(voidptr_cast(f), 0, DIM_PAGINA);
+				return f;
+			});
+	if (v != ini_utn_w + DIM_USR_COW) {
+		unmap(cow_root, ini_utn_w, v,
+			[](vaddr, paddr p, int) {
+				rilascia_frame(p);
+			});
+		rilascia_tab(cow_root);
+		cow_root = 0;
+		return false;
+	}
+	return true;
+//   SOLUZIONE 2023-06-07 )
+// ( SOLUZIONE 2023-06-07
+	if (esecuzione->livello != LIV_UTENTE || v < ini_utn_w || v - ini_utn_w >= DIM_USR_COW)
+		return false;
+
+// Per rendere l'indirizzo scrivibile dobbiamo settare BIT_RW su tutto il
+// percorso di traduzione, ma siccome dobbiamo farlo solo per il processo
+// corrente, dobbiamo creare una copia privata di tutte le tabelle sul percorso
+// e del frame finale.  Dobbiamo anche stare attenti a non creare copie di cose
+// che avevamo già copiato. Per fortuna possiamo riconoscere le entità già
+// copiate osservando il BIT_RW del descrittore che le punta: se è già settato
+// deve per forza trattarsi di una tabella o frame privato.
+//
+// Operativamente, usiamo un tab_iter per discendere lungo il percorso di
+// traduzione partendo dal livello 4. Ad ogni passo osserviamo il tab_entry su
+// cui si è fermato l'iteratore: se BIT_RW è già settato non abbiamo altro da
+// fare a questo livello e possiamo proseguire. Altrimenti dobbiamo creare una
+// copia dell'entità di livello inferiore, redirigere il puntatore nel
+// tab_entry e settare BIT_RW. Notare che, ad ogni passo, il tab_entry su cui
+// si ferma l'iteratore è sicuramente privato: la priva volta perché si trova
+// nella tabella radice, che é già privata per ogni processo, e nei passi
+// successivi perché abbiamo creato una tabella privata al passo precedente (se
+// non lo era già).
+	for (tab_iter it(esecuzione->cr3, v, 1); it; it.next()) {
+		// prendiamo un riferimento all'entrata corrente
+		tab_entry& e = it.get_e();
+		// aggiorna_cow_privata() è chiamata solo per gli indirizzi
+		// della zona cow, che dovrebbero essere tutti validi. Se
+		// troviamo P==0 ci deve essere un errore.
+		if (!(e & BIT_P))
+			fpanic("indirizzo cow %lx non mappato", v);
+		if (e & BIT_RW)
+			continue;
+		paddr new_frame;
+		// estraiamo il puntatore alla entità (tabella o frame)
+		// corrente
+		paddr old_frame = extr_IND_FISICO(e);
+		if (it.get_l() > 1) {
+			// se siamo ad un livello maggiore di 1, l'entità
+			// puntata è una tabella. Per copiarla usiamo
+			// copy_des(), che aggiorna correttamente il
+			// contatore delle entrate valide
+			new_frame = alloca_tab();
+			if (!new_frame)
+				return false;
+			copy_des(old_frame, new_frame, 0, 512);
+		} else {
+			// se il livello è 1, l'entità puntata è
+			// un frame. Possiamo copiarla con una semplice
+			// memcpy()
+			new_frame = alloca_frame();
+			if (!new_frame)
+				return false;
+			memcpy(voidptr_cast(new_frame),
+			       voidptr_cast(old_frame), DIM_PAGINA);
+			// visto che modificheremo il permesso RW per questo
+			// indirizzo, invalidiamo la corrispondente entrata nel TLB
+			//
+			// Nota: in questo caso l'invalidazione non è
+			// strettamente necessaria. Visto che l'indirizzo era
+			// non scrivibile, il bit D copiato nel TLB sarà
+			// sicuramente 0. Questo vuol dire che il TLB genererà
+			// un miss forzato al primo tentativo di scrittura, e
+			// quindi la MMU sarà costretta a percorrere il TRIE e
+			// vedere il nuovo valore dei bit RW.
+			invalida_entrata_TLB(it.get_v());
+		}
+		// redirigiamo l'entrata corrente e settiamo RW
+		set_IND_FISICO(e, new_frame);
+		e |= BIT_RW;
+	}
+	return true;
+//   SOLUZIONE 2023-06-07 )
+
+
+******************************************
+* question.dox
+******************************************
+
+
+

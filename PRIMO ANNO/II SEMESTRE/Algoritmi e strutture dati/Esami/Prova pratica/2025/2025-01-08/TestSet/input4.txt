@@ -1,0 +1,11 @@
+10 51 vizr
+1 vi C 1
+4 tjjo A 1
+23 p A 12
+3 fao D 5
+22 kxs A 14
+0 w A 11
+7 lni B 10
+17 vizr A 13
+9 mhy B 8
+16 nfc B 10

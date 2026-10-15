@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compito 2026-02-18</title>
+
+<style>
+header{
+    text-align: center;
+    padding:12px;
+    background:blue;
+    color:white;
+    font-size: larger;
+    font-weight: bolder;
+}
+.container{
+    margin:20px auto;
+    max-width:900px;
+    font-size: larger;
+    font-weight: bolder;
+}
+input{
+    font-size: larger;
+    padding:6px;
+    width:50%;
+}
+button{
+    font-size: larger;
+    padding:6px 12px;
+}
+.card{
+    border:2px solid black;
+    padding:12px;
+}
+canvas{
+    border:2px solid blue;
+    display:block;
+    margin: 20px auto;
+    background-color: lightgoldenrodyellow;
+}
+</style>
+</head>
+<body>
+<header>Lettere che cadono</header>
+<div class="container">
+    <div class="card" id="schedaImpostazioni">
+        <p>Inserisci 4 parole (3-6 lettere ciascuna, solo lettere, separate da spazi).</p>
+        <input id="inputParole" placeholder="es: sedia bici libro vento">
+        <button id="pulsanteInizia" disabled>Inizia</button>
+        <p id="messaggio"></p>
+        <p>Comandi: A sinistra, D destra</p>
+    </div>
+    <div class="card" id="schedaGioco" style="display:none">
+        <p id="testoParole"></p>
+        <p id="testoProgresso"></p>
+        <canvas id="tela" width="600" height="400"></canvas>
+    </div>
+</div>
+<script>
+const REGEX_PAROLE = /^\s*([A-Za-z][a-z]{2,5}\s+){3}[A-Za-z][a-z]{2,5}\s*$/;
+const inputParole = document.getElementById("inputParole");
+const pulsanteInizia = document.getElementById("pulsanteInizia");
+const schedaImpostazioni = document.getElementById("schedaImpostazioni");
+const schedaGioco = document.getElementById("schedaGioco");
+const testoParole = document.getElementById("testoParole");
+const testoProgresso = document.getElementById("testoProgresso");
+const tela = document.getElementById("tela");
+const contesto = tela.getContext("2d");
+const tasti = { a: false, d: false };
+const barra = { x: 0, y: tela.height - 30, w: 140, h: 14, velocita: 500 };
+barra.x = tela.width / 2 - barra.w / 2;
+// Stato globale del gioco: parole target, progresso, loop animazione e lettere attive.
+const stato = {
+    parole: [], sequenza: "", totale: 0, fatte: 0,
+    inCorso: false, terminato: false, lettere: [], ultimoTs: 0, spawnAcc: 0
+};
+const GENERA_OGNI = 0.5;
+const VELOCITA_LETTERE = 200;
+const VELOCITA_ROTAZIONE = 3;
+const DIMENSIONE_LETTERA = 16;
+const ALFABETO = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+// Aggiorna il progresso mostrato all'utente.
+function aggiornaProgresso(){
+    testoProgresso.textContent = `Progresso: ${stato.fatte} / ${stato.totale}`;
+}
+// Inizializza una nuova partita 
+function avviaGioco(paroleInserite){
+    stato.parole = paroleInserite.map(p => p.toUpperCase());
+    stato.sequenza = stato.parole.join("");
+    stato.totale = stato.sequenza.length;
+    stato.fatte = stato.ultimoTs = stato.spawnAcc = 0;
+    stato.inCorso = true;
+    stato.terminato = false;
+    stato.lettere = [];
+    testoParole.textContent = `Parole: ${stato.parole.join(" ")}`;
+    aggiornaProgresso();
+    schedaImpostazioni.style.display = "none";
+    schedaGioco.style.display = "block";
+    requestAnimationFrame(ciclo);
+}
+
+// Controlla se la lettera catturata e' quella attesa e aggiorna lo stato.
+function provaInserimento(carattere){
+    const richiesta = stato.sequenza[stato.fatte];
+    if(carattere !== richiesta){
+        return;
+    }
+    stato.fatte++;
+    aggiornaProgresso();
+    if(stato.fatte >= stato.totale){
+        stato.inCorso = false;
+        stato.terminato = true;
+        testoParole.textContent = "COMPLETATO!";
+    }
+}
+// Crea una nuova lettera in alto con posizione e angolo casuali.
+function generaLettera(){
+    stato.lettere.push({
+        carattere: ALFABETO[Math.floor(Math.random() * ALFABETO.length)],
+        x: 20 + Math.random() * (tela.width - 40),
+        y: -20,
+        angolo: Math.random() * Math.PI * 2,
+        catturata: false
+    });
+}
+// Verifica collisione 
+function toccaBarra(l){
+    const dentroX = l.x >= barra.x && l.x <= barra.x + barra.w;
+    const toccaY = l.y >= barra.y - 16 && l.y <= barra.y + barra.h + 16;
+    return dentroX && toccaY;
+}
+
+// Aggiorna posizioni di barra/lettere e gestisce catture e rimozioni.
+function aggiorna(dt){
+    if(tasti.a){
+        barra.x -= barra.velocita * dt;
+    }
+    if(tasti.d){
+        barra.x += barra.velocita * dt;
+    }
+    barra.x = Math.max(0, Math.min(tela.width - barra.w, barra.x));
+    stato.lettere.forEach(l => {
+        l.angolo += VELOCITA_ROTAZIONE * dt;
+        l.y += (l.catturata ? -1 : 1) * VELOCITA_LETTERE * dt;
+        if(!l.catturata && toccaBarra(l)){
+            l.catturata = true;
+            provaInserimento(l.carattere);
+        }
+    });
+    stato.lettere = stato.lettere.filter(l =>
+        !(!l.catturata && l.y - DIMENSIONE_LETTERA > tela.height || l.catturata && l.y + DIMENSIONE_LETTERA < 0)
+    );
+}
+// Disegna barra e lettere nel canvas
+function disegna(){
+    contesto.clearRect(0, 0, tela.width, tela.height);
+    contesto.fillStyle = "#00f";
+    contesto.fillRect(barra.x, barra.y, barra.w, barra.h);
+    contesto.font = "bold 40px Arial";
+    contesto.textAlign = "center";
+    contesto.textBaseline = "middle";
+    stato.lettere.forEach(l => {
+        contesto.save();
+        contesto.translate(l.x, l.y);
+        contesto.rotate(l.angolo);
+        contesto.fillStyle = l.catturata ? "#0f0" : "#f00";
+        contesto.fillText(l.carattere, 0, 0);
+        contesto.restore();
+    });
+}
+// Loop principale: calcola dt, genera lettere, aggiorna e ridisegna.
+function ciclo(ts){
+    if(!stato.inCorso && !stato.terminato){
+        return;
+    }
+    const t = ts / 1000;
+    const dt = stato.ultimoTs ? t - stato.ultimoTs : 0;
+    stato.ultimoTs = t;
+    if(stato.inCorso){
+        stato.spawnAcc += dt;
+        if(stato.spawnAcc > GENERA_OGNI){
+            stato.spawnAcc = 0;
+            generaLettera();
+        }
+        aggiorna(dt);
+    }
+    disegna();
+    requestAnimationFrame(ciclo);
+}
+// Aggiorna lo stato dei tasti
+function aggiornaTasto(e, valore){
+    const t = e.key.toLowerCase();
+    if(t in tasti){
+        tasti[t] = valore;
+    }
+}
+pulsanteInizia.addEventListener("click", () => {
+    if(!REGEX_PAROLE.test(inputParole.value)){
+        return;
+    }
+    avviaGioco(inputParole.value.trim().split(/\s+/));
+});
+inputParole.addEventListener("input", () => {
+    pulsanteInizia.disabled = !REGEX_PAROLE.test(inputParole.value);
+});
+document.addEventListener("keydown", e => aggiornaTasto(e, true));
+document.addEventListener("keyup", e => aggiornaTasto(e, false));
+</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+TPS
+STD
+MXP
+LAX
+LAS
+KIX
+FCO

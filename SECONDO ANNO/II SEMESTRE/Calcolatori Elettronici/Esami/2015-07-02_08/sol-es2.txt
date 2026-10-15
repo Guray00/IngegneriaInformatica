@@ -1,0 +1,108 @@
+******************************************
+* sistema/sistema.s
+******************************************
+
+// ( SOLUZIONE 2015-07-02
+	carica_gate	TIPO_SA		a_shmem_attach	LIV_UTENTE
+//   SOLUZIONE 2015-07-02 )
+// ( SOLUZIONE 2015-07-02
+a_shmem_attach:
+	.cfi_startproc
+	.cfi_def_cfa_offset 40
+	.cfi_offset rip, -40
+	.cfi_offset rsp, -16
+	call salva_stato
+	call c_shmem_attach
+	call carica_stato
+	iretq
+	.cfi_endproc
+//   SOLUZIONE 2015-07-02 )
+
+
+******************************************
+* sistema/sistema.cpp
+******************************************
+
+// ( SOLUZIONE 2015-07-02
+extern "C" void c_shmem_attach(natl id)
+{
+	if (!shmem_valid(id)) {
+		flog(LOG_WARN, "shmem non valida: %d", id);
+		// abortiamo il processo e terminiamo la funzione
+		c_abort_p();
+		return;
+	}
+
+	des_shmem *sh = &array_desshmem[id];
+
+	// inseriamo in I_RAX il valore 0 in modo da restituire
+	// errore se ritorniamo dalla funzione prima di arrivare alla
+	// fine
+	esecuzione->contesto[I_RAX] = 0;
+
+	// l'intervallo di indirizzi virtuali occupati dalla shmem
+	// nello spazio di indirizzamento del processo chiamante
+	// sarà [start, end), dove start è il primo indirizzo non
+	// ancora usato, ed end si ottiene da start sommando la
+	// dimensione della shmem
+	vaddr start = esecuzione->avail_addr;
+	vaddr end   = start + sh->npag * DIM_PAGINA;
+
+	// controlliamo che l'intervallo sia contenuto nella parte
+	// utente/condivisa. Il caso 'end < start' corrisponde ad
+	// un eventuale overflow nella somma qui sopra
+	if (end < start || end >= fin_utn_c) {
+		flog(LOG_WARN, "Impossibile mappare %d pagine da %lx",
+			sh->npag, start);
+		// il chiamante non ha colpe e la specifica dice che
+		// dobbiamo solo restituire errore (lo 0 in %rax),
+		// non abortire il processo
+		return;
+	}
+
+	// a questo punto dobbiamo creare la traduzione tra gli indirizzi
+	// nell'intervallo [start, end) verso i frame della shmem.
+	// Usiamo map() con una funzione lambda che restituisca gli
+	// indirizzi fisici dei frame, in successione. Usiamo la
+	// variable fn (frame number) per tenere traccia del frame
+	// corrente
+	natl fn = sh->first_frame_number;
+	vaddr last = map(esecuzione->cr3, start, end, BIT_RW|BIT_US,
+			// con [&] catturiamo fn per riferimento, in modo
+			// che gli assegnamenti a fn dentro la lambda
+			// aggiornino la variabile fn dichiarata qui sopra,
+			// invece che una copia locale (che perderebbe gli
+			// aggiornamenti ogni volta che la funzione viene
+			// chiamata)
+			//
+			// Il parametro v non ci serve, quindi possiamo evitare
+			// di dargli un nome.
+			[&](vaddr) {
+				// memorizziamo il valore corrente di fn	
+				natl cfn = fn;
+				// e poi lo facciamo avanzare nella lista
+				// (per la prossima chiamata)
+				fn = vdf[fn].next_shmem;
+				// dobbiamo restituire l'indirizzo fisico del
+				// frame; lo otteniamo moltiplicando il frame
+				// number per la dimensione di un frame
+				return cfn * DIM_PAGINA;
+			});
+	if (last != end) {
+		// map è riuscita a mappare solo [start, last). Eseguiamo
+		// l'unmap su questo intervallo. La funzione lambda non
+		// deve fare niente di particolare.
+		unmap(esecuzione->cr3, start, last, [](vaddr, paddr, int) {});
+		// anche in questo caso il chiamante non ha colpe e ci
+		// limitiamo a restituire errore
+		return;
+	}
+	// se tutto è andato bene aggiorniamo avail_addr, in modo
+	// che la prossima shmem venga mappata dopo questa
+	esecuzione->avail_addr = end;
+	// restituiamo l'indirizzo iniziale della shmem al chiamante
+	esecuzione->contesto[I_RAX] = start;
+}
+//   SOLUZIONE 2015-07-02 )
+
+

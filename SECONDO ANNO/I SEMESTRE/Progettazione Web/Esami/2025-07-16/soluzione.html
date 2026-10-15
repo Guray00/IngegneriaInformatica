@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca Personale</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: lightgray;
+    }
+    header {
+      background-color: steelblue;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      padding: 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .forms {
+      margin-bottom: 2rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      padding: 0.5rem;
+      margin: 0.3rem;
+      font-size: 1rem;
+    }
+    input:invalid {
+      border: 2px solid red;
+      background: #ffe6e6;
+    }
+    #bottonerimuovi {
+      background-color: red;
+      color: white;
+    }
+    #bottonerimuovi:disabled {
+      background: lightgray;
+      color: dimgray;
+    }
+    .griglia {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+    .libro {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .titolocartella {
+      margin-left: 2rem;
+      margin-top: 2rem;
+      font-weight: bold;
+      color: black;
+    }
+    .contenitorecartella {
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      color: black;
+      height: fit-content;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .colorecartella-0 { background: #ffe082; }
+    .colorecartella-1 { background: #b2dfdb; }
+    .colorecartella-2 { background: #c5e1a5; }
+    .colorecartella-3 { background: #f8bbd0; }
+    .colorecartella-4 { background: #d1c4e9; }
+    .colorecartella-5 { background: #ffccbc; }
+    .colorecartella-6 { background: #b3e5fc; }
+    .colorecartella-7 { background: #dcedc8; }
+    .colorecartella-8 { background: #f0f4c3; }
+    .colorecartella-9 { background: #f5e1a4; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Biblioteca Personale</h1>
+  </header>
+  <main>
+    <div class="forms">
+      <h2>Aggiungi un nuovo libro</h2>
+      <input type="text" id="tit" placeholder="Titolo" />
+      <input type="text" id="aut" placeholder="Autore" />
+      <input type="text" id="cart" placeholder="Cartella (es. Storia, Arte)" />
+      <button id="aggiungiBtn">Aggiungi libro</button>
+    </div>
+    <div class="forms">
+      <h2>Cerca libri</h2>
+      <input type="text" id="searchInput" placeholder="Cerca per titolo o autore" />
+    </div>
+    <div id="biblio" class="griglia"></div>
+    <div class="forms">
+      <button id="rimuoviBtn">Rimuovi tutti i libri</button>
+    </div>
+  </main>
+  <script>
+    'use strict';
+    // Recupera i libri salvati in localStorage o inizializza come array vuoto
+    let libri = JSON.parse(localStorage.getItem('libri') || '[]');
+    
+    // Converte l'array di libri in formato JSON e lo salva in localStorage
+    function salvaLibri() {
+      localStorage.setItem('libri', JSON.stringify(libri));
+    }
+    
+    // Aggiunge un nuovo libro alla biblioteca
+    function aggiungiLibro() {
+      const titoloInput = document.getElementById('tit');
+      const autoreInput = document.getElementById('aut');
+      const cartellaInput = document.getElementById('cart');
+      const titolo = titoloInput.value;
+      const autore = autoreInput.value;
+      const cartella = cartellaInput.value;
+      // Resetta validità
+      [titoloInput, autoreInput, cartellaInput].forEach(input => {
+        input.setCustomValidity("");
+      });
+      let mancante = false;
+      if (!titolo) {
+        titoloInput.setCustomValidity("invalid");
+        mancante = true;
+      }
+      if (!autore) {
+        autoreInput.setCustomValidity("invalid");
+        mancante = true;
+      }
+      if (!cartella) {
+        cartellaInput.setCustomValidity("invalid");
+        mancante = true;
+      }
+      if (mancante) {
+        alert('Compila tutti i campi.');
+        return;
+      }
+      libri.push({ titolo, autore, cartella });
+      salvaLibri();
+      mostraLibri();
+      aggiornaBottoneRimuovi();
+      titoloInput.value = '';
+      autoreInput.value = '';
+      cartellaInput.value = '';
+    }
+
+    // Rimuove tutti i libri dalla biblioteca
+    function rimuoviLibri() {
+      if (confirm('Sei sicuro di voler rimuovere tutti i libri dalla biblioteca?')) {
+        libri = [];
+        salvaLibri();
+        mostraLibri();
+        aggiornaBottoneRimuovi();
+      }
+    }
+
+    // Filtra e mostra i libri in base alla ricerca
+    function cercaLibri() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      mostraLibri(query);
+    }
+
+    // Aggiorna lo stato del bottone "Rimuovi tutti i libri"
+    function aggiornaBottoneRimuovi() {
+      const btn = document.getElementById('rimuoviBtn');
+      btn.disabled = libri.length === 0;
+    }
+
+    // Mostra i libri raggruppati per cartella
+    function mostraLibri(filter = '') {
+      const container = document.getElementById('biblio');
+      container.innerHTML = '';
+      const cartelle = {};
+      // Raggruppa i libri per cartella
+      libri.forEach(libro => {
+        if (!cartelle[libro.cartella]) cartelle[libro.cartella] = [];
+        cartelle[libro.cartella].push(libro);
+      });
+
+      const nomiCartelle = Object.keys(cartelle);
+      nomiCartelle.forEach((nc, idx) => {
+        const filteredlibri = cartelle[nc].filter(libro =>
+          libro.titolo.toLowerCase().includes(filter) ||
+          libro.autore.toLowerCase().includes(filter)
+        );
+        if (filteredlibri.length === 0) return;
+        // Crea la scheda della cartella
+        const cartellaDiv = document.createElement('div');
+        cartellaDiv.className = 'contenitorecartella colorecartella-' + (idx % 10);
+        // Crea il titolo della cartella
+        const cartellaTit = document.createElement('div');
+        cartellaTit.className = 'titolocartella';
+        cartellaTit.textContent = nc;
+        cartellaDiv.appendChild(cartellaTit);
+        // Crea la lista dei libri nella cartella
+        const listaLibri = document.createElement('div');
+        filteredlibri.forEach(libro => {
+          const libroDiv = document.createElement('div');
+          libroDiv.className = 'libro';
+          const strong = document.createElement('strong');
+          strong.textContent = libro.titolo;
+          libroDiv.appendChild(strong);
+          libroDiv.appendChild(document.createElement('br'));
+          const byText = document.createTextNode('di ' + libro.autore);
+          libroDiv.appendChild(byText);
+          listaLibri.appendChild(libroDiv);
+        });
+        cartellaDiv.appendChild(listaLibri);
+        container.appendChild(cartellaDiv);
+      });
+      aggiornaBottoneRimuovi();
+    }
+    function inizializza(){
+      document.getElementById('searchInput').addEventListener('input', cercaLibri);
+      document.getElementById('aggiungiBtn').addEventListener('click', aggiungiLibro);
+      document.getElementById('rimuoviBtn').addEventListener('click', rimuoviLibri);
+      mostraLibri();
+      aggiornaBottoneRimuovi();
+    }
+    document.addEventListener('DOMContentLoaded', inizializza);
+  </script>
+</body>
+</html>

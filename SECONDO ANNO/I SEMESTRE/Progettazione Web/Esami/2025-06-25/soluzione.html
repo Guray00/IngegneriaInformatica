@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>2025-06-25</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: lightgoldenrodyellow;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: lightblue;
+            padding: 24px;
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form,#group-controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        input, select, button, label {
+            padding: 8px;
+        }
+        .tasks {
+            background-color: lightgreen;
+            margin-top: 16px;
+            padding: 16px;
+        }
+        .task {
+            display: flex;
+            background: white;
+            margin-bottom: 6px;
+            padding: 8px;
+            border-radius: 4px;
+            gap: 12px;
+        }
+        .task>span {
+            flex-grow: 1;
+        }
+        .task.completed {
+            color: #aaa;
+            background: #e0e0e0;
+        }
+        .task.completed>span {
+            text-decoration: line-through;
+        }
+        .remove-btn {
+            background: lightcoral;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 4px 10px;
+        }
+    </style>
+    <script>
+    'use strict';
+    const priorities = ['Alta', 'Media', 'Bassa'];
+    const priorityLabels = { 'Alta': 'Alta Priorità', 
+                             'Media': 'Media Priorità', 
+                             'Bassa': 'Bassa Priorità' };
+    /* Raggruppa i task per priorità */
+    function groupTasksByPriority(tasks) {
+        const grouped = {};
+        priorities.forEach(priority => {
+            grouped[priority] = tasks.filter(task => task.priority === priority);
+        });
+        return grouped;
+    }
+    /* Raggruppa i task per categoria */
+    function groupTasksByCategory(tasks) {
+        const grouped = {};
+        tasks.forEach(task => {
+            if (!grouped[task.category]) grouped[task.category] = [];
+            grouped[task.category].push(task);
+        });
+        return grouped;
+    }
+
+    function renderTasks(tasks, groupMode, tasksDiv) {
+        while (tasksDiv.firstChild) {
+            tasksDiv.removeChild(tasksDiv.firstChild);
+        }
+        if (!tasks || tasks.length === 0) {
+            const p = document.createElement('p');
+            p.textContent = 'Nessun task da visualizzare.';
+            tasksDiv.appendChild(p);
+            return;
+        }
+        if (groupMode === 'priority') {
+            const grouped = groupTasksByPriority(tasks);
+            Object.keys(grouped).forEach(priority => {
+                if (grouped[priority].length === 0) return;
+                const prioritySection = document.createElement('div');
+                const priorityTitle = document.createElement('h2');
+                priorityTitle.textContent = priorityLabels[priority];
+                prioritySection.appendChild(priorityTitle);
+                const categories = groupTasksByCategory(grouped[priority]);
+                Object.keys(categories).forEach(cat => {
+                    const catDiv = document.createElement('div');
+                    const catTitle = document.createElement('h3');
+                    catTitle.textContent = cat;
+                    catDiv.appendChild(catTitle);
+                    categories[cat].forEach(task => {
+                        const taskDiv = createTaskDiv(task, tasks, tasksDiv, groupMode);
+                        catDiv.appendChild(taskDiv);
+                    });
+                    prioritySection.appendChild(catDiv);
+                });
+                tasksDiv.appendChild(prioritySection);
+            });
+        } else {
+            const grouped = groupTasksByCategory(tasks);
+            Object.keys(grouped).forEach(cat => {
+                const catDiv = document.createElement('div');
+                const catTitle = document.createElement('h2');
+                catTitle.textContent = cat;
+                catDiv.appendChild(catTitle);
+                priorities.forEach(priority => {
+                    const tasksForPriority = grouped[cat].filter(task => task.priority === priority);
+                    if (tasksForPriority.length === 0) return;
+                    const priorityTitle = document.createElement('h3');
+                    priorityTitle.textContent = priorityLabels[priority];
+                    catDiv.appendChild(priorityTitle);
+                    tasksForPriority.forEach(task => {
+                        const taskDiv = createTaskDiv(task, tasks, tasksDiv, groupMode);
+                        catDiv.appendChild(taskDiv);
+                    });
+                });
+                tasksDiv.appendChild(catDiv);
+            });
+        }
+    }
+
+    function createTaskDiv(task, tasks, tasksDiv, groupMode) {
+        const taskDiv = document.createElement('div');
+        taskDiv.className = 'task' + (task.completed ? ' completed' : '');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = task.completed;
+        checkbox.addEventListener('change', () => {
+            task.completed = !task.completed;
+            renderTasks(tasks, groupMode, tasksDiv);
+        });
+        taskDiv.appendChild(checkbox);
+        const titleSpan = document.createElement('span');
+        titleSpan.textContent = ' ' + task.title;
+        taskDiv.appendChild(titleSpan);
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove-btn';
+        removeBtn.textContent = 'Rimuovi';
+        removeBtn.addEventListener('click', () => {
+            const idx = tasks.indexOf(task);
+            if (idx > -1) tasks.splice(idx, 1);
+            renderTasks(tasks, groupMode, tasksDiv);
+        });
+        taskDiv.appendChild(removeBtn);
+        return taskDiv;
+    }
+
+    /* Inizializza la pagina, gestisce l'aggiunta dei task
+       e il raggruppamento per priorità o categoria */
+    function inizializza() {
+        const form = document.getElementById('todo-form');
+        const tasksDiv = document.getElementById('tasks');
+        const groupModeSelect = document.getElementById('group-mode');
+        let groupMode = 'priority';
+        const tasks = [];
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = form.elements['title'].value.trim();
+            const category = form.elements['category'].value.trim();
+            const priority = form.elements['priority'].value;
+            if (!title || !category) return;
+            tasks.push({ title, category, priority, completed: false });
+            form.reset();
+            renderTasks(tasks, groupMode, tasksDiv);
+        });
+
+        groupModeSelect.addEventListener('change', function() {
+            groupMode = groupModeSelect.value;
+            renderTasks(tasks, groupMode, tasksDiv);
+        });
+
+        renderTasks(tasks, groupMode, tasksDiv);
+    }
+    document.addEventListener("DOMContentLoaded", inizializza);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>To do</h1>
+        <form id="todo-form">
+            <input type="text" name="title" placeholder="Descrizione del task" required />
+            <input type="text" name="category" placeholder="Categoria" required />
+            <label for="prio">Priorità:</label>
+            <select name="priority" id="prio">
+                <option value="Alta">Alta</option>
+                <option value="Media" selected>Media</option>
+                <option value="Bassa">Bassa</option>
+            </select>
+            <button type="submit">Aggiungi Task</button>
+        </form>
+    </div>
+    <div class="container">
+        <div id="group-controls">
+            <label for="group-mode">Raggruppa per:</label>
+            <select id="group-mode">
+                <option value="priority" selected>Priorità</option>
+                <option value="category">Categoria</option>
+            </select>
+        </div>
+        <div id="tasks" class="tasks">
+        </div>
+    </div>
+</body>
+</html>

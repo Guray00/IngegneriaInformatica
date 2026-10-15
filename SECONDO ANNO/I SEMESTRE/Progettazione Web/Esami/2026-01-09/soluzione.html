@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prenotazioni aula informatica</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 12px; background:#d5ef09; }
+    .layout { display: flex; gap: 12px;}
+    .col { background: #fff; border: 1px solid black; padding: 10px; width: 33%; min-height: 420px; min-width: 400px; max-width: 500px;}
+    label { display:block; margin-top: 8px; font-size: 16px; font-weight: bold;}
+    input, select, button {width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box;}
+    .invalid { border: 2px solid red; }
+    .error { margin-top: 10px; padding: 8px; background:#ffe5e5; border:1px solid #ffb3b3; display:none; }
+    .error.show { display:block; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    th, td { border: 1px solid #ccc; padding: 6px; font-size: 12px; }
+    th { background: #eee; }
+    .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+    .postazione {
+      height: 54px; width: 54px;
+      border: 1px solid black;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#fff;
+      font-weight: bold;
+    }
+    .postazione.blue { background:#cfe8ff; }
+    .postazione.red  { background:#ffb3b3; }
+  </style>
+</head>
+<body>
+  <h1>Gestione postazioni aula informatica</h1>
+  <div class="layout">
+    <!-- sinistra -->
+    <section class="col">
+      <h2>Prenotazione</h2>
+      <label for="nome">Nome</label> <input id="nome" placeholder="Mario"/>
+      <label for="cognome">Cognome</label> <input id="cognome" placeholder="Rossi"/>
+      <label for="postazione">Numero postazione</label> <input id="postazione" type="number" min="1" max="30" placeholder="12"/>
+      <label for="fascia">Fascia oraria</label>
+      <select id="fascia">
+        <option value="">Seleziona...</option>
+        <option value="9-11">9-11</option>
+        <option value="11-13">11-13</option>
+        <option value="14-16">14-16</option>
+        <option value="16-18">16-18</option>
+      </select>
+      <button id="btnPrenota" disabled>Prenota</button>
+      <div id="errBox" class="error"></div>
+    </section>
+    <!-- centro -->
+    <section class="col">
+      <h2>Postazioni</h2>
+      <div id="grid" class="grid"></div>
+    </section>
+    <!-- destra -->
+    <section class="col">
+      <h2>Dettaglio postazione</h2>
+      <div id="detail">
+        Clicca una postazione per vedere il dettaglio.
+      </div>
+    </section>
+  </div>
+  <script>
+    'use strict';
+    const fasceDisponibili = ["9-11", "11-13", "14-16", "16-18"];
+    class Prenotazione {
+      constructor(nome, cognome, fascia) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.fascia = fascia;
+      }
+    }
+    class Postazione {
+      constructor(numero) {
+        this.numero = numero;
+          this.prenotazioniPerFascia = new Array(fasceDisponibili.length).fill(null);
+      }
+      prenota(fascia, prenotazione) {
+          const idx = fasceDisponibili.indexOf(fascia);
+          if (idx === -1) return false;
+          if (this.prenotazioniPerFascia[idx] !== null) return false;
+          this.prenotazioniPerFascia[idx] = prenotazione;
+        return true;
+      }
+      haPrenotazioni() {
+          return this.prenotazioniPerFascia.some(p => p !== null);
+      }
+      completamentePrenotata() {
+          return this.prenotazioniPerFascia.every(p => p !== null);
+      }
+      elencoPrenotazioniOrdinatoPerFascia() {
+          return this.prenotazioniPerFascia
+           .map((p, i) => p ? { fascia: fasceDisponibili[i], prenotazione: p } : null)
+           .filter(e => e);
+      }
+    }
+    class SistemaPrenotazioni {
+      constructor() {
+        this.mappaPostazioni = [];
+        for (let i = 1; i <= 30; i++) this.mappaPostazioni.push(new Postazione(i));
+        this.elNome = document.getElementById("nome");
+        this.elCognome = document.getElementById("cognome");
+        this.elPostazione = document.getElementById("postazione");
+        this.elFascia = document.getElementById("fascia");
+        this.btnPrenota = document.getElementById("btnPrenota");
+        this.errBox = document.getElementById("errBox");
+        this.griglia = document.getElementById("grid");
+        this.dettaglio = document.getElementById("detail");
+        this.bloccato = false;
+        this.timerDettaglio = null;
+        this.timerErrore = null;
+        this.creaGriglia();
+        this.aggiornaGriglia();
+        this.validaEAttiva();
+      }
+      nomeValido(s) {
+        return /^[A-Z][a-zA-Z]*$/.test(s.trim());
+      }
+      numeroPostazioneValido(v) {
+        const n = Number(v);
+        return Number.isInteger(n) && n >= 1 && n <= 30;
+      }
+      validaEAttiva() {
+        const nomeOk = this.nomeValido(this.elNome.value);
+        const cognomeOk = this.nomeValido(this.elCognome.value);
+        const postazioneOk = this.numeroPostazioneValido(this.elPostazione.value);
+        const fasciaOk = this.elFascia.value !== "";
+        this.impostaNonValido(this.elNome, !nomeOk);
+        this.impostaNonValido(this.elCognome, !cognomeOk);
+        this.impostaNonValido(this.elPostazione, !postazioneOk);
+        this.impostaNonValido(this.elFascia, !fasciaOk);
+        this.btnPrenota.disabled = !(nomeOk && cognomeOk && postazioneOk && fasciaOk);
+      }
+      impostaNonValido(el, nonValido) {
+        el.classList.toggle("invalid", nonValido);
+      }
+      creaGriglia() {
+        this.griglia.innerHTML = "";
+        for (let i = 1; i <= 30; i++) {
+          const d = document.createElement("div");
+          d.className = "postazione";
+          d.textContent = i;
+          d.dataset.numeroPostazione = String(i);
+          this.griglia.appendChild(d);
+        }
+      }
+      classeColorePostazione(postazioneObj) {
+        if (!postazioneObj.haPrenotazioni()) return "";
+        if (postazioneObj.completamentePrenotata()) return "red";
+        return "blue";
+      }
+      aggiornaGriglia() {
+        for (const cella of this.griglia.querySelectorAll(".postazione")) {
+          const n = Number(cella.dataset.numeroPostazione);
+          const postazioneObj = this.mappaPostazioni[n - 1];
+          cella.classList.remove("blue", "red");
+          const cls = this.classeColorePostazione(postazioneObj);
+          if (cls) cella.classList.add(cls);
+        }
+      }
+      mostraErrore(msg) {
+        this.errBox.textContent = msg;
+        this.errBox.classList.add("show");
+        if (this.timerErrore) clearTimeout(this.timerErrore);
+        this.timerErrore = setTimeout(() => {
+          this.errBox.classList.remove("show");
+        }, 3000);
+      }
+      mostraDettaglioPerPostazione(numeroPostazione) {
+        const postazioneObj = this.mappaPostazioni[numeroPostazione - 1];
+        this.dettaglio.innerHTML = "";
+        if (!postazioneObj.haPrenotazioni()) {
+          const div = document.createElement("div");
+          div.textContent = `Nessuna prenotazione per la postazione `;
+          const b = document.createElement("b");
+          b.textContent = numeroPostazione;
+          div.appendChild(b);
+          div.appendChild(document.createTextNode("."));
+          this.dettaglio.appendChild(div);
+        } else {
+          const p = document.createElement("p");
+          const b = document.createElement("b");
+          b.textContent = `Postazione ${numeroPostazione}`;
+          p.appendChild(b);
+          p.appendChild(document.createTextNode(" — prenotazioni (ordinate per fascia)"));
+          this.dettaglio.appendChild(p);
+
+          const table = document.createElement("table");
+          const thead = document.createElement("thead");
+          const trHead = document.createElement("tr");
+          ["Nome", "Cognome", "Fascia oraria"].forEach(testo => {
+            const th = document.createElement("th");
+            th.textContent = testo;
+            trHead.appendChild(th);
+          });
+          thead.appendChild(trHead);
+          table.appendChild(thead);
+
+          const tbody = document.createElement("tbody");
+          const prenotazioni = postazioneObj.elencoPrenotazioniOrdinatoPerFascia();
+          prenotazioni.forEach(({ fascia, prenotazione }) => {
+            const tr = document.createElement("tr");
+            const tdNome = document.createElement("td");
+            tdNome.textContent = prenotazione.nome;
+            const tdCognome = document.createElement("td");
+            tdCognome.textContent = prenotazione.cognome;
+            const tdFascia = document.createElement("td");
+            tdFascia.textContent = fascia;
+            tr.appendChild(tdNome);
+            tr.appendChild(tdCognome);
+            tr.appendChild(tdFascia);
+            tbody.appendChild(tr);
+          });
+          table.appendChild(tbody);
+          this.dettaglio.appendChild(table);
+        }
+        this.bloccaGrigliaPer5s();
+      }
+      bloccaGrigliaPer5s() {
+        this.bloccato = true;
+        if (this.timerDettaglio) clearTimeout(this.timerDettaglio);
+        this.timerDettaglio = setTimeout(() => {
+          this.bloccato = false;
+          this.dettaglio.innerText = "Clicca una postazione per vedere il dettaglio.";
+        }, 5000);
+      }
+      aggiungiPrenotazione() {
+        if (this.btnPrenota.disabled) return;
+        const nome = this.elNome.value.trim();
+        const cognome = this.elCognome.value.trim();
+        const numeroPostazione = Number(this.elPostazione.value);
+        const fascia = this.elFascia.value;
+        const postazioneObj = this.mappaPostazioni[numeroPostazione - 1];
+        const prenotazione = new Prenotazione(nome, cognome, fascia);
+        const ok = postazioneObj.prenota(fascia, prenotazione);
+        if (!ok) {
+          this.mostraErrore("Postazione già occupata nella fascia selezionata.");
+          return;
+        }
+        this.aggiornaGriglia();
+        this.elNome.value = "";
+        this.elCognome.value = "";
+        this.elPostazione.value = "";
+        this.elFascia.value = "";
+        this.validaEAttiva();
+      }
+      collegaEventi() {
+        const v = () => this.validaEAttiva();
+        this.elNome.addEventListener("input", v);
+        this.elCognome.addEventListener("input", v);
+        this.elPostazione.addEventListener("input", v);
+        this.elFascia.addEventListener("change", v);
+        this.btnPrenota.addEventListener("click", () => this.aggiungiPrenotazione());
+        this.griglia.addEventListener("click", (e) => {
+          const cella = e.target;
+          if (!cella.classList.contains("postazione")) return;
+          if (this.bloccato) return;
+          const numeroPostazione = Number(cella.dataset.numeroPostazione);
+          this.mostraDettaglioPerPostazione(numeroPostazione);
+        });
+      }
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      const sp = new SistemaPrenotazioni();
+      sp.collegaEventi();
+    });
+  </script>
+</body>
+</html>
